@@ -1,0 +1,154 @@
+---
+title: Quickstart
+description: Step-by-step guide to signing up, creating your first documentation space, and publishing initial content using the web editor.
+---
+
+## Prerequisites
+
+Before starting, ensure you have:
+
+<Callout kind="info">
+
+- A valid email address for account creation
+- A modern web browser like Chrome, Firefox, or Safari
+- Optional: A custom domain for advanced publishing
+
+</Callout>
+
+## Sign Up and Get Started
+
+Follow these steps to create your Yashwanth Muddana account, set up your first documentation space, and publish content.
+
+<Steps>
+  <Step title="Create Account" icon="user-plus">
+
+    Visit [https://dashboard.yashwanthmuddana.com/signup](https://dashboard.yashwanthmuddana.com/signup) and enter your email and password.
+
+    Confirm your email address to activate the account. You'll receive a verification link.
+
+  </Step>
+
+  <Step title="Access Dashboard" icon="monitor">
+
+    Log in at [https://dashboard.yashwanthmuddana.com](https://dashboard.yashwanthmuddana.com).
+
+    Review the welcome tour to familiarize yourself with the interface.
+
+  </Step>
+
+  <Step title="Create Documentation Space" icon="folder-plus">
+
+    Click **New Space** in the dashboard.
+
+    Enter a name like `My Project Docs`, select **Public** visibility, and choose the default template.
+
+    Your space is now ready at a URL like `https://yashwanthmuddana.com/my-project-docs`.
+
+  </Step>
+
+  <Step title="Build First Page with Web Editor" icon="edit-3">
+
+    Navigate to your new space and click **New Page**.
+
+    Use the web editor to add a title, write content, and insert elements like headings or lists.
+
+    For example, add a quick intro: "Welcome to my docs powered by Yashwanth Muddana."
+
+  </Step>
+
+  <Step title="Preview and Publish" icon="eye">
+
+    Click **Preview** to see the live version.
+
+    Make edits in real-time, then hit **Publish** to make it public.
+
+    Share the page URL with your team.
+
+  </Step>
+</Steps>
+
+## Add Rich Content in the Editor
+
+The web editor supports Markdown, components, and embeds. Here's how to add a code example:
+
+<Tabs>
+  <Tab title="JavaScript" icon="code">
+
+````javascript
+// Simple API call example
+const response = await fetch('https://api.example.com/docs', {
+  headers: {
+    'Authorization': `Bearer ${YOUR_API_KEY}`
+  }
+});
+
+const data = await response.json();
+console.log(data);
+````
+
+  </Tab>
+  <Tab title="Python" icon="python">
+
+````python
+import requests
+
+response = requests.get(
+    'https://api.example.com/docs',
+    headers={'Authorization': f'Bearer {YOUR_API_KEY}'}
+)
+data = response.json()
+print(data)
+````
+
+  </Tab>
+</Tabs>
+
+<Callout kind="tip">
+
+  Replace `{YOUR_API_KEY}` with your actual key from the dashboard settings.
+
+</Callout>
+
+## Customize Your Space
+
+<Expandable title="Advanced Editor Tips" default-open="false">
+
+  - Drag-and-drop images directly into the editor
+  - Use slash commands like `/image` or `/code` for quick inserts
+  - Toggle between visual and Markdown modes with `Ctrl+M`
+
+</Expandable>
+
+## Next Steps
+
+Explore these resources to build out your documentation:
+
+<Columns cols={2}>
+  <Card title="Authentication" icon="shield" href="/authentication">
+    Secure your docs with API keys and user management.
+  </Card>
+
+  <Card title="Guides" icon="book-open" href="/guides">
+    Dive into advanced publishing and AI features.
+  </Card>
+
+  <Card title="Configuration" icon="settings" href="/configuration">
+    Set up custom domains and branding.
+  </Card>
+
+  <Card title="Changelog" icon="git-branch" href="/changelog">
+    Stay updated with the latest releases.
+  </Card>
+</Columns>
+
+<Board title="Documentation Workflow">
+  <BoardColumn title="Draft" color="0" icon="edit">
+    <BoardCard title="Write intro page" description="Use web editor for first draft" />
+  </BoardColumn>
+  <BoardColumn title="Review" color="1" icon="search">
+    <BoardCard title="Preview changes" description="Check formatting and links" />
+  </BoardColumn>
+  <BoardColumn title="Live" color="2" icon="globe">
+    <BoardCard title="Publish space" description="Go live with custom domain" dueDate="2024-12-31" />
+  </BoardColumn>
+</Board>

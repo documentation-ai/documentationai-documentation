@@ -1,0 +1,146 @@
+---
+title: Changelog
+description: Version history with recent updates, new features, improvements, and changes to the platform.
+---
+
+## Recent Changes
+
+<Callout kind="info">
+  Track the evolution of Yashwanth Muddana with detailed release notes. Each update includes new features, bug fixes, and improvements to enhance your documentation experience.
+</Callout>
+
+<Update label="2024-12-05" description="v1.3.0" tags={["feature", "improvement"]}>
+
+## New Features
+
+- Added AI-powered documentation agent that suggests and auto-generates updates based on your product changes.
+- Introduced inline AI assistant for users to query docs directly with cited responses.
+
+## Improvements
+
+- Enhanced search with semantic understanding for better relevance.
+- Optimized performance for faster page loads, now `<50ms` average.
+
+## Bug Fixes
+
+- Fixed rendering issues with nested code blocks in MDX files.
+- Resolved authentication token expiration during long sessions.
+
+</Update>
+
+<Update label="2024-11-20" description="v1.2.0" tags={["feature", "bugfix"]}>
+
+## New Features
+
+- Flexible publishing options: web editor or docs-as-code via Git.
+- AI-ready structure for LLMs, agents, and search engines out of the box.
+
+## Bug Fixes
+
+- Corrected webhook delivery failures on high-traffic endpoints.
+- Patched cross-origin request blocking in dashboard embeds.
+
+## Improvements
+
+- Updated UI components with brand color `#3B82F6` for better visual consistency.
+
+</Update>
+
+<Update label="2024-10-15" description="v1.1.0" tags={["feature", "breaking"]}>
+
+## New Features
+
+- Core documentation platform with automatic syncing from your repo.
+- Customizable themes and lightning-fast rendering engine.
+
+## Breaking Changes
+
+- Migrated to new API base URL: `https://api.example.com/v2`.
+- Removed legacy `{API_KEY}` format; use `Bearer YOUR_TOKEN` instead.
+
+## Bug Fixes
+
+- Fixed initial setup wizard crashes on certain browsers.
+
+</Update>
+
+## Upcoming Roadmap
+
+Visualize planned enhancements with this kanban-style board. Prioritize features based on community feedback.
+
+<Board title="Q1 2025 Roadmap">
+  <BoardColumn title="Planned" color="0" icon="calendar">
+    <BoardCard
+      title="Real-time Collaboration"
+      description="Multi-user editing with live previews"
+      icon="users"
+      dueDate="2025-02-15"
+      author="Engineering Team"
+    />
+    <BoardCard
+      title="Advanced Analytics"
+      description="Track doc usage and AI query performance"
+      icon="bar-chart-3"
+      dueDate="2025-03-01"
+    />
+  </BoardColumn>
+  <BoardColumn title="In Progress" color="1" icon="loader-2">
+    <BoardCard
+      title="Webhook Enhancements"
+      description="Custom event triggers and retries"
+      icon="zap"
+      author="Yashwanth Muddana"
+    />
+  </BoardColumn>
+  <BoardColumn title="Completed" color="2" icon="check-circle">
+    <BoardCard
+      title="Mobile-Responsive Editor"
+      description="Full support for editing on any device"
+      createdAt="2024-12-01"
+    />
+  </BoardColumn>
+</Board>
+
+## How to Update
+
+Follow these steps to ensure you run the latest version.
+
+<Steps>
+  <Step title="Check Your Version" icon="package">
+    Run the version check command:
+    
+    ```bash
+    npx yashwanth-muddana --version
+    ```
+  </Step>
+  <Step title="Upgrade" icon="upload">
+    <Tabs>
+      <Tab title="npm" icon="package">
+        ```bash
+        npm update yashwanth-muddana
+        ```
+      </Tab>
+      <Tab title="yarn" icon="package">
+        ```bash
+        yarn upgrade yashwanth-muddana
+        ```
+      </Tab>
+    </Tabs>
+  </Step>
+  <Step title="Verify" icon="check-circle">
+    Restart your docs server and review the changelog for migration notes.
+  </Step>
+</Steps>
+
+<Columns cols={2}>
+  <Card title="Submit Feedback" icon="message-circle" href="https://github.com/your-repo/issues" target="_blank">
+    Share ideas or report issues to shape future releases.
+  </Card>
+  <Card title="Join Community" icon="users" href="https://discord.gg/your-community" target="_blank">
+    Discuss updates and get early access to betas.
+  </Card>
+</Columns>
+
+<Callout kind="tip">
+  Subscribe to RSS or GitHub notifications for instant changelog alerts. Customize this space for your Yashwanth Muddana projects.
+</Callout>
