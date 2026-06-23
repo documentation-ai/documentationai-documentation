@@ -654,11 +654,6 @@
       "tagId": "GTM-NDB4L6DV"
     }
   },
-  "customCss": [
-    {
-      "src": "styles/custom.css"
-    }
-  ],
   "redirects": [
     {
       "source": "/integrations-and-workflows/github-integration",
