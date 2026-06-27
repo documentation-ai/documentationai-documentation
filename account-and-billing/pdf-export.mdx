@@ -1,0 +1,147 @@
+---
+title: PDF Export
+description: Download your entire documentation site as a PDF file for offline access, archiving, or sharing.
+---
+
+## Export your documentation site as a PDF
+
+PDF Export creates a single PDF file for your entire documentation site so you can share it offline, keep an archive, or distribute a fixed snapshot of your docs. Documentation owners and organization admins can use PDF Export on Standard, Professional, and Enterprise plans.
+
+<Callout kind="info">
+
+PDF Export supports sites with up to 8,000 pages per export request.
+
+
+</Callout>
+
+## Request a PDF export
+
+Request a new export from the dashboard when you need the latest version of your documentation site as a PDF. If an export already exists, requesting a new one cancels and replaces the previous export.
+
+<Steps>
+
+  <Step title="Open your documentation site settings" icon="settings">
+
+  Sign in to the dashboard, then open the documentation site you want to export. Go to the PDF Export section in your site settings.
+
+
+  </Step>
+  <Step title="Start a new export" icon="play-circle">
+
+  Select **Request export** to create a new PDF export for the entire site.
+
+  After you submit the request, the export appears with a status of `pending` or `processing`.
+
+
+  </Step>
+  <Step title="Wait for the export to finish" icon="check-circle">
+
+  Keep the dashboard open or leave and return later. You will also receive an email when the export is ready to download.
+
+  A successful export changes to `completed`.
+
+
+  </Step>
+</Steps>
+
+<Callout kind="alert">
+
+If you request a new export before the current one finishes or expires, the new request cancels the previous export and replaces it.
+
+
+</Callout>
+
+### Request an export with the API
+
+If you manage your site programmatically, you can also request a PDF export with the API. Use the same site you would export from the dashboard, then monitor the export status until it completes.
+
+<Callout kind="info">
+
+This page covers the export workflow from a user perspective. Use your API workflow when you need to automate exports or trigger them from internal tools.
+
+
+</Callout>
+
+## Export status
+
+Every export moves through a small set of statuses so you can see whether it is ready, still running, or no longer available.
+
+| Status | What it means |
+| --- | --- |
+| `pending` | The export request was accepted and is waiting to start. |
+| `processing` | The PDF is being generated. |
+| `completed` | The export finished successfully and is ready to download. |
+| `failed` | The export did not complete successfully. Request a new export. |
+| `cancelled` | The export was stopped before completion, either by you or by a replacement request. |
+| `expired` | The completed export is no longer available for download after the retention window ends. |
+
+A new export does not update an existing file in place. Each completed export is a generated snapshot of your site at the time you requested it.
+
+## Download a completed export
+
+Download the file from the dashboard after the export status changes to `completed`. The download remains available for 7 days.
+
+<Steps>
+
+  <Step title="Open the PDF Export section" icon="folder">
+
+  Return to the documentation site in the dashboard and open the PDF Export section.
+
+
+  </Step>
+  <Step title="Confirm the export is completed" icon="check-circle">
+
+  Find the current export and check that its status is `completed`.
+
+  If the export is still `pending` or `processing`, wait for the completion email or refresh the page later.
+
+
+  </Step>
+  <Step title="Download the PDF" icon="download">
+
+  Select **Download export** to save the PDF file.
+
+  Your browser starts downloading a single PDF for the entire documentation site.
+
+
+  </Step>
+</Steps>
+
+<Callout kind="tip">
+
+If you do not see a download option, check whether the export failed, was cancelled, or expired.
+
+
+</Callout>
+
+## Cancel or delete an export
+
+Cancel an export while it is still running if you no longer need it or want to start over with a fresh request. You can also remove an export record after it completes or fails, depending on what actions are available in the dashboard.
+
+- **Cancel an in-progress export** when the status is `pending` or `processing`.
+- **Request a replacement export** if you want a newer PDF snapshot. The new request cancels the previous export automatically.
+- **Delete an export** if you want to remove it from the dashboard after it is no longer needed.
+
+If you cancel an export, the file is not generated and nothing becomes available for download. If you need the PDF later, request a new export.
+
+## Expiry and retention
+
+Completed exports stay available to download for 7 days. After that window ends, the export expires and you can no longer download the file.
+
+If you still need a PDF after an export expires, request a new export. The new export generates a fresh file from the current state of your documentation site.
+
+<Callout kind="info">
+
+The download link is temporary. Save the PDF locally within 7 days if you need to keep a copy for records, review, or distribution.
+
+
+</Callout>
+
+## Plan requirements
+
+<Callout kind="info">
+
+PDF Export is available on Standard, Professional, and Enterprise plans only. If you do not see PDF Export in the dashboard, check your current plan and account permissions.
+
+
+</Callout>
