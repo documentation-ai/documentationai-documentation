@@ -15,7 +15,10 @@ Documentation.AI uses credits for two AI features:
 Only these features consume credits. Browsing, editing, publishing, and normal site usage do not consume credits.
 
 <Callout kind="info" collapsed="false">
-  Credits reset every billing cycle. Unused credits do not roll over.
+
+  Credits reset every billing cycle. Up to 50% of unused subscription credits carry forward to the next cycle, capped at 1.5× your monthly allocation.
+
+
 </Callout>
 
 ## AI Assistant / Ask AI
@@ -77,9 +80,12 @@ This is a common task where you connect a GitHub repository and ask the agent to
 This task costs more because the agent needs to read from GitHub, search your docs, and then edit multiple pages. If only 1–2 pages need updating, it will usually land near the lower end of the range. If the commits affect many areas of your docs, it can move well beyond 10 credits.
 
 <Callout kind="warning" collapsed="false">
+
   Tasks that involve many files, long conversations, or multiple revisions can
   use 5–10+ credits in a single session. If you are working on a large task,
   check your credit balance in the dashboard periodically.
+
+
 </Callout>
 
 ### Worked example: "Fix a typo"
@@ -138,7 +144,34 @@ The usage page shows:
 - A breakdown by feature (Documentation Agent vs. AI Assistant)
 
 <Callout kind="info" collapsed="false">
-  If you run out of credits, the AI Documentation Agent and AI Assistant features will be disabled until your next billing cycle or until you upgrade your plan.
+
+  If you run out of both subscription credits and pack credits, and overage is not enabled or the overage limit has been reached, the AI Documentation Agent and AI Assistant features will be disabled until your next billing cycle, until you purchase a credit pack, or until you upgrade your plan.
+
+
+</Callout>
+
+## Credit packs
+
+In addition to the monthly credits included with your plan, you can purchase **credit packs** as an add-on. Credit packs provide a fixed number of additional credits that are consumed after your monthly subscription credits run out.
+
+- Credit packs are available in several sizes (5,000 to 100,000 credits)
+- Pack credits are used automatically after your subscription credits are exhausted
+- Pack credits persist until depleted — they are not lost at the end of a billing cycle
+- Trial accounts receive 10,000 pack credits that expire after 14 days
+
+To purchase a credit pack, go to **Settings → Organization Settings → Billing** and select the pack size that fits your needs.
+
+## Overage usage
+
+If you have an active subscription with a payment method on file, you can enable **overage usage** to continue using AI features after both your subscription and pack credits are exhausted. Overage credits are billed at $0.01 per credit and are charged through Stripe at the end of each billing cycle.
+
+You can set a monthly **overage spending limit** (in USD) to control how much you are charged. When the overage limit is reached, AI features are paused until the next billing cycle — no additional charges are incurred.
+
+<Callout kind="tip" collapsed="false">
+
+  Credit packs are consumed before overage credits. If you have both pack credits and overage enabled, pack credits are used first, and overage only applies once pack credits are also exhausted.
+
+
 </Callout>
 
 ## Tips to use credits efficiently

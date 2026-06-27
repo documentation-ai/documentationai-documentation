@@ -13,7 +13,7 @@ The Documentation.AI REST API and the [Authoring MCP Server](/ai/authoring-mcp-s
 
 Before using the Documentation.AI REST API, make sure you have the following:
 
-1. **A Documentation.AI account** on the Standard plan or above
+1. **A Documentation.AI account** on the Standard plan or above, or any AppSumo Lifetime tier
 2. **A published documentation project** with a connected repository
 3. **Admin access** to the organization that owns the documentation project (required to create API keys)
 
@@ -27,12 +27,15 @@ Before using the Documentation.AI REST API, make sure you have the following:
 6. Copy the generated key immediately — it will only be shown once
 
 <Callout kind="alert">
+
   Store your API key securely. Do not commit it to version control or expose it in client-side code. Use environment variables or a secrets manager.
+
 </Callout>
 
 <Callout kind="info">
 
 If you want AI-assisted authoring instead of direct HTTP requests, use the [Authoring MCP Server](/ai/authoring-mcp-server). This page covers the REST API.
+
 
 </Callout>
 
@@ -128,7 +131,9 @@ curl -X POST https://api.documentationai.app/api/v1/push \
 ```
 
 <Callout kind="info">
+
   Pushing to the deployment branch (usually `main`) triggers a live deployment. Use a feature branch for draft changes, then merge when ready.
+
 </Callout>
 
 ## Endpoints
