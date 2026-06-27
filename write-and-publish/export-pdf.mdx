@@ -1,0 +1,128 @@
+---
+title: Export to PDF
+description: Export your entire documentation site to a single PDF file. Available on Standard, Professional, and Enterprise plans.
+---
+
+## Export your site as a single PDF
+
+PDF export lets you download your entire documentation site as one merged PDF file. Use it for offline reading, sharing with stakeholders, compliance archiving, or printing.
+
+<Callout kind="alert">
+
+PDF export is available on **Standard**, **Professional**, and **Enterprise** plans. It is not available on the **Starter** plan.
+
+
+</Callout>
+
+### Request a PDF export
+
+Start exports from **Settings** → **Exports** in your Documentation.AI dashboard.
+
+<Callout kind="tip">
+
+The export runs in the background. You do not need to stay on the page while it finishes. Documentation.AI sends you an email when the export is ready.
+
+
+</Callout>
+
+<Steps>
+
+  <Step title="Open the Exports page">
+
+Go to **Settings** → **Exports** in your Documentation.AI dashboard.
+
+
+  </Step>
+  <Step title="Start the export">
+
+Click **Export to PDF**. The export starts in the background. You receive a `202` response and the export ID.
+
+
+  </Step>
+  <Step title="Track progress">
+
+Wait for the export to complete. On the same page, you can monitor progress as it runs. The page shows the total number of pages and how many pages have completed so far.
+
+
+  </Step>
+  <Step title="Check for completion">
+
+When the export is ready, you receive an email notification. You can also return to **Settings** → **Exports** at any time to check the current status and access the download.
+
+
+  </Step>
+  <Step title="Download the PDF">
+
+Click **Download** to save the PDF to your device.
+
+
+  </Step>
+</Steps>
+
+### Understand export status
+
+Each export moves through a small set of statuses.
+
+| Status | Meaning |
+| --- | --- |
+| **Pending** | The export has been requested and is queued. |
+| **Processing** | Pages are being rendered and merged into the PDF. |
+| **Completed** | The export is ready to download. |
+| **Failed** | An error occurred. The error message is shown. |
+| **Cancelled** | The export was cancelled, for example because you started a new export. |
+| **Expired** | The download link has expired. Completed exports are available for 7 days. |
+
+### Download the completed file
+
+Once the status is **Completed**, the download link is available on the **Exports** page and in the email notification.
+
+<Callout kind="info">
+
+Completed exports remain available for 7 days. After the link expires, run a new export to download the PDF again.
+
+
+</Callout>
+
+Exports do not have a file size limit, but each export is capped at **8,000 pages**. If your site has more than 8,000 pages, the export fails.
+
+### Run one export at a time
+
+Each documentation site can run only one export at a time. If you start a new export, Documentation.AI cancels the previous export.
+
+### Cancel an export
+
+You can cancel an in-progress export from **Settings** → **Exports**.
+
+### Email notification
+
+When the export completes, Documentation.AI sends an email to the address on your account. The email includes a link to the **Exports** page, where you can download the file.
+
+### Common questions
+
+<ExpandableGroup>
+
+  <Expandable title="How long does an export take?">
+
+It depends on the number of pages in your site. Small sites usually finish in minutes. Large sites with hundreds of pages may take longer.
+
+
+  </Expandable>
+  <Expandable title="Can I export a specific section instead of the whole site?">
+
+No. PDF export always includes the full site.
+
+
+  </Expandable>
+  <Expandable title="What if my export fails?">
+
+Check the error message on the **Exports** page. Common causes include temporary service unavailability. You can start a new export once the issue is resolved.
+
+
+  </Expandable>
+  <Expandable title="Is the PDF formatted for printing?">
+
+Pages are rendered at A4 size with standard margins, using your site's print stylesheet.
+
+
+  </Expandable>
+</ExpandableGroup>

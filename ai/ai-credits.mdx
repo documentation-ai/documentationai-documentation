@@ -15,7 +15,17 @@ Documentation.AI uses credits for two AI features:
 Only these features consume credits. Browsing, editing, publishing, and normal site usage do not consume credits.
 
 <Callout kind="info" collapsed="false">
+
   Credits reset every billing cycle. Unused credits do not roll over.
+
+</Callout>
+
+Pack credits are additional credits that you can purchase separately on top of your monthly plan allowance. Documentation.AI uses pack credits only after your monthly plan credits run out. Unlike plan credits, pack credits carry over and do not expire at the end of the billing cycle.
+
+<Callout kind="info" collapsed="false">
+
+  Pack credits extend your available credits beyond your plan's monthly allowance. They are consumed after your plan credits are used up, so you will not be charged overage rates while pack credits remain.
+
 </Callout>
 
 ## AI Assistant / Ask AI
@@ -77,9 +87,11 @@ This is a common task where you connect a GitHub repository and ask the agent to
 This task costs more because the agent needs to read from GitHub, search your docs, and then edit multiple pages. If only 1–2 pages need updating, it will usually land near the lower end of the range. If the commits affect many areas of your docs, it can move well beyond 10 credits.
 
 <Callout kind="warning" collapsed="false">
+
   Tasks that involve many files, long conversations, or multiple revisions can
   use 5–10+ credits in a single session. If you are working on a large task,
   check your credit balance in the dashboard periodically.
+
 </Callout>
 
 ### Worked example: "Fix a typo"
@@ -137,8 +149,18 @@ The usage page shows:
 - Credit usage over time
 - A breakdown by feature (Documentation Agent vs. AI Assistant)
 
+### Overage
+
+If you have exhausted your plan credits and pack credits, additional AI usage is billed as overage at $0.01 per credit, provided overage is enabled for your account.
+
+You can set a spending cap (overage limit) in your billing settings to control the maximum overage cost per billing cycle. Once the cap is reached, AI features are paused for the remainder of the cycle.
+
+If overage is disabled on your account, AI features are paused as soon as all plan credits and pack credits are exhausted.
+
 <Callout kind="info" collapsed="false">
-  If you run out of credits, the AI Documentation Agent and AI Assistant features will be disabled until your next billing cycle or until you upgrade your plan.
+
+  AI features remain available as long as any credits remain — whether from your monthly plan, a credit pack, or enabled overage. Features are only paused when all available credit pools are exhausted and no overage is configured.
+
 </Callout>
 
 ## Tips to use credits efficiently
