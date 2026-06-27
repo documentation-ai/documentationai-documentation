@@ -15,7 +15,9 @@ Documentation.AI uses credits for two AI features:
 Only these features consume credits. Browsing, editing, publishing, and normal site usage do not consume credits.
 
 <Callout kind="info" collapsed="false">
+
   Credits reset every billing cycle. Unused credits do not roll over.
+
 </Callout>
 
 ## AI Assistant / Ask AI
@@ -77,9 +79,11 @@ This is a common task where you connect a GitHub repository and ask the agent to
 This task costs more because the agent needs to read from GitHub, search your docs, and then edit multiple pages. If only 1–2 pages need updating, it will usually land near the lower end of the range. If the commits affect many areas of your docs, it can move well beyond 10 credits.
 
 <Callout kind="warning" collapsed="false">
+
   Tasks that involve many files, long conversations, or multiple revisions can
   use 5–10+ credits in a single session. If you are working on a large task,
   check your credit balance in the dashboard periodically.
+
 </Callout>
 
 ### Worked example: "Fix a typo"
@@ -138,8 +142,12 @@ The usage page shows:
 - A breakdown by feature (Documentation Agent vs. AI Assistant)
 
 <Callout kind="info" collapsed="false">
-  If you run out of credits, the AI Documentation Agent and AI Assistant features will be disabled until your next billing cycle or until you upgrade your plan.
+
+  If you use all available AI credits, the AI Documentation Agent and AI Assistant features will be disabled until credits become available again. Documentation.AI checks all credit sources together: your plan credits, any purchased credit packs, and any enabled overage allowance. If you have purchased credit packs, Documentation.AI uses those after your plan credits are depleted, and AI features remain available until those packs are also exhausted.
+
 </Callout>
+
+When you configure an overage spending limit and that limit is reached, AI usage stops immediately. Any background AI run that is still in progress stops cleanly before its changes are committed, and you receive a notification. This prevents charges from exceeding your configured overage cap.
 
 ## Tips to use credits efficiently
 

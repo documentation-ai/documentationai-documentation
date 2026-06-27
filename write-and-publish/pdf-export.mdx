@@ -1,0 +1,148 @@
+---
+title: Export documentation as PDF
+description: Generate a single PDF of your published documentation, track export progress, download the file, and understand plan limits and expiry.
+---
+
+## Overview
+
+PDF export generates a single PDF file from your entire published documentation site. Exports run in the background, so the export starts from the dashboard, pages are assembled asynchronously, and an email arrives when the file is ready to download.
+
+## Requirements
+
+PDF export is available on **Standard**, **Professional**, and **Enterprise** plans.
+
+<Callout kind="alert" collapsed="false">
+
+PDF export requires a **Standard** plan or higher. If the documentation site is on the Starter plan, upgrade the plan to access this feature.
+
+
+</Callout>
+
+- **Eligible plans** — Standard, Professional, and Enterprise
+- **Starter plan** — PDF export is not available
+- **One active export per site** — each documentation site can have only one export in progress at a time
+- **New export behavior** — triggering a new export while another export is pending or in progress automatically cancels the previous export and starts a new one
+
+## Export your documentation as PDF
+
+Start the export from the dashboard, then return when processing finishes to download the file.
+
+<Steps>
+
+  <Step title="Open Exports in the dashboard" icon="settings" title-type="p">
+
+  Open the dashboard for the documentation site, then go to **Settings → Exports**.
+
+
+  </Step>
+
+  <Step title="Start the export" icon="play-circle" title-type="p">
+
+  Click **Export as PDF** for the documentation site to queue the export immediately.
+
+  A confirmation indicates that the export is pending.
+
+
+  </Step>
+
+  <Step title="Monitor export progress" icon="bar-chart" title-type="p">
+
+  Watch the progress indicator in **Settings → Exports** as pages are rendered into the final file.
+
+  Large documentation sites take longer to process. Progress changes from pending to in progress as the export job moves through the queue.
+
+
+  </Step>
+
+  <Step title="Wait for the completion email" icon="check-circle" title-type="p">
+
+  When processing finishes, an email notification is sent to the registered account email address with a download link.
+
+  The completed export also appears in **Settings → Exports**.
+
+
+  </Step>
+
+  <Step title="Download the PDF" icon="download" title-type="p">
+
+  Return to **Settings → Exports** and click **Download** to save the PDF to your computer.
+
+  A completed export is ready when the dashboard shows a finished status and the download action is available.
+
+
+  </Step>
+</Steps>
+
+## Export limits and behavior
+
+PDF exports follow fixed limits and always use the latest published version of the site.
+
+- **Page limit** — exports support up to **8,000 pages**
+- **File format** — A4 paper size with a print-optimized layout
+- **Published content only** — the export reflects the **most recently published** content
+- **Draft behavior** — unpublished drafts are not included
+
+<Callout kind="info" collapsed="false">
+
+Completed exports remain available for **7 days** from the time the export finishes. After 7 days, the download expires and a new export is required.
+
+
+</Callout>
+
+## Cancel an export
+
+Cancel a pending or in-progress export from **Settings → Exports**. Cancellation removes the export and any partial files.
+
+If a fresh file is still needed after cancellation, trigger a new export from the same page.
+
+## Troubleshooting
+
+Common issues usually come down to queue time, site size, or download expiry.
+
+<ExpandableGroup>
+
+  <Expandable title="I triggered an export but it is stuck on pending" default-open="true">
+
+  The export job is queued and processed in the background. Larger documentation sites with many pages take more time before visible progress appears.
+
+  If the export remains on pending for more than 30 minutes without moving to in progress, cancel the export and trigger a new one.
+
+
+  </Expandable>
+
+  <Expandable title="The export failed" default-open="false">
+
+  Exports can fail when the documentation site has more than 8,000 pages or when a rendering error occurs during processing.
+
+  Check the export status in **Settings → Exports**. If the export fails again after retrying, contact support.
+
+
+  </Expandable>
+
+  <Expandable title="My download link expired" default-open="false">
+
+  Completed exports are available for 7 days only.
+
+  Trigger a new export to generate a fresh download link.
+
+
+  </Expandable>
+
+  <Expandable title="I did not receive the email notification" default-open="false">
+
+  Check the spam or junk folder first. The notification is sent to the registered account email address.
+
+  If the email does not arrive, download the completed export directly from **Settings → Exports** in the dashboard.
+
+
+  </Expandable>
+
+  <Expandable title="I triggered a new export but my previous one disappeared" default-open="false">
+
+  Each documentation site supports only one active export at a time.
+
+  Triggering a new export automatically cancels and removes the previous pending or in-progress export.
+
+
+  </Expandable>
+</ExpandableGroup>

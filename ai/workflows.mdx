@@ -21,7 +21,9 @@ Each workflow starts from a template or a custom setup. After you create it, the
 Open the dashboard, then go to **AI Agents** → **Workflows**. The Workflows area is where you create workflows, review previous runs, and inspect results.
 
 <Callout kind="info" collapsed="false">
+
   Workflows are currently in beta. Expect the feature set to expand, and review workflow output before you merge or publish changes.
+
 </Callout>
 
 ## Before you start
@@ -29,6 +31,7 @@ Open the dashboard, then go to **AI Agents** → **Workflows**. The Workflows ar
 Workflows depend on your plan and repository connection setup. Confirm these requirements before you try to create one.
 
 <Callout kind="alert" collapsed="false">
+
   You need all of the following before Workflows are available:
 
   - A **Standard** plan or higher
@@ -36,6 +39,7 @@ Workflows depend on your plan and repository connection setup. Confirm these req
   - A documentation site synced to a **connected GitHub repository**
 
   - Any repository you want to use as a trigger repo or context repo connected in Documentation.AI
+
 </Callout>
 
 If your repositories are not connected, you can still explore the Workflows area, but repo-based workflow setup and repository selection will be limited.
@@ -45,37 +49,55 @@ If your repositories are not connected, you can still explore the Workflows area
 Start with a built-in template when you want a focused workflow for a common task. Choose **Custom** when none of the preset templates matches your process.
 
 <Columns cols="2">
+
   <Card title="Broken Link Audit" icon="external-link" horizontal="false">
+
     Scan your documentation for broken links and review the results in the workflow run history.
+
   </Card>
 
   <Card title="Grammar and Typo Check" icon="check-circle" horizontal="false">
+
     Find writing issues across your documentation and generate suggested fixes.
+
   </Card>
 
   <Card title="Style Guide Enforcement" icon="book-open" horizontal="false">
+
     Check content against your documentation standards and highlight places that need revision.
+
   </Card>
 
   <Card title="Documentation Update from Code" icon="code" horizontal="false">
+
     Use connected repository context to update docs when code changes affect product behavior.
+
   </Card>
 
   <Card title="API Sync from Code" icon="database" horizontal="false">
+
     Review code-aware changes that affect API documentation and generate updates from repository context.
+
   </Card>
 
   <Card title="Changelog Generation" icon="edit" horizontal="false">
+
     Create changelog content based on recent repository activity and documentation context.
+
   </Card>
 
   <Card title="Navigation Audit" icon="folder" horizontal="false">
+
     Check documentation structure for navigation issues and identify areas that need cleanup.
+
   </Card>
 
   <Card title="Custom" icon="settings" horizontal="false">
+
     Create a workflow for a task that does not fit one of the built-in templates.
+
   </Card>
+
 </Columns>
 
 The best template depends on the job you want to automate. Content-only checks such as grammar or style usually require less setup than repo-aware workflows such as code-driven updates or API sync tasks.
@@ -85,19 +107,25 @@ The best template depends on the job you want to automate. Content-only checks s
 Create your first workflow from the Workflows page in a few steps. The setup flow asks you to choose a template, define how it should run, and select repository context when needed.
 
 <Steps>
+
   <Step title="Open the Workflows page" icon="home" title-type="p">
+
     In the dashboard, go to **AI Agents** → **Workflows**.
 
     If your account and documentation site meet the requirements, you can start a new workflow from this page.
+
   </Step>
 
   <Step title="Choose a template" icon="plus" title-type="p">
+
     Select one of the built-in templates or choose **Custom**.
 
     Pick the template that matches the task you want to automate. For example, choose **Broken Link Audit** for content health checks or **Documentation Update from Code** when documentation changes depend on repository activity.
+
   </Step>
 
   <Step title="Configure the trigger" icon="play-circle" title-type="p">
+
     Choose how the workflow should start:
 
     - **Pull request merge** to run after merges in the selected trigger repository
@@ -107,23 +135,30 @@ Create your first workflow from the Workflows page in a few steps. The setup flo
     - **Manual run** after creation when you want to start the workflow yourself
 
     After you save the workflow, it becomes available in your Workflows list.
+
   </Step>
 
   <Step title="Select repositories" icon="github" title-type="p">
+
     Choose one **trigger repository** for repo-based runs. This repository determines where the workflow watches for repository-driven activity.
 
     You can also add **additional context repositories**. These repositories give the workflow more source material to reference while planning and executing the task.
+
   </Step>
 
   <Step title="Save and verify the workflow" icon="check-circle" title-type="p">
+
     Finish the setup and save the workflow.
 
     A saved workflow appears in the Workflows list. From there, you can wait for its trigger or run it manually to confirm the configuration works.
+
   </Step>
 </Steps>
 
 <Callout kind="tip" collapsed="false">
+
   Run the workflow manually after creation if you want to verify the setup before waiting for the next merge or scheduled window.
+
 </Callout>
 
 ## Triggers and repository context
@@ -149,7 +184,9 @@ The **trigger repo** is the single repository tied to the workflow's repo-based 
 **Additional context repos** do not trigger runs. They expand the repository context available to the workflow so it can produce better updates, checks, or summaries across related code and docs.
 
 <Callout kind="info" collapsed="false">
+
   You can only select repositories that are already connected in Documentation.AI.
+
 </Callout>
 
 ## Review workflow runs
@@ -176,11 +213,14 @@ Workflows consume AI credits. Credit usage depends on the type of workflow and t
 
 Simple checks usually use fewer credits than repo-aware or multi-step workflows. If a workflow analyzes multiple repositories or performs more planning and validation, expect higher credit usage.
 
+If your organization reaches its credit overage spending limit while a workflow run is in progress, the run stops before its changes are committed and you receive a notification. Changes are not applied when a run is stopped at this point.
+
 ## Current limitations
 
 The current Workflows experience covers the most common user-facing automation paths, but a few constraints affect setup and scheduling today.
 
 <Callout kind="alert" collapsed="false">
+
   Current limitations include:
 
   - Workflows are in **beta**
@@ -192,5 +232,6 @@ The current Workflows experience covers the most common user-facing automation p
   - **Monthly schedules** are limited to days **1** through **28**
 
   - Not every backend workflow capability is exposed in the current UI
+
 </Callout>
 
