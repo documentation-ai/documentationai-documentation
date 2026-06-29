@@ -1,0 +1,145 @@
+---
+title: SVG
+description: Embed scalable vector graphics directly in MDX with inline SVG markup for icons, logos, diagrams, and crisp illustrations.
+type: reference
+---
+
+## Overview
+
+Use the `<SVG>` component to render vector graphics inline in your documentation page. Inline SVG stays sharp at any size, which makes it a good fit for icons, logos, simple illustrations, and technical visuals that need to scale cleanly.
+
+Unlike [Images](/components/images), which load a file from a URL, `<SVG>` renders SVG markup directly in the page content. That gives you full control over shapes, colors, text, and sizing without managing a separate asset file.
+
+For auto-generated flowcharts and sequence diagrams, use [Mermaid Diagrams](/components/mermaid). For screenshots, photos, and other file-based media, use [Images](/components/images). For embedded media, see [Videos and Iframes](/components/videos-and-iframes).
+
+<Callout kind="info">
+
+`<SVG>` is best for graphics you want to author or customize directly in MDX. If the graphic already exists as a reusable file, the [Images](/components/images) component is usually easier to maintain.
+
+
+</Callout>
+
+## Using with Code Editor
+
+When editing pages as MDX, wrap your inline SVG markup in the `<SVG>` component. Add standard SVG elements such as `svg`, `path`, `rect`, `circle`, `text`, and `defs` as children.
+
+### Basic usage
+
+```jsx
+<SVG>
+  <svg width="200" height="100" viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+    <rect x="10" y="10" width="180" height="80" rx="8" fill="#3b82f6" />
+    <text x="100" y="55" text-anchor="middle" fill="white" font-size="14">Inline SVG</text>
+  </svg>
+</SVG>
+```
+
+This example renders a simple rounded rectangle with centered text. The graphic is part of the page itself, so it scales cleanly and can be edited directly in your MDX file.
+
+### More complex example
+
+```jsx
+<SVG>
+  <svg width="320" height="180" viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="diagram-title diagram-desc">
+    <title id="diagram-title">Processing pipeline</title>
+    <desc id="diagram-desc">A three-step pipeline showing input, processing, and output.</desc>
+    <defs>
+      <linearGradient id="pipeline-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#2563eb" />
+        <stop offset="100%" stop-color="#06b6d4" />
+      </linearGradient>
+      <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+        <path d="M0,0 L0,6 L9,3 z" fill="#475569" />
+      </marker>
+    </defs>
+
+    <rect x="20" y="50" width="80" height="50" rx="10" fill="url(#pipeline-gradient)" />
+    <rect x="120" y="50" width="80" height="50" rx="10" fill="#e2e8f0" />
+    <rect x="220" y="50" width="80" height="50" rx="10" fill="#dcfce7" />
+
+    <text x="60" y="80" text-anchor="middle" fill="white" font-size="14">Input</text>
+    <text x="160" y="80" text-anchor="middle" fill="#0f172a" font-size="14">Process</text>
+    <text x="260" y="80" text-anchor="middle" fill="#166534" font-size="14">Output</text>
+
+    <line x1="100" y1="75" x2="120" y2="75" stroke="#475569" stroke-width="2" marker-end="url(#arrow)" />
+    <line x1="200" y1="75" x2="220" y2="75" stroke="#475569" stroke-width="2" marker-end="url(#arrow)" />
+  </svg>
+</SVG>
+```
+
+This pattern works well for lightweight diagrams, annotated icons, and branded illustrations that need more control than a static image file.
+
+### Key props
+
+<ParamField path="children" param-type="ReactNode" required="true" deprecated="false">
+
+  Inline SVG markup rendered inside the component. Pass one or more SVG elements that define the graphic, typically a root `svg` element with child elements such as `path`, `rect`, `circle`, `text`, `defs`, or `linearGradient`.
+
+</ParamField>
+
+## Advanced options
+
+Inline SVG gives you full control, but a few patterns make SVG content easier to maintain and easier to read.
+
+### Choose the right format for the job
+
+Use `<SVG>` when the graphic should live in the page source and stay editable in MDX. That works well for:
+
+- Icons and badges
+- Logos
+- Simple technical illustrations
+- Lightweight annotated diagrams
+
+Use [Images](/components/images) when you already have an exported asset or need to display screenshots, photos, or externally managed artwork. Use [Mermaid Diagrams](/components/mermaid) when you need structured diagrams with automatic layout, such as flowcharts or sequence diagrams.
+
+### Use a viewBox for consistent scaling
+
+Set a `viewBox` on the root `svg` element so the graphic scales cleanly across layouts. Without a `viewBox`, width and height control the rendered size, but the graphic is less flexible when you reuse it in different page widths.
+
+<Callout kind="tip">
+
+Keep `width`, `height`, and `viewBox` aligned. A predictable coordinate system makes it much easier to resize the same SVG later without editing every shape.
+
+
+</Callout>
+
+### Keep markup clean and maintainable
+
+Small SVGs are easy to manage inline. Large exported files often include unnecessary groups, metadata, and long path data that make the page harder to edit.
+
+When possible:
+
+- Remove unused `defs`, empty groups, and editor metadata
+- Use readable IDs for gradients, masks, and markers
+- Break complex graphics into logical sections with indentation
+- Prefer simple shapes over dense path data when the result is equivalent
+
+If the SVG becomes too large to review comfortably in MDX, move the asset to a file and render it with [Images](/components/images) instead.
+
+### Add accessibility metadata
+
+Add a `title` and `desc` element inside the root `svg` when the graphic conveys meaning. Those elements help screen readers understand what the image represents, especially for diagrams and status visuals.
+
+```jsx
+<SVG>
+  <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="status-title status-desc">
+    <title id="status-title">Deployment status</title>
+    <desc id="status-desc">A green checkmark indicating the deployment completed successfully.</desc>
+    <circle cx="20" cy="20" r="16" fill="#16a34a" />
+    <path d="M12 20l5 5 11-11" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+  </svg>
+</SVG>
+```
+
+<Callout kind="info">
+
+If the SVG is purely decorative, keep it out of the accessibility tree using your SVG's own accessibility attributes. If the SVG communicates information, include a meaningful `title` and `desc`.
+
+
+</Callout>
+
+### Use standard SVG attributes on inner elements
+
+Write standard SVG attributes directly on the elements inside `<SVG>`. Common attributes include `width`, `height`, `viewBox`, `fill`, `stroke`, `stroke-width`, `x`, `y`, `d`, and `transform`.
+
+Because the markup is inline, you can adjust individual shapes without regenerating an external file. That makes `<SVG>` especially useful when documentation needs small visual tweaks over time.
