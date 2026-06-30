@@ -46,9 +46,11 @@ The selected image is inserted into the page and served from an optimized CDN.
 <Image src="https://blob-cdn.documentation.ai/org-53a37986-2c9e-4094-b9e8-1e1ffae9e9ee/doc-b389b141-ae58-4fd5-91f9-6702fae9ac58/1767252085148-y3nnwqv3vm-pasted-image-1767252083236.png?q=85&fm=auto&auto=compress%2Cformat" width="500" height="331" alt="Upload image picker in Web Editor" caption="Upload image picker in Web Editor" style="width: 500px; height: auto; cursor: pointer; margin: 0 auto;" />
 
 <Callout kind="info" collapsed="false">
+
   Prefer writing in code?
 
   You can switch to **MDX view inside the Web Editor** to write or edit this component using the same syntax as the Code Editor. This is useful if you want full control while staying in the Web Editor.
+
 </Callout>
 
 ### Resize, align, and manage the image
@@ -80,11 +82,15 @@ Hover over an image to reveal controls:
    - **Alt text:** Required descriptive text for accessibility and SEO.
 
 <Callout kind="info" collapsed="false">
+
   The alt text field is mandatory for SEO and accessibility. Describe what is in the image, not just the file name.
+
 </Callout>
 
 <Callout kind="tip" collapsed="false">
+
   You can copy the image URL from image properties and reuse it in other components, such as `<Card image="...">`, `<Columns>`, or additional `<Image>` blocks.
+
 </Callout>
 
 ## Using with Code Editor
@@ -105,7 +111,9 @@ When editing pages as MDX (for example in the [Code Editor](/write-and-publish/c
 <Image uid="fcb073e1-1a69-4d5b-86e8-41b52dac9802" src="https://fdjsuzcsbmpqsraaooua.supabase.co/storage/v1/object/public/documentation-images/org-53a37986-2c9e-4094-b9e8-1e1ffae9e9ee/doc-b389b141-ae58-4fd5-91f9-6702fae9ac58/1758638266765-vc81ki2xs9-abstract-image.webp" width="672" height="343" alt="Abstract geometric pattern with colorful shapes" />
 
 <Callout kind="info" collapsed="false">
+
   The `alt` attribute is required. Provide concise, descriptive text that explains the image content to screen readers.
+
 </Callout>
 
 ### Key props
@@ -113,31 +121,45 @@ When editing pages as MDX (for example in the [Code Editor](/write-and-publish/c
 Use these props to control how images render:
 
 <ParamField path="src" param-type="string" required="true" deprecated="false">
+
   Absolute image URL. Prefer CDN URLs, including those copied from the Web Editor.
+
 </ParamField>
 
 <ParamField path="alt" param-type="string" required="true" deprecated="false">
+
   Descriptive text for accessibility and SEO. This is read by screen readers and shown when the image cannot load.
+
 </ParamField>
 
 <ParamField path="width" param-type="string" required="false" deprecated="false">
+
   Image width in pixels. Helps optimize layout and prevent layout shift.
+
 </ParamField>
 
 <ParamField path="height" param-type="string" required="false" deprecated="false">
+
   Image height in pixels. Used with `width` to reserve space and reduce layout shift.
+
 </ParamField>
 
 <ParamField path="style" param-type="string" required="false" deprecated="false">
+
   Inline CSS styles for alignment, sizing, and positioning. Use for custom layout behavior.
+
 </ParamField>
 
 <ParamField path="priority" param-type="boolean" required="false" deprecated="false">
+
   Load the image immediately instead of lazy loading. Use for above-the-fold images only (default: `false`).
+
 </ParamField>
 
 <ParamField path="fetchpriority" param-type="string" required="false" deprecated="false">
+
   Browser loading priority: `high`, `low`, or `auto`. Use `high` for critical images such as hero banners.
+
 </ParamField>
 
 ### Alignment and sizing example
@@ -174,7 +196,9 @@ Use `priority` and `fetchpriority` to fine-tune how critical images load:
 ```
 
 <Callout kind="info" collapsed="false">
+
   Reserve performance options for above-the-fold or otherwise critical images. Overusing `priority` or `fetchpriority="high"` can hurt overall page performance.
+
 </Callout>
 
 ### External URLs
@@ -191,7 +215,9 @@ You can reference external images directly in MDX:
 ```
 
 <Callout kind="danger" collapsed="false">
+
   External images are not optimized by Documentation.AI's CDN. Whenever possible, upload images through the Web Editor and reuse their CDN URLs for better caching and performance.
+
 </Callout>
 
 ### Specifications
@@ -203,4 +229,6 @@ You can reference external images directly in MDX:
 - **Supported formats:** JPEG, JPG, PNG, GIF, WebP, SVG, ICO.
 
 - **CDN:** Images uploaded via the Web Editor are automatically optimized and cached.
+
+- **SVG handling:** SVG files are served in their native vector format to preserve interactive elements such as embedded links, hover states, and CSS animations. Raster formats (JPEG, PNG, GIF, etc.) are automatically converted and compressed for optimal delivery.
 
