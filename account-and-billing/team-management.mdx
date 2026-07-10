@@ -4,7 +4,7 @@ description: Manage team members and understand user permissions in your organiz
 ---
 ## User Roles Overview
 
-Documentation.ai has two user roles for organization members:
+Documentation.ai has three user roles for organization members:
 
 ### Admin Role
 
@@ -20,19 +20,52 @@ Documentation.ai has two user roles for organization members:
 
 - Publish documentation
 
+### Editor Role
+
+**Edit and publish permissions:**
+
+- Create, edit, and delete documentation content
+
+- Publish documentation and manage branches
+
+- Manage the file tree (create, rename, move, and delete files)
+
+- Participate in comments and threads
+
+- Cannot manage team members or organization settings
+
+- Cannot delete or manage the organization
+
 ### Viewer Role
 
 **Read-only permissions:**
 
 - View all documentation under the organization
 
-- Cannot make any changes or edits
+- Open the editor in read-only mode to see real-time changes from other collaborators
+
+- Participate in comments and threads (create, reply, resolve, and reopen)
+
+- View and manage their own notifications
+
+- Cannot make any changes to documentation content
 
 - Cannot manage team members or organization settings
 
 - Cannot publish or modify documentation
 
 **Important**: User roles are specific to each organization. The same user can have different roles in different organizations.
+
+<Callout kind="info">
+
+  Role changes may take up to two minutes to take effect in the editor due to permission caching. If a teammate's permissions do not update immediately after a role change, wait a few minutes and try again.
+
+
+
+
+
+
+</Callout>
 
 ## Inviting Team Members
 
@@ -50,7 +83,7 @@ Documentation.ai has two user roles for organization members:
 
    - Multiple users: `user1@example.com, user2@example.com, user3@example.com`
 
-5. Select the role (Admin or Viewer)
+5. Select the role (Admin, Editor, or Viewer)
 
 6. Click **Invite**
 
@@ -84,7 +117,7 @@ Access the members list at **Settings** → **Organization Settings** → **Memb
 
 3. Select **Change Role**
 
-4. Choose new role (Admin or Viewer)
+4. Choose new role (Admin, Editor, or Viewer)
 
 5. Click **Save**
 
@@ -122,6 +155,8 @@ Access the members list at **Settings** → **Organization Settings** → **Memb
 
 - Admins have full control across all documentation projects
 
+- Editors can create, edit, and publish documentation across all projects
+
 - Viewers have read-only access across all documentation projects
 
 ### Multi-Organization Users
@@ -137,6 +172,8 @@ Access the members list at **Settings** → **Organization Settings** → **Memb
 ### Role Assignment
 
 - **Use Admin role for**: Team leads, content managers, developers who need full access
+
+- **Use Editor role for**: Writers, developers, and contributors who need to edit and publish documentation but do not need to manage the organization
 
 - **Use Viewer role for**: Stakeholders, clients, or team members who only need to read documentation
 

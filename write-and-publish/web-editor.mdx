@@ -30,11 +30,17 @@ Use the web editor when:
 
 If you need a Git-based workflow, local previews, or tight integration with your existing development tooling, use the [code editor](/write-and-publish/code-editor) instead.
 
-<Callout kind="danger" collapsed="false">
-  Unpublished changes are saved only in your current browser session. If you\
-  switch browsers, devices, or clear your cache, these changes may be lost.\
-  Changes published by other team members may not appear until your local\
-  changes are published or cleared.
+<Callout kind="info" collapsed="false">
+
+  Changes you make in the web editor are auto-saved to the server as you type.\
+  Your in-progress edits on a branch are preserved across browser sessions and\
+  visible to teammates in real time. Changes are not committed to Git until you\
+  publish.
+
+
+
+
+
 </Callout>
 
 ## Getting started with the web editor
@@ -102,28 +108,59 @@ For more detail on how dimensions, views, groups, and pages behave across your p
 Use the web editor to make safe, incremental changes to your documentation structure while keeping it consistent with your overall organization model.
 
 <Steps>
+
   <Step title="Choose the right dimension and view" icon="layers" title-type="p">
+
     If your project uses [dimensions](/organize/dimensions), start by selecting the correct dimension in the sidebar. Then choose the appropriate [view](/organize/views) within that dimension (or at the root if there are no dimensions) so you are working on the right part of the tree.
+
+
+
+
+
   </Step>
 
   <Step title="Add views with Tabs or Dropdowns (optional)" icon="notebook-tabs-icon" title-type="p">
+
     Use [views](/organize/views) to introduce Tabs or Dropdowns when you need multiple layouts or navigation tracks within a dimension or at the root.
 
     The views model follows a one-child rule: each Tabs or Dropdowns container should have a single type of child (pages, groups, or another nested view). For supported patterns and examples, see the [views guide](/organize/views).
+
+
+
+
+
   </Step>
 
   <Step title="Decide between groups and flat pages" icon="folder-tree" title-type="p">
+
     Use [groups](/organize/groups) when you have several related pages that should be nested together. Avoid mixing grouped and ungrouped pages at the same level: once you introduce groups under a parent, new pages should live inside one of those groups rather than alongside them.
 
     If you only have a few pages, you can keep them flat without groups.
+
+
+
+
+
   </Step>
 
   <Step title="Create pages with stable slugs" icon="file-text" title-type="p">
+
     Add [pages](/organize/pages) where you want new content to live. Each page is backed by MDX and identified by a stable `path` (slug). Prefer keeping paths stable over time and move pages within the structure instead of renaming paths when you reorganize. When you must change a path, use redirects as described in the pages guide.
+
+
+
+
+
   </Step>
 
   <Step title="Plan patterns at a higher level" icon="layout-dashboard" title-type="p">
+
     Use this page for quick structural edits and content changes. For larger reorganizations across dimensions, views, and groups, refer to the [organize overview](/organize/overview) to choose patterns that scale before you start editing in the web editor.
+
+
+
+
+
   </Step>
 </Steps>
 
@@ -167,7 +204,13 @@ Markdown mode exposes the underlying MDX source for your page so you can work di
 
 ```tsx
 <Callout kind="info">
+
   Use callouts to highlight important information for your readers.
+
+
+
+
+
 </Callout>
 ```
 
@@ -241,7 +284,13 @@ In markdown mode:
 
 ```tsx
 <Callout kind="tip">
+
   Use callouts to emphasize best practices or caveats that readers should not miss.
+
+
+
+
+
 </Callout>
 ```
 
@@ -289,15 +338,40 @@ For a deeper look at how dimensions, views, groups, and pages work across your p
 
 ### Collaboration and review
 
-The web editor is built for teams:
+The web editor supports real-time collaboration so your team can write, review, and discuss documentation together without leaving the editor.
 
-- Multiple collaborators can open and edit content.
+#### Real-time collaborative editing
 
-- Changes are auto-saved as you type.
+Multiple teammates can open and edit the same page simultaneously. Changes sync instantly across all connected editors, and conflict resolution is handled automatically — you never have to worry about overwriting someone else's work.
 
-- You can review edits in the editor before publishing.
+- All team members can open the editor and see live changes from other collaborators.
+- Admins and editors can make edits and manage the file tree (create, rename, move, and delete files).
+- Viewers get a read-only connection: they can see live edits and participate in comments, but cannot change content.
 
-Use your team’s review process (for example, checklists, issue trackers, or comments in your existing tools) around the web editor to keep changes controlled and traceable.
+See [Team Management & Roles](/account-and-billing/team-management) for details on each role.
+
+#### Inline comments and threads
+
+You can leave comments anchored to specific text selections in any document. Comments are scoped to the current branch and file, so they stay in context as your team works.
+
+- Create a comment by selecting text and adding a note. The selected text is quoted automatically for context.
+- Reply to continue a discussion within a thread.
+- Resolve a thread when the discussion is complete, and reopen it if you need to revisit.
+- Edit or delete your own messages at any time.
+
+All team members — including viewers — can create comments, reply, and resolve threads.
+
+Comments automatically follow files when they are renamed or moved within the branch. When a file is deleted, its comments are removed.
+
+#### Mentions and notifications
+
+Tag a teammate in a comment using `@` followed by their name. Mentioned users receive an in-app notification with a link to the relevant thread and file.
+
+- An unread notification badge appears in the editor when you have new notifications.
+- Click the badge to view your notification feed, then mark individual notifications or all notifications as read.
+- If you have unread notifications at the end of the day, you receive a daily digest email summarizing them.
+
+Notifications are scoped to each documentation project, so you only see notifications relevant to the project you are working in.
 
 ### Review changes in the editor
 
@@ -307,11 +381,11 @@ Use the **Changes** view to review all the changes visually
 
 - **Saved changes** — Compare saved changes on your current branch against the default branch.
 
-- **Unsaved changes** — Review local unpublished edits before you publish.
+- **Unsaved changes** — Review unpublished edits on your current branch before you publish.
 
 For content pages, the editor shows a visual diff with highlighted additions and deletions. For other file types, the Changes view uses a code diff.
 
-From the unsaved changes review flow, you can revert a single page or revert all pending changes when you want to discard local edits.
+From the unsaved changes review flow, you can revert a single page or revert all pending changes to discard edits you no longer want.
 
 <Image src="https://blob-cdn.documentation.ai/org-53a37986-2c9e-4094-b9e8-1e1ffae9e9ee/doc-b389b141-ae58-4fd5-91f9-6702fae9ac58/1779782027671-i7cizikd7ko-saved-unsved.png?fm=auto&auto=compress%2Cformat" width="2196" height="1245" alt="" />
 
@@ -379,12 +453,25 @@ Changes you make in Site Config appear in the **Changes** panel just like conten
 If you need to take your documentation site offline, you can unpublish it from the dashboard Settings page (this action is in the dashboard, not in the Editor's Site Config panel).
 
 <Steps>
+
   <Step title="Open documentation settings" icon="settings" title-type="p">
+
     Navigate to **Settings** → **Documentation Settings** → **General** and scroll to the **Danger Zone** section.
+
+
+
+
+
   </Step>
 
   <Step title="Unpublish" icon="cloud-off" title-type="p">
+
     Click **Unpublish Documentation** and confirm in the dialog.
+
+
+
+
+
   </Step>
 </Steps>
 
@@ -401,6 +488,11 @@ When you unpublish:
 To bring your site back online, open the Editor and click **Publish** again. Your documentation will redeploy with all content and settings intact.
 
 <Callout kind="info" collapsed="false">
-  Unpublishing removes public access but does not delete content or configuration. You can republish at any time.
-</Callout>
 
+  Unpublishing removes public access but does not delete content or configuration. You can republish at any time.
+
+
+
+
+
+</Callout>
