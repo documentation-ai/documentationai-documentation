@@ -592,6 +592,11 @@
                 "path": "changelog",
                 "icon": "scroll",
                 "show-parent-label": false
+              },
+              {
+                "title": "Changelog (New)",
+                "path": "changelog-new",
+                "icon": "scroll"
               }
             ]
           }
@@ -604,6 +609,11 @@
           {
             "title": "Roadmap",
             "path": "roadmap",
+            "icon": "map"
+          },
+          {
+            "title": "Roadmap (New)",
+            "path": "roadmap-new",
             "icon": "map"
           }
         ]

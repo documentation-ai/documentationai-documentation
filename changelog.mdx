@@ -1,103 +1,81 @@
 ---
 title: Changelog
-description: Version history with recent updates, new features, improvements, and changes to the platform.
+description: >-
+  Version history with recent updates, new features, improvements, and changes
+  to the platform.
 ---
-
 ## Recent Changes
 
-<Callout kind="info">
+<Callout kind="info" collapsed="false">
   Track the evolution of Yashwanth Muddana with detailed release notes. Each update includes new features, bug fixes, and improvements to enhance your documentation experience.
 </Callout>
 
-<Update label="2024-12-05" description="v1.3.0" tags={["feature", "improvement"]}>
+<Update label="2024-12-05" description="v1.3.0" tags={["feature","improvement"]}>
+  ## New Features
 
-## New Features
+  - Added AI-powered documentation agent that suggests and auto-generates updates based on your product changes.
+  - Introduced inline AI assistant for users to query docs directly with cited responses.
 
-- Added AI-powered documentation agent that suggests and auto-generates updates based on your product changes.
-- Introduced inline AI assistant for users to query docs directly with cited responses.
+  ## Improvements
 
-## Improvements
+  - Enhanced search with semantic understanding for better relevance.
+  - Optimized performance for faster page loads, now `<50ms` average.
 
-- Enhanced search with semantic understanding for better relevance.
-- Optimized performance for faster page loads, now `<50ms` average.
+  ## Bug Fixes
 
-## Bug Fixes
-
-- Fixed rendering issues with nested code blocks in MDX files.
-- Resolved authentication token expiration during long sessions.
-
+  - Fixed rendering issues with nested code blocks in MDX files.
+  - Resolved authentication token expiration during long sessions.
 </Update>
 
-<Update label="2024-11-20" description="v1.2.0" tags={["feature", "bugfix"]}>
+<Update label="2024-11-20" description="v1.2.0" tags={["feature","bugfix"]}>
+  ## New Features
 
-## New Features
+  - Flexible publishing options: web editor or docs-as-code via Git.
+  - AI-ready structure for LLMs, agents, and search engines out of the box.
 
-- Flexible publishing options: web editor or docs-as-code via Git.
-- AI-ready structure for LLMs, agents, and search engines out of the box.
+  ## Bug Fixes
 
-## Bug Fixes
+  - Corrected webhook delivery failures on high-traffic endpoints.
+  - Patched cross-origin request blocking in dashboard embeds.
 
-- Corrected webhook delivery failures on high-traffic endpoints.
-- Patched cross-origin request blocking in dashboard embeds.
+  ## Improvements
 
-## Improvements
-
-- Updated UI components with brand color `#3B82F6` for better visual consistency.
-
+  - Updated UI components with brand color `#3B82F6` for better visual consistency.
 </Update>
 
-<Update label="2024-10-15" description="v1.1.0" tags={["feature", "breaking"]}>
+<Update label="2024-10-15" description="v1.1.0" tags={["feature","breaking"]}>
+  ## New Features
 
-## New Features
+  - Core documentation platform with automatic syncing from your repo.
+  - Customizable themes and lightning-fast rendering engine.
 
-- Core documentation platform with automatic syncing from your repo.
-- Customizable themes and lightning-fast rendering engine.
+  ## Breaking Changes
 
-## Breaking Changes
+  - Migrated to new API base URL: `https://api.example.com/v2`.
+  - Removed legacy `{API_KEY}` format; use `Bearer YOUR_TOKEN` instead.
 
-- Migrated to new API base URL: `https://api.example.com/v2`.
-- Removed legacy `{API_KEY}` format; use `Bearer YOUR_TOKEN` instead.
+  ## Bug Fixes
 
-## Bug Fixes
-
-- Fixed initial setup wizard crashes on certain browsers.
-
+  - Fixed initial setup wizard crashes on certain browsers.
 </Update>
 
 ## Upcoming Roadmap
 
 Visualize planned enhancements with this kanban-style board. Prioritize features based on community feedback.
 
-<Board title="Q1 2025 Roadmap">
-  <BoardColumn title="Planned" color="0" icon="calendar">
-    <BoardCard
-      title="Real-time Collaboration"
-      description="Multi-user editing with live previews"
-      icon="users"
-      dueDate="2025-02-15"
-      author="Engineering Team"
-    />
-    <BoardCard
-      title="Advanced Analytics"
-      description="Track doc usage and AI query performance"
-      icon="bar-chart-3"
-      dueDate="2025-03-01"
-    />
+<Board uid="e087b1d8-85a7-4b01-b77f-3c0786914ba3" title="Q1 2025 Roadmap">
+  <BoardColumn title="Planned" uid="be42b430-db0a-43dc-aa3a-e01c5371672c" color="0" icon="calendar">
+    <BoardCard title="Real-time Collaboration" uid="4f4296d9-8825-4ee6-98ce-38df0e5e5733" description="Multi-user editing with live previews" icon="users" due-date="2025-02-15" author="Engineering Team" />
+
+    <BoardCard title="Advanced Analytics" uid="37ebcbca-96be-44b1-aa01-13759b5a009d" description="Track doc usage and AI query performance" icon="bar-chart-3" due-date="2025-03-01" />
   </BoardColumn>
-  <BoardColumn title="In Progress" color="1" icon="loader-2">
-    <BoardCard
-      title="Webhook Enhancements"
-      description="Custom event triggers and retries"
-      icon="zap"
-      author="Yashwanth Muddana"
-    />
+
+  <BoardColumn title="In Progress" uid="fffa7108-7c38-4e4c-a4ae-f0957796a144" color="1" icon="loader-2">
+    <BoardCard title="Webhook Enhancements" uid="fa0b41cb-add8-4abd-a3d2-35806a192bae" description="Custom event triggers and retries" icon="zap" author="Yashwanth Muddana" />
   </BoardColumn>
-  <BoardColumn title="Completed" color="2" icon="check-circle">
-    <BoardCard
-      title="Mobile-Responsive Editor"
-      description="Full support for editing on any device"
-      createdAt="2024-12-01"
-    />
+
+  <BoardColumn title="Completed" uid="076cba74-8871-4f68-8396-30e3ecc57260" color="2" icon="check-circle">
+    <BoardCard title="Mobile-Responsive Editor" uid="d42aae4f-c74a-4f24-93f2-0f30dbf5d4c5" description="Full support for editing on any device" created-at="2024-12-01" />
   </BoardColumn>
 </Board>
 
@@ -106,20 +84,22 @@ Visualize planned enhancements with this kanban-style board. Prioritize features
 Follow these steps to ensure you run the latest version.
 
 <Steps>
-  <Step title="Check Your Version" icon="package">
+  <Step title="Check Your Version" icon="package" title-type="p">
     Run the version check command:
-    
+
     ```bash
     npx yashwanth-muddana --version
     ```
   </Step>
-  <Step title="Upgrade" icon="upload">
+
+  <Step title="Upgrade" icon="upload" title-type="p">
     <Tabs>
       <Tab title="npm" icon="package">
         ```bash
         npm update yashwanth-muddana
         ```
       </Tab>
+
       <Tab title="yarn" icon="package">
         ```bash
         yarn upgrade yashwanth-muddana
@@ -127,20 +107,23 @@ Follow these steps to ensure you run the latest version.
       </Tab>
     </Tabs>
   </Step>
-  <Step title="Verify" icon="check-circle">
+
+  <Step title="Verify" icon="check-circle" title-type="p">
     Restart your docs server and review the changelog for migration notes.
   </Step>
 </Steps>
 
-<Columns cols={2}>
-  <Card title="Submit Feedback" icon="message-circle" href="https://github.com/your-repo/issues" target="_blank">
+<Columns cols="2">
+  <Card title="Submit Feedback" href="https://github.com/your-repo/issues" icon="message-circle" horizontal="false" target="_blank">
     Share ideas or report issues to shape future releases.
   </Card>
-  <Card title="Join Community" icon="users" href="https://discord.gg/your-community" target="_blank">
+
+  <Card title="Join Community" href="https://discord.gg/your-community" icon="users" horizontal="false" target="_blank">
     Discuss updates and get early access to betas.
   </Card>
 </Columns>
 
-<Callout kind="tip">
+<Callout kind="tip" collapsed="false">
   Subscribe to RSS or GitHub notifications for instant changelog alerts. Customize this space for your Yashwanth Muddana projects.
 </Callout>
+
