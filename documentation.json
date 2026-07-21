@@ -194,6 +194,11 @@
                 "title": "Helpful Prompts",
                 "path": "write-and-publish/prompts",
                 "icon": "check-circle"
+              },
+              {
+                "title": "PDF Export",
+                "path": "write-and-publish/pdf-export",
+                "icon": "file-down"
               }
             ]
           },

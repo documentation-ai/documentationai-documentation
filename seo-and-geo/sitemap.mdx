@@ -14,6 +14,8 @@ Documentation.AI serves a sitemap for every published site at the root URL `/sit
   The sitemap always reflects your public **published** content state. When you publish new pages, rename or move existing ones, or unpublish content, the sitemap updates to match.
 </Callout>
 
+Each URL in the sitemap includes a `<lastmod>` date so search engines know when content was last updated. Documentation.AI derives this date from your page frontmatter timestamps, falling back to the previous deployment time if no timestamp is available. This means search engines see accurate last-modified dates per page rather than a single deployment-wide date.
+
 ## Access and verify sitemap.xml
 
 Access your sitemap at your docs base URL with `/sitemap.xml` appended, then verify that it lists your published pages.
