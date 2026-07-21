@@ -1,69 +1,101 @@
 ---
-title: Core Concepts
+title: Important Concepts
 description: An overview of the core concepts behind Documentation.AI
 ---
-Documentation.AI helps you build documentation that stays accurate, readable, and AI-ready. These core concepts give you a clear mental model of how the platform works, why it is AI-native, and how teams write and maintain content using either the web editor or a code editor.
+# Important Concepts
 
-testing second
+Welcome! If you're new to Documentation.AI, these concepts will help you get oriented quickly. Think of this as your guided tour of the platform's key ideas: how it stays AI-native, the two ways you can work, how components make your docs richer, and how API documentation fits in. Once you understand these building blocks, everything else will feel natural.
 
-third testing
-
-yashwanth is a good boy and i know this helps a lot to debug
-
-If you want a quick end-to-end setup, see the [Quickstart](/getting-started/quickstart).
+<Callout kind="info" collapsed="false">
+  If you want a quick end-to-end setup, see the [Quickstart](/getting-started/quickstart).
+</Callout>
 
 ## AI Native
 
-Being AI native means Documentation.AI uses AI and AI-integrated features throughout the product to support both writers and readers. Structured components remain important, but they are one part of a broader, AI-driven workflow.
+Documentation.AI uses AI throughout the product to support both writers and readers. Structured components still matter, but they work as part of a broader workflow designed to make documentation easier to create, maintain, and search.
 
-- **AI agent for writing and maintenance**: Helps draft, rewrite, and refine content in the web editor. See [AI documentation agent](/ai/ai-documentation-agent)
-- **AI assistant for readers**: Provides context-aware answers sourced from your documentation. See [Set up AI assistant](/ai/ai-assistant).
-- **On-page AI features**: Includes quick actions such as copy helpers and the AI menu for fast explanations. See [On-page AI menu](/page-actions).
-- **MCP server for docs**: Enables AI tools to work with your content safely and predictably.
-- **Structured components**: Provide semantic cues that improve AI retrieval and help models understand page structure.
-- **Additional AI-aware foundations**: Includes llms-txt guidance and documentation best practices that make your content easier for models to consume.
+<Columns cols="2">
+  <Card title="Documentation Agent" href="/ai/ai-documentation-agent" icon="book-open" cta="Learn more" horizontal="true" target="_self">
+    Draft, rewrite, and refine content with an AI agent that understands your documentation context.
+  </Card>
 
-AI-native features work together so your documentation becomes easier to write, maintain, and explore.
+  <Card title="AI Assistant" href="/ai/ai-assistant" icon="help-circle" cta="Set up assistant" horizontal="true" target="_self">
+    Give readers context-aware answers sourced directly from your published documentation.
+  </Card>
+
+  <Card title="Page Actions" href="/page-actions" icon="edit" cta="Explore actions" horizontal="true" target="_self">
+    Use on-page AI actions such as copy helpers and explanations to move faster while editing.
+  </Card>
+
+  <Card title="MCP Server" href="/ai/docs-mcp-server" icon="terminal" cta="Connect tools" horizontal="true" target="_self">
+    Enable AI tools like Cursor and Claude to work with your docs safely and predictably.
+  </Card>
+
+  <Card title="Structured Components" href="/components/heading-and-text" icon="settings" cta="Browse components" horizontal="true" target="_self">
+    Semantic components give AI clearer signals about your content structure and meaning.
+  </Card>
+
+  <Card title="LLMs.txt and best practices" href="/seo-and-geo/robots-txt-and-llm-txt" icon="file-text" cta="Read more" horizontal="true" target="_self">
+    Guidance that makes your content easier for AI models to discover and consume.
+  </Card>
+</Columns>
+
+These features work together so your documentation becomes easier to write, maintain, and explore.
 
 ## Two ways to work
 
-Documentation.AI offers two fully synced workflows so every contributor can work in the environment they prefer.
+Documentation.AI supports two fully synced workflows, so each contributor can use the environment that fits their role and habits.
 
-### Web editor
+<Columns cols="2">
+  <Card title="Web Editor" href="/write-and-publish/web-editor" icon="edit" cta="Open editor guide" horizontal="true" target="_self">
+    Edit in a visual interface, insert components with slash commands, organize the sidebar, and use the built-in AI agent while you write.
+  </Card>
 
-The web editor is ideal for non-technical contributors or teams that want a visual, in-browser editing experience.
-
-- Edit content with a WYSIWYG interface.
-- Use slash commands to insert components.
-- Organise the pages nav bar.&#x20;
-- Use the built-in AI agent to write documentation efficiently.
-
-### Code editor
-
-Use the code editor workflow if your team prefers working with local files, git branches, and CI.
-
-- Keep docs versioned alongside your codebase.
-- Use your preferred editor, linters, and review tools.
-- Commit and merge documentation changes like any other code.
-- Ideal for engineering-heavy teams or API reference work.
-- Use coding agents such as Cursor or GitHub Copilot or Claude Code with the MCP server to update and maintain docs using AI.
+  <Card title="Code Editor" href="/write-and-publish/code-editor" icon="code" cta="Set up MDX" horizontal="true" target="_self">
+    Keep docs versioned with your codebase, use your preferred editor and linters, and work with AI coding agents through MCP.
+  </Card>
+</Columns>
 
 ## Components: rich, reusable blocks
 
-Components help you structure content consistently and make pages more readable. They also give AI clearer signals about the meaning of your content.
+Components make pages easier to scan and keep patterns consistent across your documentation. They also add structure that helps AI systems interpret the meaning of each section more accurately.
 
-- Explore all components [here](/components/heading-and-text).
-- Use cards, tabs, steps, callouts, and code groups to add structure.
-- Combine components to create predictable patterns across your docs.
-- Keep content readable while adding hierarchy and clarity.
+<Columns cols="3">
+  <Card title="Browse Components" href="/components/heading-and-text" icon="folder" cta="Explore all" horizontal="false" target="_self">
+    Use cards, tabs, steps, callouts, code groups, and more to structure your pages.
+  </Card>
+
+  <Card title="Structured Content" href="/components/callout" icon="info" cta="See examples" horizontal="false" target="_self">
+    Combine components to create predictable, readable patterns across your docs.
+  </Card>
+
+  <Card title="API Components" href="/components/api-components" icon="code" cta="View API blocks" horizontal="false" target="_self">
+    Use parameter fields, response fields, and code groups built for API documentation.
+  </Card>
+
+  <Card title="Steps and Tabs" href="/components/steps" icon="list-ordered" cta="See usage" horizontal="false" target="_self">
+    Guide readers through sequential instructions with Steps, and switch between contexts with Tabs.
+  </Card>
+
+  <Card title="Expandables" href="/components/expandables" icon="chevron-down" cta="Learn more" horizontal="false" target="_self">
+    Collapse detailed sections so readers can expand them on demand and keep pages clean.
+  </Card>
+</Columns>
+
+Good structure adds hierarchy and clarity without making pages harder to read.
 
 ## API documentation and playground
 
-If your product includes an API, Documentation.AI provides a complete workflow for importing, organizing, and testing endpoints.
+Documentation.AI includes a complete workflow for teams that publish API reference material. You can import schemas, organize endpoints, and let readers test requests from the docs.
 
-- Import schemas with [OpenAPI Import](/api-documentation-and-playground/openapi-import).
-- Structure your reference using [Organize API Reference](/api-documentation-and-playground/organize-api-reference).
-- Enable live request testing in the interactive playground.
-- Keep your API docs synced by updating `openapi.yaml` in your repo.
+<Columns cols="2">
+  <Card title="OpenAPI Import" href="/api-documentation-and-playground/openapi-import" icon="download" cta="Import specs" horizontal="true" target="_self">
+    Import OpenAPI and JSON schemas and generate API reference pages automatically.
+  </Card>
 
-Together, these concepts give you a solid foundation for building documentation that scales with your product and your team.
+  <Card title="Organize and Playground" href="/api-documentation-and-playground/organize-api-reference" icon="folder" cta="Set up reference" horizontal="true" target="_self">
+    Structure your API reference and enable live request testing in the playground.
+  </Card>
+</Columns>
+
+Together, these concepts give you a solid foundation for building documentation that scales with your product and your team. and we so provide of our team you know be cause know exactly eaht we are doing

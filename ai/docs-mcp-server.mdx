@@ -50,9 +50,29 @@ The Docs MCP Server becomes available when you publish documentation. It does no
 
 </Callout>
 
+### Session persistence
+
+When you connect an MCP client and select a project, the Docs MCP Server now persists that selection so it survives session re-initialization. You do not need to re-authenticate or re-select your project if the session is restored.
+
+That persistence helps when an SSE connection drops, a deploy happens, or a request is handled by a different instance. In those cases, the MCP server automatically restores your previously selected project and continues in the same published-docs context.
+
+<Callout kind="info">
+
+Sessions are persisted to Redis with a 7-day TTL. After 7 days of inactivity, the session expires and you need to select your project again.
+
+</Callout>
+
 ## Use Authoring MCP Server when you need write access
 
 Use the Authoring MCP Server when the AI tool needs to work with projects, files, branches, reviews, or deployments. That server is for authoring and operational workflows, while the Docs MCP Server is for read-only retrieval from published docs.
+
+<Callout kind="warning">
+
+Users with the Viewer role cannot call write tools through the MCP server. The blocked tools are `update_documentation`, `create_branch`, `delete_branch`, and `merge_branches`.
+
+Viewers can still use all read-only tools, including search, read, and list operations. If a viewer needs write access, ask an organization admin or editor to update their role.
+
+</Callout>
 
 ## What to use next
 

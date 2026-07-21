@@ -156,6 +156,51 @@ Use these props to control how images render:
 
 You can combine `<Image>` with layout components like [`<Columns>`](/components/columns) or include an image in a [`<Card>`](/components/card) via its `image` prop to create more complex grids and feature blocks.
 
+## SVG and SVGClient components
+
+Use `SVG` and `SVGClient` to fetch remote SVG files and render them inline so they inherit page CSS and styles. `SVG` renders server-side at build time, while `SVGClient` fetches and renders client-side in the browser.
+
+### Basic SVG usage
+
+```jsx
+<SVG
+  src="https://example.com/diagram.svg"
+  alt="System architecture diagram"
+/>
+```
+
+### SVGClient with a custom className
+
+```jsx
+<SVGClient
+  src="https://example.com/live-chart.svg"
+  alt="Live data chart"
+  className="my-chart"
+/>
+```
+
+### SVG props
+
+<ParamField body="src" param-type="string" required="true" deprecated="false">
+  URL of the remote SVG file.
+</ParamField>
+
+<ParamField body="alt" param-type="string" required="false" deprecated="false">
+  Accessibility text describing the SVG content.
+</ParamField>
+
+<ParamField body="className" param-type="string" required="false" deprecated="false">
+  CSS class applied to the rendered SVG container.
+</ParamField>
+
+<ParamField body="fallback" param-type="ReactNode" required="false" deprecated="false">
+  Content shown if the SVG fetch or parse fails.
+</ParamField>
+
+<Callout kind="alert" collapsed="false">
+  Only remote SVGs served over HTTPS are supported. Inline scripts and event handlers are stripped during DOM parsing for security.
+</Callout>
+
 ## Advanced options
 
 ### Performance and loading behavior
@@ -203,4 +248,3 @@ You can reference external images directly in MDX:
 - **Supported formats:** JPEG, JPG, PNG, GIF, WebP, SVG, ICO.
 
 - **CDN:** Images uploaded via the Web Editor are automatically optimized and cached.
-

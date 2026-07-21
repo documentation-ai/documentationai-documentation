@@ -58,6 +58,52 @@ Use the **Changes** view to review both types of work: saved branch changes(if a
   Use branches for any change that needs review, coordination, or a preview link. Stay on the Live branch for small, urgent edits that should go live immediately.
 </Callout>
 
+## Real-time collaboration
+
+Documentation.AI supports real-time collaborative editing, so multiple team members can work on the same branch at the same time. As you edit, the Web Editor shows collaborator activity live, which makes it easier to coordinate changes without waiting for one person to finish first.
+
+### Live cursors
+
+Editors can see each other's cursor positions in real time within the Web Editor. This helps your team avoid overlapping edits and makes it easier to talk through changes while everyone is looking at the same branch.
+
+### Editor locking during merges
+
+When a branch merge starts, Documentation.AI temporarily locks the target branch in the editor to prevent conflicting edits during the operation.
+
+<Callout kind="alert" collapsed="false">
+  The editor becomes read-only for the target branch while a merge is in progress. After the merge completes, normal editing resumes automatically.
+</Callout>
+
+### Merge progress tracking
+
+Workspace events stream merge progress in real time, so everyone working in the branch can follow what is happening as the merge runs. If the system is rearranging files or applying tree changes, collaborators also see loading toasts that reflect that in-progress work.
+
+### Publish button gating
+
+The publish button responds to active branch and tree operations so you do not publish in the middle of a structural change.
+
+<Callout kind="info" collapsed="false">
+  Documentation.AI disables the publish button during active tree operations such as file moves, renames, and deletes, as well as during branch merges. The button becomes available again as soon as the operation finishes.
+</Callout>
+
+### Collaborative commenting
+
+Team members can leave threaded comments anchored to specific positions in a document, reply within existing threads, and use comments to review wording, structure, or technical accuracy without editing the page directly.
+
+<ExpandableGroup>
+  <Expandable title="Resolve and reopen comment threads" default-open="false">
+
+    Resolve a thread when the issue is addressed and you want to clear it from active review. If more discussion is needed later, reopen the same thread instead of starting over in a new one.
+
+  </Expandable>
+
+  <Expandable title="Notify collaborators with mentions" default-open="false">
+
+    Use `@mentions` in a comment to notify specific teammates. Mentions help route questions or approvals to the right person without leaving the document.
+
+  </Expandable>
+</ExpandableGroup>
+
 ## Create and work on a branch
 
 Create a branch when you want a safe place to draft or test changes before they affect the live site.

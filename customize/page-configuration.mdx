@@ -92,3 +92,27 @@ You can also include any other custom key-value pairs in your front matter. This
 <Callout kind="info" collapsed="false">
   Page layout options such as `show-sidebar`, `show-toc`, `show-parent-label`, `content-width`, and `badge` are configured in the navigation section of your [site configuration](/customize/site-configuration#pages-configuration), not in front matter.
 </Callout>
+
+### SEO & Meta editing panel
+
+<Callout kind="tip">
+
+You can now edit SEO and social metadata directly from the dashboard without touching front matter. Open any navigation item's dialog (page, group, or dropdown), switch to the `SEO & Meta` tab, and edit fields visually. Changes are written to the page's front matter automatically.
+
+</Callout>
+
+You can edit the following fields in the panel:
+
+- Meta titles
+- Meta descriptions
+- Canonical URLs
+- Open Graph images
+- JSON-LD structured data schemas
+
+<Expandable title="JSON-LD in the SEO & Meta panel">
+
+You can paste or build JSON-LD schema blocks such as `Article`, `FAQPage`, or `BreadcrumbList` directly in the panel. The panel validates the JSON structure and writes it to the page's `jsonLd` front matter property.
+
+</Expandable>
+
+These fields correspond to the existing front matter properties: `metaTitle`, `metaDescription`, `canonical`, `ogImage`, and `jsonLd`.
