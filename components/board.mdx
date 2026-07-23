@@ -188,11 +188,11 @@ Use card attributes when the roadmap needs more context than a title alone.
 
 ### Attribute naming in MDX
 
-Some board attributes use kebab-case in MDX.
+Card date props accept both kebab-case and camelCase in MDX.
 
 <Callout kind="info">
 
-Write card date props as `due-date` and `created-at` in MDX. These map to the underlying camelCase fields used internally.
+Both `due-date` and `dueDate` are accepted, as are `created-at` and `createdAt`. The component prefers the camelCase value when both are present and falls back to the kebab-case value otherwise. Use whichever convention matches your style — the examples on this page use kebab-case.
 
 </Callout>
 
@@ -239,7 +239,7 @@ Lucide icon name shown on the card.
 </ParamField>
 
 <ParamField body="due-date" param-type="string" required="false" show-location="false">
-Due date associated with the card. Use a date string such as `2025-02-01`.
+Due date associated with the card. Use a date string such as `2025-02-01`. Both `due-date` and `dueDate` are accepted.
 </ParamField>
 
 <ParamField body="author" param-type="string" required="false" show-location="false">
@@ -247,7 +247,7 @@ Person associated with the card.
 </ParamField>
 
 <ParamField body="created-at" param-type="string" required="false" show-location="false">
-Creation date for the card. Use a date string such as `2025-01-15`.
+Creation date for the card. Use a date string such as `2025-01-15`. Both `created-at` and `createdAt` are accepted.
 </ParamField>
 
 ## Column colors

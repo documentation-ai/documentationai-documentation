@@ -48,6 +48,30 @@ Why this is important:
 
 If an answer cannot be strongly supported by your docs, the assistant can ask for clarification or fall back to the support path you configured.
 
+## Answer quality & source code analysis
+
+The AI Assistant delivers more accurate, better-grounded answers by proactively analyzing connected source code and refusing to fabricate when data is unavailable.
+
+### Proactive code analysis
+
+When you connect a repository to your documentation project, the assistant proactively analyzes your source code to ground its answers in actual implementation details. It does not wait for users to explicitly mention code — if a question involves product behavior, API details, or implementation patterns, the assistant checks the codebase for authoritative answers alongside your published docs.
+
+<Callout kind="info" collapsed="false">
+  Code analysis runs automatically when repositories are connected — no special prompts or configuration needed. See [GitHub Integration](/integrations/github) to connect a repository.
+</Callout>
+
+### No fabricated answers
+
+If code analysis fails or a question depends on data that is not available, the assistant explicitly says what it could not access rather than guessing. This prevents confident-sounding but incorrect answers and helps users understand what information is missing.
+
+<Callout kind="alert" collapsed="false">
+  When the assistant cannot access relevant code or documentation data, it will tell you what failed instead of making up an answer.
+</Callout>
+
+### Continuous quality improvements
+
+Response generation now prioritizes content accuracy and quality more highly. Underlying models have been upgraded for better reasoning, and content quality rules are enforced throughout the answer generation pipeline.
+
 ## Customization
 
 Configure the AI Assistant from its dedicated settings area. You can control whether it appears, how it opens, how it is positioned, and how it guides users through a conversation.

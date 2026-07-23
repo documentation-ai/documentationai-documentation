@@ -261,6 +261,11 @@
                 "icon": "search-check-icon",
                 "pages": [
                   {
+                    "title": "Meta Tags & Social Previews",
+                    "path": "seo-and-geo/meta-tags-setup",
+                    "icon": "image"
+                  },
+                  {
                     "title": "Robots.txt & llms.txt",
                     "path": "seo-and-geo/robots-txt-and-llm-txt",
                     "icon": "file"
@@ -553,6 +558,49 @@
                 "title": "Overview",
                 "path": "analytics/overview",
                 "icon": "bar-chart4-icon"
+              }
+            ]
+          },
+          {
+            "group": "Paperguide",
+            "expandable": true,
+            "pages": [
+              {
+                "title": "Paperguide Help Center",
+                "path": "paperguide/overview",
+                "icon": "book-open"
+              }
+            ]
+          },
+          {
+            "group": "Confluence",
+            "expandable": true,
+            "pages": [
+              {
+                "title": "Getting Started in Confluence from Jira",
+                "path": "confluence/getting-started",
+                "icon": "compass"
+              }
+            ]
+          },
+          {
+            "group": "Templates",
+            "expandable": true,
+            "pages": [
+              {
+                "title": "Product Requirements Document",
+                "path": "templates/product-requirements",
+                "icon": "notepad-text"
+              },
+              {
+                "title": "Meeting Notes",
+                "path": "templates/meeting-notes",
+                "icon": "calendar"
+              },
+              {
+                "title": "Decision Documentation",
+                "path": "templates/decision-documentation",
+                "icon": "gavel"
               }
             ]
           }

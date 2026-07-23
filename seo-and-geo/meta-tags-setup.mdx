@@ -1,8 +1,106 @@
 ---
-title: Meta Tags Setup
-description: "SEO and geographic targeting: Meta Tags Setup setup for your site."
+title: Meta Tags & Social Media Previews
+description: Control how your documentation pages appear when shared on social platforms with auto-generated OG images, Twitter cards, and per-page overrides.
 ---
 
-# Meta Tags Setup
+## Share polished documentation links automatically
 
-[How-to Guide] Set up Meta Tags Setup to help search engines discover, understand, and correctly localize your docs.
+When someone shares a link to your documentation in Slack, X, LinkedIn, or another social platform, the page can appear as a rich preview card with a title, description, and image. Documentation.AI generates these previews automatically for every page and also gives you page-level and site-level controls when you need a different result.
+
+## How OG images are generated
+
+Every page gets a dynamic `1200 × 630` PNG Open Graph image generated automatically at request time. The generated image includes the page title in large white text, the page description as a grey subtitle, the parent group or section name as an orange accent label, and your site name or logo at the top, all placed on a dark geometric background.
+
+Documentation.AI builds that image from metadata you already maintain. It uses the page `title` and `description` from frontmatter, the parent navigation group name from your docs structure, and the site name and logo from your site configuration.
+
+<Callout kind="info">
+
+OG image generation is automatic and requires no setup.
+
+</Callout>
+
+## Twitter cards
+
+X uses the same Open Graph image and metadata with the `summary_large_image` card format. The title, description, and image from your OG tags are reused automatically, so you do not need separate Twitter-specific settings for each page.
+
+## Per-page overrides
+
+Override the default social preview for any page directly in frontmatter. This is useful when you want a shorter share title, a different search snippet, or a fully custom social image.
+
+- **`ogImage`** — Sets a custom image URL and bypasses auto-generated OG images entirely. A `1200 × 630` image is recommended.
+- **`metaTitle`** — Sets a custom title for social cards and search results. If omitted, the page `title` is used.
+- **`metaDescription`** — Sets a custom description for social cards and search results. If omitted, the page `description` is used.
+
+<Callout kind="info">
+
+For the full reference of frontmatter fields including `ogImage`, `metaTitle`, `metaDescription`, `canonical`, and `jsonLd`, see [Page Configuration](/customize/page-configuration).
+
+</Callout>
+
+<CodeGroup tabs="YAML">
+```yaml
+---
+title: "API Rate Limits"
+description: "Understand rate limiting policies and headers for our REST API."
+metaTitle: "API Rate Limits | Acme Docs"
+metaDescription: "Learn how API rate limiting works, including burst limits, quota headers, and retry strategies."
+ogImage: "https://example.com/images/rate-limits-social.png"
+---
+```
+</CodeGroup>
+
+## Site-level SEO configuration
+
+Set global SEO defaults in your `documentation.json` file under the `seo` key. These settings apply across your site unless a page overrides them in frontmatter.
+
+| Field | Type | Purpose |
+| --- | --- | --- |
+| `og:type` | string | Open Graph content type. Default: `article` |
+| `og:locale` | string | Locale for OG tags, such as `en_US` |
+| `twitter:card` | string | Twitter card type. Default: `summary_large_image` |
+| `twitter:site` | string | Twitter handle for the site |
+| `twitter:creator` | string | Twitter handle for the content author |
+| `robots:index` | boolean | Whether search engines can index pages. Default: `true` |
+| `robots:follow` | boolean | Whether search engines should follow links. Default: `true` |
+
+<CodeGroup tabs="JSON">
+```json
+{
+  "seo": {
+    "og:type": "article",
+    "og:locale": "en_US",
+    "twitter:card": "summary_large_image",
+    "twitter:site": "@acme",
+    "twitter:creator": "@acmedocs",
+    "robots:index": true,
+    "robots:follow": true
+  }
+}
+```
+</CodeGroup>
+
+## Protected pages
+
+Pages behind authentication do not expose shareable metadata to unauthenticated visitors. If a page is protected with Password, JWT, or OAuth 2.0 access control, Documentation.AI does not emit OG tags or Twitter card metadata for visitors who are not signed in.
+
+Protected pages also send `robots: noindex, nofollow` so search engines do not index them or follow links from them. That prevents private documentation from appearing in search results or leaking through social preview cards.
+
+<Callout kind="alert">
+
+This behavior is automatic and cannot be overridden for protected pages.
+
+</Callout>
+
+## SEO & Meta editing panel
+
+Edit page-level OG title, description, and custom image from the dashboard without changing frontmatter by hand. Open any navigation item's dialog, switch to the **SEO & Meta** tab, and update the fields there. Documentation.AI writes those changes back to frontmatter automatically.
+
+<Callout kind="tip">
+
+See [Page Configuration](/customize/page-configuration) for the full field reference.
+
+</Callout>
+
+## Fallback metadata
+
+Pages without explicit frontmatter still produce basic social preview metadata. The site layout adds a JSON-LD WebSite schema and fallback Open Graph metadata, including your site name and default description, so every page has at least a usable social preview.

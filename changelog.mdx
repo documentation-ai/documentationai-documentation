@@ -7,8 +7,24 @@ description: >-
 ## Recent Changes
 
 <Callout kind="info" collapsed="false">
-  Track the evolution of Yashwanth Muddana with detailed release notes. Each update includes new features, bug fixes, and improvements to enhance your documentation experience.
+  Track the evolution of Documentation.AI with detailed release notes. Each update includes new features, bug fixes, and improvements to enhance your documentation experience.
 </Callout>
+
+<Update label="2026-07-21" description="Social media previews, AI answer quality, collaborative editing, and BoardCard prop flexibility" tags={["feature","improvement","fix"]}>
+  ## New Features
+
+  - **Meta Tags & Social Media Previews** — Documentation pages now generate rich preview cards automatically when shared on social platforms. Each page gets a dynamic 1200×630 px OG image with the page title, description, parent section name, and site branding. Includes Twitter `summary_large_image` support, per-page frontmatter overrides (`ogImage`, `metaTitle`, `metaDescription`), site-level SEO config fields, and automatic suppression of OG tags on protected pages. See [Meta Tags & Social Media Previews](/seo-and-geo/meta-tags-setup) for full details.
+  - **Collaborative editing for non-MDX files** — CSS, custom scripts, and OpenAPI files now support real-time collaborative editing in the dashboard. Multiple team members can edit the same file simultaneously with live sync, so changes appear instantly for all connected users without needing a page reload.
+
+  ## Improvements
+
+  - **Improved AI answer quality** — The AI Assistant now proactively analyzes connected source code to ground answers in actual implementation details, rather than waiting for users to explicitly mention code. When code data is unavailable, the assistant says what it could not access instead of fabricating an answer. Underlying models and content quality rules have also been upgraded for better reasoning across all question types. See [AI Assistant](/ai/ai-assistant#answer-quality--source-code-analysis) for details.
+  - **Board card date props accept both naming styles** — The `BoardCard` component now accepts date-related attributes in both kebab-case (`due-date`, `created-at`) and camelCase (`dueDate`, `createdAt`). Use whichever convention matches your style; the component prefers the camelCase value when both are present. See [Board](/components/board) for full attribute reference.
+
+  ## Bug Fixes
+
+  - Fixed `BoardCard` silently ignoring date props when authors used the opposite naming convention from what the component expected.
+</Update>
 
 <Update label="2026-07-03" description="UI Polish" tags={["improvement"]}>
   ## Improvements
@@ -101,7 +117,7 @@ Follow these steps to ensure you run the latest version.
     Run the version check command:
 
     ```bash
-    npx yashwanth-muddana --version
+    npx documentation-ai --version
     ```
   </Step>
 
@@ -109,13 +125,13 @@ Follow these steps to ensure you run the latest version.
     <Tabs>
       <Tab title="npm" icon="package">
         ```bash
-        npm update yashwanth-muddana
+        npm update documentation-ai
         ```
       </Tab>
 
       <Tab title="yarn" icon="package">
         ```bash
-        yarn upgrade yashwanth-muddana
+        yarn upgrade documentation-ai
         ```
       </Tab>
     </Tabs>
@@ -137,5 +153,5 @@ Follow these steps to ensure you run the latest version.
 </Columns>
 
 <Callout kind="tip" collapsed="false">
-  Subscribe to RSS or GitHub notifications for instant changelog alerts. Customize this space for your Yashwanth Muddana projects.
+  Subscribe to RSS or GitHub notifications for instant changelog alerts. Customize this space for your Documentation.AI projects.
 </Callout>

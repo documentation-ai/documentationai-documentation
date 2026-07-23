@@ -1,10 +1,12 @@
 ---
 title: Important Concepts
-description: An overview of the core concepts behind Documentation.AI
+description: >-
+  Understand the core ideas behind Documentation.AI — AI-native workflows, dual
+  editing modes, rich components, and API documentation.
 ---
 # Important Concepts
 
-Welcome! If you're new to Documentation.AI, these concepts will help you get oriented quickly. Think of this as your guided tour of the platform's key ideas: how it stays AI-native, the two ways you can work, how components make your docs richer, and how API documentation fits in. Once you understand these building blocks, everything else will feel natural.
+Documentation.AI feels much easier once you know the few ideas that shape how it works. Start here to get oriented, then move into the workflow that fits you best.
 
 <Callout kind="info" collapsed="false">
   If you want a quick end-to-end setup, see the [Quickstart](/getting-started/quickstart).
@@ -12,7 +14,7 @@ Welcome! If you're new to Documentation.AI, these concepts will help you get ori
 
 ## AI Native
 
-Documentation.AI uses AI throughout the product to support both writers and readers. Structured components still matter, but they work as part of a broader workflow designed to make documentation easier to create, maintain, and search.
+Documentation.AI uses AI across the writing and reading experience. The platform still relies on structure, but that structure now helps both people and AI understand your docs more clearly.
 
 <Columns cols="2">
   <Card title="Documentation Agent" href="/ai/ai-documentation-agent" icon="book-open" cta="Learn more" horizontal="true" target="_self">
@@ -20,82 +22,114 @@ Documentation.AI uses AI throughout the product to support both writers and read
   </Card>
 
   <Card title="AI Assistant" href="/ai/ai-assistant" icon="help-circle" cta="Set up assistant" horizontal="true" target="_self">
-    Give readers context-aware answers sourced directly from your published documentation.
+    Answer reader questions with responses grounded in your published documentation.
   </Card>
 
   <Card title="Page Actions" href="/page-actions" icon="edit" cta="Explore actions" horizontal="true" target="_self">
-    Use on-page AI actions such as copy helpers and explanations to move faster while editing.
+    Use built-in AI actions while editing to explain, transform, and improve content faster.
   </Card>
 
   <Card title="MCP Server" href="/ai/docs-mcp-server" icon="terminal" cta="Connect tools" horizontal="true" target="_self">
-    Enable AI tools like Cursor and Claude to work with your docs safely and predictably.
+    Connect AI tools like Cursor and Claude to your docs with a controlled workflow.
   </Card>
 
   <Card title="Structured Components" href="/components/heading-and-text" icon="settings" cta="Browse components" horizontal="true" target="_self">
-    Semantic components give AI clearer signals about your content structure and meaning.
+    Add semantic structure that improves readability and gives AI clearer signals.
   </Card>
 
   <Card title="LLMs.txt and best practices" href="/seo-and-geo/robots-txt-and-llm-txt" icon="file-text" cta="Read more" horizontal="true" target="_self">
-    Guidance that makes your content easier for AI models to discover and consume.
+    Make your content easier for AI systems to discover, interpret, and use accurately.
   </Card>
 </Columns>
 
-These features work together so your documentation becomes easier to write, maintain, and explore.
+<Callout kind="tip" collapsed="false">
+  The same structured components that make pages easier to scan also give AI better context for drafting content and answering questions.
+</Callout>
 
 ## Two ways to work
 
-Documentation.AI supports two fully synced workflows, so each contributor can use the environment that fits their role and habits.
+Documentation.AI supports two fully synced workflows. Pick the one that matches how you already work, and switch when your team needs a different approach.
 
-<Columns cols="2">
-  <Card title="Web Editor" href="/write-and-publish/web-editor" icon="edit" cta="Open editor guide" horizontal="true" target="_self">
-    Edit in a visual interface, insert components with slash commands, organize the sidebar, and use the built-in AI agent while you write.
-  </Card>
+<Tabs>
+  <Tab title="Web Editor" icon="edit-3">
+    Write in a visual workspace with built-in editing tools, slash commands, and AI help close at hand.
 
-  <Card title="Code Editor" href="/write-and-publish/code-editor" icon="code" cta="Set up MDX" horizontal="true" target="_self">
-    Keep docs versioned with your codebase, use your preferred editor and linters, and work with AI coding agents through MCP.
-  </Card>
-</Columns>
+    <Callout kind="tip" collapsed="false">
+      Best for teams who want a guided editing experience in the browser. See the [Web Editor guide](/write-and-publish/web-editor).
+    </Callout>
+  </Tab>
+
+  <Tab title="Code Editor" icon="code">
+    Manage docs as MDX in your codebase, use your preferred editor, and keep documentation inside your existing development workflow.
+
+    <Callout kind="tip" collapsed="false">
+      Best for teams that version docs with code and work heavily in local tooling. See the [Code Editor guide](/write-and-publish/code-editor).
+    </Callout>
+  </Tab>
+</Tabs>
 
 ## Components: rich, reusable blocks
 
-Components make pages easier to scan and keep patterns consistent across your documentation. They also add structure that helps AI systems interpret the meaning of each section more accurately.
+Components make pages easier to scan, easier to maintain, and more consistent across your docs. They also add the structure that helps AI interpret what each part of the page is doing.
 
 <Columns cols="3">
   <Card title="Browse Components" href="/components/heading-and-text" icon="folder" cta="Explore all" horizontal="false" target="_self">
-    Use cards, tabs, steps, callouts, code groups, and more to structure your pages.
+    Use cards, tabs, steps, callouts, code groups, and more to shape your pages.
   </Card>
 
   <Card title="Structured Content" href="/components/callout" icon="info" cta="See examples" horizontal="false" target="_self">
-    Combine components to create predictable, readable patterns across your docs.
+    Combine components into repeatable patterns that stay readable as your docs grow.
   </Card>
 
   <Card title="API Components" href="/components/api-components" icon="code" cta="View API blocks" horizontal="false" target="_self">
-    Use parameter fields, response fields, and code groups built for API documentation.
+    Document parameters, responses, and examples with components built for API reference.
   </Card>
 
   <Card title="Steps and Tabs" href="/components/steps" icon="list-ordered" cta="See usage" horizontal="false" target="_self">
-    Guide readers through sequential instructions with Steps, and switch between contexts with Tabs.
+    Walk readers through a sequence with Steps, or switch context cleanly with Tabs.
   </Card>
 
   <Card title="Expandables" href="/components/expandables" icon="chevron-down" cta="Learn more" horizontal="false" target="_self">
-    Collapse detailed sections so readers can expand them on demand and keep pages clean.
+    Hide optional detail until readers need it, so dense pages stay approachable.
+  </Card>
+
+  <Card title="Mermaid Diagrams" href="/components/mermaid" icon="git-branch" cta="View diagrams" horizontal="false" target="_self">
+    Explain flows, systems, and relationships visually with diagrams that live in your docs.
   </Card>
 </Columns>
 
-Good structure adds hierarchy and clarity without making pages harder to read.
+<Steps>
+  <Step title="Browse the library" icon="layout-grid" title-type="p">
+    Start with the component library to see what building blocks are available and when to use each one.
+  </Step>
+
+  <Step title="Combine for patterns" icon="layers" title-type="p">
+    Mix components such as Cards, Callouts, Tabs, and Expandables to create layouts readers can scan quickly.
+  </Step>
+
+  <Step title="Add API blocks" icon="code" title-type="p">
+    When you document endpoints, use API-focused components to keep requests, responses, and fields consistent.
+  </Step>
+</Steps>
 
 ## API documentation and playground
 
-Documentation.AI includes a complete workflow for teams that publish API reference material. You can import schemas, organize endpoints, and let readers test requests from the docs.
+Documentation.AI includes a full workflow for publishing API reference material. You can generate docs from schemas, organize endpoints clearly, and let readers try requests without leaving the page.
 
-<Columns cols="2">
-  <Card title="OpenAPI Import" href="/api-documentation-and-playground/openapi-import" icon="download" cta="Import specs" horizontal="true" target="_self">
-    Import OpenAPI and JSON schemas and generate API reference pages automatically.
-  </Card>
+<Steps>
+  <Step title="Import schemas" icon="download" title-type="p">
+    Import OpenAPI and JSON schemas to generate API reference pages faster. See [OpenAPI Import](/api-documentation-and-playground/openapi-import).
+  </Step>
 
-  <Card title="Organize and Playground" href="/api-documentation-and-playground/organize-api-reference" icon="folder" cta="Set up reference" horizontal="true" target="_self">
-    Structure your API reference and enable live request testing in the playground.
-  </Card>
-</Columns>
+  <Step title="Organize endpoints" icon="folder-tree" title-type="p">
+    Group and structure your API reference so readers can find the right endpoint without digging. See [Organize and Playground](/api-documentation-and-playground/organize-api-reference).
+  </Step>
 
-Together, these concepts give you a solid foundation for building documentation that scales with your product and your team. and we so provide of our team you know be cause know exactly eaht we are doing
+  <Step title="Enable the playground" icon="flask-conical" title-type="p">
+    Turn your reference into a working experience by letting readers test requests directly from the docs.
+  </Step>
+</Steps>
+
+<Callout kind="tip" collapsed="false">
+  Ready to try it yourself? Start with the [Quickstart](/getting-started/quickstart), then explore the [Components](/components/heading-and-text) library as you build.
+</Callout>
