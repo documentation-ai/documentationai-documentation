@@ -1,0 +1,225 @@
+---
+title: Confluence Integration
+description: Connect Confluence to Documentation.AI so the AI agent can search and read your team’s pages as project context while writing docs.
+---
+
+## Overview
+
+Use the Confluence integration to connect your Atlassian workspace and add Confluence as a context source for a documentation project. This lets the AI Documentation Agent search Confluence pages and read their content while planning, updating, and reviewing documentation.
+
+<Callout kind="info" collapsed="false">
+
+Confluence is connected once at the organization level, then attached to individual documentation projects. This keeps access centralized while letting each project choose whether to use Confluence context.
+
+
+</Callout>
+
+## Before you start
+
+<Callout kind="info" collapsed="false">
+
+You need:
+
+- An organization admin role in Documentation.AI
+- Editor or higher permissions to connect integrations
+- Confluence admin access to authorize the connection in Atlassian
+- At least one documentation project created in your Documentation.AI workspace
+
+Users with viewer or higher permissions can view integration status, but only users with editor or higher permissions can connect or change the integration.
+
+
+</Callout>
+
+## Connect Confluence at the organization level
+
+Connect Confluence once before you attach it to any project.
+
+<Steps>
+
+  <Step title="Open organization integrations" icon="settings">
+
+  In the dashboard, go to **Settings** → **Organization Settings** → **Integrations**.
+
+
+  </Step>
+  <Step title="Start the Confluence connection" icon="plus">
+
+  Find **Confluence** in the integrations list, then click **Connect**.
+
+
+  </Step>
+  <Step title="Authorize in Atlassian" icon="external-link">
+
+  Documentation.AI redirects you to Atlassian to authorize the connection. Review the requested access, then approve it for the Confluence workspace you want to use.
+
+
+  </Step>
+  <Step title="Confirm the connection is active" icon="check-circle">
+
+  After authorization, you return to Documentation.AI and the Confluence integration shows as connected.
+
+  The integration status should display as active. If it does not, refresh the page and check the connection status again.
+
+
+  </Step>
+</Steps>
+
+<Callout kind="tip" collapsed="false">
+
+If your organization uses multiple Atlassian workspaces, connect the one that contains the Confluence content your documentation team wants the AI agent to reference.
+
+
+</Callout>
+
+## Attach Confluence to a documentation project
+
+Once the organization connection is active, attach it to each project that should use Confluence as context.
+
+<Steps>
+
+  <Step title="Open the project settings" icon="folder">
+
+  In the dashboard, open the documentation project that should use Confluence.
+
+  Then go to **Settings** → **Integrations**.
+
+
+  </Step>
+  <Step title="Open Confluence configuration" icon="settings">
+
+  Find **Confluence** in the project integrations list, then click **Configure**.
+
+
+  </Step>
+  <Step title="Attach the organization connection" icon="link">
+
+  Select the connected Confluence account and attach it as a context source for the project.
+
+  After you save the configuration, Confluence appears as an enabled context source for that project.
+
+
+  </Step>
+  <Step title="Verify the project can use Confluence context" icon="check-circle">
+
+  Return to the project integrations page and confirm that Confluence shows as enabled.
+
+  If the integration status includes a sync indicator, wait until the initial sync completes before relying on Confluence content in agent prompts.
+
+
+  </Step>
+</Steps>
+
+## Use Confluence context with the AI agent
+
+After you attach Confluence to a project, the AI agent can use relevant Confluence pages as context while working on documentation. The agent can search page content and read matching pages to answer questions, draft updates, and align docs with internal knowledge.
+
+Use prompts that point the agent toward the Confluence material you want it to reference. Good prompts mention the topic, page title, team, or process you expect the agent to look for.
+
+- "Update the deployment guide using our Confluence runbook for staging releases."
+- "Draft a troubleshooting section based on the Confluence page for SSO login issues."
+- "Compare the current onboarding docs with the Confluence process for new workspace setup."
+
+For more on how the agent gathers and uses context, see [AI Documentation Agent](/ai/ai-documentation-agent).
+
+<Callout kind="info" collapsed="false">
+
+Project-level context is independent. You can attach Confluence to one documentation project without making it available to every project in your workspace.
+
+
+</Callout>
+
+## Manage the connection
+
+You can manage Confluence at both the organization and project levels.
+
+### Enable or disable Confluence for a project
+
+Turn the project connection on or off from the project’s **Settings** → **Integrations** page. Disabling Confluence for one project does not disconnect it for other projects.
+
+### Refresh connection or sync status
+
+If the integration shows a pending or outdated status, refresh the status from the integration settings page. Use this when you have recently connected Confluence, changed permissions, or expect newly available pages to appear.
+
+### Disconnect Confluence for the organization
+
+Disconnect Confluence from **Settings** → **Organization Settings** → **Integrations** when you no longer want any project to use it.
+
+<Callout kind="alert" collapsed="false">
+
+Disconnecting Confluence at the organization level removes all project-level Confluence connections. If you only want to stop using Confluence in one project, disable it in that project instead of disconnecting the organization integration.
+
+
+</Callout>
+
+## Troubleshooting
+
+<ExpandableGroup>
+
+  <Expandable title="I connected Confluence, but it does not appear in a project" default-open="false">
+
+  Confirm that the organization-level Confluence connection is active first. Then open the project’s **Settings** → **Integrations** page and check whether Confluence is available to configure.
+
+  If the connection still does not appear, refresh the integrations page and verify that your account has editor or higher permissions.
+
+
+  </Expandable>
+  <Expandable title="The authorization flow returned me to Documentation.AI, but the connection is not active" default-open="false">
+
+  Refresh the organization integrations page and check the Confluence status again. If the connection still shows as inactive, repeat the authorization flow and confirm that you approved access in Atlassian for the correct workspace.
+
+  If another admin manages Atlassian permissions for your team, ask them to verify that your Confluence workspace allows the requested authorization.
+
+
+  </Expandable>
+  <Expandable title="The AI agent is not using the Confluence information I expected" default-open="false">
+
+  Confirm that Confluence is attached to the same documentation project where you are running the agent. Then make your prompt more specific by naming the process, document topic, or page title you want the agent to reference.
+
+  If the project connection was added recently, wait for sync status to complete and try again.
+
+
+  </Expandable>
+  <Expandable title="Can I disable Confluence for one project without disconnecting the organization?" default-open="false">
+
+  Yes. Disable or remove the project-level Confluence connection from that project’s integration settings.
+
+  The organization-level connection stays available for other projects unless you disconnect it at the organization level.
+
+
+  </Expandable>
+  <Expandable title="Who can connect or manage the Confluence integration?" default-open="false">
+
+  Users with viewer or higher permissions can see integration status. Users with editor or higher permissions can connect and manage integrations.
+
+  Organization-level setup also requires the appropriate admin access in Documentation.AI and permission to authorize the connection in Confluence.
+
+
+  </Expandable>
+</ExpandableGroup>
+
+## What to use next
+
+<Columns cols={2}>
+
+  <Card title="Integrations overview" href="/integrations/overview" icon="book-open" cta="Open overview">
+
+    See how integrations work across your workspace and how to choose the right context sources for each project.
+
+  </Card>
+  <Card title="GitHub Integration" href="/integrations/github" icon="github" cta="View guide">
+
+    Connect repositories so the AI agent can reference code, commits, and project history while updating documentation.
+
+  </Card>
+  <Card title="Jira Integration" href="/integrations/jira" icon="folder" cta="View guide">
+
+    Add Jira issues and project context when you want the agent to reference planning and delivery work.
+
+  </Card>
+  <Card title="AI Documentation Agent" href="/ai/ai-documentation-agent" icon="rocket" cta="Learn how it works">
+
+    See how the agent combines project context sources, prompts, and documentation edits in a single workflow.
+
+  </Card>
+
+</Columns>

@@ -1,0 +1,214 @@
+---
+title: Jira Integration
+description: Connect Jira once at the organization level, attach it to documentation projects, and let the AI agent use issues as writing context.
+---
+
+## Overview
+
+Use the Jira integration to connect your Atlassian account and link Jira as context for a documentation project. This lets the AI Documentation Agent search Jira issues and read issue details while planning and editing your docs.
+
+<Callout kind="info" collapsed="false">
+
+Jira context helps the agent reference active work, bug reports, feature requests, and implementation notes that already live in your team's issue tracker.
+
+
+</Callout>
+
+For a broader view of available integrations, see the [integrations overview](/integrations/overview). If your team also uses GitHub or Confluence as context sources, see the [GitHub Integration](/integrations/github) and [Confluence Integration](/integrations/confluence) pages.
+
+## Before you start
+
+Make sure you have the right access so you can connect Jira once at the organization level and then attach it to projects without interruptions.
+
+<Callout kind="info" collapsed="false">
+
+You need:
+
+- An organization admin role or editor-level access in Documentation.AI to connect Jira
+- Jira admin access, or permission to authorize the Atlassian connection for your organization
+- At least one documentation project created in your Documentation.AI workspace
+
+Users with viewer-level access can see connection status, but they cannot create or change the connection.
+
+
+</Callout>
+
+## 1. Connect Jira at the organization level
+
+Connect Jira once in organization settings, then reuse that connection across your documentation projects.
+
+<Steps>
+
+  <Step title="Open the Jira integration settings" icon="settings" title-type="p">
+
+    In the Documentation.AI dashboard, go to **Settings → Organization Settings → Integrations → Jira**. This page shows the current connection status and provides the option to connect Jira.
+
+  </Step>
+
+  <Step title="Authorize the Atlassian connection" icon="external-link" title-type="p">
+
+    Click **Connect**. You will be redirected to Atlassian to authorize the connection.
+
+    - Sign in to the Atlassian account that has access to the Jira site you want to use.
+    - Review the requested access.
+    - Confirm the authorization.
+
+    After authorization completes, Documentation.AI returns you to the Jira integration page.
+
+  </Step>
+
+  <Step title="Verify the connection" icon="check-circle" title-type="p">
+
+    Return to **Settings → Organization Settings → Integrations → Jira**. You should see the connection listed as active.
+
+    If the page still shows Jira as disconnected, refresh the page and check the status again. A successful connection shows Jira as available for project-level configuration.
+
+  </Step>
+</Steps>
+
+## 2. Attach Jira to a documentation project
+
+After the organization connection is active, attach Jira to each documentation project that should use issue context.
+
+<Steps>
+
+  <Step title="Open project integration settings" icon="folder" title-type="p">
+
+    In the Documentation.AI dashboard, open the documentation project that should use Jira context. Then go to **Settings → Integrations → Jira**.
+
+  </Step>
+
+  <Step title="Configure Jira for the project" icon="edit" title-type="p">
+
+    Click **Configure**, then attach the existing Jira organization connection as a context source for the project.
+
+    If your workspace uses multiple context sources, confirm that you are attaching the correct Jira connection for this project.
+
+  </Step>
+
+  <Step title="Confirm Jira is enabled for the project" icon="check-circle" title-type="p">
+
+    After you save the configuration, the project integration settings should show Jira as enabled or connected.
+
+    At this point, the AI agent can use Jira issues as context when working inside that documentation project.
+
+  </Step>
+</Steps>
+
+<Callout kind="info" collapsed="false">
+
+Connecting Jira at the organization level does not automatically enable it for every project. Attach Jira separately to each documentation project that should use it.
+
+
+</Callout>
+
+## Using Jira context with the AI agent
+
+Once Jira is attached to a project, the AI Documentation Agent can use Jira issues as reference material while generating plans, drafting content, and updating existing pages. The agent can search issues using Jira query patterns and read issue details that help explain what changed, what is blocked, or what still needs documentation.
+
+Use prompts that point the agent toward the issue context you want it to consider. For example:
+
+- "Update the release notes using the issues marked done in the current sprint."
+- "Draft a setup guide based on the Jira issues for the new onboarding flow."
+- "Find open bugs related to authentication and update the troubleshooting section."
+- "Review the linked Jira issues and summarize the user-facing changes for this feature."
+
+For more detail on how the agent plans and writes with connected context sources, see the [AI Documentation Agent](/ai/ai-documentation-agent) page.
+
+## Manage the connection
+
+Manage Jira at two levels: the shared organization connection and the per-project attachment.
+
+### Enable or disable Jira for a single project
+
+Turn Jira on or off from **Project Settings → Integrations → Jira**. Disabling Jira for one project does not affect other projects that use the same organization-level connection.
+
+This is the right option when one team wants Jira context for release notes or troubleshooting content, but another project does not need issue data.
+
+### Refresh connection or sync status
+
+If Jira access changes or the integration status looks outdated, open the Jira settings page and refresh the status. Use this when a project cannot see Jira context even though the organization connection was already authorized.
+
+A successful refresh shows the connection as active and available for project use.
+
+### Disconnect Jira at the organization level
+
+Disconnect Jira from **Settings → Organization Settings → Integrations → Jira** when you want to remove the Atlassian connection completely.
+
+<Callout kind="info" collapsed="false">
+
+Disconnecting Jira at the organization level removes Jira from every documentation project that uses it. Reconnect Jira and reattach it to projects if you want to use issue context again later.
+
+
+</Callout>
+
+## Troubleshooting
+
+<ExpandableGroup>
+
+  <Expandable title="The Connect button is unavailable or I cannot complete the setup" default-open="false">
+
+  Check your permissions first. You need editor-level access or higher in Documentation.AI to create the connection, and you need enough access in Atlassian to authorize Jira for your organization.
+
+  If you only have viewer access, you can see the current status but you cannot connect, disconnect, or change project settings.
+
+
+  </Expandable>
+
+  <Expandable title="Jira shows as connected at the organization level, but the AI agent cannot use it in a project" default-open="false">
+
+  Open the documentation project and confirm Jira is attached in **Settings → Integrations → Jira**. The organization connection only makes Jira available; each project must enable it separately.
+
+  After you attach Jira, check that the project status shows Jira as enabled or connected. If it does not, save the configuration again and refresh the integration status.
+
+
+  </Expandable>
+
+  <Expandable title="The authorization flow completed, but the connection still looks inactive" default-open="false">
+
+  Refresh the Jira integration page in organization settings and check the status again. Temporary browser or session issues can delay what you see immediately after returning from Atlassian.
+
+  If the connection still appears inactive, start the connection flow again from **Settings → Organization Settings → Integrations → Jira** and reauthorize the Atlassian account.
+
+
+  </Expandable>
+
+  <Expandable title="Disconnecting Jira removed it from my projects" default-open="false">
+
+  This is expected behavior. The project-level Jira attachments depend on the shared organization connection.
+
+  Reconnect Jira at the organization level first, then return to each documentation project and attach Jira again in **Settings → Integrations → Jira**.
+
+
+  </Expandable>
+
+  <Expandable title="The agent is not finding the Jira issues I expected" default-open="false">
+
+  Check that the project has Jira enabled and that your prompt clearly describes the issue set you want the agent to use. Mention issue types, status, sprint, labels, or other Jira search terms when they matter.
+
+  If the issue set recently changed, refresh the connection status and try the prompt again with more specific language.
+
+
+  </Expandable>
+</ExpandableGroup>
+
+## What to use next
+
+<Columns cols={2}>
+
+  <Card
+    title="AI Documentation Agent"
+    href="/ai/ai-documentation-agent"
+    icon="book-open"
+    cta="Learn how the agent uses context"
+  />
+
+  <Card
+    title="Confluence Integration"
+    href="/integrations/confluence"
+    icon="database"
+    cta="Add team knowledge as context"
+  />
+
+
+</Columns>
