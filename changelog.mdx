@@ -10,6 +10,33 @@ description: >-
   Track the evolution of Documentation.AI with detailed release notes. Each update includes new features, bug fixes, and improvements to enhance your documentation experience.
 </Callout>
 
+<Update label="2026-07-24" description="Jira & Confluence integrations, dual MCP servers, server-backed AI chat, agent live collaboration, publish conflict resolution, SVG component, and app-wide visual refresh" tags={["feature","improvement","fix"]}>
+  ## New Features
+
+  - **Jira & Confluence integrations** — Connect Jira and Confluence workspaces so the AI documentation agent can search issues, sprints, and wiki pages to ground its answers. Both integrations use a unified connect/manage dialog with OAuth-based authentication. The agent automatically picks the right connector based on your question — ask about a Jira ticket or a Confluence page without switching tools. See [GitHub Integration](/integrations/github) for the pattern; Jira and Confluence follow the same connector model.
+  - **Dual MCP Servers** — The MCP server offering is now split into two clearly separated servers: **Docs MCP Server** (read-only — lets AI tools search published documentation) and **Authoring MCP Server** (read & write — lets AI tools create and update pages, manage branches, merge, and deploy via 12 exposed tools). The Authoring server requires OAuth 2.1 login. See [Docs MCP Server](/ai/docs-mcp-server) and [Authoring MCP Server](/ai/authoring-mcp-server) for setup instructions.
+  - **Server-backed AI chat** — Chat history now persists server-side instead of in the browser. Thread IDs are proper UUIDs, conversations load instantly from the server when reopened, and a loading skeleton replaces the previous blank flash. The Stop button now actually cancels the server-side run (previously it only stopped the browser stream while the agent kept writing). If you refresh mid-reply, the stream resumes automatically.
+  - **Agent writes to live collaborative documents** — The AI writer agent now edits through the same real-time collaboration pipeline (Yjs/Hocuspocus) that humans use, applying CRDT edits directly to the live document. The agent appears as a purple "AI Agent" presence in connected editors, applies changes block-by-block, and skips sections that a human is actively editing. No more Redis staging or browser involvement for agent writes.
+  - **Publish conflict resolution** — When publishing, the system now performs a three-way merge of your changes against upstream. Clean auto-merges happen silently; real conflicts surface a merge dialog with side-by-side ours/theirs pairs so you can resolve before anything is pushed. See [Branches & Previews](/write-and-publish/branches-and-previews) for publishing context.
+  - **"View Changes" button in agent chat** — After the AI finishes writing a file, a clickable file path appears in the chat. Clicking it opens the file in the editor and scrolls to the exact blocks that were changed, with the changes highlighted.
+  - **SVG component for MDX** — A new `<SVG>` MDX component lets you embed dynamic SVGs from a URL. The server-side variant fetches at build time with 1-hour revalidation; the client-side variant fetches on demand with abort support. Both are registered in the MDX component map — just write `<SVG src="https://example.com/diagram.svg" />` in any page. See [Images](/components/images) for related media components.
+
+  ## Improvements
+
+  - **App-wide visual refresh** — Primary buttons, switches, and progress bars now use brand color consistently across every page. Controls standardized to a uniform height and corner radius. Dark theme surfaces retuned with a deeper background and flatter cards for better contrast. Agent and tool cards updated to consistent rounded corners.
+  - **Search modal layout overhaul** — The search modal now properly constrains to viewport height, keeps the input bar fixed, and makes the results list scrollable within the modal. Search debounce reduced from 300ms to 200ms for faster results as you type.
+  - **Heading click-to-copy-link** — Clicking any heading on a documentation page now copies its anchor link to your clipboard and updates the URL hash, with a brief visual confirmation. No need to hunt for the small link icon.
+  - **Editor reliability for file operations** — Moving, renaming, or deleting files now shows a loading toast while the operation is in progress, a success toast only after the server confirms, and an error toast with the affected file path if it fails. The Publish button is disabled during tree operations so you can't commit a partially-applied state. Agent file operations also await server confirmation before continuing.
+  - **Domain reuse after deletion** — Custom domains and subdomains are now freed up for reuse when a documentation site is deleted, without destroying the historical domain row. Domain availability checks properly exclude soft-deleted docs.
+  - **Credit usage validation** — Blocked AI charges now drain credit pools to zero to prevent infinite free retries, ensuring fair usage limits.
+
+  ## Bug Fixes
+
+  - Fixed Turbopuffer search indexing failing on deeply-nested pages — page slugs were truncated to 100 characters, causing duplicate chunk IDs and rejected upsert batches. Slugs are now full-length with no cap.
+  - Fixed folder rename/move silently dropping content for never-opened files on publish. Files without a database row are now resolved from GitHub before building publish operations.
+  - Fixed `dueDate` and `createdAt` attributes not rendering correctly in the rich-text editor when MDX content used kebab-case naming (`due-date`, `created-at`).
+</Update>
+
 <Update label="2026-07-21" description="Social media previews, AI answer quality, collaborative editing, and BoardCard prop flexibility" tags={["feature","improvement","fix"]}>
   ## New Features
 
