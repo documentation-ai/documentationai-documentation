@@ -1,16 +1,16 @@
 ---
 title: Set Up Navigation and Sidebar
-description: Create an organized navigation structure for your documentation site using the optimal hierarchy for your content and users.
+description: >-
+  Create an organized navigation structure for your documentation site using the
+  optimal hierarchy for your content and users.
 ---
-
-
-Create a well-organized navigation structure for your documentation site. The Documentation.AI platform offers multiple navigation patterns - choose the one that best fits your content structure and user needs.
+Create a well-organized navigation structure for your documentation site. The Documentation.AI platform offers multiple navigation patterns - choose the one that best fits your content structure and user needs.bfxgf
 
 ## Prerequisites
 
 - Your content structure planned out
 - List of your documentation pages and their organization
-- Access to your `documentation.json` file  
+- Access to your `documentation.json` file
 - Understanding of your user navigation patterns
 
 ## Choose Your Navigation Pattern
@@ -18,7 +18,7 @@ Create a well-organized navigation structure for your documentation site. The Do
 Select the structure that matches your content complexity:
 
 - **Pages**: Simple flat list (5-10 pages)
-- **Groups**: Section-based organization (10-50 pages)  
+- **Groups**: Section-based organization (10-50 pages)
 - **Tabs**: Multiple product areas (50+ pages)
 - **Menus**: Complex hierarchical structure
 - **Versions**: Multiple product versions
@@ -31,7 +31,7 @@ Select the structure that matches your content complexity:
 Before configuring navigation, organize your content:
 
 1. List all your documentation pages (each should be an MDX file)
-2. Group related topics together  
+2. Group related topics together
 3. Determine logical user paths through your content
 4. Choose appropriate icons from the [Lucide React library](https://lucide.dev/icons/)
 
@@ -62,19 +62,19 @@ For sites with fewer than 10 pages, use a simple pages structure:
 
 For each page in your navigation, configure:
 
-<ParamField path="title" param-type="string" required="true" showLocation="false">
+<ParamField path="title" param-type="string" required="true" deprecated="false" show-location="false">
   Display name shown in navigation and browser title.
 </ParamField>
 
-<ParamField path="path" param-type="string" required="false" showLocation="false">
+<ParamField path="path" param-type="string" required="false" deprecated="false" show-location="false">
   Relative path to your MDX file. Specify the path without the `.mdx` extension.
 </ParamField>
 
-<ParamField path="icon" param-type="string" required="false" showLocation="false">
+<ParamField path="icon" param-type="string" required="false" deprecated="false" show-location="false">
   Page icon from the Lucide React icon library.
 </ParamField>
 
-<ParamField path="href" param-type="string" required="false" showLocation="false">
+<ParamField path="href" param-type="string" required="false" deprecated="false" show-location="false">
   External URL for links that open in new tabs. Use instead of `path` for external links.
 </ParamField>
 
@@ -178,6 +178,7 @@ For automatic API documentation generation:
 ```
 
 The `openapi` property accepts:
+
 - JSON files (`.json`)
 - YAML files (`.yaml`, `.yml`)
 - Relative paths within your project
@@ -214,10 +215,11 @@ The `openapi` property accepts:
 ## What's Next
 
 - [Customize your site branding](branding)
-- [Set up header and navbar elements](header-and-navbar) 
+- [Set up header and navbar elements](header-and-navbar)
 - [Configure colors and typography](colors-and-typography)
 - [See complete site configuration reference](site-configuration)
 
-<Callout type="info">
-Navigation configuration is completely flexible. You can mix and match structures as your content grows. Start simple and add complexity only as needed for better user experience.
+<Callout kind="note" collapsed="false">
+  Navigation configuration is completely flexible. You can mix and match structures as your content grows. Start simple and add complexity only as needed for better user experience.
 </Callout>
+
