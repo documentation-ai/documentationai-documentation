@@ -1,47 +1,106 @@
 ---
-title: Introduction to Yashwanth Muddana
-description: >-
-  Landing page introducing Yashwanth Muddana, the AI-powered documentation
-  platform, highlighting key features like AI agents, structured content, and
-  fast publishing to drive product adoption
+title: Introduction to WP Travel Engine
+description: Discover WP Travel Engine, a comprehensive WordPress plugin for creating and managing travel booking websites with features for trip itineraries, customer portals, and pro addons.
 ---
-<Image src="https://blob-cdn.documentation.ai/org-2ebb2ef5-dd91-493f-9938-283fbdb14c81/doc-d2a73d2e-4391-4446-a5c8-2d0b41b7c4c1/1774416420393-s9t4cno1w99-Image-8.png?q=85&fm=auto&auto=compress%2Cformat" width="800" height="400" alt="Yashwanth Muddana documentation" />
 
-## Welcome to Yashwanth Muddana
-
-123
-
-<Columns cols="2">
-  <Card title="AI Agent Keeps Docs Fresh" href="/quickstart" icon="zap" horizontal="false">
-    Your AI agent suggests, writes, and formats updates so docs evolve with your product.
-  </Card>
-
-  <Card title="AI Assistant in Docs" href="/authentication" icon="bot" horizontal="false">
-    Users ask questions directly in docs and get instant, accurate answers.
-  </Card>
-
-  <Card title="Flexible Publishing" href="/changelog" icon="upload" horizontal="false">
-    Update through web editor or code editor with docs-as-code workflow.
-  </Card>
-
-  <Card title="AI-Ready Structure" href="#" icon="cpu" horizontal="false">
-    Structured content that LLMs, agents, and search engines use instantly.
-  </Card>
-</Columns>
-
-## Explore Yashwanth Muddana
-
-<Columns cols="2">
-  <Card title="Quickstart" href="/quickstart" icon="book-open" horizontal="false">
-    Get started with your documentation in minutes.
-  </Card>
-
-  <Card title="Authentication" href="/authentication" icon="shield" horizontal="false">
-    Secure access to your documentation platform.
-  </Card>
-</Columns>
-
-<Callout kind="tip" collapsed="false">
-  This documentation was generated as a starter kit. Customize the content to match your product.
+<Callout kind="info" title="Starter Kit Template">
+  This documentation was generated as a starter kit template based on your brand. Please review and customize the content to accurately reflect your product's features, APIs, and capabilities.
 </Callout>
 
+## Overview
+
+WP Travel Engine is a powerful WordPress plugin that lets you create professional travel booking websites. You can build detailed trip pages with itineraries, pricing, galleries, and booking forms. It handles everything from trip management to customer portals, making it easy to run a travel business online.
+
+Key benefits include customizable designs, seamless booking integration, and pro addons for advanced features like seat allocation and social login. Whether you manage tours, adventures, or packages, WP Travel Engine streamlines your workflow while delivering great user experiences.
+
+## Key Features
+
+<Columns cols={3}>
+  <Card title="Trip Management" icon="map" href="/quickstart">
+    Create trips with general info, itineraries, pricing, and galleries. Manage bookings and capacities effortlessly.
+  </Card>
+  <Card title="Customer Portal" icon="users" href="/authentication">
+    Provide user dashboards for booking history, social login, and personalized experiences.
+  </Card>
+  <Card title="Design Customization" icon="palette" href="#">
+    Use blocks, patterns, and templates to match your brand. Customize layouts without coding.
+  </Card>
+</Columns>
+
+## Quick Start
+
+<Callout kind="info">
+  Ensure you have WordPress `>=5.0` and PHP `>=7.4`. Basic hosting with MySQL support works best.
+</Callout>
+
+Follow these steps to get WP Travel Engine running in minutes.
+
+<Steps>
+  <Step title="Install the Plugin" icon="download">
+    Choose your preferred method.
+
+    <Tabs>
+      <Tab title="WordPress Admin" icon="monitor">
+        1. Go to **Plugins > Add New**.
+        2. Upload the `wp-travel-engine.zip` file.
+        3. Click **Install Now** then **Activate**.
+      </Tab>
+      <Tab title="WP-CLI" icon="terminal">
+````bash
+wp plugin install wp-travel-engine.zip --activate
+````
+      </Tab>
+    </Tabs>
+  </Step>
+  <Step title="Create Your First Trip" icon="plus">
+    Navigate to **Trips > Add New** in your admin dashboard.
+
+    Fill in:
+    - General info (title, description)
+    - Date and price
+    - Itinerary tabs
+
+    Publish the trip.
+  </Step>
+  <Step title="Display Trips" icon="eye">
+    Add this shortcode to any page or post:
+
+````php
+[wpte_trip_search]
+````
+
+    Or use Gutenberg blocks: Search for "WP Travel Engine" blocks.
+  </Step>
+</Steps>
+
+## System Requirements
+
+<Expandable title="Detailed Requirements" default-open="true">
+  | Requirement       | Minimum Version |
+  |-------------------|-----------------|
+  | WordPress         | 5.0             |
+  | PHP               | 7.4             |
+  | MySQL             | 5.6             |
+  | Memory Limit      | 256MB           |
+  | HTTPS             | Required        |
+
+  Compatible with popular themes and page builders like Elementor.
+</Expandable>
+
+## Next Steps
+
+<Columns cols={2}>
+  <Card title="Quickstart Guide" icon="rocket" href="/quickstart">
+    Detailed setup and first booking.
+  </Card>
+  <Card title="User Authentication" icon="shield" href="/authentication">
+    Configure dashboards and social login.
+  </Card>
+  <Card title="Changelog" icon="git-branch" href="/changelog">
+    See latest updates and features.
+  </Card>
+</Columns>
+
+<Callout kind="tip">
+  Explore the <a href="/quickstart">Quickstart Guide</a> next to create your first trip. Customize templates to match your brand!
+</Callout>

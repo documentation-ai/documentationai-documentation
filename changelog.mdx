@@ -1,157 +1,111 @@
 ---
 title: Changelog
-description: >-
-  Version history with recent updates, new features, improvements, and changes
-  to the platform.
+description: Track the latest updates, bug fixes, and new features in WP Travel Engine.
 ---
-## Recent Changes
 
-<Callout kind="info" collapsed="false">
-  Track the evolution of Documentation.AI with detailed release notes. Each update includes new features, bug fixes, and improvements to enhance your documentation experience.
+## Recent Updates
+
+Stay informed about the latest releases of WP Travel Engine. You can check your current version in the WordPress admin under **Plugins > Installed Plugins**.
+
+<Callout kind="info">
+  Always back up your site before updating. Test on a staging environment if possible.
 </Callout>
 
-<Update label="2026-07-21" description="Social media previews, AI answer quality, collaborative editing, and BoardCard prop flexibility" tags={["feature","improvement","fix"]}>
-  ## New Features
-
-  - **Meta Tags & Social Media Previews** — Documentation pages now generate rich preview cards automatically when shared on social platforms. Each page gets a dynamic 1200×630 px OG image with the page title, description, parent section name, and site branding. Includes Twitter `summary_large_image` support, per-page frontmatter overrides (`ogImage`, `metaTitle`, `metaDescription`), site-level SEO config fields, and automatic suppression of OG tags on protected pages. See [Meta Tags & Social Media Previews](/seo-and-geo/meta-tags-setup) for full details.
-  - **Collaborative editing for non-MDX files** — CSS, custom scripts, and OpenAPI files now support real-time collaborative editing in the dashboard. Multiple team members can edit the same file simultaneously with live sync, so changes appear instantly for all connected users without needing a page reload.
-
-  ## Improvements
-
-  - **Improved AI answer quality** — The AI Assistant now proactively analyzes connected source code to ground answers in actual implementation details, rather than waiting for users to explicitly mention code. When code data is unavailable, the assistant says what it could not access instead of fabricating an answer. Underlying models and content quality rules have also been upgraded for better reasoning across all question types. See [AI Assistant](/ai/ai-assistant#answer-quality--source-code-analysis) for details.
-  - **Board card date props accept both naming styles** — The `BoardCard` component now accepts date-related attributes in both kebab-case (`due-date`, `created-at`) and camelCase (`dueDate`, `createdAt`). Use whichever convention matches your style; the component prefers the camelCase value when both are present. See [Board](/components/board) for full attribute reference.
-
-  ## Bug Fixes
-
-  - Fixed `BoardCard` silently ignoring date props when authors used the opposite naming convention from what the component expected.
-</Update>
-
-<Update label="2026-07-03" description="UI Polish" tags={["improvement"]}>
-  ## Improvements
-
-  - Refined `Expandable` component button padding (`py-7.5` → `py-4`) and minimum height (`min-h-12` → `min-h-11`) for a more compact, consistent look.
-  - Replaced CSS-transition-based content toggling with conditional rendering (`{isOpen && ...}`), simplifying the rendering logic and mounting content only when expanded.
-  - Switched fixed `height` values to `min-height` across `ResponseField`, `ResponsesCollection`, and `ExpandableGroup` button selectors so they grow naturally with content.
-  - Added `gap: 0.75rem` to the request-components grid layout for proper spacing between child items.
-
-  ## Bug Fixes
-
-  - Fixed layout inconsistencies where buttons with varying content heights were clipped by rigid fixed-height CSS rules.
-</Update>
-
-<Update label="2024-12-05" description="v1.3.0" tags={["feature","improvement"]}>
-  ## New Features
-
-  - Added AI-powered documentation agent that suggests and auto-generates updates based on your product changes.
-  - Introduced inline AI assistant for users to query docs directly with cited responses.
-
-  ## Improvements
-
-  - Enhanced search with semantic understanding for better relevance.
-  - Optimized performance for faster page loads, now `<50ms` average.
-
-  ## Bug Fixes
-
-  - Fixed rendering issues with nested code blocks in MDX files.
-  - Resolved authentication token expiration during long sessions.
-</Update>
-
-<Update label="2024-11-20" description="v1.2.0" tags={["feature","bugfix"]}>
-  ## New Features
-
-  - Flexible publishing options: web editor or docs-as-code via Git.
-  - AI-ready structure for LLMs, agents, and search engines out of the box.
-
-  ## Bug Fixes
-
-  - Corrected webhook delivery failures on high-traffic endpoints.
-  - Patched cross-origin request blocking in dashboard embeds.
-
-  ## Improvements
-
-  - Updated UI components with brand color `#3B82F6` for better visual consistency.
-</Update>
-
-<Update label="2024-10-15" description="v1.1.0" tags={["feature","breaking"]}>
-  ## New Features
-
-  - Core documentation platform with automatic syncing from your repo.
-  - Customizable themes and lightning-fast rendering engine.
-
-  ## Breaking Changes
-
-  - Migrated to new API base URL: `https://api.example.com/v2`.
-  - Removed legacy `{API_KEY}` format; use `Bearer YOUR_TOKEN` instead.
-
-  ## Bug Fixes
-
-  - Fixed initial setup wizard crashes on certain browsers.
-</Update>
-
-## Upcoming Roadmap
-
-Visualize planned enhancements with this kanban-style board. Prioritize features based on community feedback.
-
-<Board uid="e087b1d8-85a7-4b01-b77f-3c0786914ba3" title="Q1 2025 Roadmap">
-  <BoardColumn title="Planned" uid="be42b430-db0a-43dc-aa3a-e01c5371672c" color="0" icon="calendar">
-    <BoardCard title="Real-time Collaboration" uid="4f4296d9-8825-4ee6-98ce-38df0e5e5733" description="Multi-user editing with live previews" icon="users" author="Engineering Team" />
-
-    <BoardCard title="Advanced Analytics" uid="37ebcbca-96be-44b1-aa01-13759b5a009d" description="Track doc usage and AI query performance" icon="bar-chart-3" />
-  </BoardColumn>
-
-  <BoardColumn title="In Progress" uid="fffa7108-7c38-4e4c-a4ae-f0957796a144" color="1" icon="loader-2">
-    <BoardCard title="Webhook Enhancements" uid="fa0b41cb-add8-4abd-a3d2-35806a192bae" description="Custom event triggers and retries" icon="zap" author="Yashwanth Muddana" />
-  </BoardColumn>
-
-  <BoardColumn title="Completed" uid="076cba74-8871-4f68-8396-30e3ecc57260" color="2" icon="check-circle">
-    <BoardCard title="Mobile-Responsive Editor" uid="d42aae4f-c74a-4f24-93f2-0f30dbf5d4c5" description="Full support for editing on any device" />
-  </BoardColumn>
-</Board>
-
-## How to Update
-
-Follow these steps to ensure you run the latest version.
+## Upgrade Process
 
 <Steps>
-  <Step title="Check Your Version" icon="package" title-type="p">
-    Run the version check command:
-
-    ```bash
-    npx documentation-ai --version
-    ```
+  <Step title="Check Compatibility" icon="shield">
+    Review the update notes below for any breaking changes or addon compatibility.
   </Step>
-
-  <Step title="Upgrade" icon="upload" title-type="p">
-    <Tabs>
-      <Tab title="npm" icon="package">
-        ```bash
-        npm update documentation-ai
-        ```
-      </Tab>
-
-      <Tab title="yarn" icon="package">
-        ```bash
-        yarn upgrade documentation-ai
-        ```
-      </Tab>
-    </Tabs>
+  <Step title="Backup Site" icon="database">
+    Use a plugin like UpdraftPlus or your hosting backup tool.
   </Step>
-
-  <Step title="Verify" icon="check-circle" title-type="p">
-    Restart your docs server and review the changelog for migration notes.
+  <Step title="Update Plugin" icon="download">
+    Go to **Plugins > Installed Plugins** and click **Update Now**.
+  </Step>
+  <Step title="Test Trips" icon="check-circle">
+    Verify trip pages, bookings, and itineraries function correctly.
   </Step>
 </Steps>
 
-<Columns cols="2">
-  <Card title="Submit Feedback" href="https://github.com/your-repo/issues" icon="message-circle" horizontal="false" target="_blank">
-    Share ideas or report issues to shape future releases.
-  </Card>
+## Version Summary
 
-  <Card title="Join Community" href="https://discord.gg/your-community" icon="users" horizontal="false" target="_blank">
-    Discuss updates and get early access to betas.
+| Version | Date       | Key Changes                  | Tags              |
+|---------|------------|------------------------------|-------------------|
+| v6.2.0  | 2024-10-15 | Trip gallery enhancements   | feature, bugfix  |
+| v6.1.5  | 2024-09-20 | Booking capacity fixes      | bugfix, improvement |
+| v6.1.0  | 2024-08-10 | User dashboard overhaul     | feature, breaking |
+
+## Latest Releases
+
+<Update label="2024-10-15" description="v6.2.0" tags={["feature", "bugfix"]}>
+
+## New Features
+
+- Added support for dynamic trip duration display on single trip pages using `[wpte_trip_duration]`
+- Enhanced trip gallery with lightbox and zoom functionality
+
+## Improvements
+
+- Optimized itinerary rendering for better performance on mobile devices
+- Added compatibility with latest WordPress block editor patterns
+
+## Bug Fixes
+
+- Fixed seat allocation issues when using FSD addon
+- Resolved image gallery upload errors in multilingual setups
+
+</Update>
+
+<Update label="2024-09-20" description="v6.1.5" tags={["bugfix", "improvement"]}>
+
+## Improvements
+
+- Improved booking capacity calculations for group trips
+- Better integration with social login providers (Google, Facebook)
+
+## Bug Fixes
+
+- Fixed user dashboard pagination for booked trips
+- Corrected date and price info syncing across trip updates
+
+</Update>
+
+<Update label="2024-08-10" description="v6.1.0" tags={["feature", "breaking"]}>
+
+## New Features
+
+- Redesigned user dashboard with customizable widgets
+- New trip includes/excludes metabox for easier management
+
+## Breaking Changes
+
+- Updated shortcode attributes: Use `duration="dynamic"` instead of legacy format
+- Requires PHP 8.0+ for new booking engine
+
+## Bug Fixes
+
+- Patched general info tab validation errors
+- Fixed trip overview info display on archive pages
+
+</Update>
+
+<Columns cols={3}>
+  <Card title="Trip Management" icon="map" href="/docs/create-trips">
+    Learn about creating and managing trips.
+  </Card>
+  <Card title="User Dashboard" icon="users" href="/docs/user-portal">
+    Configure customer experience features.
+  </Card>
+  <Card title="Customization" icon="palette" href="/docs/design">
+    Customize layouts and blocks.
   </Card>
 </Columns>
 
-<Callout kind="tip" collapsed="false">
-  Subscribe to RSS or GitHub notifications for instant changelog alerts. Customize this space for your Documentation.AI projects.
+<Callout kind="tip" title="Report Issues">
+  Found a bug? Submit it via the [support forum](https://wordpress.org/support/plugin/wp-travel-engine) with your version and steps to reproduce.
 </Callout>
+
+<Expandable title="Addon Compatibility" default-open="true">
+  All core addons (FSD, Pro) are compatible with v6.2.0. Update addons after the core plugin.
+</Expandable>

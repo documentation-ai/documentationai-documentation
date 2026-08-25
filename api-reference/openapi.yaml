@@ -1,16 +1,16 @@
 openapi: '3.0.0'
 info:
   version: 1.0.0
-  title: Yashwanth Muddana Documentation API
+  title: WP Travel Engine
   license:
     name: MIT
 servers:
   - url: http://petstore.swagger.io/v1
 paths:
-  /documents:
+  /tours:
     get:
-      summary: List all documents
-      operationId: listDocuments
+      summary: List all tours
+      operationId: listTours
       parameters:
         - name: limit
           in: query
@@ -21,7 +21,7 @@ paths:
             format: int32
       responses:
         200:
-          description: An paged array of documents
+          description: An paged array of tours
           headers:
             x-next:
               description: A link to the next page of responses
@@ -30,7 +30,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Documents'
+                $ref: '#/components/schemas/Tours'
         default:
           description: unexpected error
           content:
@@ -38,8 +38,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     post:
-      summary: Create a document
-      operationId: createDocuments
+      summary: Create a tour
+      operationId: createTours
       responses:
         201:
           description: Null response
@@ -49,15 +49,15 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /documents/{documentId}:
+  /tours/{tourId}:
     get:
-      summary: Get document by ID
-      operationId: showDocumentById
+      summary: Info for a tour
+      operationId: showTourById
       parameters:
-        - name: documentId
+        - name: tourId
           in: path
           required: true
-          description: The id of the document to retrieve
+          description: The id of the tour to retrieve
           schema:
             type: string
       responses:
@@ -66,17 +66,17 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Documents'
+                $ref: '#/components/schemas/Tours'
         default:
           description: unexpected error
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /projects:
+  /bookings:
     get:
-      summary: List all projects
-      operationId: listProjects
+      summary: List all bookings
+      operationId: listBookings
       parameters:
         - name: limit
           in: query
@@ -87,7 +87,7 @@ paths:
             format: int32
       responses:
         200:
-          description: An paged array of projects
+          description: A paged array of bookings
           headers:
             x-next:
               description: A link to the next page of responses
@@ -96,7 +96,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Documents'
+                $ref: '#/components/schemas/Tours'
         default:
           description: unexpected error
           content:
@@ -104,35 +104,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     post:
-      summary: Create a project
-      operationId: createProjects
+      summary: Create booking
+      operationId: createBookings
       responses:
         201:
           description: Null response
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-  /projects/{projectId}:
-    get:
-      summary: Get project by ID
-      operationId: showProjectById
-      parameters:
-        - name: projectId
-          in: path
-          required: true
-          description: The id of the project to retrieve
-          schema:
-            type: string
-      responses:
-        200:
-          description: Expected response to a valid request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Documents'
         default:
           description: unexpected error
           content:
@@ -141,7 +117,7 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    Document:
+    Tour:
       required:
         - id
         - name
@@ -153,10 +129,10 @@ components:
           type: string
         tag:
           type: string
-    Documents:
+    Tours:
       type: array
       items:
-        $ref: '#/components/schemas/Document'
+        $ref: '#/components/schemas/Tour'
     Error:
       required:
         - code
