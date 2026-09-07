@@ -38,6 +38,29 @@ Stay informed about the latest releases of WP Travel Engine. You can check your 
 
 ## Latest Releases
 
+<Update label="2026-09-07" description="Media Manager" tags={["feature", "improvement", "bugfix"]}>
+
+## New Features
+
+- **Replace images without breaking links** — Swap a media asset with a new file while keeping the same URL. Every page that references the image automatically shows the new file, no manual edits required.
+- **Rename files before uploading from the editor** — When inserting media via the slash command picker, you can now edit the filename before it uploads. The original file extension is preserved.
+- **Media library accessible from the editor sidebar** — The Media tab is now available in the editor's secondary navigation, so you can browse and manage assets without leaving the page you're editing.
+
+## Improvements
+
+- **Upload progress visibility** — Large file uploads now show a percentage in the progress toast, so you always know the upload is working instead of guessing.
+- **Non-blocking replace flow** — The media detail panel closes immediately after you choose a replacement file, letting you return to the library while the replacement continues in the background.
+- **CDN-aware image refreshing** — Replaced images now update automatically once the CDN confirms the new file is live. A "Replacing across your documentation" overlay appears on the old image during propagation, and the preview refreshes on its own when complete.
+- **Replacement state survives page reloads** — If you refresh the page during a CDN propagation, the replacement status is preserved and continues tracking until the new file is confirmed live.
+
+## Bug Fixes
+
+- **Fixed stale image previews after replacement** — Previously, browser and CDN caching could show the old image even after a successful replacement. Replaced assets now refresh reliably across the media library and editor.
+- **Fixed stale video and PDF poster images** — Replacing a video or PDF now regenerates its poster image, so the thumbnail matches the new file.
+- **Fixed upload failures for generated posters and onboarding logos** — Corrected content-type and caching headers on presigned uploads, preventing failures for auto-generated media assets.
+
+</Update>
+
 <Update label="2024-10-15" description="v6.2.0" tags={["feature", "bugfix"]}>
 
 ## New Features
