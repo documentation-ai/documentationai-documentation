@@ -32,11 +32,44 @@ Stay informed about the latest releases of WP Travel Engine. You can check your 
 
 | Version | Date       | Key Changes                  | Tags              |
 |---------|------------|------------------------------|-------------------|
+| Media Library | 2025-07-10 | Media library, editor sidebar, slash commands, storage settings | feature, improvement, bugfix |
 | v6.2.0  | 2024-10-15 | Trip gallery enhancements   | feature, bugfix  |
 | v6.1.5  | 2024-09-20 | Booking capacity fixes      | bugfix, improvement |
 | v6.1.0  | 2024-08-10 | User dashboard overhaul     | feature, breaking |
 
 ## Latest Releases
+
+<Update label="2025-07-10" description="Media Library" tags={["feature", "improvement", "bugfix"]}>
+
+## New Features
+
+- **Media Library** — Upload, organize, search, and manage images, video, audio, PDFs, and documents per documentation project. Supports drag-and-drop uploads, grid and list views, filtering by type/size/date, and sorting.
+- **Editor Media Sidebar** — Browse and insert media directly from a sidebar in the editor. Drag assets into your document or use the insert action. Works in both rich-text and MDX modes.
+- **Slash Commands** — Use `/video` to pick or upload a video and insert it as a playable element. Use `/file` to insert PDFs, documents, and other files as links.
+- **File Replacement** — Replace a media file with a new version while keeping the same URL. All pages using the asset update automatically.
+- **Media Detail Panel** — Preview files, view metadata (type, size, dimensions, duration, page count), copy the direct URL, or download.
+- **Bulk Deletion** — Select and delete multiple files at once in the full media library.
+- **Activity Log** — Admins can view uploads, replacements, edits, and deletions, and export to CSV.
+- **Accessibility Prompts** — Add alt text after uploading images; add descriptions for non-image files used as link text.
+- **Media Storage Settings** — View storage usage, quota, per-file limits, and per-documentation breakdown (admin only). Warns when approaching or exceeding storage limits.
+
+## Updates
+
+- Image picker now shows only image assets instead of all media types
+- Image deletion restricted to administrators
+- Role-aware controls — viewers, editors, and admins see only actions available to them
+
+## Bug Fixes
+
+- Drag-and-drop into the editor now handles all supported file types (video, PDFs, documents, audio, archives, fonts), processes multiple files at once, and shows errors for unsupported files
+- Dropping files no longer causes the browser to navigate away from the editor
+- Dragging existing library assets inserts them correctly instead of creating duplicates or pasting raw URLs
+- Slash command menus no longer crash when a dialog opens
+- Upload and delete failures now show specific error messages instead of generic ones
+- Replaced assets refresh their preview immediately instead of showing cached content
+- Files with missing or inaccurate MIME types are recognized by extension when the format is supported
+
+</Update>
 
 <Update label="2024-10-15" description="v6.2.0" tags={["feature", "bugfix"]}>
 
