@@ -38,6 +38,31 @@ Stay informed about the latest releases of WP Travel Engine. You can check your 
 
 ## Latest Releases
 
+<Update label="2026-09-08" description="Media Library & Assets" tags={["feature", "improvement", "bugfix"]}>
+
+## New Features
+
+- **Server-side media pagination** — The media library now fetches assets in pages from the server instead of loading the entire library at once. Use **Load more** or scroll the editor sidebar to append additional pages.
+- **Full-library search** — Media search now queries the entire asset collection server-side, so results include assets beyond the currently loaded page.
+- **Server-side media filtering** — Filtering by media type returns accurate results immediately, without paging through the full library.
+
+## Improvements
+
+- Loading skeletons replace empty states and generic spinners during search and pagination
+- The storage usage meter now refreshes after uploads, replacements, and deletions without redundant background requests
+- Repository links in the UI are normalized — trailing `.git` suffixes and slashes are stripped, producing valid branch and commit URLs
+- Non-image assets inserted into content keep their file extension (e.g., `report.pdf` instead of `report`)
+- Additional media host domains are supported for optimized image rendering
+
+## Bug Fixes
+
+- Uploaded videos now render correctly as videos instead of showing as link embeds
+- Outdated search responses no longer overwrite newer results when typing quickly
+- The editor sidebar scroll loader and **Load more** button no longer fire duplicate page requests for the same page
+- Spacing and alignment corrected in the media activity panel and asset detail header
+
+</Update>
+
 <Update label="2024-10-15" description="v6.2.0" tags={["feature", "bugfix"]}>
 
 ## New Features
