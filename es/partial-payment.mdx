@@ -1,0 +1,187 @@
+---
+title: Pago parcial
+description: >-
+  Permite que los viajeros reserven pagando por adelantado un porcentaje o un
+  depósito fijo, con días límite y recordatorios automáticos para el saldo.
+type: guide
+---
+El complemento Partial Payment permite que los viajeros reserven viajes pagando por adelantado una parte del coste total.
+
+Es ideal para operadores turísticos que quieren ofrecer opciones de pago flexibles, de modo que a los clientes les resulte más fácil comprometerse con una reserva sin pagar el importe completo de inmediato.
+
+<Video uid="de8c8ea4-7bf3-4a17-b2b5-325a53b94568" src="https://www.youtube.com/embed/T9XjxcXciTY" render-type="iframe" width="648" height="365" controls="true" allow-full-screen="true" style="width: 648px; height: auto; cursor: pointer;" />
+
+## Funciones principales
+
+- Permite a los clientes pagar por adelantado un importe fijo o un porcentaje.
+- Define importes de pago parcial globales o específicos de cada viaje.
+- Personaliza las etiquetas de pago que ven los usuarios.
+- Envía recordatorios automáticos por correo electrónico para los pagos pendientes.
+- Se integra con las distintas pasarelas de pago compatibles con WP Travel Engine.
+- Desactiva el pago parcial en un viaje concreto.
+
+## Requisitos previos
+
+- WordPress 6.0 o superior.
+- Plugin WP Travel Engine instalado y activado.
+- Plugin WP Travel Engine Pro instalado y activado.
+- Complemento Partial Payment instalado y activado.
+
+## Instalar el complemento Partial Payment
+
+<Callout kind="info" collapsed="false">
+  Consulta [cómo activar la clave de licencia de un complemento Pro](/article/activate-pro-addon-license-key/) para ver el proceso completo de instalación y activación.
+</Callout>
+
+## Configuración de la función
+
+### 1. Activar el módulo Partial Payment
+
+Para configurar los ajustes globales de Partial Payment, ve a **WP Travel Engine → Settings → Extensions → Partial Payment**.
+
+<Image src="https://blob-cdn.documentation.ai/org-fd8ba769-7008-47cf-98f1-e0d78d98350b/doc-08c376b3-8054-4dc6-b874-0c65a04a623e/1786942443053-l1d8ugy01m-partial-payment-global-settings.partial-payment-global-settings?fm=auto&auto=compress%2Cformat" width="2560" height="1980" alt="" />
+
+- Elige si aceptas los pagos parciales como porcentaje o como importe fijo:
+  - **Percentage**: introduce el porcentaje del precio del viaje que se pagará como pago parcial.
+  - **Fixed Amount per Traveler**: introduce el importe fijo que se **pagará por cada viajero** de una reserva como pago parcial.
+  - **Fixed Amount per Booking**: introduce el importe fijo que se **pagará por reserva** como pago parcial.
+- Activa la opción **Full Payment** si quieres ofrecer a tus clientes el pago completo inmediato además del plan de pago parcial.
+- Haz clic en **Save and Continue**.
+
+#### Fixed Amount per Traveler explicado con un ejemplo
+
+Cuando eliges Fixed Amount per Traveler como tipo de pago parcial, el importe se calcula por viajero: el pago parcial total se multiplica por el número de viajeros seleccionados en la reserva.
+
+<Callout kind="tip" collapsed="false">
+  **Ejemplo:** Defines el pago parcial como un importe fijo de 100 $. Un cliente reserva un viaje para 3 viajeros.
+
+  Depósito inicial = 100 $ × 3 = **300 $**
+
+  El cliente debe pagar 300 $ por adelantado para confirmar la reserva. Así el depósito crece con el número de viajeros, lo que resulta justo y proporcional en las reservas de grupo.
+</Callout>
+
+#### Fixed Amount per Booking explicado con un ejemplo
+
+Cuando eliges Fixed Amount per Booking como tipo de pago parcial, el importe se aplica a toda la reserva y no a cada viajero: el pago parcial es el mismo sin importar cuántos viajeros incluya.
+
+<Callout kind="tip" collapsed="false">
+  **Ejemplo:** Defines el pago parcial como un importe fijo de 100 $. Un cliente reserva un viaje para 3 viajeros.
+
+  Depósito inicial = **100 $**
+
+  El cliente debe pagar 100 $ por adelantado para confirmar la reserva. Así el depósito es el mismo en cada reserva, sea cual sea el tamaño del grupo.
+</Callout>
+
+### 2. Añadir días límite
+
+Los días límite te permiten definir un periodo antes de la fecha de inicio del viaje a partir del cual los viajeros deben pagar el importe completo en lugar de un pago parcial. Así te aseguras de cobrar el total en las reservas de última hora.
+
+<Callout kind="info" collapsed="false">
+  **Ejemplo 1:** Defines 5 días límite y el viaje empieza el 30 de marzo. Quienes reserven el 25 de marzo o después deben pagar el 100 % del coste del viaje en lugar del pago parcial. Quienes reserven antes del 25 de marzo aún pueden pagar el importe parcial.
+
+  **Ejemplo 2:** Defines 0 días límite. Todos los viajeros, sea cual sea la fecha de reserva, pueden hacer el pago parcial hasta que empiece el viaje.
+</Callout>
+
+<Callout kind="alert" collapsed="false">
+  Aunque la opción Full Payment esté desactivada, definir días límite habilita automáticamente el pago completo para las reservas que caen dentro del periodo límite.
+</Callout>
+
+### 3. Configurar recordatorios de pago
+
+La función Payment Reminder te permite avisar automáticamente a los clientes de sus próximos pagos pendientes antes de que empiece el viaje. También puedes mostrar un mensaje de depósito personalizado en el pago para informar a los viajeros del calendario de pagos restante.
+
+Esto agiliza el cobro y reduce los pagos olvidados o con retraso, porque mantiene a los viajeros informados.
+
+<Image src="https://blob-cdn.documentation.ai/org-fd8ba769-7008-47cf-98f1-e0d78d98350b/doc-08c376b3-8054-4dc6-b874-0c65a04a623e/1786945053234-u4x20l9c8a-partial-payment-set-payment-reminders.partial-payment-set-payment-reminders?fm=auto&auto=compress%2Cformat" width="2034" height="927" alt="" />
+
+Para configurar esta función, ve a **WP Travel Engine → Settings → Extensions → Partial Payment**.
+
+#### Final Payment Due In
+
+Define cuántos días antes de la fecha de inicio del viaje debe realizarse el pago final. Este valor también se usa para programar el recordatorio automático por correo electrónico.
+
+<Callout kind="info" collapsed="false">
+  Ejemplo: si lo defines en 7 días, los viajeros deben pagar el saldo restante 7 días antes de que empiece el viaje y reciben un recordatorio en consecuencia.
+</Callout>
+
+#### Deposit Message at Checkout
+
+Muestra en el pago un mensaje que informa a los clientes de cuándo vence el pago restante. Usa `{payment_due_date}` para mostrar la fecha de vencimiento de forma dinámica y `{amount_due}` para mostrar el saldo pendiente.
+
+<Callout kind="tip" collapsed="false">
+  Mensaje de ejemplo: "Tu saldo pendiente de {amount_due} vence el {payment_due_date}. Recibirás un correo de recordatorio antes de esa fecha."
+</Callout>
+
+### 4. Definir un pago parcial específico para un viaje
+
+El pago parcial también puede aplicarse a cada viaje por separado, de modo que puedes personalizar el depósito como porcentaje o importe fijo, o desactivar la opción por completo en un viaje.
+
+<Steps>
+  <Step title="Abre el viaje" title-type="p">
+    Ve a **Trips → All Trips** y selecciona el viaje que quieres editar.
+  </Step>
+
+  <Step title="Abre la pestaña Date and Price" title-type="p">
+    Desplázate hasta la zona **WP Travel Engine – Trip Settings**, al final de la página del viaje, y haz clic en la pestaña **Date and Price**.
+  </Step>
+
+  <Step title="Configura el pago parcial de este viaje" title-type="p">
+    Busca las opciones de Partial Payment y configura los ajustes del viaje.
+
+    <Image src="https://blob-cdn.documentation.ai/org-fd8ba769-7008-47cf-98f1-e0d78d98350b/doc-08c376b3-8054-4dc6-b874-0c65a04a623e/1786945142919-444q9e8jxsq-partial-payment-set-trip-specific-partial-payment-amount.partial-payment-set-trip-specific-partial-payment-amount?fm=auto&auto=compress%2Cformat" width="1024" height="625" alt="" />
+
+    Puedes usar los ajustes globales que ya configuraste, personalizarlos para este viaje o desactivarlos por completo.
+  </Step>
+
+  <Step title="Actualiza el viaje" title-type="p">
+    Cuando termines la configuración, actualiza el viaje.
+  </Step>
+</Steps>
+
+### 5. Configurar el correo de recordatorio de pago parcial
+
+Una vez activados y configurados los recordatorios, define la plantilla del correo de recordatorio en **Dashboard → WP Travel Engine → Settings → Emails → Notifications → Customer**.
+
+<Steps>
+  <Step title="Busca la plantilla de recordatorio" title-type="p">
+    Desplázate hasta la plantilla de correo "Partial Payment Reminder".
+  </Step>
+
+  <Step title="Personaliza el correo" title-type="p">
+    Personaliza el asunto, el contenido y el diseño.
+
+    <Image src="https://blob-cdn.documentation.ai/org-fd8ba769-7008-47cf-98f1-e0d78d98350b/doc-08c376b3-8054-4dc6-b874-0c65a04a623e/1786945305973-g4nxutzminb-partial-payment-reminder-email.partial-payment-reminder-email?fm=auto&auto=compress%2Cformat" width="1024" height="584" alt="" />
+  </Step>
+</Steps>
+
+El correo se envía automáticamente según el ajuste Final Payment Due In.
+
+<Callout kind="info" collapsed="false">
+  El correo solo se envía si las funciones Partial Payment y Payment Reminder están activadas y bien configuradas.
+</Callout>
+
+## Casos de uso habituales
+
+- **Viajes de alto valor:** permite a los clientes asegurar su reserva con un depósito en tours caros.
+- **Ofertas de reserva anticipada:** fomenta las reservas tempranas aceptando pagos parciales por adelantado.
+- **Reservas de grupo:** facilita las reservas de grupo permitiendo que cada miembro pague una parte por adelantado.
+
+## Preguntas frecuentes
+
+<ExpandableGroup>
+  <Expandable title="¿Puedo definir importes de pago parcial distintos para cada viaje?" default-open="false">
+    Sí, puedes sustituir los ajustes globales configurando las opciones de pago parcial en los ajustes de cada viaje.
+  </Expandable>
+
+  <Expandable title="¿Cómo se recuerda a los clientes que paguen el importe restante?" default-open="false">
+    El sistema envía recordatorios automáticos por correo electrónico según tu configuración de correo.
+  </Expandable>
+
+  <Expandable title="¿Puedo desactivar por completo la opción de pago completo?" default-open="false">
+    Sí, puedes desactivarla desde los ajustes globales del complemento Partial Payment.
+  </Expandable>
+</ExpandableGroup>
+
+<Callout kind="info" collapsed="false" color="#06b6d4">
+  Si sigues con dudas o tienes una pregunta que no hemos cubierto, nuestro equipo de soporte estará encantado de ayudarte. Escríbenos desde [**nuestra página de soporte**](https://wptravelengine.com/support-ticket/) y lo resolveremos.
+</Callout>

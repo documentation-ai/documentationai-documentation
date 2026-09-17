@@ -1,0 +1,77 @@
+---
+title: How to Configure Currency Settings in WP Travel Engine
+description: >-
+  Set the currency, symbol position and separators for trip prices in WP Travel
+  Engine 5.x.
+type: guide
+---
+<Callout kind="info" collapsed="false">
+  This page is for WP Travel Engine 5.x. In version 6, currency settings moved to their own menu and gained a currency code option and a custom amount format.
+</Callout>
+
+## Configure your currency settings
+
+Your currency settings control how trip prices appear across your travel website. In WP Travel Engine 5.x you choose the currency you charge in, where the currency symbol sits, and the separators your travelers expect to see.
+
+## Open the currency settings
+
+<Steps>
+  <Step title="Log in to WordPress" title-type="p">
+    Open your WordPress Admin Dashboard and sign in to your website.
+  </Step>
+
+  <Step title="Go to the currency settings" title-type="p">
+    From the left sidebar, go to **WP Travel Engine > Settings > Miscellaneous > Currency Settings**.
+
+    All currency options in version 5 sit on this single screen.
+  </Step>
+</Steps>
+
+## Choose your payment currency
+
+Select a currency from the **Base Currency** dropdown. By default, the currency is set to **US Dollar (USD)**.
+
+Click **Save Settings** to apply the currency to all trip prices.
+
+## Choose the symbol position
+
+Version 5 always shows prices with the currency symbol. It has no option to show a currency code such as `USD` instead.
+
+Use the **Currency Position** dropdown to decide where the symbol appears:
+
+| Option              | Example     |
+| ------------------- | ----------- |
+| Left                | `$1,000.00` |
+| Right               | `1,000.00$` |
+| Left with space     | `$ 1,000.00`|
+| Right with space    | `1,000.00 $`|
+
+The default position is **Left**.
+
+<Callout kind="alert" collapsed="false">
+  WP Travel Engine 5.x does not support the `%CURRENCY_CODE%`, `%CURRENCY_SYMBOL%` or `%FORMATED_AMOUNT%` format tags. Custom amount formats were introduced in version 6.
+</Callout>
+
+## Set the separators
+
+- **Decimal Separator** - The symbol before the decimal part of a price. The default is `.`.
+- **Thousands Separator** - The symbol that groups large numbers. The default is `,`.
+
+Prices in version 5 always show two decimal places. The number of decimal digits cannot be changed.
+
+Click **Save Settings** after you change either separator.
+
+## Example configuration for a Nepal-based travel website
+
+| Setting             | Value                |
+| ------------------- | -------------------- |
+| Base Currency       | Nepalese Rupees (Rs) |
+| Currency Position   | Left with space      |
+| Decimal Separator   | `.`                  |
+| Thousands Separator | `,`                  |
+
+With this configuration, a price of 16000 displays as `Rs 16,000.00`.
+
+<Callout kind="info" collapsed="false" color="#06b6d4">
+  If you're still stuck or have a question we didn't cover, our support team is happy to help. Reach out at [**our support page**](https://wptravelengine.com/support-ticket/) and we'll get you sorted.
+</Callout>

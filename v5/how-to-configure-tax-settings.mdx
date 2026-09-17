@@ -1,0 +1,48 @@
+---
+title: How to Configure Tax Settings
+description: >-
+  Add a tax percentage to bookings in WP Travel Engine 5.x and set the tax label
+  travelers see at checkout.
+type: guide
+---
+<Callout kind="info" collapsed="false">
+  This page is for WP Travel Engine 5.x. Version 6 moved tax to the Payments settings and added the option to include tax in the trip price.
+</Callout>
+
+## Overview
+
+WP Travel Engine 5.x can add a tax percentage to every booking. Tax is always added at checkout as a separate line. Version 5 cannot show trip prices with tax already included.
+
+## How to enable tax
+
+<Steps>
+  <Step title="Navigate to the tax settings" title-type="p">
+    In the left sidebar of your WordPress dashboard, go to **WP Travel Engine** > **Settings** > **Extensions** > **Tax**.
+  </Step>
+
+  <Step title="Enable tax" title-type="p">
+    Check the **Enable Tax** checkbox.
+  </Step>
+
+  <Step title="Enter the tax percentage" title-type="p">
+    Enter the percentage in **Tax Percentage**. The same rate applies to every trip on your site. Version 5 has no per-trip tax rate.
+  </Step>
+
+  <Step title="Save" title-type="p">
+    Click **Save Settings**.
+  </Step>
+</Steps>
+
+## Tax label
+
+The **Tax Label** field sets the text shown next to the tax amount at checkout. The default label is `Tax`.
+
+The label is plain text. Version 5 does not support the `%s` and `%%` placeholders, so the rate is not inserted into the label automatically. To show the rate, type it into the label yourself, for example `VAT 13%`.
+
+## How tax appears at checkout
+
+Say you run a day tour for $100 and the tax percentage is 10. The traveler sees $100 on the trip page. At checkout, they see $100 plus $10 tax for a total of $110.
+
+<Callout kind="info" collapsed="false" color="#06b6d4">
+  If you're stuck or have a question we didn't cover, our support team is happy to help. Reach out at [our support page](https://wptravelengine.com/support-ticket/) and we'll get you sorted.
+</Callout>

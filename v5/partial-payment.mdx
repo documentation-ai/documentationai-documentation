@@ -1,0 +1,73 @@
+---
+title: Partial Payment
+description: >-
+  Let travelers book trips in WP Travel Engine 5.x by paying a percentage of the
+  trip price upfront.
+type: guide
+---
+<Callout kind="info" collapsed="false">
+  This page is for WP Travel Engine 5.x. Version 6 added fixed deposit amounts, cut-off days, automatic payment reminders and per-trip settings.
+</Callout>
+
+The Partial Payment add-on lets travelers book a trip by paying part of the total cost upfront.
+
+## Key features
+
+- Travelers pay a percentage of the trip price as a deposit.
+- One deposit percentage applies to every trip on your site.
+- Optionally let travelers choose between the deposit and the full price.
+
+## Prerequisites
+
+- WordPress version 5.2 or higher.
+- WP Travel Engine 5.x installed and activated.
+- Partial Payment add-on installed and activated.
+
+Version 5 does not require WP Travel Engine Pro for this add-on.
+
+## Feature configuration
+
+### Enabling Partial Payment
+
+Go to **WP Travel Engine → Settings → Extensions → Partial Payment**.
+
+- Check **Enable Partial Payment**.
+- Enter the deposit in **Partial Payment Percentage**. The default is 20%.
+- Check **Allow Full Payment** if travelers may also pay the full price at checkout.
+- Click **Save Settings**.
+
+<Callout kind="tip" collapsed="false">
+  **Example:** You set the partial payment to 25%. A traveler books a trip that costs $800.
+
+  Initial deposit = 25% of $800 = **$200**
+</Callout>
+
+<Callout kind="alert" collapsed="false">
+  Version 5 supports percentage deposits only. Fixed amounts per traveler or per booking are not available.
+</Callout>
+
+### Collecting the remaining balance
+
+Version 5 does not send automatic reminders for the remaining balance. To collect it, open the booking under **Bookings → All Bookings**, check the **Due** amount, and contact the traveler yourself.
+
+There are no cut-off days in version 5. Travelers can pay the deposit for any departure date, including last-minute bookings.
+
+### Trip-specific settings
+
+Version 5 has no per-trip partial payment settings. The global percentage applies to every trip, and partial payment cannot be turned off for a single trip.
+
+## FAQs
+
+<ExpandableGroup>
+  <Expandable title="Can I set different partial payment amounts for different trips?" default-open="false">
+    No. In version 5, one percentage applies to every trip.
+  </Expandable>
+
+  <Expandable title="How are customers reminded to pay the remaining amount?" default-open="false">
+    They are not reminded automatically in version 5. You follow up with each traveler from the booking details.
+  </Expandable>
+</ExpandableGroup>
+
+<Callout kind="info" collapsed="false" color="#06b6d4">
+  If you're still stuck or have a question we didn't cover, our support team is happy to help. Reach out at [**our support page**](https://wptravelengine.com/support-ticket/) and we'll get you sorted.
+</Callout>

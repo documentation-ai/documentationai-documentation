@@ -1,0 +1,70 @@
+---
+title: Cómo configurar los impuestos
+description: >-
+  Añade impuestos a cada reserva de forma automática, elige cómo se muestran los
+  precios a los viajeros y muestra una etiqueta de impuesto clara en el pago.
+type: guide
+---
+## Descripción general
+
+Añade un porcentaje de impuesto a cada reserva de forma automática desde el panel de WordPress, que es la zona de administración principal donde gestionas tu sitio web. También puedes elegir si el impuesto ya está incluido en el precio del viaje o se añade después en el pago, y cambiar la etiqueta que ven los viajeros.
+
+<Video uid="f053cceb-e377-416d-8f6f-5516a5c2f825" src="https://www.youtube.com/embed/31B1lr0Vb34?si=mAIXA7xBXwc4He_N" render-type="iframe" width="560" height="315" controls="true" allow-full-screen="true" />
+
+## Cómo activar los impuestos
+
+<Callout kind="info" collapsed="false" color="#10b981">
+  Antes de empezar, asegúrate de que puedes iniciar sesión en el panel de WordPress. Necesitas acceso a la zona de administración de tu sitio web para cambiar los ajustes de pago.
+</Callout>
+
+<Steps>
+  <Step title="Ve a Tax Settings" title-type="p">
+    Aquí se guardan todas las opciones relacionadas con los impuestos.
+
+    En la barra lateral izquierda del panel de WordPress, ve a **WP Travel Engine** > **Settings** > **Payments** > **Tax Settings**.
+  </Step>
+
+  <Step title="Activa Apply Tax" title-type="p">
+    Esto activa los impuestos en las reservas de tus viajes.
+
+    Busca el interruptor **Apply Tax** y actívalo. Una vez activado, WP Travel Engine empezará a aplicar tu configuración de impuestos a las reservas.
+
+    <Image src="https://blob-cdn.documentation.ai/org-fd8ba769-7008-47cf-98f1-e0d78d98350b/doc-08c376b3-8054-4dc6-b874-0c65a04a623e/1787569279976-np9muuym5i9-tax-settings.png?fm=auto&auto=compress%2Cformat" width="1024" height="486" alt="" />
+  </Step>
+
+  <Step title="Indica el valor del impuesto" title-type="p">
+    Este número controla cuánto impuesto se añade a cada reserva.
+
+    Introduce el valor del impuesto que quieres aplicar. Por ejemplo, si el tipo impositivo local es del 10 %, cada reserva usará ese porcentaje. Tanto si vendes una excursión guiada de un día como un trekking de varios días o un paquete con alquiler de equipo, el valor del impuesto se aplicará automáticamente según tu configuración.
+
+    Cuando guardes el ajuste, podrás elegir cómo se muestra el impuesto a tus viajeros.
+  </Step>
+</Steps>
+
+## Opciones de impuestos disponibles
+
+Después de activar los impuestos, puedes ajustar algunas opciones para que los precios se muestren como quieres en tu sitio.
+
+| Ajuste         | Descripción                                                                                                                                                                                                          |
+| -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Custom Label   | Cambia la etiqueta del impuesto según tu negocio o la normativa local. Puedes usar `%s` para mostrar el valor del impuesto y `%%` para mostrar el signo de porcentaje. Por ejemplo, `IVA %s%%` aparecería como `IVA 10%` si tu tipo es 10. |
+| Trip Prices    | Elige si el precio del viaje que ve el viajero ya incluye el impuesto o si el impuesto se añade como un importe aparte durante el pago.                                                                                 |
+| Tax Percentage | Define el porcentaje de impuesto que se aplica a cada reserva. Es el número que WP Travel Engine usa al calcular el impuesto de tus viajes.                                                                            |
+
+### Modos de Trip Prices
+
+#### Impuesto incluido en el precio
+
+Usa esta opción si quieres que el precio del viaje que se muestra ya contenga el impuesto.
+
+Supongamos que organizas un trekking de 3 días por 500 $ y el impuesto es del 10 %. El viajero ve 500 $ y paga 500 $. El impuesto ya está incluido en ese importe. Funciona bien si quieres que los precios resulten sencillos en las páginas de viaje, sobre todo en paquetes de precio fijo u ofertas de temporada.
+
+#### Impuesto añadido en el pago
+
+Usa esta opción si quieres mostrar primero el precio base del viaje y añadir el impuesto después como una línea aparte.
+
+Supongamos que organizas una excursión de un día por 100 $ y el impuesto es del 10 %. El viajero ve 100 $ en la página del viaje. En el pago, ve 100 $ más 10 $ de impuesto, con un total de 110 $. Esta opción es útil si quieres que los viajeros vean claramente el importe del impuesto antes de completar la reserva.
+
+<Callout kind="info" collapsed="false" color="#06b6d4">
+  Si tienes dudas o una pregunta que no hemos cubierto, nuestro equipo de soporte estará encantado de ayudarte. Escríbenos desde [nuestra página de soporte](https://wptravelengine.com/support-ticket/) y lo resolveremos.
+</Callout>

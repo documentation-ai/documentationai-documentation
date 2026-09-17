@@ -1,0 +1,77 @@
+---
+title: Installation and Setup
+description: Install WP Travel Engine 5.x on your WordPress site and complete the setup wizard.
+---
+
+<Callout kind="info" collapsed="false">
+  This page is for WP Travel Engine 5.x. Version 6 raised the system requirements and replaced the setup wizard with manual configuration.
+</Callout>
+
+## Prerequisites
+
+<Callout kind="info" title="System Requirements">
+- WordPress 4.9 or higher
+- PHP 7.0 or greater
+- MySQL 5.6+ or MariaDB 10.0+
+- Minimum 128MB memory (recommended 256MB)
+</Callout>
+
+## Installation
+
+<Steps>
+  <Step title="Search for the plugin">
+    In your WordPress admin, go to **Plugins > Add New** and search for **WP Travel Engine**.
+  </Step>
+
+  <Step title="Install">
+    Click **Install Now** on the WP Travel Engine card.
+  </Step>
+
+  <Step title="Activate">
+    Click **Activate**. The setup wizard opens automatically.
+  </Step>
+</Steps>
+
+## Setup wizard
+
+Version 5 walks you through the initial configuration in a four-step wizard.
+
+<Steps>
+  <Step title="General">
+    Choose your base currency and date format.
+  </Step>
+
+  <Step title="Pages">
+    Let the wizard create the Checkout, Thank You and Terms and Conditions pages.
+  </Step>
+
+  <Step title="Payments">
+    Enable at least one payment gateway, such as PayPal Standard.
+  </Step>
+
+  <Step title="Finish">
+    Click **Go to Dashboard**.
+  </Step>
+</Steps>
+
+If you skip the wizard, reopen it from **WP Travel Engine > Setup Wizard**.
+
+## Display trips
+
+Add this shortcode to any page to list your trips:
+
+```php
+[WTE_Trips]
+```
+
+## Troubleshooting
+
+<ExpandableGroup>
+  <Expandable title="The setup wizard did not open?" default-open="true">
+    Open it from **WP Travel Engine > Setup Wizard**. Pop-up blockers and some caching plugins can stop the redirect after activation.
+  </Expandable>
+
+  <Expandable title="Bookings not working?">
+    Verify permalinks: **Settings > Permalinks > Save Changes**.
+  </Expandable>
+</ExpandableGroup>

@@ -1,0 +1,221 @@
+---
+title: Cómo configurar la moneda en WP Travel Engine
+description: >-
+  Define cómo se muestran los precios en tu sitio de viajes para que los viajeros
+  vean la moneda, el símbolo y el formato numérico adecuados para tu negocio.
+type: guide
+---
+## Configura la moneda
+
+La configuración de moneda controla cómo aparecen los precios de los viajes en todo tu sitio web. Puedes elegir la moneda en la que cobras, decidir si los precios muestran un símbolo o un código y definir los separadores y el formato que esperan tus viajeros.
+
+Si organizas tours para viajeros de un país concreto, estos ajustes hacen que tus precios resulten familiares y claros. Por ejemplo, una empresa de trekking en Nepal puede querer mostrar los precios en rupias, mientras que un operador de excursiones de un día para viajeros internacionales puede preferir dólares estadounidenses. A continuación verás cada ajuste uno por uno.
+
+<Callout kind="info" collapsed="false">
+  Antes de empezar, asegúrate de que puedes iniciar sesión en el panel de administración de WordPress y abrir la zona de ajustes de WP Travel Engine desde la barra lateral izquierda.
+</Callout>
+
+## Abre los ajustes de moneda
+
+Tienes que empezar en el lugar correcto antes de cambiar nada. Estos ajustes están dentro de la zona del plugin WP Travel Engine en WordPress.
+
+<Steps>
+  <Step title="Inicia sesión en WordPress" title-type="p">
+    Abre el panel de administración de WordPress e inicia sesión en tu sitio web.
+
+    Si eres nuevo en WordPress, este es el panel de control principal desde el que gestionas tu sitio.
+  </Step>
+
+  <Step title="Ve a la página de ajustes de moneda" title-type="p">
+    En la barra lateral izquierda del panel de WordPress, ve a **WP Travel Engine > Settings > Currency > General**.
+
+    Ya estás en la pantalla donde controlas cómo aparecen los precios en tu sitio. Ahora puedes definir la moneda principal de tu negocio.
+
+    <Image src="https://blob-cdn.documentation.ai/org-fd8ba769-7008-47cf-98f1-e0d78d98350b/doc-08c376b3-8054-4dc6-b874-0c65a04a623e/1787560416806-pdk57unclml-currency-settings-settings.currency-settings-settings?fm=auto&auto=compress%2Cformat" width="1024" height="495" alt="" />
+  </Step>
+</Steps>
+
+## Elige la moneda de pago
+
+Este ajuste indica a WP Travel Engine qué moneda debe usar tu sitio web. Es lo primero que conviene definir, porque el resto de la presentación de precios se construye a partir de él.
+
+Puedes elegir monedas como USD, INR, yuan o yen. De forma predeterminada, la moneda es **US Dollar (USD)**.
+
+<Steps>
+  <Step title="Busca el desplegable Payment Currency" title-type="p">
+    Busca el desplegable **Payment Currency** en la zona de ajustes de moneda.
+
+    Este desplegable muestra las monedas disponibles para tu sitio.
+  </Step>
+
+  <Step title="Selecciona la moneda que quieres usar" title-type="p">
+    Elige la moneda con la que quieres mostrar los precios en tu sitio web.
+
+    Por ejemplo, si vendes rutas de senderismo guiadas a viajeros de Estados Unidos, puedes elegir USD. Si organizas tours locales en la India, puedes elegir INR.
+  </Step>
+
+  <Step title="Guarda el cambio" title-type="p">
+    Haz clic en **Save Settings**.
+
+    Tu sitio usará ahora esa moneda como base para los precios de los viajes. A continuación, decide si los viajeros deben ver un símbolo o un código junto al importe.
+
+    <Image src="https://blob-cdn.documentation.ai/org-fd8ba769-7008-47cf-98f1-e0d78d98350b/doc-08c376b3-8054-4dc6-b874-0c65a04a623e/1787560447252-sr0va0466mq-currency-settings-payment-currency.currency-settings-payment-currency?fm=auto&auto=compress%2Cformat" width="1024" height="520" alt="" />
+  </Step>
+</Steps>
+
+## Elige si mostrar el símbolo o el código de la moneda
+
+Este ajuste controla cómo aparece la moneda junto al precio. Puedes mostrar un símbolo, como `$`, o un código, como `USD`.
+
+Un símbolo es el signo visual de una moneda. Un código es la etiqueta corta que se usa a nivel internacional.
+
+- **Currency Symbol**: muestra la moneda con su símbolo, como `$` para el dólar estadounidense o `₹` para la rupia india.
+- **Currency Code**: muestra la moneda con su código, como `USD` para el dólar estadounidense o `INR` para la rupia india.
+
+Para muchas empresas de tours, los símbolos resultan más familiares en la página de reserva. Los códigos pueden ser útiles si trabajas con viajeros internacionales que quizá no reconozcan todos los símbolos.
+
+<Steps>
+  <Step title="Elige cómo quieres que aparezca la moneda" title-type="p">
+    Abre el desplegable **Display Currency Symbol or Code**.
+
+    Selecciona **Currency Symbol** o **Currency Code**.
+  </Step>
+
+  <Step title="Ajusta el formato del importe antes de guardar" title-type="p">
+    Antes de hacer clic en **Save Settings**, asegúrate de que **Amount Display Format** coincide con la opción que has seleccionado aquí.
+
+    Si eliges **Currency Symbol**, el formato debe usar la etiqueta del símbolo. Si eliges **Currency Code**, el formato debe usar la etiqueta del código.
+  </Step>
+
+  <Step title="Guarda los ajustes" title-type="p">
+    Haz clic en **Save Settings** cuando ambos ajustes coincidan.
+
+    Así los precios de tus viajes se mostrarán correctamente. La siguiente sección explica qué formato usar.
+
+    <Image src="https://blob-cdn.documentation.ai/org-fd8ba769-7008-47cf-98f1-e0d78d98350b/doc-08c376b3-8054-4dc6-b874-0c65a04a623e/1787560502938-q5hhj1w5m1-currency-settings-display-currency-symbol-code.currency-settings-display-currency-symbol-code?fm=auto&auto=compress%2Cformat" width="1024" height="123" alt="" />
+  </Step>
+</Steps>
+
+## Define el formato de visualización del importe
+
+Este ajuste controla el orden y la estructura de la moneda y el número. Usa etiquetas, que son códigos cortos que WP Travel Engine lee y convierte en el precio final que se muestra en tu sitio.
+
+Por ejemplo, un formato puede mostrar el símbolo antes del importe. Otro puede mostrar el código antes del importe.
+
+| Etiqueta            | Muestra                                               |
+| ------------------- | ----------------------------------------------------- |
+| `%CURRENCY_CODE%`   | El código de la moneda, como `USD`                    |
+| `%CURRENCY_SYMBOL%` | El símbolo de la moneda, como `$`                     |
+| `%AMOUNT%`          | El importe sin formato, como `1000`                   |
+| `%FORMATED_AMOUNT%` | El importe con el formato adecuado, como `1,000.00`   |
+
+El formato predeterminado es `%CURRENCY_SYMBOL%%FORMATED_AMOUNT%`.
+
+<Callout kind="alert" collapsed="false">
+  El formato debe coincidir con el ajuste **Display Currency Symbol or Code** anterior. Si seleccionas **Currency Code**, usa `%CURRENCY_CODE%%FORMATED_AMOUNT%`. Si seleccionas **Currency Symbol**, usa `%CURRENCY_SYMBOL%%FORMATED_AMOUNT%`. Si los ajustes no coinciden, es posible que los precios de los viajes no se muestren como esperas.
+</Callout>
+
+<Steps>
+  <Step title="Busca el campo Amount Display Format" title-type="p">
+    Busca el campo **Amount Display Format** en la misma zona de ajustes.
+
+    Este campo controla cómo se ve el precio final cuando un viajero consulta un viaje, un paquete o un complemento.
+  </Step>
+
+  <Step title="Introduce el formato que quieres usar" title-type="p">
+    Escribe el formato que prefieras con las etiquetas de la tabla anterior.
+
+    Por ejemplo, si quieres que un paquete de trekking muestre primero el símbolo, usa `%CURRENCY_SYMBOL%%FORMATED_AMOUNT%`. Si quieres mostrar primero el código para mayor claridad internacional, usa `%CURRENCY_CODE%%FORMATED_AMOUNT%`.
+  </Step>
+
+  <Step title="Guarda el formato" title-type="p">
+    Haz clic en **Save Settings**.
+
+    Tus precios ya tienen la estructura que quieres. Ahora puedes controlar cómo se muestran los decimales.
+
+    <Image src="https://blob-cdn.documentation.ai/org-fd8ba769-7008-47cf-98f1-e0d78d98350b/doc-08c376b3-8054-4dc6-b874-0c65a04a623e/1787560542743-jgkpkf3rce-currency-settings-amount-display-format.currency-settings-amount-display-format?fm=auto&auto=compress%2Cformat" width="1024" height="116" alt="" />
+  </Step>
+</Steps>
+
+<Callout kind="tip" collapsed="false">
+  Si no sabes qué formato usar, empieza con el formato predeterminado. Funciona bien para la mayoría de los sitios de tours y muestra los precios de una forma familiar.
+</Callout>
+
+## Define el separador decimal
+
+El separador decimal controla el signo que aparece antes de los céntimos o de la parte más pequeña del importe. Muchos sitios web usan un punto, con lo que un precio se ve como `1,000.00`.
+
+Esto importa si tus viajeros esperan un estilo numérico concreto. También ayuda si ofreces alquiler de equipo, permisos o complementos de temporada con precios más exactos.
+
+<Steps>
+  <Step title="Busca el campo Decimal Separator" title-type="p">
+    Busca el campo **Decimal Separator**.
+
+    Aquí eliges el signo que separa la parte entera de la parte decimal.
+  </Step>
+
+  <Step title="Introduce el separador que quieres usar" title-type="p">
+    Introduce el signo que prefieras en el campo.
+
+    Por ejemplo, si introduces `.`, un precio se mostrará como `1,000.00`.
+  </Step>
+
+  <Step title="Guarda el cambio" title-type="p">
+    Haz clic en **Save Settings**.
+
+    El estilo decimal ya está definido. Ahora puedes elegir cómo se agrupan los números grandes.
+
+    <Image src="https://blob-cdn.documentation.ai/org-fd8ba769-7008-47cf-98f1-e0d78d98350b/doc-08c376b3-8054-4dc6-b874-0c65a04a623e/1787560569327-ijxsogeaa88-currency-settings-decimal-separator.currency-settings-decimal-separator?fm=auto&auto=compress%2Cformat" width="1024" height="115" alt="" />
+  </Step>
+</Steps>
+
+## Define el separador de miles
+
+El separador de miles controla el signo que divide los números grandes. Así los precios altos son más fáciles de leer.
+
+Por ejemplo, un paquete de varios días, una reserva de grupo o una expedición premium pueden tener un precio elevado. Un separador ayuda a que ese precio se lea de un vistazo.
+
+<Steps>
+  <Step title="Busca el campo Thousands Separator" title-type="p">
+    Busca el campo **Thousands Separator**.
+
+    Este campo controla cómo se agrupan los números grandes en tu sitio.
+  </Step>
+
+  <Step title="Introduce el separador que quieres usar" title-type="p">
+    Introduce el signo que prefieras en el campo.
+
+    Por ejemplo, si introduces `,`, un número se mostrará como `1,000`.
+  </Step>
+
+  <Step title="Guarda el cambio" title-type="p">
+    Haz clic en **Save Settings**.
+
+    Ya has configurado las partes principales de la visualización de la moneda. El ejemplo siguiente muestra cómo funcionan juntos estos ajustes.
+
+    <Image src="https://blob-cdn.documentation.ai/org-fd8ba769-7008-47cf-98f1-e0d78d98350b/doc-08c376b3-8054-4dc6-b874-0c65a04a623e/1787560594161-33lqf33b3s7-currency-settings-thousand-separator.currency-settings-thousand-separator?fm=auto&auto=compress%2Cformat" width="1024" height="162" alt="" />
+  </Step>
+</Steps>
+
+## Ejemplo de configuración para un sitio de viajes en Nepal
+
+Este ejemplo muestra cómo una empresa de tours con sede en Nepal podría configurar la visualización de la moneda en los precios de sus viajes.
+
+| Ajuste                          | Valor                                |
+| ------------------------------- | ------------------------------------ |
+| Payment Currency                | Nepalese Rupees (Rs)                 |
+| Display Currency Symbol or Code | Currency Symbol                      |
+| Amount Display Format           | `%CURRENCY_SYMBOL%%FORMATED_AMOUNT%` |
+| Decimal Digits                  | 3                                    |
+| Decimal Separator               | `.`                                  |
+| Thousands Separator             | `,`                                  |
+
+Con esta configuración, un precio de 1000 se mostraría como `Rs16,000.342`.
+
+<Image src="https://blob-cdn.documentation.ai/org-fd8ba769-7008-47cf-98f1-e0d78d98350b/doc-08c376b3-8054-4dc6-b874-0c65a04a623e/1787560624038-yqu11fdvd8m-currency-settings-frontend.currency-settings-frontend?fm=auto&auto=compress%2Cformat" width="1024" height="461" alt="" />
+
+Esa forma de mostrar el precio puede ser útil si tus tarifas incluyen cálculos locales detallados o importes por servicios extra. Si tus precios son más sencillos, puedes seguir el mismo proceso con los separadores y el formato que mejor encajen con tu mercado.
+
+<Callout kind="info" collapsed="false" color="#06b6d4">
+  Si sigues con dudas o tienes una pregunta que no hemos cubierto, nuestro equipo de soporte estará encantado de ayudarte. Escríbenos desde [**nuestra página de soporte**](https://wptravelengine.com/support-ticket/) y lo resolveremos.
+</Callout>
