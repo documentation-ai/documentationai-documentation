@@ -1,0 +1,30 @@
+---
+title: Error responses
+metaTitle: Error responses | API Reference | demo Docs
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1789729307816-mpb0s9i9kcd-992ae1db4551e55bc5925a4bc1659c5f420b6b6f.png?fm=auto&auto=compress%2Cformat
+---
+
+All errors follow a consistent structure:
+
+```json
+{
+  "error": {
+    "code": "not_found",
+    "message": "The requested resource could not be found.",
+    "status": 404
+  }
+}
+```
+
+| Status | Meaning |
+| --- | --- |
+| `400` | Bad request — check your request body |
+| `401` | Unauthorized — missing or invalid API key |
+| `403` | Forbidden — insufficient permissions |
+| `404` | Not found |
+| `429` | Rate limited — back off and retry |
+| `500` | Server error |
+
+<Callout kind="alert">
+  This API is for demo purposes only — **don't** use it in production.
+</Callout>
