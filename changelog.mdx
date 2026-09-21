@@ -32,11 +32,40 @@ Stay informed about the latest releases of WP Travel Engine. You can check your 
 
 | Version | Date       | Key Changes                  | Tags              |
 |---------|------------|------------------------------|-------------------|
+| Media & Uploads | 2025-01-21 | Upload links, remote image import, picker improvements, plan-aware validation | feature, improvement, bugfix |
 | v6.2.0  | 2024-10-15 | Trip gallery enhancements   | feature, bugfix  |
 | v6.1.5  | 2024-09-20 | Booking capacity fixes      | bugfix, improvement |
 | v6.1.0  | 2024-08-10 | User dashboard overhaul     | feature, breaking |
 
 ## Latest Releases
+
+<Update label="2025-01-21" description="Media & Uploads" tags={["feature", "improvement", "bugfix"]}>
+
+## New Features
+
+- **Upload links** — Receive a shareable link from the AI assistant to upload files without opening the dashboard. Drag-and-drop or browse, see expiration time and notes, and track each file's status with clear success, duplicate-reuse, and failure messages.
+- **Remote image import** — Public image URLs are now imported server-side, eliminating browser-based downloads for more reliable remote logo imports during onboarding.
+- **Searchable image and SVG pickers** — Both pickers now support server-side search, "Load more" pagination, retry after errors, and show only relevant file types instead of loading the entire media library.
+- **Plan-aware upload validation** — Files are validated against your plan limits before upload with a clear message (e.g., "shot.png is 12 MB — your plan allows images up to 10 MB").
+
+## Improvements
+
+- Media library pagination is more reliable after uploads, deletions, and reused files
+- Opening the full media library from the sidebar now resets to the first page
+- Re-selecting the current page size contracts the list back to one page
+- Deleted images disappear from the picker instantly
+- Duplicate uploads are reported as reused assets — no phantom cards or inflated counts
+- Pasted images use the correct file extension (no more `.svg+xml` filenames)
+- Upload and bulk-delete error messages now include the specific reason from the server (plan restriction, unsupported type, network failure, etc.)
+
+## Bug Fixes
+
+- Bulk-deleting more than 100 files no longer fails — selections are batched automatically, and partial outcomes are reported accurately
+- "Load more" no longer stays visible after all files are loaded or skips rows after deletions
+- Opening the full library while the sidebar is loading no longer mixes stale results
+- Non-image assets no longer appear in the image picker
+
+</Update>
 
 <Update label="2024-10-15" description="v6.2.0" tags={["feature", "bugfix"]}>
 
