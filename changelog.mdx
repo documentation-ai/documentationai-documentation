@@ -38,6 +38,25 @@ Stay informed about the latest releases of WP Travel Engine. You can check your 
 
 ## Latest Releases
 
+<Update label="2025-07-18" description="MCP Servers Update" tags={["improvement", "bugfix"]}>
+
+## Improvements
+
+- **MCP Servers page adapts to your documentation's access-control settings.** The Reader tab now shows only the endpoints relevant to your privacy level — public, partially private, or fully private — and displays OAuth and credential controls only when applicable.
+- **Authoring MCP tool list expanded to 32 tools**, grouped into Read and Write sections with role requirements noted for write operations.
+- **Contextual documentation links** added to each MCP panel, linking directly to the relevant setup and authentication guides.
+- **Help links are now underlined by default** on the MCP page for easier discoverability.
+
+## Bug Fixes
+
+- Fixed Reader MCP endpoints briefly showing incorrect URLs while access-control settings loaded — a loading skeleton now appears until the correct endpoints are ready.
+- Fixed copy-button feedback leaking across multiple URL cards — copying one endpoint no longer marks all buttons as copied.
+- Fixed generated machine-client MCP configuration pointing to the wrong endpoint for private documentation — credential configs now use the authenticated Reader MCP URL.
+
+For MCP setup instructions, see the [MCP connection guide](/connect-ai-assistants-via-mcp-with-wp-travel-engine).
+
+</Update>
+
 <Update label="2024-10-15" description="v6.2.0" tags={["feature", "bugfix"]}>
 
 ## New Features
