@@ -36,7 +36,7 @@
                             "path": "how-to-add-general-info"
                           },
                           {
-                            "title": "How to add Date and Price Info?",
+                            "title": "How to add Date and Price Info? this is just a test on how long the page title can be so dont bbe concerend about this",
                             "path": "how-to-add-date-and-price-info"
                           },
                           {
@@ -915,6 +915,10 @@
                           {
                             "title": "What is WP Travel Engine?",
                             "path": "help-center/faq/what-is-wp-travel-engine"
+                          },
+                          {
+                            "title": "Frequently Asked Questions",
+                            "path": "help-center/faq/common-questions"
                           }
                         ]
                       },
@@ -1215,5 +1219,8 @@
   "seo": {
     "robots:index": false,
     "robots:follow": true
+  },
+  "icons": {
+    "library": "tabler"
   }
 }
