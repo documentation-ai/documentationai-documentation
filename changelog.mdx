@@ -32,11 +32,34 @@ Stay informed about the latest releases of WP Travel Engine. You can check your 
 
 | Version | Date       | Key Changes                  | Tags              |
 |---------|------------|------------------------------|-------------------|
+| Platform | 2025-07-09 | Icon library expansion     | feature, improvement, bugfix |
 | v6.2.0  | 2024-10-15 | Trip gallery enhancements   | feature, bugfix  |
 | v6.1.5  | 2024-09-20 | Booking capacity fixes      | bugfix, improvement |
 | v6.1.0  | 2024-08-10 | User dashboard overhaul     | feature, breaking |
 
 ## Latest Releases
+
+<Update label="2025-07-09" description="Platform Update" tags={["feature", "improvement", "bugfix"]}>
+
+## New Features
+
+- Added three icon libraries — **Font Awesome Free** (solid, regular, brand), **Tabler Icons** (outline, filled), and **Lucide** (default) — for use across navigation, callouts, steps, and tabs
+- Expanded the icon picker with unified search across all libraries, style filters (outline, filled, brands), and ranked matching that prioritizes exact and prefix hits
+- Added support for custom image icons — upload SVG, PNG, or WebP files from the media library or paste an image URL to import
+
+## Improvements
+
+- Icons in the editor now render identically to how they appear on published documentation pages
+- Existing Lucide icons remain compatible when switching the default icon library
+- Icon inputs accept common naming styles including PascalCase, kebab-case, and prefixed names like `fa-solid:rocket` or `tabler-filled:star`
+
+## Bug Fixes
+
+- Invalid or unknown icons no longer leave empty space in editor controls; callouts fall back to their default icon when a custom icon can't be displayed
+- Image icons that fail to load now degrade gracefully instead of breaking layout
+- Icon loading preserves layout space to prevent flicker during lazy loading
+
+</Update>
 
 <Update label="2024-10-15" description="v6.2.0" tags={["feature", "bugfix"]}>
 
