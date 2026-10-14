@@ -32,11 +32,6 @@
                         "icon": "rocket",
                         "pages": [
                           {
-                            "title": "404-error",
-                            "path": "404-error",
-                            "icon": "activity-icon"
-                          },
-                          {
                             "title": "How to add ggaasdas General Info?",
                             "path": "how-to-add-general-info"
                           },
@@ -1230,8 +1225,6 @@
   },
   "initialRoute": "trip-fixed-starting-dates-introduction",
   "errors": {
-    "404": {
-      "page": "404-error"
-    }
+    "404": "404"
   }
 }
