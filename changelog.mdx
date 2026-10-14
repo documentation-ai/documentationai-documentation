@@ -32,11 +32,32 @@ Stay informed about the latest releases of WP Travel Engine. You can check your 
 
 | Version | Date       | Key Changes                  | Tags              |
 |---------|------------|------------------------------|-------------------|
+| Editor  | 2025-07-17 | Inline icons in the editor   | feature, improvement |
 | v6.2.0  | 2024-10-15 | Trip gallery enhancements   | feature, bugfix  |
 | v6.1.5  | 2024-09-20 | Booking capacity fixes      | bugfix, improvement |
 | v6.1.0  | 2024-08-10 | User dashboard overhaul     | feature, breaking |
 
 ## Latest Releases
+
+<Update label="2025-07-17" description="Editor" tags={["feature", "improvement"]}>
+
+## New Features
+
+- **Inline icons** — Insert icons directly within text using the slash command menu. Place icons inside paragraphs, headings, links, and table cells. The icon picker supports the full icon library, file uploads, and custom image URLs.
+
+## Improvements
+
+- The icon picker is now organized into clearer **Icons** and **Upload / URL** tabs
+- Inline icons are preserved through collaborative editing, previews, diffs, and MDX publishing
+- Text formatting (bold, italic, links, etc.) is retained around inline icons
+- The icon picker opens automatically after inserting an icon, and focus returns to the text immediately after
+
+## Bug Fixes
+
+- Fixed inline icon rendering in table cells during MDX import
+- Slash commands not supported by the current editor view are now hidden from the menu
+
+</Update>
 
 <Update label="2024-10-15" description="v6.2.0" tags={["feature", "bugfix"]}>
 
