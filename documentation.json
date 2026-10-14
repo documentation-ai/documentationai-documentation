@@ -1224,7 +1224,9 @@
     "library": "tabler"
   },
   "initialRoute": "trip-fixed-starting-dates-introduction",
-  "errors": {
-    "404": "404"
-  }
+  "customCss": [
+    {
+      "src": "styles/footer-overrides.css"
+    }
+  ]
 }
