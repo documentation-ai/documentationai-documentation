@@ -1228,5 +1228,40 @@
     {
       "src": "styles/footer-overrides.css"
     }
-  ]
+  ],
+  "footer": {
+    "columns": [
+      {
+        "title": "hello",
+        "links": [
+          {
+            "title": "bad",
+            "link": ""
+          },
+          {
+            "title": "mornning",
+            "link": ""
+          }
+        ]
+      },
+      {
+        "title": "good evening",
+        "links": [
+          {
+            "title": "hello",
+            "link": ""
+          },
+          {
+            "title": "hi",
+            "link": ""
+          }
+        ]
+      }
+    ],
+    "socials": {
+      "discord": "www.discord",
+      "instagram": "www.instagram"
+    },
+    "copyright": "2026 documentation ai legal"
+  }
 }
