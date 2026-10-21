@@ -32,11 +32,37 @@ Stay informed about the latest releases of WP Travel Engine. You can check your 
 
 | Version | Date       | Key Changes                  | Tags              |
 |---------|------------|------------------------------|-------------------|
+| Oct 2026 | 2026-10-21 | GitLab context repos & branch selection | feature, improvement, bugfix |
 | v6.2.0  | 2024-10-15 | Trip gallery enhancements   | feature, bugfix  |
 | v6.1.5  | 2024-09-20 | Booking capacity fixes      | bugfix, improvement |
 | v6.1.0  | 2024-08-10 | User dashboard overhaul     | feature, breaking |
 
 ## Latest Releases
+
+<Update label="2026-10-21" description="Context Repositories & Branch Selection" tags={["feature", "improvement", "bugfix"]}>
+
+## New Features
+
+- **GitLab context repositories** — Connect GitLab projects as read-only AI context sources alongside GitHub repositories. The agent reads your code but never writes to the project.
+- **Branch selection for context repositories** — Choose which branch the AI reads for each connected repository. Set a default in Agent settings, then override it per chat or per automation.
+- **Branch selection in automations** — Automation connectors now include inline branch pickers for each included repository.
+
+## Improvements
+
+- Context repository connectors are now grouped by provider (GitHub, GitLab) across Agent settings, chats, and automations for clearer organization.
+- Branch lists preload when the repository dialog opens, with search and per-repository refresh for quick selection.
+- Code analysis results now display the correct provider icon (GitHub or GitLab) based on the repository's source.
+- Each provider supports up to 10 context repositories, with a visible selection counter.
+
+## Bug Fixes
+
+- Branch selections made during chat loading are no longer overwritten by stale server data.
+- Newly added GitLab repositories no longer show an empty branch picker before branches load.
+- GitLab connections no longer create unusable excess connectors when the repository limit is reached.
+- Duplicate success notifications when connecting a GitLab project have been removed.
+- Swapping repositories after reaching the 10-repository limit now works reliably.
+
+</Update>
 
 <Update label="2024-10-15" description="v6.2.0" tags={["feature", "bugfix"]}>
 
