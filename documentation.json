@@ -957,7 +957,78 @@
                       }
                     ]
                   }
-                ]
+                ],
+                "banner": {
+                  "content": "our api is down please move to version 2",
+                  "type": "alert",
+                  "color": "#8b5cf6"
+                },
+                "footer": {
+                  "columns": [
+                    {
+                      "title": "hello",
+                      "links": [
+                        {
+                          "title": "bad",
+                          "link": ""
+                        },
+                        {
+                          "title": "mornning",
+                          "link": ""
+                        }
+                      ]
+                    },
+                    {
+                      "title": "good evening",
+                      "links": [
+                        {
+                          "title": "hello",
+                          "link": ""
+                        },
+                        {
+                          "title": "hi",
+                          "link": ""
+                        }
+                      ]
+                    }
+                  ],
+                  "links": [
+                    {
+                      "header": "Comapny",
+                      "items": [
+                        {
+                          "label": "company1",
+                          "href": "/addon/fixed-starting-dates"
+                        },
+                        {
+                          "label": "company2",
+                          "href": "/es/how-to-configure-currency-settings"
+                        }
+                      ]
+                    },
+                    {
+                      "header": "product",
+                      "items": [
+                        {
+                          "label": "product1",
+                          "href": "/addon/fsd-global-settings"
+                        },
+                        {
+                          "label": "product2",
+                          "href": "/es/installation"
+                        }
+                      ]
+                    }
+                  ],
+                  "socials": {
+                    "discord": "www.discord",
+                    "instagram": "www.instagram",
+                    "youtube": "",
+                    "telegram": "",
+                    "reddit": ""
+                  },
+                  "copyright": "2026 documentation ai legal"
+                }
               },
               {
                 "language": "Español",
@@ -1008,7 +1079,11 @@
                       }
                     ]
                   }
-                ]
+                ],
+                "banner": {
+                  "content": "testing",
+                  "color": "#6b7280"
+                }
               }
             ]
           },
@@ -1064,7 +1139,73 @@
                       }
                     ]
                   }
-                ]
+                ],
+                "footer": {
+                  "columns": [
+                    {
+                      "title": "hello",
+                      "links": [
+                        {
+                          "title": "bad",
+                          "link": ""
+                        },
+                        {
+                          "title": "mornning",
+                          "link": ""
+                        }
+                      ]
+                    },
+                    {
+                      "title": "good evening",
+                      "links": [
+                        {
+                          "title": "hello",
+                          "link": ""
+                        },
+                        {
+                          "title": "hi",
+                          "link": ""
+                        }
+                      ]
+                    }
+                  ],
+                  "links": [
+                    {
+                      "header": "Comapny",
+                      "items": [
+                        {
+                          "label": "company1",
+                          "href": "/addon/fixed-starting-dates"
+                        },
+                        {
+                          "label": "company2",
+                          "href": "/es/how-to-configure-currency-settings"
+                        }
+                      ]
+                    },
+                    {
+                      "header": "product",
+                      "items": [
+                        {
+                          "label": "product1",
+                          "href": "/addon/fsd-global-settings"
+                        },
+                        {
+                          "label": "product2",
+                          "href": "/es/installation"
+                        }
+                      ]
+                    }
+                  ],
+                  "socials": {
+                    "discord": "www.discord",
+                    "instagram": "www.instagram",
+                    "youtube": "",
+                    "telegram": "",
+                    "reddit": ""
+                  },
+                  "copyright": "2026 documentation ai legal"
+                }
               }
             ]
           }
@@ -1263,5 +1404,9 @@
       "instagram": "www.instagram"
     },
     "copyright": "2026 documentation ai legal"
+  },
+  "banner": {
+    "content": "this is testing ",
+    "color": "#6b7280"
   }
 }
