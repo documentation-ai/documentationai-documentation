@@ -32,11 +32,22 @@ Stay informed about the latest releases of WP Travel Engine. You can check your 
 
 | Version | Date       | Key Changes                  | Tags              |
 |---------|------------|------------------------------|-------------------|
+| Editor  | 2025-07-10 | Rich text formatting fix    | bugfix           |
 | v6.2.0  | 2024-10-15 | Trip gallery enhancements   | feature, bugfix  |
 | v6.1.5  | 2024-09-20 | Booking capacity fixes      | bugfix, improvement |
 | v6.1.0  | 2024-08-10 | User dashboard overhaul     | feature, breaking |
 
 ## Latest Releases
+
+<Update label="2025-07-10" description="Editor" tags={["bugfix"]}>
+
+## Bug Fixes
+
+- Fixed an issue where mixed text formatting (e.g., bold combined with italic, or a link partially embedded in bold text) could leave stray formatting characters like `****` visible after saving and reopening a page
+- Bold, italic, underline, strikethrough, keyboard, and link formatting now persist reliably through save/reopen cycles without visual artifacts
+- Formatting surrounding inline components is now preserved correctly on save
+
+</Update>
 
 <Update label="2024-10-15" description="v6.2.0" tags={["feature", "bugfix"]}>
 
