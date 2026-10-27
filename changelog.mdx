@@ -38,6 +38,17 @@ Stay informed about the latest releases of WP Travel Engine. You can check your 
 
 ## Latest Releases
 
+<Update label="2025-01-09" description="Platform Security Update" tags={["security"]}>
+
+## Security
+
+- Added Content-Security-Policy (CSP) headers to all documentation pages, restricting which sources can load scripts, styles, and other resources
+- Enabled clickjacking protection — documentation pages can no longer be embedded in frames or iframes by external sites
+- Added `X-Frame-Options: DENY` as a fallback for older browsers that don't support CSP `frame-ancestors`
+- Deployed environments now automatically upgrade insecure HTTP requests to HTTPS
+
+</Update>
+
 <Update label="2024-10-15" description="v6.2.0" tags={["feature", "bugfix"]}>
 
 ## New Features
