@@ -30,13 +30,33 @@ Stay informed about the latest releases of WP Travel Engine. You can check your 
 
 ## Version Summary
 
-| Version | Date       | Key Changes                  | Tags              |
-|---------|------------|------------------------------|-------------------|
-| v6.2.0  | 2024-10-15 | Trip gallery enhancements   | feature, bugfix  |
+| Version | Date       | Key Changes                    | Tags              |
+|---------|------------|--------------------------------|-------------------|
+| Platform Update | 2025-07-10 | Crash recovery, reliability fixes | improvement, bugfix |
+| v6.2.0  | 2024-10-15 | Trip gallery enhancements     | feature, bugfix  |
 | v6.1.5  | 2024-09-20 | Booking capacity fixes      | bugfix, improvement |
 | v6.1.0  | 2024-08-10 | User dashboard overhaul     | feature, breaking |
 
 ## Latest Releases
+
+<Update label="2025-07-10" description="Platform Reliability Update" tags={["improvement", "bugfix"]}>
+
+## New Features
+
+- Added a crash recovery screen that appears when the dashboard fails to load — you can reload to clear corrupted local data while staying signed in
+
+## Improvements
+
+- Automation failure notifications now display more specific error details when available
+
+## Bug Fixes
+
+- Fixed an issue where creating a new organization opened the editor in read-only mode instead of granting full edit permissions
+- Resolved crashes caused by malformed organization data or corrupted local browser state
+- Fixed scrolling on the file upload page when many files are selected or on smaller screens
+- Corrected Content Security Policy to allow connections to the proper API domain
+
+</Update>
 
 <Update label="2024-10-15" description="v6.2.0" tags={["feature", "bugfix"]}>
 
