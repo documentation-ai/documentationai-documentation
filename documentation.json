@@ -884,6 +884,51 @@
                             "path": "how-to-configure-social-login"
                           }
                         ]
+                      },
+                      {
+                        "group": "QA Batch",
+                        "pages": [
+                          {
+                            "title": "QA batch page 1",
+                            "path": "qa-batch/page-1"
+                          },
+                          {
+                            "title": "QA batch page 2",
+                            "path": "qa-batch/page-2"
+                          },
+                          {
+                            "title": "QA batch page 3",
+                            "path": "qa-batch/page-3"
+                          },
+                          {
+                            "title": "QA batch page 4",
+                            "path": "qa-batch/page-4"
+                          },
+                          {
+                            "title": "QA batch page 5",
+                            "path": "qa-batch/page-5"
+                          },
+                          {
+                            "title": "QA batch page 6",
+                            "path": "qa-batch/page-6"
+                          },
+                          {
+                            "title": "QA batch page 7",
+                            "path": "qa-batch/page-7"
+                          },
+                          {
+                            "title": "QA batch page 8",
+                            "path": "qa-batch/page-8"
+                          },
+                          {
+                            "title": "QA batch page 9",
+                            "path": "qa-batch/page-9"
+                          },
+                          {
+                            "title": "QA batch page 10",
+                            "path": "qa-batch/page-10"
+                          }
+                        ]
                       }
                     ]
                   },
