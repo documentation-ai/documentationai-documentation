@@ -10,22 +10,20 @@ The debug plugin will display useful debug information at [`http://localhost:300
 It is mostly useful for plugin authors, that will be able to inspect more easily the content of the `.docusaurus` folder (like the creates routes), but also be able to inspect data structures that are never written to disk, like the plugin data loaded through the `contentLoaded` lifecycle.
 
 <Callout kind="info">
-  info
-
   If you use the plugin via the classic preset, the preset will **enable the plugin in development and disable it in production** by default (`debug: undefined`) to avoid exposing potentially sensitive information. You can use `debug: true` to always enable it or `debug: false` to always disable it.
 
   If you use a standalone plugin, you may need to achieve the same effect by checking the environment:
 
-  docusaurus.config.js
-
-  ```
-  export default {  plugins: [    process.env.NODE_ENV !== 'production' && '@docusaurus/plugin-debug',  ].filter(Boolean),};
+  ```js title="docusaurus.config.js"
+  export default {
+    plugins: [
+      process.env.NODE_ENV !== 'production' && '@docusaurus/plugin-debug',
+    ].filter(Boolean),
+  };
   ```
 </Callout>
 
 <Callout kind="info">
-  note
-
   If you report a bug, we will probably ask you to have this plugin turned on in the production, so that we can inspect your deployment config more easily.
 
   If you don't have any sensitive information, you can keep it on in production [like we do](https://docusaurus.io/__docusaurus/debug).
@@ -35,33 +33,31 @@ It is mostly useful for plugin authors, that will be able to inspect more easily
 
 <Tabs>
   <Tab title="npm">
-    ```
+    ```bash
     npm install --save @docusaurus/plugin-debug
     ```
   </Tab>
 
   <Tab title="Yarn">
-    ```
+    ```bash
     yarn add @docusaurus/plugin-debug
     ```
   </Tab>
 
   <Tab title="pnpm">
-    ```
+    ```bash
     pnpm add @docusaurus/plugin-debug
     ```
   </Tab>
 
   <Tab title="Bun">
-    ```
+    ```bash
     bun add @docusaurus/plugin-debug
     ```
   </Tab>
 </Tabs>
 
 <Callout kind="tip">
-  tip
-
   If you use the preset `@docusaurus/preset-classic`, you don't need to install this plugin as a dependency.
 
   You can configure this plugin through the [preset options](/docs/using-plugins#docusauruspreset-classic).
@@ -78,8 +74,6 @@ This plugin currently has no options.
 You can configure this plugin through preset options or plugin options.
 
 <Callout kind="tip">
-  tip
-
   Most Docusaurus users configure this plugin through the preset options.
 </Callout>
 
@@ -87,20 +81,27 @@ You can configure this plugin through preset options or plugin options.
   <Tab title="Preset options">
     If you use a preset, configure this plugin through the [preset options](/docs/using-plugins#docusauruspreset-classic):
 
-    docusaurus.config.js
-
-    ```
-    export default {  presets: [    [      '@docusaurus/preset-classic',      {        debug: true, // This will enable the plugin in production      },    ],  ],};
+    ```js title="docusaurus.config.js"
+    export default {
+      presets: [
+        [
+          '@docusaurus/preset-classic',
+          {
+            debug: true, // This will enable the plugin in production
+          },
+        ],
+      ],
+    };
     ```
   </Tab>
 
   <Tab title="Plugin Options">
     If you are using a standalone plugin, provide options directly to the plugin:
 
-    docusaurus.config.js
-
-    ```
-    export default {  plugins: ['@docusaurus/plugin-debug'],};
+    ```js title="docusaurus.config.js"
+    export default {
+      plugins: ['@docusaurus/plugin-debug'],
+    };
     ```
   </Tab>
 </Tabs>

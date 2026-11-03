@@ -8,7 +8,7 @@ ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc
 The default [Google Analytics](https://developers.google.com/analytics/devguides/collection/analyticsjs/) plugin. It is a JavaScript library for measuring how users interact with your website **in the production build**. If you are using Google Analytics 4 you might need to consider using [plugin-google-gtag](/docs/2-x/api/plugins/docusaurus/plugin-google-gtag) instead.
 
 <Callout kind="danger">
-  Deprecated
+  **Deprecated**
 
   This plugin is **deprecated**, and will become useless on July 1, 2023.
 
@@ -18,7 +18,7 @@ The default [Google Analytics](https://developers.google.com/analytics/devguides
 </Callout>
 
 <Callout kind="alert">
-  production only
+  **production only**
 
   This plugin is always inactive in development and **only active in production** to avoid polluting the analytics statistics.
 </Callout>
@@ -27,33 +27,31 @@ The default [Google Analytics](https://developers.google.com/analytics/devguides
 
 <Tabs>
   <Tab title="npm">
-    ```
+    ```bash
     npm install --save @docusaurus/plugin-google-analytics
     ```
   </Tab>
 
   <Tab title="Yarn">
-    ```
+    ```bash
     yarn add @docusaurus/plugin-google-analytics
     ```
   </Tab>
 
   <Tab title="pnpm">
-    ```
+    ```bash
     pnpm add @docusaurus/plugin-google-analytics
     ```
   </Tab>
 
   <Tab title="Bun">
-    ```
+    ```bash
     bun add @docusaurus/plugin-google-analytics
     ```
   </Tab>
 </Tabs>
 
 <Callout kind="tip">
-  tip
-
   If you use the preset `@docusaurus/preset-classic`, you don't need to install this plugin as a dependency.
 
   You can configure this plugin through the [preset options](/docs/2-x/using-plugins#docusauruspreset-classic).
@@ -63,7 +61,7 @@ The default [Google Analytics](https://developers.google.com/analytics/devguides
 
 Accepted fields:
 
-| Name | Type | Default | Description`trackingID``string`**Required**The tracking ID of your analytics service.`anonymizeIP``boolean``false`Whether the IP should be anonymized when sending requests. |
+| Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | `trackingID` | `string` | **Required** | The tracking ID of your analytics service. |
 | `anonymizeIP` | `boolean` | `false` | Whether the IP should be anonymized when sending requests. |
@@ -75,8 +73,6 @@ Accepted fields:
 You can configure this plugin through preset options or plugin options.
 
 <Callout kind="tip">
-  tip
-
   Most Docusaurus users configure this plugin through the preset options.
 </Callout>
 
@@ -84,20 +80,38 @@ You can configure this plugin through preset options or plugin options.
   <Tab title="Preset options">
     If you use a preset, configure this plugin through the [preset options](/docs/2-x/using-plugins#docusauruspreset-classic):
 
-    docusaurus.config.js
-
-    ```
-    module.exports = {  presets: [    [      '@docusaurus/preset-classic',      {        googleAnalytics: {          trackingID: 'UA-141789564-1',          anonymizeIP: true,        },      },    ],  ],};
+    ```js title="docusaurus.config.js"
+    module.exports = {
+      presets: [
+        [
+          '@docusaurus/preset-classic',
+          {
+            googleAnalytics: {
+              trackingID: 'UA-141789564-1',
+              anonymizeIP: true,
+            },
+          },
+        ],
+      ],
+    };
     ```
   </Tab>
 
   <Tab title="Plugin options">
     If you are using a standalone plugin, provide options directly to the plugin:
 
-    docusaurus.config.js
-
-    ```
-    module.exports = {  plugins: [    [      '@docusaurus/plugin-google-analytics',      {        trackingID: 'UA-141789564-1',        anonymizeIP: true,      },    ],  ],};
+    ```js title="docusaurus.config.js"
+    module.exports = {
+      plugins: [
+        [
+          '@docusaurus/plugin-google-analytics',
+          {
+            trackingID: 'UA-141789564-1',
+            anonymizeIP: true,
+          },
+        ],
+      ],
+    };
     ```
   </Tab>
 </Tabs>

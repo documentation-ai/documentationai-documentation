@@ -231,7 +231,12 @@
               {
                 "path": "docs/migration",
                 "title": "Upgrading"
-              },
+              }
+            ],
+            "tab": "Docs"
+          },
+          {
+            "pages": [
               {
                 "path": "docs/cli",
                 "title": "CLI"
@@ -395,39 +400,6 @@
                 "path": "docs/category/miscellaneous"
               }
             ],
-            "tab": "Docs"
-          },
-          {
-            "pages": [
-              {
-                "path": "docs/cli",
-                "title": "CLI"
-              },
-              {
-                "path": "docs/docusaurus-core",
-                "title": "Client API"
-              },
-              {
-                "path": "docs/api/docusaurus-config",
-                "title": "docusaurus.config.js"
-              },
-              {
-                "path": "docs/api/plugin-methods",
-                "title": "Plugin method references"
-              },
-              {
-                "path": "docs/api/plugins",
-                "title": "Plugins"
-              },
-              {
-                "path": "docs/api/themes",
-                "title": "Themes"
-              },
-              {
-                "path": "docs/category/miscellaneous",
-                "title": "Miscellaneous"
-              }
-            ],
             "tab": "API"
           }
         ],
@@ -437,10 +409,6 @@
         "tabs": [
           {
             "pages": [
-              {
-                "path": "docs/3-1-1",
-                "title": "Introduction"
-              },
               {
                 "path": "docs/3-1-1/category/getting-started",
                 "title": "Getting Started"
@@ -629,18 +597,6 @@
               {
                 "path": "docs/3-1-1",
                 "title": "Introduction"
-              },
-              {
-                "path": "docs/3-1-1/category/getting-started",
-                "title": "Getting Started"
-              },
-              {
-                "path": "docs/3-1-1/category/guides",
-                "title": "Guides"
-              },
-              {
-                "path": "docs/3-1-1/advanced",
-                "title": "Advanced Guides"
               }
             ],
             "tab": "Docs"
@@ -653,28 +609,8 @@
           {
             "pages": [
               {
-                "path": "docs/3-0-1",
-                "title": "Introduction"
-              },
-              {
                 "group": "Getting Started",
                 "pages": [
-                  {
-                    "path": "docs/3-0-1/installation",
-                    "title": "Installation"
-                  },
-                  {
-                    "path": "docs/3-0-1/configuration",
-                    "title": "Configuration"
-                  },
-                  {
-                    "path": "docs/3-0-1/playground",
-                    "title": "Playground"
-                  },
-                  {
-                    "path": "docs/3-0-1/typescript-support",
-                    "title": "TypeScript Support"
-                  },
                   {
                     "path": "docs/3-0-1/installation",
                     "title": "Installation"
@@ -910,10 +846,6 @@
                 "path": "docs/3-0-1/migration"
               },
               {
-                "path": "docs/3-0-1/cli",
-                "title": "CLI"
-              },
-              {
                 "path": "docs/3-0-1/docusaurus-core",
                 "title": "Client API"
               },
@@ -1061,18 +993,6 @@
               {
                 "path": "docs/3-0-1",
                 "title": "Introduction"
-              },
-              {
-                "path": "docs/3-0-1/category/guides",
-                "title": "Guides"
-              },
-              {
-                "path": "docs/3-0-1/advanced",
-                "title": "Advanced Guides"
-              },
-              {
-                "path": "docs/3-0-1/migration",
-                "title": "Upgrading"
               }
             ],
             "tab": "Docs"
@@ -1082,30 +1002,6 @@
               {
                 "path": "docs/3-0-1/cli",
                 "title": "CLI"
-              },
-              {
-                "path": "docs/3-0-1/docusaurus-core",
-                "title": "Client API"
-              },
-              {
-                "path": "docs/3-0-1/api/docusaurus-config",
-                "title": "docusaurus.config.js"
-              },
-              {
-                "path": "docs/3-0-1/api/plugin-methods",
-                "title": "Plugin method references"
-              },
-              {
-                "path": "docs/3-0-1/api/plugins",
-                "title": "Plugins"
-              },
-              {
-                "path": "docs/3-0-1/api/themes",
-                "title": "Themes"
-              },
-              {
-                "path": "docs/3-0-1/api/misc/create-docusaurus",
-                "title": "Miscellaneous"
               }
             ],
             "tab": "API"
@@ -1324,6 +1220,36 @@
                 "title": "Migrating from v1 to v2"
               },
               {
+                "group": "Migrating from v1 to v2",
+                "pages": [
+                  {
+                    "path": "docs/2-x/migration",
+                    "title": "Migration overview"
+                  },
+                  {
+                    "path": "docs/2-x/migration/automated",
+                    "title": "Automated migration"
+                  },
+                  {
+                    "path": "docs/2-x/migration/manual",
+                    "title": "Manual migration"
+                  },
+                  {
+                    "path": "docs/2-x/migration/versioned-sites",
+                    "title": "Versioned sites"
+                  },
+                  {
+                    "path": "docs/2-x/migration/translated-sites",
+                    "title": "Translated sites"
+                  }
+                ]
+              }
+            ],
+            "tab": "Docs"
+          },
+          {
+            "pages": [
+              {
                 "path": "docs/2-x/cli",
                 "title": "CLI"
               },
@@ -1459,64 +1385,6 @@
                     "title": "📦 logger"
                   }
                 ]
-              },
-              {
-                "group": "Migrating from v1 to v2",
-                "pages": [
-                  {
-                    "path": "docs/2-x/migration",
-                    "title": "Migration overview"
-                  },
-                  {
-                    "path": "docs/2-x/migration/automated",
-                    "title": "Automated migration"
-                  },
-                  {
-                    "path": "docs/2-x/migration/manual",
-                    "title": "Manual migration"
-                  },
-                  {
-                    "path": "docs/2-x/migration/versioned-sites",
-                    "title": "Versioned sites"
-                  },
-                  {
-                    "path": "docs/2-x/migration/translated-sites",
-                    "title": "Translated sites"
-                  }
-                ]
-              }
-            ],
-            "tab": "Docs"
-          },
-          {
-            "pages": [
-              {
-                "path": "docs/2-x/cli",
-                "title": "CLI"
-              },
-              {
-                "path": "docs/2-x/docusaurus-core",
-                "title": "Client API"
-              },
-              {
-                "path": "docs/2-x/api/docusaurus-config",
-                "title": "docusaurus.config.js"
-              },
-              {
-                "path": "docs/2-x/api/plugin-methods",
-                "title": "Plugin method references"
-              },
-              {
-                "path": "docs/2-x/api/plugins",
-                "title": "Plugins"
-              },
-              {
-                "path": "docs/2-x/api/themes",
-                "title": "Themes"
-              },
-              {
-                "path": "docs/2-x/api/misc/create-docusaurus",
-                "title": "Miscellaneous"
               }
             ],
             "tab": "API"

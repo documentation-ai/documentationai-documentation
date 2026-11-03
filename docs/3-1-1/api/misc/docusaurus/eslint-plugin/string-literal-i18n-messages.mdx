@@ -15,14 +15,32 @@ Docusaurus offers the [`docusaurus write-translations`](https://docusaurus.io/do
 
 Examples of **incorrect** code for this rule:
 
-```
-const text = 'Some text to be translated'// Invalid <Translate> child<Translate>{text}</Translate>// Invalid message attributetranslate({message: text})
+```js
+const text = 'Some text to be translated'
+
+// Invalid <Translate> child
+<Translate>{text}</Translate>
+
+// Invalid message attribute
+translate({message: text})
 ```
 
 Examples of **correct** code for this rule:
 
-```
-// Valid <Translate> child<Translate>Some text to be translated</Translate>// Valid message attributetranslate({message: 'Some text to be translated'})// Valid <Translate> child using values object as prop<Translate values={{firstName: 'Sébastien'}}>  {'Welcome, {firstName}! How are you?'}</Translate>// Valid message attribute using values object as second argumenttranslate({message: 'The logo of site {siteName}'}, {siteName: 'Docusaurus'})
+```js
+// Valid <Translate> child
+<Translate>Some text to be translated</Translate>
+
+// Valid message attribute
+translate({message: 'Some text to be translated'})
+
+// Valid <Translate> child using values object as prop
+<Translate values={{firstName: 'Sébastien'}}>
+  {'Welcome, {firstName}! How are you?'}
+</Translate>
+
+// Valid message attribute using values object as second argument
+translate({message: 'The logo of site {siteName}'}, {siteName: 'Docusaurus'})
 ```
 
 ## When Not To Use It

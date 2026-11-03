@@ -8,8 +8,6 @@ ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc
 A [Rsdoctor](https://rsdoctor.dev/) plugin can help you troubleshoot the bundling phase of your Docusaurus site, supporting both Webpack and Rspack.
 
 <Callout kind="tip">
-  tip
-
   Use it to figure out which plugin or loader is slowing down the bundler, and focus your efforts on optimizing the bottleneck.
 </Callout>
 
@@ -17,25 +15,25 @@ A [Rsdoctor](https://rsdoctor.dev/) plugin can help you troubleshoot the bundlin
 
 <Tabs>
   <Tab title="npm">
-    ```
+    ```bash
     npm install --save @docusaurus/plugin-rsdoctor
     ```
   </Tab>
 
   <Tab title="Yarn">
-    ```
+    ```bash
     yarn add @docusaurus/plugin-rsdoctor
     ```
   </Tab>
 
   <Tab title="pnpm">
-    ```
+    ```bash
     pnpm add @docusaurus/plugin-rsdoctor
     ```
   </Tab>
 
   <Tab title="Bun">
-    ```
+    ```bash
     bun add @docusaurus/plugin-rsdoctor
     ```
   </Tab>
@@ -45,7 +43,7 @@ A [Rsdoctor](https://rsdoctor.dev/) plugin can help you troubleshoot the bundlin
 
 Accepted fields:
 
-| Name | Type | Default | Description`rsdoctorOptions``object``{}`The [Rsdoctor bundler plugin options](https://rsdoctor.dev/config/options/options), forwarded as is |
+| Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | `rsdoctorOptions` | `object` | `{}` | The [Rsdoctor bundler plugin options](https://rsdoctor.dev/config/options/options), forwarded as is |
 
@@ -55,8 +53,17 @@ Accepted fields:
 
 You can configure this plugin through plugin options.
 
-docusaurus.config.js
-
-```
-export default {  plugins: [    [      'rsdoctor',      {        rsdoctorOptions: {          mode: 'lite',        },      },    ],  ],};
+```js title="docusaurus.config.js"
+export default {
+  plugins: [
+    [
+      'rsdoctor',
+      {
+        rsdoctorOptions: {
+          mode: 'lite',
+        },
+      },
+    ],
+  ],
+};
 ```

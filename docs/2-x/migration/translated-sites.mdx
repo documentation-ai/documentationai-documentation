@@ -25,19 +25,29 @@ Each plugin has its own i18n subfolder, like: `website/i18n/fr/docusaurus-plugin
 
 With Docusaurus v1, you translate your pages with `<translate>`:
 
-```
-const translate = require('../../server/translate.js').translate;<h2>  <translate desc="the header description">    This header will be translated  </translate></h2>;
+```jsx
+const translate = require('../../server/translate.js').translate;
+
+<h2>
+  <translate desc="the header description">
+    This header will be translated
+  </translate>
+</h2>;
 ```
 
 On Docusaurus v2, you translate your pages with `<Translate>`
 
-```
-import Translate from '@docusaurus/Translate';<h2>  <Translate id="header.translation.id" description="the header description">    This header will be translated  </Translate></h2>;
+```jsx
+import Translate from '@docusaurus/Translate';
+
+<h2>
+  <Translate id="header.translation.id" description="the header description">
+    This header will be translated
+  </Translate>
+</h2>;
 ```
 
 <Callout kind="info">
-  note
-
   The `write-translations` CLI still works to extract translations from your code.
 
   The code translations are now added to `i18n/[locale]/code.json` using Chrome i18n JSON format.
@@ -60,8 +70,6 @@ This section will help you figure out how to **keep your existing v1 translation
 There are **multiple possible strategies** to migrate a Docusaurus v1 site using Crowdin, with different tradeoffs.
 
 <Callout kind="alert">
-  warning
-
   This documentation is a best-effort to help you migrate, please help us improve it if you find a better way!
 </Callout>
 
@@ -72,8 +80,6 @@ Before all, we recommend to:
 - Make Crowdin work for your v2 site, using a new and untranslated Crowdin project and the [Crowdin tutorial](/docs/2-x/i18n/crowdin)
 
 <Callout kind="danger">
-  danger
-
   Don't try to migrate without understanding both Crowdin and Docusaurus v2 i18n.
 </Callout>
 
@@ -82,8 +88,6 @@ Before all, we recommend to:
 To avoid any **risk of breaking your v1 site in production**, one possible strategy is to duplicate the original v1 Crowdin project.
 
 <Callout kind="info">
-  info
-
   This strategy was used to [upgrade the Jest website](https://jestjs.io/blog/2021/03/09/jest-website-upgrade).
 </Callout>
 
@@ -112,14 +116,10 @@ There is no ultimate guide we could write to fix these errors, but common errors
 You might want to repeat this pre-translation process, eventually trying the "Perfect" option and limiting pre-translation only some languages/files.
 
 <Callout kind="tip">
-  tip
-
   Use [`mdx-code-block`](/docs/2-x/i18n/crowdin#mdx-solutions) around problematic Markdown elements: Crowdin is less likely mess things up with code blocks.
 </Callout>
 
 <Callout kind="info">
-  note
-
   You will likely notice that some things were translated on your old project, but are now untranslated in your new project.
 
   The Crowdin Markdown parser is evolving other time and each Crowdin project has a different parser version, which can lead to pre-translation not being able to pre-translate all the strings.
@@ -130,8 +130,6 @@ You might want to repeat this pre-translation process, eventually trying the "Pe
 </Callout>
 
 <Callout kind="danger">
-  danger
-
   Crowdin has an "upload translations" feature, but in our experience it does not give very good results for Markdown
 </Callout>
 
@@ -140,8 +138,6 @@ You might want to repeat this pre-translation process, eventually trying the "Pe
 If you don't mind modifying your existing Crowdin project and risking to mess things up, it may be possible to use the Crowdin branch system.
 
 <Callout kind="alert">
-  warning
-
   This workflow has not been tested in practice, please report us how good it is.
 </Callout>
 

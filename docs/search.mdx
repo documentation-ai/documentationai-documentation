@@ -13,8 +13,6 @@ There are a few options you can use to add search to your website:
 - 👥 [Your own `SearchBar` component](#using-your-own-search)
 
 <Callout kind="info">
-  info
-
   🥇 Docusaurus provides **first-class support** for [Algolia DocSearch](#using-algolia-docsearch).
 
   👥 Other options are **maintained by the community**: please report bugs to their respective repositories.
@@ -33,13 +31,11 @@ DocSearch crawls your website once a week (the schedule is configurable from the
 If your website is [not eligible](https://docsearch.algolia.com/docs/who-can-apply) for the free, hosted version of DocSearch, or if your website sits behind a firewall and is not public, then you can [run your own](https://docsearch.algolia.com/docs/run-your-own/) DocSearch crawler.
 
 <Callout kind="info">
-  note
-
   By default, the Docusaurus preset generates a [sitemap.xml](https://docusaurus.io/sitemap.xml) that the Algolia crawler can use.
 </Callout>
 
 <Callout kind="info">
-  From the old docsearch?
+  <strong>From the old docsearch?</strong>
 
   You can read more about migration from the legacy DocSearch infra in [our blog post](https://docusaurus.io/blog/2021/11/21/algolia-docsearch-migration) or [the DocSearch migration docs](https://docsearch.algolia.com/docs/migrating-from-legacy).
 </Callout>
@@ -51,13 +47,13 @@ If your website is [not eligible](https://docsearch.algolia.com/docs/who-can-app
 After your application has been approved and deployed, you will receive an email with all the details for you to add DocSearch to your project. Editing and managing your crawls can be done via [the web interface](https://crawler.algolia.com/). Indices are readily available after deployment, so manual configuration usually isn't necessary.
 
 <Callout kind="danger">
-  Use the recommended crawler config
+  **Use the recommended crawler config**
 
   It is highly recommended to use our official [**Docusaurus v3 crawler configuration**](https://docsearch.algolia.com/docs/templates/#docusaurus-v3-template). We cannot support you if you choose a different crawler configuration.
 </Callout>
 
 <Callout kind="alert">
-  When updating your crawler config
+  **When updating your crawler config**
 
   The crawler configuration contains a `initialIndexSettings`, which will only be used to initialize your Algolia index if it does not exist yet.
 
@@ -73,25 +69,25 @@ Docusaurus' own `@docusaurus/preset-classic` supports Algolia DocSearch integrat
 
   <Tabs>
     <Tab title="npm">
-      ```
+      ```bash
       npm install --save @docusaurus/theme-search-algolia
       ```
     </Tab>
 
     <Tab title="Yarn">
-      ```
+      ```bash
       yarn add @docusaurus/theme-search-algolia
       ```
     </Tab>
 
     <Tab title="pnpm">
-      ```
+      ```bash
       pnpm add @docusaurus/theme-search-algolia
       ```
     </Tab>
 
     <Tab title="Bun">
-      ```
+      ```bash
       bun add @docusaurus/theme-search-algolia
       ```
     </Tab>
@@ -99,32 +95,71 @@ Docusaurus' own `@docusaurus/preset-classic` supports Algolia DocSearch integrat
 
   2. Register the theme in `docusaurus.config.js`:
 
-  docusaurus.config.js
-
-  ```
-  export default {  title: 'My site',  // ...  themes: ['@docusaurus/theme-search-algolia'],  themeConfig: {    // ...  },};
+  ```js title="docusaurus.config.js"
+  export default {
+    title: 'My site',
+    // ...
+    themes: ['@docusaurus/theme-search-algolia'],
+    themeConfig: {
+      // ...
+    },
+  };
   ```
 </Expandable>
 
 Then, add an `algolia` field in your `themeConfig`. <strong>[Apply for DocSearch](https://docsearch.algolia.com/apply/)</strong> to get your Algolia index and API key.
 
-docusaurus.config.js
+```js title="docusaurus.config.js"
+export default {
+  // ...
+  themeConfig: {
+    // ...
+    algolia: {
+      // The application ID provided by Algolia
+      appId: 'YOUR_APP_ID',
 
-```
-export default {  // ...  themeConfig: {    // ...    algolia: {      // The application ID provided by Algolia      appId: 'YOUR_APP_ID',      // Public API key: it is safe to commit it      apiKey: 'YOUR_SEARCH_API_KEY',      indexName: 'YOUR_INDEX_NAME',      // Optional: see doc section below      contextualSearch: true,      // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.      externalUrlRegex: 'external\\.com|domain\\.com',      // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs      replaceSearchResultPathname: {        from: '/docs/', // or as RegExp: /\/docs\//        to: '/',      },      // Optional: Algolia search parameters      searchParameters: {},      // Optional: path for search page that enabled by default (`false` to disable it)      searchPagePath: 'search',      // Optional: whether the insights feature is enabled or not on Docsearch (`false` by default)      insights: false,      // Optional: whether you want to use the new Ask AI feature (undefined by default)      askAi: 'YOUR_ALGOLIA_ASK_AI_ASSISTANT_ID',      //... other Algolia params    },  },};
+      // Public API key: it is safe to commit it
+      apiKey: 'YOUR_SEARCH_API_KEY',
+
+      indexName: 'YOUR_INDEX_NAME',
+
+      // Optional: see doc section below
+      contextualSearch: true,
+
+      // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
+      externalUrlRegex: 'external\\.com|domain\\.com',
+
+      // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
+      replaceSearchResultPathname: {
+        from: '/docs/', // or as RegExp: /\/docs\//
+        to: '/',
+      },
+
+      // Optional: Algolia search parameters
+      searchParameters: {},
+
+      // Optional: path for search page that enabled by default (`false` to disable it)
+      searchPagePath: 'search',
+
+      // Optional: whether the insights feature is enabled or not on Docsearch (`false` by default)
+      insights: false,
+
+      // Optional: whether you want to use the new Ask AI feature (undefined by default)
+      askAi: 'YOUR_ALGOLIA_ASK_AI_ASSISTANT_ID',
+
+      //... other Algolia params
+    },
+  },
+};
 ```
 
 <Callout kind="info">
-  info
-
   The `searchParameters` option used to be named `algoliaOptions` in Docusaurus v1.
 
   Refer to its [official DocSearch documentation](https://docsearch.algolia.com/docs/api#searchparameters) for possible values.
 </Callout>
 
 <Callout kind="alert">
-  warning
-
   The search feature will not work reliably until Algolia crawls your site.
 
   If search doesn't work after any significant change, please use the Algolia dashboard to **trigger a new crawl**.
@@ -136,10 +171,16 @@ Contextual search is **enabled by default**.
 
 It ensures that search results are **relevant to the current language and version**.
 
-docusaurus.config.js
-
-```
-export default {  // ...  themeConfig: {    // ...    algolia: {      contextualSearch: true,    },  },};
+```js title="docusaurus.config.js"
+export default {
+  // ...
+  themeConfig: {
+    // ...
+    algolia: {
+      contextualSearch: true,
+    },
+  },
+};
 ```
 
 Let's consider you have 2 docs versions (**v1** and **v2**) and 2 languages (`en` and `fr`).
@@ -154,23 +195,30 @@ To solve this problem, the contextual search feature understands that you are br
 - on `/fr/docs/v2/myDoc`, search results will only include **French** results for the **v2** docs (+ other unversioned pages)
 
 <Callout kind="info">
-  info
-
   When using `contextualSearch: true` (default), the contextual facet filters will be merged with the ones provided with `algolia.searchParameters.facetFilters` .
 
   For specific needs, you can disable `contextualSearch` and define your own `facetFilters`:
 
-  docusaurus.config.js
-
-  ```
-  export default {  // ...  themeConfig: {    // ...    algolia: {      contextualSearch: false,      searchParameters: {        facetFilters: ['language:en', ['filter1', 'filter2'], 'filter3'],      },    },  },};
+  ```js title="docusaurus.config.js"
+  export default {
+    // ...
+    themeConfig: {
+      // ...
+      algolia: {
+        contextualSearch: false,
+        searchParameters: {
+          facetFilters: ['language:en', ['filter1', 'filter2'], 'filter3'],
+        },
+      },
+    },
+  };
   ```
 
   Refer to the relevant [Algolia faceting documentation](https://www.algolia.com/doc/guides/managing-results/refine-results/faceting/).
 </Callout>
 
 <Callout kind="alert">
-  Contextual search doesn't work?
+  <strong>Contextual search doesn't work?</strong>
 
   If you only get search results when Contextual Search is disabled, this is very likely because of an [index configuration issue](#algolia-no-search-results).
 </Callout>
@@ -190,15 +238,30 @@ Ask AI brings the power of AI to your documentation:
 
 To enable it, add an `askAi` field in your `algolia` config:
 
-docusaurus.config.js
+```js title="docusaurus.config.js"
+export default {
+  // ...
+  themeConfig: {
+    // ...
+    algolia: {
+      askAi: 'YOUR_ALGOLIA_ASK_AI_ASSISTANT_ID',
 
-```
-export default {  // ...  themeConfig: {    // ...    algolia: {      askAi: 'YOUR_ALGOLIA_ASK_AI_ASSISTANT_ID',      // OR with custom parameters      askAi: {        assistantId: 'YOUR_ALGOLIA_ASK_AI_ASSISTANT_ID',        indexName: 'YOUR_ALGOLIA_INDEX_NAME',        apiKey: 'YOUR_ALGOLIA_API_KEY',        appId: 'YOUR_ALGOLIA_APP_ID',        suggestedQuestions: true, // Optional: enable suggested questions (default: false)      },      //... other Algolia params    },  },};
+      // OR with custom parameters
+      askAi: {
+        assistantId: 'YOUR_ALGOLIA_ASK_AI_ASSISTANT_ID',
+        indexName: 'YOUR_ALGOLIA_INDEX_NAME',
+        apiKey: 'YOUR_ALGOLIA_API_KEY',
+        appId: 'YOUR_ALGOLIA_APP_ID',
+        suggestedQuestions: true, // Optional: enable suggested questions (default: false)
+      },
+
+      //... other Algolia params
+    },
+  },
+};
 ```
 
 <Callout kind="info">
-  info
-
   To use Ask AI, you need to have an Algolia index with the Ask AI assistant enabled. Learn more about [how to setup Ask AI](https://docsearch.algolia.com/docs/v4/askai).
 </Callout>
 
@@ -208,20 +271,63 @@ By default, DocSearch comes with a fine-tuned theme that was designed for access
 
 Still, you can reuse the [Infima CSS variables](/docs/styling-layout#styling-your-site-with-infima) from Docusaurus to style DocSearch by editing the `/src/css/custom.css` file.
 
-/src/css/custom.css
+```css title="/src/css/custom.css"
+[data-theme='light'] .DocSearch {
+  /* --docsearch-primary-color: var(--ifm-color-primary); */
+  /* --docsearch-text-color: var(--ifm-font-color-base); */
+  --docsearch-muted-color: var(--ifm-color-secondary-darkest);
+  --docsearch-container-background: rgba(94, 100, 112, 0.7);
+  /* Modal */
+  --docsearch-modal-background: var(--ifm-color-secondary-lighter);
+  /* Search box */
+  --docsearch-searchbox-background: var(--ifm-color-secondary);
+  --docsearch-searchbox-focus-background: var(--ifm-color-white);
+  /* Hit */
+  --docsearch-hit-color: var(--ifm-font-color-base);
+  --docsearch-hit-active-color: var(--ifm-color-white);
+  --docsearch-hit-background: var(--ifm-color-white);
+  /* Footer */
+  --docsearch-footer-background: var(--ifm-color-white);
+}
 
-```
-[data-theme='light'] .DocSearch {  /* --docsearch-primary-color: var(--ifm-color-primary); */  /* --docsearch-text-color: var(--ifm-font-color-base); */  --docsearch-muted-color: var(--ifm-color-secondary-darkest);  --docsearch-container-background: rgba(94, 100, 112, 0.7);  /* Modal */  --docsearch-modal-background: var(--ifm-color-secondary-lighter);  /* Search box */  --docsearch-searchbox-background: var(--ifm-color-secondary);  --docsearch-searchbox-focus-background: var(--ifm-color-white);  /* Hit */  --docsearch-hit-color: var(--ifm-font-color-base);  --docsearch-hit-active-color: var(--ifm-color-white);  --docsearch-hit-background: var(--ifm-color-white);  /* Footer */  --docsearch-footer-background: var(--ifm-color-white);}[data-theme='dark'] .DocSearch {  --docsearch-text-color: var(--ifm-font-color-base);  --docsearch-muted-color: var(--ifm-color-secondary-darkest);  --docsearch-container-background: rgba(47, 55, 69, 0.7);  /* Modal */  --docsearch-modal-background: var(--ifm-background-color);  /* Search box */  --docsearch-searchbox-background: var(--ifm-background-color);  --docsearch-searchbox-focus-background: var(--ifm-color-black);  /* Hit */  --docsearch-hit-color: var(--ifm-font-color-base);  --docsearch-hit-active-color: var(--ifm-color-white);  --docsearch-hit-background: var(--ifm-color-emphasis-100);  /* Footer */  --docsearch-footer-background: var(--ifm-background-surface-color);  --docsearch-key-gradient: linear-gradient(    -26.5deg,    var(--ifm-color-emphasis-200) 0%,    var(--ifm-color-emphasis-100) 100%  );}
+[data-theme='dark'] .DocSearch {
+  --docsearch-text-color: var(--ifm-font-color-base);
+  --docsearch-muted-color: var(--ifm-color-secondary-darkest);
+  --docsearch-container-background: rgba(47, 55, 69, 0.7);
+  /* Modal */
+  --docsearch-modal-background: var(--ifm-background-color);
+  /* Search box */
+  --docsearch-searchbox-background: var(--ifm-background-color);
+  --docsearch-searchbox-focus-background: var(--ifm-color-black);
+  /* Hit */
+  --docsearch-hit-color: var(--ifm-font-color-base);
+  --docsearch-hit-active-color: var(--ifm-color-white);
+  --docsearch-hit-background: var(--ifm-color-emphasis-100);
+  /* Footer */
+  --docsearch-footer-background: var(--ifm-background-surface-color);
+  --docsearch-key-gradient: linear-gradient(
+    -26.5deg,
+    var(--ifm-color-emphasis-200) 0%,
+    var(--ifm-color-emphasis-100) 100%
+  );
+}
 ```
 
 ### Customizing the Algolia search behavior
 
 Algolia DocSearch supports a [list of options](https://docsearch.algolia.com/docs/api/) that you can pass to the `algolia` field in the `docusaurus.config.js` file.
 
-docusaurus.config.js
-
-```
-export default {  themeConfig: {    // ...    algolia: {      apiKey: 'YOUR_API_KEY',      indexName: 'YOUR_INDEX_NAME',      // Options...    },  },};
+```js title="docusaurus.config.js"
+export default {
+  themeConfig: {
+    // ...
+    algolia: {
+      apiKey: 'YOUR_API_KEY',
+      indexName: 'YOUR_INDEX_NAME',
+      // Options...
+    },
+  },
+};
 ```
 
 ### Editing the Algolia search component
@@ -230,25 +336,25 @@ If you prefer to edit the Algolia search React component, [swizzle](/docs/swizzl
 
 <Tabs>
   <Tab title="npm">
-    ```
+    ```bash
     npm run swizzle @docusaurus/theme-search-algolia SearchBar
     ```
   </Tab>
 
   <Tab title="Yarn">
-    ```
+    ```bash
     yarn swizzle @docusaurus/theme-search-algolia SearchBar
     ```
   </Tab>
 
   <Tab title="pnpm">
-    ```
+    ```bash
     pnpm run swizzle @docusaurus/theme-search-algolia SearchBar
     ```
   </Tab>
 
   <Tab title="Bun">
-    ```
+    ```bash
     bun run swizzle @docusaurus/theme-search-algolia SearchBar
     ```
   </Tab>
@@ -267,8 +373,16 @@ Seeing no search results is usually related to an **index configuration problem*
 <Expandable title="How to check if I have a config problem?">
   Docusaurus uses [Algolia faceting](https://www.algolia.com/doc/guides/managing-results/refine-results/faceting/) for its [Contextual Search](#contextual-search) feature, to create dynamic queries such as:
 
-  ```
-  [  "language:en",  [    "docusaurus_tag:default",    "docusaurus_tag:docs-default-3.2.1",    "docusaurus_tag:docs-community-current",    "docusaurus_tag:docs-docs-tests-current"  ]]
+  ```json
+  [
+    "language:en",
+    [
+      "docusaurus_tag:default",
+      "docusaurus_tag:docs-default-3.2.1",
+      "docusaurus_tag:docs-community-current",
+      "docusaurus_tag:docs-docs-tests-current"
+    ]
+  ]
   ```
 
   On the Algolia UI, your index should allow to create facet queries on fields `docusaurus_tag`, `language`, `lang`, `version`, `type`, as shown in the screenshot below:
@@ -279,7 +393,7 @@ Seeing no search results is usually related to an **index configuration problem*
 </Expandable>
 
 <Callout kind="danger">
-  Use the recommended configuration
+  **Use the recommended configuration**
 
   We [recommend a specific crawler configuration](#algolia-index-configuration) for a good reason. We cannot support you if you choose to use a different configuration.
 </Callout>
@@ -334,25 +448,25 @@ To use your own search, swizzle the `SearchBar` component in `@docusaurus/theme-
 
 <Tabs>
   <Tab title="npm">
-    ```
+    ```bash
     npm run swizzle @docusaurus/theme-classic SearchBar
     ```
   </Tab>
 
   <Tab title="Yarn">
-    ```
+    ```bash
     yarn swizzle @docusaurus/theme-classic SearchBar
     ```
   </Tab>
 
   <Tab title="pnpm">
-    ```
+    ```bash
     pnpm run swizzle @docusaurus/theme-classic SearchBar
     ```
   </Tab>
 
   <Tab title="Bun">
-    ```
+    ```bash
     bun run swizzle @docusaurus/theme-classic SearchBar
     ```
   </Tab>

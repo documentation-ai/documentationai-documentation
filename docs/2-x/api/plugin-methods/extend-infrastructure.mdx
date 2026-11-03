@@ -15,10 +15,17 @@ Use this for files that are consumed server-side, because theme files are automa
 
 Example:
 
-docusaurus-plugin/src/index.js
-
-```
-const path = require('path');module.exports = function (context, options) {  return {    name: 'docusaurus-plugin',    getPathsToWatch() {      const contentPath = path.resolve(context.siteDir, options.path);      return [`${contentPath}/**/*.{ts,tsx}`];    },  };};
+```js title="docusaurus-plugin/src/index.js"
+const path = require('path');
+module.exports = function (context, options) {
+  return {
+    name: 'docusaurus-plugin',
+    getPathsToWatch() {
+      const contentPath = path.resolve(context.siteDir, options.path);
+      return [`${contentPath}/**/*.{ts,tsx}`];
+    },
+  };
+};
 ```
 
 ## `extendCli(cli)`
@@ -26,17 +33,25 @@ const path = require('path');module.exports = function (context, options) {  ret
 Register an extra command to enhance the CLI of Docusaurus. `cli` is a [commander](https://www.npmjs.com/package/commander/v/5.1.0) object.
 
 <Callout kind="alert">
-  warning
-
   The commander version matters! We use commander v5, and make sure you are referring to the right version documentation for available APIs.
 </Callout>
 
 Example:
 
-docusaurus-plugin/src/index.js
-
-```
-module.exports = function (context, options) {  return {    name: 'docusaurus-plugin',    extendCli(cli) {      cli        .command('roll')        .description('Roll a random number between 1 and 1000')        .action(() => {          console.log(Math.floor(Math.random() * 1000 + 1));        });    },  };};
+```js title="docusaurus-plugin/src/index.js"
+module.exports = function (context, options) {
+  return {
+    name: 'docusaurus-plugin',
+    extendCli(cli) {
+      cli
+        .command('roll')
+        .description('Roll a random number between 1 and 1000')
+        .action(() => {
+          console.log(Math.floor(Math.random() * 1000 + 1));
+        });
+    },
+  };
+};
 ```
 
 <a id="getThemePath"></a>
@@ -47,10 +62,17 @@ Returns the path to the directory where the theme components can be found. When 
 
 For example, your `getThemePath` can be:
 
-my-theme/src/index.js
+```js title="my-theme/src/index.js"
+const path = require('path');
 
-```
-const path = require('path');module.exports = function (context, options) {  return {    name: 'my-theme',    getThemePath() {      return './theme';    },  };};
+module.exports = function (context, options) {
+  return {
+    name: 'my-theme',
+    getThemePath() {
+      return './theme';
+    },
+  };
+};
 ```
 
 <a id="getTypeScriptThemePath"></a>
@@ -60,8 +82,6 @@ const path = require('path');module.exports = function (context, options) {  ret
 Similar to `getThemePath()`, it should return the path to the directory where the source code of TypeScript theme components can be found. This path is purely for swizzling TypeScript theme components, and theme components under this path will **not** be resolved by Webpack. Therefore, it is not a replacement for `getThemePath()`. Typically, you can make the path returned by `getTypeScriptThemePath()` be your source directory, and make the path returned by `getThemePath()` be the compiled JavaScript output.
 
 <Callout kind="tip">
-  tip
-
   For TypeScript theme authors: you are strongly advised to make your compiled output as human-readable as possible. Only strip type annotations and don't transpile any syntaxes, because they will be handled by Webpack's Babel loader based on the targeted browser versions.
 
   You should also format these files with Prettier. Remember—JS files can and will be directly consumed by your users.
@@ -69,10 +89,22 @@ Similar to `getThemePath()`, it should return the path to the directory where th
 
 Example:
 
-my-theme/src/index.js
+```js title="my-theme/src/index.js"
+const path = require('path');
 
-```
-const path = require('path');module.exports = function (context, options) {  return {    name: 'my-theme',    getThemePath() {      // Where compiled JavaScript output lives      return '../lib/theme';    },    getTypeScriptThemePath() {      // Where TypeScript source code lives      return '../src/theme';    },  };};
+module.exports = function (context, options) {
+  return {
+    name: 'my-theme',
+    getThemePath() {
+      // Where compiled JavaScript output lives
+      return '../lib/theme';
+    },
+    getTypeScriptThemePath() {
+      // Where TypeScript source code lives
+      return '../src/theme';
+    },
+  };
+};
 ```
 
 ## `getSwizzleComponentList()`
@@ -81,8 +113,16 @@ const path = require('path');module.exports = function (context, options) {  ret
 
 Returns a list of stable components that are considered safe for swizzling. These components will be swizzlable without `--danger`. All components are considered unstable by default. If an empty array is returned, all components are considered unstable. If `undefined` is returned, all components are considered stable.
 
-my-theme/src/index.js
+```js title="my-theme/src/index.js"
+const swizzleAllowedComponents = [
+  'CodeBlock',
+  'DocSidebar',
+  'Footer',
+  'NotFound',
+  'SearchBar',
+  'hooks/useTheme',
+  'prism-include-languages',
+];
 
-```
-const swizzleAllowedComponents = [  'CodeBlock',  'DocSidebar',  'Footer',  'NotFound',  'SearchBar',  'hooks/useTheme',  'prism-include-languages',];myTheme.getSwizzleComponentList = () => swizzleAllowedComponents;
+myTheme.getSwizzleComponentList = () => swizzleAllowedComponents;
 ```

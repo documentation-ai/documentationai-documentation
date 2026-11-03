@@ -9,9 +9,15 @@ Docusaurus versioning is based on the `major.minor.patch` scheme and respects [*
 
 **Breaking changes** are only released on major version upgrades, and thoroughly documented in the following upgrade guides.
 
-[📄️To Docusaurus v3This documentation will help you upgrade your site from Docusaurus v2 to Docusaurus v3.](https://docusaurus.io/docs/migration/v3)
+<Columns cols={2}>
+  <Card title="To Docusaurus v3" href="https://docusaurus.io/docs/migration/v3">
+    This documentation will help you upgrade your site from Docusaurus v2 to Docusaurus v3.
+  </Card>
 
-[🗃️To Docusaurus v25 items](https://docusaurus.io/docs/migration/v2)
+  <Card title="To Docusaurus v2" href="https://docusaurus.io/docs/migration/v2">
+    5 items
+  </Card>
+</Columns>
 
 ## Troubleshooting upgrades
 
@@ -23,25 +29,25 @@ This CLI command is used to clear a Docusaurus site's generated assets, caches a
 
 <Tabs>
   <Tab title="npm">
-    ```
+    ```bash
     npm run clear
     ```
   </Tab>
 
   <Tab title="Yarn">
-    ```
+    ```bash
     yarn clear
     ```
   </Tab>
 
   <Tab title="pnpm">
-    ```
+    ```bash
     pnpm run clear
     ```
   </Tab>
 
   <Tab title="Bun">
-    ```
+    ```bash
     bun run clear
     ```
   </Tab>
@@ -53,13 +59,13 @@ Remove the `node_modules` folder and your package manager's lock file using the 
 
 <Tabs>
   <Tab title="Bash">
-    ```
+    ```bash
     rm -rf node_modules yarn.lock package-lock.json
     ```
   </Tab>
 
   <Tab title="PowerShell">
-    ```
+    ```powershell
     @('node_modules','yarn.lock','package-lock.json') | Remove-Item -Force -Recurse -ErrorAction SilentlyContinue
     ```
   </Tab>
@@ -69,25 +75,25 @@ Then reinstall packages and regenerate the `lock` file using:
 
 <Tabs>
   <Tab title="npm">
-    ```
+    ```bash
     npm install
     ```
   </Tab>
 
   <Tab title="Yarn">
-    ```
+    ```bash
     yarn install
     ```
   </Tab>
 
   <Tab title="pnpm">
-    ```
+    ```bash
     pnpm install
     ```
   </Tab>
 
   <Tab title="Bun">
-    ```
+    ```bash
     bun install
     ```
   </Tab>

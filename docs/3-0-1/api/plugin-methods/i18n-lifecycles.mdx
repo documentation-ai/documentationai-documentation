@@ -20,10 +20,26 @@ These files will be written by the [`write-translations` CLI](/docs/3-0-1/cli#do
 
 Example:
 
-my-plugin.js
-
-```
-export default function (context, options) {  return {    name: 'my-plugin',    async getTranslationFiles({content}) {      return [        {          path: 'sidebar-labels',          content: {            someSidebarLabel: {              message: 'Some Sidebar Label',              description: 'A label used in my plugin in the sidebar',            },            someLabelFromContent: content.myLabel,          },        },      ];    },  };}
+```js title="my-plugin.js"
+export default function (context, options) {
+  return {
+    name: 'my-plugin',
+    async getTranslationFiles({content}) {
+      return [
+        {
+          path: 'sidebar-labels',
+          content: {
+            someSidebarLabel: {
+              message: 'Some Sidebar Label',
+              description: 'A label used in my plugin in the sidebar',
+            },
+            someLabelFromContent: content.myLabel,
+          },
+        },
+      ];
+    },
+  };
+}
 ```
 
 <a id="translateContent"></a>
@@ -38,10 +54,21 @@ The `contentLoaded()` lifecycle will be called with the localized plugin content
 
 Example:
 
-my-plugin.js
-
-```
-export default function (context, options) {  return {    name: 'my-plugin',    translateContent({content, translationFiles}) {      const myTranslationFile = translationFiles.find(        (f) => f.path === 'myTranslationFile',      );      return {        ...content,        someContentLabel: myTranslationFile.someContentLabel.message,      };    },  };}
+```js title="my-plugin.js"
+export default function (context, options) {
+  return {
+    name: 'my-plugin',
+    translateContent({content, translationFiles}) {
+      const myTranslationFile = translationFiles.find(
+        (f) => f.path === 'myTranslationFile',
+      );
+      return {
+        ...content,
+        someContentLabel: myTranslationFile.someContentLabel.message,
+      };
+    },
+  };
+}
 ```
 
 <a id="translateThemeConfig"></a>
@@ -54,10 +81,21 @@ Returns the localized `themeConfig`.
 
 Example:
 
-my-plugin.js
-
-```
-export default function (context, options) {  return {    name: 'my-theme',    translateThemeConfig({themeConfig, translationFiles}) {      const myTranslationFile = translationFiles.find(        (f) => f.path === 'myTranslationFile',      );      return {        ...themeConfig,        someThemeConfigLabel: myTranslationFile.someThemeConfigLabel.message,      };    },  };}
+```js title="my-plugin.js"
+export default function (context, options) {
+  return {
+    name: 'my-theme',
+    translateThemeConfig({themeConfig, translationFiles}) {
+      const myTranslationFile = translationFiles.find(
+        (f) => f.path === 'myTranslationFile',
+      );
+      return {
+        ...themeConfig,
+        someThemeConfigLabel: myTranslationFile.someThemeConfigLabel.message,
+      };
+    },
+  };
+}
 ```
 
 ## `async getDefaultCodeTranslationMessages()`
@@ -68,8 +106,13 @@ It should return messages in `Record<string, string>`, where keys are translatio
 
 Example:
 
-my-plugin.js
-
-```
-export default function (context, options) {  return {    name: 'my-theme',    async getDefaultCodeTranslationMessages() {      return readJsonFile(`${context.i18n.currentLocale}.json`);    },  };}
+```js title="my-plugin.js"
+export default function (context, options) {
+  return {
+    name: 'my-theme',
+    async getDefaultCodeTranslationMessages() {
+      return readJsonFile(`${context.i18n.currentLocale}.json`);
+    },
+  };
+}
 ```

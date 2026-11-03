@@ -8,8 +8,6 @@ ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc
 You can use the versioning CLI to create a new documentation version based on the latest content in the `docs` directory. That specific set of documentation will then be preserved and accessible even as the documentation in the `docs` directory continues to evolve.
 
 <Callout kind="alert">
-  warning
-
   Think about it before starting to version your documentation - it can become difficult for contributors to help improve it!
 </Callout>
 
@@ -21,23 +19,41 @@ To better understand how versioning works and see if it suits your needs, you ca
 
 A typical versioned doc site looks like below:
 
-```
-website├── sidebars.json        # sidebar for the current docs version├── docs                 # docs directory for the current docs version│   ├── foo│   │   └── bar.md       # https://mysite.com/docs/next/foo/bar│   └── hello.md         # https://mysite.com/docs/next/hello├── versions.json        # file to indicate what versions are available├── versioned_docs│   ├── version-1.1.0│   │   ├── foo│   │   │   └── bar.md   # https://mysite.com/docs/foo/bar│   │   └── hello.md│   └── version-1.0.0│       ├── foo│       │   └── bar.md   # https://mysite.com/docs/1.0.0/foo/bar│       └── hello.md├── versioned_sidebars│   ├── version-1.1.0-sidebars.json│   └── version-1.0.0-sidebars.json├── docusaurus.config.js└── package.json
+```bash
+website
+├── sidebars.json        # sidebar for the current docs version
+├── docs                 # docs directory for the current docs version
+│   ├── foo
+│   │   └── bar.md       # https://mysite.com/docs/next/foo/bar
+│   └── hello.md         # https://mysite.com/docs/next/hello
+├── versions.json        # file to indicate what versions are available
+├── versioned_docs
+│   ├── version-1.1.0
+│   │   ├── foo
+│   │   │   └── bar.md   # https://mysite.com/docs/foo/bar
+│   │   └── hello.md
+│   └── version-1.0.0
+│       ├── foo
+│       │   └── bar.md   # https://mysite.com/docs/1.0.0/foo/bar
+│       └── hello.md
+├── versioned_sidebars
+│   ├── version-1.1.0-sidebars.json
+│   └── version-1.0.0-sidebars.json
+├── docusaurus.config.js
+└── package.json
 ```
 
 The `versions.json` file is a list of version names, ordered from newest to oldest.
 
 The table below explains how a versioned file maps to its version and the generated URL.
 
-| Path | Version | URL`versioned_docs/version-1.0.0/hello.md`1.0.0/docs/1.0.0/hello`versioned_docs/version-1.1.0/hello.md`1.1.0 (latest)/docs/hello`docs/hello.md`current/docs/next/hello |
+| Path | Version | URL |
 | --- | --- | --- |
 | `versioned_docs/version-1.0.0/hello.md` | 1.0.0 | /docs/1.0.0/hello |
 | `versioned_docs/version-1.1.0/hello.md` | 1.1.0 (latest) | /docs/hello |
 | `docs/hello.md` | current | /docs/next/hello |
 
 <Callout kind="tip">
-  tip
-
   The files in the `docs` directory belong to the `current` docs version.
 
   By default, the `current` docs version is labeled as `Next` and hosted under `/docs/next/*`, but it is entirely configurable to fit your project's release lifecycle.
@@ -66,25 +82,25 @@ Current version is defined by the **file system location**, while latest version
 
 <Tabs>
   <Tab title="npm">
-    ```
+    ```bash
     npm run docusaurus docs:version 1.1.0
     ```
   </Tab>
 
   <Tab title="Yarn">
-    ```
+    ```bash
     yarn docusaurus docs:version 1.1.0
     ```
   </Tab>
 
   <Tab title="pnpm">
-    ```
+    ```bash
     pnpm run docusaurus docs:version 1.1.0
     ```
   </Tab>
 
   <Tab title="Bun">
-    ```
+    ```bash
     bun run docusaurus docs:version 1.1.0
     ```
   </Tab>
@@ -103,14 +119,22 @@ When tagging a new version, the document versioning mechanism will:
 
 <Tabs>
   <Tab title="Current version structure">
-    ```
-    # The new file.docs/new.md# Edit the corresponding sidebar file.sidebars.js
+    ```bash
+    # The new file.
+    docs/new.md
+
+    # Edit the corresponding sidebar file.
+    sidebars.js
     ```
   </Tab>
 
   <Tab title="Older version structure">
-    ```
-    # The new file.versioned_docs/version-1.0.0/new.md# Edit the corresponding sidebar file.versioned_sidebars/version-1.0.0-sidebars.json
+    ```bash
+    # The new file.
+    versioned_docs/version-1.0.0/new.md
+
+    # Edit the corresponding sidebar file.
+    versioned_sidebars/version-1.0.0-sidebars.json
     ```
   </Tab>
 </Tabs>
@@ -133,8 +157,12 @@ You can delete/remove versions as well.
 
 Example:
 
-```
-[  "2.0.0",  "1.9.0",- "1.8.0"]
+```diff
+[
+  "2.0.0",
+  "1.9.0",
+- "1.8.0"
+]
 ```
 
 2. Delete the versioned docs directory. Example: `versioned_docs/version-1.8.0`.
@@ -151,10 +179,21 @@ Docusaurus defaults work great for the first use case. We will label the current
 
 **For the 2nd use case**: if you release v1 and don't plan to work on v2 anytime soon, instead of versioning v1 and having to maintain the docs in 2 folders (`./docs` \+ `./versioned_docs/version-1.0.0`), you may consider "pretending" that the current version is a cut version by giving it a path and a label:
 
-docusaurus.config.js
-
-```
-module.exports = {  presets: [    '@docusaurus/preset-classic',    docs: {      lastVersion: 'current',      versions: {        current: {          label: '1.0.0',          path: '1.0.0',        },      },    },  ],};
+```js title="docusaurus.config.js"
+module.exports = {
+  presets: [
+    '@docusaurus/preset-classic',
+    docs: {
+      lastVersion: 'current',
+      versions: {
+        current: {
+          label: '1.0.0',
+          path: '1.0.0',
+        },
+      },
+    },
+  ],
+};
 ```
 
 The docs in `./docs` will be served at `/docs/1.0.0` instead of `/docs/next`, and `1.0.0` will become the default version we link to in the navbar dropdown, and you will only need to maintain a single `./docs` folder.
@@ -209,7 +248,7 @@ Should you cut a new documentation version 1.0.1? **You probably shouldn't**. 1.
 As a good rule of thumb, try to keep the number of your versions below 10. You will **very likely** to have a lot of obsolete versioned documentation that nobody even reads anymore. For example, [Jest](https://jestjs.io/versions) is currently in version `27.4`, and only maintains several latest documentation versions with the lowest being `25.X`. Keep it small 😊
 
 <Callout kind="tip">
-  archive older versions
+  **archive older versions**
 
   If you deploy your site on a Jamstack provider (e.g. [Netlify](/docs/2-x/deployment)), the provider will save each production build as a snapshot under an immutable URL. You can include archived versions that will never be rebuilt as external links to these immutable URLs. The Jest website and the Docusaurus website both use such pattern to keep the number of actively built versions low.
 </Callout>
@@ -218,16 +257,19 @@ As a good rule of thumb, try to keep the number of your versions below 10. You w
 
 Don't use relative paths import within the docs. Because when we cut a version the paths no longer work (the nesting level is different, among other reasons). You can utilize the `@site` alias provided by Docusaurus that points to the `website` directory. Example:
 
-```
-- import Foo from '../src/components/Foo';+ import Foo from '@site/src/components/Foo';
+```diff
+- import Foo from '../src/components/Foo';
++ import Foo from '@site/src/components/Foo';
 ```
 
 ### Link docs by file paths
 
 Refer to other docs by relative file paths with the `.md` extension, so that Docusaurus can rewrite them to actual URL paths during building. Files will be linked to the correct corresponding version.
 
-```
-The [@hello](hello.mdx#paginate) document is great!See the [Tutorial](../getting-started/tutorial.mdx) for more info.
+```md
+The [@hello](hello.mdx#paginate) document is great!
+
+See the [Tutorial](../getting-started/tutorial.mdx) for more info.
 ```
 
 ### Global or versioned collocated assets
@@ -236,12 +278,16 @@ You should decide if assets like images and files are per-version or shared betw
 
 If your assets should be versioned, put them in the docs version, and use relative paths:
 
-```
-![img alt](./myImage.png)[download this file](./file.pdf)
+```md
+![img alt](./myImage.png)
+
+[download this file](./file.pdf)
 ```
 
 If your assets are global, put them in `/static` and use absolute paths:
 
-```
-![img alt](/myImage.png)[download this file](/file.pdf)
+```md
+![img alt](/myImage.png)
+
+[download this file](/file.pdf)
 ```

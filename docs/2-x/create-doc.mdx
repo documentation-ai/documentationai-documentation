@@ -7,17 +7,45 @@ ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc
 
 Create a Markdown file, `greeting.md`, and place it under the `docs` directory.
 
-```
-website # root directory of your site├── docs│   └── greeting.md├── src│   └── pages├── docusaurus.config.js├── ...
+```bash
+website # root directory of your site
+├── docs
+│   └── greeting.md
+├── src
+│   └── pages
+├── docusaurus.config.js
+├── ...
 ```
 
-```
----description: Create a doc page with rich content.---# Hello from DocusaurusAre you ready to create the documentation site for your open source project?## Headerswill show up on the table of contents on the upper rightSo that your users will know what this page is all about without scrolling down or even without reading too much.## Only h2 and h3 will be in the TOC by default.You can configure the TOC heading levels either per-document or in the theme configuration.The headers are well-spaced so that the hierarchy is clear.- lists will help you- present the key points- that you want your users to remember  - and you may nest them    - multiple times
+```md
+---
+description: Create a doc page with rich content.
+---
+
+# Hello from Docusaurus
+
+Are you ready to create the documentation site for your open source project?
+
+## Headers
+
+will show up on the table of contents on the upper right
+
+So that your users will know what this page is all about without scrolling down or even without reading too much.
+
+## Only h2 and h3 will be in the TOC by default.
+
+You can configure the TOC heading levels either per-document or in the theme configuration.
+
+The headers are well-spaced so that the hierarchy is clear.
+
+- lists will help you
+- present the key points
+- that you want your users to remember
+  - and you may nest them
+    - multiple times
 ```
 
 <Callout kind="info">
-  note
-
   All files prefixed with an underscore (`_`) under the `docs` directory are treated as "partial" pages and will be ignored by default.
 
   Read more about [importing partial pages](/docs/2-x/markdown-features/react#importing-markdown).
@@ -31,13 +59,17 @@ The [front matter](/docs/2-x/markdown-features#front-matter) is used to provide 
 
 Optionally, you can add tags to your doc pages, which introduces another dimension of categorization in addition to the [docs sidebar](/docs/2-x/sidebar). Tags are passed in the front matter as a list of labels:
 
-```
----id: doc-with-tagstitle: A doc with tagstags:  - Demo  - Getting started---
+```md
+---
+id: doc-with-tags
+title: A doc with tags
+tags:
+  - Demo
+  - Getting started
+---
 ```
 
 <Callout kind="tip">
-  tip
-
   Tags can also be declared with `tags: [Demo, Getting started]`.
 
   Read more about all the possible [Yaml array syntaxes](https://www.w3schools.io/file/yaml-arrays/).
@@ -53,14 +85,22 @@ Every document has a unique `id`. By default, a document `id` is the name of the
 
 For example, the ID of `greeting.md` is `greeting`, and the ID of `guide/hello.md` is `guide/hello`.
 
-```
-website # Root directory of your site└── docs   ├── greeting.md   └── guide      └── hello.md
+```bash
+website # Root directory of your site
+└── docs
+   ├── greeting.md
+   └── guide
+      └── hello.md
 ```
 
 However, the **last part** of the `id` can be defined by the user in the front matter. For example, if `guide/hello.md`'s content is defined as below, its final `id` is `guide/part1`.
 
-```
----id: part1---Lorem ipsum
+```md
+---
+id: part1
+---
+
+Lorem ipsum
 ```
 
 The ID is used to refer to a document when hand-writing sidebars, or when using docs-related layout components or hooks.
@@ -71,21 +111,26 @@ By default, a document's URL location is its file path relative to the `docs` fo
 
 For example, suppose your site structure looks like this:
 
-```
-website # Root directory of your site└── docs    └── guide        └── hello.md
+```bash
+website # Root directory of your site
+└── docs
+    └── guide
+        └── hello.md
 ```
 
 By default `hello.md` will be available at `/docs/guide/hello`. You can change its URL location to `/docs/bonjour`:
 
-```
----slug: /bonjour---Lorem ipsum
+```md
+---
+slug: /bonjour
+---
+
+Lorem ipsum
 ```
 
 `slug` will be appended to the doc plugin's `routeBasePath`, which is `/docs` by default. See [Docs-only mode](/docs/2-x/docs-introduction#docs-only-mode) for how to remove the `/docs` part from the URL.
 
 <Callout kind="info">
-  note
-
   It is possible to use:
 
   - absolute slugs: `slug: /mySlug`, `slug: /`...
@@ -94,8 +139,13 @@ By default `hello.md` will be available at `/docs/guide/hello`. You can change i
 
 If you want a document to be available at the root, and have a path like `https://docusaurus.io/docs/`, you can use the slug front matter:
 
-```
----id: my-home-docslug: /---Lorem ipsum
+```md
+---
+id: my-home-doc
+slug: /
+---
+
+Lorem ipsum
 ```
 
 ### Sidebars

@@ -15,8 +15,10 @@ Please read [KaTeX](https://katex.org) documentation for more details.
 
 Write inline math equations by wrapping LaTeX equations between `$`:
 
-```
-Let $f\colon[a,b]\to\R$ be Riemann integrable. Let $F\colon[a,b]\to\R$ be$F(x)=\int_{a}^{x} f(t)\,dt$. Then $F$ is continuous, and at all $x$ such that$f$ is continuous at $x$, $F$ is differentiable at $x$ with $F'(x)=f(x)$.
+```latex
+Let $f\colon[a,b]\to\R$ be Riemann integrable. Let $F\colon[a,b]\to\R$ be
+$F(x)=\int_{a}^{x} f(t)\,dt$. Then $F$ is continuous, and at all $x$ such that
+$f$ is continuous at $x$, $F$ is differentiable at $x$ with $F'(x)=f(x)$.
 ```
 
 http://localhost:3000
@@ -27,14 +29,18 @@ Let f ⁣:[a,b]→Rf\\colon[a,b] \\to \\Rf:[a,b]→R be Riemann integrable. Let 
 
 For equation block or display mode, use ```` ```math ```` fenced code blocks.
 
-````
-```mathI = \int_0^{2\pi} \sin(x)\,dx```
+````latex
+```math
+I = \int_0^{2\pi} \sin(x)\,dx
+```
 ````
 
 You can also use line breaks and `$$`, although this syntax relies on a [Markdown syntax extension](https://github.com/micromark/micromark-extension-math) and is less portable:
 
-```
-$$I = \int_0^{2\pi} \sin(x)\,dx$$
+```latex
+$$
+I = \int_0^{2\pi} \sin(x)\,dx
+$$
 ```
 
 http://localhost:3000
@@ -47,74 +53,137 @@ To enable KaTeX, you need to install `remark-math` and `rehype-katex` plugins.
 
 <Tabs>
   <Tab title="npm">
-    ```
+    ```bash
     npm install --save remark-math@6 rehype-katex@7
     ```
   </Tab>
 
   <Tab title="Yarn">
-    ```
+    ```bash
     yarn add remark-math@6 rehype-katex@7
     ```
   </Tab>
 
   <Tab title="pnpm">
-    ```
+    ```bash
     pnpm add remark-math@6 rehype-katex@7
     ```
   </Tab>
 
   <Tab title="Bun">
-    ```
+    ```bash
     bun add remark-math@6 rehype-katex@7
     ```
   </Tab>
 </Tabs>
 
 <Callout kind="alert">
-  warning
-
   Make sure to use `remark-math 6` and `rehype-katex 7` for Docusaurus v3 (using MDX v3). We can't guarantee other versions will work.
 </Callout>
 
 Those 2 plugins are now [**only available as ES Modules**](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c). To simplify usage, it is recommended to use an [**ES Modules**](https://flaviocopes.com/es-modules/) config file:
 
-ES module docusaurus.config.js
+```js title="ES module docusaurus.config.js"
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
 
-```
-import remarkMath from 'remark-math';import rehypeKatex from 'rehype-katex';export default {  presets: [    [      '@docusaurus/preset-classic',      {        docs: {          path: 'docs',          remarkPlugins: [remarkMath],          rehypePlugins: [rehypeKatex],        },      },    ],  ],};
+export default {
+  presets: [
+    [
+      '@docusaurus/preset-classic',
+      {
+        docs: {
+          path: 'docs',
+          remarkPlugins: [remarkMath],
+          rehypePlugins: [rehypeKatex],
+        },
+      },
+    ],
+  ],
+};
 ```
 
 <Expandable title="Using a CommonJS config file?">
   If you decide to use a CommonJS config file, it is possible to load those ES module plugins thanks to dynamic imports and an async config creator function:
 
-  CommonJS module docusaurus.config.js
-
-  ```
-  module.exports = async function createConfigAsync() {  return {    presets: [      [        '@docusaurus/preset-classic',        {          docs: {            path: 'docs',            remarkPlugins: [(await import('remark-math')).default],            rehypePlugins: [(await import('rehype-katex')).default],          },        },      ],    ],  };};
+  ```js title="CommonJS module docusaurus.config.js"
+  module.exports = async function createConfigAsync() {
+    return {
+      presets: [
+        [
+          '@docusaurus/preset-classic',
+          {
+            docs: {
+              path: 'docs',
+              remarkPlugins: [(await import('remark-math')).default],
+              rehypePlugins: [(await import('rehype-katex')).default],
+            },
+          },
+        ],
+      ],
+    };
+  };
   ```
 </Expandable>
 
 Include the KaTeX CSS in your config under `stylesheets`:
 
-```
-stylesheets: [  {    href: 'https://cdn.jsdelivr.net/npm/[email protected]/dist/katex.min.css',    type: 'text/css',    integrity:      'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',    crossorigin: 'anonymous',  },],
+```js
+stylesheets: [
+  {
+    href: 'https://cdn.jsdelivr.net/npm/[email protected]/dist/katex.min.css',
+    type: 'text/css',
+    integrity:
+      'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
+    crossorigin: 'anonymous',
+  },
+],
 ```
 
 Overall the changes look like:
 
-docusaurus.config.js
+```js title="docusaurus.config.js"
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
 
-```
-import remarkMath from 'remark-math';import rehypeKatex from 'rehype-katex';export default {  title: 'Docusaurus',  tagline: 'Build optimized websites quickly, focus on your content',  presets: [    [      '@docusaurus/preset-classic',      {        docs: {          path: 'docs',          remarkPlugins: [remarkMath],          rehypePlugins: [rehypeKatex],        },      },    ],  ],  stylesheets: [    {      href: 'https://cdn.jsdelivr.net/npm/[email protected]/dist/katex.min.css',      type: 'text/css',      integrity:        'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',      crossorigin: 'anonymous',    },  ],};
+export default {
+  title: 'Docusaurus',
+  tagline: 'Build optimized websites quickly, focus on your content',
+  presets: [
+    [
+      '@docusaurus/preset-classic',
+      {
+        docs: {
+          path: 'docs',
+          remarkPlugins: [remarkMath],
+          rehypePlugins: [rehypeKatex],
+        },
+      },
+    ],
+  ],
+  stylesheets: [
+    {
+      href: 'https://cdn.jsdelivr.net/npm/[email protected]/dist/katex.min.css',
+      type: 'text/css',
+      integrity:
+        'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
+      crossorigin: 'anonymous',
+    },
+  ],
+};
 ```
 
 ## Self-hosting KaTeX assets
 
 Loading stylesheets, fonts, and JavaScript libraries from CDN sources is a good practice for popular libraries and assets, since it reduces the amount of assets you have to host. In case you prefer to self-host the `katex.min.css` (along with required KaTeX fonts), you can download the latest version from [KaTeX GitHub releases](https://github.com/KaTeX/KaTeX/releases), extract and copy `katex.min.css` and `fonts` directory (only `.woff2` font types should be enough) to your site's `static` directory, and in `docusaurus.config.js`, replace the stylesheet's `href` from the CDN URL to your local path (say, `/katex/katex.min.css`).
 
-docusaurus.config.js
-
-```
-export default {  stylesheets: [    {      href: '/katex/katex.min.css',      type: 'text/css',    },  ],};
+```js title="docusaurus.config.js"
+export default {
+  stylesheets: [
+    {
+      href: '/katex/katex.min.css',
+      type: 'text/css',
+    },
+  ],
+};
 ```

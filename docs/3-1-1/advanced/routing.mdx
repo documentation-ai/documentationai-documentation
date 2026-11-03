@@ -72,8 +72,41 @@ When writing links in Markdown, you could either mean a *file path*, or a *URL p
 The following directory structure may help you visualize this file → URL mapping. Assume that there's no slug customization in any page.
 
 <Expandable title="A sample site structure">
-  ```
-  .├── blog                            # blog plugin has routeBasePath: '/blog'│   ├── 2019-05-28-first-blog-post.md       # -> /blog/2019/05/28/first-blog-post│   ├── 2019-05-29-long-blog-post.md        # -> /blog/2019/05/29/long-blog-post│   ├── 2021-08-01-mdx-blog-post.mdx        # -> /blog/2021/08/01/mdx-blog-post│   └── 2021-08-26-welcome│       ├── docusaurus-plushie-banner.jpeg│       └── index.md                        # -> /blog/2021/08/26/welcome├── docs                            # docs plugin has routeBasePath: '/docs'; current version has base path '/'│   ├── intro.md                            # -> /docs/intro│   ├── tutorial-basics│   │   ├── _category_.json│   │   ├── congratulations.md              # -> /docs/tutorial-basics/congratulations│   │   └── markdown-features.mdx           # -> /docs/tutorial-basics/markdown-features│   └── tutorial-extras│       ├── _category_.json│       ├── manage-docs-versions.md         # -> /docs/tutorial-extras/manage-docs-versions│       └── translate-your-site.md          # -> /docs/tutorial-extras/translate-your-site├── src│   └── pages                       # pages plugin has routeBasePath: '/'│       ├── index.module.css│       ├── index.tsx                       # -> /│       └── markdown-page.md                # -> /markdown-page└── versioned_docs    └── version-1.0.0               # version has base path '/1.0.0'        ├── intro.md                        # -> /docs/1.0.0/intro        ├── tutorial-basics        │   ├── _category_.json        │   ├── congratulations.md          # -> /docs/1.0.0/tutorial-basics/congratulations        │   └── markdown-features.mdx       # -> /docs/1.0.0/tutorial-basics/markdown-features        └── tutorial-extras            ├── _category_.json            ├── manage-docs-versions.md     # -> /docs/1.0.0/tutorial-extras/manage-docs-versions            └── translate-your-site.md      # -> /docs/1.0.0/tutorial-extras/translate-your-site
+  ```bash
+  .
+  ├── blog                            # blog plugin has routeBasePath: '/blog'
+  │   ├── 2019-05-28-first-blog-post.md       # -> /blog/2019/05/28/first-blog-post
+  │   ├── 2019-05-29-long-blog-post.md        # -> /blog/2019/05/29/long-blog-post
+  │   ├── 2021-08-01-mdx-blog-post.mdx        # -> /blog/2021/08/01/mdx-blog-post
+  │   └── 2021-08-26-welcome
+  │       ├── docusaurus-plushie-banner.jpeg
+  │       └── index.md                        # -> /blog/2021/08/26/welcome
+  ├── docs                            # docs plugin has routeBasePath: '/docs'; current version has base path '/'
+  │   ├── intro.md                            # -> /docs/intro
+  │   ├── tutorial-basics
+  │   │   ├── _category_.json
+  │   │   ├── congratulations.md              # -> /docs/tutorial-basics/congratulations
+  │   │   └── markdown-features.mdx           # -> /docs/tutorial-basics/markdown-features
+  │   └── tutorial-extras
+  │       ├── _category_.json
+  │       ├── manage-docs-versions.md         # -> /docs/tutorial-extras/manage-docs-versions
+  │       └── translate-your-site.md          # -> /docs/tutorial-extras/translate-your-site
+  ├── src
+  │   └── pages                       # pages plugin has routeBasePath: '/'
+  │       ├── index.module.css
+  │       ├── index.tsx                       # -> /
+  │       └── markdown-page.md                # -> /markdown-page
+  └── versioned_docs
+      └── version-1.0.0               # version has base path '/1.0.0'
+          ├── intro.md                        # -> /docs/1.0.0/intro
+          ├── tutorial-basics
+          │   ├── _category_.json
+          │   ├── congratulations.md          # -> /docs/1.0.0/tutorial-basics/congratulations
+          │   └── markdown-features.mdx       # -> /docs/1.0.0/tutorial-basics/markdown-features
+          └── tutorial-extras
+              ├── _category_.json
+              ├── manage-docs-versions.md     # -> /docs/1.0.0/tutorial-extras/manage-docs-versions
+              └── translate-your-site.md      # -> /docs/1.0.0/tutorial-extras/translate-your-site
   ```
 </Expandable>
 
@@ -88,8 +121,56 @@ The `/docs/advanced/routing` route can correspond to either `/docs/advanced/rout
 For example, the build output of the directory above is (ignoring other assets and JS bundle):
 
 <Expandable title="Output of the above workspace">
-  ```
-  build├── 404.html                      # /404/├── blog│   ├── archive│   │   └── index.html            # /blog/archive/│   ├── first-blog-post│   │   └── index.html            # /blog/first-blog-post/│   ├── index.html                # /blog/│   ├── long-blog-post│   │   └── index.html            # /blog/long-blog-post/│   ├── mdx-blog-post│   │   └── index.html            # /blog/mdx-blog-post/│   ├── tags│   │   ├── docusaurus│   │   │   └── index.html        # /blog/tags/docusaurus/│   │   ├── hola│   │   │   └── index.html        # /blog/tags/hola/│   │   └── index.html            # /blog/tags/│   └── welcome│       └── index.html            # /blog/welcome/├── docs│   ├── 1.0.0│   │   ├── intro│   │   │   └── index.html        # /docs/1.0.0/intro/│   │   ├── tutorial-basics│   │   │   ├── congratulations│   │   │   │   └── index.html    # /docs/1.0.0/tutorial-basics/congratulations/│   │   │   └── markdown-features│   │   │       └── index.html    # /docs/1.0.0/tutorial-basics/markdown-features/│   │   └── tutorial-extras│   │       ├── manage-docs-versions│   │       │   └── index.html    # /docs/1.0.0/tutorial-extras/manage-docs-versions/│   │       └── translate-your-site│   │           └── index.html    # /docs/1.0.0/tutorial-extras/translate-your-site/│   ├── intro│   │   └── index.html            # /docs/1.0.0/intro/│   ├── tutorial-basics│   │   ├── congratulations│   │   │   └── index.html        # /docs/tutorial-basics/congratulations/│   │   └── markdown-features│   │       └── index.html        # /docs/tutorial-basics/markdown-features/│   └── tutorial-extras│       ├── manage-docs-versions│       │   └── index.html        # /docs/tutorial-extras/manage-docs-versions/│       └── translate-your-site│           └── index.html        # /docs/tutorial-extras/translate-your-site/├── index.html                    # /└── markdown-page    └── index.html                # /markdown-page/
+  ```bash
+  build
+  ├── 404.html                      # /404/
+  ├── blog
+  │   ├── archive
+  │   │   └── index.html            # /blog/archive/
+  │   ├── first-blog-post
+  │   │   └── index.html            # /blog/first-blog-post/
+  │   ├── index.html                # /blog/
+  │   ├── long-blog-post
+  │   │   └── index.html            # /blog/long-blog-post/
+  │   ├── mdx-blog-post
+  │   │   └── index.html            # /blog/mdx-blog-post/
+  │   ├── tags
+  │   │   ├── docusaurus
+  │   │   │   └── index.html        # /blog/tags/docusaurus/
+  │   │   ├── hola
+  │   │   │   └── index.html        # /blog/tags/hola/
+  │   │   └── index.html            # /blog/tags/
+  │   └── welcome
+  │       └── index.html            # /blog/welcome/
+  ├── docs
+  │   ├── 1.0.0
+  │   │   ├── intro
+  │   │   │   └── index.html        # /docs/1.0.0/intro/
+  │   │   ├── tutorial-basics
+  │   │   │   ├── congratulations
+  │   │   │   │   └── index.html    # /docs/1.0.0/tutorial-basics/congratulations/
+  │   │   │   └── markdown-features
+  │   │   │       └── index.html    # /docs/1.0.0/tutorial-basics/markdown-features/
+  │   │   └── tutorial-extras
+  │   │       ├── manage-docs-versions
+  │   │       │   └── index.html    # /docs/1.0.0/tutorial-extras/manage-docs-versions/
+  │   │       └── translate-your-site
+  │   │           └── index.html    # /docs/1.0.0/tutorial-extras/translate-your-site/
+  │   ├── intro
+  │   │   └── index.html            # /docs/1.0.0/intro/
+  │   ├── tutorial-basics
+  │   │   ├── congratulations
+  │   │   │   └── index.html        # /docs/tutorial-basics/congratulations/
+  │   │   └── markdown-features
+  │   │       └── index.html        # /docs/tutorial-basics/markdown-features/
+  │   └── tutorial-extras
+  │       ├── manage-docs-versions
+  │       │   └── index.html        # /docs/tutorial-extras/manage-docs-versions/
+  │       └── translate-your-site
+  │           └── index.html        # /docs/tutorial-extras/translate-your-site/
+  ├── index.html                    # /
+  └── markdown-page
+      └── index.html                # /markdown-page/
   ```
 </Expandable>
 
@@ -111,10 +192,19 @@ On the client side, we offer `@docusaurus/router` to access the page's route. `@
 
 This API is **SSR safe**, as opposed to the browser-only `window.location`.
 
-myComponent.js
+```jsx title="myComponent.js"
+import React from 'react';
+import {useLocation} from '@docusaurus/router';
 
-```
-import React from 'react';import {useLocation} from '@docusaurus/router';export function PageRoute() {  // React router provides the current component's route, even in SSR  const location = useLocation();  return (    <span>      We are currently on <code>{location.pathname}</code>    </span>  );}
+export function PageRoute() {
+  // React router provides the current component's route, even in SSR
+  const location = useLocation();
+  return (
+    <span>
+      We are currently on <code>{location.pathname}</code>
+    </span>
+  );
+}
 ```
 
 http://localhost:3000
@@ -127,7 +217,7 @@ Docusaurus builds a [single-page application](https://developer.mozilla.org/en-U
 
 If you put some HTML pages under the `static` folder, they will be copied to the build output and therefore become accessible as part of your website, yet it's not part of the Docusaurus route system. We provide a `pathname://` protocol that allows you to redirect to another part of your domain in a non-SPA fashion, as if this route is an external link.
 
-```
+```md
 - [pathname:///pure-html](pathname:///pure-html)
 ```
 
@@ -137,10 +227,10 @@ http://localhost:3000
 
 The `pathname://` protocol is useful for referencing any content in the static folder. For example, Docusaurus would convert [all Markdown static assets to require() calls](https://docusaurus.io/docs/3.1.1/markdown-features/assets#static-assets). You can use `pathname://` to keep it a regular link instead of being hashed by Webpack.
 
-my-doc.md
+```md title="my-doc.md"
+![An image from the static](pathname:///img/docusaurus.png)
 
-```
-![An image from the static](pathname:///img/docusaurus.png)[An asset from the static](pathname:///files/asset.pdf)
+[An asset from the static](pathname:///files/asset.pdf)
 ```
 
 Docusaurus will only strip the `pathname://` prefix without processing the content.

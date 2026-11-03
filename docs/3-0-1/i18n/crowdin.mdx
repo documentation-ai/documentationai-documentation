@@ -12,16 +12,12 @@ You can integrate Docusaurus with the **tools and SaaS of your choice**, as long
 We document the usage of [Crowdin](https://crowdin.com/), as **one** possible **integration example**.
 
 <Callout kind="alert">
-  warning
-
   This is **not an endorsement of Crowdin** as the unique choice to translate a Docusaurus site, but it is successfully used by Facebook to translate documentation projects such as [Jest](https://jestjs.io/), [Docusaurus](/), and [ReasonML](https://reasonml.github.io/).
 
-  Refer to the <strong>[Crowdin documentation](https://support.crowdin.com/)</strong> and <strong>[Crowdin support](https://docusaurus.io/cdn-cgi/l/email-protection#26555356564954526645544951424f480845494b)</strong> for help.
+  Refer to the <strong>[Crowdin documentation](https://support.crowdin.com/)</strong> and <strong>[Crowdin support](https://docusaurus.io/cdn-cgi/l/email-protection#97e4e2e7e7f8e5e3d7f4e5f8e0f3fef9b9f4f8fa)</strong> for help.
 </Callout>
 
 <Callout kind="tip">
-  tip
-
   Use this <strong>[community-driven GitHub discussion](https://github.com/facebook/docusaurus/discussions/4052)</strong> to discuss anything related to Docusaurus + Crowdin.
 </Callout>
 
@@ -51,24 +47,52 @@ The end result can be seen at [docusaurus-crowdin-example.netlify.app](https://d
 
 Initialize a new Docusaurus site:
 
-```
+```bash
 npx create-docusaurus@latest website classic
 ```
 
 Add the site configuration for the French language:
 
-docusaurus.config.js
-
-```
-export default {  i18n: {    defaultLocale: 'en',    locales: ['en', 'fr'],  },  themeConfig: {    navbar: {      items: [        // ...        {          type: 'localeDropdown',          position: 'left',        },        // ...      ],    },  },  // ...};
+```js title="docusaurus.config.js"
+export default {
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'fr'],
+  },
+  themeConfig: {
+    navbar: {
+      items: [
+        // ...
+        {
+          type: 'localeDropdown',
+          position: 'left',
+        },
+        // ...
+      ],
+    },
+  },
+  // ...
+};
 ```
 
 Translate the homepage:
 
-src/pages/index.js
+```jsx title="src/pages/index.js"
+import React from 'react';
+import Translate from '@docusaurus/Translate';
+import Layout from '@theme/Layout';
 
-```
-import React from 'react';import Translate from '@docusaurus/Translate';import Layout from '@theme/Layout';export default function Home() {  return (    <Layout>      <h1 style={{margin: 20}}>        <Translate description="The homepage main heading">          Welcome to my Docusaurus translated site!        </Translate>      </h1>    </Layout>  );}
+export default function Home() {
+  return (
+    <Layout>
+      <h1 style={{margin: 20}}>
+        <Translate description="The homepage main heading">
+          Welcome to my Docusaurus translated site!
+        </Translate>
+      </h1>
+    </Layout>
+  );
+}
 ```
 
 ### Create a Crowdin project
@@ -90,10 +114,20 @@ This configuration ([doc](https://support.crowdin.com/configuration-file/)) prov
 
 Create `crowdin.yml` in `website`:
 
-crowdin.yml
-
-```
-project_id: '123456'api_token_env: CROWDIN_PERSONAL_TOKENpreserve_hierarchy: truefiles:  # JSON translation files  - source: /i18n/en/**/*    translation: /i18n/%two_letters_code%/**/%original_file_name%  # Docs Markdown files  - source: /docs/**/*    translation: /i18n/%two_letters_code%/docusaurus-plugin-content-docs/current/**/%original_file_name%  # Blog Markdown files  - source: /blog/**/*    translation: /i18n/%two_letters_code%/docusaurus-plugin-content-blog/**/%original_file_name%
+```yml title="crowdin.yml"
+project_id: '123456'
+api_token_env: CROWDIN_PERSONAL_TOKEN
+preserve_hierarchy: true
+files:
+  # JSON translation files
+  - source: /i18n/en/**/*
+    translation: /i18n/%two_letters_code%/**/%original_file_name%
+  # Docs Markdown files
+  - source: /docs/**/*
+    translation: /i18n/%two_letters_code%/docusaurus-plugin-content-docs/current/**/%original_file_name%
+  # Blog Markdown files
+  - source: /blog/**/*
+    translation: /i18n/%two_letters_code%/docusaurus-plugin-content-blog/**/%original_file_name%
 ```
 
 Crowdin has its own syntax for declaring source/translation paths:
@@ -103,8 +137,6 @@ Crowdin has its own syntax for declaring source/translation paths:
 - `**/%original_file_name%`: the translations will preserve the original folder/file hierarchy
 
 <Callout kind="info">
-  info
-
   The Crowdin CLI warnings are not always easy to understand.
 
   We advise to:
@@ -122,14 +154,10 @@ The `api_token_env` attribute defines the **env variable name** read by the Crow
 You can obtain a `Personal Access Token` on [your personal profile page](https://crowdin.com/settings#api-key).
 
 <Callout kind="tip">
-  tip
-
   You can keep the default value `CROWDIN_PERSONAL_TOKEN`, and set this environment variable and on your computer and on the CI server to the generated access token.
 </Callout>
 
 <Callout kind="alert">
-  warning
-
   A Personal Access Tokens grant **read-write access to all your Crowdin projects**.
 
   You should **not commit** it, and it may be a good idea to create a dedicated **Crowdin profile for your company** instead of using a personal account.
@@ -148,25 +176,25 @@ Install the Crowdin CLI as an npm package to your Docusaurus site:
 
 <Tabs>
   <Tab title="npm">
-    ```
+    ```bash
     npm install @crowdin/cli@3
     ```
   </Tab>
 
   <Tab title="Yarn">
-    ```
+    ```bash
     yarn add @crowdin/cli@3
     ```
   </Tab>
 
   <Tab title="pnpm">
-    ```
+    ```bash
     pnpm add @crowdin/cli@3
     ```
   </Tab>
 
   <Tab title="Bun">
-    ```
+    ```bash
     bun add @crowdin/cli@3
     ```
   </Tab>
@@ -174,35 +202,39 @@ Install the Crowdin CLI as an npm package to your Docusaurus site:
 
 Add a `crowdin` script:
 
-package.json
-
-```
-{  "scripts": {    // ...    "write-translations": "docusaurus write-translations",    "crowdin": "crowdin"  }}
+```json title="package.json"
+{
+  "scripts": {
+    // ...
+    "write-translations": "docusaurus write-translations",
+    "crowdin": "crowdin"
+  }
+}
 ```
 
 Test that you can run the Crowdin CLI:
 
 <Tabs>
   <Tab title="npm">
-    ```
+    ```bash
     npm run crowdin -- --version
     ```
   </Tab>
 
   <Tab title="Yarn">
-    ```
+    ```bash
     yarn crowdin --version
     ```
   </Tab>
 
   <Tab title="pnpm">
-    ```
+    ```bash
     pnpm run crowdin --version
     ```
   </Tab>
 
   <Tab title="Bun">
-    ```
+    ```bash
     bun run crowdin --version
     ```
   </Tab>
@@ -211,8 +243,6 @@ Test that you can run the Crowdin CLI:
 Set the `CROWDIN_PERSONAL_TOKEN` env variable on your computer, to allow the CLI to authenticate with the Crowdin API.
 
 <Callout kind="tip">
-  tip
-
   Temporarily, you can hardcode your personal token in `crowdin.yml` with `api_token: 'MY-TOKEN'`.
 </Callout>
 
@@ -222,25 +252,25 @@ Generate the JSON translation files for the default language in `website/i18n/en
 
 <Tabs>
   <Tab title="npm">
-    ```
+    ```bash
     npm run write-translations
     ```
   </Tab>
 
   <Tab title="Yarn">
-    ```
+    ```bash
     yarn write-translations
     ```
   </Tab>
 
   <Tab title="pnpm">
-    ```
+    ```bash
     pnpm run write-translations
     ```
   </Tab>
 
   <Tab title="Bun">
-    ```
+    ```bash
     bun run write-translations
     ```
   </Tab>
@@ -250,25 +280,25 @@ Upload all the JSON and Markdown translation files:
 
 <Tabs>
   <Tab title="npm">
-    ```
+    ```bash
     npm run crowdin upload
     ```
   </Tab>
 
   <Tab title="Yarn">
-    ```
+    ```bash
     yarn crowdin upload
     ```
   </Tab>
 
   <Tab title="pnpm">
-    ```
+    ```bash
     pnpm run crowdin upload
     ```
   </Tab>
 
   <Tab title="Bun">
-    ```
+    ```bash
     bun run crowdin upload
     ```
   </Tab>
@@ -291,8 +321,6 @@ Translate some Markdown files.
 <Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793700651859-bdmlfnv0yo-crowdin-translate-markdown-52fbe989729acd74.png?fm=auto&auto=compress%2Cformat" alt="Crowdin UI to translate a Markdown file" width={3044} height={1586} />
 
 <Callout kind="tip">
-  tip
-
   Use `Hide String` to make sure translators **don't translate things that should not be**:
 
   - Front matter: `id`, `slug`, `tags` ...
@@ -306,14 +334,10 @@ Translate some JSON files.
 <Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793700651741-nysqm2kjti-crowdin-translate-json-9a5071a390872f58.png?fm=auto&auto=compress%2Cformat" alt="Crowdin UI to translate a JSON file" width={2868} height={1490} />
 
 <Callout kind="info">
-  info
-
   The `description` attribute of JSON translation files is visible on Crowdin to help translate the strings.
 </Callout>
 
 <Callout kind="tip">
-  tip
-
   <strong>[Pre-translate](https://support.crowdin.com/pre-translation-via-machine/)</strong> your site, and **fix pre-translation mistakes manually** (enable the Global Translation Memory in settings first).
 
   Use the `Hide String` feature first, as Crowdin is pre-translating things too optimistically.
@@ -325,25 +349,25 @@ Use the Crowdin CLI to download the translated JSON and Markdown files.
 
 <Tabs>
   <Tab title="npm">
-    ```
+    ```bash
     npm run crowdin download
     ```
   </Tab>
 
   <Tab title="Yarn">
-    ```
+    ```bash
     yarn crowdin download
     ```
   </Tab>
 
   <Tab title="pnpm">
-    ```
+    ```bash
     pnpm run crowdin download
     ```
   </Tab>
 
   <Tab title="Bun">
-    ```
+    ```bash
     bun run crowdin download
     ```
   </Tab>
@@ -355,25 +379,25 @@ Start your site on the French locale:
 
 <Tabs>
   <Tab title="npm">
-    ```
+    ```bash
     npm run start -- --locale fr
     ```
   </Tab>
 
   <Tab title="Yarn">
-    ```
+    ```bash
     yarn run start --locale fr
     ```
   </Tab>
 
   <Tab title="pnpm">
-    ```
+    ```bash
     pnpm run start --locale fr
     ```
   </Tab>
 
   <Tab title="Bun">
-    ```
+    ```bash
     bun run start --locale fr
     ```
   </Tab>
@@ -391,23 +415,21 @@ Set the `CROWDIN_PERSONAL_TOKEN` env variable on your CI.
 
 Create an npm script to `sync` Crowdin (extract sources, upload sources, download translations):
 
-package.json
-
-```
-{  "scripts": {    "crowdin:sync": "docusaurus write-translations && crowdin upload && crowdin download"  }}
+```json title="package.json"
+{
+  "scripts": {
+    "crowdin:sync": "docusaurus write-translations && crowdin upload && crowdin download"
+  }
+}
 ```
 
 Call the `npm run crowdin:sync` script in your CI, just before building the Docusaurus site.
 
 <Callout kind="tip">
-  tip
-
   Keep your deploy-previews fast: don't download translations, and use `npm run build -- --locale en` for feature branches.
 </Callout>
 
 <Callout kind="alert">
-  warning
-
   Crowdin does not support well multiple concurrent uploads/downloads: it is preferable to only include translations to your production deployment, and keep deploy previews untranslated.
 </Callout>
 
@@ -416,8 +438,6 @@ Call the `npm run crowdin:sync` script in your CI, just before building the Docu
 ### MDX
 
 <Callout kind="alert">
-  warning
-
   Pay special attention to the JSX fragments in MDX documents!
 </Callout>
 
@@ -433,8 +453,34 @@ Simple JSX fragments using simple string props like `<Username name="Sebastien"/
 
 We recommend extracting the complex embedded JSX code as separate standalone components. We also added an `mdx-code-block` escape hatch syntax:
 
-`````
-# How to deploy DocusaurusTo deploy Docusaurus, run the following command:````mdx-code-block import Tabs from '@theme/Tabs';import TabItem from '@theme/TabItem';<Tabs>  <TabItem value="bash" label="Bash">  ```bash  GIT_USER=<GITHUB_USERNAME> yarn deploy  ```  </TabItem>  <TabItem value="windows" label="Windows">  ```batch  cmd /C "set "GIT_USER=<GITHUB_USERNAME>" && yarn deploy"  ```  </TabItem></Tabs>````
+`````text
+# How to deploy Docusaurus
+
+To deploy Docusaurus, run the following command:
+
+````mdx-code-block 
+
+import Tabs from '@theme/Tabs';
+
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+  <TabItem value="bash" label="Bash">
+
+  ```bash
+  GIT_USER=<GITHUB_USERNAME> yarn deploy
+  ```
+
+  </TabItem>
+  <TabItem value="windows" label="Windows">
+
+  ```batch
+  cmd /C "set "GIT_USER=<GITHUB_USERNAME>" && yarn deploy"
+  ```
+
+  </TabItem>
+</Tabs>
+````
 `````
 
 This will:
@@ -456,8 +502,6 @@ Crowdin provides a `Duplicate Strings` setting.
 We recommend using `Hide`, but the ideal setting depends on how much your versions are different.
 
 <Callout kind="alert">
-  warning
-
   Not using `Hide` leads to a much larger amount of `source strings` in quotas, and will affect the pricing.
 </Callout>
 
@@ -485,7 +529,7 @@ When your sources are refactored, you should use the Crowdin UI to **update your
 Crowdin has multiple VCS integrations for [GitHub](https://support.crowdin.com/github-integration/), GitLab, Bitbucket.
 
 <Callout kind="alert">
-  TL;DR
+  **TL;DR**
 
   We recommend avoiding them.
 </Callout>
@@ -505,8 +549,6 @@ In practice, **it didn't work very reliably** for a few reasons:
 Crowdin has an [In-Context localization](https://support.crowdin.com/in-context-localization/) feature.
 
 <Callout kind="alert">
-  warning
-
   Unfortunately, it does not work yet for technical reasons, but we have good hope it can be solved.
 
   Crowdin replaces Markdown strings with technical IDs such as `crowdin:id12345`, but it does so too aggressively, including hidden strings, and messes up with front matter, admonitions, JSX...
@@ -518,15 +560,39 @@ When the user is browsing a page at `/fr/doc1`, the edit button will link by def
 
 You may prefer the edit button to link to the Crowdin interface instead by using the `editUrl` function to customize the edit URLs on a per-locale basis.
 
-docusaurus.config.js
+```js title="docusaurus.config.js"
+const DefaultLocale = 'en';
 
-```
-const DefaultLocale = 'en';export default {  presets: [    [      '@docusaurus/preset-classic',      {        docs: {          editUrl: ({locale, versionDocsDirPath, docPath}) => {            // Link to Crowdin for French docs            if (locale !== DefaultLocale) {              return `https://crowdin.com/project/docusaurus-v2/${locale}`;            }            // Link to GitHub for English docs            return `https://github.com/facebook/docusaurus/edit/main/website/${versionDocsDirPath}/${docPath}`;          },        },        blog: {          editUrl: ({locale, blogDirPath, blogPath}) => {            if (locale !== DefaultLocale) {              return `https://crowdin.com/project/docusaurus-v2/${locale}`;            }            return `https://github.com/facebook/docusaurus/edit/main/website/${blogDirPath}/${blogPath}`;          },        },      },    ],  ],};
+export default {
+  presets: [
+    [
+      '@docusaurus/preset-classic',
+      {
+        docs: {
+          editUrl: ({locale, versionDocsDirPath, docPath}) => {
+            // Link to Crowdin for French docs
+            if (locale !== DefaultLocale) {
+              return `https://crowdin.com/project/docusaurus-v2/${locale}`;
+            }
+            // Link to GitHub for English docs
+            return `https://github.com/facebook/docusaurus/edit/main/website/${versionDocsDirPath}/${docPath}`;
+          },
+        },
+        blog: {
+          editUrl: ({locale, blogDirPath, blogPath}) => {
+            if (locale !== DefaultLocale) {
+              return `https://crowdin.com/project/docusaurus-v2/${locale}`;
+            }
+            return `https://github.com/facebook/docusaurus/edit/main/website/${blogDirPath}/${blogPath}`;
+          },
+        },
+      },
+    ],
+  ],
+};
 ```
 
 <Callout kind="info">
-  note
-
   It is currently **not possible to link to a specific file** in Crowdin.
 </Callout>
 
@@ -534,8 +600,42 @@ const DefaultLocale = 'en';export default {  presets: [    [      '@docusaurus/p
 
 The **Docusaurus configuration file** is a good example of using versioning and multi-instance:
 
-crowdin.yml
-
-```
-project_id: '428890'api_token_env: CROWDIN_PERSONAL_TOKENpreserve_hierarchy: truelanguages_mapping: &languages_mapping  two_letters_code:    pt-BR: pt-BRmdx_file_type: &mdx_file_type mdx_v2_4files:  - source: /website/i18n/en/**/*    translation: /website/i18n/%two_letters_code%/**/%original_file_name%    languages_mapping: *languages_mapping  - source: /website/docs/**/*.mdx    translation: /website/i18n/%two_letters_code%/docusaurus-plugin-content-docs/current/**/%original_file_name%    languages_mapping: *languages_mapping    type: *mdx_file_type  - source: /website/docs/**/*    translation: /website/i18n/%two_letters_code%/docusaurus-plugin-content-docs/current/**/%original_file_name%    languages_mapping: *languages_mapping    ignore: [/**/*.mdx]  - source: /website/versioned_docs/**/*.mdx    translation: /website/i18n/%two_letters_code%/docusaurus-plugin-content-docs/**/%original_file_name%    languages_mapping: *languages_mapping    type: *mdx_file_type  - source: /website/versioned_docs/**/*    translation: /website/i18n/%two_letters_code%/docusaurus-plugin-content-docs/**/%original_file_name%    languages_mapping: *languages_mapping    ignore: [/**/*.mdx]  - source: /website/community/**/*    translation: /website/i18n/%two_letters_code%/docusaurus-plugin-content-docs-community/current/**/%original_file_name%    languages_mapping: *languages_mapping  - source: /website/blog/**/*    translation: /website/i18n/%two_letters_code%/docusaurus-plugin-content-blog/**/%original_file_name%    languages_mapping: *languages_mapping  - source: /website/src/pages/**/*    translation: /website/i18n/%two_letters_code%/docusaurus-plugin-content-pages/**/%original_file_name%    ignore: [/**/*.js, /**/*.jsx, /**/*.ts, /**/*.tsx, /**/*.css]    languages_mapping: *languages_mapping
+```yaml title="crowdin.yml"
+project_id: '428890'
+api_token_env: CROWDIN_PERSONAL_TOKEN
+preserve_hierarchy: true
+languages_mapping: &languages_mapping
+  two_letters_code:
+    pt-BR: pt-BR
+mdx_file_type: &mdx_file_type mdx_v2_4
+files:
+  - source: /website/i18n/en/**/*
+    translation: /website/i18n/%two_letters_code%/**/%original_file_name%
+    languages_mapping: *languages_mapping
+  - source: /website/docs/**/*.mdx
+    translation: /website/i18n/%two_letters_code%/docusaurus-plugin-content-docs/current/**/%original_file_name%
+    languages_mapping: *languages_mapping
+    type: *mdx_file_type
+  - source: /website/docs/**/*
+    translation: /website/i18n/%two_letters_code%/docusaurus-plugin-content-docs/current/**/%original_file_name%
+    languages_mapping: *languages_mapping
+    ignore: [/**/*.mdx]
+  - source: /website/versioned_docs/**/*.mdx
+    translation: /website/i18n/%two_letters_code%/docusaurus-plugin-content-docs/**/%original_file_name%
+    languages_mapping: *languages_mapping
+    type: *mdx_file_type
+  - source: /website/versioned_docs/**/*
+    translation: /website/i18n/%two_letters_code%/docusaurus-plugin-content-docs/**/%original_file_name%
+    languages_mapping: *languages_mapping
+    ignore: [/**/*.mdx]
+  - source: /website/community/**/*
+    translation: /website/i18n/%two_letters_code%/docusaurus-plugin-content-docs-community/current/**/%original_file_name%
+    languages_mapping: *languages_mapping
+  - source: /website/blog/**/*
+    translation: /website/i18n/%two_letters_code%/docusaurus-plugin-content-blog/**/%original_file_name%
+    languages_mapping: *languages_mapping
+  - source: /website/src/pages/**/*
+    translation: /website/i18n/%two_letters_code%/docusaurus-plugin-content-pages/**/%original_file_name%
+    ignore: [/**/*.js, /**/*.jsx, /**/*.ts, /**/*.tsx, /**/*.css]
+    languages_mapping: *languages_mapping
 ```

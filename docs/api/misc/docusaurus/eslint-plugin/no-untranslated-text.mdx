@@ -15,14 +15,18 @@ When the [i18n feature](/docs/i18n/introduction) is used, this rule ensures that
 
 Examples of **incorrect** code for this rule:
 
-```
-// Hello World is not translated<Component>Hello World</Component>
+```js
+// Hello World is not translated
+<Component>Hello World</Component>
 ```
 
 Examples of **correct** code for this rule:
 
-```
-// Hello World is translated<Component>  <Translate>Hello World</Translate></Component>
+```js
+// Hello World is translated
+<Component>
+  <Translate>Hello World</Translate>
+</Component>
 ```
 
 <a id="configuration"></a>
@@ -31,7 +35,7 @@ Examples of **correct** code for this rule:
 
 Accepted fields:
 
-| Option | Type | Default | Description`ignoredStrings``string[]``[]`Text labels that only contain strings in this list will not be reported. |
+| Option | Type | Default | Description |
 | --- | --- | --- | --- |
 | `ignoredStrings` | `string[]` | `[]` | Text labels that only contain strings in this list will not be reported. |
 

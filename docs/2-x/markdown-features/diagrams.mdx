@@ -11,25 +11,25 @@ Diagrams can be rendered using [Mermaid](https://mermaid-js.github.io/mermaid/) 
 
 <Tabs>
   <Tab title="npm">
-    ```
+    ```bash
     npm install --save @docusaurus/theme-mermaid
     ```
   </Tab>
 
   <Tab title="Yarn">
-    ```
+    ```bash
     yarn add @docusaurus/theme-mermaid
     ```
   </Tab>
 
   <Tab title="pnpm">
-    ```
+    ```bash
     pnpm add @docusaurus/theme-mermaid
     ```
   </Tab>
 
   <Tab title="Bun">
-    ```
+    ```bash
     bun add @docusaurus/theme-mermaid
     ```
   </Tab>
@@ -37,20 +37,27 @@ Diagrams can be rendered using [Mermaid](https://mermaid-js.github.io/mermaid/) 
 
 Enable Mermaid functionality by adding plugin `@docusaurus/theme-mermaid` and setting `markdown.mermaid` to `true` in your `docusaurus.config.js`.
 
-docusaurus.config.js
-
-```
-module.exports = {  markdown: {    mermaid: true,  },  themes: ['@docusaurus/theme-mermaid'],};
+```js title="docusaurus.config.js"
+module.exports = {
+  markdown: {
+    mermaid: true,
+  },
+  themes: ['@docusaurus/theme-mermaid'],
+};
 ```
 
 ## Usage
 
 Add a code block with language `mermaid`:
 
-Example Mermaid diagram
-
-````
-```mermaidgraph TD;    A-->B;    A-->C;    B-->D;    C-->D;```
+````md title="Example Mermaid diagram"
+```mermaid
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+```
 ````
 
 See the [Mermaid syntax documentation](https://mermaid-js.github.io/mermaid/#/./n00b-syntaxReference) for more information on the Mermaid syntax.
@@ -59,10 +66,14 @@ See the [Mermaid syntax documentation](https://mermaid-js.github.io/mermaid/#/./
 
 The diagram dark and light themes can be changed by setting `mermaid.theme` values in the `themeConfig` in your `docusaurus.config.js`. You can set themes for both light and dark mode.
 
-docusaurus.config.js
-
-```
-module.exports = {  themeConfig: {    mermaid: {      theme: {light: 'neutral', dark: 'forest'},    },  },};
+```js title="docusaurus.config.js"
+module.exports = {
+  themeConfig: {
+    mermaid: {
+      theme: {light: 'neutral', dark: 'forest'},
+    },
+  },
+};
 ```
 
 See the [Mermaid theme documentation](https://mermaid-js.github.io/mermaid/#/theming) for more information on theming Mermaid diagrams.
@@ -73,10 +84,16 @@ See the [Mermaid theme documentation](https://mermaid-js.github.io/mermaid/#/the
 
 Options in `mermaid.options` will be passed directly to `mermaid.initialize`:
 
-docusaurus.config.js
-
-```
-module.exports = {  themeConfig: {    mermaid: {      options: {        maxTextSize: 50,      },    },  },};
+```js title="docusaurus.config.js"
+module.exports = {
+  themeConfig: {
+    mermaid: {
+      options: {
+        maxTextSize: 50,
+      },
+    },
+  },
+};
 ```
 
 See the [Mermaid configuration documentation](https://mermaid-js.github.io/mermaid/#/./Setup?id=configuration) for the available config options.

@@ -11,25 +11,25 @@ Docusaurus Plugin to add PWA support using [Workbox](https://developers.google.c
 
 <Tabs>
   <Tab title="npm">
-    ```
+    ```bash
     npm install --save @docusaurus/plugin-pwa
     ```
   </Tab>
 
   <Tab title="Yarn">
-    ```
+    ```bash
     yarn add @docusaurus/plugin-pwa
     ```
   </Tab>
 
   <Tab title="pnpm">
-    ```
+    ```bash
     pnpm add @docusaurus/plugin-pwa
     ```
   </Tab>
 
   <Tab title="Bun">
-    ```
+    ```bash
     bun add @docusaurus/plugin-pwa
     ```
   </Tab>
@@ -41,10 +41,39 @@ Create a [PWA manifest](https://web.dev/add-manifest/) at `./static/manifest.jso
 
 Modify `docusaurus.config.js` with a minimal PWA config, like:
 
-docusaurus.config.js
-
-```
-export default {  plugins: [    [      '@docusaurus/plugin-pwa',      {        debug: true,        offlineModeActivationStrategies: [          'appInstalled',          'standalone',          'queryString',        ],        pwaHead: [          {            tagName: 'link',            rel: 'icon',            href: '/img/docusaurus.png',          },          {            tagName: 'link',            rel: 'manifest',            href: '/manifest.json', // your PWA manifest          },          {            tagName: 'meta',            name: 'theme-color',            content: 'rgb(37, 194, 160)',          },        ],      },    ],  ],};
+```js title="docusaurus.config.js"
+export default {
+  plugins: [
+    [
+      '@docusaurus/plugin-pwa',
+      {
+        debug: true,
+        offlineModeActivationStrategies: [
+          'appInstalled',
+          'standalone',
+          'queryString',
+        ],
+        pwaHead: [
+          {
+            tagName: 'link',
+            rel: 'icon',
+            href: '/img/docusaurus.png',
+          },
+          {
+            tagName: 'link',
+            rel: 'manifest',
+            href: '/manifest.json', // your PWA manifest
+          },
+          {
+            tagName: 'meta',
+            name: 'theme-color',
+            content: 'rgb(37, 194, 160)',
+          },
+        ],
+      },
+    ],
+  ],
+};
 ```
 
 ## Progressive Web App
@@ -62,8 +91,6 @@ If your browser supports it, you should be able to install a Docusaurus site as 
 <Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793700530420-bupdbt43p45-pwa_install-6173aeb9776cf1d0.gif?fm=auto&auto=compress%2Cformat" alt='A screen recording of the installation process. A button appears in the address bar of the browser, which displays a dialog asking "install this application?" when clicked. After clicking the "Install" button, a new application is opened in the operating system, opening to the Docusaurus homepage.' width={640} height={505} />
 
 <Callout kind="info">
-  note
-
   App installation requires the HTTPS protocol and a valid manifest.
 </Callout>
 
@@ -84,8 +111,6 @@ By default, offline mode is enabled when the site is installed as an app. See th
 After the site has been precached, the service worker will serve cached responses for later visits. When a new build is deployed along with a new service worker, the new one will begin installing and eventually move to a waiting state. During this waiting state, a reload popup will show and ask the user to reload the page for new content. Until the user either clears the application cache or clicks the `reload` button on the popup, the service worker will continue serving the old content.
 
 <Callout kind="alert">
-  warning
-
   Offline mode / precaching requires downloading all the static assets of the site ahead of time, and can consume unnecessary bandwidth. It may not be a good idea to activate it for all kind of sites.
 </Callout>
 
@@ -118,14 +143,10 @@ Strategies used to turn the offline mode on:
 - `always`: activates for all users
 
 <Callout kind="alert">
-  warning
-
   Use this carefully: some users may not like to be forced to use the offline mode.
 </Callout>
 
 <Callout kind="danger">
-  danger
-
   It is not possible to detect if a page is rendered as a PWA in a reliable manner.
 
   The `appinstalled` event has been [removed from the specification](https://github.com/w3c/manifest/pull/836), and the [`navigator.getInstalledRelatedApps()`](https://web.dev/get-installed-related-apps/) API is only supported in recent Chrome versions and require `related_applications` declared in the manifest.
@@ -140,10 +161,28 @@ Strategies used to turn the offline mode on:
 - Type: `InjectManifestOptions`
 - Default: `{}`
 
-docusaurus.config.js
-
-```
-export default {  plugins: [    [      '@docusaurus/plugin-pwa',      {        injectManifestConfig: {          manifestTransforms: [            //...          ],          modifyURLPrefix: {            //...          },          // We already add regular static assets (HTML, images...) to be available offline          // You can add more files according to your needs          globPatterns: ['**/*.{pdf,docx,xlsx}'],          // ...        },      },    ],  ],};
+```js title="docusaurus.config.js"
+export default {
+  plugins: [
+    [
+      '@docusaurus/plugin-pwa',
+      {
+        injectManifestConfig: {
+          manifestTransforms: [
+            //...
+          ],
+          modifyURLPrefix: {
+            //...
+          },
+          // We already add regular static assets (HTML, images...) to be available offline
+          // You can add more files according to your needs
+          globPatterns: ['**/*.{pdf,docx,xlsx}'],
+          // ...
+        },
+      },
+    ],
+  ],
+};
 ```
 
 ### `pwaHead`
@@ -153,8 +192,64 @@ export default {  plugins: [    [      '@docusaurus/plugin-pwa',      {        i
 
 Array of objects containing `tagName` and key-value pairs for attributes to inject into the `<head>` tag. Technically you can inject any head tag through this, but it's ideally used for tags to make your site PWA compliant. Here's a list of tag to make your app fully compliant:
 
-```
-export default {  plugins: [    [      '@docusaurus/plugin-pwa',      {        pwaHead: [          {            tagName: 'link',            rel: 'icon',            href: '/img/docusaurus.png',          },          {            tagName: 'link',            rel: 'manifest',            href: '/manifest.json',          },          {            tagName: 'meta',            name: 'theme-color',            content: 'rgb(37, 194, 160)',          },          {            tagName: 'meta',            name: 'mobile-web-app-capable',            content: 'yes',          },          {            tagName: 'meta',            name: 'apple-mobile-web-app-status-bar-style',            content: '#000',          },          {            tagName: 'link',            rel: 'apple-touch-icon',            href: '/img/docusaurus.png',          },          {            tagName: 'link',            rel: 'mask-icon',            href: '/img/docusaurus.svg',            color: 'rgb(37, 194, 160)',          },          {            tagName: 'meta',            name: 'msapplication-TileImage',            content: '/img/docusaurus.png',          },          {            tagName: 'meta',            name: 'msapplication-TileColor',            content: '#000',          },        ],      },    ],  ],};
+```js
+export default {
+  plugins: [
+    [
+      '@docusaurus/plugin-pwa',
+      {
+        pwaHead: [
+          {
+            tagName: 'link',
+            rel: 'icon',
+            href: '/img/docusaurus.png',
+          },
+          {
+            tagName: 'link',
+            rel: 'manifest',
+            href: '/manifest.json',
+          },
+          {
+            tagName: 'meta',
+            name: 'theme-color',
+            content: 'rgb(37, 194, 160)',
+          },
+          {
+            tagName: 'meta',
+            name: 'mobile-web-app-capable',
+            content: 'yes',
+          },
+          {
+            tagName: 'meta',
+            name: 'apple-mobile-web-app-status-bar-style',
+            content: '#000',
+          },
+          {
+            tagName: 'link',
+            rel: 'apple-touch-icon',
+            href: '/img/docusaurus.png',
+          },
+          {
+            tagName: 'link',
+            rel: 'mask-icon',
+            href: '/img/docusaurus.svg',
+            color: 'rgb(37, 194, 160)',
+          },
+          {
+            tagName: 'meta',
+            name: 'msapplication-TileImage',
+            content: '/img/docusaurus.png',
+          },
+          {
+            tagName: 'meta',
+            name: 'msapplication-TileColor',
+            content: '#000',
+          },
+        ],
+      },
+    ],
+  ],
+};
 ```
 
 ### `swCustom`
@@ -166,8 +261,26 @@ Useful for additional Workbox rules. You can do whatever a service worker can do
 
 For example, to cache files from external routes:
 
-```
-import {registerRoute} from 'workbox-routing';import {StaleWhileRevalidate} from 'workbox-strategies';// default fn export receiving some useful paramsexport default function swCustom(params) {  const {    debug, // :boolean    offlineMode, // :boolean  } = params;  // Cache responses from external resources  registerRoute((context) => {    return [      /graph\.facebook\.com\/.*\/picture/,      /netlify\.com\/img/,      /avatars1\.githubusercontent/,    ].some((regex) => context.url.href.match(regex));  }, new StaleWhileRevalidate());}
+```js
+import {registerRoute} from 'workbox-routing';
+import {StaleWhileRevalidate} from 'workbox-strategies';
+
+// default fn export receiving some useful params
+export default function swCustom(params) {
+  const {
+    debug, // :boolean
+    offlineMode, // :boolean
+  } = params;
+
+  // Cache responses from external resources
+  registerRoute((context) => {
+    return [
+      /graph\.facebook\.com\/.*\/picture/,
+      /netlify\.com\/img/,
+      /avatars1\.githubusercontent/,
+    ].some((regex) => context.url.href.match(regex));
+  }, new StaleWhileRevalidate());
+}
 ```
 
 The module should have a `default` function export, and receives some params.
@@ -185,8 +298,64 @@ Passing `false` will disable registration entirely.
 
 The Docusaurus site manifest can serve as an inspiration:
 
-```
-{  "name": "Docusaurus",  "short_name": "Docusaurus",  "theme_color": "#2196f3",  "background_color": "#424242",  "display": "standalone",  "scope": "./",  "start_url": "./index.html",  "related_applications": [    {      "platform": "webapp",      "url": "https://docusaurus.io/manifest.json"    }  ],  "icons": [    {      "src": "img/icons/icon-72x72.png",      "sizes": "72x72",      "type": "image/png"    },    {      "src": "img/icons/icon-96x96.png",      "sizes": "96x96",      "type": "image/png"    },    {      "src": "img/icons/icon-128x128.png",      "sizes": "128x128",      "type": "image/png"    },    {      "src": "img/icons/icon-144x144.png",      "sizes": "144x144",      "type": "image/png"    },    {      "src": "img/icons/icon-152x152.png",      "sizes": "152x152",      "type": "image/png"    },    {      "src": "img/icons/icon-192x192.png",      "sizes": "192x192",      "type": "image/png"    },    {      "src": "img/icons/icon-384x384.png",      "sizes": "384x384",      "type": "image/png"    },    {      "src": "img/icons/icon-512x512.png",      "sizes": "512x512",      "type": "image/png"    }  ]}
+```json
+{
+  "name": "Docusaurus",
+  "short_name": "Docusaurus",
+  "theme_color": "#2196f3",
+  "background_color": "#424242",
+  "display": "standalone",
+  "scope": "./",
+  "start_url": "./index.html",
+  "related_applications": [
+    {
+      "platform": "webapp",
+      "url": "https://docusaurus.io/manifest.json"
+    }
+  ],
+  "icons": [
+    {
+      "src": "img/icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "img/icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "img/icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "img/icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "img/icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    },
+    {
+      "src": "img/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "img/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "img/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
 ```
 
 ## Customizing reload popup

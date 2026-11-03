@@ -8,8 +8,6 @@ ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc
 Docusaurus consists of a set of npm [packages](https://github.com/facebook/docusaurus/tree/main/packages).
 
 <Callout kind="tip">
-  tip
-
   Use the <strong>[Fast Track](/docs/3-0-1#fast-track)</strong> to understand Docusaurus in <strong>5 minutes ⏱</strong>!
 
   Use <strong>[docusaurus.new](https://docusaurus.new)</strong> to test Docusaurus immediately in your browser!
@@ -25,7 +23,7 @@ Docusaurus consists of a set of npm [packages](https://github.com/facebook/docus
 
 The easiest way to install Docusaurus is to use the command line tool that helps you scaffold a skeleton Docusaurus website. You can run this command anywhere in a new empty repository or within an existing repository, it will create a new directory containing the scaffolded files.
 
-```
+```bash
 npx create-docusaurus@latest my-website classic
 ```
 
@@ -33,16 +31,16 @@ We recommend the `classic` template so that you can get started quickly, and it 
 
 You can also use the template's TypeScript variant by passing the `--typescript` flag. See [TypeScript support](/docs/3-0-1/typescript-support) for more information.
 
-```
+```bash
 npx create-docusaurus@latest my-website classic --typescript
 ```
 
 <Callout kind="info">
-  Meta-Only
+  **Meta-Only**
 
   If you are setting up a new Docusaurus website for a Meta open source project, run this command inside an internal repository, which comes with some useful Meta-specific defaults:
 
-  ```
+  ```bash
   scarf static-docs-bootstrap
   ```
 </Callout>
@@ -52,25 +50,25 @@ npx create-docusaurus@latest my-website classic --typescript
 
   <Tabs>
     <Tab title="npm">
-      ```
+      ```bash
       npm init docusaurus
       ```
     </Tab>
 
     <Tab title="Yarn">
-      ```
+      ```bash
       yarn create docusaurus
       ```
     </Tab>
 
     <Tab title="pnpm">
-      ```
+      ```bash
       pnpm create docusaurus
       ```
     </Tab>
 
     <Tab title="Bun">
-      ```
+      ```bash
       bunx create-docusaurus
       ```
     </Tab>
@@ -83,8 +81,30 @@ Run `npx create-docusaurus@latest --help`, or check out its [API docs](/docs/3-0
 
 Assuming you chose the classic template and named your site `my-website`, you will see the following files generated under a new directory `my-website/`:
 
-```
-my-website├── blog│   ├── 2019-05-28-hola.md│   ├── 2019-05-29-hello-world.md│   └── 2020-05-30-welcome.md├── docs│   ├── doc1.md│   ├── doc2.md│   ├── doc3.md│   └── mdx.md├── src│   ├── css│   │   └── custom.css│   └── pages│       ├── styles.module.css│       └── index.js├── static│   └── img├── docusaurus.config.js├── package.json├── README.md├── sidebars.js└── yarn.lock
+```bash
+my-website
+├── blog
+│   ├── 2019-05-28-hola.md
+│   ├── 2019-05-29-hello-world.md
+│   └── 2020-05-30-welcome.md
+├── docs
+│   ├── doc1.md
+│   ├── doc2.md
+│   ├── doc3.md
+│   └── mdx.md
+├── src
+│   ├── css
+│   │   └── custom.css
+│   └── pages
+│       ├── styles.module.css
+│       └── index.js
+├── static
+│   └── img
+├── docusaurus.config.js
+├── package.json
+├── README.md
+├── sidebars.js
+└── yarn.lock
 ```
 
 ### Project structure rundown
@@ -103,8 +123,16 @@ my-website├── blog│   ├── 2019-05-28-hola.md│   ├── 2019-0
 
 If you are using Docusaurus for documentation of an existing project, a monorepo may be the solution for you. Monorepos allow you to share dependencies between similar projects. For example, your website may use your local packages to showcase latest features instead of depending on a released version. Then, your contributors can update the docs as they implement features. An example monorepo folder structure is below:
 
-```
-my-monorepo├── package-a # Another package, your actual project│   ├── src│   └── package.json # Package A's dependencies├── website   # Docusaurus root│   ├── docs│   ├── src│   └── package.json # Docusaurus' dependencies├── package.json # Monorepo's shared dependencies
+```bash
+my-monorepo
+├── package-a # Another package, your actual project
+│   ├── src
+│   └── package.json # Package A's dependencies
+├── website   # Docusaurus root
+│   ├── docs
+│   ├── src
+│   └── package.json # Docusaurus' dependencies
+├── package.json # Monorepo's shared dependencies
 ```
 
 In this case, you should run `npx create-docusaurus` within the `./my-monorepo` folder.
@@ -119,26 +147,30 @@ To preview your changes as you edit the files, you can run a local development s
 
 <Tabs>
   <Tab title="npm">
-    ```
-    cd my-websitenpm run start
+    ```bash
+    cd my-website
+    npm run start
     ```
   </Tab>
 
   <Tab title="Yarn">
-    ```
-    cd my-websiteyarn run start
+    ```bash
+    cd my-website
+    yarn run start
     ```
   </Tab>
 
   <Tab title="pnpm">
-    ```
-    cd my-websitepnpm run start
+    ```bash
+    cd my-website
+    pnpm run start
     ```
   </Tab>
 
   <Tab title="Bun">
-    ```
-    cd my-websitebun run start
+    ```bash
+    cd my-website
+    bun run start
     ```
   </Tab>
 </Tabs>
@@ -153,25 +185,25 @@ Docusaurus is a modern static website generator so we need to build the website 
 
 <Tabs>
   <Tab title="npm">
-    ```
+    ```bash
     npm run build
     ```
   </Tab>
 
   <Tab title="Yarn">
-    ```
+    ```bash
     yarn build
     ```
   </Tab>
 
   <Tab title="pnpm">
-    ```
+    ```bash
     pnpm run build
     ```
   </Tab>
 
   <Tab title="Bun">
-    ```
+    ```bash
     bun run build
     ```
   </Tab>
@@ -184,40 +216,42 @@ and contents will be generated within the `/build` directory, which can be copie
 There are many ways to update your Docusaurus version. One guaranteed way is to manually change the version number in `package.json` to the desired version. Note that all `@docusaurus/`-namespaced packages should be using the same version.
 
 <Callout kind="alert">
-  warning
-
   You are browsing the documentation of an outdated version. The snippet below shows how to upgrade to the latest version.
 </Callout>
 
-package.json
-
-```
-{  "dependencies": {    "@docusaurus/core": "3.10.2",    "@docusaurus/preset-classic": "3.10.2",    // ...  }}
+```json title="package.json"
+{
+  "dependencies": {
+    "@docusaurus/core": "3.10.2",
+    "@docusaurus/preset-classic": "3.10.2",
+    // ...
+  }
+}
 ```
 
 Then, in the directory containing `package.json`, run your package manager's install command:
 
 <Tabs>
   <Tab title="npm">
-    ```
+    ```bash
     npm install
     ```
   </Tab>
 
   <Tab title="Yarn">
-    ```
+    ```bash
     yarn install
     ```
   </Tab>
 
   <Tab title="pnpm">
-    ```
+    ```bash
     pnpm install
     ```
   </Tab>
 
   <Tab title="Bun">
-    ```
+    ```bash
     bun install
     ```
   </Tab>
@@ -225,7 +259,7 @@ Then, in the directory containing `package.json`, run your package manager's ins
 
 To check that the update occurred successfully, run:
 
-```
+```bash
 npx docusaurus --version
 ```
 
@@ -233,13 +267,11 @@ You should see the correct version as output.
 
 Alternatively, if you are using Yarn, you can do:
 
-```
+```bash
 yarn add @docusaurus/core @docusaurus/preset-classic
 ```
 
 <Callout kind="tip">
-  tip
-
   Use new unreleased features of Docusaurus with the [`@canary` npm dist tag](https://docusaurus.io/community/canary)
 </Callout>
 

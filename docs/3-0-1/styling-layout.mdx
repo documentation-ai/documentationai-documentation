@@ -6,8 +6,6 @@ ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc
 ---
 
 <Callout kind="tip">
-  tip
-
   This section is focused on styling through stylesheets. For more advanced customizations (DOM structure, React code...), refer to the [swizzling guide](/docs/3-0-1/swizzling).
 </Callout>
 
@@ -21,22 +19,38 @@ This is the most traditional way of styling that most developers (including non-
 
 If you're using `@docusaurus/preset-classic`, you can create your own CSS files (e.g. `/src/css/custom.css`) and import them globally by passing them as an option of the classic theme.
 
-docusaurus.config.js
-
-```
-export default {  // ...  presets: [    [      '@docusaurus/preset-classic',      {        theme: {          customCss: ['./src/css/custom.css'],        },      },    ],  ],};
+```js title="docusaurus.config.js"
+export default {
+  // ...
+  presets: [
+    [
+      '@docusaurus/preset-classic',
+      {
+        theme: {
+          customCss: ['./src/css/custom.css'],
+        },
+      },
+    ],
+  ],
+};
 ```
 
 Any CSS you write within that file will be available globally and can be referenced directly using string literals.
 
-/src/css/custom.css
+```css title="/src/css/custom.css"
+.purple-text {
+  color: rebeccapurple;
+}
+```
 
-```
-.purple-text {  color: rebeccapurple;}
-```
-
-```
-function MyComponent() {  return (    <main>      <h1 className="purple-text">Purple Heading!</h1>    </main>  );}
+```jsx
+function MyComponent() {
+  return (
+    <main>
+      <h1 className="purple-text">Purple Heading!</h1>
+    </main>
+  );
+}
 ```
 
 If you want to add CSS to any element, you can open the DevTools in your browser to inspect its class names. Class names come in several kinds:
@@ -50,14 +64,92 @@ If you want to add CSS to any element, you can open the DevTools in your browser
 We provide some stable CSS class names for robust and maintainable global layout styling. These names are theme-agnostic and meant to be targeted by custom CSS.
 
 <Callout kind="tip">
-  tip
-
   If you can't find a way to create a robust CSS selector, please [report your customization use-case](https://github.com/facebook/docusaurus/discussions/5468) and we will consider adding new class names.
 </Callout>
 
 <Expandable title="Exhaustive list of stable class names">
-  ```
-  export const ThemeClassNames = {  page: {    blogListPage: 'blog-list-page',    blogPostPage: 'blog-post-page',    blogTagsListPage: 'blog-tags-list-page',    blogTagPostListPage: 'blog-tags-post-list-page',    blogAuthorsListPage: 'blog-authors-list-page',    blogAuthorsPostsPage: 'blog-authors-posts-page',    docsDocPage: 'docs-doc-page',    docsTagsListPage: 'docs-tags-list-page',    docsTagDocListPage: 'docs-tags-doc-list-page',    mdxPage: 'mdx-page',  },  common: {    editThisPage: 'theme-edit-this-page',    lastUpdated: 'theme-last-updated',    backToTopButton: 'theme-back-to-top-button',    codeBlock: 'theme-code-block',    admonition: 'theme-admonition',    unlistedBanner: 'theme-unlisted-banner',    draftBanner: 'theme-draft-banner',    admonitionType: (type: string) => `theme-admonition-${type}`,  },  announcementBar: {    container: 'theme-announcement-bar',  },  tabs: {    container: 'theme-tabs-container',  },  layout: {    navbar: {      container: 'theme-layout-navbar',      containerLeft: 'theme-layout-navbar-left',      containerRight: 'theme-layout-navbar-right',      mobileSidebar: {        container: 'theme-layout-navbar-sidebar',        panel: 'theme-layout-navbar-sidebar-panel',      },    },    main: {      container: 'theme-layout-main',    },    footer: {      container: 'theme-layout-footer',      column: 'theme-layout-footer-column',    },  },  docs: {    docVersionBanner: 'theme-doc-version-banner',    docVersionBadge: 'theme-doc-version-badge',    docBreadcrumbs: 'theme-doc-breadcrumbs',    docMarkdown: 'theme-doc-markdown',    docTocMobile: 'theme-doc-toc-mobile',    docTocDesktop: 'theme-doc-toc-desktop',    docFooter: 'theme-doc-footer',    docFooterTagsRow: 'theme-doc-footer-tags-row',    docFooterEditMetaRow: 'theme-doc-footer-edit-meta-row',    docSidebarContainer: 'theme-doc-sidebar-container',    docSidebarMenu: 'theme-doc-sidebar-menu',    docSidebarItemCategory: 'theme-doc-sidebar-item-category',    docSidebarItemLink: 'theme-doc-sidebar-item-link',    docSidebarItemCategoryLevel: (level: number) =>      `theme-doc-sidebar-item-category-level-${level}` as const,    docSidebarItemLinkLevel: (level: number) =>      `theme-doc-sidebar-item-link-level-${level}` as const,    docCard: {      container: 'theme-doc-card-container',      heading: 'theme-doc-card-heading',      icon: 'theme-doc-card-icon',      title: 'theme-doc-card-title',      description: 'theme-doc-card-description',    },  },  blog: {    blogFooterTagsRow: 'theme-blog-footer-tags-row',    blogFooterEditMetaRow: 'theme-blog-footer-edit-meta-row',  },  pages: {    pageFooterEditMetaRow: 'theme-pages-footer-edit-meta-row',  },} as const;
+  ```ts
+  export const ThemeClassNames = {
+    page: {
+      blogListPage: 'blog-list-page',
+      blogPostPage: 'blog-post-page',
+      blogTagsListPage: 'blog-tags-list-page',
+      blogTagPostListPage: 'blog-tags-post-list-page',
+      blogAuthorsListPage: 'blog-authors-list-page',
+      blogAuthorsPostsPage: 'blog-authors-posts-page',
+      docsDocPage: 'docs-doc-page',
+      docsTagsListPage: 'docs-tags-list-page',
+      docsTagDocListPage: 'docs-tags-doc-list-page',
+      mdxPage: 'mdx-page',
+    },
+    common: {
+      editThisPage: 'theme-edit-this-page',
+      lastUpdated: 'theme-last-updated',
+      backToTopButton: 'theme-back-to-top-button',
+      codeBlock: 'theme-code-block',
+      admonition: 'theme-admonition',
+      unlistedBanner: 'theme-unlisted-banner',
+      draftBanner: 'theme-draft-banner',
+      admonitionType: (type: string) => `theme-admonition-${type}`,
+    },
+    announcementBar: {
+      container: 'theme-announcement-bar',
+    },
+    tabs: {
+      container: 'theme-tabs-container',
+    },
+    layout: {
+      navbar: {
+        container: 'theme-layout-navbar',
+        containerLeft: 'theme-layout-navbar-left',
+        containerRight: 'theme-layout-navbar-right',
+        mobileSidebar: {
+          container: 'theme-layout-navbar-sidebar',
+          panel: 'theme-layout-navbar-sidebar-panel',
+        },
+      },
+      main: {
+        container: 'theme-layout-main',
+      },
+      footer: {
+        container: 'theme-layout-footer',
+        column: 'theme-layout-footer-column',
+      },
+    },
+    docs: {
+      docVersionBanner: 'theme-doc-version-banner',
+      docVersionBadge: 'theme-doc-version-badge',
+      docBreadcrumbs: 'theme-doc-breadcrumbs',
+      docMarkdown: 'theme-doc-markdown',
+      docTocMobile: 'theme-doc-toc-mobile',
+      docTocDesktop: 'theme-doc-toc-desktop',
+      docFooter: 'theme-doc-footer',
+      docFooterTagsRow: 'theme-doc-footer-tags-row',
+      docFooterEditMetaRow: 'theme-doc-footer-edit-meta-row',
+      docSidebarContainer: 'theme-doc-sidebar-container',
+      docSidebarMenu: 'theme-doc-sidebar-menu',
+      docSidebarItemCategory: 'theme-doc-sidebar-item-category',
+      docSidebarItemLink: 'theme-doc-sidebar-item-link',
+      docSidebarItemCategoryLevel: (level: number) =>
+        `theme-doc-sidebar-item-category-level-${level}` as const,
+      docSidebarItemLinkLevel: (level: number) =>
+        `theme-doc-sidebar-item-link-level-${level}` as const,
+      docCard: {
+        container: 'theme-doc-card-container',
+        heading: 'theme-doc-card-heading',
+        icon: 'theme-doc-card-icon',
+        title: 'theme-doc-card-title',
+        description: 'theme-doc-card-description',
+      },
+    },
+    blog: {
+      blogFooterTagsRow: 'theme-blog-footer-tags-row',
+      blogFooterEditMetaRow: 'theme-blog-footer-edit-meta-row',
+    },
+    pages: {
+      pageFooterEditMetaRow: 'theme-pages-footer-edit-meta-row',
+    },
+  } as const;
   ```
 </Expandable>
 
@@ -67,10 +159,11 @@ We provide some stable CSS class names for robust and maintainable global layout
 
 When you scaffold your Docusaurus project with `create-docusaurus`, the website will be generated with basic Infima stylesheets and default styling. You can override Infima CSS variables globally.
 
-/src/css/custom.css
-
-```
-:root {  --ifm-color-primary: #25c2a0;  --ifm-code-font-size: 95%;}
+```css title="/src/css/custom.css"
+:root {
+  --ifm-color-primary: #25c2a0;
+  --ifm-code-font-size: 95%;
+}
 ```
 
 Infima uses 7 shades of each color. We recommend using [ColorBox](https://www.colorbox.io/) to find the different shades of colors for your chosen primary color.
@@ -78,8 +171,6 @@ Infima uses 7 shades of each color. We recommend using [ColorBox](https://www.co
 Alternatively, use the following tool to generate the different shades for your website and copy the variables into `/src/css/custom.css`.
 
 <Callout kind="tip">
-  tip
-
   Aim for at least [WCAG-AA contrast ratio](https://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast) for the primary color to ensure readability. Use the Docusaurus website itself to preview how your color palette would look like. You can use alternative palettes in dark mode because one color doesn't usually work in both light and dark mode.
 </Callout>
 
@@ -87,7 +178,7 @@ Alternatively, use the following tool to generate the different shades for your 
 
 <label>Background:</label>
 
-| CSS Variable Name | Hex | Adjustment | Contrast Rating`--ifm-color-primary-lightest``#3cad6e`<strong>Fail 🔴</strong>`--ifm-color-primary-lighter``#359962`<strong>Fail 🔴</strong>`--ifm-color-primary-light``#33925d`<strong>Fail 🔴</strong>`--ifm-color-primary``#2e8555`0<strong>AA 👍</strong>`--ifm-color-primary-dark``#29784c`<strong>AA 👍</strong>`--ifm-color-primary-darker``#277148`<strong>AA 👍</strong>`--ifm-color-primary-darkest``#205d3b`<strong>AAA 🏅</strong> |
+| CSS Variable Name | Hex | Adjustment | Contrast Rating |
 | --- | --- | --- | --- |
 | `--ifm-color-primary-lightest` | `#3cad6e` |  | <strong>Fail 🔴</strong> |
 | `--ifm-color-primary-lighter` | `#359962` |  | <strong>Fail 🔴</strong> |
@@ -99,23 +190,34 @@ Alternatively, use the following tool to generate the different shades for your 
 
 Replace the variables in `src/css/custom.css` with these new variables.
 
-/src/css/custom.css
-
-```
-:root {  --ifm-color-primary: #2e8555;  --ifm-color-primary-dark: #29784c;  --ifm-color-primary-darker: #277148;  --ifm-color-primary-darkest: #205d3b;  --ifm-color-primary-light: #33925d;  --ifm-color-primary-lighter: #359962;  --ifm-color-primary-lightest: #3cad6e;}
+```css title="/src/css/custom.css"
+:root {
+  --ifm-color-primary: #2e8555;
+  --ifm-color-primary-dark: #29784c;
+  --ifm-color-primary-darker: #277148;
+  --ifm-color-primary-darkest: #205d3b;
+  --ifm-color-primary-light: #33925d;
+  --ifm-color-primary-lighter: #359962;
+  --ifm-color-primary-lightest: #3cad6e;
+}
 ```
 
 ### Dark Mode
 
 In light mode, the `<html>` element has a `data-theme="light"` attribute; in dark mode, it's `data-theme="dark"`. Therefore, you can scope your CSS to dark-mode-only by targeting `html` with a specific attribute.
 
-```
-/* Overriding root Infima variables */[data-theme='dark'] {  --ifm-color-primary: #4e89e8;}/* Styling one class specially in dark mode */[data-theme='dark'] .purple-text {  color: plum;}
+```css
+/* Overriding root Infima variables */
+[data-theme='dark'] {
+  --ifm-color-primary: #4e89e8;
+}
+/* Styling one class specially in dark mode */
+[data-theme='dark'] .purple-text {
+  color: plum;
+}
 ```
 
 <Callout kind="tip">
-  tip
-
   It is possible to initialize the Docusaurus theme directly from a `docusaurus-theme` query string parameter.
 
   Examples:
@@ -147,10 +249,14 @@ It is possible to inject `<html>` data attributes with query string parameters f
 
 For example, let's render one of our pages with a red border and no navbar:
 
-/src/css/custom.css
+```css title="/src/css/custom.css"
+html[data-navbar='false'] .navbar {
+  display: none;
+}
 
-```
-html[data-navbar='false'] .navbar {  display: none;}html[data-red-border] div#__docusaurus {  border: red solid thick;}
+html[data-red-border] div#__docusaurus {
+  border: red solid thick;
+}
 ```
 
 /docs/?docusaurus-data-navbar=false&docusaurus-data-red-border
@@ -164,7 +270,7 @@ html[data-navbar='false'] .navbar {  display: none;}html[data-red-border] div#__
 </Callout>
 
 <Callout kind="tip">
-  Iframe Mode
+  **Iframe Mode**
 
   If you plan to embed some Docusaurus pages on another site though an iframe, it can be useful to create an alternative display mode and use iframe urls such as `https://mysite.com/docs/myDoc?docusaurus-data-mode=iframe`. It is your responsibility to provide the additional styles and decide which UI elements you want to keep or hide.
 </Callout>
@@ -173,22 +279,47 @@ html[data-navbar='false'] .navbar {  display: none;}html[data-red-border] div#__
 
 Docusaurus uses `996px` as the cutoff between mobile screen width and desktop. If you want your layout to be different in the mobile view, you can use media queries.
 
-```
-.banner {  padding: 4rem;}/** In mobile view, reduce the padding */@media screen and (max-width: 996px) {  .heroBanner {    padding: 2rem;  }}
+```css
+.banner {
+  padding: 4rem;
+}
+/** In mobile view, reduce the padding */
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    padding: 2rem;
+  }
+}
 ```
 
 ## CSS modules
 
 To style your components using [CSS Modules](https://github.com/css-modules/css-modules), name your stylesheet files with the `.module.css` suffix (e.g. `welcome.module.css`). Webpack will load such CSS files as CSS modules and you have to reference the class names as properties of the imported CSS module (as opposed to using plain strings). This is similar to the convention used in [Create React App](https://facebook.github.io/create-react-app/docs/adding-a-css-modules-stylesheet).
 
-styles.module.css
+```css title="styles.module.css"
+.main {
+  padding: 12px;
+}
 
-```
-.main {  padding: 12px;}.heading {  font-weight: bold;}.contents {  color: #ccc;}
+.heading {
+  font-weight: bold;
+}
+
+.contents {
+  color: #ccc;
+}
 ```
 
-```
-import styles from './styles.module.css';function MyComponent() {  return (    <main className={styles.main}>      <h1 className={styles.heading}>Hello!</h1>      <article className={styles.contents}>Lorem Ipsum</article>    </main>  );}
+```jsx
+import styles from './styles.module.css';
+
+function MyComponent() {
+  return (
+    <main className={styles.main}>
+      <h1 className={styles.heading}>Hello!</h1>
+      <article className={styles.contents}>Lorem Ipsum</article>
+    </main>
+  );
+}
 ```
 
 The class names will be processed by webpack into a globally unique class name during build.
@@ -196,8 +327,6 @@ The class names will be processed by webpack into a globally unique class name d
 ## CSS-in-JS
 
 <Callout kind="alert">
-  warning
-
   CSS-in-JS support is a work in progress, so libs like MUI may have display quirks. [Welcoming PRs](https://github.com/facebook/docusaurus/issues/1640).
 </Callout>
 
@@ -209,25 +338,25 @@ To use Sass/SCSS as your CSS preprocessor, install the unofficial Docusaurus plu
 
 <Tabs>
   <Tab title="npm">
-    ```
+    ```bash
     npm install --save docusaurus-plugin-sass sass
     ```
   </Tab>
 
   <Tab title="Yarn">
-    ```
+    ```bash
     yarn add docusaurus-plugin-sass sass
     ```
   </Tab>
 
   <Tab title="pnpm">
-    ```
+    ```bash
     pnpm add docusaurus-plugin-sass sass
     ```
   </Tab>
 
   <Tab title="Bun">
-    ```
+    ```bash
     bun add docusaurus-plugin-sass sass
     ```
   </Tab>
@@ -235,10 +364,12 @@ To use Sass/SCSS as your CSS preprocessor, install the unofficial Docusaurus plu
 
 2. Include the plugin in your `docusaurus.config.js` file:
 
-docusaurus.config.js
-
-```
-export default {  // ...  plugins: ['docusaurus-plugin-sass'],  // ...};
+```js title="docusaurus.config.js"
+export default {
+  // ...
+  plugins: ['docusaurus-plugin-sass'],
+  // ...
+};
 ```
 
 3. Write and import your stylesheets in Sass/SCSS as normal.
@@ -247,22 +378,45 @@ export default {  // ...  plugins: ['docusaurus-plugin-sass'],  // ...};
 
 You can now set the `customCss` property of `@docusaurus/preset-classic` to point to your Sass/SCSS file:
 
-docusaurus.config.js
-
-```
-export default {  presets: [    [      '@docusaurus/preset-classic',      {        // ...        theme: {          customCss: ['./src/css/custom.scss'],        },        // ...      },    ],  ],};
+```js title="docusaurus.config.js"
+export default {
+  presets: [
+    [
+      '@docusaurus/preset-classic',
+      {
+        // ...
+        theme: {
+          customCss: ['./src/css/custom.scss'],
+        },
+        // ...
+      },
+    ],
+  ],
+};
 ```
 
 ### Modules using Sass/SCSS
 
 Name your stylesheet files with the `.module.scss` suffix (e.g. `welcome.module.scss`) instead of `.css`. Webpack will use `sass-loader` to preprocess your stylesheets and load them as CSS modules.
 
-styles.module.scss
+```scss title="styles.module.scss"
+.main {
+  padding: 12px;
 
-```
-.main {  padding: 12px;  article {    color: #ccc;  }}
+  article {
+    color: #ccc;
+  }
+}
 ```
 
-```
-import styles from './styles.module.scss';function MyComponent() {  return (    <main className={styles.main}>      <article>Lorem Ipsum</article>    </main>  );}
+```jsx
+import styles from './styles.module.scss';
+
+function MyComponent() {
+  return (
+    <main className={styles.main}>
+      <article>Lorem Ipsum</article>
+    </main>
+  );
+}
 ```

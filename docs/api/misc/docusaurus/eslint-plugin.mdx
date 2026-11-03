@@ -11,25 +11,25 @@ ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc
 
 <Tabs>
   <Tab title="npm">
-    ```
+    ```bash
     npm install --save-dev @docusaurus/eslint-plugin
     ```
   </Tab>
 
   <Tab title="Yarn">
-    ```
+    ```bash
     yarn add --dev @docusaurus/eslint-plugin
     ```
   </Tab>
 
   <Tab title="pnpm">
-    ```
+    ```bash
     pnpm add --save-dev @docusaurus/eslint-plugin
     ```
   </Tab>
 
   <Tab title="Bun">
-    ```
+    ```bash
     bun add --dev @docusaurus/eslint-plugin
     ```
   </Tab>
@@ -41,10 +41,10 @@ ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc
 
 Add `plugin:@docusaurus/recommended` to the `extends` section of your `.eslintrc` configuration file:
 
-.eslintrc
-
-```
-{  "extends": ["plugin:@docusaurus/recommended"]}
+```json title=".eslintrc"
+{
+  "extends": ["plugin:@docusaurus/recommended"]
+}
 ```
 
 This will enable the `@docusaurus` eslint plugin and use the `recommended` config. See [Supported rules](#supported-rules) below for a list of rules that this will enable.
@@ -53,10 +53,14 @@ This will enable the `@docusaurus` eslint plugin and use the `recommended` confi
 
 For more fine-grained control, you can also enable the plugin manually and configure the rules you want to use directly:
 
-.eslintrc
-
-```
-{  "plugins": ["@docusaurus"],  "rules": {    "@docusaurus/string-literal-i18n-messages": "error",    "@docusaurus/no-untranslated-text": "warn"  }}
+```json title=".eslintrc"
+{
+  "plugins": ["@docusaurus"],
+  "rules": {
+    "@docusaurus/string-literal-i18n-messages": "error",
+    "@docusaurus/no-untranslated-text": "warn"
+  }
+}
 ```
 
 ## Supported configs
@@ -66,7 +70,7 @@ For more fine-grained control, you can also enable the plugin manually and confi
 
 ## Supported rules
 
-| Name | Description | [`@docusaurus/no-untranslated-text`](/docs/api/misc/docusaurus/eslint-plugin/no-untranslated-text)Enforce text labels in JSX to be wrapped by translate calls[`@docusaurus/string-literal-i18n-messages`](/docs/api/misc/docusaurus/eslint-plugin/string-literal-i18n-messages)Enforce translate APIs to be called on plain text labels✅[`@docusaurus/no-html-links`](/docs/api/misc/docusaurus/eslint-plugin/no-html-links)Ensures @docusaurus/Link is used instead of `<a>` tags✅[`@docusaurus/prefer-docusaurus-heading`](/docs/api/misc/docusaurus/eslint-plugin/prefer-docusaurus-heading)Ensures @theme/Heading is used instead of `<hn>` tags for headings✅ |
+| Name | Description |  |
 | --- | --- | --- |
 | [`@docusaurus/no-untranslated-text`](/docs/api/misc/docusaurus/eslint-plugin/no-untranslated-text) | Enforce text labels in JSX to be wrapped by translate calls |  |
 | [`@docusaurus/string-literal-i18n-messages`](/docs/api/misc/docusaurus/eslint-plugin/string-literal-i18n-messages) | Enforce translate APIs to be called on plain text labels | ✅ |
@@ -79,8 +83,14 @@ For more fine-grained control, you can also enable the plugin manually and confi
 
 Here's an example configuration:
 
-.eslintrc.js
-
-```
-module.exports = {  extends: ['plugin:@docusaurus/recommended'],  rules: {    '@docusaurus/no-untranslated-text': [      'warn',      {ignoredStrings: ['·', '—', '×']},    ],  },};
+```js title=".eslintrc.js"
+module.exports = {
+  extends: ['plugin:@docusaurus/recommended'],
+  rules: {
+    '@docusaurus/no-untranslated-text': [
+      'warn',
+      {ignoredStrings: ['·', '—', '×']},
+    ],
+  },
+};
 ```

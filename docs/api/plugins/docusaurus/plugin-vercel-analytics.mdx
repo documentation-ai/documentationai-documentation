@@ -8,7 +8,7 @@ ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc
 [Vercel Analytics](https://vercel.com/docs/analytics) provides comprehensive insights into your website's visitors, tracking top pages, referrers, and demographics like location, operating systems, and browser info.
 
 <Callout kind="alert">
-  production only
+  **production only**
 
   This plugin is always inactive in development and **only active in production** (`docusaurus build`) to avoid polluting the analytics statistics.
 </Callout>
@@ -17,25 +17,25 @@ ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc
 
 <Tabs>
   <Tab title="npm">
-    ```
+    ```bash
     npm install --save @docusaurus/plugin-vercel-analytics
     ```
   </Tab>
 
   <Tab title="Yarn">
-    ```
+    ```bash
     yarn add @docusaurus/plugin-vercel-analytics
     ```
   </Tab>
 
   <Tab title="pnpm">
-    ```
+    ```bash
     pnpm add @docusaurus/plugin-vercel-analytics
     ```
   </Tab>
 
   <Tab title="Bun">
-    ```
+    ```bash
     bun add @docusaurus/plugin-vercel-analytics
     ```
   </Tab>
@@ -45,7 +45,7 @@ ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc
 
 Accepted fields:
 
-| Name | Type | Default | Description`mode``string``'auto'`Override the automatic environment detection. Read the [official docs](https://vercel.com/docs/analytics/package#mode) for details.`debug``boolean``undefined`Enable browser console logging of analytics events. Read the [official docs](https://vercel.com/docs/analytics/package#debug) for details. |
+| Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | `mode` | `string` | `'auto'` | Override the automatic environment detection. Read the [official docs](https://vercel.com/docs/analytics/package#mode) for details. |
 | `debug` | `boolean` | `undefined` | Enable browser console logging of analytics events. Read the [official docs](https://vercel.com/docs/analytics/package#debug) for details. |
@@ -56,8 +56,16 @@ Accepted fields:
 
 You can configure this plugin through plugin options.
 
-docusaurus.config.js
-
-```
-export default {  plugins: [    [      'vercel-analytics',      {        debug: true,        mode: 'auto',      },    ],  ],};
+```js title="docusaurus.config.js"
+export default {
+  plugins: [
+    [
+      'vercel-analytics',
+      {
+        debug: true,
+        mode: 'auto',
+      },
+    ],
+  ],
+};
 ```

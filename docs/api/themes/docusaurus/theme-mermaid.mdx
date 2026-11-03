@@ -9,25 +9,25 @@ This theme provides a `@theme/Mermaid` component that is powered by [mermaid](ht
 
 <Tabs>
   <Tab title="npm">
-    ```
+    ```bash
     npm install --save @docusaurus/theme-mermaid
     ```
   </Tab>
 
   <Tab title="Yarn">
-    ```
+    ```bash
     yarn add @docusaurus/theme-mermaid
     ```
   </Tab>
 
   <Tab title="pnpm">
-    ```
+    ```bash
     pnpm add @docusaurus/theme-mermaid
     ```
   </Tab>
 
   <Tab title="Bun">
-    ```
+    ```bash
     bun add @docusaurus/theme-mermaid
     ```
   </Tab>
@@ -35,8 +35,13 @@ This theme provides a `@theme/Mermaid` component that is powered by [mermaid](ht
 
 ## Configuration
 
-docusaurus.config.js
-
-```
-export default {  themes: ['@docusaurus/theme-mermaid'],  // In order for Mermaid code blocks in Markdown to work,  // you also need to enable the Remark plugin with this option  markdown: {    mermaid: true,  },};
+```js title="docusaurus.config.js"
+export default {
+  themes: ['@docusaurus/theme-mermaid'],
+  // In order for Mermaid code blocks in Markdown to work,
+  // you also need to enable the Remark plugin with this option
+  markdown: {
+    mermaid: true,
+  },
+};
 ```

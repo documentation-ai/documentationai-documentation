@@ -17,7 +17,7 @@ It is possible to customize the color mode support within the `colorMode` object
 
 Accepted fields:
 
-| Name | Type | Default | Description`defaultMode``'light' \| 'dark'``'light'`The color mode when user first visits the site.`disableSwitch``boolean``false`Hides the switch in the navbar. Useful if you want to support a single color mode.`respectPrefersColorScheme``boolean``false`Whether to use the `prefers-color-scheme` media-query, using user system preferences, instead of the hardcoded `defaultMode`. |
+| Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | `defaultMode` | `'light' \| 'dark'` | `'light'` | The color mode when user first visits the site. |
 | `disableSwitch` | `boolean` | `false` | Hides the switch in the navbar. Useful if you want to support a single color mode. |
@@ -25,15 +25,19 @@ Accepted fields:
 
 Example configuration:
 
-docusaurus.config.js
-
-```
-export default {  themeConfig: {    colorMode: {      defaultMode: 'light',      disableSwitch: false,      respectPrefersColorScheme: false,    },  },};
+```js title="docusaurus.config.js"
+export default {
+  themeConfig: {
+    colorMode: {
+      defaultMode: 'light',
+      disableSwitch: false,
+      respectPrefersColorScheme: false,
+    },
+  },
+};
 ```
 
 <Callout kind="alert">
-  warning
-
   With `respectPrefersColorScheme: true`, the `defaultMode` is overridden by user system preferences.
 
   If you only want to support one color mode, you likely want to ignore user system preferences.
@@ -45,16 +49,18 @@ You can configure a default image that will be used for your meta tag, in partic
 
 Accepted fields:
 
-| Name | Type | Default | Description`image``string``undefined`The meta image URL for the site. Relative to your site's "static" directory. Cannot be SVGs. Can be external URLs too. |
+| Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | `image` | `string` | `undefined` | The meta image URL for the site. Relative to your site's "static" directory. Cannot be SVGs. Can be external URLs too. |
 
 Example configuration:
 
-docusaurus.config.js
-
-```
-export default {  themeConfig: {    image: 'img/docusaurus.png',  },};
+```js title="docusaurus.config.js"
+export default {
+  themeConfig: {
+    image: 'img/docusaurus.png',
+  },
+};
 ```
 
 ### Metadata
@@ -63,16 +69,18 @@ You can configure additional HTML metadata (and override existing ones).
 
 Accepted fields:
 
-| Name | Type | Default | Description`metadata``Metadata[]``[]`Any field will be directly passed to the `<meta />` tag. Possible fields include `id`, `name`, `property`, `content`, `itemprop`, etc. |
+| Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | `metadata` | `Metadata[]` | `[]` | Any field will be directly passed to the `<meta />` tag. Possible fields include `id`, `name`, `property`, `content`, `itemprop`, etc. |
 
 Example configuration:
 
-docusaurus.config.js
-
-```
-export default {  themeConfig: {    metadata: [{name: 'twitter:card', content: 'summary'}],  },};
+```js title="docusaurus.config.js"
+export default {
+  themeConfig: {
+    metadata: [{name: 'twitter:card', content: 'summary'}],
+  },
+};
 ```
 
 ### Announcement bar
@@ -81,7 +89,7 @@ Sometimes you want to announce something in your website. Just for such a case, 
 
 Accepted fields:
 
-| Name | Type | Default | Description`id``string``'announcement-bar'`Any value that will identify this message.`content``string``''`The text content of the announcement. HTML will be interpolated.`backgroundColor``string``'#fff'`Background color of the entire bar.`textColor``string``'#000'`Announcement text color.`isCloseable``boolean``true`Whether this announcement can be dismissed with a '×' button. |
+| Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | `id` | `string` | `'announcement-bar'` | Any value that will identify this message. |
 | `content` | `string` | `''` | The text content of the announcement. HTML will be interpolated. |
@@ -91,17 +99,26 @@ Accepted fields:
 
 Example configuration:
 
-docusaurus.config.js
-
-```
-export default {  themeConfig: {    announcementBar: {      id: 'support_us',      content:        'We are looking to revamp our docs, please fill <a target="_blank" rel="noopener noreferrer" href="#">this survey</a>',      backgroundColor: '#fafbfc',      textColor: '#091E42',      isCloseable: false,    },  },};
+```js title="docusaurus.config.js"
+export default {
+  themeConfig: {
+    announcementBar: {
+      id: 'support_us',
+      content:
+        'We are looking to revamp our docs, please fill <a target="_blank" rel="noopener noreferrer" href="#">this survey</a>',
+      backgroundColor: '#fafbfc',
+      textColor: '#091E42',
+      isCloseable: false,
+    },
+  },
+};
 ```
 
 ## Navbar
 
 Accepted fields:
 
-| Name | Type | Default | Description`title``string``undefined`Title for the navbar.`logo`*See below*`undefined`Customization of the logo object.`items``NavbarItem[]``[]`A list of navbar items. See specification below.`hideOnScroll``boolean``false`Whether the navbar is hidden when the user scrolls down.`style``'primary' \| 'dark'`Same as themeSets the navbar style, ignoring the dark/light theme. |
+| Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | `title` | `string` | `undefined` | Title for the navbar. |
 | `logo` | *See below* | `undefined` | Customization of the logo object. |
@@ -117,7 +134,7 @@ To improve dark mode support, you can also set a different logo for this mode.
 
 Accepted fields:
 
-| Name | Type | Default | Description`alt``string``undefined`Alt tag for the logo image.`src``string`**Required**URL to the logo image. Base URL is appended by default.`srcDark``string``logo.src`An alternative image URL to use in dark mode.`href``string``siteConfig.baseUrl`Link to navigate to when the logo is clicked.`width``string \| number``undefined`Specifies the `width` attribute.`height``string \| number``undefined`Specifies the `height` attribute.`target``string`Calculated based on `href` (external links will open in a new tab, all others in the current one).The `target` attribute of the link; controls whether the link is opened in a new tab, the current one, or otherwise.`className``string``undefined`CSS class applied to the image.`style``object``undefined`CSS inline style object. React/JSX flavor, using camelCase properties. |
+| Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | `alt` | `string` | `undefined` | Alt tag for the logo image. |
 | `src` | `string` | **Required** | URL to the logo image. Base URL is appended by default. |
@@ -131,20 +148,61 @@ Accepted fields:
 
 Example configuration:
 
-docusaurus.config.js
-
-```
-export default {  themeConfig: {    navbar: {      title: 'Site Title',      logo: {        alt: 'Site Logo',        src: 'img/logo.svg',        srcDark: 'img/logo_dark.svg',        href: 'https://docusaurus.io/',        target: '_self',        width: 32,        height: 32,        className: 'custom-navbar-logo-class',        style: {border: 'solid red'},      },    },  },};
+```js title="docusaurus.config.js"
+export default {
+  themeConfig: {
+    navbar: {
+      title: 'Site Title',
+      logo: {
+        alt: 'Site Logo',
+        src: 'img/logo.svg',
+        srcDark: 'img/logo_dark.svg',
+        href: 'https://docusaurus.io/',
+        target: '_self',
+        width: 32,
+        height: 32,
+        className: 'custom-navbar-logo-class',
+        style: {border: 'solid red'},
+      },
+    },
+  },
+};
 ```
 
 ### Navbar items
 
 You can add items to the navbar via `themeConfig.navbar.items`.
 
-docusaurus.config.js
-
-```
-export default {  themeConfig: {    navbar: {      items: [        {          type: 'doc',          position: 'left',          docId: 'introduction',          label: 'Docs',        },        {to: 'blog', label: 'Blog', position: 'left'},        {          type: 'docsVersionDropdown',          position: 'right',        },        {          type: 'localeDropdown',          position: 'right',        },        {          href: 'https://github.com/facebook/docusaurus',          position: 'right',          className: 'header-github-link',          'aria-label': 'GitHub repository',        },      ],    },  },};
+```js title="docusaurus.config.js"
+export default {
+  themeConfig: {
+    navbar: {
+      items: [
+        {
+          type: 'doc',
+          position: 'left',
+          docId: 'introduction',
+          label: 'Docs',
+        },
+        {to: 'blog', label: 'Blog', position: 'left'},
+        {
+          type: 'docsVersionDropdown',
+          position: 'right',
+        },
+        {
+          type: 'localeDropdown',
+          position: 'right',
+        },
+        {
+          href: 'https://github.com/facebook/docusaurus',
+          position: 'right',
+          className: 'header-github-link',
+          'aria-label': 'GitHub repository',
+        },
+      ],
+    },
+  },
+};
 ```
 
 The items can have different behaviors based on the `type` field. The sections below will introduce you to all the types of navbar items available.
@@ -159,7 +217,7 @@ Outbound (external) links automatically get `target="_blank" rel="noopener noref
 
 Accepted fields:
 
-| Name | Type | Default | Description`type``'default'`OptionalSets the type of this item to a link.`label``string`**Required**The name to be shown for this item.`html``string`OptionalSame as `label`, but renders pure HTML instead of text content.`to``string`**Required**Client-side routing, used for navigating within the website. The baseUrl will be automatically prepended to this value.`href``string`**Required**A full-page navigation, used for navigating outside of the website. <strong>Only one of `to` or `href` should be used.</strong>`prependBaseUrlToHref``boolean``false`Prepends the baseUrl to `href` values.`position``'left' \| 'right'``'left'`The side of the navbar this item should appear on.`activeBasePath``string``to` / `href`To apply the active class styling on all routes starting with this path. This usually isn't necessary.`activeBaseRegex``string``undefined`Alternative to `activeBasePath` if required.`className``string``''`Custom CSS class (for styling any item). |
+| Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | `type` | `'default'` | Optional | Sets the type of this item to a link. |
 | `label` | `string` | **Required** | The name to be shown for this item. |
@@ -173,17 +231,31 @@ Accepted fields:
 | `className` | `string` | `''` | Custom CSS class (for styling any item). |
 
 <Callout kind="info">
-  note
-
   In addition to the fields above, you can specify other arbitrary attributes that can be applied to a HTML link.
 </Callout>
 
 Example configuration:
 
-docusaurus.config.js
-
-```
-export default {  themeConfig: {    navbar: {      items: [        {          to: 'docs/introduction',          // Only one of "to" or "href" should be used          // href: 'https://www.facebook.com',          label: 'Introduction',          // Only one of "label" or "html" should be used          // html: '<b>Introduction</b>'          position: 'left',          activeBaseRegex: 'docs/(next|v8)',          target: '_blank',        },      ],    },  },};
+```js title="docusaurus.config.js"
+export default {
+  themeConfig: {
+    navbar: {
+      items: [
+        {
+          to: 'docs/introduction',
+          // Only one of "to" or "href" should be used
+          // href: 'https://www.facebook.com',
+          label: 'Introduction',
+          // Only one of "label" or "html" should be used
+          // html: '<b>Introduction</b>'
+          position: 'left',
+          activeBaseRegex: 'docs/(next|v8)',
+          target: '_blank',
+        },
+      ],
+    },
+  },
+};
 ```
 
 #### Navbar dropdown
@@ -202,7 +274,7 @@ Note that the dropdown base item is a clickable link as well, so this item can r
 
 Accepted fields:
 
-| Name | Type | Default | Description`type``'dropdown'`OptionalSets the type of this item to a dropdown.`label``string`**Required**The name to be shown for this item.`items``LinkLikeItem[]`**Required**The items to be contained in the dropdown.`position``'left' \| 'right'``'left'`The side of the navbar this item should appear on. |
+| Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | `type` | `'dropdown'` | Optional | Sets the type of this item to a dropdown. |
 | `label` | `string` | **Required** | The name to be shown for this item. |
@@ -211,10 +283,32 @@ Accepted fields:
 
 Example configuration:
 
-docusaurus.config.js
-
-```
-export default {  themeConfig: {    navbar: {      items: [        {          type: 'dropdown',          label: 'Community',          position: 'left',          items: [            {              label: 'Facebook',              href: 'https://www.facebook.com',            },            {              type: 'doc',              label: 'Social',              docId: 'social',            },            // ... more items          ],        },      ],    },  },};
+```js title="docusaurus.config.js"
+export default {
+  themeConfig: {
+    navbar: {
+      items: [
+        {
+          type: 'dropdown',
+          label: 'Community',
+          position: 'left',
+          items: [
+            {
+              label: 'Facebook',
+              href: 'https://www.facebook.com',
+            },
+            {
+              type: 'doc',
+              label: 'Social',
+              docId: 'social',
+            },
+            // ... more items
+          ],
+        },
+      ],
+    },
+  },
+};
 ```
 
 #### Navbar doc link
@@ -223,7 +317,7 @@ If you want to link to a specific doc, this special navbar item type will render
 
 Accepted fields:
 
-| Name | Type | Default | Description`type``'doc'`**Required**Sets the type of this item to a doc link.`docId``string`**Required**The ID of the doc that this item links to.`label``string``docId`The name to be shown for this item.`position``'left' \| 'right'``'left'`The side of the navbar this item should appear on.`docsPluginId``string``'default'`The ID of the docs plugin that the doc belongs to. |
+| Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | `type` | `'doc'` | **Required** | Sets the type of this item to a doc link. |
 | `docId` | `string` | **Required** | The ID of the doc that this item links to. |
@@ -233,10 +327,21 @@ Accepted fields:
 
 Example configuration:
 
-docusaurus.config.js
-
-```
-export default {  themeConfig: {    navbar: {      items: [        {          type: 'doc',          position: 'left',          docId: 'introduction',          label: 'Docs',        },      ],    },  },};
+```js title="docusaurus.config.js"
+export default {
+  themeConfig: {
+    navbar: {
+      items: [
+        {
+          type: 'doc',
+          position: 'left',
+          docId: 'introduction',
+          label: 'Docs',
+        },
+      ],
+    },
+  },
+};
 ```
 
 <a id="navbar-doc-sidebar"></a>
@@ -247,7 +352,7 @@ You can link a navbar item to the first document link (which can be a doc link o
 
 Accepted fields:
 
-| Name | Type | Default | Description`type``'docSidebar'`**Required**Sets the type of this navbar item to a sidebar's first document.`sidebarId``string`**Required**The ID of the sidebar that this item is linked to.`label``string`First document link's sidebar labelThe name to be shown for this item.`position``'left' \| 'right'``'left'`The side of the navbar this item should appear on.`docsPluginId``string``'default'`The ID of the docs plugin that the sidebar belongs to. |
+| Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | `type` | `'docSidebar'` | **Required** | Sets the type of this navbar item to a sidebar's first document. |
 | `sidebarId` | `string` | **Required** | The ID of the sidebar that this item is linked to. |
@@ -256,23 +361,45 @@ Accepted fields:
 | `docsPluginId` | `string` | `'default'` | The ID of the docs plugin that the sidebar belongs to. |
 
 <Callout kind="tip">
-  tip
-
   Use this navbar item type if your sidebar is updated often and the order is not stable.
 </Callout>
 
 Example configuration:
 
-docusaurus.config.js
-
+```js title="docusaurus.config.js"
+export default {
+  themeConfig: {
+    navbar: {
+      items: [
+        {
+          type: 'docSidebar',
+          position: 'left',
+          sidebarId: 'api',
+          label: 'API',
+        },
+      ],
+    },
+  },
+};
 ```
-export default {  themeConfig: {    navbar: {      items: [        {          type: 'docSidebar',          position: 'left',          sidebarId: 'api',          label: 'API',        },      ],    },  },};
-```
 
-sidebars.js
-
-```
-export default {  tutorial: [    {      type: 'autogenerated',      dirName: 'guides',    },  ],  api: [    'cli', // The navbar item will be linking to this doc    'docusaurus-core',    {      type: 'autogenerated',      dirName: 'api',    },  ],};
+```js title="sidebars.js"
+export default {
+  tutorial: [
+    {
+      type: 'autogenerated',
+      dirName: 'guides',
+    },
+  ],
+  api: [
+    'cli', // The navbar item will be linking to this doc
+    'docusaurus-core',
+    {
+      type: 'autogenerated',
+      dirName: 'api',
+    },
+  ],
+};
 ```
 
 #### Navbar docs version dropdown
@@ -283,7 +410,7 @@ The user will be able to switch from one version to another, while staying on th
 
 Accepted fields:
 
-| Name | Type | Default | Description`type``'docsVersionDropdown'`**Required**Sets the type of this item to a docs version dropdown.`position``'left' \| 'right'``'left'`The side of the navbar this item should appear on.`dropdownItemsBefore``LinkLikeItem[]``[]`Add additional dropdown items at the beginning of the dropdown.`dropdownItemsAfter``LinkLikeItem[]``[]`Add additional dropdown items at the end of the dropdown.`docsPluginId``string``'default'`The ID of the docs plugin that the doc versioning belongs to.`dropdownActiveClassDisabled``boolean``false`Do not add the link active class when browsing docs. |
+| Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | `type` | `'docsVersionDropdown'` | **Required** | Sets the type of this item to a docs version dropdown. |
 | `position` | `'left' \| 'right'` | `'left'` | The side of the navbar this item should appear on. |
@@ -294,10 +421,21 @@ Accepted fields:
 
 Example configuration:
 
-docusaurus.config.js
-
-```
-export default {  themeConfig: {    navbar: {      items: [        {          type: 'docsVersionDropdown',          position: 'left',          dropdownItemsAfter: [{to: '/versions', label: 'All versions'}],          dropdownActiveClassDisabled: true,        },      ],    },  },};
+```js title="docusaurus.config.js"
+export default {
+  themeConfig: {
+    navbar: {
+      items: [
+        {
+          type: 'docsVersionDropdown',
+          position: 'left',
+          dropdownItemsAfter: [{to: '/versions', label: 'All versions'}],
+          dropdownActiveClassDisabled: true,
+        },
+      ],
+    },
+  },
+};
 ```
 
 #### Navbar docs version
@@ -306,7 +444,7 @@ If you use docs with versioning, this special navbar item type will link to the 
 
 Accepted fields:
 
-| Name | Type | Default | Description`type``'docsVersion'`**Required**Sets the type of this item to a doc version link.`label``string`The active/latest version label.The name to be shown for this item.`to``string`The active/latest version.The internal link that this item points to.`position``'left' \| 'right'``'left'`The side of the navbar this item should appear on.`docsPluginId``string``'default'`The ID of the docs plugin that the doc versioning belongs to. |
+| Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | `type` | `'docsVersion'` | **Required** | Sets the type of this item to a doc version link. |
 | `label` | `string` | The active/latest version label. | The name to be shown for this item. |
@@ -316,10 +454,21 @@ Accepted fields:
 
 Example configuration:
 
-docusaurus.config.js
-
-```
-export default {  themeConfig: {    navbar: {      items: [        {          type: 'docsVersion',          position: 'left',          to: '/path',          label: 'label',        },      ],    },  },};
+```js title="docusaurus.config.js"
+export default {
+  themeConfig: {
+    navbar: {
+      items: [
+        {
+          type: 'docsVersion',
+          position: 'left',
+          to: '/path',
+          label: 'label',
+        },
+      ],
+    },
+  },
+};
 ```
 
 #### Navbar locale dropdown
@@ -330,7 +479,7 @@ The user will be able to switch from one locale to another, while staying on the
 
 Accepted fields:
 
-| Name | Type | Default | Description`type``'localeDropdown'`**Required**Sets the type of this item to a locale dropdown.`position``'left' \| 'right'``'left'`The side of the navbar this item should appear on.`dropdownItemsBefore``LinkLikeItem[]``[]`Add additional dropdown items at the beginning of the dropdown.`dropdownItemsAfter``LinkLikeItem[]``[]`Add additional dropdown items at the end of the dropdown.`queryString``string``undefined`The query string to be appended to the URL. |
+| Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | `type` | `'localeDropdown'` | **Required** | Sets the type of this item to a locale dropdown. |
 | `position` | `'left' \| 'right'` | `'left'` | The side of the navbar this item should appear on. |
@@ -340,10 +489,25 @@ Accepted fields:
 
 Example configuration:
 
-docusaurus.config.js
-
-```
-export default {  themeConfig: {    navbar: {      items: [        {          type: 'localeDropdown',          position: 'left',          dropdownItemsAfter: [            {              to: 'https://my-site.com/help-us-translate',              label: 'Help us translate',            },          ],        },      ],    },  },};
+```js title="docusaurus.config.js"
+export default {
+  themeConfig: {
+    navbar: {
+      items: [
+        {
+          type: 'localeDropdown',
+          position: 'left',
+          dropdownItemsAfter: [
+            {
+              to: 'https://my-site.com/help-us-translate',
+              label: 'Help us translate',
+            },
+          ],
+        },
+      ],
+    },
+  },
+};
 ```
 
 #### Navbar search
@@ -352,43 +516,66 @@ If you use the [search](https://docusaurus.io/docs/3.1.1/search), the search bar
 
 However, with this special navbar item type, you can change the default location.
 
-| Name | Type | Default | Description`type``'search'`**Required**Sets the type of this item to a search bar.`position``'left' \| 'right'``'left'`The side of the navbar this item should appear on.`className``string`/Custom CSS class for this navbar item. |
+| Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | `type` | `'search'` | **Required** | Sets the type of this item to a search bar. |
 | `position` | `'left' \| 'right'` | `'left'` | The side of the navbar this item should appear on. |
 | `className` | `string` | / | Custom CSS class for this navbar item. |
 
-docusaurus.config.js
-
-```
-export default {  themeConfig: {    navbar: {      items: [        {          type: 'search',          position: 'right',        },      ],    },  },};
+```js title="docusaurus.config.js"
+export default {
+  themeConfig: {
+    navbar: {
+      items: [
+        {
+          type: 'search',
+          position: 'right',
+        },
+      ],
+    },
+  },
+};
 ```
 
 #### Navbar with custom HTML
 
 You can also render your own HTML markup inside a navbar item using this navbar item type.
 
-| Name | Type | Default | Description`type``'html'`**Required**Sets the type of this item to a HTML element.`position``'left' \| 'right'``'left'`The side of the navbar this item should appear on.`className``string``''`Custom CSS class for this navbar item.`value``string``''`Custom HTML to be rendered inside this navbar item. |
+| Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | `type` | `'html'` | **Required** | Sets the type of this item to a HTML element. |
 | `position` | `'left' \| 'right'` | `'left'` | The side of the navbar this item should appear on. |
 | `className` | `string` | `''` | Custom CSS class for this navbar item. |
 | `value` | `string` | `''` | Custom HTML to be rendered inside this navbar item. |
 
-docusaurus.config.js
-
-```
-export default {  themeConfig: {    navbar: {      items: [        {          type: 'html',          position: 'right',          value: '<button>Give feedback</button>',        },      ],    },  },};
+```js title="docusaurus.config.js"
+export default {
+  themeConfig: {
+    navbar: {
+      items: [
+        {
+          type: 'html',
+          position: 'right',
+          value: '<button>Give feedback</button>',
+        },
+      ],
+    },
+  },
+};
 ```
 
 ### Auto-hide sticky navbar
 
 You can enable this cool UI feature that automatically hides the navbar when a user starts scrolling down the page, and show it again when the user scrolls up.
 
-docusaurus.config.js
-
-```
-export default {  themeConfig: {    navbar: {      hideOnScroll: true,    },  },};
+```js title="docusaurus.config.js"
+export default {
+  themeConfig: {
+    navbar: {
+      hideOnScroll: true,
+    },
+  },
+};
 ```
 
 ### Navbar style
@@ -397,10 +584,14 @@ You can set the static Navbar style without disabling the theme switching abilit
 
 Currently, there are two possible style options: `dark` and `primary` (based on the `--ifm-color-primary` color). You can see the styles preview in the [Infima documentation](https://infima.dev/docs/components/navbar/).
 
-docusaurus.config.js
-
-```
-export default {  themeConfig: {    navbar: {      style: 'primary',    },  },};
+```js title="docusaurus.config.js"
+export default {
+  themeConfig: {
+    navbar: {
+      style: 'primary',
+    },
+  },
+};
 ```
 
 ## CodeBlock
@@ -409,19 +600,29 @@ Docusaurus uses [Prism React Renderer](https://github.com/FormidableLabs/prism-r
 
 Accepted fields:
 
-| Name | Type | Default | Description`theme``PrismTheme``palenight`The Prism theme to use for light-theme code blocks.`darkTheme``PrismTheme``palenight`The Prism theme to use for dark-theme code blocks.`defaultLanguage``string``undefined`The default language to use for code blocks not declaring any explicit language.`magicComments``MagicCommentConfig[]`*see below*The list of [magic comments](https://docusaurus.io/docs/3.1.1/markdown-features/code-blocks#custom-magic-comments). |
+| Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | `theme` | `PrismTheme` | `palenight` | The Prism theme to use for light-theme code blocks. |
 | `darkTheme` | `PrismTheme` | `palenight` | The Prism theme to use for dark-theme code blocks. |
 | `defaultLanguage` | `string` | `undefined` | The default language to use for code blocks not declaring any explicit language. |
 | `magicComments` | `MagicCommentConfig[]` | *see below* | The list of [magic comments](https://docusaurus.io/docs/3.1.1/markdown-features/code-blocks#custom-magic-comments). |
 
-```
-type MagicCommentConfig = {  className: string;  line?: string;  block?: {start: string; end: string};};
+```ts
+type MagicCommentConfig = {
+  className: string;
+  line?: string;
+  block?: {start: string; end: string};
+};
 ```
 
-```
-const defaultMagicComments = [  {    className: 'theme-code-block-highlighted-line',    line: 'highlight-next-line',    block: {start: 'highlight-start', end: 'highlight-end'},  },];
+```js
+const defaultMagicComments = [
+  {
+    className: 'theme-code-block-highlighted-line',
+    line: 'highlight-next-line',
+    block: {start: 'highlight-start', end: 'highlight-end'},
+  },
+];
 ```
 
 ### Theme
@@ -430,15 +631,20 @@ By default, we use [Palenight](https://github.com/FormidableLabs/prism-react-ren
 
 Example configuration:
 
-docusaurus.config.js
+```js title="docusaurus.config.js"
+import {themes as prismThemes} from 'prism-react-renderer';
 
-```
-import {themes as prismThemes} from 'prism-react-renderer';export default {  themeConfig: {    prism: {      theme: prismThemes.github,      darkTheme: prismThemes.dracula,    },  },};
+export default {
+  themeConfig: {
+    prism: {
+      theme: prismThemes.github,
+      darkTheme: prismThemes.dracula,
+    },
+  },
+};
 ```
 
 <Callout kind="info">
-  note
-
   If you use the line highlighting Markdown syntax, you might need to specify a different highlight background color for the dark mode syntax highlighting theme. Refer to the [docs for guidance](https://docusaurus.io/docs/3.1.1/markdown-features/code-blocks#line-highlighting).
 </Callout>
 
@@ -448,10 +654,14 @@ You can set a default language for code blocks if no language is added after the
 
 Example configuration:
 
-docusaurus.config.js
-
-```
-export default {  themeConfig: {    prism: {      defaultLanguage: 'javascript',    },  },};
+```js title="docusaurus.config.js"
+export default {
+  themeConfig: {
+    prism: {
+      defaultLanguage: 'javascript',
+    },
+  },
+};
 ```
 
 ## Footer
@@ -460,7 +670,7 @@ You can add logo and a copyright to the footer via `themeConfig.footer`. Logo ca
 
 Accepted fields:
 
-| Name | Type | Default | Description`logo``Logo``undefined`Customization of the logo object. See [Navbar logo](#navbar-logo) for details.`copyright``string``undefined`The copyright message to be displayed at the bottom, also supports custom HTML.`style``'dark' \| 'light'``'light'`The color theme of the footer component.`links``(Column \| FooterLink)[]``[]`The link groups to be present. |
+| Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | `logo` | `Logo` | `undefined` | Customization of the logo object. See [Navbar logo](#navbar-logo) for details. |
 | `copyright` | `string` | `undefined` | The copyright message to be displayed at the bottom, also supports custom HTML. |
@@ -469,10 +679,21 @@ Accepted fields:
 
 Example configuration:
 
-docusaurus.config.js
-
-```
-export default {  themeConfig: {    footer: {      logo: {        alt: 'Meta Open Source Logo',        src: 'img/meta_oss_logo.png',        href: 'https://opensource.fb.com',        width: 160,        height: 51,      },      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,    },  },};
+```js title="docusaurus.config.js"
+export default {
+  themeConfig: {
+    footer: {
+      logo: {
+        alt: 'Meta Open Source Logo',
+        src: 'img/meta_oss_logo.png',
+        href: 'https://opensource.fb.com',
+        width: 160,
+        height: 51,
+      },
+      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+    },
+  },
+};
 ```
 
 ### Footer Links
@@ -481,14 +702,14 @@ You can add links to the footer via `themeConfig.footer.links`. There are two ty
 
 Multi-column footer links have a `title` and a list of `FooterItem`s for each column.
 
-| Name | Type | Default | Description`title``string``undefined`Label of the section of these links.`items``FooterItem[]``[]`Links in this section. |
+| Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | `title` | `string` | `undefined` | Label of the section of these links. |
 | `items` | `FooterItem[]` | `[]` | Links in this section. |
 
 Accepted fields of each `FooterItem`:
 
-| Name | Type | Default | Description`label``string`**Required**Text to be displayed for this link.`to``string`**Required**Client-side routing, used for navigating within the website. The baseUrl will be automatically prepended to this value.`href``string`**Required**A full-page navigation, used for navigating outside of the website. <strong>Only one of `to` or `href` should be used.</strong>`html``string``undefined`Renders the HTML pass-through instead of a simple link. In case `html` is used, no other options should be provided. |
+| Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | `label` | `string` | **Required** | Text to be displayed for this link. |
 | `to` | `string` | **Required** | Client-side routing, used for navigating within the website. The baseUrl will be automatically prepended to this value. |
@@ -497,37 +718,104 @@ Accepted fields of each `FooterItem`:
 
 Example multi-column configuration:
 
-docusaurus.config.js
-
-```
-export default {  footer: {    links: [      {        title: 'Docs',        items: [          {            label: 'Style Guide',            to: 'docs/',          },          {            label: 'Second Doc',            to: 'docs/doc2/',          },        ],      },      {        title: 'Community',        items: [          {            label: 'Stack Overflow',            href: 'https://stackoverflow.com/questions/tagged/docusaurus',          },          {            label: 'Discord',            href: 'https://discordapp.com/invite/docusaurus',          },          {            label: 'X',            href: 'https://x.com/docusaurus',          },          {            html: `                <a href="https://www.netlify.com" target="_blank" rel="noreferrer noopener" aria-label="Deploys by Netlify">                  <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify" width="114" height="51" />                </a>              `,          },        ],      },    ],  },};
+```js title="docusaurus.config.js"
+export default {
+  footer: {
+    links: [
+      {
+        title: 'Docs',
+        items: [
+          {
+            label: 'Style Guide',
+            to: 'docs/',
+          },
+          {
+            label: 'Second Doc',
+            to: 'docs/doc2/',
+          },
+        ],
+      },
+      {
+        title: 'Community',
+        items: [
+          {
+            label: 'Stack Overflow',
+            href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+          },
+          {
+            label: 'Discord',
+            href: 'https://discordapp.com/invite/docusaurus',
+          },
+          {
+            label: 'X',
+            href: 'https://x.com/docusaurus',
+          },
+          {
+            html: `
+                <a href="https://www.netlify.com" target="_blank" rel="noreferrer noopener" aria-label="Deploys by Netlify">
+                  <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify" width="114" height="51" />
+                </a>
+              `,
+          },
+        ],
+      },
+    ],
+  },
+};
 ```
 
 A simple footer just has a list of `FooterItem`s displayed in a row.
 
 Example simple configuration:
 
-docusaurus.config.js
-
-```
-export default {  footer: {    links: [      {        label: 'Stack Overflow',        href: 'https://stackoverflow.com/questions/tagged/docusaurus',      },      {        label: 'Discord',        href: 'https://discordapp.com/invite/docusaurus',      },      {        label: 'X',        href: 'https://x.com/docusaurus',      },      {        html: `            <a href="https://www.netlify.com" target="_blank" rel="noreferrer noopener" aria-label="Deploys by Netlify">              <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify" width="114" height="51" />            </a>          `,      },    ],  },};
+```js title="docusaurus.config.js"
+export default {
+  footer: {
+    links: [
+      {
+        label: 'Stack Overflow',
+        href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+      },
+      {
+        label: 'Discord',
+        href: 'https://discordapp.com/invite/docusaurus',
+      },
+      {
+        label: 'X',
+        href: 'https://x.com/docusaurus',
+      },
+      {
+        html: `
+            <a href="https://www.netlify.com" target="_blank" rel="noreferrer noopener" aria-label="Deploys by Netlify">
+              <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg" alt="Deploys by Netlify" width="114" height="51" />
+            </a>
+          `,
+      },
+    ],
+  },
+};
 ```
 
 ## Table of Contents
 
 You can adjust the default table of contents via `themeConfig.tableOfContents`.
 
-| Name | Type | Default | Description`minHeadingLevel``number``2`The minimum heading level shown in the table of contents. Must be between 2 and 6 and lower or equal to the max value.`maxHeadingLevel``number``3`Max heading level displayed in the TOC. Should be an integer between 2 and 6. |
+| Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | `minHeadingLevel` | `number` | `2` | The minimum heading level shown in the table of contents. Must be between 2 and 6 and lower or equal to the max value. |
 | `maxHeadingLevel` | `number` | `3` | Max heading level displayed in the TOC. Should be an integer between 2 and 6. |
 
 Example configuration:
 
-docusaurus.config.js
-
-```
-export default {  themeConfig: {    tableOfContents: {      minHeadingLevel: 2,      maxHeadingLevel: 5,    },  },};
+```js title="docusaurus.config.js"
+export default {
+  themeConfig: {
+    tableOfContents: {
+      minHeadingLevel: 2,
+      maxHeadingLevel: 5,
+    },
+  },
+};
 ```
 
 ## Hooks
@@ -538,17 +826,28 @@ A React hook to access the color context. This context contains functions for se
 
 Usage example:
 
-```
-import React from 'react';import {useColorMode} from '@docusaurus/theme-common';const Example = () => {  const {colorMode, setColorMode} = useColorMode();  return <h1>Dark mode is now {colorMode === 'dark' ? 'on' : 'off'}</h1>;};
+```jsx
+import React from 'react';
+import {useColorMode} from '@docusaurus/theme-common';
+
+const Example = () => {
+  const {colorMode, setColorMode} = useColorMode();
+
+  return <h1>Dark mode is now {colorMode === 'dark' ? 'on' : 'off'}</h1>;
+};
 ```
 
 <Callout kind="info">
-  note
-
   The component calling `useColorMode` must be a child of the `Layout` component.
 
-  ```
-  function ExamplePage() {  return (    <Layout>      <Example />    </Layout>  );}
+  ```jsx
+  function ExamplePage() {
+    return (
+      <Layout>
+        <Example />
+      </Layout>
+    );
+  }
   ```
 </Callout>
 
@@ -565,6 +864,10 @@ Read the [i18n introduction](https://docusaurus.io/docs/3.1.1/i18n/introduction)
 
 ### Example file-system structure
 
-```
-website/i18n/[locale]/docusaurus-theme-classic││ # translations for the theme├── navbar.json└── footer.json
+```bash
+website/i18n/[locale]/docusaurus-theme-classic
+│
+│ # translations for the theme
+├── navbar.json
+└── footer.json
 ```

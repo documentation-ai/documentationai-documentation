@@ -15,25 +15,32 @@ This component creates a [React error boundary](https://reactjs.org/docs/error-b
 
 Use it to wrap components that might throw, and display a fallback when that happens instead of crashing the whole app.
 
-```
-import React from 'react';import ErrorBoundary from '@docusaurus/ErrorBoundary';const SafeComponent = () => (  <ErrorBoundary    fallback={({error, tryAgain}) => (      <div>        <p>This component crashed because of error: {error.message}.</p>        <button onClick={tryAgain}>Try Again!</button>      </div>    )}>    <SomeDangerousComponentThatMayThrow />  </ErrorBoundary>);
+```jsx
+import React from 'react';
+import ErrorBoundary from '@docusaurus/ErrorBoundary';
+
+const SafeComponent = () => (
+  <ErrorBoundary
+    fallback={({error, tryAgain}) => (
+      <div>
+        <p>This component crashed because of error: {error.message}.</p>
+        <button onClick={tryAgain}>Try Again!</button>
+      </div>
+    )}>
+    <SomeDangerousComponentThatMayThrow />
+  </ErrorBoundary>
+);
 ```
 
 <Callout kind="tip">
-  tip
-
   To see it in action, click here: 
 </Callout>
 
 <Callout kind="info">
-  info
-
   Docusaurus uses this component to catch errors within the theme's layout, and also within the entire app.
 </Callout>
 
 <Callout kind="info">
-  note
-
   This component doesn't catch build-time errors and only protects against client-side render errors that can happen when using stateful React components.
 </Callout>
 
@@ -42,8 +49,6 @@ import React from 'react';import ErrorBoundary from '@docusaurus/ErrorBoundary';
 - `fallback`: an optional render callback returning a JSX element. It will receive an object with 2 attributes: `error`, the error that was caught, and `tryAgain`, a function (`() => void`) callback to reset the error in the component and try rendering it again. If not present, `@theme/Error` will be rendered instead. `@theme/Error` is used for the error boundaries wrapping the site, above the layout.
 
 <Callout kind="alert">
-  warning
-
   The `fallback` prop is a callback, and **not a React functional component**. You can't use React hooks inside this callback.
 </Callout>
 
@@ -53,20 +58,44 @@ This reusable React component will manage all of your changes to the document he
 
 Usage Example:
 
-```
-import React from 'react';import Head from '@docusaurus/Head';const MySEO = () => (  <Head>    <meta property="og:description" content="My custom description" />    <meta charSet="utf-8" />    <title>My Title</title>    <link rel="canonical" href="http://mysite.com/example" />  </Head>);
+```jsx
+import React from 'react';
+import Head from '@docusaurus/Head';
+
+const MySEO = () => (
+  <Head>
+    <meta property="og:description" content="My custom description" />
+    <meta charSet="utf-8" />
+    <title>My Title</title>
+    <link rel="canonical" href="http://mysite.com/example" />
+  </Head>
+);
 ```
 
 Nested or latter components will override duplicate usages:
 
-```
-<Parent>  <Head>    <title>My Title</title>    <meta name="description" content="Helmet application" />  </Head>  <Child>    <Head>      <title>Nested Title</title>      <meta name="description" content="Nested component" />    </Head>  </Child></Parent>
+```jsx
+<Parent>
+  <Head>
+    <title>My Title</title>
+    <meta name="description" content="Helmet application" />
+  </Head>
+  <Child>
+    <Head>
+      <title>Nested Title</title>
+      <meta name="description" content="Nested component" />
+    </Head>
+  </Child>
+</Parent>
 ```
 
 Outputs:
 
-```
-<head>  <title>Nested Title</title>  <meta name="description" content="Nested component" /></head>
+```html
+<head>
+  <title>Nested Title</title>
+  <meta name="description" content="Nested component" />
+</head>
 ```
 
 ### `<Link/>`
@@ -77,21 +106,31 @@ The component is a wrapper around react-router’s `<Link>` component that adds 
 
 External links also work, and automatically have these props: `target="_blank" rel="noopener noreferrer"`.
 
-```
-import React from 'react';import Link from '@docusaurus/Link';const Page = () => (  <div>    <p>      Check out my <Link to="/blog">blog</Link>!    </p>    <p>      Follow me on <Link to="https://x.com/docusaurus">X</Link>!    </p>  </div>);
+```jsx
+import React from 'react';
+import Link from '@docusaurus/Link';
+
+const Page = () => (
+  <div>
+    <p>
+      Check out my <Link to="/blog">blog</Link>!
+    </p>
+    <p>
+      Follow me on <Link to="https://x.com/docusaurus">X</Link>!
+    </p>
+  </div>
+);
 ```
 
 #### `to`: string
 
 The target location to navigate to. Example: `/docs/introduction`.
 
-```
+```jsx
 <Link to="/courses" />
 ```
 
 <Callout kind="tip">
-  tip
-
   Prefer this component to vanilla `<a>` tags because Docusaurus does a lot of optimizations (e.g. broken path detection, prefetching, applying base URL...) if you use `<Link>`.
 </Callout>
 
@@ -101,13 +140,16 @@ Rendering a `<Redirect>` will navigate to a new location. The new location will 
 
 Example usage:
 
-```
-import React from 'react';import {Redirect} from '@docusaurus/router';const Home = () => {  return <Redirect to="/docs/test" />;};
+```jsx
+import React from 'react';
+import {Redirect} from '@docusaurus/router';
+
+const Home = () => {
+  return <Redirect to="/docs/test" />;
+};
 ```
 
 <Callout kind="info">
-  note
-
   `@docusaurus/router` implements [React Router](https://reacttraining.com/react-router/web/guides/quick-start) and supports its features.
 </Callout>
 
@@ -116,8 +158,6 @@ import React from 'react';import {Redirect} from '@docusaurus/router';const Home
 The `<BrowserOnly>` component permits to render React components only in the browser after the React app has hydrated.
 
 <Callout kind="tip">
-  tip
-
   Use it for integrating with code that can't run in Node.js, because the `window` or `document` objects are being accessed.
 </Callout>
 
@@ -128,14 +168,33 @@ The `<BrowserOnly>` component permits to render React components only in the bro
 
 #### Example with code
 
-```
-import BrowserOnly from '@docusaurus/BrowserOnly';const MyComponent = () => {  return (    <BrowserOnly>      {() => <span>page url = {window.location.href}</span>}    </BrowserOnly>  );};
+```jsx
+import BrowserOnly from '@docusaurus/BrowserOnly';
+
+const MyComponent = () => {
+  return (
+    <BrowserOnly>
+      {() => <span>page url = {window.location.href}</span>}
+    </BrowserOnly>
+  );
+};
 ```
 
 #### Example with a library
 
-```
-import BrowserOnly from '@docusaurus/BrowserOnly';const MyComponent = (props) => {  return (    <BrowserOnly fallback={<div>Loading...</div>}>      {() => {        const LibComponent = require('some-lib').LibComponent;        return <LibComponent {...props} />;      }}    </BrowserOnly>  );};
+```jsx
+import BrowserOnly from '@docusaurus/BrowserOnly';
+
+const MyComponent = (props) => {
+  return (
+    <BrowserOnly fallback={<div>Loading...</div>}>
+      {() => {
+        const LibComponent = require('some-lib').LibComponent;
+        return <LibComponent {...props} />;
+      }}
+    </BrowserOnly>
+  );
+};
 ```
 
 ### `<Interpolate/>`
@@ -149,8 +208,26 @@ The placeholders will be replaced with the provided dynamic values and JSX eleme
 - `children`: text containing interpolation placeholders like `{placeholderName}`
 - `values`: object containing interpolation placeholder values
 
-```
-import React from 'react';import Link from '@docusaurus/Link';import Interpolate from '@docusaurus/Interpolate';export default function VisitMyWebsiteMessage() {  return (    <Interpolate      values={{        firstName: 'Sébastien',        website: (          <Link to="https://docusaurus.io" className="my-website-class">            website          </Link>        ),      }}>      {'Hello, {firstName}! How are you? Take a look at my {website}'}    </Interpolate>  );}
+```jsx
+import React from 'react';
+import Link from '@docusaurus/Link';
+import Interpolate from '@docusaurus/Interpolate';
+
+export default function VisitMyWebsiteMessage() {
+  return (
+    <Interpolate
+      values={{
+        firstName: 'Sébastien',
+        website: (
+          <Link to="https://docusaurus.io" className="my-website-class">
+            website
+          </Link>
+        ),
+      }}>
+      {'Hello, {firstName}! How are you? Take a look at my {website}'}
+    </Interpolate>
+  );
+}
 ```
 
 ### `<Translate/>`
@@ -160,8 +237,6 @@ When [localizing your site](/docs/2-x/i18n/introduction), the `<Translate/>` com
 The translation strings will statically extracted from your code with the [`docusaurus write-translations`](/docs/2-x/cli#docusaurus-write-translations-sitedir) CLI and a `code.json` translation file will be created in `website/i18n/[locale]`.
 
 <Callout kind="info">
-  note
-
   The `<Translate/>` props **must be hardcoded strings**.
 
   Apart from the `values` prop used for interpolation, it is **not possible to use variables**, or the static extraction wouldn't work.
@@ -176,18 +251,36 @@ The translation strings will statically extracted from your code with the [`docu
 
 #### Example
 
-src/pages/index.js
+```jsx title="src/pages/index.js"
+import React from 'react';
+import Layout from '@theme/Layout';
 
-```
-import React from 'react';import Layout from '@theme/Layout';import Translate from '@docusaurus/Translate';export default function Home() {  return (    <Layout>      <h1>        <Translate          id="homepage.title"          description="The homepage welcome message">          Welcome to my website        </Translate>      </h1>      <main>        <Translate values={{firstName: 'Sébastien'}}>          {'Welcome, {firstName}! How are you?'}        </Translate>      </main>    </Layout>  );}
+import Translate from '@docusaurus/Translate';
+
+export default function Home() {
+  return (
+    <Layout>
+      <h1>
+        <Translate
+          id="homepage.title"
+          description="The homepage welcome message">
+          Welcome to my website
+        </Translate>
+      </h1>
+      <main>
+        <Translate values={{firstName: 'Sébastien'}}>
+          {'Welcome, {firstName}! How are you?'}
+        </Translate>
+      </main>
+    </Layout>
+  );
+}
 ```
 
 <Callout kind="info">
-  note
-
   You can even omit the children prop and specify a translation string in your `code.json` file manually after running the `docusaurus write-translations` CLI command.
 
-  ```
+  ```jsx
   <Translate id="homepage.title" />
   ```
 </Callout>
@@ -200,19 +293,59 @@ import React from 'react';import Layout from '@theme/Layout';import Translate fr
 
 React hook to access Docusaurus Context. The context contains the `siteConfig` object from [docusaurus.config.js](/docs/2-x/api/docusaurus-config) and some additional site metadata.
 
-```
-type PluginVersionInformation =  | {readonly type: 'package'; readonly version?: string}  | {readonly type: 'project'}  | {readonly type: 'local'}  | {readonly type: 'synthetic'};type SiteMetadata = {  readonly docusaurusVersion: string;  readonly siteVersion?: string;  readonly pluginVersions: Record<string, PluginVersionInformation>;};type I18nLocaleConfig = {  label: string;  direction: string;};type I18n = {  defaultLocale: string;  locales: [string, ...string[]];  currentLocale: string;  localeConfigs: Record<string, I18nLocaleConfig>;};type DocusaurusContext = {  siteConfig: DocusaurusConfig;  siteMetadata: SiteMetadata;  globalData: Record<string, unknown>;  i18n: I18n;  codeTranslations: Record<string, string>;};
+```ts
+type PluginVersionInformation =
+  | {readonly type: 'package'; readonly version?: string}
+  | {readonly type: 'project'}
+  | {readonly type: 'local'}
+  | {readonly type: 'synthetic'};
+
+type SiteMetadata = {
+  readonly docusaurusVersion: string;
+  readonly siteVersion?: string;
+  readonly pluginVersions: Record<string, PluginVersionInformation>;
+};
+
+type I18nLocaleConfig = {
+  label: string;
+  direction: string;
+};
+
+type I18n = {
+  defaultLocale: string;
+  locales: [string, ...string[]];
+  currentLocale: string;
+  localeConfigs: Record<string, I18nLocaleConfig>;
+};
+
+type DocusaurusContext = {
+  siteConfig: DocusaurusConfig;
+  siteMetadata: SiteMetadata;
+  globalData: Record<string, unknown>;
+  i18n: I18n;
+  codeTranslations: Record<string, string>;
+};
 ```
 
 Usage example:
 
-```
-import React from 'react';import useDocusaurusContext from '@docusaurus/useDocusaurusContext';const MyComponent = () => {  const {siteConfig, siteMetadata} = useDocusaurusContext();  return (    <div>      <h1>{siteConfig.title}</h1>      <div>{siteMetadata.siteVersion}</div>      <div>{siteMetadata.docusaurusVersion}</div>    </div>  );};
+```jsx
+import React from 'react';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+
+const MyComponent = () => {
+  const {siteConfig, siteMetadata} = useDocusaurusContext();
+  return (
+    <div>
+      <h1>{siteConfig.title}</h1>
+      <div>{siteMetadata.siteVersion}</div>
+      <div>{siteMetadata.docusaurusVersion}</div>
+    </div>
+  );
+};
 ```
 
 <Callout kind="info">
-  note
-
   The `siteConfig` object only contains **serializable values** (values that are preserved after `JSON.stringify()`). Functions, regexes, etc. would be lost on the client side.
 </Callout>
 
@@ -223,8 +356,6 @@ import React from 'react';import useDocusaurusContext from '@docusaurus/useDocus
 Returns `true` when the React app has successfully hydrated in the browser.
 
 <Callout kind="alert">
-  warning
-
   Use this hook instead of `typeof windows !== 'undefined'` in React rendering logic.
 
   The first client-side render output (in the browser) **must be exactly the same** as the server-side render output (Node.js). Not following this rule can lead to unexpected hydration behaviors, as described in [The Perils of Rehydration](https://www.joshwcomeau.com/react/the-perils-of-rehydration/).
@@ -232,8 +363,14 @@ Returns `true` when the React app has successfully hydrated in the browser.
 
 Usage example:
 
-```
-import React from 'react';import useIsBrowser from '@docusaurus/useIsBrowser';const MyComponent = () => {  const isBrowser = useIsBrowser();  return <div>{isBrowser ? 'Client' : 'Server'}</div>;};
+```jsx
+import React from 'react';
+import useIsBrowser from '@docusaurus/useIsBrowser';
+
+const MyComponent = () => {
+  const isBrowser = useIsBrowser();
+  return <div>{isBrowser ? 'Client' : 'Server'}</div>;
+};
 ```
 
 ### `useBaseUrl`
@@ -241,8 +378,6 @@ import React from 'react';import useIsBrowser from '@docusaurus/useIsBrowser';co
 React hook to prepend your site `baseUrl` to a string.
 
 <Callout kind="alert">
-  warning
-
   <strong>Don't use it for regular links!</strong>
 
   The `/baseUrl/` prefix is automatically added to all **absolute paths** by default:
@@ -253,24 +388,31 @@ React hook to prepend your site `baseUrl` to a string.
 
 #### Options
 
-```
-type BaseUrlOptions = {  forcePrependBaseUrl: boolean;  absolute: boolean;};
+```ts
+type BaseUrlOptions = {
+  forcePrependBaseUrl: boolean;
+  absolute: boolean;
+};
 ```
 
 #### Example usage:
 
-```
-import React from 'react';import useBaseUrl from '@docusaurus/useBaseUrl';const SomeImage = () => {  const imgSrc = useBaseUrl('/img/myImage.png');  return <img src={imgSrc} />;};
+```jsx
+import React from 'react';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+const SomeImage = () => {
+  const imgSrc = useBaseUrl('/img/myImage.png');
+  return <img src={imgSrc} />;
+};
 ```
 
 <Callout kind="tip">
-  tip
-
   In most cases, you don't need `useBaseUrl`.
 
   Prefer a `require()` call for [assets](/docs/2-x/markdown-features/assets):
 
-  ```
+  ```jsx
   <img src={require('@site/static/img/myImage.png').default} />
   ```
 </Callout>
@@ -281,8 +423,16 @@ Sometimes `useBaseUrl` is not good enough. This hook return additional utils rel
 
 - `withBaseUrl`: useful if you need to add base URLs to multiple URLs at once.
 
-```
-import React from 'react';import {useBaseUrlUtils} from '@docusaurus/useBaseUrl';const Component = () => {  const urls = ['/a', '/b'];  const {withBaseUrl} = useBaseUrlUtils();  const urlsWithBaseUrl = urls.map(withBaseUrl);  return <div>{/* ... */}</div>;};
+```jsx
+import React from 'react';
+import {useBaseUrlUtils} from '@docusaurus/useBaseUrl';
+
+const Component = () => {
+  const urls = ['/a', '/b'];
+  const {withBaseUrl} = useBaseUrlUtils();
+  const urlsWithBaseUrl = urls.map(withBaseUrl);
+  return <div>{/* ... */}</div>;
+};
 ```
 
 <a id="useGlobalData"></a>
@@ -294,24 +444,33 @@ React hook to access Docusaurus global data created by all the plugins.
 Global data is namespaced by plugin name then by plugin ID.
 
 <Callout kind="info">
-  info
-
   Plugin ID is only useful when a plugin is used multiple times on the same site. Each plugin instance is able to create its own global data.
 </Callout>
 
-```
-type GlobalData = Record<  PluginName,  Record<    PluginId, // "default" by default    any // plugin-specific data  >>;
+```ts
+type GlobalData = Record<
+  PluginName,
+  Record<
+    PluginId, // "default" by default
+    any // plugin-specific data
+  >
+>;
 ```
 
 Usage example:
 
-```
-import React from 'react';import useGlobalData from '@docusaurus/useGlobalData';const MyComponent = () => {  const globalData = useGlobalData();  const myPluginData = globalData['my-plugin']['default'];  return <div>{myPluginData.someAttribute}</div>;};
+```jsx
+import React from 'react';
+import useGlobalData from '@docusaurus/useGlobalData';
+
+const MyComponent = () => {
+  const globalData = useGlobalData();
+  const myPluginData = globalData['my-plugin']['default'];
+  return <div>{myPluginData.someAttribute}</div>;
+};
 ```
 
 <Callout kind="tip">
-  tip
-
   Inspect your site's global data at `./docusaurus/globalData.json`
 </Callout>
 
@@ -325,28 +484,48 @@ This is the most convenient hook to access plugin global data and should be used
 
 `pluginId` is optional if you don't use multi-instance plugins.
 
-```
-function usePluginData(  pluginName: string,  pluginId?: string,  options?: {failfast?: boolean},);
+```ts
+function usePluginData(
+  pluginName: string,
+  pluginId?: string,
+  options?: {failfast?: boolean},
+);
 ```
 
 Usage example:
 
-```
-import React from 'react';import {usePluginData} from '@docusaurus/useGlobalData';const MyComponent = () => {  const myPluginData = usePluginData('my-plugin');  return <div>{myPluginData.someAttribute}</div>;};
+```jsx
+import React from 'react';
+import {usePluginData} from '@docusaurus/useGlobalData';
+
+const MyComponent = () => {
+  const myPluginData = usePluginData('my-plugin');
+  return <div>{myPluginData.someAttribute}</div>;
+};
 ```
 
 ### `useAllPluginInstancesData`
 
 Access global data created by a specific plugin. Given a plugin name, it returns the data of all the plugins instances of that name, by plugin id.
 
-```
-function useAllPluginInstancesData(  pluginName: string,  options?: {failfast?: boolean},);
+```ts
+function useAllPluginInstancesData(
+  pluginName: string,
+  options?: {failfast?: boolean},
+);
 ```
 
 Usage example:
 
-```
-import React from 'react';import {useAllPluginInstancesData} from '@docusaurus/useGlobalData';const MyComponent = () => {  const allPluginInstancesData = useAllPluginInstancesData('my-plugin');  const myPluginData = allPluginInstancesData['default'];  return <div>{myPluginData.someAttribute}</div>;};
+```jsx
+import React from 'react';
+import {useAllPluginInstancesData} from '@docusaurus/useGlobalData';
+
+const MyComponent = () => {
+  const allPluginInstancesData = useAllPluginInstancesData('my-plugin');
+  const myPluginData = allPluginInstancesData['default'];
+  return <div>{myPluginData.someAttribute}</div>;
+};
 ```
 
 ## Functions
@@ -357,14 +536,23 @@ The imperative counterpart of the [`<Interpolate>`](#interpolate) component.
 
 #### Signature
 
-```
-// Simple string interpolationfunction interpolate(text: string, values: Record<string, string>): string;// JSX interpolationfunction interpolate(  text: string,  values: Record<string, ReactNode>,): ReactNode;
+```ts
+// Simple string interpolation
+function interpolate(text: string, values: Record<string, string>): string;
+
+// JSX interpolation
+function interpolate(
+  text: string,
+  values: Record<string, ReactNode>,
+): ReactNode;
 ```
 
 #### Example
 
-```
-import {interpolate} from '@docusaurus/Interpolate';const message = interpolate('Welcome {firstName}', {firstName: 'Sébastien'});
+```js
+import {interpolate} from '@docusaurus/Interpolate';
+
+const message = interpolate('Welcome {firstName}', {firstName: 'Sébastien'});
 ```
 
 <a id="translate-imperative"></a>
@@ -374,8 +562,6 @@ import {interpolate} from '@docusaurus/Interpolate';const message = interpolate(
 The imperative counterpart of the [`<Translate>`](#translate) component. Also supporting [placeholders interpolation](#interpolate).
 
 <Callout kind="tip">
-  tip
-
   Use the imperative API for the **rare cases** where a **component cannot be used**, such as:
 
   - the page `title` metadata
@@ -385,16 +571,42 @@ The imperative counterpart of the [`<Translate>`](#translate) component. Also su
 
 #### Signature
 
-```
-function translate(  translation: {message: string; id?: string; description?: string},  values: Record<string, string>,): string;
+```ts
+function translate(
+  translation: {message: string; id?: string; description?: string},
+  values: Record<string, string>,
+): string;
 ```
 
 #### Example
 
-src/pages/index.js
+```jsx title="src/pages/index.js"
+import React from 'react';
+import Layout from '@theme/Layout';
 
-```
-import React from 'react';import Layout from '@theme/Layout';import {translate} from '@docusaurus/Translate';export default function Home() {  return (    <Layout      title={translate({message: 'My page meta title'})}>      <img        src={'https://docusaurus.io/logo.png'}        aria-label={          translate(            {              message: 'The logo of site {siteName}',              // Optional              id: 'homepage.logo.ariaLabel',              description: 'The home page logo aria label',            },            {siteName: 'Docusaurus'},          )        }      />    </Layout>  );}
+import {translate} from '@docusaurus/Translate';
+
+export default function Home() {
+  return (
+    <Layout
+      title={translate({message: 'My page meta title'})}>
+      <img
+        src={'https://docusaurus.io/logo.png'}
+        aria-label={
+          translate(
+            {
+              message: 'The logo of site {siteName}',
+              // Optional
+              id: 'homepage.logo.ariaLabel',
+              description: 'The home page logo aria label',
+            },
+            {siteName: 'Docusaurus'},
+          )
+        }
+      />
+    </Layout>
+  );
+}
 ```
 
 ## Modules
@@ -404,18 +616,20 @@ import React from 'react';import Layout from '@theme/Layout';import {translate} 
 A module that exposes a few boolean variables to check the current rendering environment.
 
 <Callout kind="alert">
-  warning
-
   For React rendering logic, use [`useIsBrowser()`](#useIsBrowser) or [`<BrowserOnly>`](#browseronly) instead.
 </Callout>
 
 Example:
 
-```
-import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';if (ExecutionEnvironment.canUseDOM) {  require('lib-that-only-works-client-side');}
+```js
+import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
+
+if (ExecutionEnvironment.canUseDOM) {
+  require('lib-that-only-works-client-side');
+}
 ```
 
-| Field | Description`ExecutionEnvironment.canUseDOM``true` if on client/browser, `false` on Node.js/prerendering.`ExecutionEnvironment.canUseEventListeners``true` if on client and has `window.addEventListener`.`ExecutionEnvironment.canUseIntersectionObserver``true` if on client and has `IntersectionObserver`.`ExecutionEnvironment.canUseViewport``true` if on client and has `window.screen`. |
+| Field | Description |
 | --- | --- |
 | `ExecutionEnvironment.canUseDOM` | `true` if on client/browser, `false` on Node.js/prerendering. |
 | `ExecutionEnvironment.canUseEventListeners` | `true` if on client and has `window.addEventListener`. |
@@ -426,10 +640,10 @@ import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';if (Executio
 
 A module exposing useful constants to client-side theme code.
 
-```
+```js
 import {DEFAULT_PLUGIN_ID} from '@docusaurus/constants';
 ```
 
-| Named export | Value`DEFAULT_PLUGIN_ID``default` |
+| Named export | Value |
 | --- | --- |
 | `DEFAULT_PLUGIN_ID` | `default` |

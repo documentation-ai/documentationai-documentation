@@ -15,14 +15,20 @@ The `<Link>` component has prefetching and preloading built-in. It also does bui
 
 Examples of **incorrect** code for this rule:
 
-```
-<a href="/page">go to page!</a><a href="https://x.com/docusaurus" target="_blank">X</a>
+```html
+<a href="/page">go to page!</a>
+
+<a href="https://x.com/docusaurus" target="_blank">X</a>
 ```
 
 Examples of **correct** code for this rule:
 
-```
-import Link from '@docusaurus/Link'<Link to="/page">go to page!</Link><Link to="https://x.com/docusaurus">X</Link>
+```js
+import Link from '@docusaurus/Link'
+
+<Link to="/page">go to page!</Link>
+
+<Link to="https://x.com/docusaurus">X</Link>
 ```
 
 <a id="configuration"></a>
@@ -31,6 +37,6 @@ import Link from '@docusaurus/Link'<Link to="/page">go to page!</Link><Link to="
 
 Accepted fields:
 
-| Option | Type | Default | Description`ignoreFullyResolved``boolean``false`Set to true will not report any `<a>` tags with absolute URLs including a protocol. |
+| Option | Type | Default | Description |
 | --- | --- | --- | --- |
 | `ignoreFullyResolved` | `boolean` | `false` | Set to true will not report any `<a>` tags with absolute URLs including a protocol. |

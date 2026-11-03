@@ -8,7 +8,7 @@ ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc
 Docusaurus uses <strong>[Markdown](https://commonmark.org/)</strong> as its main content authoring format.
 
 <Callout kind="tip">
-  Learn Markdown
+  **Learn Markdown**
 
   You can [learn Markdown in 10 minutes](https://commonmark.org/help/).
 </Callout>
@@ -18,7 +18,7 @@ Docusaurus uses modern tooling to help you create **interactive documentation**.
 The <strong>[MDX](https://mdxjs.com/)</strong> compiler transforms **Markdown files to React components**, and allows you to use JSX in your Markdown content. This enables you to easily interleave React components within your content, and create delightful learning experiences.
 
 <Callout kind="tip">
-  Use the MDX Playground
+  **Use the MDX Playground**
 
   The <strong>[MDX playground](https://mdxjs.com/playground/)</strong> is your new best friend!
 
@@ -41,7 +41,7 @@ By default, **Docusaurus v3 uses the MDX format for all files** (including `.md`
 It is possible to **opt-in for CommonMark** using the [`siteConfig.markdown.format`](/docs/api/docusaurus-config#markdown) setting or the `mdx.format: md` front matter.
 
 <Callout kind="tip">
-  how to use CommonMark
+  **how to use CommonMark**
 
   If you plan to use CommonMark, we recommend the [`siteConfig.markdown.format: 'detect'`](/docs/api/docusaurus-config#markdown) setting. The appropriate format will be selected automatically, based on file extensions:
 
@@ -50,7 +50,7 @@ It is possible to **opt-in for CommonMark** using the [`siteConfig.markdown.form
 </Callout>
 
 <Callout kind="danger">
-  Experimental CommonMark support
+  **Experimental CommonMark support**
 
   The CommonMark support is **experimental** and currently has a few [limitations](https://github.com/facebook/docusaurus/issues/9092).
 </Callout>
@@ -59,8 +59,12 @@ It is possible to **opt-in for CommonMark** using the [`siteConfig.markdown.form
 
 Markdown is a syntax that enables you to write formatted content in a readable syntax.
 
-```
-### My Doc SectionHello world message with some **bold** text, some _italic_ text, and a [link](/)![img alt](/img/docusaurus.png)
+```md
+### My Doc Section
+
+Hello world message with some **bold** text, some _italic_ text, and a [link](/)
+
+![img alt](/img/docusaurus.png)
 ```
 
 http://localhost:3000
@@ -85,13 +89,17 @@ Front matter is used to add metadata to your Markdown file. All content plugins 
 
 Front matter is provided at the very top of the file, enclosed by three dashes `---`. The content is parsed as [YAML](https://yaml.org/spec/1.2.2/).
 
-```
----title: My Doc Titlemore_data:  - Can be provided  - as: objects    or: arrays---
+```md
+---
+title: My Doc Title
+more_data:
+  - Can be provided
+  - as: objects
+    or: arrays
+---
 ```
 
 <Callout kind="info">
-  info
-
   The API documentation of each official plugin lists the supported attributes:
 
   - [Docs front matter](/docs/api/plugins/docusaurus/plugin-content-docs#markdown-front-matter)
@@ -100,16 +108,39 @@ Front matter is provided at the very top of the file, enclosed by three dashes `
 </Callout>
 
 <Callout kind="tip">
-  enhance your front matter
+  **enhance your front matter**
 
   Use the [Markdown config `parseFrontMatter` function](/docs/api/docusaurus-config#markdown) to provide your own front matter parser, or to enhance the default parser.
 
   It is possible to reuse the default parser to wrap it with your own custom proprietary logic. This makes it possible to implement convenient front matter transformations, shortcuts, or to integrate with external systems using front matter that Docusaurus plugins do not support.
 
-  docusaurus.config.js
+  ```js title="docusaurus.config.js"
+  export default {
+    markdown: {
+      parseFrontMatter: async (params) => {
+        // Reuse the default parser
+        const result = await params.defaultParseFrontMatter(params);
 
-  ```
-  export default {  markdown: {    parseFrontMatter: async (params) => {      // Reuse the default parser      const result = await params.defaultParseFrontMatter(params);      // Process front matter description placeholders      result.frontMatter.description =        result.frontMatter.description?.replaceAll('{{MY_VAR}}', 'MY_VALUE');      // Create your own front matter shortcut      if (result.frontMatter.i_do_not_want_docs_pagination) {        result.frontMatter.pagination_prev = null;        result.frontMatter.pagination_next = null;      }      // Rename an unsupported front matter coming from another system      if (result.frontMatter.cms_seo_summary) {        result.frontMatter.description = result.frontMatter.cms_seo_summary;        delete result.frontMatter.cms_seo_summary;      }      return result;    },  },};
+        // Process front matter description placeholders
+        result.frontMatter.description =
+          result.frontMatter.description?.replaceAll('{{MY_VAR}}', 'MY_VALUE');
+
+        // Create your own front matter shortcut
+        if (result.frontMatter.i_do_not_want_docs_pagination) {
+          result.frontMatter.pagination_prev = null;
+          result.frontMatter.pagination_next = null;
+        }
+
+        // Rename an unsupported front matter coming from another system
+        if (result.frontMatter.cms_seo_summary) {
+          result.frontMatter.description = result.frontMatter.cms_seo_summary;
+          delete result.frontMatter.cms_seo_summary;
+        }
+
+        return result;
+      },
+    },
+  };
   ```
 </Callout>
 
@@ -117,8 +148,10 @@ Front matter is provided at the very top of the file, enclosed by three dashes `
 
 Markdown quotes are beautifully styled:
 
-```
-> Easy to maintain open source documentation websites.>> — Docusaurus
+```md
+> Easy to maintain open source documentation websites.
+>
+> — Docusaurus
 ```
 
 http://localhost:3000
@@ -131,8 +164,25 @@ http://localhost:3000
 
 Markdown can embed HTML elements, and [`details`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details) HTML elements are beautifully styled:
 
-````
-### Details element example<details>  <summary>Toggle me!</summary>  This is the detailed content  ```js  console.log("Markdown features including the code block are available");  ```  You can use Markdown here including **bold** and _italic_ text, and [inline link](https://docusaurus.io)  <details>    <summary>Nested toggle! Some surprise inside...</summary>    😲😲😲😲😲  </details></details>
+````md
+### Details element example
+
+<details>
+  <summary>Toggle me!</summary>
+
+  This is the detailed content
+
+  ```js
+  console.log("Markdown features including the code block are available");
+  ```
+
+  You can use Markdown here including **bold** and _italic_ text, and [inline link](https://docusaurus.io)
+  <details>
+    <summary>Nested toggle! Some surprise inside...</summary>
+
+    😲😲😲😲😲
+  </details>
+</details>
 ````
 
 http://localhost:3000
@@ -142,7 +192,7 @@ http://localhost:3000
 <Expandable title="Toggle me!">
   This is the detailed content
 
-  ```
+  ```js
   console.log("Markdown features including the code block are available");
   ```
 
@@ -154,7 +204,5 @@ http://localhost:3000
 </Expandable>
 
 <Callout kind="info">
-  info
-
   You may want to keep your `<summary>` on a single line. Keep in mind that [MDX creates extra HTML `<p>` paragraphs for line breaks.](https://mdxjs.com/migrating/v2/#jsx). When in doubt, use the [MDX playground](https://mdxjs.com/playground/) to troubleshoot `<details>` rendering problems.
 </Callout>

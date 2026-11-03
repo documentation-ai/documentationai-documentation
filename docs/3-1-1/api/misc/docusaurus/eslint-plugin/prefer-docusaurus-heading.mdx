@@ -13,12 +13,22 @@ Ensures that the `@theme/Heading` theme component provided by Docusaurus [`theme
 
 Examples of **incorrect** code for this rule:
 
-```
-<h1>This is heading 1</h1><h2>This is heading 2</h2><h3>This is heading 3</h3>
+```html
+<h1>This is heading 1</h1>
+
+<h2>This is heading 2</h2>
+
+<h3>This is heading 3</h3>
 ```
 
 Examples of **correct** code for this rule:
 
-```
-import Heading from '@theme/Heading'<Heading as='h1'>This is heading 1</Heading><Heading as='h2'>This is heading 2</Heading><Heading as='h3'>This is heading 3</Heading>
+```javascript
+import Heading from '@theme/Heading'
+
+<Heading as='h1'>This is heading 1</Heading>
+
+<Heading as='h2'>This is heading 2</Heading>
+
+<Heading as='h3'>This is heading 3</Heading>
 ```

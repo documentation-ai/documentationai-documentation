@@ -13,7 +13,7 @@ The minimum required version is **TypeScript 5.1**.
 
 Docusaurus supports writing and using TypeScript theme components. If the init template provides a TypeScript variant, you can directly [initialize a site](/docs/installation#scaffold-project-website) with full TypeScript support by using the `--typescript` flag.
 
-```
+```bash
 npx create-docusaurus@latest my-website classic --typescript
 ```
 
@@ -25,25 +25,25 @@ Add the following packages to your project:
 
 <Tabs>
   <Tab title="npm">
-    ```
+    ```bash
     npm install --save-dev typescript @docusaurus/module-type-aliases @docusaurus/tsconfig @docusaurus/types
     ```
   </Tab>
 
   <Tab title="Yarn">
-    ```
+    ```bash
     yarn add --dev typescript @docusaurus/module-type-aliases @docusaurus/tsconfig @docusaurus/types
     ```
   </Tab>
 
   <Tab title="pnpm">
-    ```
+    ```bash
     pnpm add --save-dev typescript @docusaurus/module-type-aliases @docusaurus/tsconfig @docusaurus/types
     ```
   </Tab>
 
   <Tab title="Bun">
-    ```
+    ```bash
     bun add --dev typescript @docusaurus/module-type-aliases @docusaurus/tsconfig @docusaurus/types
     ```
   </Tab>
@@ -51,10 +51,13 @@ Add the following packages to your project:
 
 Then add `tsconfig.json` to your project root with the following content:
 
-tsconfig.json
-
-```
-{  "extends": "@docusaurus/tsconfig",  "compilerOptions": {    "baseUrl": "."  }}
+```json title="tsconfig.json"
+{
+  "extends": "@docusaurus/tsconfig",
+  "compilerOptions": {
+    "baseUrl": "."
+  }
+}
 ```
 
 Docusaurus doesn't use this `tsconfig.json` to compile your project. It is added just for a nicer Editor experience, although you can choose to run `tsc` to type check your code for yourself or on CI.
@@ -67,10 +70,31 @@ Now you can start writing TypeScript theme components.
 
 It is possible to use a TypeScript config file in Docusaurus.
 
-docusaurus.config.ts
+```ts title="docusaurus.config.ts"
+import type {Config} from '@docusaurus/types';
+import type * as Preset from '@docusaurus/preset-classic';
 
-```
-import type {Config} from '@docusaurus/types';import type * as Preset from '@docusaurus/preset-classic';const config: Config = {  title: 'My Site',  favicon: 'img/favicon.ico',  /* Your site config here */  presets: [    [      'classic',      {        /* Your preset config here */      } satisfies Preset.Options,    ],  ],  themeConfig: {    /* Your theme config here */  } satisfies Preset.ThemeConfig,};export default config;
+const config: Config = {
+  title: 'My Site',
+  favicon: 'img/favicon.ico',
+
+  /* Your site config here */
+
+  presets: [
+    [
+      'classic',
+      {
+        /* Your preset config here */
+      } satisfies Preset.Options,
+    ],
+  ],
+
+  themeConfig: {
+    /* Your theme config here */
+  } satisfies Preset.ThemeConfig,
+};
+
+export default config;
 ```
 
 <Expandable title="It is also possible to use JSDoc type annotations within a .js file:">
@@ -78,16 +102,41 @@ import type {Config} from '@docusaurus/types';import type * as Preset from '@doc
 
   The `// @ts-check` comment ensures the config file is properly type-checked when running `npx tsc`.
 
-  docusaurus.config.js
+  ```js title="docusaurus.config.js"
+  // @ts-check
 
-  ```
-  // @ts-check/** @type {import('@docusaurus/types').Config} */const config = {  tagline: 'Dinosaurs are cool',  favicon: 'img/favicon.ico',  /* Your site config here */  presets: [    [      '@docusaurus/preset-classic',      /** @type {import('@docusaurus/preset-classic').Options} */      (        {          /* Your preset config here */        }      ),    ],  ],  themeConfig:    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */    (      {        /* Your theme config here */      }    ),};export default config;
+  /** @type {import('@docusaurus/types').Config} */
+  const config = {
+    tagline: 'Dinosaurs are cool',
+    favicon: 'img/favicon.ico',
+
+    /* Your site config here */
+
+    presets: [
+      [
+        '@docusaurus/preset-classic',
+        /** @type {import('@docusaurus/preset-classic').Options} */
+        (
+          {
+            /* Your preset config here */
+          }
+        ),
+      ],
+    ],
+    themeConfig:
+      /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+      (
+        {
+          /* Your theme config here */
+        }
+      ),
+  };
+
+  export default config;
   ```
 </Expandable>
 
 <Callout kind="tip">
-  tip
-
   Type annotations are very useful and help your IDE understand the type of config objects!
 
   The best IDEs (VS Code, WebStorm, IntelliJ...) will provide a nice auto-completion experience.
@@ -99,25 +148,25 @@ For themes that support TypeScript theme components, you can add the `--typescri
 
 <Tabs>
   <Tab title="npm">
-    ```
+    ```bash
     npm run swizzle @docusaurus/theme-classic Footer -- --typescript
     ```
   </Tab>
 
   <Tab title="Yarn">
-    ```
+    ```bash
     yarn swizzle @docusaurus/theme-classic Footer --typescript
     ```
   </Tab>
 
   <Tab title="pnpm">
-    ```
+    ```bash
     pnpm run swizzle @docusaurus/theme-classic Footer --typescript
     ```
   </Tab>
 
   <Tab title="Bun">
-    ```
+    ```bash
     bun run swizzle @docusaurus/theme-classic Footer --typescript
     ```
   </Tab>

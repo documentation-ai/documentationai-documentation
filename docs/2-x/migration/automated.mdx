@@ -8,8 +8,6 @@ ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc
 The migration CLI automatically migrates your v1 website to a v2 website.
 
 <Callout kind="info">
-  info
-
   Manual work is still required after using the migration CLI, as we can't automate a full migration
 </Callout>
 
@@ -28,41 +26,51 @@ To use the migration CLI, follow these steps:
 1. Before using the migration CLI, ensure that `/docs`, `/blog`, `/static`, `sidebars.json`, `siteConfig.js`, `package.json` follow the expected structure.
 2. To migrate your v1 website, run the migration CLI with the appropriate filesystem paths:
 
-```
-# migration command formatnpx @docusaurus/migrate migrate <v1 website directory> <desired v2 website directory># examplenpx @docusaurus/migrate migrate ./v1-website ./v2-website
+```bash
+# migration command format
+npx @docusaurus/migrate migrate <v1 website directory> <desired v2 website directory>
+
+# example
+npx @docusaurus/migrate migrate ./v1-website ./v2-website
 ```
 
 3. To view your new website locally, go into your v2 website's directory and start your development server.
 
 <Tabs>
   <Tab title="npm">
-    ```
-    cd ./v2-websitenpm installnpm start
+    ```bash
+    cd ./v2-website
+    npm install
+    npm start
     ```
   </Tab>
 
   <Tab title="Yarn">
-    ```
-    cd ./v2-websiteyarn installyarn start
+    ```bash
+    cd ./v2-website
+    yarn install
+    yarn start
     ```
   </Tab>
 
   <Tab title="pnpm">
-    ```
-    cd ./v2-websitepnpm installpnpm start
+    ```bash
+    cd ./v2-website
+    pnpm install
+    pnpm start
     ```
   </Tab>
 
   <Tab title="Bun">
-    ```
-    cd ./v2-websitebun installbun start
+    ```bash
+    cd ./v2-website
+    bun install
+    bun start
     ```
   </Tab>
 </Tabs>
 
 <Callout kind="danger">
-  danger
-
   The migration CLI updates existing files. Be sure to have committed them first!
 </Callout>
 
@@ -70,18 +78,17 @@ To use the migration CLI, follow these steps:
 
 You can add option flags to the migration CLI to automatically migrate Markdown content and pages to v2. It is likely that you will still need to make some manual changes to achieve your desired result.
 
-| Name | Description`--mdx`Add this flag to convert Markdown to MDX automatically`--page`Add this flag to migrate pages automatically |
+| Name | Description |
 | --- | --- |
 | `--mdx` | Add this flag to convert Markdown to MDX automatically |
 | `--page` | Add this flag to migrate pages automatically |
 
-```
-# example using optionsnpx @docusaurus/migrate migrate --mdx --page ./v1-website ./v2-website
+```bash
+# example using options
+npx @docusaurus/migrate migrate --mdx --page ./v1-website ./v2-website
 ```
 
 <Callout kind="danger">
-  danger
-
   The migration of pages and MDX is still a work in progress.
 
   We recommend you to try to run the pages without these options, commit, and then try to run the migration again with the `--page` and `--mdx` options.

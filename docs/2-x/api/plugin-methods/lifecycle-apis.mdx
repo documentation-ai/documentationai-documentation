@@ -15,10 +15,15 @@ Plugins should use this lifecycle to fetch from data sources (filesystem, remote
 
 For example, this plugin below returns a random integer between 1 to 10 as content.
 
-docusaurus-plugin/src/index.js
-
-```
-module.exports = function (context, options) {  return {    name: 'docusaurus-plugin',    async loadContent() {      return 1 + Math.floor(Math.random() * 10);    },  };};
+```js title="docusaurus-plugin/src/index.js"
+module.exports = function (context, options) {
+  return {
+    name: 'docusaurus-plugin',
+    async loadContent() {
+      return 1 + Math.floor(Math.random() * 10);
+    },
+  };
+};
 ```
 
 ## `async contentLoaded({content, actions})`
@@ -39,8 +44,25 @@ The data that was loaded in `loadContent` will be consumed in `contentLoaded`. I
 
 Create a route to add to the website.
 
-```
-type RouteConfig = {  path: string;  component: string;  modules?: RouteModules;  routes?: RouteConfig[];  exact?: boolean;  priority?: number;};type RouteModules = {  [module: string]: Module | RouteModules | RouteModules[];};type Module =  | {      path: string;      __import?: boolean;      query?: ParsedUrlQueryInput;    }  | string;
+```ts
+type RouteConfig = {
+  path: string;
+  component: string;
+  modules?: RouteModules;
+  routes?: RouteConfig[];
+  exact?: boolean;
+  priority?: number;
+};
+type RouteModules = {
+  [module: string]: Module | RouteModules | RouteModules[];
+};
+type Module =
+  | {
+      path: string;
+      __import?: boolean;
+      query?: ParsedUrlQueryInput;
+    }
+  | string;
 ```
 
 #### `createData(name: string, data: any): Promise<string>`
@@ -49,16 +71,40 @@ A declarative callback to create static data (generally JSON or string) which ca
 
 For example, this plugin below creates a `/friends` page which displays `Your friends are: Yangshun, Sebastien`:
 
-website/src/components/Friends.js
+```jsx title="website/src/components/Friends.js"
+import React from 'react';
 
-```
-import React from 'react';export default function FriendsComponent({friends}) {  return <div>Your friends are {friends.join(',')}</div>;}
+export default function FriendsComponent({friends}) {
+  return <div>Your friends are {friends.join(',')}</div>;
+}
 ```
 
-docusaurus-friends-plugin/src/index.js
+```js title="docusaurus-friends-plugin/src/index.js"
+export default function friendsPlugin(context, options) {
+  return {
+    name: 'docusaurus-friends-plugin',
+    async contentLoaded({content, actions}) {
+      const {createData, addRoute} = actions;
+      // Create friends.json
+      const friends = ['Yangshun', 'Sebastien'];
+      const friendsJsonPath = await createData(
+        'friends.json',
+        JSON.stringify(friends),
+      );
 
-```
-export default function friendsPlugin(context, options) {  return {    name: 'docusaurus-friends-plugin',    async contentLoaded({content, actions}) {      const {createData, addRoute} = actions;      // Create friends.json      const friends = ['Yangshun', 'Sebastien'];      const friendsJsonPath = await createData(        'friends.json',        JSON.stringify(friends),      );      // Add the '/friends' routes, and ensure it receives the friends props      addRoute({        path: '/friends',        component: '@site/src/components/Friends.js',        modules: {          // propName -> JSON file path          friends: friendsJsonPath,        },        exact: true,      });    },  };}
+      // Add the '/friends' routes, and ensure it receives the friends props
+      addRoute({
+        path: '/friends',
+        component: '@site/src/components/Friends.js',
+        modules: {
+          // propName -> JSON file path
+          friends: friendsJsonPath,
+        },
+        exact: true,
+      });
+    },
+  };
+}
 ```
 
 <a id="setGlobalData"></a>
@@ -70,23 +116,39 @@ This function permits one to create some global plugin data that can be read fro
 This data becomes accessible to your client-side/theme code through the [`useGlobalData`](/docs/2-x/docusaurus-core#useGlobalData) and [`usePluginData`](/docs/2-x/docusaurus-core#usePluginData) hooks.
 
 <Callout kind="alert">
-  warning
-
   Global data is... global: its size affects the loading time of all pages of your site, so try to keep it small. Prefer `createData` and page-specific data whenever possible.
 </Callout>
 
 For example, this plugin below creates a `/friends` page which displays `Your friends are: Yangshun, Sebastien`:
 
-website/src/components/Friends.js
+```jsx title="website/src/components/Friends.js"
+import React from 'react';
+import {usePluginData} from '@docusaurus/useGlobalData';
 
-```
-import React from 'react';import {usePluginData} from '@docusaurus/useGlobalData';export default function FriendsComponent() {  const {friends} = usePluginData('docusaurus-friends-plugin');  return <div>Your friends are {friends.join(',')}</div>;}
+export default function FriendsComponent() {
+  const {friends} = usePluginData('docusaurus-friends-plugin');
+  return <div>Your friends are {friends.join(',')}</div>;
+}
 ```
 
-docusaurus-friends-plugin/src/index.js
+```js title="docusaurus-friends-plugin/src/index.js"
+export default function friendsPlugin(context, options) {
+  return {
+    name: 'docusaurus-friends-plugin',
+    async contentLoaded({content, actions}) {
+      const {setGlobalData, addRoute} = actions;
+      // Create friends global data
+      setGlobalData({friends: ['Yangshun', 'Sebastien']});
 
-```
-export default function friendsPlugin(context, options) {  return {    name: 'docusaurus-friends-plugin',    async contentLoaded({content, actions}) {      const {setGlobalData, addRoute} = actions;      // Create friends global data      setGlobalData({friends: ['Yangshun', 'Sebastien']});      // Add the '/friends' routes      addRoute({        path: '/friends',        component: '@site/src/components/Friends.js',        exact: true,      });    },  };}
+      // Add the '/friends' routes
+      addRoute({
+        path: '/friends',
+        component: '@site/src/components/Friends.js',
+        exact: true,
+      });
+    },
+  };
+}
 ```
 
 ## `configureWebpack(config, isServer, utils, content)`
@@ -94,8 +156,6 @@ export default function friendsPlugin(context, options) {  return {    name: 'do
 Modifies the internal webpack config. If the return value is a JavaScript object, it will be merged into the final config using [`webpack-merge`](https://github.com/survivejs/webpack-merge). If it is a function, it will be called and receive `config` as the first argument and an `isServer` flag as the second argument.
 
 <Callout kind="alert">
-  warning
-
   The API of `configureWebpack` will be modified in the future to accept an object (`configureWebpack({config, isServer, utils, content})`)
 </Callout>
 
@@ -118,10 +178,25 @@ You may use them to return your webpack configuration conditionally.
 
 For example, this plugin below modify the webpack config to transpile `.foo` files.
 
-docusaurus-plugin/src/index.js
-
-```
-module.exports = function (context, options) {  return {    name: 'custom-docusaurus-plugin',    configureWebpack(config, isServer, utils) {      const {getJSLoader} = utils;      return {        module: {          rules: [            {              test: /\.foo$/,              use: [getJSLoader(isServer), 'my-custom-webpack-loader'],            },          ],        },      };    },  };};
+```js title="docusaurus-plugin/src/index.js"
+module.exports = function (context, options) {
+  return {
+    name: 'custom-docusaurus-plugin',
+    configureWebpack(config, isServer, utils) {
+      const {getJSLoader} = utils;
+      return {
+        module: {
+          rules: [
+            {
+              test: /\.foo$/,
+              use: [getJSLoader(isServer), 'my-custom-webpack-loader'],
+            },
+          ],
+        },
+      };
+    },
+  };
+};
 ```
 
 ### `content`
@@ -134,10 +209,18 @@ We merge the Webpack configuration parts of plugins into the global Webpack conf
 
 It is possible to specify the merge strategy. For example, if you want a webpack rule to be prepended instead of appended:
 
-docusaurus-plugin/src/index.js
-
-```
-module.exports = function (context, options) {  return {    name: 'custom-docusaurus-plugin',    configureWebpack(config, isServer, utils) {      return {        mergeStrategy: {'module.rules': 'prepend'},        module: {rules: [myRuleToPrepend]},      };    },  };};
+```js title="docusaurus-plugin/src/index.js"
+module.exports = function (context, options) {
+  return {
+    name: 'custom-docusaurus-plugin',
+    configureWebpack(config, isServer, utils) {
+      return {
+        mergeStrategy: {'module.rules': 'prepend'},
+        module: {rules: [myRuleToPrepend]},
+      };
+    },
+  };
+};
 ```
 
 Read the [webpack-merge strategy doc](https://github.com/survivejs/webpack-merge#merging-with-strategies) for more details.
@@ -146,10 +229,19 @@ Read the [webpack-merge strategy doc](https://github.com/survivejs/webpack-merge
 
 The dev server can be configured through returning a `devServer` field.
 
-docusaurus-plugin/src/index.js
-
-```
-module.exports = function (context, options) {  return {    name: 'custom-docusaurus-plugin',    configureWebpack(config, isServer, utils) {      return {        devServer: {          open: '/docs', // Opens localhost:3000/docs instead of localhost:3000/        },      };    },  };};
+```js title="docusaurus-plugin/src/index.js"
+module.exports = function (context, options) {
+  return {
+    name: 'custom-docusaurus-plugin',
+    configureWebpack(config, isServer, utils) {
+      return {
+        devServer: {
+          open: '/docs', // Opens localhost:3000/docs instead of localhost:3000/
+        },
+      };
+    },
+  };
+};
 ```
 
 ## `configurePostCss(options)`
@@ -160,32 +252,62 @@ Should return the mutated `postcssOptions`.
 
 By default, `postcssOptions` looks like this:
 
-```
-const postcssOptions = {  ident: 'postcss',  plugins: [require('autoprefixer')],};
+```js
+const postcssOptions = {
+  ident: 'postcss',
+  plugins: [require('autoprefixer')],
+};
 ```
 
 Example:
 
-docusaurus-plugin/src/index.js
-
-```
-module.exports = function (context, options) {  return {    name: 'docusaurus-plugin',    configurePostCss(postcssOptions) {      // Appends new PostCSS plugin.      postcssOptions.plugins.push(require('postcss-import'));      return postcssOptions;    },  };};
+```js title="docusaurus-plugin/src/index.js"
+module.exports = function (context, options) {
+  return {
+    name: 'docusaurus-plugin',
+    configurePostCss(postcssOptions) {
+      // Appends new PostCSS plugin.
+      postcssOptions.plugins.push(require('postcss-import'));
+      return postcssOptions;
+    },
+  };
+};
 ```
 
 ## `postBuild(props)`
 
 Called when a (production) build finishes.
 
-```
-interface Props {  siteDir: string;  generatedFilesDir: string;  siteConfig: DocusaurusConfig;  outDir: string;  baseUrl: string;  headTags: string;  preBodyTags: string;  postBodyTags: string;  routesPaths: string[];  plugins: Plugin<any>[];  content: Content;}
+```ts
+interface Props {
+  siteDir: string;
+  generatedFilesDir: string;
+  siteConfig: DocusaurusConfig;
+  outDir: string;
+  baseUrl: string;
+  headTags: string;
+  preBodyTags: string;
+  postBodyTags: string;
+  routesPaths: string[];
+  plugins: Plugin<any>[];
+  content: Content;
+}
 ```
 
 Example:
 
-docusaurus-plugin/src/index.js
-
-```
-module.exports = function (context, options) {  return {    name: 'docusaurus-plugin',    async postBuild({siteConfig = {}, routesPaths = [], outDir}) {      // Print out to console all the rendered routes.      routesPaths.map((route) => {        console.log(route);      });    },  };};
+```js title="docusaurus-plugin/src/index.js"
+module.exports = function (context, options) {
+  return {
+    name: 'docusaurus-plugin',
+    async postBuild({siteConfig = {}, routesPaths = [], outDir}) {
+      // Print out to console all the rendered routes.
+      routesPaths.map((route) => {
+        console.log(route);
+      });
+    },
+  };
+};
 ```
 
 ## `injectHtmlTags({content})`
@@ -194,16 +316,69 @@ Inject head and/or body HTML tags to Docusaurus generated HTML.
 
 `injectHtmlTags` will be called both with the content loaded by the plugin.
 
-```
-function injectHtmlTags(): {  headTags?: HtmlTags;  preBodyTags?: HtmlTags;  postBodyTags?: HtmlTags;};type HtmlTags = string | HtmlTagObject | (string | HtmlTagObject)[];type HtmlTagObject = {  /**   * Attributes of the HTML tag   * E.g. `{'disabled': true, 'value': 'demo', 'rel': 'preconnect'}`   */  attributes?: {    [attributeName: string]: string | boolean;  };  /**   * The tag name e.g. `div`, `script`, `link`, `meta`   */  tagName: string;  /**   * The inner HTML   */  innerHTML?: string;};
+```ts
+function injectHtmlTags(): {
+  headTags?: HtmlTags;
+  preBodyTags?: HtmlTags;
+  postBodyTags?: HtmlTags;
+};
+
+type HtmlTags = string | HtmlTagObject | (string | HtmlTagObject)[];
+
+type HtmlTagObject = {
+  /**
+   * Attributes of the HTML tag
+   * E.g. `{'disabled': true, 'value': 'demo', 'rel': 'preconnect'}`
+   */
+  attributes?: {
+    [attributeName: string]: string | boolean;
+  };
+  /**
+   * The tag name e.g. `div`, `script`, `link`, `meta`
+   */
+  tagName: string;
+  /**
+   * The inner HTML
+   */
+  innerHTML?: string;
+};
 ```
 
 Example:
 
-docusaurus-plugin/src/index.js
-
-```
-module.exports = function (context, options) {  return {    name: 'docusaurus-plugin',    loadContent: async () => {      return {remoteHeadTags: await fetchHeadTagsFromAPI()};    },    injectHtmlTags({content}) {      return {        headTags: [          {            tagName: 'link',            attributes: {              rel: 'preconnect',              href: 'https://www.github.com',            },          },          ...content.remoteHeadTags,        ],        preBodyTags: [          {            tagName: 'script',            attributes: {              charset: 'utf-8',              src: '/noflash.js',            },          },        ],        postBodyTags: [`<div> This is post body </div>`],      };    },  };};
+```js title="docusaurus-plugin/src/index.js"
+module.exports = function (context, options) {
+  return {
+    name: 'docusaurus-plugin',
+    loadContent: async () => {
+      return {remoteHeadTags: await fetchHeadTagsFromAPI()};
+    },
+    injectHtmlTags({content}) {
+      return {
+        headTags: [
+          {
+            tagName: 'link',
+            attributes: {
+              rel: 'preconnect',
+              href: 'https://www.github.com',
+            },
+          },
+          ...content.remoteHeadTags,
+        ],
+        preBodyTags: [
+          {
+            tagName: 'script',
+            attributes: {
+              charset: 'utf-8',
+              src: '/noflash.js',
+            },
+          },
+        ],
+        postBodyTags: [`<div> This is post body </div>`],
+      };
+    },
+  };
+};
 ```
 
 <a id="getClientModules"></a>
@@ -214,8 +389,16 @@ Returns an array of paths to the [client modules](/docs/2-x/advanced/client#clie
 
 As an example, to make your theme load a `customCss` or `customJs` file path from `options` passed in by the user:
 
-my-theme/src/index.js
+```js title="my-theme/src/index.js"
+const path = require('path');
 
-```
-const path = require('path');module.exports = function (context, options) {  const {customCss, customJs} = options || {};  return {    name: 'name-of-my-theme',    getClientModules() {      return [customCss, customJs];    },  };};
+module.exports = function (context, options) {
+  const {customCss, customJs} = options || {};
+  return {
+    name: 'name-of-my-theme',
+    getClientModules() {
+      return [customCss, customJs];
+    },
+  };
+};
 ```

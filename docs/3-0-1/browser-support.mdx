@@ -13,14 +13,21 @@ Websites need to balance between backward compatibility and bundle size. As old 
 
 For example, you may use the [optional chaining syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining):
 
-```
+```js
 const value = obj?.prop?.val;
 ```
 
 ...which unfortunately is only recognized by browser versions released after 2020. To be compatible with earlier browser versions, when building your site for production, our JS loader will transpile your code to a more verbose syntax:
 
-```
-var _obj, _obj$prop;const value =  (_obj = obj) === null || _obj === void 0    ? void 0    : (_obj$prop = _obj.prop) === null || _obj$prop === void 0    ? void 0    : _obj$prop.val;
+```js
+var _obj, _obj$prop;
+
+const value =
+  (_obj = obj) === null || _obj === void 0
+    ? void 0
+    : (_obj$prop = _obj.prop) === null || _obj$prop === void 0
+    ? void 0
+    : _obj$prop.val;
 ```
 
 However, this penalizes all other users with increased site load time because the 29-character line now becomes 168 characters—a 6-fold increase! (In practice, it will be better because the names used will be shorter.) As a tradeoff, the JS loader only transpiles the syntax to the degree that's supported by all browser versions defined in the browser list.
@@ -28,8 +35,6 @@ However, this penalizes all other users with increased site load time because th
 The browser list by default is provided through the `package.json` file as a root `browserslist` field.
 
 <Callout kind="alert">
-  warning
-
   On old browsers, the compiled output will use unsupported (too recent) JS syntax, causing React to fail to initialize and end up with a static website with only HTML/CSS and no JS.
 </Callout>
 
@@ -37,10 +42,20 @@ The browser list by default is provided through the `package.json` file as a roo
 
 Websites initialized with the default classic template has the following in `package.json`:
 
-package.json
-
-```
-{  "name": "docusaurus",  // ...  "browserslist": {    "production": [">0.5%", "not dead", "not op_mini all"],    "development": [      "last 1 chrome version",      "last 1 firefox version",      "last 1 safari version"    ]  }  // ...}
+```json title="package.json"
+{
+  "name": "docusaurus",
+  // ...
+  "browserslist": {
+    "production": [">0.5%", "not dead", "not op_mini all"],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+  // ...
+}
 ```
 
 Explained in natural language, the browsers supported in production are those:
@@ -55,14 +70,32 @@ And browsers used in development are:
 
 You can "evaluate" any config with the `browserslist` CLI to obtain the actual list:
 
-```
+```bash
 npx browserslist --env="production"
 ```
 
 The output is all browsers supported in production. Below is the output in January 2022:
 
-```
-and_chr 96and_uc 12.12chrome 96chrome 95chrome 94edge 96firefox 95firefox 94ie 11ios_saf 15.2ios_saf 15.0-15.1ios_saf 14.5-14.8ios_saf 14.0-14.4ios_saf 12.2-12.5opera 82opera 81safari 15.1safari 14.1safari 13.1
+```text
+and_chr 96
+and_uc 12.12
+chrome 96
+chrome 95
+chrome 94
+edge 96
+firefox 95
+firefox 94
+ie 11
+ios_saf 15.2
+ios_saf 15.0-15.1
+ios_saf 14.5-14.8
+ios_saf 14.0-14.4
+ios_saf 12.2-12.5
+opera 82
+opera 81
+safari 15.1
+safari 14.1
+safari 13.1
 ```
 
 ## Read more

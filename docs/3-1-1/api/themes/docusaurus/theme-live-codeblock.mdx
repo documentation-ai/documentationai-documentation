@@ -9,25 +9,25 @@ This theme provides a `@theme/CodeBlock` component that is powered by [react-liv
 
 <Tabs>
   <Tab title="npm">
-    ```
+    ```bash
     npm install --save @docusaurus/theme-live-codeblock
     ```
   </Tab>
 
   <Tab title="Yarn">
-    ```
+    ```bash
     yarn add @docusaurus/theme-live-codeblock
     ```
   </Tab>
 
   <Tab title="pnpm">
-    ```
+    ```bash
     pnpm add @docusaurus/theme-live-codeblock
     ```
   </Tab>
 
   <Tab title="Bun">
-    ```
+    ```bash
     bun add @docusaurus/theme-live-codeblock
     ```
   </Tab>
@@ -35,8 +35,17 @@ This theme provides a `@theme/CodeBlock` component that is powered by [react-liv
 
 ### Configuration
 
-docusaurus.config.js
-
-```
-export default {  plugins: ['@docusaurus/theme-live-codeblock'],  themeConfig: {    liveCodeBlock: {      /**       * The position of the live playground, above or under the editor       * Possible values: "top" | "bottom"       */      playgroundPosition: 'bottom',    },  },};
+```js title="docusaurus.config.js"
+export default {
+  plugins: ['@docusaurus/theme-live-codeblock'],
+  themeConfig: {
+    liveCodeBlock: {
+      /**
+       * The position of the live playground, above or under the editor
+       * Possible values: "top" | "bottom"
+       */
+      playgroundPosition: 'bottom',
+    },
+  },
+};
 ```

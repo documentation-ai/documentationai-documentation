@@ -11,29 +11,33 @@ ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc
 
 It usually exports a site configuration object:
 
-docusaurus.config.js
-
-```
-module.exports = {  // site config...};
+```js title="docusaurus.config.js"
+module.exports = {
+  // site config...
+};
 ```
 
 <Expandable title="Config files also support config creator functions and async code.">
-  docusaurus.config.js
-
-  ```
-  module.exports = function configCreator() {  return {    // site config...  };};
-  ```
-
-  docusaurus.config.js
-
-  ```
-  module.exports = async function configCreatorAsync() {  return {    // site config...  };};
+  ```js title="docusaurus.config.js"
+  module.exports = function configCreator() {
+    return {
+      // site config...
+    };
+  };
   ```
 
-  docusaurus.config.js
-
+  ```js title="docusaurus.config.js"
+  module.exports = async function configCreatorAsync() {
+    return {
+      // site config...
+    };
+  };
   ```
-  module.exports = Promise.resolve({  // site config...});
+
+  ```js title="docusaurus.config.js"
+  module.exports = Promise.resolve({
+    // site config...
+  });
   ```
 </Expandable>
 
@@ -45,10 +49,10 @@ module.exports = {  // site config...};
 
 Title for your website. Will be used in metadata and as browser tab title.
 
-docusaurus.config.js
-
-```
-module.exports = {  title: 'Docusaurus',};
+```js title="docusaurus.config.js"
+module.exports = {
+  title: 'Docusaurus',
+};
 ```
 
 ### `url`
@@ -57,10 +61,10 @@ module.exports = {  title: 'Docusaurus',};
 
 URL for your website. This can also be considered the top-level hostname. For example, `https://facebook.github.io` is the URL of [https://facebook.github.io/metro/](https://facebook.github.io/metro/), and `https://docusaurus.io` is the URL for [https://docusaurus.io](/). This field is related to the [`baseUrl`](#baseUrl) field.
 
-docusaurus.config.js
-
-```
-module.exports = {  url: 'https://docusaurus.io',};
+```js title="docusaurus.config.js"
+module.exports = {
+  url: 'https://docusaurus.io',
+};
 ```
 
 <a id="baseUrl"></a>
@@ -71,10 +75,10 @@ module.exports = {  url: 'https://docusaurus.io',};
 
 Base URL for your site. Can be considered as the path after the host. For example, `/metro/` is the base URL of [https://facebook.github.io/metro/](https://facebook.github.io/metro/). For URLs that have no path, the baseUrl should be set to `/`. This field is related to the [`url`](#url) field. Always has both leading and trailing slash.
 
-docusaurus.config.js
-
-```
-module.exports = {  baseUrl: '/',};
+```js title="docusaurus.config.js"
+module.exports = {
+  baseUrl: '/',
+};
 ```
 
 ## Optional fields
@@ -85,10 +89,10 @@ module.exports = {  baseUrl: '/',};
 
 Path to your site favicon; must be a URL that can be used in link's href. For example, if your favicon is in `static/img/favicon.ico`:
 
-docusaurus.config.js
-
-```
-module.exports = {  favicon: '/img/favicon.ico',};
+```js title="docusaurus.config.js"
+module.exports = {
+  favicon: '/img/favicon.ico',
+};
 ```
 
 <a id="trailingSlash"></a>
@@ -104,8 +108,6 @@ Allow to customize the presence/absence of a trailing slash at the end of URLs/l
 - `false`: remove trailing slashes from URLs/links, and emit `/docs/myDoc.html` for `/docs/myDoc.md`
 
 <Callout kind="tip">
-  tip
-
   Each static hosting provider serves static files differently (this behavior may even change over time).
 
   Refer to the [deployment guide](/docs/2-x/deployment) and [slorber/trailing-slash-guide](https://github.com/slorber/trailing-slash-guide) to choose the appropriate setting.
@@ -119,10 +121,30 @@ The i18n configuration object to [localize your site](/docs/2-x/i18n/introductio
 
 Example:
 
-docusaurus.config.js
-
-```
-module.exports = {  i18n: {    defaultLocale: 'en',    locales: ['en', 'fa'],    path: 'i18n',    localeConfigs: {      en: {        label: 'English',        direction: 'ltr',        htmlLang: 'en-US',        calendar: 'gregory',        path: 'en',      },      fa: {        label: 'فارسی',        direction: 'rtl',        htmlLang: 'fa-IR',        calendar: 'persian',        path: 'fa',      },    },  },};
+```js title="docusaurus.config.js"
+module.exports = {
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'fa'],
+    path: 'i18n',
+    localeConfigs: {
+      en: {
+        label: 'English',
+        direction: 'ltr',
+        htmlLang: 'en-US',
+        calendar: 'gregory',
+        path: 'en',
+      },
+      fa: {
+        label: 'فارسی',
+        direction: 'rtl',
+        htmlLang: 'fa-IR',
+        calendar: 'persian',
+        path: 'fa',
+      },
+    },
+  },
+};
 ```
 
 - `defaultLocale`: The locale that (1) does not have its name in the base URL (2) gets started with `docusaurus start` without `--locale` option (3) will be used for the `<link hrefLang="x-default">` tag
@@ -146,10 +168,10 @@ This option adds `<meta name="robots" content="noindex, nofollow">` to every pag
 
 Example:
 
-docusaurus.config.js
-
-```
-module.exports = {  noIndex: true, // Defaults to `false`};
+```js title="docusaurus.config.js"
+module.exports = {
+  noIndex: true, // Defaults to `false`
+};
 ```
 
 ### `onBrokenLinks`
@@ -161,8 +183,6 @@ The behavior of Docusaurus when it detects any broken link.
 By default, it throws an error, to ensure you never ship any broken link, but you can lower this security if needed.
 
 <Callout kind="info">
-  note
-
   The broken links detection is only available for a production build (`docusaurus build`).
 </Callout>
 
@@ -190,10 +210,11 @@ By default, it displays a warning after you run `yarn start` or `yarn build`.
 
 The tagline for your website.
 
-docusaurus.config.js
-
-```
-module.exports = {  tagline:    'Docusaurus makes it easy to maintain Open Source documentation websites.',};
+```js title="docusaurus.config.js"
+module.exports = {
+  tagline:
+    'Docusaurus makes it easy to maintain Open Source documentation websites.',
+};
 ```
 
 ### `organizationName`
@@ -202,10 +223,11 @@ module.exports = {  tagline:    'Docusaurus makes it easy to maintain Open Sourc
 
 The GitHub user or organization that owns the repository. You don't need this if you are not using the `docusaurus deploy` command.
 
-docusaurus.config.js
-
-```
-module.exports = {  // Docusaurus' organization is facebook  organizationName: 'facebook',};
+```js title="docusaurus.config.js"
+module.exports = {
+  // Docusaurus' organization is facebook
+  organizationName: 'facebook',
+};
 ```
 
 ### `projectName`
@@ -214,10 +236,10 @@ module.exports = {  // Docusaurus' organization is facebook  organizationName: '
 
 The name of the GitHub repository. You don't need this if you are not using the `docusaurus deploy` command.
 
-docusaurus.config.js
-
-```
-module.exports = {  projectName: 'docusaurus',};
+```js title="docusaurus.config.js"
+module.exports = {
+  projectName: 'docusaurus',
+};
 ```
 
 ### `deploymentBranch`
@@ -226,10 +248,10 @@ module.exports = {  projectName: 'docusaurus',};
 
 The name of the branch to deploy the static files to. You don't need this if you are not using the `docusaurus deploy` command.
 
-docusaurus.config.js
-
-```
-module.exports = {  deploymentBranch: 'gh-pages',};
+```js title="docusaurus.config.js"
+module.exports = {
+  deploymentBranch: 'gh-pages',
+};
 ```
 
 ### `githubHost`
@@ -238,10 +260,10 @@ module.exports = {  deploymentBranch: 'gh-pages',};
 
 The hostname of your server. Useful if you are using GitHub Enterprise. You don't need this if you are not using the `docusaurus deploy` command.
 
-docusaurus.config.js
-
-```
-module.exports = {  githubHost: 'github.com',};
+```js title="docusaurus.config.js"
+module.exports = {
+  githubHost: 'github.com',
+};
 ```
 
 ### `githubPort`
@@ -250,10 +272,10 @@ module.exports = {  githubHost: 'github.com',};
 
 The port of your server. Useful if you are using GitHub Enterprise. You don't need this if you are not using the `docusaurus deploy` command.
 
-docusaurus.config.js
-
-```
-module.exports = {  githubPort: '22',};
+```js title="docusaurus.config.js"
+module.exports = {
+  githubPort: '22',
+};
 ```
 
 ### `themeConfig`
@@ -264,50 +286,111 @@ The [theme configuration](/docs/2-x/api/themes/configuration) object to customiz
 
 Example:
 
-docusaurus.config.js
-
-```
-module.exports = {  themeConfig: {    docs: {      sidebar: {        hideable: false,        autoCollapseCategories: false,      },    },    colorMode: {      defaultMode: 'light',      disableSwitch: false,      respectPrefersColorScheme: true,    },    navbar: {      title: 'Site Title',      logo: {        alt: 'Site Logo',        src: 'img/logo.svg',        width: 32,        height: 32,      },      items: [        {          to: 'docs/docusaurus.config.js',          activeBasePath: 'docs',          label: 'docusaurus.config.js',          position: 'left',        },        // ... other links      ],    },    footer: {      style: 'dark',      links: [        {          title: 'Docs',          items: [            {              label: 'Docs',              to: 'docs/doc1',            },          ],        },        // ... other links      ],      logo: {        alt: 'Meta Open Source Logo',        src: 'img/meta_oss_logo.png',        href: 'https://opensource.fb.com',        width: 160,        height: 51,      },      copyright: `Copyright © ${new Date().getFullYear()} Facebook, Inc.`, // You can also put own HTML here    },  },};
+```js title="docusaurus.config.js"
+module.exports = {
+  themeConfig: {
+    docs: {
+      sidebar: {
+        hideable: false,
+        autoCollapseCategories: false,
+      },
+    },
+    colorMode: {
+      defaultMode: 'light',
+      disableSwitch: false,
+      respectPrefersColorScheme: true,
+    },
+    navbar: {
+      title: 'Site Title',
+      logo: {
+        alt: 'Site Logo',
+        src: 'img/logo.svg',
+        width: 32,
+        height: 32,
+      },
+      items: [
+        {
+          to: 'docs/docusaurus.config.js',
+          activeBasePath: 'docs',
+          label: 'docusaurus.config.js',
+          position: 'left',
+        },
+        // ... other links
+      ],
+    },
+    footer: {
+      style: 'dark',
+      links: [
+        {
+          title: 'Docs',
+          items: [
+            {
+              label: 'Docs',
+              to: 'docs/doc1',
+            },
+          ],
+        },
+        // ... other links
+      ],
+      logo: {
+        alt: 'Meta Open Source Logo',
+        src: 'img/meta_oss_logo.png',
+        href: 'https://opensource.fb.com',
+        width: 160,
+        height: 51,
+      },
+      copyright: `Copyright © ${new Date().getFullYear()} Facebook, Inc.`, // You can also put own HTML here
+    },
+  },
+};
 ```
 
 ### `plugins`
 
 - Type: `PluginConfig[]`
 
-```
+```ts
 type PluginConfig = string | [string, any] | PluginModule | [PluginModule, any];
 ```
 
 See [plugin method references](/docs/2-x/api/plugin-methods) for the shape of a `PluginModule`.
 
-docusaurus.config.js
-
-```
-module.exports = {  plugins: [    'docusaurus-plugin-awesome',    ['docusuarus-plugin-confetti', {fancy: false}],    () => ({      postBuild() {        console.log('Build finished');      },    }),  ],};
+```js title="docusaurus.config.js"
+module.exports = {
+  plugins: [
+    'docusaurus-plugin-awesome',
+    ['docusuarus-plugin-confetti', {fancy: false}],
+    () => ({
+      postBuild() {
+        console.log('Build finished');
+      },
+    }),
+  ],
+};
 ```
 
 ### `themes`
 
 - Type: `PluginConfig[]`
 
-docusaurus.config.js
-
-```
-module.exports = {  themes: ['@docusaurus/theme-classic'],};
+```js title="docusaurus.config.js"
+module.exports = {
+  themes: ['@docusaurus/theme-classic'],
+};
 ```
 
 ### `presets`
 
 - Type: `PresetConfig[]`
 
-```
+```ts
 type PresetConfig = string | [string, any];
 ```
 
-docusaurus.config.js
-
-```
-module.exports = {  presets: [],};
+```js title="docusaurus.config.js"
+module.exports = {
+  presets: [],
+};
 ```
 
 ### `customFields`
@@ -316,15 +399,18 @@ Docusaurus guards `docusaurus.config.js` from unknown fields. To add a custom fi
 
 - Type: `Object`
 
-docusaurus.config.js
-
-```
-module.exports = {  customFields: {    admin: 'endi',    superman: 'lol',  },};
+```js title="docusaurus.config.js"
+module.exports = {
+  customFields: {
+    admin: 'endi',
+    superman: 'lol',
+  },
+};
 ```
 
 Attempting to add unknown fields in the config will lead to errors during build time:
 
-```
+```bash
 Error: The field(s) 'foo', 'bar' are not recognized in docusaurus.config.js
 ```
 
@@ -336,10 +422,10 @@ An array of paths, relative to the site's directory or absolute. Files under the
 
 Example:
 
-docusaurus.config.js
-
-```
-module.exports = {  staticDirectories: ['static'],};
+```js title="docusaurus.config.js"
+module.exports = {
+  staticDirectories: ['static'],
+};
 ```
 
 ### `headTags`
@@ -350,10 +436,18 @@ An array of tags that will be inserted in the HTML `<head>`. The values must be 
 
 Example:
 
-docusaurus.config.js
-
-```
-module.exports = {  headTags: [    {      tagName: 'link',      attributes: {        rel: 'icon',        href: '/img/docusaurus.png',      },    },  ],};
+```js title="docusaurus.config.js"
+module.exports = {
+  headTags: [
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'icon',
+        href: '/img/docusaurus.png',
+      },
+    },
+  ],
+};
 ```
 
 This would become `<link rel="icon" href="img/docusaurus.png" />` in the generated HTML.
@@ -368,10 +462,18 @@ Note that `<script>` added here are render-blocking, so you might want to add `a
 
 Example:
 
-docusaurus.config.js
-
-```
-module.exports = {  scripts: [    // String format.    'https://docusaurus.io/script.js',    // Object format.    {      src: 'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js',      async: true,    },  ],};
+```js title="docusaurus.config.js"
+module.exports = {
+  scripts: [
+    // String format.
+    'https://docusaurus.io/script.js',
+    // Object format.
+    {
+      src: 'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js',
+      async: true,
+    },
+  ],
+};
 ```
 
 ### `stylesheets`
@@ -382,15 +484,20 @@ An array of CSS sources to load. The values can be either strings or plain objec
 
 Example:
 
-docusaurus.config.js
-
-```
-module.exports = {  stylesheets: [    // String format.    'https://docusaurus.io/style.css',    // Object format.    {      href: 'http://mydomain.com/style.css',    },  ],};
+```js title="docusaurus.config.js"
+module.exports = {
+  stylesheets: [
+    // String format.
+    'https://docusaurus.io/style.css',
+    // Object format.
+    {
+      href: 'http://mydomain.com/style.css',
+    },
+  ],
+};
 ```
 
 <Callout kind="info">
-  info
-
   By default, the `<link>` tags will have `rel="stylesheet"`, but you can explicitly add a custom `rel` value to inject any kind of `<link>` tag, not necessarily stylesheets.
 </Callout>
 
@@ -402,10 +509,13 @@ An array of [client modules](/docs/2-x/advanced/client#client-modules) to load g
 
 Example:
 
-docusaurus.config.js
-
-```
-module.exports = {  clientModules: [    require.resolve('./mySiteGlobalJs.js'),    require.resolve('./mySiteGlobalCss.css'),  ],};
+```js title="docusaurus.config.js"
+module.exports = {
+  clientModules: [
+    require.resolve('./mySiteGlobalJs.js'),
+    require.resolve('./mySiteGlobalCss.css'),
+  ],
+};
 ```
 
 ### `ssrTemplate`
@@ -416,10 +526,36 @@ An HTML template written in [Eta's syntax](https://eta.js.org/docs/syntax#syntax
 
 Example:
 
-docusaurus.config.js
-
-```
-module.exports = {  ssrTemplate: `<!DOCTYPE html><html <%~ it.htmlAttributes %>>  <head>    <meta charset="UTF-8">    <meta name="generator" content="Docusaurus v<%= it.version %>">    <% it.metaAttributes.forEach((metaAttribute) => { %>      <%~ metaAttribute %>    <% }); %>    <%~ it.headTags %>    <% it.stylesheets.forEach((stylesheet) => { %>      <link rel="stylesheet" href="<%= it.baseUrl %><%= stylesheet %>" />    <% }); %>    <% it.scripts.forEach((script) => { %>      <link rel="preload" href="<%= it.baseUrl %><%= script %>" as="script">    <% }); %>  </head>  <body <%~ it.bodyAttributes %>>    <%~ it.preBodyTags %>    <div id="__docusaurus">      <%~ it.appHtml %>    </div>    <% it.scripts.forEach((script) => { %>      <script src="<%= it.baseUrl %><%= script %>"></script>    <% }); %>    <%~ it.postBodyTags %>  </body></html>`,};
+```js title="docusaurus.config.js"
+module.exports = {
+  ssrTemplate: `<!DOCTYPE html>
+<html <%~ it.htmlAttributes %>>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="generator" content="Docusaurus v<%= it.version %>">
+    <% it.metaAttributes.forEach((metaAttribute) => { %>
+      <%~ metaAttribute %>
+    <% }); %>
+    <%~ it.headTags %>
+    <% it.stylesheets.forEach((stylesheet) => { %>
+      <link rel="stylesheet" href="<%= it.baseUrl %><%= stylesheet %>" />
+    <% }); %>
+    <% it.scripts.forEach((script) => { %>
+      <link rel="preload" href="<%= it.baseUrl %><%= script %>" as="script">
+    <% }); %>
+  </head>
+  <body <%~ it.bodyAttributes %>>
+    <%~ it.preBodyTags %>
+    <div id="__docusaurus">
+      <%~ it.appHtml %>
+    </div>
+    <% it.scripts.forEach((script) => { %>
+      <script src="<%= it.baseUrl %><%= script %>"></script>
+    <% }); %>
+    <%~ it.postBodyTags %>
+  </body>
+</html>`,
+};
 ```
 
 ### `titleDelimiter`
@@ -430,10 +566,10 @@ Will be used as title delimiter in the generated `<title>` tag.
 
 Example:
 
-docusaurus.config.js
-
-```
-module.exports = {  titleDelimiter: '🦖', // Defaults to `|`};
+```js title="docusaurus.config.js"
+module.exports = {
+  titleDelimiter: '🦖', // Defaults to `|`
+};
 ```
 
 ### `baseUrlIssueBanner`
@@ -444,17 +580,15 @@ When enabled, will show a banner in case your site can't load its CSS or JavaScr
 
 Example:
 
-docusaurus.config.js
-
-```
-module.exports = {  baseUrlIssueBanner: true, // Defaults to `true`};
+```js title="docusaurus.config.js"
+module.exports = {
+  baseUrlIssueBanner: true, // Defaults to `true`
+};
 ```
 
 <Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793700474170-z7upp08cyk-baseUrlIssueBanner-59d44ce573769992.png?fm=auto&auto=compress%2Cformat" alt='A sample base URL issue banner. The style is very raw since the stylesheets failed to load. The text says "Your Docusaurus site did not load properly... Current configured baseUrl = / (default value); We suggest trying baseUrl = /build/' width={1864} height={1384} />
 
 <Callout kind="alert">
-  warning
-
   This banner needs to inline CSS / JS in case all asset loading fails due to wrong base URL.
 
   If you have a strict [Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP), you should rather disable it.

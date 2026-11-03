@@ -9,39 +9,57 @@ In addition to the basic Markdown syntax, we have a special admonitions syntax b
 
 Example:
 
-```
-:::noteSome **content** with _Markdown_ `syntax`. Check [this `api`](#).::::::tipSome **content** with _Markdown_ `syntax`. Check [this `api`](#).::::::infoSome **content** with _Markdown_ `syntax`. Check [this `api`](#).::::::warningSome **content** with _Markdown_ `syntax`. Check [this `api`](#).::::::dangerSome **content** with _Markdown_ `syntax`. Check [this `api`](#).:::
+```md
+:::note
+
+Some **content** with _Markdown_ `syntax`. Check [this `api`](#).
+
+:::
+
+:::tip
+
+Some **content** with _Markdown_ `syntax`. Check [this `api`](#).
+
+:::
+
+:::info
+
+Some **content** with _Markdown_ `syntax`. Check [this `api`](#).
+
+:::
+
+:::warning
+
+Some **content** with _Markdown_ `syntax`. Check [this `api`](#).
+
+:::
+
+:::danger
+
+Some **content** with _Markdown_ `syntax`. Check [this `api`](#).
+
+:::
 ```
 
 http://localhost:3000
 
 <Callout kind="info">
-  note
-
   Some **content** with *Markdown* `syntax`. Check this `api`.
 </Callout>
 
 <Callout kind="tip">
-  tip
-
   Some **content** with *Markdown* `syntax`. Check this `api`.
 </Callout>
 
 <Callout kind="info">
-  info
-
   Some **content** with *Markdown* `syntax`. Check this `api`.
 </Callout>
 
 <Callout kind="alert">
-  warning
-
   Some **content** with *Markdown* `syntax`. Check this `api`.
 </Callout>
 
 <Callout kind="danger">
-  danger
-
   Some **content** with *Markdown* `syntax`. Check this `api`.
 </Callout>
 
@@ -49,22 +67,39 @@ http://localhost:3000
 
 If you use [Prettier](https://prettier.io) to format your Markdown files, Prettier might auto-format your code to invalid admonition syntax. To avoid this problem, add empty lines around the starting and ending directives. This is also why the examples we show here all have empty lines around the content.
 
-```
-<!-- Prettier doesn't change this -->:::noteHello world:::<!-- Prettier changes this -->:::noteHello world:::<!-- to this -->::: note Hello world:::
+```md
+<!-- Prettier doesn't change this -->
+:::note
+
+Hello world
+
+:::
+
+<!-- Prettier changes this -->
+:::note
+Hello world
+:::
+
+<!-- to this -->
+::: note Hello world:::
 ```
 
 ## Specifying title
 
 You may also specify an optional title.
 
-```
-:::note[Your Title **with** some _Markdown_ `syntax`!]Some **content** with some _Markdown_ `syntax`.:::
+```md
+:::note[Your Title **with** some _Markdown_ `syntax`!]
+
+Some **content** with some _Markdown_ `syntax`.
+
+:::
 ```
 
 http://localhost:3000
 
 <Callout kind="info">
-  Your Title **with** some *Markdown* `syntax`!
+  <strong>Your Title with some Markdown syntax!</strong>
 
   Some **content** with some *Markdown* `syntax`.
 </Callout>
@@ -73,27 +108,39 @@ http://localhost:3000
 
 You may also provide classes or IDs to admonitions.
 
-```
-:::note[With css classes]{.padding--lg .text--italic}Note the padding and the italicized text.::::::note{#admonition-id}The admonition container has now the id `admonition-id`.::::::note{.padding--lg #admonition-id-2}Use id and classes together.:::
+```md
+:::note[With css classes]{.padding--lg .text--italic}
+
+Note the padding and the italicized text.
+
+:::
+
+:::note{#admonition-id}
+
+The admonition container has now the id `admonition-id`.
+
+:::
+
+:::note{.padding--lg #admonition-id-2}
+
+Use id and classes together.
+
+:::
 ```
 
 http://localhost:3000
 
 <Callout kind="info">
-  With css classes
+  **With css classes**
 
   Note the padding and the italicized text.
 </Callout>
 
 <Callout kind="info">
-  note
-
   The admonition container has now the id `admonition-id`.
 </Callout>
 
 <Callout kind="info">
-  note
-
   Use id and classes together.
 </Callout>
 
@@ -101,24 +148,40 @@ http://localhost:3000
 
 Admonitions can be nested. Use more colons `:` for each parent admonition level.
 
-```
-:::::info[Parent]Parent content::::danger[Child]Child content:::tip[Deep Child]Deep child content::::::::::::
+```md
+:::::info[Parent]
+
+Parent content
+
+::::danger[Child]
+
+Child content
+
+:::tip[Deep Child]
+
+Deep child content
+
+:::
+
+::::
+
+:::::
 ```
 
 http://localhost:3000
 
 <Callout kind="info">
-  Parent
+  **Parent**
 
   Parent content
 
   <Callout kind="danger">
-    Child
+    **Child**
 
     Child content
 
     <Callout kind="tip">
-      Deep Child
+      **Deep Child**
 
       Deep child content
     </Callout>
@@ -129,14 +192,26 @@ http://localhost:3000
 
 You can use MDX inside admonitions too!
 
-```
-import Tabs from '@theme/Tabs';import TabItem from '@theme/TabItem';:::tip[Use tabs in admonitions]<Tabs>  <TabItem value="apple" label="Apple">This is an apple 🍎</TabItem>  <TabItem value="orange" label="Orange">This is an orange 🍊</TabItem>  <TabItem value="banana" label="Banana">This is a banana 🍌</TabItem></Tabs>:::
+```jsx
+import Tabs from '@theme/Tabs';
+
+import TabItem from '@theme/TabItem';
+
+:::tip[Use tabs in admonitions]
+
+<Tabs>
+  <TabItem value="apple" label="Apple">This is an apple 🍎</TabItem>
+  <TabItem value="orange" label="Orange">This is an orange 🍊</TabItem>
+  <TabItem value="banana" label="Banana">This is a banana 🍌</TabItem>
+</Tabs>
+
+:::
 ```
 
 http://localhost:3000
 
 <Callout kind="tip">
-  Use tabs in admonitions
+  **Use tabs in admonitions**
 
   <Tabs>
     <Tab title="Apple">
@@ -157,24 +232,33 @@ http://localhost:3000
 
 Outside of Markdown, you can use the `@theme/Admonition` component to get the same output.
 
-MyReactPage.jsx
+```jsx title="MyReactPage.jsx"
+import Admonition from '@theme/Admonition';
 
-```
-import Admonition from '@theme/Admonition';export default function MyReactPage() {  return (    <div>      <Admonition type="info">        <p>Some information</p>      </Admonition>    </div>  );}
+export default function MyReactPage() {
+  return (
+    <div>
+      <Admonition type="info">
+        <p>Some information</p>
+      </Admonition>
+    </div>
+  );
+}
 ```
 
 The types that are accepted are the same as above: `note`, `tip`, `danger`, `info`, `warning`. Optionally, you can specify an icon by passing a JSX element or a string, or a title:
 
-MyReactPage.jsx
-
-```
-<Admonition type="tip" icon="💡" title="Did you know...">  Use plugins to introduce shorter syntax for the most commonly used JSX  elements in your project.</Admonition>
+```jsx title="MyReactPage.jsx"
+<Admonition type="tip" icon="💡" title="Did you know...">
+  Use plugins to introduce shorter syntax for the most commonly used JSX
+  elements in your project.
+</Admonition>
 ```
 
 http://localhost:3000
 
 <Callout kind="tip">
-  💡Did you know...
+  <strong>💡Did you know...</strong>
 
   Use plugins to introduce shorter syntax for the most commonly used JSX elements in your project.
 </Callout>
@@ -187,20 +271,39 @@ There are two kinds of customizations possible with admonitions: **parsing** and
 
 You can customize how each individual admonition type is rendered through [swizzling](/docs/swizzling). You can often achieve your goal through a simple wrapper. For example, in the follow example, we swap out the icon for `info` admonitions only.
 
-src/theme/Admonition.js
+```jsx title="src/theme/Admonition.js"
+import React from 'react';
+import Admonition from '@theme-original/Admonition';
+import MyCustomNoteIcon from '@site/static/img/info.svg';
 
-```
-import React from 'react';import Admonition from '@theme-original/Admonition';import MyCustomNoteIcon from '@site/static/img/info.svg';export default function AdmonitionWrapper(props) {  if (props.type !== 'info') {    return <Admonition title="My Custom Admonition Title" {...props} />;  }  return <Admonition icon={<MyCustomNoteIcon />} {...props} />;}
+export default function AdmonitionWrapper(props) {
+  if (props.type !== 'info') {
+    return <Admonition title="My Custom Admonition Title" {...props} />;
+  }
+  return <Admonition icon={<MyCustomNoteIcon />} {...props} />;
+}
 ```
 
 ### Customizing parsing behavior
 
 Admonitions are implemented with a [Remark plugin](/docs/markdown-features/plugins). The plugin is designed to be configurable. To customize the Remark plugin for a specific content plugin (docs, blog, pages), pass the options through the `admonitions` key.
 
-docusaurus.config.js
-
-```
-export default {  presets: [    [      '@docusaurus/preset-classic',      {        docs: {          admonitions: {            keywords: ['note', 'tip', 'info', 'warning', 'danger'],            extendDefaults: true,          },        },      },    ],  ],};
+```js title="docusaurus.config.js"
+export default {
+  presets: [
+    [
+      '@docusaurus/preset-classic',
+      {
+        docs: {
+          admonitions: {
+            keywords: ['note', 'tip', 'info', 'warning', 'danger'],
+            extendDefaults: true,
+          },
+        },
+      },
+    ],
+  ],
+};
 ```
 
 The plugin accepts the following options:
@@ -216,24 +319,60 @@ By default, the theme doesn't know what do to with custom admonition keywords su
 
 If you registered a new admonition type `my-custom-admonition` via the following config:
 
-docusaurus.config.js
-
-```
-export default {  // ...  presets: [    [      'classic',      {        // ...        docs: {          admonitions: {            keywords: ['my-custom-admonition'],            extendDefaults: true,          },        },      },    ],  ],};
+```js title="docusaurus.config.js"
+export default {
+  // ...
+  presets: [
+    [
+      'classic',
+      {
+        // ...
+        docs: {
+          admonitions: {
+            keywords: ['my-custom-admonition'],
+            extendDefaults: true,
+          },
+        },
+      },
+    ],
+  ],
+};
 ```
 
 You can provide the corresponding React component for `:::my-custom-admonition` by creating the following file (unfortunately, since it's not a React component file, it's not swizzlable):
 
-src/theme/Admonition/Types.js
+```js title="src/theme/Admonition/Types.js"
+import React from 'react';
+import DefaultAdmonitionTypes from '@theme-original/Admonition/Types';
 
-```
-import React from 'react';import DefaultAdmonitionTypes from '@theme-original/Admonition/Types';function MyCustomAdmonition(props) {  return (    <div style={{border: 'solid red', padding: 10}}>      <h5 style={{color: 'blue', fontSize: 30}}>{props.title}</h5>      <div>{props.children}</div>    </div>  );}const AdmonitionTypes = {  ...DefaultAdmonitionTypes,  // Add all your custom admonition types here...  // You can also override the default ones if you want  'my-custom-admonition': MyCustomAdmonition,};export default AdmonitionTypes;
+function MyCustomAdmonition(props) {
+  return (
+    <div style={{border: 'solid red', padding: 10}}>
+      <h5 style={{color: 'blue', fontSize: 30}}>{props.title}</h5>
+      <div>{props.children}</div>
+    </div>
+  );
+}
+
+const AdmonitionTypes = {
+  ...DefaultAdmonitionTypes,
+
+  // Add all your custom admonition types here...
+  // You can also override the default ones if you want
+  'my-custom-admonition': MyCustomAdmonition,
+};
+
+export default AdmonitionTypes;
 ```
 
 Now you can use your new admonition keyword in a Markdown file, and it will be parsed and rendered with your custom logic:
 
-```
-:::my-custom-admonition[My Title]It works!:::
+```md
+:::my-custom-admonition[My Title]
+
+It works!
+
+:::
 ```
 
 http://localhost:3000

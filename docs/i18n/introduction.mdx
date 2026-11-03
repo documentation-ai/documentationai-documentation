@@ -68,8 +68,17 @@ JSON is used to translate:
 
 The JSON format used is called **Chrome i18n**:
 
-```
-{  "myTranslationKey1": {    "message": "Translated message 1",    "description": "myTranslationKey1 is used on the homepage"  },  "myTranslationKey2": {    "message": "Translated message 2",    "description": "myTranslationKey2 is used on the FAQ page"  }}
+```json
+{
+  "myTranslationKey1": {
+    "message": "Translated message 1",
+    "description": "myTranslationKey1 is used on the homepage"
+  },
+  "myTranslationKey2": {
+    "message": "Translated message 2",
+    "description": "myTranslationKey2 is used on the FAQ page"
+  }
+}
 ```
 
 The choice was made for 2 reasons:
@@ -87,20 +96,33 @@ The translation files should be created at the correct filesystem location.
 
 Each locale and plugin has its own `i18n` subfolder:
 
-```
+```text
 website/i18n/[locale]/[pluginName]/...
 ```
 
 <Callout kind="info">
-  note
-
   For multi-instance plugins, the path is `website/i18n/[locale]/[pluginName]-[pluginId]/...`.
 </Callout>
 
 Translating a very simple Docusaurus site in French would lead to the following tree:
 
-```
-website/i18n└── fr    ├── code.json  # Any text label present in the React code    │              # Includes text labels from the themes' code    ├── docusaurus-plugin-content-blog # translation data the blog plugin needs    │   └── 2020-01-01-hello.md    │    ├── docusaurus-plugin-content-docs # translation data the docs plugin needs    │   ├── current    │   │   ├── doc1.md    │   │   └── doc2.mdx    │   └── current.json    │    └── docusaurus-theme-classic # translation data the classic theme needs        ├── footer.json   # Text labels in your footer theme config        └── navbar.json   # Text labels in your navbar theme config
+```bash
+website/i18n
+└── fr
+    ├── code.json  # Any text label present in the React code
+    │              # Includes text labels from the themes' code
+    ├── docusaurus-plugin-content-blog # translation data the blog plugin needs
+    │   └── 2020-01-01-hello.md
+    │
+    ├── docusaurus-plugin-content-docs # translation data the docs plugin needs
+    │   ├── current
+    │   │   ├── doc1.md
+    │   │   └── doc2.mdx
+    │   └── current.json
+    │
+    └── docusaurus-theme-classic # translation data the classic theme needs
+        ├── footer.json   # Text labels in your footer theme config
+        └── navbar.json   # Text labels in your navbar theme config
 ```
 
 The JSON files are initialized with the [`docusaurus write-translations`](/docs/cli#docusaurus-write-translations-sitedir) CLI command. Each plugin sources its own translated content under the corresponding folder, while the `code.json` file defines all text labels used in the React code.

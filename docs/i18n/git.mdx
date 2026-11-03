@@ -24,8 +24,6 @@ Using Git also present some shortcomings:
 - **Hard to maintain**: you have to keep the translated files **in sync** with the untranslated files
 
 <Callout kind="info">
-  note
-
   Some **large-scale technical projects** (React, Vue.js, MDN, TypeScript, Nuxt.js, etc.) use Git for translations.
 
   Refer to the [Docusaurus i18n RFC](https://github.com/facebook/docusaurus/issues/3317) for our notes and links studying these systems.
@@ -39,24 +37,52 @@ This is a walk-through of using Git to translate a newly initialized English Doc
 
 Initialize a new Docusaurus site:
 
-```
+```bash
 npx create-docusaurus@latest website classic
 ```
 
 Add the site configuration for the French language:
 
-docusaurus.config.js
-
-```
-export default {  i18n: {    defaultLocale: 'en',    locales: ['en', 'fr'],  },  themeConfig: {    navbar: {      items: [        // ...        {          type: 'localeDropdown',          position: 'left',        },        // ...      ],    },  },  // ...};
+```js title="docusaurus.config.js"
+export default {
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'fr'],
+  },
+  themeConfig: {
+    navbar: {
+      items: [
+        // ...
+        {
+          type: 'localeDropdown',
+          position: 'left',
+        },
+        // ...
+      ],
+    },
+  },
+  // ...
+};
 ```
 
 Translate the homepage:
 
-src/pages/index.js
+```jsx title="src/pages/index.js"
+import React from 'react';
+import Translate from '@docusaurus/Translate';
+import Layout from '@theme/Layout';
 
-```
-import React from 'react';import Translate from '@docusaurus/Translate';import Layout from '@theme/Layout';export default function Home() {  return (    <Layout>      <h1 style={{margin: 20}}>        <Translate description="The homepage main heading">          Welcome to my Docusaurus translated site!        </Translate>      </h1>    </Layout>  );}
+export default function Home() {
+  return (
+    <Layout>
+      <h1 style={{margin: 20}}>
+        <Translate description="The homepage main heading">
+          Welcome to my Docusaurus translated site!
+        </Translate>
+      </h1>
+    </Layout>
+  );
+}
 ```
 
 ### Initialize the `i18n` folder
@@ -65,33 +91,51 @@ Use the [write-translations](/docs/cli#docusaurus-write-translations-sitedir) CL
 
 <Tabs>
   <Tab title="npm">
-    ```
-    npm run write-translations -- --locale fr  1 translations written at i18n/fr/code.json 11 translations written at i18n/fr/docusaurus-theme-classic/footer.json  4 translations written at i18n/fr/docusaurus-theme-classic/navbar.json  3 translations written at i18n/fr/docusaurus-plugin-content-docs/current.json
+    ```bash
+    npm run write-translations -- --locale fr
+
+      1 translations written at i18n/fr/code.json
+     11 translations written at i18n/fr/docusaurus-theme-classic/footer.json
+      4 translations written at i18n/fr/docusaurus-theme-classic/navbar.json
+      3 translations written at i18n/fr/docusaurus-plugin-content-docs/current.json
     ```
   </Tab>
 
   <Tab title="Yarn">
-    ```
-    yarn write-translations --locale fr  1 translations written at i18n/fr/code.json 11 translations written at i18n/fr/docusaurus-theme-classic/footer.json  4 translations written at i18n/fr/docusaurus-theme-classic/navbar.json  3 translations written at i18n/fr/docusaurus-plugin-content-docs/current.json
+    ```bash
+    yarn write-translations --locale fr
+
+      1 translations written at i18n/fr/code.json
+     11 translations written at i18n/fr/docusaurus-theme-classic/footer.json
+      4 translations written at i18n/fr/docusaurus-theme-classic/navbar.json
+      3 translations written at i18n/fr/docusaurus-plugin-content-docs/current.json
     ```
   </Tab>
 
   <Tab title="pnpm">
-    ```
-    pnpm run write-translations --locale fr  1 translations written at i18n/fr/code.json 11 translations written at i18n/fr/docusaurus-theme-classic/footer.json  4 translations written at i18n/fr/docusaurus-theme-classic/navbar.json  3 translations written at i18n/fr/docusaurus-plugin-content-docs/current.json
+    ```bash
+    pnpm run write-translations --locale fr
+
+      1 translations written at i18n/fr/code.json
+     11 translations written at i18n/fr/docusaurus-theme-classic/footer.json
+      4 translations written at i18n/fr/docusaurus-theme-classic/navbar.json
+      3 translations written at i18n/fr/docusaurus-plugin-content-docs/current.json
     ```
   </Tab>
 
   <Tab title="Bun">
-    ```
-    bun run write-translations --locale fr  1 translations written at i18n/fr/code.json 11 translations written at i18n/fr/docusaurus-theme-classic/footer.json  4 translations written at i18n/fr/docusaurus-theme-classic/navbar.json  3 translations written at i18n/fr/docusaurus-plugin-content-docs/current.json
+    ```bash
+    bun run write-translations --locale fr
+
+      1 translations written at i18n/fr/code.json
+     11 translations written at i18n/fr/docusaurus-theme-classic/footer.json
+      4 translations written at i18n/fr/docusaurus-theme-classic/navbar.json
+      3 translations written at i18n/fr/docusaurus-plugin-content-docs/current.json
     ```
   </Tab>
 </Tabs>
 
 <Callout kind="tip">
-  tip
-
   Use the `--messagePrefix '(fr) '` option to make the untranslated strings stand out.
 
   `Hello` will appear as `(fr) Hello` and makes it clear a translation is missing.
@@ -99,8 +143,15 @@ Use the [write-translations](/docs/cli#docusaurus-write-translations-sitedir) CL
 
 Copy your untranslated Markdown files to the French folder:
 
-```
-mkdir -p i18n/fr/docusaurus-plugin-content-docs/currentcp -r docs/. i18n/fr/docusaurus-plugin-content-docs/currentmkdir -p i18n/fr/docusaurus-plugin-content-blogcp -r blog/. i18n/fr/docusaurus-plugin-content-blogmkdir -p i18n/fr/docusaurus-plugin-content-pagescp -r src/pages/. i18n/fr/docusaurus-plugin-content-pages
+```bash
+mkdir -p i18n/fr/docusaurus-plugin-content-docs/current
+cp -r docs/. i18n/fr/docusaurus-plugin-content-docs/current
+
+mkdir -p i18n/fr/docusaurus-plugin-content-blog
+cp -r blog/. i18n/fr/docusaurus-plugin-content-blog
+
+mkdir -p i18n/fr/docusaurus-plugin-content-pages
+cp -r src/pages/. i18n/fr/docusaurus-plugin-content-pages
 ```
 
 Add all these files to Git.
@@ -113,25 +164,25 @@ You should now be able to start your site in French and see the translations:
 
 <Tabs>
   <Tab title="npm">
-    ```
+    ```bash
     npm run start -- --locale fr
     ```
   </Tab>
 
   <Tab title="Yarn">
-    ```
+    ```bash
     yarn run start --locale fr
     ```
   </Tab>
 
   <Tab title="pnpm">
-    ```
+    ```bash
     pnpm run start --locale fr
     ```
   </Tab>
 
   <Tab title="Bun">
-    ```
+    ```bash
     bun run start --locale fr
     ```
   </Tab>
@@ -141,26 +192,34 @@ You can also build the site locally or on your CI:
 
 <Tabs>
   <Tab title="npm">
-    ```
-    npm run build# ornpm run build -- --locale fr
+    ```bash
+    npm run build
+    # or
+    npm run build -- --locale fr
     ```
   </Tab>
 
   <Tab title="Yarn">
-    ```
-    yarn build# oryarn build --locale fr
+    ```bash
+    yarn build
+    # or
+    yarn build --locale fr
     ```
   </Tab>
 
   <Tab title="pnpm">
-    ```
-    pnpm run build# orpnpm run build --locale fr
+    ```bash
+    pnpm run build
+    # or
+    pnpm run build --locale fr
     ```
   </Tab>
 
   <Tab title="Bun">
-    ```
-    bun run build# orbun run build --locale fr
+    ```bash
+    bun run build
+    # or
+    bun run build --locale fr
     ```
   </Tab>
 </Tabs>
@@ -185,25 +244,25 @@ To help you maintain the JSON translation files, it is possible to run again the
 
 <Tabs>
   <Tab title="npm">
-    ```
+    ```bash
     npm run write-translations -- --locale fr
     ```
   </Tab>
 
   <Tab title="Yarn">
-    ```
+    ```bash
     yarn write-translations --locale fr
     ```
   </Tab>
 
   <Tab title="pnpm">
-    ```
+    ```bash
     pnpm run write-translations --locale fr
     ```
   </Tab>
 
   <Tab title="Bun">
-    ```
+    ```bash
     bun run write-translations --locale fr
     ```
   </Tab>
@@ -212,8 +271,6 @@ To help you maintain the JSON translation files, it is possible to run again the
 New translations will be appended, and existing ones will not be overridden.
 
 <Callout kind="tip">
-  tip
-
   Reset your translations with the `--override` option.
 </Callout>
 

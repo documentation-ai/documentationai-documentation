@@ -11,7 +11,7 @@ In [architecture](/docs/2-x/advanced/architecture), we mentioned that the theme 
 - During **client-side rendering**, the theme is compiled to JavaScript that gets eventually executed in the browser, so it has access to browser variables.
 
 <Callout kind="info">
-  SSR or SSG?
+  <strong>SSR or SSG?</strong>
 
   *Server-side rendering* and *static site generation* can be different concepts, but we use them interchangeably.
 
@@ -20,13 +20,17 @@ In [architecture](/docs/2-x/advanced/architecture), we mentioned that the theme 
 
 Therefore, while you probably know not to access Node globals like `process` ([or can we?](#node-env)) or the `'fs'` module, you can't freely access browser globals either.
 
-```
-import React from 'react';export default function WhereAmI() {  return <span>{window.location.href}</span>;}
+```jsx
+import React from 'react';
+
+export default function WhereAmI() {
+  return <span>{window.location.href}</span>;
+}
 ```
 
 This looks like idiomatic React, but if you run `docusaurus build`, you will get an error:
 
-```
+```text
 ReferenceError: window is not defined
 ```
 
@@ -35,22 +39,46 @@ This is because during server-side rendering, the Docusaurus app isn't actually 
 <Expandable title="What about process.env.NODE_ENV?">
   One exception to the "no Node globals" rule is `process.env.NODE_ENV`. In fact, you can use it in React, because Webpack injects this variable as a global:
 
-  ```
-  import React from 'react';export default function expensiveComp() {  if (process.env.NODE_ENV === 'development') {    return <>This component is not shown in development</>;  }  const res = someExpensiveOperationThatLastsALongTime();  return <>{res}</>;}
+  ```jsx
+  import React from 'react';
+
+  export default function expensiveComp() {
+    if (process.env.NODE_ENV === 'development') {
+      return <>This component is not shown in development</>;
+    }
+    const res = someExpensiveOperationThatLastsALongTime();
+    return <>{res}</>;
+  }
   ```
 
   During Webpack build, the `process.env.NODE_ENV` will be replaced with the value, either `'development'` or `'production'`. You will then get different build results after dead code elimination:
 
   <Tabs>
     <Tab title="Development">
-      ```
-      import React from 'react';export default function expensiveComp() {  if ('development' === 'development') {+   return <>This component is not shown in development</>;  }- const res = someExpensiveOperationThatLastsALongTime();- return <>{res}</>;}
+      ```diff
+      import React from 'react';
+
+      export default function expensiveComp() {
+        if ('development' === 'development') {
+      +   return <>This component is not shown in development</>;
+        }
+      - const res = someExpensiveOperationThatLastsALongTime();
+      - return <>{res}</>;
+      }
       ```
     </Tab>
 
     <Tab title="Production">
-      ```
-      import React from 'react';export default function expensiveComp() {- if ('production' === 'development') {-   return <>This component is not shown in development</>;- }+ const res = someExpensiveOperationThatLastsALongTime();+ return <>{res}</>;}
+      ```diff
+      import React from 'react';
+
+      export default function expensiveComp() {
+      - if ('production' === 'development') {
+      -   return <>This component is not shown in development</>;
+      - }
+      + const res = someExpensiveOperationThatLastsALongTime();
+      + return <>{res}</>;
+      }
       ```
     </Tab>
   </Tabs>
@@ -77,8 +105,6 @@ If you want to render any dynamic content on your screen that relies on the brow
 You may need to escape from SSR since static HTML can't display anything useful without knowing the client state.
 
 <Callout kind="alert">
-  warning
-
   It is important for the first client-side render to produce the exact same DOM structure as server-side rendering, otherwise, React will correlate virtual DOM with the wrong DOM elements.
 
   Therefore, the naïve attempt of `if (typeof window !== 'undefined) {/* render something */}` won't work appropriately as a browser vs. server detection, because the first client render would instantly render different markup from the server-generated one.
@@ -92,14 +118,35 @@ We provide several more reliable ways to escape SSR.
 
 If you need to render some component in browser only (for example, because the component relies on browser specifics to be functional at all), one common approach is to wrap your component with [`<BrowserOnly>`](/docs/2-x/docusaurus-core#browseronly) to make sure it's invisible during SSR and only rendered in CSR.
 
-```
-import BrowserOnly from '@docusaurus/BrowserOnly';function MyComponent(props) {  return (    <BrowserOnly fallback={<div>Loading...</div>}>      {() => {        const LibComponent =          require('some-lib-that-accesses-window').LibComponent;        return <LibComponent {...props} />;      }}    </BrowserOnly>  );}
+```jsx
+import BrowserOnly from '@docusaurus/BrowserOnly';
+
+function MyComponent(props) {
+  return (
+    <BrowserOnly fallback={<div>Loading...</div>}>
+      {() => {
+        const LibComponent =
+          require('some-lib-that-accesses-window').LibComponent;
+        return <LibComponent {...props} />;
+      }}
+    </BrowserOnly>
+  );
+}
 ```
 
 It's important to realize that the children of `<BrowserOnly>` is not a JSX element, but a function that *returns* an element. This is a design decision. Consider this code:
 
-```
-import BrowserOnly from '@docusaurus/BrowserOnly';function MyComponent() {  return (    <BrowserOnly>      {/* DON'T DO THIS - doesn't actually work */}      <span>page url = {window.location.href}</span>    </BrowserOnly>  );}
+```jsx
+import BrowserOnly from '@docusaurus/BrowserOnly';
+
+function MyComponent() {
+  return (
+    <BrowserOnly>
+      {/* DON'T DO THIS - doesn't actually work */}
+      <span>page url = {window.location.href}</span>
+    </BrowserOnly>
+  );
+}
 ```
 
 While you may expect that `BrowserOnly` hides away the children during server-side rendering, it actually can't. When the React renderer tries to render this JSX tree, it does see the `{window.location.href}` variable as a node of this tree and tries to render it, although it's actually not used! Using a function ensures that we only let the renderer see the browser-only component when it's needed.
@@ -108,16 +155,28 @@ While you may expect that `BrowserOnly` hides away the children during server-si
 
 You can also use the `useIsBrowser()` hook to test if the component is currently in a browser environment. It returns `false` in SSR and `true` is CSR, after first client render. Use this hook if you only need to perform certain conditional operations on client-side, but not render an entirely different UI.
 
-```
-import useIsBrowser from '@docusaurus/useIsBrowser';function MyComponent() {  const isBrowser = useIsBrowser();  const location = isBrowser ? window.location.href : 'fetching location...';  return <span>{location}</span>;}
+```jsx
+import useIsBrowser from '@docusaurus/useIsBrowser';
+
+function MyComponent() {
+  const isBrowser = useIsBrowser();
+  const location = isBrowser ? window.location.href : 'fetching location...';
+  return <span>{location}</span>;
+}
 ```
 
 ### `useEffect`
 
 Lastly, you can put your logic in `useEffect()` to delay its execution until after first CSR. This is most appropriate if you are only performing side-effects but don't *get* data from the client state.
 
-```
-function MyComponent() {  useEffect(() => {    // Only logged in the browser console; nothing is logged during server-side rendering    console.log("I'm now in the browser");  }, []);  return <span>Some content...</span>;}
+```jsx
+function MyComponent() {
+  useEffect(() => {
+    // Only logged in the browser console; nothing is logged during server-side rendering
+    console.log("I'm now in the browser");
+  }, []);
+  return <span>Some content...</span>;
+}
 ```
 
 ### `ExecutionEnvironment`
@@ -126,8 +185,10 @@ The [`ExecutionEnvironment`](/docs/2-x/docusaurus-core#executionenvironment) nam
 
 Beware that it essentially checked `typeof window !== 'undefined'` under the hood, so you should not use it for rendering-related logic, but only imperative code, like reacting to user input by sending web requests, or dynamically importing libraries, where DOM isn't updated at all.
 
-a-client-module.js
+```js title="a-client-module.js"
+import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 
-```
-import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';if (ExecutionEnvironment.canUseDOM) {  document.title = "I'm loaded!";}
+if (ExecutionEnvironment.canUseDOM) {
+  document.title = "I'm loaded!";
+}
 ```

@@ -8,8 +8,6 @@ ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc
 Docusaurus Plugin to generate an almost ideal image (responsive, lazy-loading, and low quality placeholder).
 
 <Callout kind="info">
-  info
-
   By default, the plugin is **inactive in development** so you could always view full-scale images. If you want to debug the ideal image behavior, you could set the [`disableInDev`](#disableInDev) option to `false`.
 </Callout>
 
@@ -17,25 +15,25 @@ Docusaurus Plugin to generate an almost ideal image (responsive, lazy-loading, a
 
 <Tabs>
   <Tab title="npm">
-    ```
+    ```bash
     npm install --save @docusaurus/plugin-ideal-image
     ```
   </Tab>
 
   <Tab title="Yarn">
-    ```
+    ```bash
     yarn add @docusaurus/plugin-ideal-image
     ```
   </Tab>
 
   <Tab title="pnpm">
-    ```
+    ```bash
     pnpm add @docusaurus/plugin-ideal-image
     ```
   </Tab>
 
   <Tab title="Bun">
-    ```
+    ```bash
     bun add @docusaurus/plugin-ideal-image
     ```
   </Tab>
@@ -45,13 +43,18 @@ Docusaurus Plugin to generate an almost ideal image (responsive, lazy-loading, a
 
 This plugin supports the PNG and JPG formats only.
 
-```
-import Image from '@theme/IdealImage';import thumbnail from './path/to/img.png';// your React code<Image img={thumbnail} />// or<Image img={require('./path/to/img.png')} />
+```jsx
+import Image from '@theme/IdealImage';
+import thumbnail from './path/to/img.png';
+
+// your React code
+<Image img={thumbnail} />
+
+// or
+<Image img={require('./path/to/img.png')} />
 ```
 
 <Callout kind="alert">
-  warning
-
   This plugin registers a [Webpack loader](https://webpack.js.org/loaders/) that changes the type of imported/require images:
 
   - Before: `string`
@@ -59,14 +62,16 @@ import Image from '@theme/IdealImage';import thumbnail from './path/to/img.png';
 </Callout>
 
 <Callout kind="alert">
-  For pnpm users
+  **For pnpm users**
 
   Starting with [pnpm 10](https://github.com/pnpm/pnpm/releases/tag/v10.0.0), running `pnpm install` won't run dependency install scripts by default. You'll need additional pnpm configuration ([issue](https://github.com/lovell/sharp/issues/4343)) for our `sharp` image resizing dependency to install correctly, such as:
 
-  package.json
-
-  ```
-  {  "pnpm": {    "onlyBuiltDependencies": ["fsevents"]  }}
+  ```json title="package.json"
+  {
+    "pnpm": {
+      "onlyBuiltDependencies": ["fsevents"]
+    }
+  }
   ```
 </Callout>
 
@@ -74,7 +79,7 @@ import Image from '@theme/IdealImage';import thumbnail from './path/to/img.png';
 
 Accepted fields:
 
-| Option | Type | Default | Description`name``string``ideal-img/[name].[hash:hex:7].[width].[ext]`Filename template for output files.`sizes``number[]`*original size*Specify all widths you want to use. If a specified size exceeds the original image's width, the latter will be used (i.e. images won't be scaled up).`size``number`*original size*Specify one width you want to use; if the specified size exceeds the original image's width, the latter will be used (i.e. images won't be scaled up)`min``number`As an alternative to manually specifying `sizes`, you can specify `min`, `max` and `steps`, and the sizes will be generated for you.`max``number`See `min` above`steps``number``4`Configure the number of images generated between `min` and `max` (inclusive)`quality``number``85`JPEG compression quality`disableInDev``boolean``true`You can test ideal image behavior in dev mode by setting this to `false`. **Tip**: use [network throttling](https://www.browserstack.com/guide/how-to-perform-network-throttling-in-chrome) in your browser to simulate slow networks. |
+| Option | Type | Default | Description |
 | --- | --- | --- | --- |
 | `name` | `string` | `ideal-img/[name].[hash:hex:7].[width].[ext]` | Filename template for output files. |
 | `sizes` | `number[]` | *original size* | Specify all widths you want to use. If a specified size exceeds the original image's width, the latter will be used (i.e. images won't be scaled up). |
@@ -91,8 +96,19 @@ Accepted fields:
 
 Here's an example configuration:
 
-docusaurus.config.js
-
-```
-export default {  plugins: [    [      '@docusaurus/plugin-ideal-image',      {        quality: 70,        max: 1030, // max resized image's size.        min: 640, // min resized image's size. if original is lower, use that size.        steps: 2, // the max number of images generated between min and max (inclusive)        disableInDev: false,      },    ],  ],};
+```js title="docusaurus.config.js"
+export default {
+  plugins: [
+    [
+      '@docusaurus/plugin-ideal-image',
+      {
+        quality: 70,
+        max: 1030, // max resized image's size.
+        min: 640, // min resized image's size. if original is lower, use that size.
+        steps: 2, // the max number of images generated between min and max (inclusive)
+        disableInDev: false,
+      },
+    ],
+  ],
+};
 ```

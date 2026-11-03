@@ -11,7 +11,7 @@ Docusaurus is written in TypeScript and provides first-class TypeScript support.
 
 Docusaurus supports writing and using TypeScript theme components. If the init template provides a TypeScript variant, you can directly initialize a site with full TypeScript support by using the `--typescript` flag.
 
-```
+```bash
 npx create-docusaurus@latest my-website classic --typescript
 ```
 
@@ -23,25 +23,25 @@ To start using TypeScript, add `@docusaurus/module-type-aliases` and the base TS
 
 <Tabs>
   <Tab title="npm">
-    ```
+    ```bash
     npm install --save-dev typescript @docusaurus/module-type-aliases @tsconfig/docusaurus
     ```
   </Tab>
 
   <Tab title="Yarn">
-    ```
+    ```bash
     yarn add --dev typescript @docusaurus/module-type-aliases @tsconfig/docusaurus
     ```
   </Tab>
 
   <Tab title="pnpm">
-    ```
+    ```bash
     pnpm add --save-dev typescript @docusaurus/module-type-aliases @tsconfig/docusaurus
     ```
   </Tab>
 
   <Tab title="Bun">
-    ```
+    ```bash
     bun add --dev typescript @docusaurus/module-type-aliases @tsconfig/docusaurus
     ```
   </Tab>
@@ -49,10 +49,13 @@ To start using TypeScript, add `@docusaurus/module-type-aliases` and the base TS
 
 Then add `tsconfig.json` to your project root with the following content:
 
-tsconfig.json
-
-```
-{  "extends": "@tsconfig/docusaurus/tsconfig.json",  "compilerOptions": {    "baseUrl": "."  }}
+```json title="tsconfig.json"
+{
+  "extends": "@tsconfig/docusaurus/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "."
+  }
+}
 ```
 
 Docusaurus doesn't use this `tsconfig.json` to compile your project. It is added just for a nicer Editor experience, although you can choose to run `tsc` to type check your code for yourself or on CI.
@@ -67,23 +70,67 @@ It is **not possible** to use a TypeScript config file in Docusaurus unless you 
 
 We recommend using [JSDoc type annotations](https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html):
 
-docusaurus.config.js
+```js title="docusaurus.config.js"
+// @ts-check
 
-```
-// @ts-check/** @type {import('@docusaurus/types').Plugin} */function MyPlugin(context, options) {  return {    name: 'my-plugin',  };}/** @type {import('@docusaurus/types').Config} */const config = {  title: 'Docusaurus',  tagline: 'Build optimized websites quickly, focus on your content',  organizationName: 'facebook',  projectName: 'docusaurus',  plugins: [MyPlugin],  presets: [    [      '@docusaurus/preset-classic',      /** @type {import('@docusaurus/preset-classic').Options} */      ({        docs: {          path: 'docs',          sidebarPath: 'sidebars.js',        },        blog: {          path: 'blog',          postsPerPage: 5,        },      }),    ],  ],  themeConfig:    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */    ({      colorMode: {        defaultMode: 'dark',      },      navbar: {        hideOnScroll: true,        title: 'Docusaurus',        logo: {          alt: 'Docusaurus Logo',          src: 'img/docusaurus.svg',          srcDark: 'img/docusaurus_keytar.svg',        },      },    }),};module.exports = config;
+/** @type {import('@docusaurus/types').Plugin} */
+function MyPlugin(context, options) {
+  return {
+    name: 'my-plugin',
+  };
+}
+
+/** @type {import('@docusaurus/types').Config} */
+const config = {
+  title: 'Docusaurus',
+  tagline: 'Build optimized websites quickly, focus on your content',
+  organizationName: 'facebook',
+  projectName: 'docusaurus',
+  plugins: [MyPlugin],
+  presets: [
+    [
+      '@docusaurus/preset-classic',
+      /** @type {import('@docusaurus/preset-classic').Options} */
+      ({
+        docs: {
+          path: 'docs',
+          sidebarPath: 'sidebars.js',
+        },
+        blog: {
+          path: 'blog',
+          postsPerPage: 5,
+        },
+      }),
+    ],
+  ],
+  themeConfig:
+    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+    ({
+      colorMode: {
+        defaultMode: 'dark',
+      },
+      navbar: {
+        hideOnScroll: true,
+        title: 'Docusaurus',
+        logo: {
+          alt: 'Docusaurus Logo',
+          src: 'img/docusaurus.svg',
+          srcDark: 'img/docusaurus_keytar.svg',
+        },
+      },
+    }),
+};
+
+module.exports = config;
 ```
 
 <Callout kind="tip">
-  tip
-
   Type annotations are very useful and help your IDE understand the type of config objects!
 
   The best IDEs (VS Code, WebStorm, IntelliJ...) will provide a nice auto-completion experience.
 </Callout>
 
 <Callout kind="info">
-  info
-
   By default, the Docusaurus TypeScript config does not type-check JavaScript files.
 
   The `// @ts-check` comment ensures the config file is properly type-checked when running `npx tsc`.
@@ -95,25 +142,25 @@ For themes that support TypeScript theme components, you can add the `--typescri
 
 <Tabs>
   <Tab title="npm">
-    ```
+    ```bash
     npm run swizzle @docusaurus/theme-classic Footer -- --typescript
     ```
   </Tab>
 
   <Tab title="Yarn">
-    ```
+    ```bash
     yarn swizzle @docusaurus/theme-classic Footer --typescript
     ```
   </Tab>
 
   <Tab title="pnpm">
-    ```
+    ```bash
     pnpm run swizzle @docusaurus/theme-classic Footer --typescript
     ```
   </Tab>
 
   <Tab title="Bun">
-    ```
+    ```bash
     bun run swizzle @docusaurus/theme-classic Footer --typescript
     ```
   </Tab>

@@ -9,25 +9,25 @@ To build the static files of your website for production, run:
 
 <Tabs>
   <Tab title="npm">
-    ```
+    ```bash
     npm run build
     ```
   </Tab>
 
   <Tab title="Yarn">
-    ```
+    ```bash
     yarn build
     ```
   </Tab>
 
   <Tab title="pnpm">
-    ```
+    ```bash
     pnpm run build
     ```
   </Tab>
 
   <Tab title="Bun">
-    ```
+    ```bash
     bun run build
     ```
   </Tab>
@@ -36,8 +36,6 @@ To build the static files of your website for production, run:
 Once it finishes, the static files will be generated within the `build` directory.
 
 <Callout kind="info">
-  note
-
   The only responsibility of Docusaurus is to build your site and emit static files in `build`.
 
   It is now up to you to choose how to host those static files.
@@ -51,7 +49,7 @@ A Docusaurus site is statically rendered, and it can generally work without Java
 
 The following parameters are required in `docusaurus.config.js` to optimize routing and serve files from the correct location:
 
-| Name | Description`url`URL for your site. For a site deployed at `https://my-org.com/my-project/`, `url` is `https://my-org.com/`.`baseUrl`Base URL for your project, with a trailing slash. For a site deployed at `https://my-org.com/my-project/`, `baseUrl` is `/my-project/`. |
+| Name | Description |
 | --- | --- |
 | `url` | URL for your site. For a site deployed at `https://my-org.com/my-project/`, `url` is `https://my-org.com/`. |
 | `baseUrl` | Base URL for your project, with a trailing slash. For a site deployed at `https://my-org.com/my-project/`, `baseUrl` is `/my-project/`. |
@@ -62,25 +60,25 @@ It is important to test your build locally before deploying it for production. D
 
 <Tabs>
   <Tab title="npm">
-    ```
+    ```bash
     npm run serve
     ```
   </Tab>
 
   <Tab title="Yarn">
-    ```
+    ```bash
     yarn serve
     ```
   </Tab>
 
   <Tab title="pnpm">
-    ```
+    ```bash
     pnpm run serve
     ```
   </Tab>
 
   <Tab title="Bun">
-    ```
+    ```bash
     bun run serve
     ```
   </Tab>
@@ -95,8 +93,6 @@ Docusaurus has a [`trailingSlash` config](/docs/3-0-1/api/docusaurus-config#trai
 The default value generally works fine. Unfortunately, each static hosting provider has a **different behavior**, and deploying the exact same site to various hosts can lead to distinct results. Depending on your host, it can be useful to change this config.
 
 <Callout kind="tip">
-  tip
-
   Use [slorber/trailing-slash-guide](https://github.com/slorber/trailing-slash-guide) to understand better the behavior of your host and configure `trailingSlash` appropriately.
 </Callout>
 
@@ -104,16 +100,29 @@ The default value generally works fine. Unfortunately, each static hosting provi
 
 Putting potentially sensitive information in the environment is common practice. However, in a typical Docusaurus website, the `docusaurus.config.js` file is the only interface to the Node.js environment (see [our architecture overview](/docs/3-0-1/advanced/architecture)), while everything else (MDX pages, React components, etc.) are client side and do not have direct access to the `process` global variable. In this case, you can consider using [`customFields`](/docs/3-0-1/api/docusaurus-config#customFields) to pass environment variables to the client side.
 
-docusaurus.config.js
+```js title="docusaurus.config.js"
+// If you are using dotenv (https://www.npmjs.com/package/dotenv)
+import 'dotenv/config';
 
-```
-// If you are using dotenv (https://www.npmjs.com/package/dotenv)import 'dotenv/config';export default {  title: '...',  url: process.env.URL, // You can use environment variables to control site specifics as well  customFields: {    // Put your custom environment here    teamEmail: process.env.EMAIL,  },};
+export default {
+  title: '...',
+  url: process.env.URL, // You can use environment variables to control site specifics as well
+  customFields: {
+    // Put your custom environment here
+    teamEmail: process.env.EMAIL,
+  },
+};
 ```
 
-home.jsx
+```jsx title="home.jsx"
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
-```
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';export default function Home() {  const {    siteConfig: {customFields},  } = useDocusaurusContext();  return <div>Contact us through {customFields.teamEmail}!</div>;}
+export default function Home() {
+  const {
+    siteConfig: {customFields},
+  } = useDocusaurusContext();
+  return <div>Contact us through {customFields.teamEmail}!</div>;
+}
 ```
 
 ## Choosing a hosting provider
@@ -152,39 +161,35 @@ Docusaurus can be self-hosted using [`docusaurus serve`](/docs/3-0-1/cli#docusau
 
 <Tabs>
   <Tab title="npm">
-    ```
+    ```bash
     npm run serve -- --build --port 80 --host 0.0.0.0
     ```
   </Tab>
 
   <Tab title="Yarn">
-    ```
+    ```bash
     yarn serve --build --port 80 --host 0.0.0.0
     ```
   </Tab>
 
   <Tab title="pnpm">
-    ```
+    ```bash
     pnpm run serve --build --port 80 --host 0.0.0.0
     ```
   </Tab>
 
   <Tab title="Bun">
-    ```
+    ```bash
     bun run serve --build --port 80 --host 0.0.0.0
     ```
   </Tab>
 </Tabs>
 
 <Callout kind="alert">
-  warning
-
   It is not the best option, compared to a static hosting provider / CDN.
 </Callout>
 
 <Callout kind="alert">
-  warning
-
   In the following sections, we will introduce a few common hosting providers and how they should be configured to deploy Docusaurus sites most efficiently. Docusaurus is not affiliated with any of these services, and this information is provided for convenience only. Some of the write-ups are provided by third-parties, and recent API changes may not be reflected on our side. If you see outdated content, PRs are welcome.
 
   Because we can only provide this content on a best-effort basis only, we have stopped accepting PRs adding new hosting options. You can, however, publish your writeup on a separate site (e.g. your blog, or the provider's official website), and ask us to include a link to your writeup.
@@ -194,10 +199,12 @@ Docusaurus can be self-hosted using [`docusaurus serve`](/docs/3-0-1/cli#docusau
 
 To deploy your Docusaurus sites to [Netlify](https://www.netlify.com/), first make sure the following options are properly configured:
 
-docusaurus.config.js
-
-```
-export default {  url: 'https://docusaurus-2.netlify.app', // Url to your site with no trailing slash  baseUrl: '/', // Base directory of your site relative to your repo  // ...};
+```js title="docusaurus.config.js"
+export default {
+  url: 'https://docusaurus-2.netlify.app', // Url to your site with no trailing slash
+  baseUrl: '/', // Base directory of your site relative to your repo
+  // ...
+};
 ```
 
 Then, [create your site with Netlify](https://app.netlify.com/start).
@@ -212,26 +219,23 @@ If you did not configure these build options, you may still go to "Site settings
 Once properly configured with the above options, your site should deploy and automatically redeploy upon merging to your deploy branch, which defaults to `main`.
 
 <Callout kind="alert">
-  warning
-
   Some Docusaurus sites put the `docs` folder outside of `website` (most likely former Docusaurus v1 sites):
 
-  ```
-  repo           # git root├── docs       # MD files└── website    # Docusaurus root
+  ```bash
+  repo           # git root
+  ├── docs       # MD files
+  └── website    # Docusaurus root
   ```
 
   If you decide to use the `website` folder as Netlify's base directory, Netlify will not trigger builds when you update the `docs` folder, and you need to configure a [custom `ignore` command](https://docs.netlify.com/configure-builds/common-configurations/ignore-builds/):
 
-  website/netlify.toml
-
-  ```
-  [build]  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF . ../docs/"
+  ```toml title="website/netlify.toml"
+  [build]
+    ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF . ../docs/"
   ```
 </Callout>
 
 <Callout kind="alert">
-  warning
-
   By default, Netlify adds trailing slashes to Docusaurus URLs.
 
   It is recommended to disable the Netlify setting `Post Processing > Asset Optimization > Pretty Urls` to prevent lowercase URLs, unnecessary redirects, and 404 errors.
@@ -264,8 +268,6 @@ Usually, there are two repositories (at least two branches) involved in a publis
 Each GitHub repository is associated with a GitHub Pages service. If the deployment repository is called `my-org/my-project` (where `my-org` is the organization name or username), the deployed site will appear at `https://my-org.github.io/my-project/`. If the deployment repository is called `my-org/my-org.github.io` (the *organization GitHub Pages repo*), the site will appear at `https://my-org.github.io/`.
 
 <Callout kind="info">
-  info
-
   In case you want to use your custom domain for GitHub Pages, create a `CNAME` file in the `static` directory. Anything within the `static` directory will be copied to the root of the `build` directory for deployment. When using a custom domain, you should be able to move back from `baseUrl: '/projectName/'` to `baseUrl: '/'`, and also set your `url` to your custom domain.
 
   You may refer to GitHub Pages' documentation [User, Organization, and Project Pages](https://help.github.com/en/articles/user-organization-and-project-pages) for more details.
@@ -279,7 +281,7 @@ We provide a `docusaurus deploy` command that helps you deploy your site from th
 
 First, modify your `docusaurus.config.js` and add the following params:
 
-| Name | Description`organizationName`The GitHub user or organization that owns the deployment repository.`projectName`The name of the deployment repository.`deploymentBranch`The name of the deployment branch. It defaults to `'gh-pages'` for non-organization GitHub Pages repos (`projectName` not ending in `.github.io`). Otherwise, it needs to be explicit as a config field or environment variable. |
+| Name | Description |
 | --- | --- |
 | `organizationName` | The GitHub user or organization that owns the deployment repository. |
 | `projectName` | The name of the deployment repository. |
@@ -288,28 +290,30 @@ First, modify your `docusaurus.config.js` and add the following params:
 These fields also have their environment variable counterparts which have a higher priority: `ORGANIZATION_NAME`, `PROJECT_NAME`, and `DEPLOYMENT_BRANCH`.
 
 <Callout kind="alert">
-  warning
-
   GitHub Pages adds a trailing slash to Docusaurus URLs by default. It is recommended to set a `trailingSlash` config (`true` or `false`, not `undefined`).
 </Callout>
 
 Example:
 
-docusaurus.config.js
-
-```
-export default {  // ...  url: 'https://endiliey.github.io', // Your website URL  baseUrl: '/',  projectName: 'endiliey.github.io',  organizationName: 'endiliey',  trailingSlash: false,  // ...};
+```js title="docusaurus.config.js"
+export default {
+  // ...
+  url: 'https://endiliey.github.io', // Your website URL
+  baseUrl: '/',
+  projectName: 'endiliey.github.io',
+  organizationName: 'endiliey',
+  trailingSlash: false,
+  // ...
+};
 ```
 
 <Callout kind="alert">
-  warning
-
   By default, GitHub Pages runs published files through [Jekyll](https://jekyllrb.com/). Since Jekyll will discard any files that begin with `_`, it is recommended that you disable Jekyll by adding an empty file named `.nojekyll` file to your `static` directory.
 </Callout>
 
 ### Environment settings
 
-| Name | Description`USE_SSH`Set to `true` to use SSH instead of the default HTTPS for the connection to the GitHub repo. If the source repo URL is an SSH URL (e.g. `[email protected]:facebook/docusaurus.git`), `USE_SSH` is inferred to be `true`.`GIT_USER`The username for a GitHub account that **has push access to the deployment repo**. For your own repositories, this will usually be your GitHub username. Required if not using SSH, and ignored otherwise.`GIT_PASS`Personal access token of the git user (specified by `GIT_USER`), to facilitate non-interactive deployment (e.g. continuous deployment)`CURRENT_BRANCH`The source branch. Usually, the branch will be `main` or `master`, but it could be any branch except for `gh-pages`. If nothing is set for this variable, then the current branch from which `docusaurus deploy` is invoked will be used.`GIT_USER_NAME`The `git config user.name` value to use when pushing to the deployment repo`GIT_USER_EMAIL`The `git config user.email` value to use when pushing to the deployment repo |
+| Name | Description |
 | --- | --- |
 | `USE_SSH` | Set to `true` to use SSH instead of the default HTTPS for the connection to the GitHub repo. If the source repo URL is an SSH URL (e.g. `[email protected]:facebook/docusaurus.git`), `USE_SSH` is inferred to be `true`. |
 | `GIT_USER` | The username for a GitHub account that **has push access to the deployment repo**. For your own repositories, this will usually be your GitHub username. Required if not using SSH, and ignored otherwise. |
@@ -320,7 +324,7 @@ export default {  // ...  url: 'https://endiliey.github.io', // Your website URL
 
 GitHub enterprise installations should work in the same manner as github.com; you only need to set the organization's GitHub Enterprise host as an environment variable:
 
-| Name | Description`GITHUB_HOST`The domain name of your GitHub enterprise site.`GITHUB_PORT`The port of your GitHub enterprise site. |
+| Name | Description |
 | --- | --- |
 | `GITHUB_HOST` | The domain name of your GitHub enterprise site. |
 | `GITHUB_PORT` | The port of your GitHub enterprise site. |
@@ -331,27 +335,25 @@ Finally, to deploy your site to GitHub Pages, run:
 
 <Tabs>
   <Tab title="Bash">
-    ```
+    ```bash
     GIT_USER=<GITHUB_USERNAME> yarn deploy
     ```
   </Tab>
 
   <Tab title="Windows">
-    ```
+    ```batch
     cmd /C "set "GIT_USER=<GITHUB_USERNAME>" && yarn deploy"
     ```
   </Tab>
 
   <Tab title="PowerShell">
-    ```
+    ```powershell
     cmd /C 'set "GIT_USER=<GITHUB_USERNAME>" && yarn deploy'
     ```
   </Tab>
 </Tabs>
 
 <Callout kind="alert">
-  warning
-
   Beginning in August 2021, GitHub requires every command-line sign-in to use the **personal access token** instead of the password. When GitHub prompts for your password, enter the PAT instead. See the [GitHub documentation](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) for more information.
 
   Alternatively, you can use SSH (`USE_SSH=true`) to log in.
@@ -383,23 +385,84 @@ Here are two approaches to deploying your docs with GitHub Actions. Based on the
       Add these two workflow files:
 
       <Callout kind="alert">
-        Tweak the parameters for your setup
+        **Tweak the parameters for your setup**
 
         These files assume you are using Yarn. If you use npm, change `cache: yarn`, `yarn install --frozen-lockfile`, `yarn build` to `cache: npm`, `npm ci`, `npm run build` accordingly.
 
         If your Docusaurus project is not at the root of your repo, you may need to configure a [default working directory](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#example-set-the-default-shell-and-working-directory), and adjust the paths accordingly.
       </Callout>
 
-      .github/workflows/deploy.yml
+      ```yml title=".github/workflows/deploy.yml"
+      name: Deploy to GitHub Pages
 
-      ```
-      name: Deploy to GitHub Pageson:  push:    branches:      - main    # Review gh actions docs if you want to further define triggers, paths, etc    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#onpermissions:  contents: writejobs:  deploy:    name: Deploy to GitHub Pages    runs-on: ubuntu-latest    steps:      - uses: actions/checkout@v3      - uses: actions/setup-node@v3        with:          node-version: 18          cache: yarn      - name: Install dependencies        run: yarn install --frozen-lockfile      - name: Build website        run: yarn build      # Popular action to deploy to GitHub Pages:      # Docs: https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-docusaurus      - name: Deploy to GitHub Pages        uses: peaceiris/actions-gh-pages@v3        with:          github_token: ${{ secrets.GITHUB_TOKEN }}          # Build output to publish to the `gh-pages` branch:          publish_dir: ./build          # The following lines assign commit authorship to the official          # GH-Actions bot for deploys to `gh-pages` branch:          # https://github.com/actions/checkout/issues/13#issuecomment-724415212          # The GH actions bot is used by default if you didn't specify the two fields.          # You can swap them out with your own user credentials.          user_name: github-actions[bot]          user_email: 41898282+github-actions[bot]@users.noreply.github.com
+      on:
+        push:
+          branches:
+            - main
+          # Review gh actions docs if you want to further define triggers, paths, etc
+          # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
+
+      permissions:
+        contents: write
+
+      jobs:
+        deploy:
+          name: Deploy to GitHub Pages
+          runs-on: ubuntu-latest
+          steps:
+            - uses: actions/checkout@v3
+            - uses: actions/setup-node@v3
+              with:
+                node-version: 18
+                cache: yarn
+
+            - name: Install dependencies
+              run: yarn install --frozen-lockfile
+            - name: Build website
+              run: yarn build
+
+            # Popular action to deploy to GitHub Pages:
+            # Docs: https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-docusaurus
+            - name: Deploy to GitHub Pages
+              uses: peaceiris/actions-gh-pages@v3
+              with:
+                github_token: ${{ secrets.GITHUB_TOKEN }}
+                # Build output to publish to the `gh-pages` branch:
+                publish_dir: ./build
+                # The following lines assign commit authorship to the official
+                # GH-Actions bot for deploys to `gh-pages` branch:
+                # https://github.com/actions/checkout/issues/13#issuecomment-724415212
+                # The GH actions bot is used by default if you didn't specify the two fields.
+                # You can swap them out with your own user credentials.
+                user_name: github-actions[bot]
+                user_email: 41898282+github-actions[bot]@users.noreply.github.com
       ```
 
-      .github/workflows/test-deploy.yml
+      ```yml title=".github/workflows/test-deploy.yml"
+      name: Test deployment
 
-      ```
-      name: Test deploymenton:  pull_request:    branches:      - main    # Review gh actions docs if you want to further define triggers, paths, etc    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#onjobs:  test-deploy:    name: Test deployment    runs-on: ubuntu-latest    steps:      - uses: actions/checkout@v3      - uses: actions/setup-node@v3        with:          node-version: 18          cache: yarn      - name: Install dependencies        run: yarn install --frozen-lockfile      - name: Test build website        run: yarn build
+      on:
+        pull_request:
+          branches:
+            - main
+          # Review gh actions docs if you want to further define triggers, paths, etc
+          # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
+
+      jobs:
+        test-deploy:
+          name: Test deployment
+          runs-on: ubuntu-latest
+          steps:
+            - uses: actions/checkout@v3
+            - uses: actions/setup-node@v3
+              with:
+                node-version: 18
+                cache: yarn
+
+            - name: Install dependencies
+              run: yarn install --frozen-lockfile
+            - name: Test build website
+              run: yarn build
       ```
     </Expandable>
   </Tab>
@@ -421,17 +484,57 @@ Here are two approaches to deploying your docs with GitHub Actions. Based on the
 
     <Expandable title="GitHub action file">
       <Callout kind="alert">
-        warning
-
         Please make sure that you replace `[email protected]` with your GitHub email and `gh-actions` with your name.
 
         This file assumes you are using Yarn. If you use npm, change `cache: yarn`, `yarn install --frozen-lockfile`, `yarn build` to `cache: npm`, `npm ci`, `npm run build` accordingly.
       </Callout>
 
-      .github/workflows/deploy.yml
+      ```yml title=".github/workflows/deploy.yml"
+      name: Deploy to GitHub Pages
 
-      ```
-      name: Deploy to GitHub Pageson:  pull_request:    branches: [main]  push:    branches: [main]permissions:  contents: writejobs:  test-deploy:    if: github.event_name != 'push'    runs-on: ubuntu-latest    steps:      - uses: actions/checkout@v3      - uses: actions/setup-node@v3        with:          node-version: 18          cache: yarn      - name: Install dependencies        run: yarn install --frozen-lockfile      - name: Test build website        run: yarn build  deploy:    if: github.event_name != 'pull_request'    runs-on: ubuntu-latest    steps:      - uses: actions/checkout@v3      - uses: actions/setup-node@v3        with:          node-version: 18          cache: yarn      - uses: webfactory/ssh-[email protected]        with:          ssh-private-key: ${{ secrets.GH_PAGES_DEPLOY }}      - name: Deploy to GitHub Pages        env:          USE_SSH: true        run: |          git config --global user.email "[email protected]"          git config --global user.name "gh-actions"          yarn install --frozen-lockfile          yarn deploy
+      on:
+        pull_request:
+          branches: [main]
+        push:
+          branches: [main]
+
+      permissions:
+        contents: write
+
+      jobs:
+        test-deploy:
+          if: github.event_name != 'push'
+          runs-on: ubuntu-latest
+          steps:
+            - uses: actions/checkout@v3
+            - uses: actions/setup-node@v3
+              with:
+                node-version: 18
+                cache: yarn
+            - name: Install dependencies
+              run: yarn install --frozen-lockfile
+            - name: Test build website
+              run: yarn build
+        deploy:
+          if: github.event_name != 'pull_request'
+          runs-on: ubuntu-latest
+          steps:
+            - uses: actions/checkout@v3
+            - uses: actions/setup-node@v3
+              with:
+                node-version: 18
+                cache: yarn
+            - uses: webfactory/ssh-[email protected]
+              with:
+                ssh-private-key: ${{ secrets.GH_PAGES_DEPLOY }}
+            - name: Deploy to GitHub Pages
+              env:
+                USE_SSH: true
+              run: |
+                git config --global user.email "[email protected]"
+                git config --global user.name "gh-actions"
+                yarn install --frozen-lockfile
+                yarn deploy
       ```
     </Expandable>
   </Tab>
@@ -460,10 +563,21 @@ Continuous integration (CI) services are typically used to perform routine tasks
 4. Create a new environment variable named `GH_TOKEN` with your newly generated token as its value, then `GH_EMAIL` (your email address) and `GH_NAME` (your GitHub username).
 5. Create a `.travis.yml` on the root of your repository with the following:
 
-.travis.yml
-
-```
-language: node_jsnode_js:  - 18branches:  only:    - maincache:  yarn: truescript:  - git config --global user.name "${GH_NAME}"  - git config --global user.email "${GH_EMAIL}"  - echo "machine github.com login ${GH_NAME} password ${GH_TOKEN}" > ~/.netrc  - yarn install  - GIT_USER="${GH_NAME}" yarn deploy
+```yml title=".travis.yml"
+language: node_js
+node_js:
+  - 18
+branches:
+  only:
+    - main
+cache:
+  yarn: true
+script:
+  - git config --global user.name "${GH_NAME}"
+  - git config --global user.email "${GH_EMAIL}"
+  - echo "machine github.com login ${GH_NAME} password ${GH_TOKEN}" > ~/.netrc
+  - yarn install
+  - GIT_USER="${GH_NAME}" yarn deploy
 ```
 
 Now, whenever a new commit lands in `main`, Travis CI will run your suite of tests and if everything passes, your website will be deployed via the `yarn deploy` script.
@@ -482,8 +596,11 @@ Follow these steps to create a pipeline that automatically deploys a new version
 6. Add a `Node.js` action.
 7. Add these commands in the action's terminal:
 
-```
-GIT_USER=<GH_PERSONAL_ACCESS_TOKEN>git config --global user.email "<YOUR_GH_EMAIL>"git config --global user.name "<YOUR_GH_USERNAME>"yarn deploy
+```bash
+GIT_USER=<GH_PERSONAL_ACCESS_TOKEN>
+git config --global user.email "<YOUR_GH_EMAIL>"
+git config --global user.name "<YOUR_GH_USERNAME>"
+yarn deploy
 ```
 
 After creating this simple pipeline, each new commit pushed to the branch you selected deploys your website to GitHub Pages using `yarn deploy`. Read [this guide](https://buddy.works/guides/react-docusaurus) to learn more about setting up a CI/CD pipeline for Docusaurus.
@@ -495,10 +612,34 @@ After creating this simple pipeline, each new commit pushed to the branch you se
 3. Go to [https://github.com/settings/tokens](https://github.com/settings/tokens) and generate a new [personal access token](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/) with the `repo` scope.
 4. In the project page (which looks like `https://dev.azure.com/ORG_NAME/REPO_NAME/_build`), create a new pipeline with the following text. Also, click on edit and add a new environment variable named `GH_TOKEN` with your newly generated token as its value, then `GH_EMAIL` (your email address) and `GH_NAME` (your GitHub username). Make sure to mark them as secret. Alternatively, you can also add a file named `azure-pipelines.yml` at your repository root.
 
-azure-pipelines.yml
+```yml title="azure-pipelines.yml"
+trigger:
+  - main
 
-```
-trigger:  - mainpool:  vmImage: ubuntu-lateststeps:  - checkout: self    persistCredentials: true  - task: NodeTool@0    inputs:      versionSpec: '18'    displayName: Install Node.js  - script: |      git config --global user.name "${GH_NAME}"      git config --global user.email "${GH_EMAIL}"      git checkout -b main      echo "machine github.com login ${GH_NAME} password ${GH_TOKEN}" > ~/.netrc      yarn install      GIT_USER="${GH_NAME}" yarn deploy    env:      GH_NAME: $(GH_NAME)      GH_EMAIL: $(GH_EMAIL)      GH_TOKEN: $(GH_TOKEN)    displayName: Install and build
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+  - checkout: self
+    persistCredentials: true
+
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '18'
+    displayName: Install Node.js
+
+  - script: |
+      git config --global user.name "${GH_NAME}"
+      git config --global user.email "${GH_EMAIL}"
+      git checkout -b main
+      echo "machine github.com login ${GH_NAME} password ${GH_TOKEN}" > ~/.netrc
+      yarn install
+      GIT_USER="${GH_NAME}" yarn deploy
+    env:
+      GH_NAME: $(GH_NAME)
+      GH_EMAIL: $(GH_EMAIL)
+      GH_TOKEN: $(GH_TOKEN)
+    displayName: Install and build
 ```
 
 ### Using Drone
@@ -510,10 +651,26 @@ trigger:  - mainpool:  vmImage: ubuntu-lateststeps:  - checkout: self    persist
 5. Click on the repository, click on activate repository, and add a secret called `git_deploy_private_key` with your private key value that you just generated.
 6. Create a `.drone.yml` on the root of your repository with the below text.
 
-.drone.yml
-
-```
-kind: pipelinetype: dockertrigger:  event:    - tag- name: Website  image: node  commands:    - mkdir -p $HOME/.ssh    - ssh-keyscan -t rsa github.com >> $HOME/.ssh/known_hosts    - echo "$GITHUB_PRIVATE_KEY" > "$HOME/.ssh/id_rsa"    - chmod 0600 $HOME/.ssh/id_rsa    - cd website    - yarn install    - yarn deploy  environment:    USE_SSH: true    GITHUB_PRIVATE_KEY:      from_secret: git_deploy_private_key
+```yml title=".drone.yml"
+kind: pipeline
+type: docker
+trigger:
+  event:
+    - tag
+- name: Website
+  image: node
+  commands:
+    - mkdir -p $HOME/.ssh
+    - ssh-keyscan -t rsa github.com >> $HOME/.ssh/known_hosts
+    - echo "$GITHUB_PRIVATE_KEY" > "$HOME/.ssh/id_rsa"
+    - chmod 0600 $HOME/.ssh/id_rsa
+    - cd website
+    - yarn install
+    - yarn deploy
+  environment:
+    USE_SSH: true
+    GITHUB_PRIVATE_KEY:
+      from_secret: git_deploy_private_key
 ```
 
 Now, whenever you push a new tag to GitHub, this trigger will start the drone CI job to publish your website.
@@ -581,25 +738,25 @@ That's it. Watch the status and wait till the app is deployed. To open the appli
 
      <Tabs>
        <Tab title="npm">
-         ```
+         ```bash
          npm run build
          ```
        </Tab>
 
        <Tab title="Yarn">
-         ```
+         ```bash
          yarn build
          ```
        </Tab>
 
        <Tab title="pnpm">
-         ```
+         ```bash
          pnpm run build
          ```
        </Tab>
 
        <Tab title="Bun">
-         ```
+         ```bash
          bun run build
          ```
        </Tab>
@@ -621,25 +778,25 @@ Deploy your app in a matter of seconds using surge with the following steps:
 
    <Tabs>
      <Tab title="npm">
-       ```
+       ```bash
        npm install -g surge
        ```
      </Tab>
 
      <Tab title="Yarn">
-       ```
+       ```bash
        yarn global add surge
        ```
      </Tab>
 
      <Tab title="pnpm">
-       ```
+       ```bash
        pnpm add -g surge
        ```
      </Tab>
 
      <Tab title="Bun">
-       ```
+       ```bash
        bun add --global surge
        ```
      </Tab>
@@ -648,32 +805,32 @@ Deploy your app in a matter of seconds using surge with the following steps:
 
    <Tabs>
      <Tab title="npm">
-       ```
+       ```bash
        npm run build
        ```
      </Tab>
 
      <Tab title="Yarn">
-       ```
+       ```bash
        yarn build
        ```
      </Tab>
 
      <Tab title="pnpm">
-       ```
+       ```bash
        pnpm run build
        ```
      </Tab>
 
      <Tab title="Bun">
-       ```
+       ```bash
        bun run build
        ```
      </Tab>
    </Tabs>
 3. Then, run this command inside the root directory of your project:
 
-   ```
+   ```bash
    surge build/
    ```
 
@@ -685,7 +842,7 @@ Confirm that the site you want to publish is in the `build` directory. A randoml
 
 If you have a domain name you can deploy your site using the command:
 
-```
+```bash
 surge build/ your-domain.com
 ```
 
@@ -695,7 +852,7 @@ Your site is now deployed for free at `subdomain.surge.sh` or `your-domain.com` 
 
 Store your domain in a CNAME file for future deployments with the following command:
 
-```
+```bash
 echo subdomain.surge.sh > CNAME
 ```
 
@@ -707,12 +864,12 @@ You can deploy any other changes in the future with the command `surge`.
 2. Create a QuantCDN account by [signing up](https://dashboard.quantcdn.io/register)
 3. Initialize your project with `quant init` and fill in your credentials:
 
-   ```
+   ```bash
    quant init
    ```
 4. Deploy your site.
 
-   ```
+   ```bash
    quant deploy
    ```
 

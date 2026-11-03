@@ -8,8 +8,6 @@ ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc
 You can create a sidebar for each **set of Markdown files** that you want to **group together**.
 
 <Callout kind="tip">
-  tip
-
   The Docusaurus site is a good example of using multiple sidebars:
 
   - [Docs](/docs)
@@ -18,10 +16,13 @@ You can create a sidebar for each **set of Markdown files** that you want to **g
 
 Consider this example:
 
-sidebars.js
-
-```
-export default {  tutorialSidebar: {    'Category A': ['doc1', 'doc2'],  },  apiSidebar: ['doc3', 'doc4'],};
+```js title="sidebars.js"
+export default {
+  tutorialSidebar: {
+    'Category A': ['doc1', 'doc2'],
+  },
+  apiSidebar: ['doc3', 'doc4'],
+};
 ```
 
 When browsing `doc1` or `doc2`, the `tutorialSidebar` will be displayed; when browsing `doc3` or `doc4`, the `apiSidebar` will be displayed.
@@ -32,10 +33,13 @@ When browsing `doc1` or `doc2`, the `tutorialSidebar` will be displayed; when br
 
 Following the example above, if a `commonDoc` is included in both sidebars:
 
-sidebars.js
-
-```
-export default {  tutorialSidebar: {    'Category A': ['doc1', 'doc2', 'commonDoc'],  },  apiSidebar: ['doc3', 'doc4', 'commonDoc'],};
+```js title="sidebars.js"
+export default {
+  tutorialSidebar: {
+    'Category A': ['doc1', 'doc2', 'commonDoc'],
+  },
+  apiSidebar: ['doc3', 'doc4', 'commonDoc'],
+};
 ```
 
 How does Docusaurus know which sidebar to display when browsing `commonDoc`? Answer: it doesn't, and we don't guarantee which sidebar it will pick.
@@ -47,26 +51,29 @@ When you add doc Y to sidebar X, it creates a two-way binding: sidebar X contain
 
 Front matter option `displayed_sidebar` will forcibly set the sidebar association. For the same example, you can still use doc shorthands without any special configuration:
 
-sidebars.js
-
-```
-export default {  tutorialSidebar: {    'Category A': ['doc1', 'doc2'],  },  apiSidebar: ['doc3', 'doc4'],};
+```js title="sidebars.js"
+export default {
+  tutorialSidebar: {
+    'Category A': ['doc1', 'doc2'],
+  },
+  apiSidebar: ['doc3', 'doc4'],
+};
 ```
 
 And then add a front matter:
 
-commonDoc.md
-
-```
----displayed_sidebar: apiSidebar---
+```md title="commonDoc.md"
+---
+displayed_sidebar: apiSidebar
+---
 ```
 
 Which explicitly tells Docusaurus to display `apiSidebar` when browsing `commonDoc`. Using the same method, you can make sidebar X which doesn't contain doc Y appear on doc Y:
 
-home.md
-
-```
----displayed_sidebar: tutorialSidebar---
+```md title="home.md"
+---
+displayed_sidebar: tutorialSidebar
+---
 ```
 
 Even when `tutorialSidebar` doesn't contain a link to `home`, it will still be displayed when viewing `home`.
@@ -81,18 +88,26 @@ If a sidebar is displayed by setting `displayed_sidebar` front matter, and this 
 
 You can customize pagination with front matter `pagination_next` and `pagination_prev`. Consider this sidebar:
 
-sidebars.js
-
-```
-export default {  tutorial: [    'introduction',    {      installation: ['windows', 'linux', 'macos'],    },    'getting-started',  ],};
+```js title="sidebars.js"
+export default {
+  tutorial: [
+    'introduction',
+    {
+      installation: ['windows', 'linux', 'macos'],
+    },
+    'getting-started',
+  ],
+};
 ```
 
 The pagination next link on "windows" points to "linux", but that doesn't make sense: you would want readers to proceed to "getting started" after installation. In this case, you can set the pagination manually:
 
-windows.md
+```md title="windows.md"
+---
+pagination_next: getting-started
+---
 
-```
----pagination_next: getting-started---# Installation on Windows
+# Installation on Windows
 ```
 
 You can also disable displaying a pagination link with `pagination_next: null` or `pagination_prev: null`.
@@ -109,10 +124,18 @@ It is particularly useful where you wish to link to the same document from multi
 
 Consider this example:
 
-sidebars.js
-
-```
-export default {  tutorialSidebar: {    'Category A': [      'doc1',      'doc2',      {type: 'ref', id: 'commonDoc'},      'doc5',    ],  },  apiSidebar: ['doc3', 'doc4', 'commonDoc'],};
+```js title="sidebars.js"
+export default {
+  tutorialSidebar: {
+    'Category A': [
+      'doc1',
+      'doc2',
+      {type: 'ref', id: 'commonDoc'},
+      'doc5',
+    ],
+  },
+  apiSidebar: ['doc3', 'doc4', 'commonDoc'],
+};
 ```
 
 You can think of the `ref` type as the equivalent to doing the following:

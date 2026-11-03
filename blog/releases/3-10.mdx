@@ -78,7 +78,7 @@ In [#11874](https://github.com/facebook/docusaurus/pull/11874), we introduced a 
 - Run similar checks on our own monorepo, to protect Docusaurus maintainers and contributors
 
 <Callout kind="danger">
-  Security Limitations
+  **Security Limitations**
 
   This security workflow **does not protect your site**. It is designed to detect serious vulnerabilities affecting the Docusaurus ecosystem as early as possible, so we can react quickly and notify you.
 
@@ -91,21 +91,43 @@ Read the [npm security best practices](https://github.com/lirantal/npm-security-
 
 Each package manager offers different security options. In our experience, [pnpm](https://pnpm.io/blog/2025/12/05/newsroom-npm-supply-chain-security) offers the best ones. We won't document all the possibilities, but here's a pnpm config example that should work well with Docusaurus:
 
-pnpm-workspace.yaml
+```yaml title="pnpm-workspace.yaml"
+minimumReleaseAge: 10080
 
-```
-minimumReleaseAge: 10080blockExoticSubdeps: truestrictDepBuilds: trueallowBuilds:  '@swc/core': true  core-js-pure: true  core-js: truetrustPolicy: no-downgradetrustPolicyExclude:  - '[email protected]'  - '[email protected]'
+blockExoticSubdeps: true
+
+strictDepBuilds: true
+allowBuilds:
+  '@swc/core': true
+  core-js-pure: true
+  core-js: true
+
+trustPolicy: no-downgrade
+trustPolicyExclude:
+  - '[email protected]'
+  - '[email protected]'
 ```
 
 <Callout kind="tip">
-  Use release cooldowns
+  **Use release cooldowns**
 
   When a popular npm package gets compromised, the community usually notices quickly and takes it down. [Using a release cooldown](https://daniakash.com/posts/simplest-supply-chain-defense/) is an effective way to reduce risk during the exposure window.
 
   Modern package managers now offer a way to delay npm updates, giving time for security scanners to report vulnerabilities.
 
-  ```
-  # npm v11.10+ - .npmrcmin-release-age=7# pnpm v10.16+ - pnpm-workspace.yamlminimumReleaseAge: 10080# Yarn v4.10+ - .yarnrc.ymlnpmMinimalAgeGate: "7d"# Bun v1.3+ - bunfig.toml[install]minimumReleaseAge = 604800
+  ```yaml
+  # npm v11.10+ - .npmrc
+  min-release-age=7
+
+  # pnpm v10.16+ - pnpm-workspace.yaml
+  minimumReleaseAge: 10080
+
+  # Yarn v4.10+ - .yarnrc.yml
+  npmMinimalAgeGate: "7d"
+
+  # Bun v1.3+ - bunfig.toml
+  [install]
+  minimumReleaseAge = 604800
   ```
 </Callout>
 
@@ -119,14 +141,17 @@ This release improves Docusaurus Faster with a new [`gitEagerVcs`](#vcs) flag an
 
 In [#11802](https://github.com/facebook/docusaurus/pull/11802), we marked **Docusaurus Faster as stable**. You now need to update your config accordingly:
 
-docusaurus.config.js
-
-```
-const config = {  future: {-   experimental_faster: true,+   faster: true,  },};
+```diff title="docusaurus.config.js"
+const config = {
+  future: {
+-   experimental_faster: true,
++   faster: true,
+  },
+};
 ```
 
 <Callout kind="info">
-  Faster By Default in v4
+  **Faster By Default in v4**
 
   Docusaurus Faster will be **enabled by default in Docusaurus v4**, and is already used for all newly initialized v3 sites. It is now part of our v4 future flags (`future.v4.fasterByDefault: true`) to help our community prepare for Docusaurus v4. If you haven't already, now is a good time to turn it on!
 </Callout>
@@ -137,14 +162,23 @@ const config = {  future: {-   experimental_faster: true,+   faster: true,  },};
 
 In [#11797](https://github.com/facebook/docusaurus/pull/11797), we marked the `config.storage` API as stable. You now need to update your config accordingly:
 
-docusaurus.config.js
-
-```
- const config = {+  storage: {+    type: 'localStorage',+    namespace: true,+  },-  future: {-    experimental_storage: {-      type: 'localStorage',-      namespace: true,-    },-  }, };
+```diff title="docusaurus.config.js"
+ const config = {
++  storage: {
++    type: 'localStorage',
++    namespace: true,
++  },
+-  future: {
+-    experimental_storage: {
+-      type: 'localStorage',
+-      namespace: true,
+-    },
+-  },
+ };
 ```
 
 <Callout kind="info">
-  Automatic namespacing in v4
+  **Automatic namespacing in v4**
 
   Docusaurus v4 will automatically namespace your storage keys to avoid `localStorage` key conflicts by default, and is now part of our v4 future flags (`future.v4.siteStorageNamespacing: true`). Instead of using a `theme` key, it will use `theme-<hash>`.
 
@@ -175,7 +209,7 @@ We believe that:
 In reality, Docusaurus has only ever supported MDX, and we should have used the `.mdx` extension from the start. Newly initialized sites now use `.mdx` by default ([#11897](https://github.com/facebook/docusaurus/pull/11897)). We encourage you to rename your existing files to `.mdx` as well, so that external tools can understand your content is MDX.
 
 <Callout kind="info">
-  About CommonMark support
+  **About CommonMark support**
 
   Although we also have experimental support for CommonMark, it still doesn't have full feature parity with MDX ([issue](https://github.com/facebook/docusaurus/issues/9092)). Once we reach full feature parity, we'll default to `markdown.format: 'detect'` to ensure that `.md` files are parsed as CommonMark instead of MDX.
 </Callout>
@@ -186,8 +220,13 @@ We have historically supported admonitions with titles using the `:::type My Tit
 
 The [Markdown Directive](https://talk.commonmark.org/t/generic-directives-plugins-syntax/444) syntax is more generic and reusable. It is not yet standardized, but widely adopted across ecosystems, including through the [remark-directive](https://github.com/remarkjs/remark-directive) package. We encourage you to migrate your admonitions to the `:::type[My Title]` syntax:
 
-```
--:::warning Pay Attention+:::warning[Pay Attention] Content :::
+```diff
+-:::warning Pay Attention
++:::warning[Pay Attention]
+
+ Content
+
+ :::
 ```
 
 ### Strict Comments
@@ -196,10 +235,13 @@ MDX v3 does not support HTML comments `<!-- comment -->`, but supports JSX comme
 
 If you use HTML comments, we encourage you to migrate to JSX comments. For example, you can truncate blog posts with a JSX comment:
 
-blog/my-post.mdx
+```diff title="blog/my-post.mdx"
+ # My Blog Post
 
-```
- # My Blog Post-<!-- truncate -->+{/* truncate */} blog post content
+-<!-- truncate -->
++{/* truncate */}
+
+ blog post content
 ```
 
 ### Strict Heading IDs
@@ -208,13 +250,14 @@ Our historical heading IDs syntax `{#my-id}` is also a proprietary Docusaurus sy
 
 In [#11755](https://github.com/facebook/docusaurus/pull/11755), we introduced a new heading ID syntax based on native MDX comments that we encourage you to adopt:
 
-```
--## My Heading {#my-id}+## My Heading {/* #my-id */}
+```diff
+-## My Heading {#my-id}
++## My Heading {/* #my-id */}
 ```
 
 In [#11777](https://github.com/facebook/docusaurus/pull/11777), we also added an option to our `write-heading-ids` CLI to emit and migrate to the new syntax:
 
-```
+```bash
 docusaurus write-heading-ids --syntax mdx-comment --migrate
 ```
 
@@ -234,10 +277,22 @@ This new API makes it possible to integrate Docusaurus with other VCS, such as S
 
 Here's an example implementation using hardcoded data:
 
-docusaurus.config.ts
-
-```
-export default {  future: {    experimental_vcs: {      initialize: ({siteDir}) => {        // You can initialize and cache VCS data here, if needed      },      getFileCreationInfo: async (filePath: string) => {        return {timestamp: 1490997600000, author: 'Slash'};      },      getFileLastUpdateInfo: async (filePath: string) => {        return {timestamp: 1490997600000, author: 'Slash'};      },    },  },};
+```ts title="docusaurus.config.ts"
+export default {
+  future: {
+    experimental_vcs: {
+      initialize: ({siteDir}) => {
+        // You can initialize and cache VCS data here, if needed
+      },
+      getFileCreationInfo: async (filePath: string) => {
+        return {timestamp: 1490997600000, author: 'Slash'};
+      },
+      getFileLastUpdateInfo: async (filePath: string) => {
+        return {timestamp: 1490997600000, author: 'Slash'};
+      },
+    },
+  },
+};
 ```
 
 We have also noticed that our historical strategy to read from the Git history can be a **significant build performance bottleneck** for large Docusaurus sites. Issuing one `git log <filepath>` call per MDX file doesn't scale well.
@@ -253,14 +308,16 @@ We also provide built-in VCS preset strategies. The available presets are:
 - `default-v1`: the historical default (dynamic, `git-ad-hoc` in prod, `hardcoded` in dev)
 - `default-v2`: the upcoming Docusaurus v4 default (dynamic, `git-eager` in prod, `hardcoded` in dev)
 
-docusaurus.config.ts
-
-```
-export default {  future: {    experimental_vcs: 'default-v2',  },};
+```ts title="docusaurus.config.ts"
+export default {
+  future: {
+    experimental_vcs: 'default-v2',
+  },
+};
 ```
 
 <Callout kind="danger">
-  Experimental
+  **Experimental**
 
   The VCS API is experimental and its design may change. If you give it a try, please share feedback on this [community discussion](https://github.com/facebook/docusaurus/discussions/11909).
 

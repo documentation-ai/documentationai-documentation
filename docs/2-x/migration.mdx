@@ -23,21 +23,38 @@ While our main focus will still be helping you get your documentations right and
 
 Your Docusaurus 1 site should have the following structure:
 
-```
-├── docs└── website    ├── blog    ├── core    │   └── Footer.js    ├── package.json    ├── pages    ├── sidebars.json    ├── siteConfig.js    └── static
+```bash
+├── docs
+└── website
+    ├── blog
+    ├── core
+    │   └── Footer.js
+    ├── package.json
+    ├── pages
+    ├── sidebars.json
+    ├── siteConfig.js
+    └── static
 ```
 
 ## Docusaurus 2 structure
 
 After the migration, your Docusaurus 2 site could look like:
 
-```
-├── docs└── website    ├── blog    ├── src    │   ├── components    │   ├── css    │   └── pages    ├── static    ├── package.json    ├── sidebars.json    ├── docusaurus.config.js
+```sh
+├── docs
+└── website
+    ├── blog
+    ├── src
+    │   ├── components
+    │   ├── css
+    │   └── pages
+    ├── static
+    ├── package.json
+    ├── sidebars.json
+    ├── docusaurus.config.js
 ```
 
 <Callout kind="info">
-  info
-
   This migration does not change the `/docs` folder location, but Docusaurus v2 sites generally have the `/docs` folder inside `/website`
 
   You are free to put the `/docs` folder anywhere you want after having migrated to v2.
@@ -63,8 +80,6 @@ The [migration CLI](/docs/2-x/migration/automated) will handle many things of th
 However, some parts can't easily be automated, and you will have to fallback to the manual process.
 
 <Callout kind="info">
-  note
-
   We recommend running the migration CLI, and complete the missing parts thanks to the manual migration process.
 </Callout>
 
