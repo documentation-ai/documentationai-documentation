@@ -1,0 +1,42 @@
+---
+title: 📦 theme-mermaid
+description: This theme provides a @theme/Mermaid component that is powered by mermaid. You can read more on diagrams documentation.
+metaTitle: 📦 theme-mermaid | Docusaurus
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793700404327-ovgp4uy1iv-docusaurus-social-card.jpg?fm=auto&auto=compress%2Cformat
+---
+
+This theme provides a `@theme/Mermaid` component that is powered by [mermaid](https://mermaid-js.github.io/). You can read more on [diagrams](/docs/markdown-features/diagrams) documentation.
+
+<Tabs>
+  <Tab title="npm">
+    ```
+    npm install --save @docusaurus/theme-mermaid
+    ```
+  </Tab>
+
+  <Tab title="Yarn">
+    ```
+    yarn add @docusaurus/theme-mermaid
+    ```
+  </Tab>
+
+  <Tab title="pnpm">
+    ```
+    pnpm add @docusaurus/theme-mermaid
+    ```
+  </Tab>
+
+  <Tab title="Bun">
+    ```
+    bun add @docusaurus/theme-mermaid
+    ```
+  </Tab>
+</Tabs>
+
+## Configuration
+
+docusaurus.config.js
+
+```
+export default {  themes: ['@docusaurus/theme-mermaid'],  // In order for Mermaid code blocks in Markdown to work,  // you also need to enable the Remark plugin with this option  markdown: {    mermaid: true,  },};
+```

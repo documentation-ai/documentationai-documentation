@@ -1,0 +1,62 @@
+---
+title: 📦 plugin-rsdoctor
+description: A Rsdoctor plugin can help you troubleshoot the bundling phase of your Docusaurus site, supporting both Webpack and Rspack.
+metaTitle: 📦 plugin-rsdoctor | Docusaurus
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793700404327-ovgp4uy1iv-docusaurus-social-card.jpg?fm=auto&auto=compress%2Cformat
+---
+
+A [Rsdoctor](https://rsdoctor.dev/) plugin can help you troubleshoot the bundling phase of your Docusaurus site, supporting both Webpack and Rspack.
+
+<Callout kind="tip">
+  tip
+
+  Use it to figure out which plugin or loader is slowing down the bundler, and focus your efforts on optimizing the bottleneck.
+</Callout>
+
+## Installation
+
+<Tabs>
+  <Tab title="npm">
+    ```
+    npm install --save @docusaurus/plugin-rsdoctor
+    ```
+  </Tab>
+
+  <Tab title="Yarn">
+    ```
+    yarn add @docusaurus/plugin-rsdoctor
+    ```
+  </Tab>
+
+  <Tab title="pnpm">
+    ```
+    pnpm add @docusaurus/plugin-rsdoctor
+    ```
+  </Tab>
+
+  <Tab title="Bun">
+    ```
+    bun add @docusaurus/plugin-rsdoctor
+    ```
+  </Tab>
+</Tabs>
+
+## Configuration
+
+Accepted fields:
+
+| Name | Type | Default | Description`rsdoctorOptions``object``{}`The [Rsdoctor bundler plugin options](https://rsdoctor.dev/config/options/options), forwarded as is |
+| --- | --- | --- | --- |
+| `rsdoctorOptions` | `object` | `{}` | The [Rsdoctor bundler plugin options](https://rsdoctor.dev/config/options/options), forwarded as is |
+
+<a id="ex-config"></a>
+
+### Example configuration
+
+You can configure this plugin through plugin options.
+
+docusaurus.config.js
+
+```
+export default {  plugins: [    [      'rsdoctor',      {        rsdoctorOptions: {          mode: 'lite',        },      },    ],  ],};
+```

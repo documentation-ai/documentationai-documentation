@@ -1,0 +1,90 @@
+---
+title: 📦 theme-classic
+description: The classic theme for Docusaurus.
+metaTitle: 📦 theme-classic | Docusaurus
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793700404327-ovgp4uy1iv-docusaurus-social-card.jpg?fm=auto&auto=compress%2Cformat
+---
+
+The classic theme for Docusaurus.
+
+You can refer to the [theme configuration page](/docs/3-0-1/api/themes/configuration) for more details on the configuration.
+
+<Tabs>
+  <Tab title="npm">
+    ```
+    npm install --save @docusaurus/theme-classic
+    ```
+  </Tab>
+
+  <Tab title="Yarn">
+    ```
+    yarn add @docusaurus/theme-classic
+    ```
+  </Tab>
+
+  <Tab title="pnpm">
+    ```
+    pnpm add @docusaurus/theme-classic
+    ```
+  </Tab>
+
+  <Tab title="Bun">
+    ```
+    bun add @docusaurus/theme-classic
+    ```
+  </Tab>
+</Tabs>
+
+<Callout kind="tip">
+  tip
+
+  If you have installed `@docusaurus/preset-classic`, you don't need to install it as a dependency.
+</Callout>
+
+## Configuration
+
+Accepted fields:
+
+| Option | Type | Default | Description`customCss``string[] \| string``[]`Stylesheets to be imported globally as [client modules](/docs/3-0-1/advanced/client#client-modules). Relative paths are resolved against the site directory. |
+| --- | --- | --- | --- |
+| `customCss` | `string[] \| string` | `[]` | Stylesheets to be imported globally as [client modules](/docs/3-0-1/advanced/client#client-modules). Relative paths are resolved against the site directory. |
+
+<Callout kind="info">
+  note
+
+  Most configuration for the theme is done in `themeConfig`, which can be found in [theme configuration](/docs/3-0-1/api/themes/configuration).
+</Callout>
+
+<a id="ex-config"></a>
+
+### Example configuration
+
+You can configure this theme through preset options or plugin options.
+
+<Callout kind="tip">
+  tip
+
+  Most Docusaurus users configure this plugin through the preset options.
+</Callout>
+
+<Tabs>
+  <Tab title="Preset options">
+    If you use a preset, configure this plugin through the [preset options](/docs/3-0-1/using-plugins#docusauruspreset-classic):
+
+    docusaurus.config.js
+
+    ```
+    module.exports = {  presets: [    [      '@docusaurus/preset-classic',      {        theme: {          customCss: './src/css/custom.css',        },      },    ],  ],};
+    ```
+  </Tab>
+
+  <Tab title="Plugin options">
+    If you are using a standalone plugin, provide options directly to the plugin:
+
+    docusaurus.config.js
+
+    ```
+    module.exports = {  plugins: [    [      '@docusaurus/theme-classic',      {        customCss: './src/css/custom.css',      },    ],  ],};
+    ```
+  </Tab>
+</Tabs>

@@ -1,0 +1,82 @@
+---
+title: Static methods
+description: Static methods are not part of the plugin instance—they are attached to the constructor function. These methods are used to validate and normalize the plugin options and theme config, which are then used as constructor parameters to initialize the plugin instance.
+metaTitle: Static methods | Docusaurus
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793700404327-ovgp4uy1iv-docusaurus-social-card.jpg?fm=auto&auto=compress%2Cformat
+---
+
+Static methods are not part of the plugin instance—they are attached to the constructor function. These methods are used to validate and normalize the plugin options and theme config, which are then used as constructor parameters to initialize the plugin instance.
+
+<a id="validateOptions"></a>
+
+## `validateOptions({options, validate})`
+
+Returns validated and normalized options for the plugin. This method is called before the plugin is initialized. You must return the options since they will be passed to the plugin during initialization.
+
+### `options`
+
+`validateOptions` is called with `options` passed to plugin for validation and normalization.
+
+### `validate`
+
+`validateOptions` is called with `validate` function which takes a <strong>[Joi](https://www.npmjs.com/package/joi)</strong> schema and options as the arguments, returns validated and normalized options. `validate` will automatically handle error and validation config.
+
+<Callout kind="tip">
+  tip
+
+  [Joi](https://www.npmjs.com/package/joi) is recommended for validation and normalization of options.
+
+  To avoid mixing Joi versions, use `const {Joi} = require("@docusaurus/utils-validation")`
+</Callout>
+
+If you don't use <strong>[Joi](https://www.npmjs.com/package/joi)</strong> for validation you can throw an Error in case of invalid options and return options in case of success.
+
+my-plugin/src/index.js
+
+```
+function myPlugin(context, options) {  return {    name: 'docusaurus-plugin',    // rest of methods  };}myPlugin.validateOptions = ({options, validate}) => {  const validatedOptions = validate(myValidationSchema, options);  return validatedOptions;};module.exports = myPlugin;
+```
+
+In TypeScript, you can also choose to export this as a separate named export.
+
+my-plugin/src/index.ts
+
+```
+export default function (context, options) {  return {    name: 'docusaurus-plugin',    // rest of methods  };}export function validateOptions({options, validate}) {  const validatedOptions = validate(myValidationSchema, options);  return validatedOptions;}
+```
+
+## `validateThemeConfig({themeConfig, validate})`
+
+Return validated and normalized configuration for the theme.
+
+### `themeConfig`
+
+`validateThemeConfig` is called with `themeConfig` provided in `docusaurus.config.js` for validation and normalization.
+
+### `validate`
+
+`validateThemeConfig` is called with `validate` function which takes a <strong>[Joi](https://www.npmjs.com/package/joi)</strong> schema and `themeConfig` as the arguments, returns validated and normalized options. `validate` will automatically handle error and validation config.
+
+<Callout kind="tip">
+  tip
+
+  [Joi](https://www.npmjs.com/package/joi) is recommended for validation and normalization of theme config.
+
+  To avoid mixing Joi versions, use `const {Joi} = require("@docusaurus/utils-validation")`
+</Callout>
+
+If you don't use <strong>[Joi](https://www.npmjs.com/package/joi)</strong> for validation you can throw an Error in case of invalid options.
+
+my-theme/src/index.js
+
+```
+function myPlugin(context, options) {  return {    name: 'docusaurus-plugin',    // rest of methods  };}myPlugin.validateThemeConfig = ({themeConfig, validate}) => {  const validatedThemeConfig = validate(myValidationSchema, options);  return validatedThemeConfig;};module.exports = validateThemeConfig;
+```
+
+In TypeScript, you can also choose to export this as a separate named export.
+
+my-theme/src/index.ts
+
+```
+export default function (context, options) {  return {    name: 'docusaurus-plugin',    // rest of methods  };}export function validateThemeConfig({themeConfig, validate}) {  const validatedThemeConfig = validate(myValidationSchema, options);  return validatedThemeConfig;}
+```

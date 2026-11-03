@@ -1,0 +1,124 @@
+---
+title: 📦 plugin-sitemap
+description: This plugin creates sitemaps for your site so that search engine crawlers can crawl your site more accurately.
+metaTitle: 📦 plugin-sitemap | Docusaurus
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793700404327-ovgp4uy1iv-docusaurus-social-card.jpg?fm=auto&auto=compress%2Cformat
+---
+
+This plugin creates sitemaps for your site so that search engine crawlers can crawl your site more accurately.
+
+<Callout kind="alert">
+  production only
+
+  This plugin is always inactive in development and **only active in production** because it works on the build output.
+</Callout>
+
+## Installation
+
+<Tabs>
+  <Tab title="npm">
+    ```
+    npm install --save @docusaurus/plugin-sitemap
+    ```
+  </Tab>
+
+  <Tab title="Yarn">
+    ```
+    yarn add @docusaurus/plugin-sitemap
+    ```
+  </Tab>
+
+  <Tab title="pnpm">
+    ```
+    pnpm add @docusaurus/plugin-sitemap
+    ```
+  </Tab>
+
+  <Tab title="Bun">
+    ```
+    bun add @docusaurus/plugin-sitemap
+    ```
+  </Tab>
+</Tabs>
+
+<Callout kind="tip">
+  tip
+
+  If you use the preset `@docusaurus/preset-classic`, you don't need to install this plugin as a dependency.
+
+  You can configure this plugin through the [preset options](/docs/using-plugins#docusauruspreset-classic).
+</Callout>
+
+## Configuration
+
+Accepted fields:
+
+| Name | Type | Default | Description`lastmod``'date' \| 'datetime' \| null``null``date` is YYYY-MM-DD. `datetime` is a ISO 8601 datetime. `null` is disabled. See [sitemap docs](https://www.sitemaps.org/protocol.html#xmlTagDefinitions).`changefreq``string \| null``'weekly'`See [sitemap docs](https://www.sitemaps.org/protocol.html#xmlTagDefinitions)`priority``number \| null``0.5`See [sitemap docs](https://www.sitemaps.org/protocol.html#xmlTagDefinitions)`ignorePatterns``string[]``[]`A list of glob patterns; matching route paths will be filtered from the sitemap. Note that you may need to include the base URL in here.`filename``string``sitemap.xml`The path to the created sitemap file, relative to the output directory. Useful if you have two plugin instances outputting two files.`createSitemapItems``CreateSitemapItemsFn \| undefined``undefined`An optional function which can be used to transform and / or filter the items in the sitemap. |
+| --- | --- | --- | --- |
+| `lastmod` | `'date' \| 'datetime' \| null` | `null` | `date` is YYYY-MM-DD. `datetime` is a ISO 8601 datetime. `null` is disabled. See [sitemap docs](https://www.sitemaps.org/protocol.html#xmlTagDefinitions). |
+| `changefreq` | `string \| null` | `'weekly'` | See [sitemap docs](https://www.sitemaps.org/protocol.html#xmlTagDefinitions) |
+| `priority` | `number \| null` | `0.5` | See [sitemap docs](https://www.sitemaps.org/protocol.html#xmlTagDefinitions) |
+| `ignorePatterns` | `string[]` | `[]` | A list of glob patterns; matching route paths will be filtered from the sitemap. Note that you may need to include the base URL in here. |
+| `filename` | `string` | `sitemap.xml` | The path to the created sitemap file, relative to the output directory. Useful if you have two plugin instances outputting two files. |
+| `createSitemapItems` | `CreateSitemapItemsFn \| undefined` | `undefined` | An optional function which can be used to transform and / or filter the items in the sitemap. |
+
+### Types
+
+#### `CreateSitemapItemsFn`
+
+```
+type CreateSitemapItemsFn = (params: {  siteConfig: DocusaurusConfig;  routes: RouteConfig[];  defaultCreateSitemapItems: CreateSitemapItemsFn;}) => Promise<SitemapItem[]>;
+```
+
+<Callout kind="info">
+  info
+
+  This plugin also respects some site config:
+
+  - [`noIndex`](/docs/api/docusaurus-config#noIndex): results in no sitemap generated
+  - [`trailingSlash`](/docs/api/docusaurus-config#trailingSlash): determines if the URLs in the sitemap have trailing slashes
+</Callout>
+
+<Callout kind="info">
+  About `lastmod`
+
+  The `lastmod` option will only output a sitemap `<lastmod>` tag if plugins provide [route metadata](/docs/api/plugin-methods/lifecycle-apis#addRoute) attributes `sourceFilePath` and/or `lastUpdatedAt`.
+
+  All the official content plugins provide the metadata for routes backed by a content file (Markdown, MDX or React page components), but it is possible third-party plugin authors do not provide this information, and the plugin will not be able to output a `<lastmod>` tag for their routes.
+</Callout>
+
+<a id="ex-config"></a>
+
+### Example configuration
+
+You can configure this plugin through preset options or plugin options.
+
+<Callout kind="tip">
+  tip
+
+  Most Docusaurus users configure this plugin through the preset options.
+</Callout>
+
+<Tabs>
+  <Tab title="Preset options">
+    If you use a preset, configure this plugin through the [preset options](/docs/using-plugins#docusauruspreset-classic):
+
+    docusaurus.config.js
+
+    ```
+    module.exports = {  presets: [    [      '@docusaurus/preset-classic',      {        sitemap: {          lastmod: 'date',          changefreq: 'weekly',          priority: 0.5,          ignorePatterns: ['/tags/**'],          filename: 'sitemap.xml',          createSitemapItems: async (params) => {            const {defaultCreateSitemapItems, ...rest} = params;            const items = await defaultCreateSitemapItems(rest);            return items.filter((item) => !item.url.includes('/page/'));          },        },      },    ],  ],};
+    ```
+  </Tab>
+
+  <Tab title="Plugin options">
+    If you are using a standalone plugin, provide options directly to the plugin:
+
+    docusaurus.config.js
+
+    ```
+    module.exports = {  plugins: [    [      '@docusaurus/plugin-sitemap',      {        lastmod: 'date',        changefreq: 'weekly',        priority: 0.5,        ignorePatterns: ['/tags/**'],        filename: 'sitemap.xml',        createSitemapItems: async (params) => {          const {defaultCreateSitemapItems, ...rest} = params;          const items = await defaultCreateSitemapItems(rest);          return items.filter((item) => !item.url.includes('/page/'));        },      },    ],  ],};
+    ```
+  </Tab>
+</Tabs>
+
+You can find your sitemap at `/sitemap.xml`.

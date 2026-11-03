@@ -1,0 +1,35 @@
+---
+title: string-literal-i18n-messages
+description: Enforce translate APIs to be called on plain text labels.
+metaTitle: string-literal-i18n-messages | Docusaurus
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793700404327-ovgp4uy1iv-docusaurus-social-card.jpg?fm=auto&auto=compress%2Cformat
+---
+
+Enforce translate APIs to be called on plain text labels.
+
+Docusaurus offers the [`docusaurus write-translations`](/docs/2-x/cli#docusaurus-write-translations-sitedir) API, which statically extracts the text labels marked as translatable. Dynamic values used in `<Translate>` or `translate()` calls will fail to be extracted. This rule will ensure that all translate calls are statically extractable.
+
+<a id="details"></a>
+
+## Rule Details
+
+Examples of **incorrect** code for this rule:
+
+```
+const text = 'Some text to be translated'// Invalid <Translate> child<Translate>{text}</Translate>// Invalid message attributetranslate({message: text})
+```
+
+Examples of **correct** code for this rule:
+
+```
+// Valid <Translate> child<Translate>Some text to be translated</Translate>// Valid message attributetranslate({message: 'Some text to be translated'})// Valid <Translate> child using values object as prop<Translate values={{firstName: 'Sébastien'}}>  {'Welcome, {firstName}! How are you?'}</Translate>// Valid message attribute using values object as second argumenttranslate({message: 'The logo of site {siteName}'}, {siteName: 'Docusaurus'})
+```
+
+## When Not To Use It
+
+If you're not using the [i18n feature](/docs/2-x/i18n/introduction), you can disable this rule.
+
+## Further Reading
+
+- [https://docusaurus.io/docs/docusaurus-core#translate](/docs/docusaurus-core#translate)
+- [https://docusaurus.io/docs/docusaurus-core#translate-imperative](/docs/docusaurus-core#translate-imperative)

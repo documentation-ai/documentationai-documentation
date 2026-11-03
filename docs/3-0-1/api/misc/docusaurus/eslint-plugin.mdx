@@ -1,0 +1,86 @@
+---
+title: 📦 eslint-plugin
+description: ESLint is a tool that statically analyzes your code and reports problems or suggests best practices through editor hints and command line. Docusaurus provides an ESLint plugin to enforce best Docusaurus practices.
+metaTitle: 📦 eslint-plugin | Docusaurus
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793700404327-ovgp4uy1iv-docusaurus-social-card.jpg?fm=auto&auto=compress%2Cformat
+---
+
+[ESLint](https://eslint.org/) is a tool that statically analyzes your code and reports problems or suggests best practices through editor hints and command line. Docusaurus provides an ESLint plugin to enforce best Docusaurus practices.
+
+## Installation
+
+<Tabs>
+  <Tab title="npm">
+    ```
+    npm install --save-dev @docusaurus/eslint-plugin
+    ```
+  </Tab>
+
+  <Tab title="Yarn">
+    ```
+    yarn add --dev @docusaurus/eslint-plugin
+    ```
+  </Tab>
+
+  <Tab title="pnpm">
+    ```
+    pnpm add --save-dev @docusaurus/eslint-plugin
+    ```
+  </Tab>
+
+  <Tab title="Bun">
+    ```
+    bun add --dev @docusaurus/eslint-plugin
+    ```
+  </Tab>
+</Tabs>
+
+## Usage
+
+### Recommended config
+
+Add `plugin:@docusaurus/recommended` to the `extends` section of your `.eslintrc` configuration file:
+
+.eslintrc
+
+```
+{  "extends": ["plugin:@docusaurus/recommended"]}
+```
+
+This will enable the `@docusaurus` eslint plugin and use the `recommended` config. See [Supported rules](#supported-rules) below for a list of rules that this will enable.
+
+### Manual config
+
+For more fine-grained control, you can also enable the plugin manually and configure the rules you want to use directly:
+
+.eslintrc
+
+```
+{  "plugins": ["@docusaurus"],  "rules": {    "@docusaurus/string-literal-i18n-messages": "error",    "@docusaurus/no-untranslated-text": "warn"  }}
+```
+
+## Supported configs
+
+- Recommended: recommended rule set for most Docusaurus sites that should be extended from.
+- All: **all** rules enabled. This will change between minor versions, so you should not use this if you want to avoid unexpected breaking changes.
+
+## Supported rules
+
+| Name | Description | [`@docusaurus/no-untranslated-text`](/docs/3-0-1/api/misc/docusaurus/eslint-plugin/no-untranslated-text)Enforce text labels in JSX to be wrapped by translate calls[`@docusaurus/string-literal-i18n-messages`](/docs/3-0-1/api/misc/docusaurus/eslint-plugin/string-literal-i18n-messages)Enforce translate APIs to be called on plain text labels✅[`@docusaurus/no-html-links`](/docs/3-0-1/api/misc/docusaurus/eslint-plugin/no-html-links)Ensures @docusaurus/Link is used instead of `<a>` tags✅[`@docusaurus/prefer-docusaurus-heading`](/docs/3-0-1/api/misc/docusaurus/eslint-plugin/prefer-docusaurus-heading)Ensures @theme/Heading is used instead of `<hn>` tags for headings✅ |
+| --- | --- | --- |
+| [`@docusaurus/no-untranslated-text`](/docs/3-0-1/api/misc/docusaurus/eslint-plugin/no-untranslated-text) | Enforce text labels in JSX to be wrapped by translate calls |  |
+| [`@docusaurus/string-literal-i18n-messages`](/docs/3-0-1/api/misc/docusaurus/eslint-plugin/string-literal-i18n-messages) | Enforce translate APIs to be called on plain text labels | ✅ |
+| [`@docusaurus/no-html-links`](/docs/3-0-1/api/misc/docusaurus/eslint-plugin/no-html-links) | Ensures @docusaurus/Link is used instead of `<a>` tags | ✅ |
+| [`@docusaurus/prefer-docusaurus-heading`](/docs/3-0-1/api/misc/docusaurus/eslint-plugin/prefer-docusaurus-heading) | Ensures @theme/Heading is used instead of `<hn>` tags for headings | ✅ |
+
+✅ = recommended
+
+## Example configuration
+
+Here's an example configuration:
+
+.eslintrc.js
+
+```
+module.exports = {  extends: ['plugin:@docusaurus/recommended'],  rules: {    '@docusaurus/no-untranslated-text': [      'warn',      {ignoredStrings: ['·', '—', '×']},    ],  },};
+```

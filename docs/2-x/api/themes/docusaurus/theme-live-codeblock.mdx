@@ -1,0 +1,42 @@
+---
+title: 📦 theme-live-codeblock
+description: This theme provides a @theme/CodeBlock component that is powered by react-live. You can read more on interactive code editor documentation.
+metaTitle: 📦 theme-live-codeblock | Docusaurus
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793700404327-ovgp4uy1iv-docusaurus-social-card.jpg?fm=auto&auto=compress%2Cformat
+---
+
+This theme provides a `@theme/CodeBlock` component that is powered by [react-live](https://commerce.nearform.com/open-source/react-live/). You can read more on [interactive code editor](/docs/2-x/markdown-features/code-blocks#interactive-code-editor) documentation.
+
+<Tabs>
+  <Tab title="npm">
+    ```
+    npm install --save @docusaurus/theme-live-codeblock
+    ```
+  </Tab>
+
+  <Tab title="Yarn">
+    ```
+    yarn add @docusaurus/theme-live-codeblock
+    ```
+  </Tab>
+
+  <Tab title="pnpm">
+    ```
+    pnpm add @docusaurus/theme-live-codeblock
+    ```
+  </Tab>
+
+  <Tab title="Bun">
+    ```
+    bun add @docusaurus/theme-live-codeblock
+    ```
+  </Tab>
+</Tabs>
+
+### Configuration
+
+docusaurus.config.js
+
+```
+module.exports = {  plugins: ['@docusaurus/theme-live-codeblock'],  themeConfig: {    liveCodeBlock: {      /**       * The position of the live playground, above or under the editor       * Possible values: "top" | "bottom"       */      playgroundPosition: 'bottom',    },  },};
+```

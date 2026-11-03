@@ -1,0 +1,45 @@
+---
+title: no-untranslated-text
+description: Enforce text labels in JSX to be wrapped by translate calls.
+metaTitle: no-untranslated-text | Docusaurus
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793700404327-ovgp4uy1iv-docusaurus-social-card.jpg?fm=auto&auto=compress%2Cformat
+---
+
+Enforce text labels in JSX to be wrapped by translate calls.
+
+When the [i18n feature](/docs/i18n/introduction) is used, this rule ensures that all labels appearing on the website are translatable, so no string accidentally slips through untranslated.
+
+<a id="details"></a>
+
+## Rule Details
+
+Examples of **incorrect** code for this rule:
+
+```
+// Hello World is not translated<Component>Hello World</Component>
+```
+
+Examples of **correct** code for this rule:
+
+```
+// Hello World is translated<Component>  <Translate>Hello World</Translate></Component>
+```
+
+<a id="configuration"></a>
+
+## Rule Configuration
+
+Accepted fields:
+
+| Option | Type | Default | Description`ignoredStrings``string[]``[]`Text labels that only contain strings in this list will not be reported. |
+| --- | --- | --- | --- |
+| `ignoredStrings` | `string[]` | `[]` | Text labels that only contain strings in this list will not be reported. |
+
+## When Not To Use It
+
+If you're not using the [i18n feature](/docs/i18n/introduction), you can disable this rule. You can also disable this rule where the text is not supposed to be translated.
+
+## Further Reading
+
+- [https://docusaurus.io/docs/docusaurus-core#translate](/docs/docusaurus-core#translate)
+- [https://docusaurus.io/docs/docusaurus-core#translate-imperative](/docs/docusaurus-core#translate-imperative)

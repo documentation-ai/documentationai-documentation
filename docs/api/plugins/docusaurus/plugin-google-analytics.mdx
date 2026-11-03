@@ -1,0 +1,103 @@
+---
+title: 📦 plugin-google-analytics
+description: The default Google Analytics plugin. It is a JavaScript library for measuring how users interact with your website in the production build. If you are using Google Analytics 4 you might need to consider using plugin-google-gtag instead.
+metaTitle: 📦 plugin-google-analytics | Docusaurus
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793700404327-ovgp4uy1iv-docusaurus-social-card.jpg?fm=auto&auto=compress%2Cformat
+---
+
+The default [Google Analytics](https://developers.google.com/analytics/devguides/collection/analyticsjs/) plugin. It is a JavaScript library for measuring how users interact with your website **in the production build**. If you are using Google Analytics 4 you might need to consider using [plugin-google-gtag](/docs/api/plugins/docusaurus/plugin-google-gtag) instead.
+
+<Callout kind="danger">
+  Deprecated
+
+  This plugin is **deprecated** and became useless on July 1, 2023.
+
+  Google is [moving away from Universal Analytics](https://blog.google/products/marketingplatform/analytics/prepare-for-future-with-google-analytics-4/).
+
+  If you are still using this plugin with a `UA-*` tracking id, you should create a Google Analytics 4 account as soon as possible, and use [`@docusaurus/plugin-google-gtag`](/docs/api/plugins/docusaurus/plugin-google-gtag) instead of this plugin. More details [here](https://github.com/facebook/docusaurus/issues/7221).
+</Callout>
+
+<Callout kind="alert">
+  production only
+
+  This plugin is always inactive in development and **only active in production** to avoid polluting the analytics statistics.
+</Callout>
+
+## Installation
+
+<Tabs>
+  <Tab title="npm">
+    ```
+    npm install --save @docusaurus/plugin-google-analytics
+    ```
+  </Tab>
+
+  <Tab title="Yarn">
+    ```
+    yarn add @docusaurus/plugin-google-analytics
+    ```
+  </Tab>
+
+  <Tab title="pnpm">
+    ```
+    pnpm add @docusaurus/plugin-google-analytics
+    ```
+  </Tab>
+
+  <Tab title="Bun">
+    ```
+    bun add @docusaurus/plugin-google-analytics
+    ```
+  </Tab>
+</Tabs>
+
+<Callout kind="tip">
+  tip
+
+  If you use the preset `@docusaurus/preset-classic`, you don't need to install this plugin as a dependency.
+
+  You can configure this plugin through the [preset options](/docs/using-plugins#docusauruspreset-classic).
+</Callout>
+
+## Configuration
+
+Accepted fields:
+
+| Name | Type | Default | Description`trackingID``string`**Required**The tracking ID of your analytics service.`anonymizeIP``boolean``false`Whether the IP should be anonymized when sending requests. |
+| --- | --- | --- | --- |
+| `trackingID` | `string` | **Required** | The tracking ID of your analytics service. |
+| `anonymizeIP` | `boolean` | `false` | Whether the IP should be anonymized when sending requests. |
+
+<a id="ex-config"></a>
+
+### Example configuration
+
+You can configure this plugin through preset options or plugin options.
+
+<Callout kind="tip">
+  tip
+
+  Most Docusaurus users configure this plugin through the preset options.
+</Callout>
+
+<Tabs>
+  <Tab title="Preset options">
+    If you use a preset, configure this plugin through the [preset options](/docs/using-plugins#docusauruspreset-classic):
+
+    docusaurus.config.js
+
+    ```
+    module.exports = {  presets: [    [      '@docusaurus/preset-classic',      {        googleAnalytics: {          trackingID: 'UA-141789564-1',          anonymizeIP: true,        },      },    ],  ],};
+    ```
+  </Tab>
+
+  <Tab title="Plugin options">
+    If you are using a standalone plugin, provide options directly to the plugin:
+
+    docusaurus.config.js
+
+    ```
+    module.exports = {  plugins: [    [      '@docusaurus/plugin-google-analytics',      {        trackingID: 'UA-141789564-1',        anonymizeIP: true,      },    ],  ],};
+    ```
+  </Tab>
+</Tabs>

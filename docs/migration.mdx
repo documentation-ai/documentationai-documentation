@@ -1,0 +1,94 @@
+---
+title: Upgrading Docusaurus
+description: Docusaurus versioning is based on the major.minor.patch scheme and respects Semantic Versioning.
+metaTitle: Upgrading Docusaurus | Docusaurus
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793700404327-ovgp4uy1iv-docusaurus-social-card.jpg?fm=auto&auto=compress%2Cformat
+---
+
+Docusaurus versioning is based on the `major.minor.patch` scheme and respects [**Semantic Versioning**](https://semver.org/).
+
+**Breaking changes** are only released on major version upgrades, and thoroughly documented in the following upgrade guides.
+
+[📄️To Docusaurus v3This documentation will help you upgrade your site from Docusaurus v2 to Docusaurus v3.](https://docusaurus.io/docs/migration/v3)
+
+[🗃️To Docusaurus v25 items](https://docusaurus.io/docs/migration/v2)
+
+## Troubleshooting upgrades
+
+When upgrading Docusaurus you may experience issues caused by mismatching cached dependencies - there are a few troubleshooting steps you should perform to resolve these common issues before reporting a bug or seeking support.
+
+### Run the `clear` command
+
+This CLI command is used to clear a Docusaurus site's generated assets, caches and build artifacts.
+
+<Tabs>
+  <Tab title="npm">
+    ```
+    npm run clear
+    ```
+  </Tab>
+
+  <Tab title="Yarn">
+    ```
+    yarn clear
+    ```
+  </Tab>
+
+  <Tab title="pnpm">
+    ```
+    pnpm run clear
+    ```
+  </Tab>
+
+  <Tab title="Bun">
+    ```
+    bun run clear
+    ```
+  </Tab>
+</Tabs>
+
+### Remove `node_modules` and your lock file(s)
+
+Remove the `node_modules` folder and your package manager's lock file using the following:
+
+<Tabs>
+  <Tab title="Bash">
+    ```
+    rm -rf node_modules yarn.lock package-lock.json
+    ```
+  </Tab>
+
+  <Tab title="PowerShell">
+    ```
+    @('node_modules','yarn.lock','package-lock.json') | Remove-Item -Force -Recurse -ErrorAction SilentlyContinue
+    ```
+  </Tab>
+</Tabs>
+
+Then reinstall packages and regenerate the `lock` file using:
+
+<Tabs>
+  <Tab title="npm">
+    ```
+    npm install
+    ```
+  </Tab>
+
+  <Tab title="Yarn">
+    ```
+    yarn install
+    ```
+  </Tab>
+
+  <Tab title="pnpm">
+    ```
+    pnpm install
+    ```
+  </Tab>
+
+  <Tab title="Bun">
+    ```
+    bun install
+    ```
+  </Tab>
+</Tabs>

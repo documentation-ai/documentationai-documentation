@@ -1,0 +1,70 @@
+---
+title: Browser support
+description: How to keep a reasonable bundle size while ensuring sufficient browser support.
+metaTitle: Browser support | Docusaurus
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793700404327-ovgp4uy1iv-docusaurus-social-card.jpg?fm=auto&auto=compress%2Cformat
+---
+
+Docusaurus allows sites to define the list of supported browsers through a [browserslist configuration](https://github.com/browserslist/browserslist).
+
+## Purpose
+
+Websites need to balance between backward compatibility and bundle size. As old browsers do not support modern APIs or syntax, more code is needed to implement the same functionality.
+
+For example, you may use the [optional chaining syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining):
+
+```
+const value = obj?.prop?.val;
+```
+
+...which unfortunately is only recognized by browser versions released after 2020. To be compatible with earlier browser versions, when building your site for production, our JS loader will transpile your code to a more verbose syntax:
+
+```
+var _obj, _obj$prop;const value =  (_obj = obj) === null || _obj === void 0    ? void 0    : (_obj$prop = _obj.prop) === null || _obj$prop === void 0    ? void 0    : _obj$prop.val;
+```
+
+However, this penalizes all other users with increased site load time because the 29-character line now becomes 168 characters—a 6-fold increase! (In practice, it will be better because the names used will be shorter.) As a tradeoff, the JS loader only transpiles the syntax to the degree that's supported by all browser versions defined in the browser list.
+
+The browser list by default is provided through the `package.json` file as a root `browserslist` field.
+
+<Callout kind="alert">
+  warning
+
+  On old browsers, the compiled output will use unsupported (too recent) JS syntax, causing React to fail to initialize and end up with a static website with only HTML/CSS and no JS.
+</Callout>
+
+## Default values
+
+Websites initialized with the default classic template has the following in `package.json`:
+
+package.json
+
+```
+{  "name": "docusaurus",  // ...  "browserslist": {    "production": [">0.5%", "not dead", "not op_mini all"],    "development": [      "last 1 chrome version",      "last 1 firefox version",      "last 1 safari version"    ]  }  // ...}
+```
+
+Explained in natural language, the browsers supported in production are those:
+
+- With more than 0.5% of market share; *and*
+- Has official support or updates in the past 24 months (the opposite of "dead"); *and*
+- Is not Opera Mini.
+
+And browsers used in development are:
+
+- The latest version of Chrome *or* Firefox *or* Safari.
+
+You can "evaluate" any config with the `browserslist` CLI to obtain the actual list:
+
+```
+npx browserslist --env="production"
+```
+
+The output is all browsers supported in production. Below is the output in January 2022:
+
+```
+and_chr 96and_uc 12.12chrome 96chrome 95chrome 94edge 96firefox 95firefox 94ie 11ios_saf 15.2ios_saf 15.0-15.1ios_saf 14.5-14.8ios_saf 14.0-14.4ios_saf 12.2-12.5opera 82opera 81safari 15.1safari 14.1safari 13.1
+```
+
+## Read more
+
+You may wish to visit the [browserslist documentation](https://github.com/browserslist/browserslist/blob/main/README.md) for more specifications, especially the accepted [query values](https://github.com/browserslist/browserslist/blob/main/README.md#queries) and [best practices](https://github.com/browserslist/browserslist/blob/main/README.md#best-practices).

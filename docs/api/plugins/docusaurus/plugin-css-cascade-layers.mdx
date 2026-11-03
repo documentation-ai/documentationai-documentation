@@ -1,0 +1,99 @@
+---
+title: 📦 plugin-css-cascade-layers
+description: This plugin is mostly designed to be used internally by the classic preset through the Docusaurus future.v4.useCssCascadeLayers flag, although it can also be used as a standalone plugin. Please let us know here if you have a use case for it and help us design an API that makes sense for the future of Docusaurus.
+metaTitle: 📦 plugin-css-cascade-layers | Docusaurus
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793700404327-ovgp4uy1iv-docusaurus-social-card.jpg?fm=auto&auto=compress%2Cformat
+---
+
+<Callout kind="alert">
+  Experimental
+
+  This plugin is mostly designed to be used internally by the classic preset through the [Docusaurus `future.v4.useCssCascadeLayers` flag](/docs/api/docusaurus-config#future), although it can also be used as a standalone plugin. Please [let us know here](https://github.com/facebook/docusaurus/pull/11142) if you have a use case for it and help us design an API that makes sense for the future of Docusaurus.
+</Callout>
+
+A plugin for wrapping CSS modules of your Docusaurus site in [CSS Cascade Layers](https://css-tricks.com/css-cascade-layers/). This modern CSS feature is widely supported by all browsers. It allows grouping CSS rules in layers of specificity and gives you more control over the CSS cascade.
+
+Use this plugin to:
+
+- apply a top-level `@layer myLayer { ... }` block rule around any CSS module, including un-layered third-party CSS.
+- define an explicit layer ordering
+
+<Callout kind="alert">
+  warning
+
+  To use this plugin properly, it's recommended to have a solid understanding of [CSS Cascade Layers](https://css-tricks.com/css-cascade-layers/), the [CSS Cascade](https://developer.mozilla.org/docs/Web/CSS/CSS_cascade/Cascade) and [specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascade/Specificity).
+</Callout>
+
+## Installation
+
+<Tabs>
+  <Tab title="npm">
+    ```
+    npm install --save @docusaurus/plugin-css-cascade-layers
+    ```
+  </Tab>
+
+  <Tab title="Yarn">
+    ```
+    yarn add @docusaurus/plugin-css-cascade-layers
+    ```
+  </Tab>
+
+  <Tab title="pnpm">
+    ```
+    pnpm add @docusaurus/plugin-css-cascade-layers
+    ```
+  </Tab>
+
+  <Tab title="Bun">
+    ```
+    bun add @docusaurus/plugin-css-cascade-layers
+    ```
+  </Tab>
+</Tabs>
+
+<Callout kind="tip">
+  tip
+
+  If you use the preset `@docusaurus/preset-classic`, this plugin is automatically configured for you with the [`siteConfig.future.v4.useCssCascadeLayers`](/docs/api/docusaurus-config#future) flag.
+</Callout>
+
+## Configuration
+
+Accepted fields:
+
+| Name | Type | Default | Description`layers``Layers`**Built-in layers**An object representing all the CSS cascade layers you want to use, and whether the layer should be applied to a given file path. See examples and types below. |
+| --- | --- | --- | --- |
+| `layers` | `Layers` | **Built-in layers** | An object representing all the CSS cascade layers you want to use, and whether the layer should be applied to a given file path. See examples and types below. |
+
+### Types
+
+#### `Layers`
+
+```
+type Layers = Record<  string, // layer name  (filePath: string) => boolean // layer matcher>;
+```
+
+The `layers` object is defined by:
+
+- key: the name of a layer
+- value: a function to define if a given CSS module file should be in that layer
+
+<Callout kind="alert">
+  Order matters
+
+  The object order matters:
+
+  - the keys order defines an explicit CSS layer order
+  - when multiple layers match a file path, only the first layer will apply
+</Callout>
+
+<a id="ex-config"></a>
+
+### Example configuration
+
+You can configure this plugin through plugin options.
+
+```
+const options = {  layers: {    'docusaurus.infima': (filePath) =>      filePath.includes('/node_modules/infima/dist'),    'docusaurus.theme-classic': (filePath) =>      filePath.includes('/node_modules/@docusaurus/theme-classic/lib'),  },};
+```

@@ -1,0 +1,75 @@
+---
+title: I18n lifecycles
+description: Plugins use these lifecycles to load i18n-related data.
+metaTitle: I18n lifecycles | Docusaurus
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793700404327-ovgp4uy1iv-docusaurus-social-card.jpg?fm=auto&auto=compress%2Cformat
+---
+
+Plugins use these lifecycles to load i18n-related data.
+
+## `getTranslationFiles({content})`
+
+Plugins declare the JSON translation files they want to use.
+
+Returns translation files `{path: string, content: ChromeI18nJSON}`:
+
+- `path`: relative to the plugin localized folder `i18n/[locale]/[pluginName]`. Extension `.json` should be omitted to remain generic.
+- `content`: using the Chrome i18n JSON format.
+
+These files will be written by the [`write-translations` CLI](/docs/3-0-1/cli#docusaurus-write-translations-sitedir) to the plugin i18n subfolder, and will be read in the appropriate locale before calling [`translateContent()`](#translateContent) and [`translateThemeConfig()`](#translateThemeConfig)
+
+Example:
+
+my-plugin.js
+
+```
+export default function (context, options) {  return {    name: 'my-plugin',    async getTranslationFiles({content}) {      return [        {          path: 'sidebar-labels',          content: {            someSidebarLabel: {              message: 'Some Sidebar Label',              description: 'A label used in my plugin in the sidebar',            },            someLabelFromContent: content.myLabel,          },        },      ];    },  };}
+```
+
+<a id="translateContent"></a>
+
+## `translateContent({content,translationFiles})`
+
+Translate the plugin content, using the localized translation files.
+
+Returns the localized plugin content.
+
+The `contentLoaded()` lifecycle will be called with the localized plugin content returned by `translateContent()`.
+
+Example:
+
+my-plugin.js
+
+```
+export default function (context, options) {  return {    name: 'my-plugin',    translateContent({content, translationFiles}) {      const myTranslationFile = translationFiles.find(        (f) => f.path === 'myTranslationFile',      );      return {        ...content,        someContentLabel: myTranslationFile.someContentLabel.message,      };    },  };}
+```
+
+<a id="translateThemeConfig"></a>
+
+## `translateThemeConfig({themeConfig,translationFiles})`
+
+Translate the site `themeConfig` labels, using the localized translation files.
+
+Returns the localized `themeConfig`.
+
+Example:
+
+my-plugin.js
+
+```
+export default function (context, options) {  return {    name: 'my-theme',    translateThemeConfig({themeConfig, translationFiles}) {      const myTranslationFile = translationFiles.find(        (f) => f.path === 'myTranslationFile',      );      return {        ...themeConfig,        someThemeConfigLabel: myTranslationFile.someThemeConfigLabel.message,      };    },  };}
+```
+
+## `async getDefaultCodeTranslationMessages()`
+
+Themes using the `<Translate>` API can provide default code translation messages.
+
+It should return messages in `Record<string, string>`, where keys are translation IDs and values are messages (without the description) localized using the site's current locale.
+
+Example:
+
+my-plugin.js
+
+```
+export default function (context, options) {  return {    name: 'my-theme',    async getDefaultCodeTranslationMessages() {      return readJsonFile(`${context.i18n.currentLocale}.json`);    },  };}
+```
