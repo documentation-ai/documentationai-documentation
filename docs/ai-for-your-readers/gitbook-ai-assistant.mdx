@@ -1,0 +1,179 @@
+---
+title: AI Assistant
+description: AI Assistant gives users accurate, contextual answers drawn from your entire knowledge base, not just your docs
+metaTitle: AI Assistant | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+<Image src="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686802027-bcihgy3g3b7-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FlzOUuOwM4Vffctmf3VHC-2F25_03_31_gitbook_assistant-402x.png?fm=auto&auto=compress%2Cformat" alt="GitBook Assistant" caption="The GitBook Assistant" />
+
+AI Assistant gives your users fast, accurate answers about your documentation using natural language. It's personalized to your users, can be embedded into your website or product, and can appear in the sidebar or search box of your published docs.
+
+Think of it as a product expert available to all of your users, in the places and times they need it most.
+
+The Assistant uses agentic retrieval to understand the context of queries based on the user's current page, previously-read pages, and previous conversations.
+
+AI Assistant uses [AI credits](/docs/account-and-billing/plans/ai-credits). You're only charged credits for relevant answers.
+
+Try asking the Assistant a question in the box below:
+
+## Configure AI Assistant
+
+To configure AI Assistant, open **Customize** in the site sidebar and click **AI Assistant**. Here you can enable the Assistant and customize its instructions, welcome message, and suggested questions.
+
+### Add custom instructions
+
+Custom instructions adjust the Assistant's tone of voice and add product-specific knowledge or terminology, so its answers consistently match your wider style.
+
+<Callout kind="info">
+  Custom instructions refine the Assistant's tone and knowledge. They can't override its built-in guardrails.
+</Callout>
+
+### Customize a welcome message
+
+The welcome message is the first thing visitors see when they open the Assistant with no active conversation. Use it to set expectations or point users towards a specific workflow.
+
+### Add suggested questions
+
+Suggested questions are pre-written prompts shown when the Assistant opens with no active conversation. They help users understand what they can ask, and can help you point your users towards useful answers or workflows.
+
+#### Best practices for suggested questions:
+
+- Start with a real user goal (setup, troubleshoot, integrate).
+- Use the words your users use (avoid internal codenames).
+- Keep them specific. “How do I…?” beats “Tell me about…”.
+- Cover different intents: quickstart, how-to, troubleshooting, and reference.
+
+<Callout kind="info">
+  If you’re embedding the Assistant in your product, you can also dynamically set suggestions in your embed configuration. See [Customizing the Embed](/docs/publish/embedding/configuration/customizing-docs-embed#adding-suggestions).
+</Callout>
+
+### Choose where the Assistant appears
+
+Under **Appearance**, set **Placement** to choose where readers reach the Assistant:
+
+- **Sidebar** (default): AI Assistant Chat, the full chat experience. Available on Ultimate site plans.
+- **Search box**: AI Assistant Ask, inline answers alongside keyword search results. Available on Essential and Ultimate site plans.
+
+<Callout kind="info">
+  The Assistant greeting applies to the sidebar placement only, so it's hidden while **Placement** is set to **Search box**.
+</Callout>
+
+<Callout kind="alert">
+  Turning **AI Assistant** off and on again resets **Placement** to **Sidebar**. If your site uses the search box placement, set it again after re-enabling the Assistant.
+</Callout>
+
+## Using AI Assistant in published docs
+
+How readers reach the Assistant depends on its placement.
+
+### Sidebar placement
+
+Users can access GitBook Assistant in three ways:
+
+- Press <kbd>⌘</kbd> \+ <kbd>I</kbd> on Mac or <kbd>Ctrl</kbd> \+ <kbd>I</kbd> on PC
+- Click the **GitBook Assistant**  button next to the <strong>Ask or search…</strong> bar
+- Type a question into the <strong>Ask or search…</strong> bar and choose the 'Ask…' option at the top of the menu
+
+### Search box placement
+
+With **Placement** set to **Search box**, users can ask a question directly in the <strong>Ask or search…</strong> bar at the top of the page, alongside the keyword results.
+
+They can open this by clicking it directly, or by pressing <kbd>⌘</kbd> \+ <kbd>K</kbd> on Mac or <kbd>Ctrl</kbd> \+ <kbd>K</kbd> on PC.
+
+Along with a summarized answer, users see an expandable section that shows the sources the Assistant used to create its answer, plus related questions they can click as a follow-up.
+
+The Assistant answers from the content of your docs site, and from any sources you've added through [connections](/docs/ai-for-your-readers/connections).
+
+<Callout kind="alert">
+  The Assistant does not answer across individual published sections on different [docs sites](/docs/publish/publish-a-docs-site).
+
+  Multi-section search is only available when viewing published [sections](/docs/manage-your-site/site-structure/site-sections) that live within the same site.
+</Callout>
+
+## Searching published documentation
+
+Keyword search is automatically enabled on every site, whether or not the Assistant is turned on.
+
+Your users can search for keywords within your docs site and jump quickly to specific pages or page sections across your entire site.
+
+## Embed AI Assistant in your product
+
+You can embed GitBook Assistant directly into your product or website, giving users instant access to AI-powered help without leaving your application. The Assistant can be embedded as part of [Docs Embed](/docs/publish/embedding), which includes the Assistant tab for AI-powered chat, the Search tab for scoped discovery, and the Docs tab for browsing your documentation.
+
+Choose the embedding method that fits your stack:
+
+- [**Standalone script tag**](/docs/publish/embedding/implementation/script) – Quick setup with a `<script>` tag
+- [**Node.js/NPM**](/docs/publish/embedding/implementation/nodejs) – Server-side or build-time integration
+- [**React component**](/docs/publish/embedding/implementation/react) – Prebuilt React components
+
+### Additional Assistant embedding guides:
+
+- [Using embedded Assistant with authenticated docs](/docs/publish/embedding/using-with-authenticated-docs) – Required if your docs need sign-in
+- [Customizing the Assistant embed](/docs/publish/embedding/configuration/customizing-docs-embed) – Welcome messages, actions, and suggestions
+- [Creating custom embed tools](/docs/publish/embedding/configuration/creating-custom-tools) – Connect Assistant to your APIs
+- [API reference](/docs/publish/embedding/configuration/reference) – All available methods and events
+
+## Extend AI Assistant’s knowledge
+
+AI Assistant can use external knowledge through [connections](/docs/ai-for-your-readers/connections) and [MCP servers](/docs/ai-for-your-readers/mcp-servers-for-published-docs).
+
+You can use connections when you want GitBook to sync records into your site, or use MCP servers when you want to hook up AI Assistant to custom tools.
+
+<Columns cols={2}>
+  <Card title="Connections">
+    Connections work best for content-heavy sources:
+
+    - GitHub issues and discussions
+    - Slack or Discord conversations
+    - Support content
+    - External docs, help centers, and websites
+  </Card>
+
+  <Card title="MCP servers">
+    MCP servers work best for live tools and data:
+
+    - Current account or product state
+    - Internal systems that change often
+    - Actions like creating tickets or filing bugs
+    - Sources you don't want to sync into GitBook
+  </Card>
+</Columns>
+
+<Tabs>
+  <Tab title="Add a connection">
+    <Steps>
+      <Step title="Open your site's settings">
+        Open your site dashboard. Then choose **Settings** → **Connections**.
+      </Step>
+
+      <Step title="Connect a source">
+        Choose a source type. Then authorize it, or enter the URL to import.
+      </Step>
+
+      <Step title="Expose records to AI Assistant">
+        Turn on **Expose in search / assistant** for the connection.
+
+        GitBook can then use those records in search and AI Assistant.
+      </Step>
+    </Steps>
+  </Tab>
+
+  <Tab title="Add an MCP server">
+    <Steps>
+      <Step title="Open your site's settings">
+        Open your site dashboard. Then choose **Settings** → **AI & MCP**.
+      </Step>
+
+      <Step title="Add a new server">
+        In the MCP servers table, click **Add MCP server**.
+      </Step>
+
+      <Step title="Enter the server details">
+        Give the server a name. Add its URL.
+
+        Then configure any HTTP headers GitBook must send with each request.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>

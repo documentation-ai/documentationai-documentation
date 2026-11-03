@@ -1,0 +1,100 @@
+---
+title: Site structure
+description: Organize your published documentation with sections, variants, and external links
+metaTitle: Site structure | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+The content on your site lives in its [sections](/docs/create-content/content-structure/space). You can add one or multiple sections. GitBook will publish each one and handle the navigation between them.
+
+## Content types
+
+Content in your site can serve as one of two different content types, which determine how GitBook treats it and shows it to visitors.
+
+<Columns cols={2}>
+  <Card title="Sections" href="/docs/manage-your-site/site-structure/site-sections" image="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686730221-hk67szshtb-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FGzx9x7fzQtLb7ewwm3T2-2FSite-20sections.png?fm=auto&auto=compress%2Cformat">
+    Split your site into distinct parts — ideal for multiple products or parts of your organization.
+  </Card>
+
+  <Card title="Content variants" href="/docs/manage-your-site/site-structure/variants" image="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686730444-zdel93r810f-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FDmZINE2qLnmlv30oMxUg-2FContent-20variants.png?fm=auto&auto=compress%2Cformat">
+    Publish multiple versions of the same content — ideal for localization, versioning, and more.
+  </Card>
+</Columns>
+
+## Managing your site structure
+
+By managing the structure of your site, you can also manage your site’s top navigation bar. This navigation bar lets visitors open sections, groups, and external links.
+
+Open the structure editor from **Site structure** in the site sidebar. Here you can see your site's sections, variants, and external links.
+
+Your site starts out with a single section with your site's name and a single variant with the content you created during your site's set-up.
+
+<Image src="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686744768-upuzq9pcx7-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FD4oCABc0YRJAFzaaVBpn-2Fstructure-402x.png?fm=auto&auto=compress%2Cformat" alt="A GitBook screenshot showing a docs site's structure" caption="The structure of a published docs site." />
+
+### Adding a section to your docs site
+
+To add a [section](/docs/manage-your-site/site-structure/site-sections), click the **Add section** button underneath the table and choose the content to add. The new section is then added to the table and will be available to visitors as a tab at the top of your site.
+
+To add a [variant](/docs/manage-your-site/site-structure/variants), click the **Add variant** button in the section you’d like to add to, then choose the content to add. The new variant is then added to the list of variants within the chosen section and will be available to visitors in the variant dropdown on your site.
+
+When you add content — as a variant or a section — a name and slug will be generated based on its title.
+
+### Adding an external link
+
+External links add destinations outside your site to its navigation. Add a link as its own navigation item, or place it in a section group with related sections.
+
+To add an external link:
+
+1. In the site sidebar, open **Site structure**.
+2. In the add menu, select **External link**.
+3. Enter the link label and destination URL.
+4. Choose whether to add the link separately or to a section group.
+5. Click **Save**.
+
+The link appears in your published site's navigation at the position you choose.
+
+### Changing sections or variants
+
+<Image src="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686745181-qnx7yw8rld-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FoXvDCD0U1CNnP8pJHL1L-2Fedit_variant-402x.png?fm=auto&auto=compress%2Cformat" alt="A GitBook screenshot showing how to edit a variant" caption="Update a site section or variant." />
+
+You can change the name and slug of each of your sections and variants by clicking the **Edit** <Image src="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686737316-svhbaofcvk9-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FA3OfGjPkE5GnOQvN36jN-2Fedit.svg?rasterize-bypass=true" alt="The Edit icon in GitBook" /> button in the table row of the item you’d like to edit. This will open a modal. Edit the field(s) you’d like to change, then click the **Save** button to save.
+
+<Callout kind="info">
+  Changing a section's slug will change its canonical URL. GitBook will create an automatic redirect from the old URL to the new one. You can also [manually create redirects](/docs/publish/site-redirects).
+</Callout>
+
+<Callout kind="info">
+  Slugs are unique across your entire organization — each path can only be used on one site, even across different sites. If you see a "path is already taken" error, another site is already using that slug. Choose a slightly varied slug that's still meaningful for your content.
+</Callout>
+
+To replace a section or variant, first delete it by clicking its **Edit** <Image src="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686737316-svhbaofcvk9-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FA3OfGjPkE5GnOQvN36jN-2Fedit.svg?rasterize-bypass=true" alt="The Edit icon in GitBook" /> button, then click the **Delete** button in the lower left of the modal. Once the item is deleted, click the **Add section** or **Add variant** button to add it again.
+
+### Reordering sections or variants
+
+Your site displays sections and variants in the order that they appear in your **Site structure** table. They can be reordered by grabbing the **Drag handle** <Image src="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686730174-vrkxfi8f0e-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FaS1QvPIBVYwhpFTGcPBN-2Foptions-menu.svg?rasterize-bypass=true" alt="The Options menu icon in GitBook" /> and moving it up or down. The changed order will be reflected on your site immediately.
+
+You can also use the keyboard to select and move content. Select a section or variant with the space bar, then use the arrow keys to move it up or down. Hit the space bar again to confirm the new position.
+
+### Setting default content
+
+If you have multiple sections in your site, one section will be marked as **Default**. This section is shown when visitors arrive on your site, and is served from your site’s root URL. Other sections each have a slug that is appended to the root URL.
+
+If you have multiple variants within a section, one variant will be marked as the default. Like sections, the default variant is shown when visitors arrive on your site, or when they visit a section. Other variants each have a slug that’s appended to the section’s URL.
+
+To set a section or variant as default, click on the **Actions menu** <Image src="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686610515-ggy419gxrp-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2F89MTSo5XRpPMVr1T0rxS-2Factions.svg?rasterize-bypass=true" alt="The Actions menu icon in GitBook" /> in its table row and then click **Set as default**.
+
+<Callout kind="info">
+  Setting content as default removes its slug field, as it will be served from the section root instead. GitBook redirects the old slug to the appropriate path, to ensure visitors keep seeing your content.
+</Callout>
+
+### Remove content from a site
+
+To remove a section or variant from a site, open the structure editor from **Site structure** in the site sidebar and find the content you want to remove.
+
+Open the **Actions menu** <Image src="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686610515-ggy419gxrp-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2F89MTSo5XRpPMVr1T0rxS-2Factions.svg?rasterize-bypass=true" alt="The Actions menu icon in GitBook" /> for the content you want to remove and choose **Remove**.
+
+<Callout kind="success">
+  Removing content from your site will remove it from the published site, but **will not delete the content itself** — you can still find it in [All content](/docs/create-content/content-structure/all-content).
+</Callout>
+
+If you delete a section's content entirely, the site — along with its settings and customizations — remains available. Deleted content stays in the **Trash** for seven days before it's permanently removed. If the deleted section was your site's default, check that the default is still set correctly.

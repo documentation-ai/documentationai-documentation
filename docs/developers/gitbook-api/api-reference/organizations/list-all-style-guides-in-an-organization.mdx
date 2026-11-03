@@ -1,0 +1,255 @@
+---
+title: List all style guides in an organization
+metaTitle: List all style guides in an organization | Developers | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+For the complete documentation index, see [llms.txt](https://gitbook.com/docs/llms.txt). This page is also available as [Markdown](/docs/developers/gitbook-api/api-reference/organizations/list-all-style-guides-in-an-organization).
+
+Lists every style guide (a space holding a team's writing style guide) in the organization, along with every site that references each one. Style guides that are not referenced by any site are still returned with an empty `sites` list.
+
+Available in MCP
+
+get
+
+Authorizations
+
+AuthorizationstringRequired
+
+Bearer authentication header of the form Bearer &lt;token>.
+
+Path parameters
+
+organizationIdstringRequired
+
+A unique entity identifier
+
+Pattern: `^[a-zA-Z0-9_-]+$`
+
+Responses
+
+200
+
+OK
+
+application/json
+
+get/orgs/&#123;organizationId&#125;/styleguides
+
+```
+GET /v1/orgs/{organizationId}/styleguides HTTP/1.1
+Host: api.gitbook.com
+Authorization: Bearer YOUR_SECRET_TOKEN
+Accept: */*
+```
+
+200OK
+
+```
+{
+  "styleguides": [
+    {
+      "space": {
+        "object": "space",
+        "id": "text",
+        "title": "text",
+        "emoji": "🎉",
+        "visibility": "public",
+        "createdAt": "2026-01-01T00:00:00.000Z",
+        "updatedAt": "2026-01-01T00:00:00.000Z",
+        "deletedAt": "2026-01-01T00:00:00.000Z",
+        "editMode": "live",
+        "type": "styleguide",
+        "mergeRules": {
+          "type": "inherit"
+        },
+        "urls": {
+          "location": "https://example.com",
+          "app": "https://example.com",
+          "published": "https://example.com",
+          "public": "https://example.com",
+          "icon": "https://example.com"
+        },
+        "organization": "text",
+        "parent": "text",
+        "language": "en",
+        "gitSync": {
+          "repoName": "text",
+          "installationStatus": "unauthenticated",
+          "installationProvider": "github",
+          "installationId": "text",
+          "parentInstallationId": "text",
+          "url": "text",
+          "installationProjectDirectory": "text",
+          "operation": {
+            "state": "running",
+            "direction": "export",
+            "startedAt": "2026-01-01T00:00:00.000Z",
+            "endedAt": "2026-01-01T00:00:00.000Z",
+            "error": "text",
+            "errorAction": {
+              "label": "text",
+              "url": "https://example.com"
+            }
+          },
+          "operationTimeout": 1,
+          "updatedAt": "2026-01-01T00:00:00.000Z"
+        },
+        "previousGitSync": {
+          "url": "text"
+        },
+        "imports": [
+          {
+            "object": "import-run",
+            "id": "text",
+            "startedAt": "2026-01-01T00:00:00.000Z",
+            "completedAt": "2026-01-01T00:00:00.000Z",
+            "createdAt": "2026-01-01T00:00:00.000Z",
+            "updatedAt": "2026-01-01T00:00:00.000Z",
+            "status": "pending",
+            "reason": "text",
+            "source": {
+              "type": "website",
+              "url": "https://example.com"
+            },
+            "target": {
+              "space": "text",
+              "changeRequest": "text",
+              "page": "text"
+            },
+            "site": "text",
+            "createdBy": "text",
+            "urls": {
+              "location": "https://example.com"
+            },
+            "pages": [
+              {
+                "id": "text",
+                "sourceURL": "text",
+                "type": "page",
+                "status": "complete"
+              }
+            ]
+          }
+        ],
+        "visitorAuth": {
+          "backend": "custom"
+        },
+        "revision": "text",
+        "defaultLevel": "admin",
+        "comments": 1,
+        "changeRequests": 1,
+        "changeRequestsOpen": 1,
+        "changeRequestsDraft": 1,
+        "internal_poweredByV2": true,
+        "internal_singleWebsocket": true,
+        "permissions": {
+          "view": true,
+          "access": true,
+          "admin": true,
+          "viewInviteLinks": true,
+          "edit": true,
+          "triggerGitSync": true,
+          "comment": true,
+          "merge": true,
+          "review": true,
+          "installIntegration": true
+        }
+      },
+      "sites": [
+        {
+          "object": "site",
+          "id": "text",
+          "type": "basic",
+          "appliedType": "basic",
+          "unpublishedBy": "user",
+          "title": "text",
+          "icon": {
+            "icon": {
+              "light": "https://example.com",
+              "dark": "https://example.com"
+            }
+          },
+          "hostname": "text",
+          "basename": "text",
+          "proxy": {
+            "origin": "text",
+            "target": "text"
+          },
+          "visibility": "public",
+          "defaultLevel": "admin",
+          "permissions": {
+            "view": true,
+            "access": true,
+            "edit": true,
+            "create": true,
+            "admin": true,
+            "installIntegration": true,
+            "viewAdaptiveSchema": true,
+            "editAdaptiveSchema": true
+          },
+          "published": true,
+          "siteSpaces": 1,
+          "gitSync": {
+            "repoName": "text",
+            "installationStatus": "unauthenticated",
+            "installationProvider": "github",
+            "installationId": "text",
+            "parentInstallationId": "text",
+            "url": "text",
+            "installationProjectDirectory": "text",
+            "operation": {
+              "state": "running",
+              "direction": "export",
+              "startedAt": "2026-01-01T00:00:00.000Z",
+              "endedAt": "2026-01-01T00:00:00.000Z",
+              "error": "text",
+              "errorAction": {
+                "label": "text",
+                "url": "https://example.com"
+              }
+            },
+            "operationTimeout": 1,
+            "updatedAt": "2026-01-01T00:00:00.000Z"
+          },
+          "createdAt": "2026-01-01T00:00:00.000Z",
+          "lastScanAt": "2026-01-01T00:00:00.000Z",
+          "adaptiveContent": {
+            "enabled": true
+          },
+          "ads": {
+            "status": "pending",
+            "submittable": true
+          },
+          "styleguide": {
+            "kind": "space",
+            "space": "text"
+          },
+          "features": [
+            {
+              "id": "sites-adaptive-content",
+              "plan": "basic",
+              "frozen": true,
+              "customizations": [
+                "header-logo"
+              ]
+            }
+          ],
+          "urls": {
+            "location": "https://example.com",
+            "app": "https://example.com",
+            "published": "https://example.com",
+            "preview": "https://example.com",
+            "login": "https://example.com",
+            "logout": "https://example.com"
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+
+Last updated <time>1 minute ago</time>
+
+Was this helpful?

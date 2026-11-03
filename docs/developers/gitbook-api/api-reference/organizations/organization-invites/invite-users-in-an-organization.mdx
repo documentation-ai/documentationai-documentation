@@ -1,0 +1,96 @@
+---
+title: Invite users in an organization
+metaTitle: Invite users in an organization | Developers | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+For the complete documentation index, see [llms.txt](https://gitbook.com/docs/llms.txt). This page is also available as [Markdown](/docs/developers/gitbook-api/api-reference/organizations/organization-invites/invite-users-in-an-organization).
+
+post
+
+Authorizations
+
+AuthorizationstringRequired
+
+Bearer authentication header of the form Bearer &lt;token>.
+
+Path parameters
+
+organizationIdstringRequired
+
+A unique entity identifier
+
+Pattern: `^[a-zA-Z0-9_-]+$`
+
+Body
+
+rolestring · enum · nullableOptional
+
+Default role to set on newly invited members.
+
+Possible values:
+
+ssobooleanOptional
+
+If true, invites the user as an SSO user of the organization. Defaults to false.
+
+Responses
+
+200
+
+OK
+
+application/json
+
+usersstring[]Required
+
+The unique identifiers of the users who were added to the organization
+
+invitednumberRequired
+
+The number of users who were added to the organization
+
+failedSSOEmailsstring[]Optional
+
+A list of emails who were invited to the organization, but who were not added as SSO users as they are members of another org
+
+400
+
+Bad Request
+
+application/json
+
+post/orgs/&#123;organizationId&#125;/invites
+
+```
+POST /v1/orgs/{organizationId}/invites HTTP/1.1
+Host: api.gitbook.com
+Authorization: Bearer YOUR_SECRET_TOKEN
+Content-Type: application/json
+Accept: */*
+Content-Length: 60
+
+{
+  "emails": [
+    "contact@gitbook.com"
+  ],
+  "role": "admin",
+  "sso": true
+}
+```
+
+```
+{
+  "users": [
+    "text"
+  ],
+  "invited": 1,
+  "failedSSOEmails": [
+    "text"
+  ]
+}
+```
+
+Last updated <time>1 minute ago</time>
+
+Was this helpful?

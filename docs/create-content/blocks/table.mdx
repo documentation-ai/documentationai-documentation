@@ -1,0 +1,103 @@
+---
+title: Tables
+description: Keep information organized and make documenting data easier with tables
+metaTitle: Tables | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+You can add tables to better organize your information in a GitBook page. You can see a sample of what is possible in the example table below:
+
+| Company | Status&lt;select>&lt;option value="36bef47f343d4588bc43db3e5c701796" label="In progress" color="blue">&lt;/option>&lt;/select> | Contact | MRR | Contact | MRR | Status&lt;select>&lt;option value="3e7a52c673ec4a01992566d18271f7a5" label="In progress" color="blue">&lt;/option>&lt;option value="2362fd3eafc7476fb8646ac754f34b72" label="Done" color="blue">&lt;/option>&lt;/select> |
+| --- | --- | --- | --- | --- | --- | --- |
+| **Ace AI** – Design | In progress | [rena@ace.ai](mailto:noreply@gitbook.com) | $450 | [rena@ace.ai](mailto:noreply@gitbook.com) | $420 | In progress |
+| **Discrete Data** – API | In progress | [dave@dd.inc](mailto:noreply@gitbook.com) | $100 | [dave@dd.inc](mailto:noreply@gitbook.com) | $69 |  |
+| **Example Co** |  | [pete@example.com](mailto:pete@example.com) | $50 |  |  |  |
+
+### Table block options
+
+When you open the Options menu to the left of a table block, you’ll have a number of options to change the appearance and manage the data inside the table:
+
+- <strong>Table/Cards:</strong> Choose to display your data as either a table block or a cards block. GitBook populates both these blocks using the same data, so you can switch between them depending on the look and design you want.
+- <strong>Add column:</strong> Add a new column to the right of your table. You can choose column type using the menu, or just click **Add column** to add a text column.
+- <strong>Insert row:</strong> Add a new row to the bottom of your table.
+- <strong>Show header:</strong> Hide or show the top title row of your table.
+- <strong>Freeze header:</strong> Keep the top row of your table visible on the page while you scroll through the rows below. This is useful for larger tables where you want the column titles to stay in view.
+- <strong>Freeze first column:</strong> Keep the leftmost column of your table visible while horizontally scrolling through the columns to the right. This is useful for wider tables that overflow the page width, where you want the row labels or identifiers to stay in view.
+- <strong>Reset column sizing:</strong> If you've changed the column widths, this will reset them all to be equal again.
+- <strong>Visible columns:</strong> Choose which columns are visible and which are hidden. If you have hidden columns in your table, this menu is where you can make them visible again.
+- <strong>Delete:</strong> Deletes the table block and all of its content.
+
+### Merging cells
+
+Select multiple cells by dragging across them, or by holding Shift and pressing the arrow keys. Use the knob that appears after you select cells to merge them.
+
+Merging works with **Text** and **Number** cells only. GitBook blocks merging for unsupported fields, mixed field types, comments outside the anchor cell, and the Cards view. GitBook also blocks reordering merged cells or rows that contain merged cells.
+
+Merges use native `colspan` and `rowspan` when you use Git Sync. Merges are positional: the anchor cell and spans follow the table’s current row order and visible-column order.
+
+Version one doesn't support rectangular merges, such as a `2x2` selection. When you merge cells, select the value to keep. GitBook clears the other values. Unmerging doesn't restore cleared values.
+
+### Changing a column type
+
+Depending on the data you want to display, you can set different data types for your table columns. These add formatting, embellishments, or restrictions to every cell in the column:
+
+- <strong>Text:</strong> A standard text column, with standard formatting support.
+- <strong>Number:</strong> A number column, with or without floating digits.
+- <strong>Checkbox:</strong> A checkbox on each line that can be checked or unchecked.
+- <strong>Select:</strong> You can select data from a list of options that you can define by opening the **Columns options** menu and choosing **Manage options**. This can be single-choice or multiple-choice.
+- <strong>Users:</strong> You can add the name and avatar of a member of your organization. This can be single-choice or multiple-choice.
+- <strong>Files:</strong> Reference a file in the section. You can upload new files when populating cells in the column.
+- <strong>Rating:</strong> A star rating. You can configure the maximum rating by opening the **Column options** menu and choosing **Max**.
+
+Use the **Column options** menu to change a column’s type. When you change a column type, you’ll see a prompt asking you to confirm the change, as column data could be deleted or broken by this action.
+
+### Resizing columns
+
+Hover over a column’s edge and drag to resize it. A pixel count appears above the cursor to help you set consistent column sizes.
+
+GitBook stores column sizes as a percentage of the overall width, which allows for relative sizing based on the overall width of the table.
+
+### Scrolling tables
+
+Tables that are wider than the editor container will be horizontally scrollable.
+
+### Column options
+
+To reorder columns, click and drag on the drag handle <Image src="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686680250-b01qn5scaep-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FPnnI41SqLSaKBNwT98fW-2Factions-horizontal.svg?rasterize-bypass=true" alt="The table drag handle icon in GitBook" /> at the top of the column you want to move.
+
+You can add new columns by clicking the **Add column** button that appears when you hover over the right edge of the table.
+
+Inside the **Column options** menu you can also switch automatic sizing on and off, add a new column to the right, hide the column, or delete the column.
+
+### Row options
+
+Hover over the row and click the **Row options** <Image src="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686610515-ggy419gxrp-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2F89MTSo5XRpPMVr1T0rxS-2Factions.svg?rasterize-bypass=true" alt="The Row options menu icon in GitBook" /> button that appears on the left of it to open the **Row options** menu. You’ll see a number of options:
+
+- <strong>Open row:</strong> Open the row in a modal that shows all of its data. Here you can quickly change row types, edit data, and see data in hidden columns.
+- <strong>Insert above/below:</strong> Add a new row above or below the currently-selected row.
+- <strong>Add column:</strong> Add a new column on the right of the table.
+- <strong>Delete row:</strong> Permanently remove all the data in the row from your table.
+
+### Images in tables
+
+When you click into a table cell, you can hit the / key to insert images. Images cannot be added to the header row of a table.
+
+### Representation in Markdown
+
+```markdown
+# Table
+
+|   |   |   |
+| - | - | - |
+|   |   |   |
+|   |   |   |
+|   |   |   |
+```
+
+<Expandable title="Can I create nested tables in GitBook?">
+  It's not possible to nest tables in GitBook. To ensure documents remain easy to write, reliable to render, and accessible for all users, GitBook keeps tables flat.
+
+  Once a table sits inside another table cell, it becomes difficult to edit, resize, navigate, or maintain consistent formatting across devices.
+
+  Nested tables also introduce significant complexity in the underlying document structure, often breaking clean semantics and leading to unpredictability in features such as Git Sync.
+</Expandable>

@@ -1,0 +1,54 @@
+---
+title: Concepts
+description: Learn about different GitBook concepts related to GitBook integrations
+metaTitle: Concepts | Developers | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+For the complete documentation index, see [llms.txt](https://gitbook.com/docs/llms.txt). This page is also available as [Markdown](/docs/developers/integrations/concepts).
+
+Throughout the GitBook developer platform and its documentation, you'll encounter various concepts, variables, and terms.
+
+Term
+
+Description
+
+Where to Find
+
+`<organizationId>`
+
+A unique identifier of an Organization in GitBook.
+
+Found in the URL of any space or via the "Copy org ID" button in the organization settings.  Example: `https://app.gitbook.com/o/<organizationId/s/<sapceId>`
+
+`<spaceId>`
+
+A unique identifier of a Space in GitBook.
+
+Found in the URL of any space or via the "Copy space ID" button in the upper-right dropdown in a space.  Example: `https://app.gitbook.com/o/<organizationId/s/<sapceId>`
+
+`<userId>`
+
+A unique identifier of a User in GitBook.
+
+Retrieved from the "GET Current User" API endpoint or via the "Copy user ID" button from your organization settings.
+
+`gitbook-manifest.yaml`
+
+A required file in a GitBook integration containing metadata for publishing and developing your app.  Automatically generated from the CLI when running `gitbook new`.
+
+See the [**Configurations**](/docs/developers/integrations/configurations) section for more info.
+
+`.gitbook-dev.yaml`
+
+A required file in a GitBook integration that includes configuration for local development.  Automatically generated from the CLI when running `gitbook dev`.
+
+See the [**Development**](/docs/developers/integrations/development) section for more info.
+
+### How integrations are rendered in GitBook
+
+Rendering of custom blocks is controlled in the integration's code and executed in the GitBook backend.
+
+Last updated <time>1 year ago</time>
+
+Was this helpful?

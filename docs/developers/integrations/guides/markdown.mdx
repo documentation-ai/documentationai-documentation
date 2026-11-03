@@ -1,0 +1,62 @@
+---
+title: Reference your component in markown
+description: Render a custom integration block from Markdown synced with Git Sync
+metaTitle: Reference your component in markown | Developers | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+For the complete documentation index, see [llms.txt](https://gitbook.com/docs/llms.txt). This page is also available as [Markdown](/docs/developers/integrations/guides/markdown).
+
+This guide maps a fenced code block to your custom component. After Git Sync imports the Markdown file, GitBook renders the component in the page.
+
+### Before you begin
+
+Before you start, make sure that:
+
+- Your integration defines a custom block in `gitbook-manifest.yaml`.
+- Your repository syncs with Git Sync.
+
+### Map the code block
+
+In `gitbook-manifest.yaml`, add a `markdown` mapping to the block:
+
+```
+blocks:
+  - id: block-name
+    title: My custom block
+    markdown:
+      codeblock: blocksyntax
+      body: content
+```
+
+The `codeblock` value identifies the Markdown fence. The `body` value identifies the component property that receives the fence content.
+
+### Add the component to Markdown
+
+In a Markdown file that Git Sync imports, add a fenced code block:
+
+<a id="B:3"></a>
+
+GitBook creates your custom block with `content` set to `something`.
+
+### Pass additional properties
+
+Add properties after the fence name when your component needs more values:
+
+<a id="B:4"></a>
+
+GitBook sets `content` to `something` and `propA` to `A`.
+
+### Sync and verify
+
+1. Commit and push the manifest and Markdown changes.
+2. Wait for Git Sync to import the commit.
+3. Open the synced page in GitBook.
+
+GitBook renders the fenced block as your custom component.
+
+For custom block configuration, see [Configure your integration](/docs/developers/integrations/configurations#blocks). For component rendering, see the Component reference.
+
+Last updated <time>2 months ago</time>
+
+Was this helpful?

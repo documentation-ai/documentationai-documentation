@@ -1,0 +1,114 @@
+---
+title: Actions
+description: Reference for built-in and custom ContentKit actions
+metaTitle: Actions | Developers | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+ContentKit actions handle events in your component. GitBook provides built-in actions, and your component can define custom actions.
+
+### Built-in actions
+
+#### `@editor.node.updateProps`
+
+Updates properties stored on the editor node bound to the current component. GitBook dispatches this action when component props change:
+
+```json
+{
+  "action": "@editor.node.updateProps",
+  "props": {}
+}
+```
+
+#### `@ui.url.open`
+
+Opens a URL:
+
+```json
+{
+  "action": "@ui.url.open",
+  "url": "https://www.gitbook.com"
+}
+```
+
+#### `@ui.modal.open`
+
+Opens `componentId` as an overlay modal with `props`:
+
+```json
+{
+  "action": "@ui.modal.open",
+  "componentId": "myModal",
+  "props": {}
+}
+```
+
+#### `@ui.modal.close`
+
+Closes the current modal. Call this action from a modal component. It can include return data from the modal:
+
+```json
+{
+  "action": "@ui.modal.close"
+}
+```
+
+#### `@webframe.ready`
+
+Signals that a webframe is ready to receive messages and updates:
+
+```json
+{
+  "action": "@webframe.ready"
+}
+```
+
+#### `@webframe.resize`
+
+Resizes a webframe container:
+
+```json
+{
+  "action": "@webframe.resize",
+  "aspectRatio": 1.7,
+  "maxHeight": 400,
+  "maxWidth": 300
+}
+```
+
+#### `@link.unfurl`
+
+GitBook sends this action to a block when someone pastes a matching URL:
+
+```json
+{
+  "action": "@link.unfurl",
+  "url": "https://myapp.com/"
+}
+```
+
+Configure URL patterns in your integration manifest:
+
+```yaml
+blocks:
+  - id: helloworld
+    title: Hello world
+    urlUnfurl:
+      - https://myapp.com/
+```
+
+Follow [Create a custom unfurl action](/docs/developers/integrations/guides/create-a-custom-unfurl-action-for-your-integration) for a complete example.
+
+### Custom actions
+
+Define custom action names in your component. The action name is available on the `action` object:
+
+```typescript
+action: async (previous, action) => {
+  switch (action.action) {
+    case 'custom-action':
+      return {};
+    default:
+  }
+}
+```

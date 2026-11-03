@@ -1,0 +1,353 @@
+---
+title: API Reference
+description: Learn more about the methods available to use when working with Docs Embed programmatically
+metaTitle: API Reference | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+Docs Embed provides different APIs depending on how you integrate it. This reference covers all available methods across integration methods.
+
+## Method Comparison
+
+| Method | Standalone Script | NPM Package | React Components |
+| --- | --- | --- | --- |
+| **Initialize** | `GitBook('init', options, frameOptions)` | `createGitBook(options)` | `<GitBookProvider siteURL="...">` |
+| **Color scheme override** | `GitBook('init', options, { colorScheme })` | `client.getFrameURL({ colorScheme })` | `<GitBookFrame colorScheme="..." />` |
+| **Get frame URL** | ❌ (handled internally) | `client.getFrameURL(options)` | `useGitBook().getFrameURL(options)` |
+| **Create frame client** | ❌ (handled internally) | `client.createFrame(iframe)` | `useGitBook().createFrame(iframe)` |
+| **Show/Hide widget** | `GitBook('show')` / `GitBook('hide')` | ❌ | ❌ |
+| **Open/Close window** | `GitBook('open')` / `GitBook('close')` / `GitBook('toggle')` | ❌ | ❌ |
+| **Navigate to page** | `GitBook('navigateToPage', path)` | `frame.navigateToPage(path)` | Via frame client |
+| **Navigate to assistant** | `GitBook('navigateToAssistant')` | `frame.navigateToAssistant()` | Via frame client |
+| **Post message** | `GitBook('postUserMessage', message)` | `frame.postUserMessage(message)` | Via frame client |
+| **Clear chat** | `GitBook('clearChat')` | `frame.clearChat()` | Via frame client |
+| **Configure** | `GitBook('configure', settings)` | `frame.configure(settings)` | Props on `<GitBookFrame>` |
+| **Event listeners** | ❌ | `frame.on(event, listener)` | Via frame client |
+| **Unload** | `GitBook('unload')` | ❌ | ❌ |
+
+## Standalone Script API
+
+### Initialization
+
+#### `GitBook('init', options, frameOptions)`
+
+Initialize the widget with site URL and optional authenticated access.
+
+<strong>Parameters:</strong>
+
+- `options`: `{ siteURL: string }` \- Your GitBook docs site URL
+- `frameOptions`: `{ visitor?: { token?: string, unsignedClaims?: Record<string, unknown> }, colorScheme?: 'light' | 'dark' }` (optional) - Frame options
+
+<strong>Example:</strong>
+
+```javascript
+window.GitBook('init', 
+  { siteURL: 'https://docs.company.com' },
+  { visitor: { token: 'your-jwt-token' }, colorScheme: 'dark' }
+);
+```
+
+When omitted, `colorScheme` follows the iframe's CSS `color-scheme`.
+
+### Widget Control
+
+#### Show the widget
+
+Display the GitBook widget if it has been hidden.
+
+<strong>Example:</strong>
+
+```js
+window.GitBook("show");
+```
+
+#### Hide the widget
+
+Hide the GitBook widget without unloading it.
+
+<strong>Example:</strong>
+
+```js
+window.GitBook("hide");
+```
+
+#### Open the window
+
+Open the Docs Embed window.
+
+<strong>Example:</strong>
+
+```js
+window.GitBook("open");
+```
+
+#### Close the window
+
+Close the Docs Embed window.
+
+<strong>Example:</strong>
+
+```js
+window.GitBook("close");
+```
+
+#### Toggle the window
+
+Toggle the Docs Embed window open or closed.
+
+<strong>Example:</strong>
+
+```js
+window.GitBook("toggle");
+```
+
+#### Unload the widget
+
+Completely remove the GitBook widget from your site.
+
+<strong>Example:</strong>
+
+```js
+window.GitBook("unload");
+```
+
+### Navigation
+
+#### `GitBook('navigateToPage', path)`
+
+Navigate to a specific page within your GitBook docs by its path.
+
+<strong>Parameters:</strong>
+
+- `path` (string): The path to the page you want to navigate to
+
+<strong>Example:</strong>
+
+```javascript
+// Navigate to the getting started guide
+window.GitBook("navigateToPage", "/getting-started");
+
+// Navigate to a specific API documentation page
+window.GitBook("navigateToPage", "/api/authentication");
+
+// Navigate to FAQ section
+window.GitBook("navigateToPage", "/faq/billing");
+```
+
+#### `GitBook('navigateToAssistant')`
+
+Navigate directly to the Assistant tab.
+
+<strong>Example:</strong>
+
+```javascript
+// Switch to the assistant tab
+window.GitBook("navigateToAssistant");
+
+// You might use this in response to a button click
+document.getElementById("help-button").addEventListener("click", () => {
+  window.GitBook("navigateToAssistant");
+});
+```
+
+### Chat
+
+#### `GitBook('postUserMessage', message)`
+
+Post a message to the chat as if the user typed it.
+
+<strong>Parameters:</strong>
+
+- `message` (string): The message to post to the chat
+
+<strong>Example:</strong>
+
+```javascript
+// Send a predefined message
+window.GitBook("postUserMessage", "How do I reset my password?");
+
+// Send a message based on user action
+function askAboutBilling() {
+  window.GitBook("postUserMessage", "I have questions about my billing");
+}
+
+// Send a message with context
+const userPlan = "premium";
+window.GitBook(
+  "postUserMessage",
+  `I'm on the ${userPlan} plan and need help with advanced features`
+);
+```
+
+#### `GitBook('clearChat')`
+
+Clear all messages from the current chat session.
+
+<strong>Example:</strong>
+
+```javascript
+// Clear the chat
+window.GitBook("clearChat");
+
+// Clear chat and start fresh conversation
+function startNewConversation() {
+  window.GitBook("clearChat");
+  window.GitBook("postUserMessage", "Hello, I need help with a new issue");
+}
+
+// Clear chat when switching contexts
+document.getElementById("new-topic").addEventListener("click", () => {
+  window.GitBook("clearChat");
+  window.GitBook("navigateToAssistant");
+});
+```
+
+### Configuration
+
+#### `GitBook('configure', settings)`
+
+Configure the embed with customization options. See the [Configuration section](/docs/publish/embedding/implementation/script#configuration-options) for available options.
+
+<strong>Example:</strong>
+
+```javascript
+window.GitBook('configure', {
+  trademark: false,
+  tabs: ['assistant', 'search', 'docs'],
+  actions: [
+    {
+      icon: 'circle-question',
+      label: 'Contact Support',
+      onClick: () => window.open('https://support.example.com', '_blank')
+    }
+  ],
+  greeting: { title: 'Welcome!', subtitle: 'How can I help?' },
+  assistantName: 'Support Copilot',
+  closeButton: true,
+  suggestions: ['What is GitBook?', 'How do I get started?']
+});
+```
+
+## NPM Package API
+
+### Client Factory
+
+#### `createGitBook(options)`
+
+Create a GitBook client instance.
+
+<strong>Parameters:</strong>
+
+- `options`: `{ siteURL: string }` \- Your GitBook docs site URL
+
+<strong>Returns:</strong> `GitBookClient`
+
+<strong>Example:</strong>
+
+```javascript
+import { createGitBook } from '@gitbook/embed';
+
+const gitbook = createGitBook({
+  siteURL: 'https://docs.company.com'
+});
+```
+
+#### `client.getFrameURL(options)`
+
+Get the iframe URL with optional authenticated access.
+
+<strong>Parameters:</strong>
+
+- `options`: `{ visitor?: { token?: string, unsignedClaims?: Record<string, unknown> }, colorScheme?: 'light' | 'dark' }` (optional)
+
+<strong>Returns:</strong> `string`
+
+<strong>Example:</strong>
+
+```javascript
+const iframeURL = gitbook.getFrameURL({
+  colorScheme: 'dark',
+  visitor: {
+    token: 'your-jwt-token',
+    unsignedClaims: { userId: '123', plan: 'premium' }
+  }
+});
+```
+
+#### `client.createFrame(iframe)`
+
+Create a frame client to communicate with the iframe.
+
+<strong>Parameters:</strong>
+
+- `iframe`: `HTMLIFrameElement` \- The iframe element
+
+<strong>Returns:</strong> `GitBookFrameClient`
+
+<strong>Example:</strong>
+
+```javascript
+const iframe = document.createElement('iframe');
+iframe.src = gitbook.getFrameURL();
+const frame = gitbook.createFrame(iframe);
+```
+
+### Frame Client Methods
+
+#### `frame.navigateToPage(path)`
+
+Navigate to a specific page in the docs tab.
+
+<strong>Parameters:</strong>
+
+- `path`: `string` \- The path to the page
+
+#### `frame.navigateToAssistant()`
+
+Switch to the assistant tab.
+
+#### `frame.postUserMessage(message)`
+
+Post a message to the chat.
+
+<strong>Parameters:</strong>
+
+- `message`: `string` \- The message to post
+
+#### `frame.clearChat()`
+
+Clear chat history.
+
+#### `frame.configure(settings)`
+
+Configure the embed. See the [Configuration section](/docs/publish/embedding/implementation/nodejs#configuration-options) for available options.
+
+#### `frame.on(event, listener)`
+
+Register an event listener.
+
+<strong>Parameters:</strong>
+
+- `event`: `string` \- The event name
+- `listener`: `Function` \- The callback function
+
+<strong>Returns:</strong> `() => void` \- Unsubscribe function
+
+<strong>Example:</strong>
+
+```javascript
+const unsubscribe = frame.on('close', () => {
+  console.log('Frame closed');
+});
+
+// Later, unsubscribe
+unsubscribe();
+```
+
+## React Components API
+
+See the [React integration guide](/docs/publish/embedding/implementation/react) for component props and the `useGitBook` hook API.
+
+`GitBookFrame` supports `assistantName`, `closeButton`, `colorScheme="light" | "dark"`, and the `visitor` prop for authenticated access.
+
+`useGitBook().getFrameURL()` accepts the same `colorScheme` parameter as the NPM package.

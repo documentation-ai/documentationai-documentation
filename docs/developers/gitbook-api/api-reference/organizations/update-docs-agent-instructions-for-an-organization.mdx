@@ -1,0 +1,120 @@
+---
+title: Update Docs agent instructions for an organization
+metaTitle: Update Docs agent instructions for an organization | Developers | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+For the complete documentation index, see [llms.txt](https://gitbook.com/docs/llms.txt). This page is also available as [Markdown](/docs/developers/gitbook-api/api-reference/organizations/update-docs-agent-instructions-for-an-organization).
+
+Available in MCP
+
+put
+
+Authorizations
+
+AuthorizationstringRequired
+
+Bearer authentication header of the form Bearer &lt;token>.
+
+Path parameters
+
+organizationIdstringRequired
+
+A unique entity identifier
+
+Pattern: `^[a-zA-Z0-9_-]+$`
+
+Body
+
+Responses
+
+200
+
+Updated instructions
+
+application/json
+
+objectstring · enumRequiredPossible values:
+
+updatedAtstring · date-timeRequired
+
+updatedBystringRequired
+
+Identifier of the member who last updated the instructions.
+
+put/orgs/&#123;organizationId&#125;/agent-instructions
+
+```
+PUT /v1/orgs/{organizationId}/agent-instructions HTTP/1.1
+Host: api.gitbook.com
+Authorization: Bearer YOUR_SECRET_TOKEN
+Content-Type: application/json
+Accept: */*
+Content-Length: 195
+
+{
+  "instructions": {
+    "object": "document",
+    "data": {},
+    "nodes": [
+      {
+        "object": "block",
+        "type": "paragraph",
+        "data": {},
+        "nodes": [
+          {
+            "object": "text",
+            "leaves": [
+              {
+                "object": "leaf",
+                "text": "Hello world",
+                "marks": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+200Updated instructions
+
+```
+{
+  "object": "agent-instructions",
+  "instructions": {
+    "object": "document",
+    "data": {},
+    "nodes": [
+      {
+        "object": "block",
+        "type": "paragraph",
+        "data": {},
+        "nodes": [
+          {
+            "object": "text",
+            "leaves": [
+              {
+                "object": "leaf",
+                "text": "Hello world",
+                "marks": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "updatedAt": "2026-01-01T00:00:00.000Z",
+  "updatedBy": "text",
+  "urls": {
+    "location": "text"
+  }
+}
+```
+
+Last updated <time>1 minute ago</time>
+
+Was this helpful?

@@ -1,0 +1,77 @@
+---
+title: Get an organization's subscription
+metaTitle: Get an organization's subscription | Developers | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+Returns whether the organization is on a trial, the free plan or a paid plan, when its trial ends, and where to upgrade. Use it to answer questions about the plan or the trial, or to find how to upgrade.
+
+**GET** `/orgs/{organizationId}/subscription`
+
+**Parameters**
+
+<ParamField header="Authorization" param-type="string" />
+
+<ParamField path="organizationId" param-type="string" required={true}>
+  The unique id of the organization
+</ParamField>
+
+**Responses**
+
+`200` OK
+
+<ResponseField name="object" field-type="string" required={true} enum="organization-subscription">
+  Type of Object, always equals to "organization-subscription"
+</ResponseField>
+
+<ResponseField name="status" field-type="string" required={true} enum="trial,free,paid">
+  Whether the organization is on a trial, the free plan, or a paid plan.
+</ResponseField>
+
+<ResponseField name="plan" field-type="object" required={true}>
+  The plan in effect, which is the trial's plan while trialing.
+
+  <Expandable title="Object Properties">
+    <ResponseField name="id" field-type="string" required={true} enum="free_2024,plus_2024,pro_2024,enterprise_2024,community_2024,internal">
+      Name of the product
+    </ResponseField>
+
+    <ResponseField name="title" field-type="string" required={true}>
+      Name of the plan shown to users, e.g. Pro.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="trial" field-type="object">
+  The current or last trial of an organization.
+
+  <Expandable title="Object Properties">
+    <ResponseField name="status" field-type="string" required={true} enum="notapplicable,none,active,ended,expired">
+      - notapplicable, no trial can be started for this organization. - none, no trial has been started yet. - active, trial is active. - ended, the trial has ended and the user has choosen to stay on the free plan or has upgraded to a paid plan. - expired, the trial has ended but the user hasn't deciced yet what to do.
+    </ResponseField>
+
+    <ResponseField name="endDate" field-type="string" required={true} />
+
+    <ResponseField name="daysRemaining" field-type="integer" required={true}>
+      Days left in the trial, rounded up, so 1 is its last day. 0 once it has ended.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="canManageBilling" field-type="boolean" required={true}>
+  Whether the user is an administrator of the organization, and so can upgrade. Otherwise, they have to ask an administrator to upgrade.
+</ResponseField>
+
+<ResponseField name="upgradeUrl" field-type="string" />
+
+<ResponseField name="pricingUrl" field-type="string" required={true} />
+
+`404` Not Found
+
+<ResponseField name="error" field-type="object" required={true}>
+  <Expandable title="Object Properties">
+    <ResponseField name="code" field-type="integer" required={true} enum="404" />
+
+    <ResponseField name="message" field-type="string" required={true} />
+  </Expandable>
+</ResponseField>

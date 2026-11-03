@@ -1,0 +1,124 @@
+---
+title: Cookies
+description: Pass visitor data into your docs through a public or signed cookie
+metaTitle: Cookies | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+<Callout kind="info">
+  Head to our guides to find a [full walk-through](https://gitbook.com/docs/guides/docs-personalization-and-authentication/setting-up-adaptive-content) on setting up adaptive content with cookies.
+</Callout>
+
+<Callout kind="alert">
+  Using adaptive content with feature flags requires adding code to your application.
+
+  This method only works if your site is served under a [custom domain](/docs/publish/custom-domain).
+</Callout>
+
+You can pass visitor data to your docs through your visitors browser cookies. Below is an overview of the different methods.
+
+| Method | Use-cases | Ease of setup | Security | Format |
+| --- | --- | --- | --- | --- |
+| Signed cookie `gitbook-visitor-token` | API test credentials, customer identification | Require signing and a custom domain | ✅ Properties can only be defined by the backend | JWT |
+| Public cookie `gitbook-visitor-public` | Feature flags, roles | Easy to set up | ❌ Visitor can override the properties | JSON |
+
+### Public cookie
+
+To pass data to GitBook from a public cookie, you’ll need to send the data from your application by setting a public `gitbook-visitor-public` cookie.
+
+Below is a simple JavaScript example:
+
+```javascript
+import Cookies from 'js-cookie';
+
+const cookieData = {
+  isLoggedIn: true,
+  isBetaUser: false,
+};
+
+Cookies.set('gitbook-visitor-public', JSON.stringify(cookieData), {
+  secure: true,
+  domain: '*.acme.org',
+})
+```
+
+<Callout kind="alert">
+  Data passed through public cookies must be defined in your visitor schema through an [unsigned](/docs/publish/adaptive-content/enabling-adaptive-content#set-an-unsigned-claim) object.
+</Callout>
+
+### Signed cookie
+
+To pass data to GitBook more securely, you’ll need to send the data as a [JSON Web Token](https://jwt.io/introduction) from your application in a cookie named `gitbook-visitor-token` tied to your domain.
+
+To set this up, you'll need to adjust your application’s login flow to include the following steps:
+
+<Steps>
+  <Step title="Generate a JWT when users logs in to your application">
+    Whenever a user logs in to your product, generate a JWT that contains selected attributes of your authenticated user's info.
+  </Step>
+
+  <Step title="Sign the JWT using the site's visitor signing key">
+    Then, make sure to sign the JWT using the site's **visitor signing key**, which you can find in your site’s audience settings after enabling Adaptive Content.
+  </Step>
+
+  <Step title="Store the JWT in a wildcard session cookie">
+    Finally you need to store the signed JWT containing your user's info into a wildcard session cookie **under your product domain**.
+
+    For example, if your application is served behind the `app.acme.org` domain, the cookie will need to be created under the `.acme.org` wildcard domain.
+  </Step>
+</Steps>
+
+Below is a simple TypeScript example:
+
+```typescript
+import * as jose from 'jose';
+
+import { Request, Response } from 'express';
+
+import { getUserInfo } from '../services/user-info-service';
+import { getFeatureFlags } from '../services/feature-flags-service';
+
+const GITBOOK_VISITOR_SIGNING_KEY = process.env.GITBOOK_VISITOR_SIGNING_KEY;
+const GITBOOK_VISITOR_COOKIE_NAME = 'gitbook-visitor-token';
+
+
+export async function handleAppLoginRequest(req: Request, res: Response) {
+   // Your business logic for handling the login request
+   // For example, checking credentials and authenticating the user
+   //
+   // e,g:
+   // const loggedInUser = await authenticateUser(req.body.username, req.body.password);
+
+   // After authenticating the user, retrieve user information that you wish
+   // to pass to GitBook from your database or user service.
+   const userInfo = await getUserInfo(loggedInUser.id);
+      
+   // Build the JWT payload with the user's information
+   const gitbookVisitorClaims = {
+       firstName: userInfo.firstName,
+       lastName: userInfo.lastName,
+       isBetaUser: userInfo.isBetaUser
+       products: userInfo.products.map((product) => product.name),
+       featureFlags: await getFeatureFlags({userId: loggedInUser.id})
+   }
+   
+   // Generate a signed JWT using the claims
+   const gitbookVisitorJWT = await new jose.SignJWT(gitbookVisitorClaims)
+     .setProtectedHeader({ alg: 'HS256' })
+     .setIssuedAt()
+     .setExpirationTime('2h') // abritary 2 hours expiration
+     .sign(GITBOOK_VISITOR_SIGNING_KEY);
+     
+  // Include a `gitbook-visitor-token` cookie including the encoded JWT in your
+  // login handler response
+  res.cookie(GITBOOK_VISITOR_COOKIE_NAME, gitbookVisitorJWT, {
+     httpOnly: true,
+     secure: process.env.NODE_ENV === 'production',
+     maxAge: 2 * 60 * 60 * 1000, // abritary 2 hours expiration
+     domain: '.acme.org' //
+  });
+  
+  // Rest of your login handler logic including redirecting the user to your app
+  res.redirect('/'); // Example redirect
+}
+```

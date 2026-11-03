@@ -1,0 +1,249 @@
+---
+title: Inline content
+description: Use the inline palette to add images, links, math & TeX, and more
+metaTitle: Inline content | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+<Image src="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686842907-h1pn20a56mi-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FQcBDNerKxNvi1X3Jnk2R-2F26_01_22_inline-palette-402x.png?fm=auto&auto=compress%2Cformat" alt="A GitBook screenshot showing inline content options" caption="Add inline elements to your content." />
+
+The inline palette lets you quickly add extra content to your text block without moving your hands away from the keyboard. Simply hit `/` on any text block to open the inline palette. The forward slash will be replaced by the content you choose to insert.
+
+## Annotations
+
+With annotations, you can add extra context to your words without breaking the reader’s train of thought. You can use them to explain the meaning of a word, insert extra information, and more. Readers can hover over the annotated text to show the annotation above the text.
+
+### Create an annotation
+
+To create an annotation, select the text you would like to annotate and click the **Annotate** option in the context menu. Once you’ve written your annotation, click outside of it to continue writing in the text block.
+
+### Markdown representation
+
+You can write content as [Markdown footnotes](https://www.markdownguide.org/extended-syntax/#footnotes) to add them as annotations in GitBook. Footnote indicators should appear immediately after the word you wish to annotate; they should not appear after punctuation marks or other symbols.
+
+```markdown
+Here's a simple footnote[^1], and here's a longer one[^bignote].
+
+[^1]: This is the first footnote.
+
+[^bignote]: Here's one with multiple paragraphs and code.
+
+    Indent paragraphs to include them in the footnote.
+
+    `{ my code }`
+
+    Add as many paragraphs as you like.
+```
+
+### Rendered example
+
+The Markdown source creates an annotation on the referenced text:
+
+```markdown
+Annotations add extra context[^annotation-example].
+
+[^annotation-example]: Hover over “extra context” to read this annotation.
+```
+
+It renders as follows. Hover over the annotated text to preview the annotation:
+
+[Annotations add extra context.](#user-content-fn-1)[^1]
+
+## Images
+
+Inline images will sit alongside your text on the page.
+
+By default, images are set to their original size with a maximum width of 300px. You can change the size by clicking the image to open the formatting palette, then choosing one of the three options:
+
+1. <strong>Inline size:</strong> The image is proportionally sized to the font — great for icons and badges.
+2. <strong>Original size:</strong> The image will remain inline at its original size, with a maximum width of 300 pixels.
+3. <strong>Convert to block:</strong> This turns an inline image into a image block, which is as wide as your content.
+
+<Callout kind="info">
+  Image blocks offer more options, including more sizes and the ability to add a caption — but will not appear inline with your text.
+</Callout>
+
+### Representation in Markdown
+
+```markdown
+Here is an inline image: <img src=".gitbook/assets/GitBook - Dark.jpg" alt="Dark version of GitBook logo" data-size="line">
+```
+
+It renders as follows: Here is an inline image: <Image src="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686842907-h1pn20a56mi-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FQcBDNerKxNvi1X3Jnk2R-2F26_01_22_inline-palette-402x.png?fm=auto&auto=compress%2Cformat" alt="GitBook logo" />
+
+## Emojis
+
+You can add emojis by hitting `/` to open the inline palette. Alternatively, type `:` and a list of emojis will pop up directly in line — you can start typing the name of an emoji to narrow down the selection.
+
+### Representation in Markdown
+
+```markdown
+:house:
+:smile:
+:dog:
+```
+
+They render as follows: 🏠 😄 🐶  
+
+## Links
+
+You can insert three different types of links:
+
+- [Relative links](#relative-links)
+- [Absolute links](#absolute-links)
+- [Email address `mailto` links](#email-address-mailto-links)
+
+### Relative links
+
+Relative links are links created by linking to pages that already exist in your section. The advantage of using relative links is that if the page's URL, name, or location changes, its reference will be kept up to date — so you'll end up with fewer broken links.
+
+Here’s how to insert a relative link:
+
+1. Click somewhere in your paragraph where you want to insert the link, or select some text.
+2. Hit / to open the inline palette and choose Link, click the **Link** button in the context menu, or hit <strong>⌘ + K</strong>.
+3. Start typing the title of the page you want to link to.
+4. Select the page from the drop-down search results.
+5. Hit `Enter`.
+
+### Absolute links
+
+Absolute links are external links that you can copy and paste into your content. They're great when you want to link to something outside your documentation.
+
+To insert an absolute link:
+
+1. Click somewhere in your paragraph where you want to insert the link, or select some text.
+2. Hit / to open the inline palette and choose Link, click the **Link** button in the context menu, or hit <strong>⌘ + K</strong>.
+3. Paste the URL you want to link to.
+4. Hit `Enter`.
+
+<Callout kind="info">
+  <strong>Why don't external links open in a new tab?</strong>
+
+  When you add a link to an external site in your docs, it will open in the same tab.
+
+  GitBook follows this [W3C-recommended behavior](https://www.w3.org/TR/WCAG20-TECHS/G200.html) to support [accessibility](https://it.wisc.edu/learn/make-it-accessible/websites-and-web-applications/when-to-open-links-in-a-new-tab/) and ensure a consistent, inclusive experience for your readers.
+</Callout>
+
+### Email address mailto links
+
+Email address `mailto` links are useful when you want your visitors to click on a link that will open up their default email client and fill in the `To` field with the email address of your link, so they can write an email to send.
+
+Here’s how to insert an email address `mailto` link:
+
+1. Click somewhere in your paragraph where you want to insert the link, or select some text.
+2. Hit / to open the inline palette and choose Link, click the **Link** button in the context menu, or hit <strong>⌘ + K</strong>.
+3. Paste or type `mailto:something@address.com`, replacing `something@address.com` with the email address you would like to use.
+4. Hit `Enter`.
+
+### Representation in Markdown
+
+```markdown
+[This is a relative link to another page in this section](../content-structure/page.md)
+[This is an absolute link](https://www.gitbook.com/blog)
+[This is a link](mailto:support@gitbook.com) to our support email address
+```
+
+They render as follows:
+
+[This is a relative link to another page in this section](/docs/create-content/content-structure)<br />[This is an absolute link](https://www.gitbook.com/blog)<br />[This is a link](mailto:support@gitbook.com) to our support email address
+
+<a id="math-and-tex"></a>
+
+## Math & TeX
+
+Using this option, you can create inline math formulas in your content. We use the [KaTeX](https://katex.org/docs/supported.html) library to render formulas.
+
+<Callout kind="info">
+  You can also insert a block-level math formula by opening the command palette in an empty block and choosing the second Math & TeX option.
+</Callout>
+
+### Representation in Markdown
+
+```markdown
+This is an inline formula: $$f(x) = x * e^{2 pi i \xi x}$$
+```
+
+It renders as follows: This is an inline formula: $$f(x) = x \* e^&#123;2 pi i \\xi x&#125;$$
+
+## Buttons
+
+Buttons are a great way to highlight calls to action or add a search or Ask AI bar to your docs. You can use them to send readers somewhere, or help them find answers.
+
+### Button actions
+
+Buttons can do more than link to a URL. You can also turn a button into a search or ask GitBook Assistant bar — right from the page. These actions work on published pages, too — as you can see from the examples below.
+
+You can configure the following actions:
+
+#### **Add a link button**
+
+Send readers to another page or an external URL:[Learn more about Assistant](/docs/ai-for-your-readers/gitbook-ai-assistant)
+
+#### **Add a search bar**
+
+Open search with an optional preset query: 
+
+#### **Add a Ask AI/GitBook Assistant bar**
+
+Open GitBook Assistant with an optional preset prompt: 
+
+#### **Add a disabled button**
+
+Show a button that’s intentionally inactive:[Inactive button](/docs/create-content/formatting/inline)
+
+### Create and configure a button
+
+1. Type `/` and choose **Button**.
+2. Click the button to open the **Label** menu.
+3. Choose an action, then set the label and style.
+4. Optional: add a preset search query or Assistant prompt.
+
+### Styles
+
+Link and inactive buttons have both primary and secondary styles. Here are a couple of examples:
+
+[Sign up to GitBook](https://app.gitbook.com/join) [Go to top](#annotations)
+
+### Representation in Markdown
+
+```markdown
+<a href="https://app.gitbook.com" class="button primary">GitBook</a>
+```
+
+It renders as follows: [GitBook](https://app.gitbook.com)
+
+## Icons
+
+Icons add visual context to paragraphs, cards, and other content. They use the visual style defined in your customization settings.
+
+Use an `<i>` element with both forms of the icon name. The Font Awesome class and token must match:
+
+```markdown
+<i class="fa-rocket">:rocket:</i>
+```
+
+Choose an icon name from the [Font Awesome icon picker](https://fontawesome.com/search). Unsupported names might not render or survive Git Sync.
+
+   
+
+### Representation in Markdown
+
+```markdown
+<i class="fa-github">:github:</i>
+```
+
+It renders as follows: 
+
+## Expressions
+
+Expressions allow you to dynamically display content defined in a variable. Expressions can be inserted from the `/` menu. Once inserted, clicking on the expression will bring up the expression editor, allowing you to reference and [conditionally format](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_operator) your variable.
+
+### Representation in Markdown
+
+```markdown
+Welcome to <code class="expression">page.vars.inlineExampleProduct</code>.
+```
+
+It renders as follows: Welcome to `page.vars.inlineExampleProduct`.
+
+[^1]: This is an annotation.

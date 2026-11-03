@@ -1,0 +1,97 @@
+---
+title: Site agent settings
+description: Configure site-specific issue remediation behavior and agent instructions.
+metaTitle: Site agent settings | Developers | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+Configure how site issue remediation should behave and provide site-specific instructions for the editing and topic analyst agents.
+
+## The SiteAgentSettings object
+
+<ResponseField name="object" field-type="string" required={true} enum="site-agent-settings" />
+
+<ResponseField name="brokenLinks" field-type="object" required={true}>
+  Settings for how GitBook resolves the broken links it finds on a site.
+
+  <Expandable title="Object Properties">
+    <ResponseField name="autoResolve" field-type="boolean" required={true}>
+      Whether GitBook resolves broken links automatically.
+    </ResponseField>
+
+    <ResponseField name="autonomyLevel" field-type="string" required={true} enum="suggest-fixes,fix-clear-matches,fix-close-matches">
+      How much GitBook may do on its own when it resolves broken links automatically. GitBook never
+      applies a fix it isn't sure about, at any level.
+
+      - `suggest-fixes` drafts fixes for approval and applies none.
+      - `fix-clear-matches` applies the clearest fixes and drafts the less certain ones for approval.
+      - `fix-close-matches` applies the clear and the close fixes.
+        At every level, GitBook drafts change requests that fix broken links to other sites, and never
+        merges them.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="updatedAt" field-type="string" />
+
+<ResponseField name="updatedBy" field-type="string">
+  Identifier of the member who last updated the settings.
+</ResponseField>
+
+<ResponseField name="urls" field-type="object" required={true}>
+  <Expandable title="Object Properties">
+    <ResponseField name="location" field-type="string" required={true}>
+      Relative URL to the resource in the API.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="scans" field-type="object" required={true}>
+  Settings related to scanning for a site.
+
+  <Expandable title="Object Properties">
+    <ResponseField name="topics" field-type="string" required={true} enum="auto,never">
+      Controls when topics are being scanned for findings.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="findings" field-type="object" required={true}>
+  Settings related to processing of findings for a site.
+
+  <Expandable title="Object Properties">
+    <ResponseField name="changeRequests" field-type="string" required={true} enum="always,auto-fixable,never">
+      Controls how issue remediation change requests should be handled for a site.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="editing" field-type="object" required={true}>
+  Site-specific instructions for the editing agent.
+
+  <Expandable title="Object Properties">
+    <ResponseField name="customInstructions" field-type="object" required={true}>
+      <Expandable title="Object Properties">
+        <ResponseField name="object" field-type="string" required={true} enum="document" />
+
+        <ResponseField name="data" field-type="object" required={true}>
+          <Expandable title="Object Properties">
+            <ResponseField name="schemaVersion" field-type="integer">
+              The schema version of the document. If undefined, the document is considered to be of the latest schema version.
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+
+        <ResponseField name="nodes" field-type="string[]" required={true} />
+
+        <ResponseField name="meta" field-type="object">
+          <Expandable title="Object Properties">
+            <ResponseField name="token" field-type="string">
+              A content token that can be used to fetch the content referenced in this document from the API.
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>

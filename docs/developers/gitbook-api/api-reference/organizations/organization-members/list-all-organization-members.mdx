@@ -1,0 +1,125 @@
+---
+title: List all organization members
+metaTitle: List all organization members | Developers | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+Lists the members of the organization. Guests can list members too, but the list they get leaves out every guest, themselves included, and filtering by the `guest` role returns no one.
+
+**GET** `/orgs/{organizationId}/members`
+
+**Parameters**
+
+<ParamField header="Authorization" param-type="string" />
+
+<ParamField path="organizationId" param-type="string" required={true}>
+  The unique id of the organization
+</ParamField>
+
+<ParamField query="page" param-type="string">
+  Identifier of the page results to fetch.
+</ParamField>
+
+<ParamField query="limit" param-type="number">
+  The number of results per page
+</ParamField>
+
+<ParamField query="order" param-type="string" enum="asc,desc">
+  An order for the items in the list
+</ParamField>
+
+<ParamField query="role" param-type="string">
+  The role to filter the list by
+</ParamField>
+
+<ParamField query="search" param-type="string">
+  A query to filter the list by display name and email
+</ParamField>
+
+<ParamField query="sort" param-type="string" enum="joinedAt,lastSeenAt,name">
+  The property to sort the list by
+</ParamField>
+
+**Responses**
+
+`200` OK
+
+<ResponseField name="next" field-type="object">
+  <Expandable title="Object Properties">
+    <ResponseField name="page" field-type="string" required={true}>
+      Unique identifier to query the next results page
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="count" field-type="number">
+  Total count of objects in the list
+</ResponseField>
+
+<ResponseField name="items" field-type="array" required={true}>
+  <Expandable title="Array Items">
+    <ResponseField name="object" field-type="string" required={true} enum="member">
+      Type of Object, always equals to "member"
+    </ResponseField>
+
+    <ResponseField name="id" field-type="string" required={true}>
+      Unique identifier for the user.
+    </ResponseField>
+
+    <ResponseField name="role" field-type="string" required={true}>
+      The role of a member in an organization, null for guests
+    </ResponseField>
+
+    <ResponseField name="user" field-type="object" required={true}>
+      <Expandable title="Object Properties">
+        <ResponseField name="object" field-type="string" required={true} enum="user">
+          Type of Object, always equals to "user"
+        </ResponseField>
+
+        <ResponseField name="id" field-type="string" required={true}>
+          Unique identifier for the user
+        </ResponseField>
+
+        <ResponseField name="displayName" field-type="string" required={true}>
+          Full name for the user
+        </ResponseField>
+
+        <ResponseField name="email" field-type="string">
+          Email address of the user
+        </ResponseField>
+
+        <ResponseField name="photoURL" field-type="string">
+          URL of the user's profile picture
+        </ResponseField>
+
+        <ResponseField name="urls" field-type="object" required={true}>
+          URLs associated with the object
+
+          <Expandable title="Object Properties">
+            <ResponseField name="location" field-type="string" required={true}>
+              URL of the user in the API
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+
+    <ResponseField name="disabled" field-type="string" required={true}>
+      Why the member is disabled, or false when the member is active. A disabled member cannot access the organization or its content.
+    </ResponseField>
+
+    <ResponseField name="joinedAt" field-type="string" required={true} />
+
+    <ResponseField name="lastSeenAt" field-type="string" />
+
+    <ResponseField name="sso" field-type="boolean" required={true}>
+      Whether the user can login with SSO.
+    </ResponseField>
+
+    <ResponseField name="spaces" field-type="number" required={true} />
+
+    <ResponseField name="teams" field-type="number" required={true} />
+
+    <ResponseField name="sites" field-type="number" required={true} />
+  </Expandable>
+</ResponseField>

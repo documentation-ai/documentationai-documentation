@@ -1,1359 +1,1687 @@
 {
-  "name": "WP Travel Engine",
+  "name": "GitBook Documentation",
   "colors": {
-    "light": {
-      "brand": "#0c6b56",
-      "heading": "#1a1a1a",
-      "text": "#374151"
-    },
     "dark": {
-      "brand": "#82A2C9",
-      "heading": "#f2f2f2",
-      "text": "#c1c1c1"
+      "brand": "#fe551b"
+    },
+    "light": {
+      "brand": "#fe551b"
     }
   },
   "navigation": {
-    "products": [
+    "tabs": [
       {
-        "product": "WP Travel Engine",
-        "versions": [
+        "icon": "lucide:book",
+        "pages": [
           {
-            "version": "v6",
-            "languages": [
+            "icon": "lucide:book-marked",
+            "path": "docs",
+            "show-sidebar": false,
+            "title": "GitBook documentation"
+          },
+          {
+            "group": "Get started",
+            "icon": "lucide:rocket",
+            "pages": [
               {
-                "language": "English",
-                "tabs": [
-                  {
-                    "tab": "Documentation",
-                    "icon": "book",
-                    "groups": [
-                      {
-                        "group": "Create and Manage Trips",
-                        "icon": "rocket",
-                        "pages": [
-                          {
-                            "title": "How to add ggaasdas General Info?",
-                            "path": "how-to-add-general-info"
-                          },
-                          {
-                            "title": "How to add Date and Price Info? this is just a test on how long the page title can be so dont bbe concerend about this",
-                            "path": "how-to-add-date-and-price-info"
-                          },
-                          {
-                            "title": "Seat Allocation and Booking Capacity in WP Travel Engine (with FSD Plugin)",
-                            "path": "seat-allocation-and-booking-capacity-in-wp-travel-engine-with-fsd-plugin"
-                          },
-                          {
-                            "title": "How to Add a Trip Itinerary",
-                            "path": "how-to-add-a-trip-itinerary"
-                          },
-                          {
-                            "title": "How to Add Trip Overview Info",
-                            "path": "how-to-add-trip-overview-info"
-                          },
-                          {
-                            "title": "How to Add Trip Info",
-                            "path": "how-to-add-trip-info"
-                          },
-                          {
-                            "title": "How to Add a Trip Gallery",
-                            "path": "how-to-add-a-trip-gallery"
-                          },
-                          {
-                            "title": "How to Add Trip Includes and Excludes",
-                            "path": "how-to-add-trip-includes-and-excludes"
-                          },
-                          {
-                            "title": "How to add Image Gallery?",
-                            "path": "how-to-add-image-gallery"
-                          },
-                          {
-                            "title": "How to display a Trip Duration on the single trip page?",
-                            "path": "how-to-display-a-trip-duration-on-the-single-trip-page"
-                          }
-                        ]
-                      },
-                      {
-                        "group": "Pro Add-ons",
-                        "icon": "layers",
-                        "pages": [
-                          {
-                            "title": "Webhooks and API",
-                            "path": "webhooks-and-api"
-                          },
-                          {
-                            "title": "Accommodation",
-                            "path": "accommodation"
-                          },
-                          {
-                            "title": "Activity Tour Booking",
-                            "path": "activity-tour-booking"
-                          },
-                          {
-                            "title": "Advanced Analytics",
-                            "path": "advanced-analytics"
-                          },
-                          {
-                            "title": "Advanced Email Automator",
-                            "path": "advanced-email-automator"
-                          },
-                          {
-                            "title": "Advanced Itinerary Builder",
-                            "path": "advanced-itinerary-builder"
-                          },
-                          {
-                            "title": "Booking Fee",
-                            "path": "booking-fee"
-                          },
-                          {
-                            "title": "Conditional Price",
-                            "path": "conditional-price"
-                          },
-                          {
-                            "title": "Currency Converter",
-                            "path": "currency-converter"
-                          },
-                          {
-                            "title": "Custom Booking Link",
-                            "path": "custom-booking-link"
-                          },
-                          {
-                            "title": "Elementor Widgets",
-                            "path": "elementor-widgets"
-                          },
-                          {
-                            "title": "Email Customizer",
-                            "path": "email-customizer"
-                          },
-                          {
-                            "title": "Extra Services",
-                            "path": "extra-services"
-                          },
-                          {
-                            "title": "File Downloads",
-                            "path": "file-downloads"
-                          },
-                          {
-                            "title": "Form Editor",
-                            "path": "form-editor"
-                          },
-                          {
-                            "title": "GA4 eCommerce Tracking",
-                            "path": "ga4-ecommerce-tracking"
-                          },
-                          {
-                            "title": "Group Discount",
-                            "path": "group-discount"
-                          },
-                          {
-                            "title": "Installment Payments",
-                            "path": "installment-payments"
-                          },
-                          {
-                            "title": "Itinerary Downloader",
-                            "path": "itinerary-downloader"
-                          },
-                          {
-                            "title": "Legal Documents",
-                            "path": "legal-documents"
-                          },
-                          {
-                            "title": "Partial Payment",
-                            "path": "partial-payment"
-                          },
-                          {
-                            "title": "Per Trip Emails",
-                            "path": "per-trip-emails"
-                          },
-                          {
-                            "title": "Pickup Points",
-                            "path": "pickup-points"
-                          },
-                          {
-                            "title": "Price on Request",
-                            "path": "price-on-request"
-                          },
-                          {
-                            "title": "Private Trips",
-                            "path": "private-trips"
-                          },
-                          {
-                            "title": "Resource Management Add-on",
-                            "path": "resource-management-add-on"
-                          },
-                          {
-                            "title": "SliceWP Integration",
-                            "path": "slicewp-integration"
-                          },
-                          {
-                            "title": "Social Proof",
-                            "path": "social-proof"
-                          },
-                          {
-                            "title": "Trip Fixed Starting Dates Countdown",
-                            "path": "trip-fixed-starting-dates-countdown"
-                          },
-                          {
-                            "title": "Trip Fixed Starting Dates",
-                            "path": "trip-fixed-starting-dates"
-                          },
-                          {
-                            "title": "Trip Fixed Starting Dates Introduction",
-                            "path": "trip-fixed-starting-dates-introduction"
-                          },
-                          {
-                            "title": "Configuring the Global Settings for Trip Fixed Starting Dates",
-                            "path": "configuring-the-global-settings-for-trip-fixed-starting-dates"
-                          },
-                          {
-                            "title": "Trip Reviews",
-                            "path": "trip-reviews"
-                          },
-                          {
-                            "title": "Trip Weather Forecast",
-                            "path": "trip-weather-forecast"
-                          },
-                          {
-                            "title": "Trips Embedder",
-                            "path": "trips-embedder"
-                          },
-                          {
-                            "title": "Travel Insurance",
-                            "path": "travel-insurance"
-                          },
-                          {
-                            "title": "User History",
-                            "path": "user-history"
-                          },
-                          {
-                            "title": "Waitlist",
-                            "path": "waitlist"
-                          },
-                          {
-                            "title": "Whatsapp Notification",
-                            "path": "whatsapp-notification"
-                          },
-                          {
-                            "title": "WP Travel Engine Pro",
-                            "path": "wp-travel-engine-pro"
-                          },
-                          {
-                            "title": "Zapier",
-                            "path": "zapier"
-                          },
-                          {
-                            "group": "Fixed Starting Dates",
-                            "pages": [
-                              {
-                                "group": "Introduction",
-                                "pages": [
-                                  {
-                                    "title": "Overview",
-                                    "path": "overview"
-                                  },
-                                  {
-                                    "title": "Prerequisites",
-                                    "path": "prerequisites"
-                                  },
-                                  {
-                                    "title": "Key Features",
-                                    "path": "key-features"
-                                  }
-                                ]
-                              },
-                              {
-                                "group": "How to Install the Trip Fixed Starting Dates Add-on",
-                                "pages": [],
-                                "path": "how-to-install-the-trip-fixed-starting-dates-add-on"
-                              },
-                              {
-                                "group": "Global Settings",
-                                "pages": [
-                                  {
-                                    "title": "General",
-                                    "path": "general"
-                                  },
-                                  {
-                                    "title": "Display Options",
-                                    "path": "display-options"
-                                  },
-                                  {
-                                    "title": "Exclude Dates",
-                                    "path": "exclude-dates"
-                                  },
-                                  {
-                                    "title": "Trip Archive",
-                                    "path": "trip-archive"
-                                  },
-                                  {
-                                    "title": "Private Trip",
-                                    "path": "private-trip"
-                                  },
-                                  {
-                                    "title": "Availability Labels",
-                                    "path": "availability-labels"
-                                  },
-                                  {
-                                    "group": "Trip Departure Calendar",
-                                    "pages": [
-                                      {
-                                        "title": "Departure Calendar Shortcode",
-                                        "path": "departure-calendar-shortcode"
-                                      }
-                                    ],
-                                    "path": "trip-departure-calendars"
-                                  },
-                                  {
-                                    "group": "FSD Settings in the Single Trip",
-                                    "pages": [
-                                      {
-                                        "title": "Date Settings in a Single Trip",
-                                        "path": "date-settings-in-a-single-trip"
-                                      },
-                                      {
-                                        "title": "Assigning Dates to Packages in FSD",
-                                        "path": "assigning-dates-to-packages-in-fsd"
-                                      },
-                                      {
-                                        "title": "Adding Time Slots for Booking",
-                                        "path": "adding-time-slots-for-booking"
-                                      },
-                                      {
-                                        "title": "Recurring time",
-                                        "path": "recurring-time"
-                                      },
-                                      {
-                                        "title": "Shortcode",
-                                        "path": "shortcodes"
-                                      }
-                                    ]
-                                  }
-                                ],
-                                "path": "global-settings"
-                              },
-                              {
-                                "title": "Troubleshooting",
-                                "path": "troubleshooting"
-                              },
-                              {
-                                "title": "FAQs",
-                                "path": "faqs"
-                              }
-                            ],
-                            "icon": "calendar",
-                            "path": "addon/fixed-starting-dates"
-                          }
-                        ]
-                      },
-                      {
-                        "group": "General Setup & Configuration",
-                        "pages": [
-                          {
-                            "title": "Installation and Setup",
-                            "path": "installation"
-                          },
-                          {
-                            "title": "How to configure Predefined Pages?",
-                            "path": "how-to-configure-predefined-pages"
-                          },
-                          {
-                            "title": "How to configure Trip Tabs Settings?",
-                            "path": "how-to-configure-trip-tabs-settings"
-                          },
-                          {
-                            "title": "How to configure Trip Info Settings?",
-                            "path": "how-to-configure-trip-info-settings"
-                          },
-                          {
-                            "title": "How to Configure Taxonomy Settings?",
-                            "path": "how-to-configure-taxonomy-settings"
-                          },
-                          {
-                            "title": "How to configure Trip Search Settings?",
-                            "path": "how-to-configure-trip-search-settings"
-                          },
-                          {
-                            "title": "How to configure Performance Setting?",
-                            "path": "how-to-configure-performance-setting"
-                          },
-                          {
-                            "title": "How to configure Single Trip settings?",
-                            "path": "how-to-configure-single-trip-settings"
-                          },
-                          {
-                            "title": "How to Configure Checkout Settings?",
-                            "path": "how-to-configure-checkout-settings"
-                          },
-                          {
-                            "title": "How to configure Trip Card/Listing page settings?",
-                            "path": "how-to-configure-trip-card/listing-page-settings"
-                          },
-                          {
-                            "title": "How to Configure Trip Archive Settings?",
-                            "path": "how-to-configure-trip-archive-settings"
-                          },
-                          {
-                            "title": "How to Customize Colors Settings?",
-                            "path": "how-to-customize-colors-settings"
-                          },
-                          {
-                            "title": "How to add a new Pricing Type?",
-                            "path": "how-to-add-a-new-pricing-type"
-                          },
-                          {
-                            "title": "How to add Global Trip Highlights?",
-                            "path": "how-to-add-global-trip-highlights"
-                          },
-                          {
-                            "title": "How to Configure Currency Settings?",
-                            "path": "how-to-configure-currency-settings"
-                          },
-                          {
-                            "title": "How to Customize the Trip Search / Archive Page",
-                            "path": "how-to-customize-the-trip-search-/-archive-page"
-                          },
-                          {
-                            "title": "Getting Started",
-                            "path": "getting-started"
-                          },
-                          {
-                            "title": "How to Set Up Coupons",
-                            "path": "how-to-set-up-coupons"
-                          }
-                        ]
-                      },
-                      {
-                        "group": "Payment Settings and Gateways",
-                        "pages": [
-                          {
-                            "title": "Stripe Payment Gateway",
-                            "path": "stripe-payment-gateway"
-                          },
-                          {
-                            "title": "How to add PayPal Standard?",
-                            "path": "how-to-add-paypal-standard"
-                          },
-                          {
-                            "title": "How to configure the Check Payments Settings?",
-                            "path": "how-to-configure-the-check-payments-settings"
-                          },
-                          {
-                            "title": "How to configure Tax Settings?",
-                            "path": "how-to-configure-tax-settings"
-                          },
-                          {
-                            "title": "Razorpay Payment Gateway",
-                            "path": "razorpay-payment-gateway"
-                          },
-                          {
-                            "title": "WeTravel Integration",
-                            "path": "wetravel-integration"
-                          },
-                          {
-                            "title": "WooCommerce Payment Gateway",
-                            "path": "woocommerce-payment-gateway"
-                          },
-                          {
-                            "title": "PayU Biz Payment Gateway",
-                            "path": "payu-biz-payment-gateway"
-                          },
-                          {
-                            "title": "PayU Money Payment Gateway",
-                            "path": "payu-money-payment-gateway"
-                          },
-                          {
-                            "title": "PayPal Express Checkout Payment Gateway",
-                            "path": "paypal-express-checkout-payment-gateway"
-                          },
-                          {
-                            "title": "PayHere Payment Gateway",
-                            "path": "payhere-payment-gateway"
-                          },
-                          {
-                            "title": "PayFast Payment Gateway",
-                            "path": "payfast-payment-gateway"
-                          },
-                          {
-                            "title": "Midtrans Payment Gateway",
-                            "path": "midtrans-payment-gateway"
-                          },
-                          {
-                            "title": "Himalayan Bank Payment Gateway",
-                            "path": "himalayan-bank-payment-gateway"
-                          },
-                          {
-                            "title": "Authorize.net Payment Gateway",
-                            "path": "authorizenet-payment-gateway"
-                          }
-                        ]
-                      },
-                      {
-                        "group": "Email Notifications",
-                        "pages": [
-                          {
-                            "title": "How to resend the booking confirmation email",
-                            "path": "how-to-resend-the-booking-confirmation-email"
-                          },
-                          {
-                            "title": "Email Troubleshooting",
-                            "path": "email-troubleshooting"
-                          },
-                          {
-                            "title": "How to change booking emails",
-                            "path": "how-to-change-booking-emails"
-                          },
-                          {
-                            "title": "How to configure Customer Email?",
-                            "path": "how-to-configure-customer-email"
-                          },
-                          {
-                            "title": "How to configure Enquiry Email?",
-                            "path": "how-to-configure-enquiry-email"
-                          },
-                          {
-                            "title": "How to configure Admin Email?",
-                            "path": "how-to-configure-admin-email"
-                          },
-                          {
-                            "title": "How to follow up or send an email to customers who have booked a tour?",
-                            "path": "how-to-follow-up-or-send-an-email-to-customers-who-have-booked-a-tour"
-                          },
-                          {
-                            "title": "How to Customize Header and Footer of Your Email Template",
-                            "path": "how-to-customize-header-and-footer-of-your-email-template"
-                          },
-                          {
-                            "title": "Email Personalization Tags",
-                            "path": "email-personalization-tags"
-                          }
-                        ]
-                      },
-                      {
-                        "group": "Licensing & Account Management",
-                        "pages": [
-                          {
-                            "title": "How to Update Your Credit Card Details",
-                            "path": "how-to-update-your-credit-card-details"
-                          },
-                          {
-                            "title": "How Can You Manage Your Subscription?",
-                            "path": "how-can-you-manage-your-subscription"
-                          },
-                          {
-                            "title": "Why Upgrade to WP Travel Engine Pro",
-                            "path": "why-upgrade-to-wp-travel-engine-pro"
-                          },
-                          {
-                            "title": "How to Make a Purchase from Nepal",
-                            "path": "how-to-make-a-purchase-from-nepal"
-                          },
-                          {
-                            "title": "How to Make a Purchase from India",
-                            "path": "how-to-make-a-purchase-from-india"
-                          },
-                          {
-                            "title": "How generate the Invoice from WP Travel Engine account?",
-                            "path": "how-generate-the-invoice-from-wp-travel-engine-account"
-                          },
-                          {
-                            "title": "How to activate the Pro add-on license key?",
-                            "path": "how-to-activate-the-pro-add-on-license-key"
-                          },
-                          {
-                            "title": "How to Download Add-ons and Themes After Purchasing?",
-                            "path": "how-to-download-add-ons-and-themes-after-purchasing"
-                          },
-                          {
-                            "title": "How to upgrade the purchased plan?",
-                            "path": "how-to-upgrade-the-purchased-plan"
-                          },
-                          {
-                            "title": "How to cancel the subscription for your purchase?",
-                            "path": "how-to-cancel-the-subscription-for-your-purchase"
-                          },
-                          {
-                            "title": "Unable to Login Into Your Account",
-                            "path": "unable-to-login-into-your-account"
-                          }
-                        ]
-                      },
-                      {
-                        "group": "Multilingual & Translation",
-                        "pages": [
-                          {
-                            "title": "How to Translate Themes and Plugins Using Loco Translate",
-                            "path": "how-to-translate-themes-and-plugins-using-loco-translate"
-                          },
-                          {
-                            "title": "How to Build a Multilingual Travel Website Using WP Travel Engine and WPML",
-                            "path": "how-to-build-a-multilingual-travel-website-using-wp-travel-engine-and-wpml"
-                          },
-                          {
-                            "title": "How to use Labels Feature for changing Static Strings?",
-                            "path": "how-to-use-labels-feature-for-changing-static-strings"
-                          },
-                          {
-                            "title": "How to use TranslatePress with WP Travel Engine?",
-                            "path": "how-to-use-translatepress-with-wp-travel-engine"
-                          }
-                        ]
-                      },
-                      {
-                        "group": "Trip Management and Operations",
-                        "pages": [
-                          {
-                            "title": "How to View and Manage Trip Bookings ?",
-                            "path": "how-to-view-and-manage-trip-bookings"
-                          },
-                          {
-                            "title": "Change Currency Symbol to Currency Code",
-                            "path": "change-currency-symbol-to-currency-code"
-                          },
-                          {
-                            "title": "Changing the default currency i.e dollar",
-                            "path": "changing-the-default-currency-ie-dollar"
-                          },
-                          {
-                            "title": "“Label” text is appeared instead of Pricing Category",
-                            "path": "label-text-is-appeared-instead-of-pricing-category"
-                          },
-                          {
-                            "title": "How to Change the Adult, Child Label",
-                            "path": "how-to-change-the-adult-child-label"
-                          },
-                          {
-                            "title": "Roles & Capabilities Controlling Who Can Access What in WP Travel Engine",
-                            "path": "roles-capabilities"
-                          }
-                        ]
-                      },
-                      {
-                        "group": "Design & Layout Customization",
-                        "pages": [
-                          {
-                            "title": "Is WP Travel Engine Compatible with Divi Builder?",
-                            "path": "is-wp-travel-engine-compatible-with-divi-builder"
-                          },
-                          {
-                            "title": "Can I use WP Travel Engine with Elementor?",
-                            "path": "can-i-use-wp-travel-engine-with-elementor"
-                          },
-                          {
-                            "title": "WP Travel Engine – Blocks, Patterns & Templates",
-                            "path": "wp-travel-engine-blocks-patterns-templates"
-                          }
-                        ]
-                      },
-                      {
-                        "group": "FAQ",
-                        "pages": [
-                          {
-                            "title": "How to give WP Travel Engine plugin review on wordpress.org?",
-                            "path": "how-to-give-wp-travel-engine-plugin-review-on-wordpressorg"
-                          },
-                          {
-                            "title": "Why can’t I expand the Trip Edit sections (Overview,Itinerary etc.) in the backend?",
-                            "path": "why-cant-i-expand-the-trip-edit-sections-overviewitinerary-etc-in-the-backend"
-                          },
-                          {
-                            "title": "How does the Trip Expiry Date feature work in WP Travel Engine?",
-                            "path": "how-does-the-trip-expiry-date-feature-work-in-wp-travel-engine"
-                          },
-                          {
-                            "title": "How to add a new filters/taxonomies using Custom Filters",
-                            "path": "how-to-add-a-new-filters/taxonomies-using-custom-filters"
-                          },
-                          {
-                            "title": "How to add the Itinerary Downloader button on the archive pages",
-                            "path": "how-to-add-the-itinerary-downloader-button-on-the-archive-pages"
-                          },
-                          {
-                            "title": "How to Export Bookings with WP Travel Engine",
-                            "path": "how-to-export-bookings-with-wp-travel-engine"
-                          },
-                          {
-                            "title": "How to Customize the WP Travel Engine Trip Slugs",
-                            "path": "how-to-customize-the-wp-travel-engine-trip-slugs"
-                          },
-                          {
-                            "title": "How to Customize the Trip Related Trips",
-                            "path": "how-to-customize-the-trip-related-trips"
-                          },
-                          {
-                            "title": "How to Sort Pricing Category in WP Travel Engine",
-                            "path": "how-to-sort-pricing-category-in-wp-travel-engine"
-                          },
-                          {
-                            "title": "Add FAQs to Your Trips",
-                            "path": "add-faqs-to-your-trips"
-                          }
-                        ]
-                      },
-                      {
-                        "group": "Troubleshooting",
-                        "pages": [
-                          {
-                            "title": "503 and Resource Limit Errors",
-                            "path": "503-resource-limit-errors"
-                          },
-                          {
-                            "title": "Created Destinations Not Displayed on the Destination Page",
-                            "path": "created-destinations-not-displayed-on-the-destination-page"
-                          },
-                          {
-                            "title": "Resolving the Date and Price Tab Loading Issue",
-                            "path": "resolving-the-date-and-price-tab-loading-issue"
-                          },
-                          {
-                            "title": "How to check plugin conflicts in WordPress?",
-                            "path": "how-to-check-plugin-conflicts-in-wordpress"
-                          },
-                          {
-                            "title": "Search Result Page Showing a 404 Error",
-                            "path": "search-result-page-showing-a-404-error"
-                          },
-                          {
-                            "title": "Trip Facts Not Appearing on the Trip Page",
-                            "path": "trip-facts-not-appearing-on-the-trip-page"
-                          },
-                          {
-                            "title": "Page not found appeared on the single trip page",
-                            "path": "page-not-found-appeared-on-the-single-trip-page"
-                          }
-                        ]
-                      },
-                      {
-                        "group": "WordPress Themes",
-                        "pages": [
-                          {
-                            "title": "Travel Booking Pro",
-                            "path": "travel-booking-pro"
-                          },
-                          {
-                            "title": "Travel Booking",
-                            "path": "travel-booking"
-                          },
-                          {
-                            "title": "Travel Muni Pro",
-                            "path": "travel-muni-pro"
-                          },
-                          {
-                            "title": "Travel Muni",
-                            "path": "travel-muni"
-                          },
-                          {
-                            "title": "Travelverse",
-                            "path": "travelverse"
-                          },
-                          {
-                            "title": "Pattern Engine",
-                            "path": "pattern-engine"
-                          }
-                        ]
-                      },
-                      {
-                        "group": "Elementor Widgets",
-                        "pages": [
-                          {
-                            "title": "Destination/Activities Slider 3",
-                            "path": "destination/activities-slider-3"
-                          },
-                          {
-                            "title": "Destination/Activities Slider 2",
-                            "path": "destination/activities-slider-2"
-                          },
-                          {
-                            "title": "Destination/Activities Slider 1",
-                            "path": "destination/activities-slider-1"
-                          },
-                          {
-                            "title": "Destination/Activities Module 2",
-                            "path": "destination/activities-module-2"
-                          },
-                          {
-                            "title": "Destination/Activities Module 1",
-                            "path": "destination/activities-module-1"
-                          },
-                          {
-                            "title": "Destination/Activities 2",
-                            "path": "destination/activities-2"
-                          },
-                          {
-                            "title": "Destination/Activities 1",
-                            "path": "destination/activities-1"
-                          },
-                          {
-                            "title": "Trips List",
-                            "path": "trips-list"
-                          },
-                          {
-                            "title": "Advanced Trips 4",
-                            "path": "advanced-trips-4"
-                          },
-                          {
-                            "title": "Advanced Trip 3",
-                            "path": "advanced-trip-3"
-                          },
-                          {
-                            "title": "Advanced Trip 2",
-                            "path": "advanced-trip-2"
-                          },
-                          {
-                            "title": "Advanced Trip",
-                            "path": "advanced-trip"
-                          },
-                          {
-                            "title": "Featured Trip",
-                            "path": "featured-trip"
-                          },
-                          {
-                            "title": "Trips Accordion",
-                            "path": "trips-accordion"
-                          },
-                          {
-                            "title": "Trips Module Three",
-                            "path": "trips-module-three"
-                          },
-                          {
-                            "title": "Trips Module Two",
-                            "path": "trips-module-two"
-                          },
-                          {
-                            "title": "Trips Module One",
-                            "path": "trips-module-one"
-                          },
-                          {
-                            "title": "Trips Slider",
-                            "path": "trips-slider"
-                          },
-                          {
-                            "title": "Trips Slider Two",
-                            "path": "trips-slider-two"
-                          },
-                          {
-                            "title": "Trips Slider Three",
-                            "path": "trips-slider-three"
-                          },
-                          {
-                            "title": "Trips Tab",
-                            "path": "trips-tab"
-                          },
-                          {
-                            "title": "Trip Search",
-                            "path": "trip-search"
-                          },
-                          {
-                            "title": "Tour Search widget",
-                            "path": "tour-search-widget"
-                          },
-                          {
-                            "title": "Contact widget",
-                            "path": "contact-widget"
-                          },
-                          {
-                            "title": "Navigation menu widget",
-                            "path": "navigation-menu-widget"
-                          },
-                          {
-                            "title": "Search widget",
-                            "path": "search-widget"
-                          },
-                          {
-                            "title": "Site logo widget",
-                            "path": "site-logo-widget"
-                          },
-                          {
-                            "title": "Header and Footer Builder",
-                            "path": "header-and-footer-builder"
-                          },
-                          {
-                            "title": "Mobile Menu & Off Canvas",
-                            "path": "mobile-menu-off-canvas"
-                          }
-                        ]
-                      },
-                      {
-                        "group": "Customer Experience & Portal",
-                        "pages": [
-                          {
-                            "title": "How to configure User Dashboard?",
-                            "path": "how-to-configure-user-dashboard"
-                          },
-                          {
-                            "title": "How to Configure Social Login",
-                            "path": "how-to-configure-social-login"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "tab": "API Reference",
-                    "icon": "code",
-                    "groups": [
-                      {
-                        "group": "Endpoints",
-                        "openapi": "api-reference/openapi.yaml",
-                        "pages": []
-                      }
-                    ]
-                  },
-                  {
-                    "tab": "Help Center",
-                    "icon": "help-circle",
-                    "pages": [
-                      {
-                        "title": "Help Center",
-                        "path": "help-center",
-                        "icon": "home"
-                      },
-                      {
-                        "group": "FAQs",
-                        "icon": "help-circle",
-                        "expandable": false,
-                        "pages": [
-                          {
-                            "title": "What is WP Travel Engine?",
-                            "path": "help-center/faq/what-is-wp-travel-engine"
-                          },
-                          {
-                            "title": "Frequently Asked Questions",
-                            "path": "help-center/faq/common-questions"
-                          }
-                        ]
-                      },
-                      {
-                        "group": "Troubleshooting",
-                        "icon": "alert-triangle",
-                        "expandable": false,
-                        "pages": [
-                          {
-                            "title": "Fix Plugin Conflict",
-                            "path": "help-center/troubleshooting/fix-plugin-conflict"
-                          }
-                        ]
-                      },
-                      {
-                        "group": "Guides",
-                        "icon": "book-open",
-                        "expandable": false,
-                        "pages": [
-                          {
-                            "title": "Setup First Tour",
-                            "path": "help-center/guides/setup-first-tour"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "tab": "Changelog",
-                    "icon": "clock",
-                    "pages": [
-                      {
-                        "title": "Release History",
-                        "path": "changelog",
-                        "icon": "history"
-                      }
-                    ]
-                  }
-                ],
-                "banner": {
-                  "content": "our api is down please move to version 2",
-                  "type": "alert",
-                  "color": "#8b5cf6"
-                },
-                "footer": {
-                  "columns": [
-                    {
-                      "title": "hello",
-                      "links": [
-                        {
-                          "title": "bad",
-                          "link": ""
-                        },
-                        {
-                          "title": "mornning",
-                          "link": ""
-                        }
-                      ]
-                    },
-                    {
-                      "title": "good evening",
-                      "links": [
-                        {
-                          "title": "hello",
-                          "link": ""
-                        },
-                        {
-                          "title": "hi",
-                          "link": ""
-                        }
-                      ]
-                    }
-                  ],
-                  "links": [
-                    {
-                      "header": "Comapny",
-                      "items": [
-                        {
-                          "label": "company1",
-                          "href": "/addon/fixed-starting-dates"
-                        },
-                        {
-                          "label": "company2",
-                          "href": "/es/how-to-configure-currency-settings"
-                        }
-                      ]
-                    },
-                    {
-                      "header": "product",
-                      "items": [
-                        {
-                          "label": "product1",
-                          "href": "/addon/fsd-global-settings"
-                        },
-                        {
-                          "label": "product2",
-                          "href": "/es/installation"
-                        }
-                      ]
-                    }
-                  ],
-                  "socials": {
-                    "discord": "www.discord",
-                    "instagram": "www.instagram",
-                    "youtube": "",
-                    "telegram": "",
-                    "reddit": ""
-                  },
-                  "copyright": "2026 documentation ai legal"
-                }
+                "icon": "lucide:zap",
+                "path": "docs/getting-started/quickstart",
+                "title": "Quickstart"
               },
               {
-                "language": "Español",
-                "tabs": [
-                  {
-                    "tab": "Documentación",
-                    "icon": "book",
-                    "groups": [
-                      {
-                        "group": "Configuración general",
-                        "pages": [
-                          {
-                            "title": "Instalación y configuración",
-                            "path": "es/installation"
-                          },
-                          {
-                            "title": "Cómo configurar la moneda",
-                            "path": "es/how-to-configure-currency-settings"
-                          }
-                        ]
-                      },
-                      {
-                        "group": "Pagos e impuestos",
-                        "pages": [
-                          {
-                            "title": "Cómo añadir PayPal Standard",
-                            "path": "es/how-to-add-paypal-standard"
-                          },
-                          {
-                            "title": "Cómo configurar los impuestos",
-                            "path": "es/how-to-configure-tax-settings"
-                          }
-                        ]
-                      },
-                      {
-                        "group": "Complementos Pro",
-                        "icon": "layers",
-                        "pages": [
-                          {
-                            "title": "Pago parcial",
-                            "path": "es/partial-payment"
-                          },
-                          {
-                            "title": "Añadir fechas excluidas",
-                            "path": "es/exclude-dates"
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ],
-                "banner": {
-                  "content": "testing",
-                  "color": "#6b7280"
-                }
+                "icon": "lucide:brain",
+                "path": "docs/getting-started/llm-ready-docs",
+                "title": "LLM-ready docs"
+              },
+              {
+                "icon": "lucide:book-marked",
+                "path": "docs/getting-started/import",
+                "title": "Migrate to GitBook"
+              },
+              {
+                "icon": "lucide:layout-grid",
+                "path": "docs/getting-started/sites-first",
+                "title": "Site workspace"
               }
             ]
           },
           {
-            "version": "v5",
-            "languages": [
+            "group": "Create content",
+            "icon": "lucide:file-text",
+            "pages": [
               {
-                "language": "English",
-                "tabs": [
+                "group": "Content structure",
+                "icon": "lucide:file-text",
+                "pages": [
                   {
-                    "tab": "Documentation",
-                    "icon": "book",
-                    "groups": [
+                    "path": "docs/create-content/content-structure/space",
+                    "title": "Sections"
+                  },
+                  {
+                    "path": "docs/create-content/content-structure/collection",
+                    "title": "Groups"
+                  },
+                  {
+                    "group": "Pages",
+                    "icon": "lucide:file-text",
+                    "pages": [
                       {
-                        "group": "General Setup & Configuration",
-                        "pages": [
-                          {
-                            "title": "Installation and Setup",
-                            "path": "v5/installation"
-                          },
-                          {
-                            "title": "How to Configure Currency Settings?",
-                            "path": "v5/how-to-configure-currency-settings"
-                          }
-                        ]
+                        "path": "docs/create-content/content-structure/page/tags",
+                        "title": "Tags"
+                      }
+                    ],
+                    "path": "docs/create-content/content-structure/page"
+                  },
+                  {
+                    "path": "docs/create-content/content-structure/all-content",
+                    "title": "All content"
+                  }
+                ],
+                "path": "docs/create-content/content-structure"
+              },
+              {
+                "group": "Format content",
+                "icon": "lucide:file-text",
+                "pages": [
+                  {
+                    "icon": "lucide:file-text",
+                    "path": "docs/create-content/formatting/inline",
+                    "title": "Inline content"
+                  },
+                  {
+                    "icon": "lucide:file-text",
+                    "path": "docs/create-content/formatting/markdown",
+                    "title": "Markdown"
+                  }
+                ],
+                "path": "docs/create-content/formatting"
+              },
+              {
+                "group": "Blocks",
+                "icon": "lucide:blocks",
+                "pages": [
+                  {
+                    "path": "docs/create-content/blocks/paragraph",
+                    "title": "Paragraphs"
+                  },
+                  {
+                    "path": "docs/create-content/blocks/heading",
+                    "title": "Headings"
+                  },
+                  {
+                    "path": "docs/create-content/blocks/unordered-list",
+                    "title": "Unordered lists"
+                  },
+                  {
+                    "path": "docs/create-content/blocks/ordered-list",
+                    "title": "Ordered lists"
+                  },
+                  {
+                    "path": "docs/create-content/blocks/task-list",
+                    "title": "Task lists"
+                  },
+                  {
+                    "path": "docs/create-content/blocks/hint",
+                    "title": "Hints"
+                  },
+                  {
+                    "path": "docs/create-content/blocks/quote",
+                    "title": "Quotes"
+                  },
+                  {
+                    "path": "docs/create-content/blocks/code-block",
+                    "title": "Code blocks"
+                  },
+                  {
+                    "path": "docs/create-content/blocks/insert-files",
+                    "title": "Files"
+                  },
+                  {
+                    "path": "docs/create-content/blocks/insert-images",
+                    "title": "Images"
+                  },
+                  {
+                    "path": "docs/create-content/blocks/embed-a-url",
+                    "title": "Embedded URLs"
+                  },
+                  {
+                    "path": "docs/create-content/blocks/table",
+                    "title": "Tables"
+                  },
+                  {
+                    "path": "docs/create-content/blocks/cards",
+                    "title": "Cards"
+                  },
+                  {
+                    "path": "docs/create-content/blocks/tabs",
+                    "title": "Tabs"
+                  },
+                  {
+                    "path": "docs/create-content/blocks/expandable",
+                    "title": "Expandable"
+                  },
+                  {
+                    "path": "docs/create-content/blocks/stepper",
+                    "title": "Stepper"
+                  },
+                  {
+                    "path": "docs/create-content/blocks/updates",
+                    "title": "Updates"
+                  },
+                  {
+                    "path": "docs/create-content/blocks/drawing",
+                    "title": "Drawings"
+                  },
+                  {
+                    "path": "docs/create-content/blocks/mermaid-blocks",
+                    "title": "Mermaid blocks"
+                  },
+                  {
+                    "path": "docs/create-content/blocks/math-and-tex",
+                    "title": "Math & TeX"
+                  },
+                  {
+                    "path": "docs/create-content/blocks/page-link",
+                    "title": "Page links"
+                  },
+                  {
+                    "path": "docs/create-content/blocks/prompt",
+                    "title": "Prompt"
+                  },
+                  {
+                    "path": "docs/create-content/blocks/columns",
+                    "title": "Columns"
+                  },
+                  {
+                    "path": "docs/create-content/blocks/conditional-content",
+                    "title": "Conditional content"
+                  },
+                  {
+                    "path": "docs/create-content/formatting/inline",
+                    "title": "Buttons"
+                  },
+                  {
+                    "path": "docs/create-content/formatting/inline",
+                    "title": "Icons"
+                  },
+                  {
+                    "path": "docs/create-content/formatting/inline",
+                    "title": "Expressions"
+                  },
+                  {
+                    "path": "docs/developers/integrations/quickstart",
+                    "title": "Custom blocks"
+                  }
+                ],
+                "path": "docs/create-content/blocks"
+              },
+              {
+                "icon": "lucide:file-text",
+                "path": "docs/create-content/reusable-content",
+                "title": "Reusable content"
+              },
+              {
+                "icon": "lucide:file-text",
+                "path": "docs/create-content/variables-and-expressions",
+                "title": "Variables and expressions"
+              },
+              {
+                "group": "Document an API",
+                "icon": "lucide:file-text",
+                "pages": [
+                  {
+                    "icon": "lucide:file-text",
+                    "method": "POST",
+                    "openapi": "api-reference/715e581e0d464caa7f0f889903f2c6f13901d28e9abf812e5e8af857b54e01c5.json POST /pet",
+                    "path": "docs/create-content/openapi",
+                    "title": "Document an API"
+                  },
+                  {
+                    "icon": "lucide:braces",
+                    "path": "docs/create-content/openapi/add-an-openapi-specification",
+                    "title": "Add an OpenAPI specification"
+                  },
+                  {
+                    "icon": "lucide:code",
+                    "path": "docs/create-content/openapi/insert-api-reference-in-your-docs",
+                    "title": "Insert API reference in your docs"
+                  },
+                  {
+                    "icon": "lucide:puzzle",
+                    "path": "docs/create-content/openapi/extensions-reference",
+                    "title": "Extensions reference"
+                  },
+                  {
+                    "group": "Guides",
+                    "icon": "lucide:book-open",
+                    "pages": [
+                      {
+                        "icon": "lucide:braces",
+                        "path": "docs/create-content/openapi/guides/openapi-layouts",
+                        "title": "OpenAPI layouts"
                       },
                       {
-                        "group": "Payment Settings and Gateways",
-                        "pages": [
-                          {
-                            "title": "How to add PayPal Standard?",
-                            "path": "v5/how-to-add-paypal-standard"
-                          },
-                          {
-                            "title": "How to configure Tax Settings?",
-                            "path": "v5/how-to-configure-tax-settings"
-                          }
-                        ]
+                        "icon": "lucide:code",
+                        "path": "docs/create-content/openapi/guides/structuring-your-api-reference",
+                        "title": "Structuring your API reference"
                       },
                       {
-                        "group": "Pro Add-ons",
-                        "icon": "layers",
+                        "icon": "lucide:code",
+                        "path": "docs/create-content/openapi/guides/adding-custom-code-samples",
+                        "title": "Adding custom code samples"
+                      },
+                      {
+                        "icon": "lucide:code",
+                        "path": "docs/create-content/openapi/guides/managing-api-operations",
+                        "title": "Managing API operations"
+                      },
+                      {
+                        "icon": "lucide:test-tube",
+                        "path": "docs/create-content/openapi/guides/configuring-the-test-it-button",
+                        "title": "Configuring the “Test it” button"
+                      },
+                      {
+                        "icon": "lucide:braces",
+                        "path": "docs/create-content/openapi/guides/using-openapi-proxy",
+                        "title": "Using OpenAPI proxy"
+                      },
+                      {
+                        "icon": "lucide:file-text",
+                        "path": "docs/create-content/openapi/guides/describing-enums",
+                        "title": "Describing enums"
+                      },
+                      {
+                        "icon": "lucide:workflow",
+                        "path": "docs/create-content/openapi/guides/support-for-ci-cd-with-api-blocks",
+                        "title": "Integrating with CI/CD"
+                      }
+                    ],
+                    "path": "docs/create-content/openapi/guides"
+                  }
+                ]
+              },
+              {
+                "icon": "lucide:palette",
+                "path": "docs/create-content/styleguide",
+                "title": "Style guide"
+              },
+              {
+                "icon": "lucide:git-branch",
+                "path": "docs/create-content/version-control",
+                "title": "Version control"
+              },
+              {
+                "group": "Searching internal content",
+                "icon": "lucide:file-text",
+                "pages": [
+                  {
+                    "icon": "lucide:search",
+                    "path": "docs/create-content/searching-your-content/quick-find",
+                    "title": "Search & Quick find"
+                  },
+                  {
+                    "icon": "lucide:book-marked",
+                    "path": "docs/create-content/searching-your-content/gitbook-ai",
+                    "title": "GitBook AI"
+                  }
+                ],
+                "path": "docs/create-content/searching-your-content"
+              },
+              {
+                "icon": "lucide:book-open",
+                "path": "docs/create-content/guides",
+                "title": "Guides"
+              }
+            ]
+          },
+          {
+            "group": "GitBook Agent",
+            "icon": "lucide:book-marked",
+            "pages": [
+              {
+                "icon": "lucide:info",
+                "path": "docs/gitbook-agent/overview",
+                "title": "Overview"
+              },
+              {
+                "icon": "lucide:book-marked",
+                "path": "docs/gitbook-agent/write-and-edit-with-ai",
+                "title": "Writing with GitBook Agent"
+              },
+              {
+                "icon": "lucide:book-marked",
+                "path": "docs/gitbook-agent/review-change-requests-with-gitbook-agent",
+                "title": "Review change requests with GitBook Agent"
+              },
+              {
+                "icon": "lucide:languages",
+                "path": "docs/gitbook-agent/translations",
+                "title": "Translations"
+              },
+              {
+                "icon": "lucide:file-text",
+                "path": "docs/gitbook-agent/channels",
+                "title": "Channels"
+              },
+              {
+                "icon": "lucide:book-open",
+                "path": "docs/gitbook-agent/guides",
+                "title": "Guides"
+              }
+            ]
+          },
+          {
+            "group": "Work from your tools",
+            "icon": "lucide:folder",
+            "pages": [
+              {
+                "group": "GitHub & GitLab Sync",
+                "icon": "lucide:folder",
+                "pages": [
+                  {
+                    "icon": "lucide:file-text",
+                    "path": "docs/docs-as-code/git-sync/enabling-github-sync",
+                    "title": "Enabling GitHub Sync"
+                  },
+                  {
+                    "icon": "lucide:file-text",
+                    "path": "docs/docs-as-code/git-sync/enabling-gitlab-sync",
+                    "title": "Enabling GitLab Sync"
+                  },
+                  {
+                    "icon": "lucide:file-text",
+                    "path": "docs/docs-as-code/git-sync/content-configuration",
+                    "title": "Content configuration"
+                  },
+                  {
+                    "icon": "lucide:git-pull-request",
+                    "path": "docs/docs-as-code/git-sync/github-pull-request-preview",
+                    "title": "GitHub pull request preview"
+                  },
+                  {
+                    "icon": "lucide:message-circle",
+                    "path": "docs/docs-as-code/git-sync/commits",
+                    "title": "Commit messages & Autolink"
+                  },
+                  {
+                    "icon": "lucide:file-text",
+                    "path": "docs/docs-as-code/git-sync/monorepos",
+                    "title": "Monorepos"
+                  },
+                  {
+                    "icon": "lucide:triangle-alert",
+                    "path": "docs/docs-as-code/git-sync/troubleshooting",
+                    "title": "Troubleshooting"
+                  }
+                ],
+                "path": "docs/docs-as-code/git-sync"
+              },
+              {
+                "icon": "lucide:book-marked",
+                "path": "docs/docs-as-code/gitbook-mcp",
+                "title": "GitBook MCP"
+              },
+              {
+                "icon": "lucide:book-marked",
+                "path": "docs/docs-as-code/gitbook-cli",
+                "title": "GitBook CLI"
+              },
+              {
+                "icon": "lucide:bot",
+                "path": "docs/docs-as-code/ai-coding-assistants-and-skillmd",
+                "title": "Agent skills"
+              },
+              {
+                "icon": "lucide:book-open",
+                "path": "docs/docs-as-code/guides",
+                "title": "Guides"
+              }
+            ]
+          },
+          {
+            "group": "Collaborate and review",
+            "icon": "lucide:folder",
+            "pages": [
+              {
+                "group": "Change requests",
+                "icon": "lucide:folder",
+                "pages": [
+                  {
+                    "path": "docs/collaborate/change-requests/change-requests-screen",
+                    "title": "Change requests screen"
+                  },
+                  {
+                    "path": "docs/collaborate/change-requests/change-requests-in-a-space",
+                    "title": "Change requests in a section"
+                  }
+                ],
+                "path": "docs/collaborate/change-requests"
+              },
+              {
+                "icon": "lucide:file-text",
+                "path": "docs/collaborate/merge-rules",
+                "title": "Merge rules"
+              },
+              {
+                "icon": "lucide:message-square",
+                "path": "docs/collaborate/comments",
+                "title": "Comments"
+              },
+              {
+                "icon": "lucide:file-text",
+                "path": "docs/collaborate/live-edits",
+                "title": "Live edits"
+              },
+              {
+                "icon": "lucide:bell",
+                "path": "docs/collaborate/notifications",
+                "title": "Notifications"
+              },
+              {
+                "group": "Member management",
+                "icon": "lucide:users",
+                "pages": [
+                  {
+                    "icon": "lucide:users",
+                    "path": "docs/collaborate/member-management/invite-members-to-your-organization",
+                    "title": "Manage or remove members"
+                  },
+                  {
+                    "icon": "lucide:shield",
+                    "path": "docs/collaborate/member-management/permissions-and-inheritance",
+                    "title": "Permissions and inheritance"
+                  },
+                  {
+                    "icon": "lucide:shield",
+                    "path": "docs/collaborate/member-management/roles",
+                    "title": "Roles"
+                  },
+                  {
+                    "icon": "lucide:users",
+                    "path": "docs/collaborate/member-management/teams",
+                    "title": "Teams"
+                  }
+                ],
+                "path": "docs/collaborate/member-management"
+              },
+              {
+                "icon": "lucide:users",
+                "path": "docs/collaborate/share",
+                "title": "Inviting your team"
+              },
+              {
+                "icon": "lucide:book-open",
+                "path": "docs/collaborate/guides",
+                "title": "Guides"
+              }
+            ]
+          },
+          {
+            "group": "Set up your site",
+            "icon": "lucide:folder",
+            "pages": [
+              {
+                "icon": "lucide:settings",
+                "path": "docs/manage-your-site/site-settings",
+                "title": "Site settings"
+              },
+              {
+                "group": "Site structure",
+                "icon": "lucide:folder",
+                "pages": [
+                  {
+                    "path": "docs/manage-your-site/site-structure/site-sections",
+                    "title": "Sections"
+                  },
+                  {
+                    "path": "docs/manage-your-site/site-structure/variants",
+                    "title": "Content variants"
+                  },
+                  {
+                    "path": "docs/manage-your-site/site-structure/multilingual-sections",
+                    "title": "Multilingual sections"
+                  }
+                ],
+                "path": "docs/manage-your-site/site-structure"
+              },
+              {
+                "group": "Site customization",
+                "icon": "lucide:folder",
+                "pages": [
+                  {
+                    "icon": "lucide:shapes",
+                    "path": "docs/manage-your-site/customization/icons-colors-and-themes",
+                    "title": "Icons, colors, and themes"
+                  },
+                  {
+                    "icon": "lucide:layout",
+                    "path": "docs/manage-your-site/customization/layout-and-structure",
+                    "title": "Layout and structure"
+                  },
+                  {
+                    "icon": "lucide:file-text",
+                    "path": "docs/manage-your-site/customization/sharing-and-social",
+                    "title": "Sharing and social"
+                  },
+                  {
+                    "icon": "lucide:file-text",
+                    "path": "docs/manage-your-site/customization/toolbar-on-published-sites-and-site-previews",
+                    "title": "Toolbar"
+                  },
+                  {
+                    "icon": "lucide:settings",
+                    "path": "docs/manage-your-site/customization/extra-configuration",
+                    "title": "Extra configuration"
+                  }
+                ],
+                "path": "docs/manage-your-site/customization"
+              },
+              {
+                "icon": "lucide:download",
+                "path": "docs/manage-your-site/install-an-integration",
+                "title": "Install and manage integrations"
+              },
+              {
+                "icon": "lucide:shield",
+                "path": "docs/manage-your-site/site-permissions",
+                "title": "Site permissions"
+              },
+              {
+                "icon": "lucide:book-open",
+                "path": "docs/manage-your-site/guides",
+                "title": "Guides"
+              }
+            ]
+          },
+          {
+            "group": "Publish and control access",
+            "icon": "lucide:send",
+            "pages": [
+              {
+                "group": "Site audience",
+                "icon": "lucide:folder",
+                "pages": [
+                  {
+                    "icon": "lucide:send",
+                    "path": "docs/publish/site-audience/share-links",
+                    "title": "Private publishing with share links"
+                  },
+                  {
+                    "group": "Authenticated access",
+                    "icon": "lucide:folder",
+                    "pages": [
+                      {
+                        "path": "docs/publish/site-audience/authenticated-access/enabling-authenticated-access",
+                        "title": "Enabling authenticated access"
+                      },
+                      {
+                        "path": "docs/publish/site-audience/authenticated-access/setting-up-auth0",
+                        "title": "Setting up Auth0"
+                      },
+                      {
+                        "path": "docs/publish/site-audience/authenticated-access/setting-up-azure-ad",
+                        "title": "Setting up Azure AD"
+                      },
+                      {
+                        "path": "docs/publish/site-audience/authenticated-access/setting-up-aws-cognito",
+                        "title": "Setting up AWS Cognito"
+                      },
+                      {
+                        "path": "docs/publish/site-audience/authenticated-access/setting-up-okta",
+                        "title": "Setting up Okta"
+                      },
+                      {
+                        "path": "docs/publish/site-audience/authenticated-access/setting-up-oidc",
+                        "title": "Setting up OIDC"
+                      },
+                      {
+                        "path": "docs/publish/site-audience/authenticated-access/setting-up-a-custom-backend",
+                        "title": "Setting up a custom backend"
+                      }
+                    ],
+                    "path": "docs/publish/site-audience/authenticated-access"
+                  }
+                ],
+                "path": "docs/publish/site-audience"
+              },
+              {
+                "group": "Adaptive content",
+                "icon": "lucide:file-text",
+                "pages": [
+                  {
+                    "group": "Enabling adaptive content",
+                    "icon": "lucide:file-text",
+                    "pages": [
+                      {
+                        "path": "docs/publish/adaptive-content/enabling-adaptive-content/cookies",
+                        "title": "Cookies"
+                      },
+                      {
+                        "path": "docs/publish/adaptive-content/enabling-adaptive-content/url",
+                        "title": "URL"
+                      },
+                      {
+                        "path": "docs/publish/adaptive-content/enabling-adaptive-content/feature-flags",
+                        "title": "Feature flags"
+                      },
+                      {
+                        "path": "docs/publish/adaptive-content/enabling-adaptive-content/authenticated-access",
+                        "title": "Authenticated access"
+                      }
+                    ],
+                    "path": "docs/publish/adaptive-content/enabling-adaptive-content"
+                  },
+                  {
+                    "icon": "lucide:file-text",
+                    "path": "docs/publish/adaptive-content/adapting-your-content",
+                    "title": "Adapting your content"
+                  },
+                  {
+                    "icon": "lucide:test-tube",
+                    "path": "docs/publish/adaptive-content/testing-with-segments",
+                    "title": "Testing with segments"
+                  },
+                  {
+                    "icon": "lucide:circle-help",
+                    "path": "docs/publish/adaptive-content/faq-and-troubleshooting",
+                    "title": "FAQ and troubleshooting"
+                  }
+                ],
+                "path": "docs/publish/adaptive-content"
+              },
+              {
+                "group": "Set a custom domain",
+                "icon": "lucide:globe",
+                "pages": [
+                  {
+                    "group": "Setting a custom subdirectory",
+                    "icon": "lucide:folder",
+                    "pages": [
+                      {
+                        "path": "docs/publish/custom-domain/setting-a-custom-subdirectory/configuring-a-subdirectory-with-cloudflare",
+                        "title": "Configuring a subdirectory with Cloudflare"
+                      },
+                      {
+                        "path": "docs/publish/custom-domain/setting-a-custom-subdirectory/configuring-a-subdirectory-with-vercel",
+                        "title": "Configuring a subdirectory with Vercel"
+                      },
+                      {
+                        "path": "docs/publish/custom-domain/setting-a-custom-subdirectory/configuring-a-subdirectory-with-aws",
+                        "title": "Configuring a subdirectory with AWS using CloudFront and Route 53"
+                      }
+                    ],
+                    "path": "docs/publish/custom-domain/setting-a-custom-subdirectory"
+                  }
+                ],
+                "path": "docs/publish/custom-domain"
+              },
+              {
+                "icon": "lucide:arrow-right-left",
+                "path": "docs/publish/site-redirects",
+                "title": "Site redirects"
+              },
+              {
+                "icon": "lucide:search-check",
+                "path": "docs/publish/seo",
+                "title": "SEO"
+              },
+              {
+                "icon": "lucide:upload",
+                "path": "docs/publish/pdf-export",
+                "title": "PDF export"
+              },
+              {
+                "group": "Embed in your product",
+                "icon": "lucide:box",
+                "pages": [
+                  {
+                    "group": "Implementation",
+                    "icon": "lucide:folder",
+                    "pages": [
+                      {
+                        "path": "docs/publish/embedding/implementation/script",
+                        "title": "Script tag"
+                      },
+                      {
+                        "path": "docs/publish/embedding/implementation/nodejs",
+                        "title": "Node.js/NPM"
+                      },
+                      {
+                        "path": "docs/publish/embedding/implementation/react",
+                        "title": "React"
+                      }
+                    ],
+                    "path": "docs/publish/embedding/implementation"
+                  },
+                  {
+                    "icon": "lucide:key",
+                    "path": "docs/publish/embedding/using-with-authenticated-docs",
+                    "title": "Authentication"
+                  },
+                  {
+                    "group": "Configuration",
+                    "icon": "lucide:settings",
+                    "pages": [
+                      {
+                        "icon": "lucide:file-text",
+                        "path": "docs/publish/embedding/configuration/customizing-docs-embed",
+                        "title": "Customizing the Embed"
+                      },
+                      {
+                        "icon": "lucide:plug",
+                        "path": "docs/publish/embedding/configuration/creating-custom-tools",
+                        "title": "Connect to custom tools"
+                      },
+                      {
+                        "icon": "lucide:code",
+                        "path": "docs/publish/embedding/configuration/reference",
+                        "title": "API Reference"
+                      }
+                    ],
+                    "path": "docs/publish/embedding/configuration"
+                  }
+                ],
+                "path": "docs/publish/embedding"
+              },
+              {
+                "icon": "lucide:send",
+                "path": "docs/publish/publish-a-docs-site",
+                "title": "Publish a docs site"
+              },
+              {
+                "icon": "lucide:book-open",
+                "path": "docs/publish/guides",
+                "title": "Guides"
+              }
+            ]
+          },
+          {
+            "group": "Serve readers and agents",
+            "icon": "lucide:bot",
+            "pages": [
+              {
+                "icon": "lucide:sparkles",
+                "path": "docs/ai-for-your-readers/gitbook-ai-assistant",
+                "title": "AI Assistant"
+              },
+              {
+                "icon": "lucide:plug",
+                "path": "docs/ai-for-your-readers/connections",
+                "title": "Connections"
+              },
+              {
+                "icon": "lucide:server",
+                "path": "docs/ai-for-your-readers/mcp-servers-for-published-docs",
+                "title": "MCP servers for published docs"
+              }
+            ]
+          },
+          {
+            "group": "Measure and improve",
+            "icon": "lucide:folder",
+            "pages": [
+              {
+                "group": "Site analytics",
+                "icon": "lucide:chart-column",
+                "pages": [
+                  {
+                    "icon": "lucide:file-text",
+                    "path": "docs/analytics/insights/traffic",
+                    "title": "Traffic"
+                  },
+                  {
+                    "icon": "lucide:sparkles",
+                    "path": "docs/analytics/insights/ai-insights",
+                    "title": "AI Assistant"
+                  },
+                  {
+                    "icon": "lucide:bot",
+                    "path": "docs/analytics/insights/agents-and-mcp",
+                    "title": "Agents & MCP"
+                  }
+                ],
+                "path": "docs/analytics/insights"
+              },
+              {
+                "icon": "lucide:link",
+                "path": "docs/analytics/broken-links",
+                "title": "Broken links"
+              },
+              {
+                "icon": "lucide:file-text",
+                "path": "docs/analytics/content-gaps",
+                "title": "Content gaps"
+              },
+              {
+                "icon": "lucide:book-open",
+                "path": "docs/analytics/guides",
+                "title": "Guides"
+              }
+            ]
+          },
+          {
+            "group": "Account and billing",
+            "icon": "lucide:user-check",
+            "pages": [
+              {
+                "group": "Plans",
+                "icon": "lucide:credit-card",
+                "pages": [
+                  {
+                    "group": "Community plan",
+                    "icon": "lucide:users",
+                    "pages": [
+                      {
+                        "icon": "lucide:credit-card",
+                        "path": "docs/account-and-billing/plans/community/sponsored-site-plan",
+                        "title": "Sponsored site plan"
+                      }
+                    ],
+                    "path": "docs/account-and-billing/plans/community"
+                  },
+                  {
+                    "icon": "lucide:credit-card",
+                    "path": "docs/account-and-billing/plans/billing-policy",
+                    "title": "Billing policy"
+                  },
+                  {
+                    "icon": "lucide:credit-card",
+                    "path": "docs/account-and-billing/plans/cancelling-a-plan",
+                    "title": "Subscription cancellations"
+                  },
+                  {
+                    "icon": "lucide:sparkles",
+                    "path": "docs/account-and-billing/plans/ai-credits",
+                    "title": "AI credits"
+                  }
+                ],
+                "path": "docs/account-and-billing/plans"
+              },
+              {
+                "icon": "lucide:settings",
+                "path": "docs/account-and-billing/account-settings",
+                "title": "Personal settings"
+              },
+              {
+                "icon": "lucide:building",
+                "path": "docs/account-and-billing/organization-settings",
+                "title": "Organization settings"
+              },
+              {
+                "group": "SSO & SAML",
+                "icon": "lucide:key",
+                "pages": [
+                  {
+                    "icon": "lucide:key",
+                    "path": "docs/account-and-billing/sso-and-saml/sso-members-vs-non-sso",
+                    "title": "SSO Members vs non-SSO"
+                  }
+                ],
+                "path": "docs/account-and-billing/sso-and-saml"
+              },
+              {
+                "group": "Billing FAQ",
+                "icon": "lucide:credit-card",
+                "pages": [
+                  {
+                    "icon": "lucide:file-text",
+                    "path": "docs/account-and-billing/billing-faq/free-trial",
+                    "title": "Free trials"
+                  },
+                  {
+                    "icon": "lucide:credit-card",
+                    "path": "docs/account-and-billing/billing-faq/payments-and-invoices",
+                    "title": "Payments and invoices"
+                  },
+                  {
+                    "icon": "lucide:users",
+                    "path": "docs/account-and-billing/billing-faq/plan-and-member-costs",
+                    "title": "Site and member costs"
+                  },
+                  {
+                    "icon": "lucide:sparkles",
+                    "path": "docs/account-and-billing/billing-faq/ai-credits-and-usage",
+                    "title": "AI credits and usage"
+                  }
+                ],
+                "path": "docs/account-and-billing/billing-faq"
+              }
+            ]
+          },
+          {
+            "group": "Reference",
+            "icon": "lucide:book-marked",
+            "pages": [
+              {
+                "icon": "lucide:file-text",
+                "path": "docs/reference/keyboard-shortcuts",
+                "title": "Keyboard shortcuts"
+              },
+              {
+                "icon": "lucide:book-a",
+                "path": "docs/reference/glossary",
+                "title": "Glossary"
+              },
+              {
+                "icon": "lucide:cog",
+                "path": "docs/reference/concepts",
+                "title": "Core concepts"
+              }
+            ]
+          },
+          {
+            "group": "Help",
+            "icon": "lucide:folder",
+            "pages": [
+              {
+                "icon": "lucide:triangle-alert",
+                "path": "docs/help/troubleshooting",
+                "title": "Troubleshooting"
+              },
+              {
+                "icon": "lucide:chart-column",
+                "path": "docs/help/report-a-bug",
+                "title": "Report a bug"
+              },
+              {
+                "icon": "lucide:headset",
+                "path": "docs/help/contact-support",
+                "title": "Contact support"
+              },
+              {
+                "icon": "lucide:handshake",
+                "path": "docs/help/contribute",
+                "title": "Contribute to the docs"
+              }
+            ]
+          }
+        ],
+        "tab": "Documentation"
+      },
+      {
+        "icon": "lucide:book",
+        "pages": [
+          {
+            "icon": "lucide:book",
+            "path": "docs/developers",
+            "show-sidebar": false,
+            "title": "Developer documentation"
+          },
+          {
+            "group": "Build a custom component",
+            "icon": "lucide:hammer",
+            "pages": [
+              {
+                "icon": "lucide:zap",
+                "path": "docs/developers/integrations/quickstart",
+                "title": "Quickstart"
+              },
+              {
+                "group": "Install the CLI",
+                "icon": "lucide:download",
+                "pages": [
+                  {
+                    "icon": "lucide:terminal",
+                    "path": "docs/developers/integrations/reference/cli-reference",
+                    "title": "CLI reference"
+                  }
+                ],
+                "path": "docs/developers/integrations/reference"
+              },
+              {
+                "icon": "lucide:file-text",
+                "path": "docs/developers/integrations/configurations",
+                "title": "Configure"
+              },
+              {
+                "group": "Develop",
+                "icon": "lucide:folder",
+                "pages": [
+                  {
+                    "group": "ContentKit",
+                    "icon": "lucide:folder",
+                    "pages": [
+                      {
+                        "path": "docs/developers/integrations/development/contentkit/actions",
+                        "title": "Actions"
+                      },
+                      {
+                        "group": "Component reference",
+                        "icon": "lucide:component",
                         "pages": [
                           {
-                            "title": "Partial Payment",
-                            "path": "v5/partial-payment"
+                            "path": "docs/developers/integrations/development/contentkit/component-reference/vstack",
+                            "title": "VStack"
                           },
                           {
-                            "title": "Exclude Dates",
-                            "path": "v5/exclude-dates"
+                            "path": "docs/developers/integrations/development/contentkit/component-reference/hstack",
+                            "title": "HStack"
+                          },
+                          {
+                            "path": "docs/developers/integrations/development/contentkit/component-reference/divider",
+                            "title": "Divider"
+                          },
+                          {
+                            "path": "docs/developers/integrations/development/contentkit/component-reference/block",
+                            "title": "Block"
+                          },
+                          {
+                            "path": "docs/developers/integrations/development/contentkit/component-reference/box",
+                            "title": "Box"
+                          },
+                          {
+                            "path": "docs/developers/integrations/development/contentkit/component-reference/text",
+                            "title": "Text"
+                          },
+                          {
+                            "path": "docs/developers/integrations/development/contentkit/component-reference/image",
+                            "title": "Image"
+                          },
+                          {
+                            "path": "docs/developers/integrations/development/contentkit/component-reference/card",
+                            "title": "Card"
+                          },
+                          {
+                            "path": "docs/developers/integrations/development/contentkit/component-reference/markdown",
+                            "title": "Markdown"
+                          },
+                          {
+                            "path": "docs/developers/integrations/development/contentkit/component-reference/modal",
+                            "title": "Modal"
+                          },
+                          {
+                            "path": "docs/developers/integrations/development/contentkit/component-reference/textinput",
+                            "title": "TextInput"
+                          },
+                          {
+                            "path": "docs/developers/integrations/development/contentkit/component-reference/codeblock",
+                            "title": "CodeBlock"
+                          },
+                          {
+                            "path": "docs/developers/integrations/development/contentkit/component-reference/button",
+                            "title": "Button"
+                          },
+                          {
+                            "path": "docs/developers/integrations/development/contentkit/component-reference/webframe",
+                            "title": "Webframe"
+                          },
+                          {
+                            "path": "docs/developers/integrations/development/contentkit/component-reference/select",
+                            "title": "Select"
+                          },
+                          {
+                            "path": "docs/developers/integrations/development/contentkit/component-reference/switch",
+                            "title": "Switch"
+                          },
+                          {
+                            "path": "docs/developers/integrations/development/contentkit/component-reference/checkbox",
+                            "title": "Checkbox"
+                          },
+                          {
+                            "path": "docs/developers/integrations/development/contentkit/component-reference/radio",
+                            "title": "Radio"
                           }
-                        ]
+                        ],
+                        "path": "docs/developers/integrations/development/contentkit/component-reference"
+                      }
+                    ],
+                    "path": "docs/developers/integrations/development/contentkit"
+                  },
+                  {
+                    "icon": "lucide:puzzle",
+                    "path": "docs/developers/integrations/development/runtime",
+                    "title": "Integration runtime"
+                  },
+                  {
+                    "icon": "lucide:library",
+                    "path": "docs/developers/integrations/development/client-library",
+                    "title": "Client library"
+                  }
+                ],
+                "path": "docs/developers/integrations/development"
+              },
+              {
+                "icon": "lucide:send",
+                "path": "docs/developers/integrations/publishing",
+                "title": "Publish your component"
+              },
+              {
+                "icon": "lucide:file-text",
+                "path": "docs/developers/integrations/submit-your-app-for-review",
+                "title": "Submit for review"
+              },
+              {
+                "icon": "lucide:cog",
+                "path": "docs/developers/integrations/concepts",
+                "title": "Concepts"
+              },
+              {
+                "group": "Guides",
+                "icon": "lucide:book-open",
+                "pages": [
+                  {
+                    "icon": "lucide:file-text",
+                    "path": "docs/developers/integrations/guides/create-a-custom-unfurl-action-for-your-integration",
+                    "title": "Create a custom unfurl action"
+                  },
+                  {
+                    "icon": "lucide:refresh-cw",
+                    "path": "docs/developers/integrations/guides/interactivity",
+                    "title": "Update text with a button"
+                  },
+                  {
+                    "icon": "lucide:webhook",
+                    "path": "docs/developers/integrations/guides/webhook",
+                    "title": "Receive webhook notifications"
+                  },
+                  {
+                    "icon": "lucide:file-text",
+                    "path": "docs/developers/integrations/guides/receiving-requests",
+                    "title": "Handle an HTTP request"
+                  },
+                  {
+                    "icon": "lucide:file-text",
+                    "path": "docs/developers/integrations/guides/create-an-interactive-text-input",
+                    "title": "Create an interactive text input"
+                  },
+                  {
+                    "icon": "lucide:database",
+                    "path": "docs/developers/integrations/guides/send-data-to-a-webframe",
+                    "title": "Send data to a webframe"
+                  },
+                  {
+                    "icon": "lucide:file-text",
+                    "path": "docs/developers/integrations/guides/open-a-modal-from-a-button",
+                    "title": "Open a modal from a button"
+                  },
+                  {
+                    "icon": "lucide:blocks",
+                    "path": "docs/developers/integrations/guides/save-editable-block-content",
+                    "title": "Save editable block content"
+                  },
+                  {
+                    "icon": "lucide:book-marked",
+                    "path": "docs/developers/integrations/guides/markdown",
+                    "title": "Reference your component in markown"
+                  }
+                ],
+                "path": "docs/developers/integrations/guides"
+              }
+            ]
+          },
+          {
+            "group": "GitBook API",
+            "icon": "lucide:book-marked",
+            "pages": [
+              {
+                "icon": "lucide:zap",
+                "path": "docs/developers/gitbook-api/quickstart",
+                "title": "Quickstart"
+              },
+              {
+                "group": "API reference",
+                "icon": "lucide:code",
+                "pages": [
+                  {
+                    "group": "Organizations",
+                    "icon": "lucide:folder",
+                    "pages": [
+                      {
+                        "group": "Organization members",
+                        "icon": "lucide:building",
+                        "pages": [
+                          {
+                            "icon": "lucide:building",
+                            "path": "docs/developers/gitbook-api/api-reference/organizations/organization-members/list-all-organization-members",
+                            "title": "getList all organization members"
+                          },
+                          {
+                            "icon": "lucide:building",
+                            "path": "docs/developers/gitbook-api/api-reference/organizations/organization-members/get-an-organization-member-by-its-id",
+                            "title": "getGet an organization member by its ID"
+                          },
+                          {
+                            "icon": "lucide:building",
+                            "path": "docs/developers/gitbook-api/api-reference/organizations/organization-members/remove-an-organization-member-or-request-an-organization-admin-to-do-it",
+                            "title": "DELRemove an organization member or request an organization admin to do it"
+                          },
+                          {
+                            "icon": "lucide:building",
+                            "path": "docs/developers/gitbook-api/api-reference/organizations/organization-members/update-an-organization-member",
+                            "title": "patchUpdate an organization member"
+                          },
+                          {
+                            "icon": "lucide:building",
+                            "path": "docs/developers/gitbook-api/api-reference/organizations/organization-members/update-an-organization-member-last-seen-at",
+                            "title": "postUpdate an organization member last seen at"
+                          },
+                          {
+                            "icon": "lucide:users",
+                            "path": "docs/developers/gitbook-api/api-reference/organizations/organization-members/set-a-user-as-an-sso-member-of-an-organization",
+                            "title": "postSet a user as an SSO member of an organization"
+                          },
+                          {
+                            "icon": "lucide:building",
+                            "path": "docs/developers/gitbook-api/api-reference/organizations/organization-members/list-an-organization-member-space-permissions",
+                            "title": "getList an organization member space permissions"
+                          },
+                          {
+                            "icon": "lucide:building",
+                            "path": "docs/developers/gitbook-api/api-reference/organizations/organization-members/list-all-organization-member-teams",
+                            "title": "getList all organization member teams"
+                          }
+                        ],
+                        "path": "docs/developers/gitbook-api/api-reference/organizations/organization-members"
+                      },
+                      {
+                        "group": "Organization invites",
+                        "icon": "lucide:building",
+                        "pages": [
+                          {
+                            "icon": "lucide:users",
+                            "path": "docs/developers/gitbook-api/api-reference/organizations/organization-invites/invite-users-in-an-organization",
+                            "title": "postInvite users in an organization"
+                          },
+                          {
+                            "icon": "lucide:building",
+                            "path": "docs/developers/gitbook-api/api-reference/organizations/organization-invites/join-an-organization-with-an-invite",
+                            "title": "postJoin an organization with an invite"
+                          },
+                          {
+                            "icon": "lucide:building",
+                            "path": "docs/developers/gitbook-api/api-reference/organizations/organization-invites/list-organization-invites",
+                            "title": "getList organization invites"
+                          },
+                          {
+                            "icon": "lucide:building",
+                            "path": "docs/developers/gitbook-api/api-reference/organizations/organization-invites/create-an-organization-invite",
+                            "title": "postCreate an organization invite"
+                          },
+                          {
+                            "icon": "lucide:building",
+                            "path": "docs/developers/gitbook-api/api-reference/organizations/organization-invites/get-an-organization-by-its-id",
+                            "title": "getGet an organization by its ID"
+                          },
+                          {
+                            "icon": "lucide:building",
+                            "path": "docs/developers/gitbook-api/api-reference/organizations/organization-invites/update-an-organization-invite",
+                            "title": "patchUpdate an organization invite"
+                          }
+                        ],
+                        "path": "docs/developers/gitbook-api/api-reference/organizations/organization-invites"
+                      },
+                      {
+                        "group": "Organization AI ask",
+                        "icon": "lucide:building",
+                        "pages": [
+                          {
+                            "icon": "lucide:building",
+                            "path": "docs/developers/gitbook-api/api-reference/organizations/organization-ai-ask/ask-a-question-in-an-organization",
+                            "title": "postAsk a question in an organization"
+                          },
+                          {
+                            "icon": "lucide:building",
+                            "path": "docs/developers/gitbook-api/api-reference/organizations/organization-ai-ask/list-recommended-questions-to-ask-in-an-organization",
+                            "title": "getList recommended questions to ask in an organization"
+                          },
+                          {
+                            "icon": "lucide:building",
+                            "path": "docs/developers/gitbook-api/api-reference/organizations/organization-ai-ask/list-recommended-questions-to-ask-in-an-organization-streamed",
+                            "title": "getList recommended questions to ask in an organization (streamed)"
+                          },
+                          {
+                            "icon": "lucide:building",
+                            "path": "docs/developers/gitbook-api/api-reference/organizations/organization-ai-ask/ask-a-question-in-an-organization-streamed",
+                            "title": "getAsk a question in an organization (streamed)"
+                          }
+                        ],
+                        "path": "docs/developers/gitbook-api/api-reference/organizations/organization-ai-ask"
+                      },
+                      {
+                        "icon": "lucide:users",
+                        "path": "docs/developers/gitbook-api/api-reference/organizations/get-the-list-of-organizations-for-the-currently-authenticated-user",
+                        "title": "getGet the list of organizations for the currently authenticated user"
+                      },
+                      {
+                        "icon": "lucide:building",
+                        "path": "docs/developers/gitbook-api/api-reference/organizations/create-an-organization",
+                        "title": "postCreate an organization"
+                      },
+                      {
+                        "icon": "lucide:building",
+                        "path": "docs/developers/gitbook-api/api-reference/organizations/get-an-organization-by-its-id",
+                        "title": "getGet an organization by its ID"
+                      },
+                      {
+                        "icon": "lucide:building",
+                        "path": "docs/developers/gitbook-api/api-reference/organizations/update-an-organization",
+                        "title": "patchUpdate an organization"
+                      },
+                      {
+                        "icon": "lucide:building",
+                        "path": "docs/developers/gitbook-api/api-reference/organizations/list-organization-audit-event-actions",
+                        "title": "getList organization audit event actions"
+                      },
+                      {
+                        "icon": "lucide:building",
+                        "path": "docs/developers/gitbook-api/api-reference/organizations/list-organization-audit-events",
+                        "title": "getList organization audit events"
+                      },
+                      {
+                        "icon": "lucide:building",
+                        "path": "docs/developers/gitbook-api/api-reference/organizations/get-an-organization-audit-event",
+                        "title": "getGet an organization audit event"
+                      },
+                      {
+                        "icon": "lucide:palette",
+                        "path": "docs/developers/gitbook-api/api-reference/organizations/list-all-style-guides-in-an-organization",
+                        "title": "getList all style guides in an organization"
+                      },
+                      {
+                        "icon": "lucide:palette",
+                        "path": "docs/developers/gitbook-api/api-reference/organizations/list-all-built-in-style-guide-templates",
+                        "title": "getList all built-in style guide templates"
+                      },
+                      {
+                        "icon": "lucide:building",
+                        "path": "docs/developers/gitbook-api/api-reference/organizations/get-an-organizations-subscription",
+                        "title": "getGet an organization's subscription"
+                      },
+                      {
+                        "icon": "lucide:building",
+                        "path": "docs/developers/gitbook-api/api-reference/organizations/deletes-an-organization-invite",
+                        "title": "DELDeletes an organization invite."
+                      },
+                      {
+                        "icon": "lucide:building",
+                        "path": "docs/developers/gitbook-api/api-reference/organizations/join-an-organization",
+                        "title": "postJoin an organization"
+                      },
+                      {
+                        "icon": "lucide:file-text",
+                        "path": "docs/developers/gitbook-api/api-reference/organizations/search-content-in-an-organization",
+                        "title": "getSearch content in an organization"
+                      },
+                      {
+                        "icon": "lucide:book",
+                        "path": "docs/developers/gitbook-api/api-reference/organizations/get-docs-agent-instructions-for-an-organization",
+                        "title": "getGet Docs agent instructions for an organization"
+                      },
+                      {
+                        "icon": "lucide:book",
+                        "path": "docs/developers/gitbook-api/api-reference/organizations/update-docs-agent-instructions-for-an-organization",
+                        "title": "putUpdate Docs agent instructions for an organization"
+                      },
+                      {
+                        "icon": "lucide:sparkles",
+                        "path": "docs/developers/gitbook-api/api-reference/organizations/list-ai-agent-conversations-in-an-organization",
+                        "title": "getList AI agent conversations in an organization"
+                      },
+                      {
+                        "icon": "lucide:sparkles",
+                        "path": "docs/developers/gitbook-api/api-reference/organizations/provision-an-ai-agent-conversation-in-an-organization",
+                        "title": "putProvision an AI agent conversation in an organization"
+                      },
+                      {
+                        "icon": "lucide:bot",
+                        "path": "docs/developers/gitbook-api/api-reference/organizations/delete-an-agent-conversation-in-an-organization",
+                        "title": "DELDelete an agent conversation in an organization"
+                      },
+                      {
+                        "icon": "lucide:sparkles",
+                        "path": "docs/developers/gitbook-api/api-reference/organizations/update-an-ai-agent-conversation-in-an-organization",
+                        "title": "patchUpdate an AI agent conversation in an organization"
+                      },
+                      {
+                        "icon": "lucide:mail",
+                        "path": "docs/developers/gitbook-api/api-reference/organizations/get-all-organizations-by-email-domain",
+                        "title": "getGet all organizations by email domain"
+                      }
+                    ],
+                    "path": "docs/developers/gitbook-api/api-reference/organizations"
+                  },
+                  {
+                    "group": "Docs sites",
+                    "icon": "lucide:book",
+                    "pages": [
+                      {
+                        "group": "Site share links",
+                        "icon": "lucide:link",
+                        "pages": [
+                          {
+                            "icon": "lucide:link",
+                            "path": "docs/developers/gitbook-api/api-reference/docs-sites/site-share-links/list-all-private-share-links-for-a-site",
+                            "title": "getList all private share links for a site"
+                          },
+                          {
+                            "icon": "lucide:link",
+                            "path": "docs/developers/gitbook-api/api-reference/docs-sites/site-share-links/create-a-private-share-link-for-a-site",
+                            "title": "postCreate a private share link for a site"
+                          },
+                          {
+                            "icon": "lucide:link",
+                            "path": "docs/developers/gitbook-api/api-reference/docs-sites/site-share-links/deletes-a-share-link",
+                            "title": "DELDeletes a share link"
+                          },
+                          {
+                            "icon": "lucide:link",
+                            "path": "docs/developers/gitbook-api/api-reference/docs-sites/site-share-links/update-a-private-share-link-for-a-site",
+                            "title": "patchUpdate a private share link for a site"
+                          }
+                        ],
+                        "path": "docs/developers/gitbook-api/api-reference/docs-sites/site-share-links"
+                      },
+                      {
+                        "group": "Site structure",
+                        "icon": "lucide:folder",
+                        "pages": [
+                          {
+                            "icon": "lucide:menu",
+                            "path": "docs/developers/gitbook-api/api-reference/docs-sites/site-structure/get-the-full-navigation-structure-of-a-site",
+                            "title": "getGet the full navigation structure of a site"
+                          }
+                        ],
+                        "path": "docs/developers/gitbook-api/api-reference/docs-sites/site-structure"
+                      },
+                      {
+                        "group": "Site auth",
+                        "icon": "lucide:key",
+                        "pages": [
+                          {
+                            "icon": "lucide:file-text",
+                            "path": "docs/developers/gitbook-api/api-reference/docs-sites/site-auth/get-the-published-content-authentication-configuration-for-a-site",
+                            "title": "getGet the published content authentication configuration for a site"
+                          },
+                          {
+                            "icon": "lucide:file-text",
+                            "path": "docs/developers/gitbook-api/api-reference/docs-sites/site-auth/update-the-published-content-authentication-configuration-for-a-site",
+                            "title": "patchUpdate the published content authentication configuration for a site"
+                          },
+                          {
+                            "icon": "lucide:key",
+                            "path": "docs/developers/gitbook-api/api-reference/docs-sites/site-auth/regenerate-the-private-key-for-a-sites-published-content-authentication",
+                            "title": "postRegenerate the private key for a site's published content authentication"
+                          }
+                        ],
+                        "path": "docs/developers/gitbook-api/api-reference/docs-sites/site-auth"
+                      },
+                      {
+                        "group": "Site preview",
+                        "icon": "lucide:eye",
+                        "pages": [
+                          {
+                            "icon": "lucide:eye",
+                            "path": "docs/developers/gitbook-api/api-reference/docs-sites/site-preview/generate-a-temporary-preview-url-for-a-sites-published-content",
+                            "title": "getGenerate a temporary preview URL for a site's published content"
+                          }
+                        ],
+                        "path": "docs/developers/gitbook-api/api-reference/docs-sites/site-preview"
+                      },
+                      {
+                        "group": "Site customization",
+                        "icon": "lucide:folder",
+                        "pages": [
+                          {
+                            "icon": "lucide:award",
+                            "path": "docs/developers/gitbook-api/api-reference/docs-sites/site-customization/get-the-branding-and-visual-customization-settings-for-a-site",
+                            "title": "getGet the branding and visual customization settings for a site"
+                          },
+                          {
+                            "icon": "lucide:award",
+                            "path": "docs/developers/gitbook-api/api-reference/docs-sites/site-customization/update-the-branding-and-visual-customization-settings-for-a-site",
+                            "title": "putUpdate the branding and visual customization settings for a site"
+                          },
+                          {
+                            "icon": "lucide:file-text",
+                            "path": "docs/developers/gitbook-api/api-reference/docs-sites/site-customization/get-the-customization-overrides-for-a-site-space",
+                            "title": "getGet the customization overrides for a site space"
+                          },
+                          {
+                            "icon": "lucide:settings",
+                            "path": "docs/developers/gitbook-api/api-reference/docs-sites/site-customization/delete-a-site-space-customization-settings",
+                            "title": "DELDelete a site space customization settings"
+                          },
+                          {
+                            "icon": "lucide:award",
+                            "path": "docs/developers/gitbook-api/api-reference/docs-sites/site-customization/override-branding-and-customization-settings-for-a-specific-site-space",
+                            "title": "patchOverride branding and customization settings for a specific site space"
+                          }
+                        ],
+                        "path": "docs/developers/gitbook-api/api-reference/docs-sites/site-customization"
+                      },
+                      {
+                        "group": "Site agent settings",
+                        "icon": "lucide:bot",
+                        "pages": [
+                          {
+                            "icon": "lucide:sparkles",
+                            "path": "docs/developers/gitbook-api/api-reference/docs-sites/site-agent-settings/get-the-ai-agent-configuration-for-a-site",
+                            "title": "getGet the AI agent configuration for a site"
+                          },
+                          {
+                            "icon": "lucide:sparkles",
+                            "path": "docs/developers/gitbook-api/api-reference/docs-sites/site-agent-settings/update-the-ai-agent-configuration-for-a-site",
+                            "title": "putUpdate the AI agent configuration for a site"
+                          }
+                        ],
+                        "path": "docs/developers/gitbook-api/api-reference/docs-sites/site-agent-settings"
+                      },
+                      {
+                        "group": "Site spaces",
+                        "icon": "lucide:folder",
+                        "pages": [
+                          {
+                            "icon": "lucide:file-text",
+                            "path": "docs/developers/gitbook-api/api-reference/docs-sites/site-spaces/list-all-spaces-linked-to-a-site-as-content-sources",
+                            "title": "getList all spaces linked to a site as content sources"
+                          },
+                          {
+                            "icon": "lucide:file-text",
+                            "path": "docs/developers/gitbook-api/api-reference/docs-sites/site-spaces/add-a-space-to-a-site-as-a-content-source",
+                            "title": "postAdd a space to a site as a content source"
+                          }
+                        ],
+                        "path": "docs/developers/gitbook-api/api-reference/docs-sites/site-spaces"
+                      }
+                    ],
+                    "path": "docs/developers/gitbook-api/api-reference/docs-sites"
+                  }
+                ],
+                "path": "docs/developers/gitbook-api/api-reference"
+              },
+              {
+                "icon": "lucide:key",
+                "path": "docs/developers/gitbook-api/authentication",
+                "show-sidebar": false,
+                "title": "Authentication"
+              }
+            ]
+          }
+        ],
+        "tab": "Developers"
+      },
+      {
+        "icon": "lucide:book",
+        "pages": [
+          {
+            "group": "Docs",
+            "icon": "lucide:book",
+            "pages": [
+              {
+                "group": "Publish",
+                "icon": "lucide:send",
+                "pages": [
+                  {
+                    "group": "Publish a docs site",
+                    "icon": "lucide:send",
+                    "pages": [
+                      {
+                        "icon": "lucide:send",
+                        "path": "docs/publish/publish-a-docs-site/public-publishing",
+                        "title": "Public publishing"
                       }
                     ]
                   }
-                ],
-                "footer": {
-                  "columns": [
-                    {
-                      "title": "hello",
-                      "links": [
-                        {
-                          "title": "bad",
-                          "link": ""
-                        },
-                        {
-                          "title": "mornning",
-                          "link": ""
-                        }
-                      ]
-                    },
-                    {
-                      "title": "good evening",
-                      "links": [
-                        {
-                          "title": "hello",
-                          "link": ""
-                        },
-                        {
-                          "title": "hi",
-                          "link": ""
-                        }
-                      ]
-                    }
-                  ],
-                  "links": [
-                    {
-                      "header": "Comapny",
-                      "items": [
-                        {
-                          "label": "company1",
-                          "href": "/addon/fixed-starting-dates"
-                        },
-                        {
-                          "label": "company2",
-                          "href": "/es/how-to-configure-currency-settings"
-                        }
-                      ]
-                    },
-                    {
-                      "header": "product",
-                      "items": [
-                        {
-                          "label": "product1",
-                          "href": "/addon/fsd-global-settings"
-                        },
-                        {
-                          "label": "product2",
-                          "href": "/es/installation"
-                        }
-                      ]
-                    }
-                  ],
-                  "socials": {
-                    "discord": "www.discord",
-                    "instagram": "www.instagram",
-                    "youtube": "",
-                    "telegram": "",
-                    "reddit": ""
-                  },
-                  "copyright": "2026 documentation ai legal"
-                }
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "product": "Travel Monster",
-        "tabs": [
-          {
-            "tab": "Documentation",
-            "icon": "book",
-            "groups": [
+                ]
+              },
               {
-                "group": "Travel Monster",
+                "group": "Account and billing",
+                "icon": "lucide:user-check",
                 "pages": [
                   {
-                    "title": "Setup Static Homepage",
-                    "path": "setup-static-homepage"
+                    "group": "Plans",
+                    "icon": "lucide:credit-card",
+                    "pages": [
+                      {
+                        "icon": "lucide:credit-card",
+                        "path": "docs/account-and-billing/plans/legacy-plans",
+                        "title": "Legacy pricing"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Reference",
+                "icon": "lucide:book-marked",
+                "pages": [
+                  {
+                    "icon": "lucide:book-marked",
+                    "path": "docs/reference/gitbook-ui",
+                    "title": "GitBook UI"
+                  }
+                ]
+              },
+              {
+                "group": "Skill",
+                "icon": "lucide:folder",
+                "pages": [
+                  {
+                    "path": "docs/skill/write-docs",
+                    "title": "Write & Edit Docs"
                   },
                   {
-                    "title": "Configure Widgets",
-                    "path": "configure-widgets"
+                    "path": "docs/skill/configure-site",
+                    "title": "Configure a Site"
                   },
                   {
-                    "title": "Configure Menus",
-                    "path": "configure-menus"
+                    "path": "docs/skill/write-openapi",
+                    "title": "Write OpenAPI Reference Docs"
                   },
                   {
-                    "title": "Posts & Pages Settings",
-                    "path": "posts-pages-settings"
+                    "path": "docs/skill/cr-create",
+                    "title": "Create & Manage Change Requests"
                   },
                   {
-                    "title": "Footer Settings",
-                    "path": "footer-settings"
-                  },
-                  {
-                    "title": "Header Settings",
-                    "path": "header-settings"
-                  },
-                  {
-                    "title": "General Settings",
-                    "path": "general-settings"
-                  },
-                  {
-                    "title": "Configure Site Identity",
-                    "path": "configure-site-identity"
-                  },
-                  {
-                    "title": "Import Starter Site",
-                    "path": "import-starter-site"
-                  },
-                  {
-                    "title": "Install Travel Monster Theme",
-                    "path": "install-travel-monster-theme"
+                    "path": "docs/skill/cr-review",
+                    "title": "Review Change Requests"
                   }
                 ]
               }
             ]
           }
-        ]
-      },
-      {
-        "product": "Travel Monster Pro",
-        "tabs": [
-          {
-            "tab": "Documentation",
-            "icon": "book",
-            "groups": [
-              {
-                "group": "Travel Monster Pro",
-                "pages": [
-                  {
-                    "title": "User Social Link",
-                    "path": "user-social-link"
-                  },
-                  {
-                    "title": "Misc Settings",
-                    "path": "misc-settings"
-                  },
-                  {
-                    "title": "Posts & Pages Settings 2",
-                    "path": "posts-pages-settings-2"
-                  },
-                  {
-                    "title": "Footer Settings 2",
-                    "path": "footer-settings-2"
-                  },
-                  {
-                    "title": "Header Settings 2",
-                    "path": "header-settings-2"
-                  },
-                  {
-                    "title": "General Settings 2",
-                    "path": "general-settings-2"
-                  },
-                  {
-                    "title": "Import Starter Site 2",
-                    "path": "import-starter-site-2"
-                  },
-                  {
-                    "title": "How To Activate Travel Monster Pro License",
-                    "path": "how-to-activate-travel-monster-pro-license"
-                  },
-                  {
-                    "title": "Install and Activate Travel Monster Pro",
-                    "path": "install-and-activate-travel-monster-pro"
-                  },
-                  {
-                    "title": "Travel Monster Addons",
-                    "path": "travel-monster-addons"
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "product": "Altus AI",
-        "tabs": [
-          {
-            "tab": "Documentation",
-            "icon": "book",
-            "groups": [
-              {
-                "group": "Altus AI",
-                "pages": [
-                  {
-                    "title": "Getting Started with Altus AI",
-                    "path": "getting-started-with-altus-ai"
-                  },
-                  {
-                    "title": "Content Generation",
-                    "path": "content-generation"
-                  },
-                  {
-                    "title": "Connect AI Assistants via MCP with WP Travel Engine",
-                    "path": "connect-ai-assistants-via-mcp-with-wp-travel-engine"
-                  },
-                  {
-                    "title": "Usage & Logs",
-                    "path": "usage-logs"
-                  }
-                ]
-              }
-            ]
-          }
-        ]
+        ],
+        "tab": "Docs"
       }
     ]
   },
@@ -1362,12 +1690,12 @@
     "robots:follow": true
   },
   "icons": {
-    "library": "tabler"
+    "library": "fontawesome"
   },
-  "initialRoute": "trip-fixed-starting-dates-introduction",
+  "initialRoute": "docs",
   "customCss": [
     {
-      "src": "styles/footer-overrides.css"
+      "src": "styles/migration.css"
     }
   ],
   "footer": {
@@ -1408,5 +1736,31 @@
   "banner": {
     "content": "this is testing ",
     "color": "#6b7280"
-  }
+  },
+  "favicon": "https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686588206-2e45wyimuir-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Ficon-2Fzs1dcg66tiqYLsZQPyo6-2FGitBook-20--20Icon-20--20Dark-20-1-.png?fm=auto&auto=compress%2Cformat",
+  "logo-dark": "https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686588165-6y61rgyja87-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Flogo-2FjeMEyot5xbWcWdbY8fAL-2FGitBook-20--20Light.svg?rasterize-bypass=true",
+  "logo-light": "https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686588185-295xge69sb-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Flogo-2FQiQ01JRaxVbpTVczX2Eu-2FGitBook-20--20Dark.svg?rasterize-bypass=true",
+  "navbar": {
+    "actions": {
+      "links": [
+        {
+          "link": "https://www.gitbook.com/pricing",
+          "title": "Pricing"
+        },
+        {
+          "link": "https://www.gitbook.com/enterprise",
+          "title": "Book a demo"
+        },
+        {
+          "link": "https://app.gitbook.com/join?utm_content=header_log_in&utm_source=gitbook_docs",
+          "title": "Log in"
+        }
+      ],
+      "primary": {
+        "link": "https://app.gitbook.com/join?utm_content=header_sign_up&utm_source=gitbook_docs",
+        "title": "Sign up"
+      }
+    }
+  },
+  "template": "classic"
 }

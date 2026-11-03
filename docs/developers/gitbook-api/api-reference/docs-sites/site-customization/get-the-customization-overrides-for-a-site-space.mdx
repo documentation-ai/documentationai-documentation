@@ -1,0 +1,482 @@
+---
+title: Get the customization overrides for a site space
+metaTitle: Get the customization overrides for a site space | Developers | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+Retrieves the customization settings that override the site-level branding for a specific site space, such as a language variant or content version. Returns the effective settings with site-level defaults where no override is set. Use this before applying or removing overrides.
+
+**GET** `/orgs/{organizationId}/sites/{siteId}/site-spaces/{siteSpaceId}/customization`
+
+**Parameters**
+
+<ParamField header="Authorization" param-type="string" />
+
+<ParamField path="organizationId" param-type="string" required={true}>
+  The unique id of the organization
+</ParamField>
+
+<ParamField path="siteId" param-type="string" required={true}>
+  The unique id of the site
+</ParamField>
+
+<ParamField path="siteSpaceId" param-type="string" required={true}>
+  The unique id of the site-space relationship
+</ParamField>
+
+<ParamField query="unmasked" param-type="boolean" deprecated={true}>
+  (Deprecated) Use the getRawCustomizationSettingsById internal endpoint.
+</ParamField>
+
+**Responses**
+
+`200` OK
+
+<ResponseField name="title" field-type="string">
+  Title of the site
+</ResponseField>
+
+<ResponseField name="localizedTitle" field-type="object">
+  Localized string value with a 128 character limit, keyed by locale. Contains overrides for non-default languages only.
+</ResponseField>
+
+<ResponseField name="styling" field-type="object" required={true}>
+  <Expandable title="Object Properties">
+    <ResponseField name="theme" field-type="string" required={true} enum="clean,muted,bold,gradient">
+      The theme to apply to the site. Supercedes the old header preset themes.
+
+      - `clean`: Modern theme featuring translucency and minimally-styled elements.
+      - `muted`: Sophisticated theme with decreased contrast between elements.
+      - `bold`: High-impact theme with prominent colors and strong contrasts.
+      - `gradient`: Trendy theme featuring colorful gradients and splashes of color.
+    </ResponseField>
+
+    <ResponseField name="primaryColor" field-type="object" required={true}>
+      <Expandable title="Object Properties">
+        <ResponseField name="light" field-type="string" required={true} />
+
+        <ResponseField name="dark" field-type="string" required={true} />
+      </Expandable>
+    </ResponseField>
+
+    <ResponseField name="secondaryColor" field-type="object">
+      <Expandable title="Object Properties">
+        <ResponseField name="light" field-type="string" required={true} />
+
+        <ResponseField name="dark" field-type="string" required={true} />
+      </Expandable>
+    </ResponseField>
+
+    <ResponseField name="tint" field-type="object">
+      <Expandable title="Object Properties">
+        <ResponseField name="color" field-type="object" required={true}>
+          <Expandable title="Object Properties">
+            <ResponseField name="light" field-type="string" required={true} />
+
+            <ResponseField name="dark" field-type="string" required={true} />
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+
+    <ResponseField name="infoColor" field-type="object" required={true}>
+      <Expandable title="Object Properties">
+        <ResponseField name="light" field-type="string" required={true} />
+
+        <ResponseField name="dark" field-type="string" required={true} />
+      </Expandable>
+    </ResponseField>
+
+    <ResponseField name="successColor" field-type="object" required={true}>
+      <Expandable title="Object Properties">
+        <ResponseField name="light" field-type="string" required={true} />
+
+        <ResponseField name="dark" field-type="string" required={true} />
+      </Expandable>
+    </ResponseField>
+
+    <ResponseField name="warningColor" field-type="object" required={true}>
+      <Expandable title="Object Properties">
+        <ResponseField name="light" field-type="string" required={true} />
+
+        <ResponseField name="dark" field-type="string" required={true} />
+      </Expandable>
+    </ResponseField>
+
+    <ResponseField name="dangerColor" field-type="object" required={true}>
+      <Expandable title="Object Properties">
+        <ResponseField name="light" field-type="string" required={true} />
+
+        <ResponseField name="dark" field-type="string" required={true} />
+      </Expandable>
+    </ResponseField>
+
+    <ResponseField name="corners" field-type="string" required={true} enum="straight,rounded,circular" />
+
+    <ResponseField name="depth" field-type="string" required={true} enum="subtle,flat">
+      The degree of visual depth (through shadows, gradients and elevation effects) of elements on the site.
+
+      - `subtle`: Subtle shadows and minimal elevation.
+      - `flat`: Flat elements, no shadows and no elevation.
+    </ResponseField>
+
+    <ResponseField name="links" field-type="string" required={true} enum="default,accent">
+      The style used for regular links in the main content, header and footer. Sidebar items are styled separately.
+
+      - `default`: Links are colored in the primary color and feature an underline in the same color.
+      - `accent`: Links are colored the same as body text and feature an underline in the primary color.
+    </ResponseField>
+
+    <ResponseField name="font" field-type="string" required={true} />
+
+    <ResponseField name="headingFont" field-type="string">
+      Font used for headings. `null` means headings use the main font (`styling.font`).
+    </ResponseField>
+
+    <ResponseField name="monospaceFont" field-type="string" required={true} />
+
+    <ResponseField name="background" field-type="string" required={true} deprecated={true} enum="plain,match">
+      The background style has been deprecated and will be removed in a future release. Use the `tint` settings instead.
+    </ResponseField>
+
+    <ResponseField name="icons" field-type="string" required={true} enum="regular,solid,duotone,light,thin" />
+
+    <ResponseField name="codeTheme" field-type="object" required={true}>
+      <Expandable title="Object Properties">
+        <ResponseField name="default" field-type="object" required={true}>
+          <Expandable title="Object Properties">
+            <ResponseField name="light" field-type="string" required={true} enum="default-light,default-dark,monochrome-light,monochrome-dark,andromeeda,aurora-x,ayu-dark,catppuccin-frappe,catppuccin-latte,catppuccin-macchiato,catppuccin-mocha,dark-plus,dracula,dracula-soft,everforest-dark,everforest-light,github-dark,github-dark-default,github-dark-dimmed,github-dark-high-contrast,github-light,github-light-default,github-light-high-contrast,gruvbox-dark-hard,gruvbox-dark-medium,gruvbox-dark-soft,gruvbox-light-hard,gruvbox-light-medium,gruvbox-light-soft,houston,kanagawa-dragon,kanagawa-lotus,kanagawa-wave,laserwave,light-plus,material-theme,material-theme-darker,material-theme-lighter,material-theme-ocean,material-theme-palenight,min-dark,min-light,monokai,night-owl,nord,one-dark-pro,one-light,plastic,poimandres,red,rose-pine,rose-pine-dawn,rose-pine-moon,slack-dark,slack-ochin,snazzy-light,solarized-dark,solarized-light,synthwave-84,tokyo-night,vesper,vitesse-black,vitesse-dark,vitesse-light" />
+
+            <ResponseField name="dark" field-type="string" required={true} enum="default-light,default-dark,monochrome-light,monochrome-dark,andromeeda,aurora-x,ayu-dark,catppuccin-frappe,catppuccin-latte,catppuccin-macchiato,catppuccin-mocha,dark-plus,dracula,dracula-soft,everforest-dark,everforest-light,github-dark,github-dark-default,github-dark-dimmed,github-dark-high-contrast,github-light,github-light-default,github-light-high-contrast,gruvbox-dark-hard,gruvbox-dark-medium,gruvbox-dark-soft,gruvbox-light-hard,gruvbox-light-medium,gruvbox-light-soft,houston,kanagawa-dragon,kanagawa-lotus,kanagawa-wave,laserwave,light-plus,material-theme,material-theme-darker,material-theme-lighter,material-theme-ocean,material-theme-palenight,min-dark,min-light,monokai,night-owl,nord,one-dark-pro,one-light,plastic,poimandres,red,rose-pine,rose-pine-dawn,rose-pine-moon,slack-dark,slack-ochin,snazzy-light,solarized-dark,solarized-light,synthwave-84,tokyo-night,vesper,vitesse-black,vitesse-dark,vitesse-light" />
+          </Expandable>
+        </ResponseField>
+
+        <ResponseField name="openapi" field-type="object" required={true}>
+          <Expandable title="Object Properties">
+            <ResponseField name="light" field-type="string" required={true} enum="default-light,default-dark,monochrome-light,monochrome-dark,andromeeda,aurora-x,ayu-dark,catppuccin-frappe,catppuccin-latte,catppuccin-macchiato,catppuccin-mocha,dark-plus,dracula,dracula-soft,everforest-dark,everforest-light,github-dark,github-dark-default,github-dark-dimmed,github-dark-high-contrast,github-light,github-light-default,github-light-high-contrast,gruvbox-dark-hard,gruvbox-dark-medium,gruvbox-dark-soft,gruvbox-light-hard,gruvbox-light-medium,gruvbox-light-soft,houston,kanagawa-dragon,kanagawa-lotus,kanagawa-wave,laserwave,light-plus,material-theme,material-theme-darker,material-theme-lighter,material-theme-ocean,material-theme-palenight,min-dark,min-light,monokai,night-owl,nord,one-dark-pro,one-light,plastic,poimandres,red,rose-pine,rose-pine-dawn,rose-pine-moon,slack-dark,slack-ochin,snazzy-light,solarized-dark,solarized-light,synthwave-84,tokyo-night,vesper,vitesse-black,vitesse-dark,vitesse-light" />
+
+            <ResponseField name="dark" field-type="string" required={true} enum="default-light,default-dark,monochrome-light,monochrome-dark,andromeeda,aurora-x,ayu-dark,catppuccin-frappe,catppuccin-latte,catppuccin-macchiato,catppuccin-mocha,dark-plus,dracula,dracula-soft,everforest-dark,everforest-light,github-dark,github-dark-default,github-dark-dimmed,github-dark-high-contrast,github-light,github-light-default,github-light-high-contrast,gruvbox-dark-hard,gruvbox-dark-medium,gruvbox-dark-soft,gruvbox-light-hard,gruvbox-light-medium,gruvbox-light-soft,houston,kanagawa-dragon,kanagawa-lotus,kanagawa-wave,laserwave,light-plus,material-theme,material-theme-darker,material-theme-lighter,material-theme-ocean,material-theme-palenight,min-dark,min-light,monokai,night-owl,nord,one-dark-pro,one-light,plastic,poimandres,red,rose-pine,rose-pine-dawn,rose-pine-moon,slack-dark,slack-ochin,snazzy-light,solarized-dark,solarized-light,synthwave-84,tokyo-night,vesper,vitesse-black,vitesse-dark,vitesse-light" />
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+
+    <ResponseField name="sidebar" field-type="object" required={true}>
+      <Expandable title="Object Properties">
+        <ResponseField name="background" field-type="string" required={true} enum="default,filled">
+          - `default`: No background, content sits directly against sidebar edge.
+          - `filled`: Muted background color that extends to sidebar edges.
+        </ResponseField>
+
+        <ResponseField name="list" field-type="string" required={true} enum="default,pill,line">
+          - `default`: Simple list items without special styling, groups are inset with a line.
+          - `pill`: Rounded capsule shape around selected/active items.
+          - `line`: Continuous line next to all items, with colored line part for selected/active items.
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+
+    <ResponseField name="search" field-type="string" required={true} enum="prominent,subtle">
+      The style of the search button.
+
+      - `prominent`: large search bar in the middle of the header, with less room for other header items,
+      - `subtle`: small search bar in the corner of the header, with more room for other header items.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="internationalization" field-type="object" required={true} deprecated={true}>
+  <Expandable title="Object Properties">
+    <ResponseField name="locale" field-type="string" required={true} deprecated={true} enum="en,fr,es,zh,ja,de,nl,no,pt-br,ru">
+      Language for the UI element
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="favicon" field-type="string" required={true} />
+
+<ResponseField name="header" field-type="object" required={true}>
+  <Expandable title="Object Properties">
+    <ResponseField name="preset" field-type="string" required={true} deprecated={true} enum="default,bold,contrast,custom,none">
+      The header preset to use for the site. This is a legacy setting and the site styling theme should be used instead.
+    </ResponseField>
+
+    <ResponseField name="logo" field-type="object">
+      <Expandable title="Object Properties">
+        <ResponseField name="light" field-type="string" required={true} />
+
+        <ResponseField name="dark" field-type="string" required={true} />
+      </Expandable>
+    </ResponseField>
+
+    <ResponseField name="primaryLink" field-type="string">
+      A relative reference to content in GitBook.
+    </ResponseField>
+
+    <ResponseField name="backgroundColor" field-type="object">
+      <Expandable title="Object Properties">
+        <ResponseField name="light" field-type="string" required={true} />
+
+        <ResponseField name="dark" field-type="string" required={true} />
+      </Expandable>
+    </ResponseField>
+
+    <ResponseField name="linkColor" field-type="object">
+      <Expandable title="Object Properties">
+        <ResponseField name="light" field-type="string" required={true} />
+
+        <ResponseField name="dark" field-type="string" required={true} />
+      </Expandable>
+    </ResponseField>
+
+    <ResponseField name="links" field-type="array" required={true}>
+      <Expandable title="Array Items">
+        <ResponseField name="title" field-type="string" required={true} />
+
+        <ResponseField name="localizedTitle" field-type="object">
+          Localized string value, keyed by locale. Contains overrides for non-default languages only.
+        </ResponseField>
+
+        <ResponseField name="style" field-type="string" enum="link,button-primary,button-secondary" />
+
+        <ResponseField name="to" field-type="string" required={true} />
+
+        <ResponseField name="links" field-type="array" required={true}>
+          <Expandable title="Array Items">
+            <ResponseField name="title" field-type="string" required={true} />
+
+            <ResponseField name="localizedTitle" field-type="object">
+              Localized string value with a 128 character limit, keyed by locale. Contains overrides for non-default languages only.
+            </ResponseField>
+
+            <ResponseField name="to" field-type="string" required={true}>
+              A relative reference to content in GitBook.
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+
+        <ResponseField name="condition" field-type="string">
+          Expression to evaluate
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="footer" field-type="object" required={true}>
+  <Expandable title="Object Properties">
+    <ResponseField name="logo" field-type="object">
+      <Expandable title="Object Properties">
+        <ResponseField name="light" field-type="string" required={true} />
+
+        <ResponseField name="dark" field-type="string" required={true} />
+      </Expandable>
+    </ResponseField>
+
+    <ResponseField name="groups" field-type="array" required={true}>
+      <Expandable title="Array Items">
+        <ResponseField name="title" field-type="string" required={true} />
+
+        <ResponseField name="localizedTitle" field-type="object">
+          Localized string value, keyed by locale. Contains overrides for non-default languages only.
+        </ResponseField>
+
+        <ResponseField name="links" field-type="array" required={true}>
+          <Expandable title="Array Items">
+            <ResponseField name="title" field-type="string" required={true} />
+
+            <ResponseField name="localizedTitle" field-type="object">
+              Localized string value with a 128 character limit, keyed by locale. Contains overrides for non-default languages only.
+            </ResponseField>
+
+            <ResponseField name="to" field-type="string" required={true}>
+              A relative reference to content in GitBook.
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+
+    <ResponseField name="copyright" field-type="string" />
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="announcement" field-type="object">
+  <Expandable title="Object Properties">
+    <ResponseField name="enabled" field-type="boolean" required={true}>
+      Whether to show the site's announcement.
+    </ResponseField>
+
+    <ResponseField name="message" field-type="string" required={true}>
+      The text content of the announcement.
+    </ResponseField>
+
+    <ResponseField name="localizedMessage" field-type="object">
+      Localized string value with a 128 character limit, keyed by locale. Contains overrides for non-default languages only.
+    </ResponseField>
+
+    <ResponseField name="link" field-type="object">
+      <Expandable title="Object Properties">
+        <ResponseField name="title" field-type="string" required={true} />
+
+        <ResponseField name="localizedTitle" field-type="object">
+          Localized string value with a 128 character limit, keyed by locale. Contains overrides for non-default languages only.
+        </ResponseField>
+
+        <ResponseField name="to" field-type="string" required={true}>
+          A relative reference to content in GitBook.
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+
+    <ResponseField name="style" field-type="string" required={true} enum="info,warning,danger,success">
+      The style of the announcement. Used to style the banner with the right semantic color and enable/disable features like hiding the banner.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="themes" field-type="object" required={true}>
+  Customization options for the dark/light theme modes.
+
+  <Expandable title="Object Properties">
+    <ResponseField name="default" field-type="string" required={true} enum="light,dark,system" />
+
+    <ResponseField name="toggeable" field-type="boolean" required={true}>
+      Should the reader be able to switch between dark and light mode
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="feedback" field-type="object" required={true}>
+  <Expandable title="Object Properties">
+    <ResponseField name="enabled" field-type="boolean" required={true}>
+      If true, feedback gathering is enabled
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="ai" field-type="object" required={true}>
+  <Expandable title="Object Properties">
+    <ResponseField name="mode" field-type="string" required={true} enum="none,search,assistant" />
+
+    <ResponseField name="greeting" field-type="string">
+      Initial greeting displayed by the AI Assistant when a visitor starts a conversation.
+    </ResponseField>
+
+    <ResponseField name="localizedGreeting" field-type="object">
+      Localized string value with a 128 character limit, keyed by locale. Contains overrides for non-default languages only.
+    </ResponseField>
+
+    <ResponseField name="suggestions" field-type="string[]">
+      Suggested questions to display at the start of the chosen AI mode.
+    </ResponseField>
+
+    <ResponseField name="instructions" field-type="string">
+      Additional instructions for the AI Assistant, injected after the base system prompt. Use them to adjust tone of voice and contribute site-specific knowledge. These instructions refine, but never override, the assistant's built-in guardrails. Only available to site admins and never exposed on the published site.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="advancedCustomization" field-type="object" required={true}>
+  <Expandable title="Object Properties">
+    <ResponseField name="enabled" field-type="boolean" required={true}>
+      If true, Advanced customization is enabled
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="pageActions" field-type="object" required={true}>
+  <Expandable title="Object Properties">
+    <ResponseField name="items" field-type="string[]" required={true} enum="assistant,external-ai,markdown,mcp,git,pdf">
+      Ordered list of the page actions enabled in the page menu. This is the source of truth for
+      which actions are enabled and in which order: the position defines the display order, the
+      first action is the default one, surfaced as the main button on the page, and actions not
+      present in the list are disabled. An empty list turns the page menu off entirely: no action
+      is shown, not even the `assistant`. On a non-empty list the `assistant` action follows the
+      `ai.mode` setting rather than its own presence: it is kept (prepended by default if missing,
+      otherwise keeping its position) when the assistant is enabled and absent when it is disabled.
+      When the menu is off, the assistant stays reachable from the header via `ai.mode`.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="externalLinks" field-type="object" required={true}>
+  <Expandable title="Object Properties">
+    <ResponseField name="target" field-type="string" required={true} enum="self,blank">
+      How external links should open when clicked.
+
+      - `self`: External links open in the current tab.
+      - `blank`: External links open in a new browser tab.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="pagination" field-type="object" required={true}>
+  <Expandable title="Object Properties">
+    <ResponseField name="enabled" field-type="boolean" required={true}>
+      Whether the pagination navigation should be displayed on pages.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="trademark" field-type="object" required={true}>
+  <Expandable title="Object Properties">
+    <ResponseField name="enabled" field-type="boolean" required={true}>
+      Whether the GitBook trademark ("Powered by GitBook") should be visible
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="privacyPolicy" field-type="object" required={true}>
+  <Expandable title="Object Properties">
+    <ResponseField name="url" field-type="string" />
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="socialPreview" field-type="object" required={true}>
+  <Expandable title="Object Properties">
+    <ResponseField name="url" field-type="string" />
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="socialAccounts" field-type="array" required={true}>
+  The social accounts of the site.
+
+  <Expandable title="Array Items">
+    <ResponseField name="platform" field-type="string" required={true} enum="twitter,instagram,facebook,linkedin,github,discord,slack,youtube,tiktok,reddit,bluesky,mastodon,threads,medium">
+      The platform of the social handle.
+    </ResponseField>
+
+    <ResponseField name="handle" field-type="string" required={true}>
+      A handle on a social platform, without prefixes like the @ symbol.
+    </ResponseField>
+
+    <ResponseField name="display" field-type="object" required={true}>
+      <Expandable title="Object Properties">
+        <ResponseField name="footer" field-type="boolean" required={true} />
+
+        <ResponseField name="header" field-type="boolean" required={true} />
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="insights" field-type="object" required={true}>
+  <Expandable title="Object Properties">
+    <ResponseField name="trackingCookie" field-type="boolean" required={true}>
+      Whether GitBook identifies the visitor on the site using a cookie.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="updatedAt" field-type="string" />
+
+`400` Bad Request
+
+<ResponseField name="error" field-type="object" required={true}>
+  <Expandable title="Object Properties">
+    <ResponseField name="code" field-type="integer" required={true} enum="400" />
+
+    <ResponseField name="message" field-type="string" required={true} />
+  </Expandable>
+</ResponseField>

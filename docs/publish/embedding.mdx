@@ -1,0 +1,72 @@
+---
+title: Embed in your product
+description: Embed your documentation in your product or website using the Docs Embed.
+metaTitle: Embed in your product | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+The Docs Embed is a powerful window into your product knowledge that you can add to any product or website. Users can ask questions to the [GitBook Assistant](/docs/ai-for-your-readers/gitbook-ai-assistant), search your docs, or browse pages directly, without leaving your product. You can open the embed with a button, put it in any component you want, or control it completely programmatically.
+
+<Image src="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686800803-ikxb0ldqrqc-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2F5krgZgNq1Mj79a3aVB7h-2Femebeddable_assistant.png?fm=auto&auto=compress%2Cformat" alt="Embed GitBook Assistant into your product or website" caption="Embed your docs into your product or website" />
+
+## Overview
+
+The Docs Embed can contain three tabs:
+
+- **Assistant**: The [GitBook Assistant](/docs/ai-for-your-readers/gitbook-ai-assistant) \- an AI-powered chat interface to help users find answers
+- **Search**: A search-focused surface for quickly finding pages and asking scoped questions
+- **Docs**: A browser for navigating your documentation site
+
+All tabs are enabled by default. If you set `tabs`, the embed shows only the tabs you list.
+
+You can customize and override the default configuration with custom actions, tools, suggested questions, [Authenticated Access](/docs/publish/site-audience/authenticated-access), and more.
+
+## Get started
+
+<Steps>
+  <Step title="Prerequisites">
+    Before embedding your docs, ensure:
+
+    1. **Your docs are published** and accessible at a URL (e.g., `https://docs.company.com`).
+    2. **You have retrieved the embed script URL** from your site settings (Settings → AI & MCP → Embed).
+
+    <Callout kind="info">
+      If you want to use the Assistant tab, [GitBook Assistant must be enabled](/docs/ai-for-your-readers/gitbook-ai-assistant) for your docs site (Settings → AI & MCP).
+    </Callout>
+  </Step>
+
+  <Step title="Implementation">
+    Use our skill to quickly implement GitBook Assistant into your product using your existing stack.
+
+    <Card href="https://gitbook.com/files/mcDIGLYgsZlaBs75S7k6" />
+
+    Alternatively, continue reading through the docs for the approach that matches your setup:
+
+    <Columns cols={3}>
+      <Card title="Standalone script tag" href="/docs/publish/embedding/implementation/script" icon="code">
+        Drop in a &lt;script> tag for the fastest setup, then customize its appearance
+      </Card>
+
+      <Card title="Node.js/NPM" href="/docs/publish/embedding/implementation/nodejs" icon="box">
+        Install via NPM for server-side rendering or build-time control
+      </Card>
+
+      <Card title="React component" href="/docs/publish/embedding/implementation/react" icon="fa-brands:react">
+        Use prebuilt React components for seamless integration
+      </Card>
+    </Columns>
+
+    <Callout kind="info">
+      If your docs use [Authenticated Access](/docs/publish/site-audience/authenticated-access), follow the steps in [how to set up the embed with authenticated docs](/docs/publish/embedding/using-with-authenticated-docs).
+    </Callout>
+  </Step>
+
+  <Step title="Configuration">
+    - [Customizing the Embed](/docs/publish/embedding/configuration/customizing-docs-embed) – Add welcome messages, custom actions, and suggestions
+    - [Creating custom tools](/docs/publish/embedding/configuration/creating-custom-tools) – Connect Assistant to your product APIs
+  </Step>
+</Steps>
+
+## Further reading
+
+For the complete API reference and source code, see the [`@gitbook/embed` package on GitHub](https://github.com/GitbookIO/gitbook/tree/main/packages/embed).

@@ -1,0 +1,40 @@
+---
+title: CLI reference
+description: Explore the full reference guide for GitBook’s CLI commands
+metaTitle: CLI reference | Developers | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+### `gitbook auth`
+
+Authenticate the CLI with a GitBook Developer API token. You can generate a personal developer token in your [GitBook Developer settings](https://app.gitbook.com/account/developer).
+
+The token can also be provided using the command line argument `--token=<token>`; If none is provided, it'll be prompted.
+
+### `gitbook integrations new <dir>`
+
+Create and initialize a new integration locally. The program will prompt for information about the integration.
+
+### `gitbook integrations dev`
+
+Create a live connection from your integration to your GitBook editor. Updates made locally while the connection is running will automatically be received in the editor.
+
+See the [development section](/docs/developers/integrations/development) to learn more.
+
+### `gitbook integrations publish`
+
+Publish the integration defined in the `gitbook-manifest.yaml` file. See the [GitBook Manifest reference](/docs/developers/integrations/configurations) documentation to learn more.
+
+See the [publishing section](/docs/developers/integrations/publishing) to learn more about publishing your integration to GitBook.
+
+### `gitbook integrations unpublish <integration-name>`
+
+Unpublish your integration from the GitBook integration platform. Pass the name of the integration as an argument to the command.
+
+### `gitbook whoami`
+
+Print information about the currently authenticated user.
+
+### `gitbook help`
+
+View the GitBook CLI commands and information on using them.

@@ -1,0 +1,21 @@
+---
+title: Modal
+description: ContentKit modal component
+metaTitle: Modal | Developers | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+```tsx
+<modal>...</modal>
+```
+
+| Props | Type | Description |
+| --- | --- | --- |
+| `children`\* | `Array<Block> \| Array<Inline>` | Modal content. |
+| `title` | `string` | Modal title. |
+| `subtitle` | `string` | Modal subtitle. |
+| `size` | `'medium' \| 'xlarge' \| 'fullscreen'` | Modal size. |
+| `returnValue` | `object` | Data returned on close. |
+| `submit` | `Button` | Submit button. |
+
+Open it with `@ui.modal.open`, then dispatch `@ui.modal.close` from the modal. See [Actions](/docs/developers/integrations/development/contentkit/actions).

@@ -1,0 +1,209 @@
+---
+title: Get the list of organizations for the currently authenticated user
+metaTitle: Get the list of organizations for the currently authenticated user | Developers | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+For the complete documentation index, see [llms.txt](https://gitbook.com/docs/llms.txt). This page is also available as [Markdown](/docs/developers/gitbook-api/api-reference/organizations/get-the-list-of-organizations-for-the-currently-authenticated-user).
+
+Available in MCP
+
+get
+
+Authorizations
+
+AuthorizationstringRequired
+
+Bearer authentication header of the form Bearer &lt;token>.
+
+Query parameters
+
+pagestringOptional
+
+Identifier of the page results to fetch.
+
+limitnumber · max: 1000Optional
+
+The number of results per page
+
+sortstring · enumOptional
+
+The property to sort the list by. With `lastSeenAt`, only the organizations the user has opened are returned, most recently opened first. It returns at most `limit` items with no next page, and cannot be combined with `page`, because the order changes every time the user opens an organization.
+
+Possible values:
+
+Responses
+
+200
+
+OK
+
+application/json
+
+countnumberOptional
+
+Total count of objects in the list
+
+400
+
+Bad Request
+
+application/json
+
+get/orgs
+
+```
+GET /v1/orgs HTTP/1.1
+Host: api.gitbook.com
+Authorization: Bearer YOUR_SECRET_TOKEN
+Accept: */*
+```
+
+```
+{
+  "next": {
+    "page": "text"
+  },
+  "count": 1,
+  "items": [
+    {
+      "object": "organization",
+      "id": "text",
+      "title": "text",
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "emailDomains": [
+        "text"
+      ],
+      "hostname": "text",
+      "type": "business",
+      "useCase": "internalDocs",
+      "communityType": "nonProfit",
+      "defaultRole": "admin",
+      "defaultContent": {
+        "type": "site",
+        "site": "text"
+      },
+      "sso": true,
+      "ai": true,
+      "aiPreference": true,
+      "aiSettings": {
+        "ai-agent": false,
+        "ai-assistant": false,
+        "ai-broken-links": false,
+        "ai-content-gap": false,
+        "ai-insight": false,
+        "ai-import": false,
+        "ai-platform": false,
+        "ai-style-guide": false,
+        "ai-translation": false,
+        "aiCreditAlertThreshold": 1,
+        "aiCreditPauseEnabled": true,
+        "aiAlertNotificationAlertId": "text",
+        "aiPauseNotificationAlertId": "text"
+      },
+      "aiPaused": true,
+      "inviteLinks": true,
+      "auditLogs": true,
+      "plan": "free_2024",
+      "billing": {
+        "interval": "monthly",
+        "endDate": "2026-01-01T00:00:00.000Z",
+        "hasPaymentFailed": true,
+        "canCheckout": true,
+        "isScheduledToCancel": true,
+        "pricing": {
+          "members": {
+            "plus_2024": {
+              "monthly": 1,
+              "yearly": 1
+            },
+            "pro_2024": {
+              "monthly": 1,
+              "yearly": 1
+            }
+          },
+          "sites": {
+            "premium": {
+              "monthly": 1,
+              "yearly": 1
+            },
+            "ultimate": {
+              "monthly": 1,
+              "yearly": 1
+            }
+          }
+        },
+        "usageAddons": {
+          "ANY_ADDITIONAL_PROPERTY": {
+            "enabled": true
+          }
+        },
+        "minUsers": 1,
+        "maxUsers": 1,
+        "minPremiumSites": 1,
+        "maxPremiumSites": 1,
+        "minUltimateSites": 1,
+        "maxUltimateSites": 1,
+        "paidMembers": 1,
+        "paidPremiumSites": 1,
+        "paidUltimateSites": 1,
+        "canChangeInterval": true,
+        "canUseSAML": true,
+        "canUseAI": true,
+        "creditsBundle": "none",
+        "aiCreditAllowance": 1,
+        "aiCreditRollover": 1
+      },
+      "mergeRules": {
+        "type": "rules",
+        "rules": [
+          {
+            "rule": "require_specific_reviewers",
+            "users": [
+              "text"
+            ]
+          }
+        ]
+      },
+      "supportCost": {
+        "perTicket": 1,
+        "currency": "text"
+      },
+      "urls": {
+        "location": "https://example.com",
+        "app": "https://example.com",
+        "logo": "https://example.com"
+      },
+      "trial": {
+        "status": "notapplicable",
+        "count": 1,
+        "endDate": "2026-01-01T00:00:00.000Z",
+        "decision": "downgrade"
+      },
+      "customHostname": "text",
+      "blocked": {
+        "source": "backoffice",
+        "reason": "text"
+      },
+      "permissions": {
+        "view": true,
+        "access": true,
+        "admin": true,
+        "ownTeam": true,
+        "createContent": true,
+        "createOpenAPISpec": true,
+        "viewBilling": true,
+        "listMembers": true,
+        "listTeams": true,
+        "listIntegrations": true,
+        "listInstallations": true,
+        "installIntegration": true
+      }
+    }
+  ]
+}
+```
+
+Last updated <time>1 minute ago</time>
+
+Was this helpful?

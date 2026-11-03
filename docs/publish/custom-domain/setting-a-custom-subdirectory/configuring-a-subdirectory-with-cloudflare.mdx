@@ -1,0 +1,59 @@
+---
+title: Configuring a subdirectory with Cloudflare
+description: Host your documentation with a /docs subdirectory using Cloudflare
+metaTitle: Configuring a subdirectory with Cloudflare | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+<Steps>
+  <Step title="Configuring your GitBook site" titleType="h3">
+    In your GitBook organization, click on your docs site name in the sidebar, then click **Manage site** or open the **Settings** tab. Open the **Domain and redirects** section and under ‘Subdirectory’, click **Set up a subdirectory**.
+
+    Enter the URL where you would like to host your docs. Then specify the subdirectory for docs access, e.g. `tomatopy.pizza/docs`, and click **Configure**.
+
+    Under **Additional configuration**, you will now see a proxy URL. You'll use this in the next step when configuring your Cloudflare worker. Copy it to your clipboard.
+  </Step>
+
+  <Step title="Create your Cloudflare worker" titleType="h3">
+    Sign into your Cloudflare account and navigate to **Workers & Pages**
+
+    Click the **Create** button.
+
+    On the ‘Create an application’ screen, click the **Hello world** button in the ‘Start from a template’ card.
+
+    Give the worker a more descriptive name, like `mydocs-subpath-proxy`. Once you finish renaming the worker, click **Deploy**.
+  </Step>
+
+  <Step title="Configure your custom domain" titleType="h3">
+    Your worker will get a default URL that you can use. To configure your custom domain instead (such as `tomatopy.pizza`), click <strong>Settings.</strong> Then, in the ‘Domains & Routes’ section, click <strong>\+ Add</strong>.
+
+    In the ‘Domains & Routes’ tray that opens, click **Custom domain**, then enter your custom domain in the textbox that follows. When you specify the custom domain, *do not* include the subdirectory. For example, `tomatopy.pizza` is correct, while `tomatopy.pizza/docs` is not.
+  </Step>
+
+  <Step title="Update the worker code" titleType="h3">
+    When the worker is finished deploying, click **Edit code**, or click **Continue to project**, and then the **Edit code** button in the upper right.
+
+    In the code editor that opens, replace the sample code with the following snippet:
+
+    ```javascript
+    export default {
+      fetch(request) { 
+        const SUBDIRECTORY = '/docs';
+        const url = new URL(request.url);
+        const target = "<INSERT YOUR PROXY URL FROM GITBOOK>" + url.pathname.slice(SUBDIRECTORY.length);
+        const proxy = new URL(
+          target.endsWith('/') ? target.slice(0, -1) : target 
+        )
+        proxy.search = url.search;
+        return fetch(new Request(proxy, request));
+      }
+    };
+    ```
+
+    <Callout kind="info">
+      Be sure to update the URL on line 5 with the proxy URL you got from GitBook in the first step.
+    </Callout>
+
+    Once that’s done, click **Deploy**. This process may take a few moments. Once it’s complete, when visiting the URL, you should see your docs site!
+  </Step>
+</Steps>

@@ -1,0 +1,490 @@
+---
+title: Override branding and customization settings for a specific site space
+metaTitle: Override branding and customization settings for a specific site space | Developers | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+For the complete documentation index, see [llms.txt](https://gitbook.com/docs/llms.txt). This page is also available as [Markdown](/docs/developers/gitbook-api/api-reference/docs-sites/site-customization/override-branding-and-customization-settings-for-a-specific-site-space).
+
+Applies customization overrides to a specific site space, such as a language variant or content version, that take precedence over the site-level settings. Only provided fields are overridden; set a field to null to clear its override and fall back to the site-level value.
+
+Available in MCP
+
+patch
+
+Authorizations
+
+AuthorizationstringRequired
+
+Bearer authentication header of the form Bearer &lt;token>.
+
+Path parameters
+
+organizationIdstringRequired
+
+A unique entity identifier
+
+Pattern: `^[a-zA-Z0-9_-]+$`
+
+siteIdstringRequired
+
+The unique id of the site
+
+siteSpaceIdstringRequired
+
+The unique id of the site-space relationship
+
+Body
+
+The settings that overrides the site customization settings.
+
+titlestring · min: 2 · max: 128 · nullableOptional
+
+Title to use for the published site variant. If not defined, the title will not be changed. If set to null, the title will be unset and will fallback to the content title.
+
+faviconone of · nullableOptional
+
+The favicon to use. Set to null to reset the override.
+
+or
+
+or
+
+objectOptional
+
+Responses
+
+200
+
+OK
+
+application/json
+
+titlestring · min: 2 · max: 128Optional
+
+Title to use for the published site. If not defined, it'll fallback to the default content title.
+
+faviconone ofRequired
+
+or
+
+or
+
+objectOptional
+
+updatedAtstring · date-timeOptional
+
+When the customization settings were updated. If missing, customization was not updated.
+
+400
+
+Bad Request
+
+application/json
+
+patch/orgs/&#123;organizationId&#125;/sites/&#123;siteId&#125;/site-spaces/&#123;siteSpaceId&#125;/customization
+
+```
+PATCH /v1/orgs/{organizationId}/sites/{siteId}/site-spaces/{siteSpaceId}/customization HTTP/1.1
+Host: api.gitbook.com
+Authorization: Bearer YOUR_SECRET_TOKEN
+Content-Type: application/json
+Accept: */*
+Content-Length: 2107
+
+{
+  "title": "text",
+  "localizedTitle": {
+    "ANY_ADDITIONAL_PROPERTY": "text"
+  },
+  "styling": {
+    "theme": "clean",
+    "primaryColor": {
+      "light": "text",
+      "dark": "text"
+    },
+    "secondaryColor": {
+      "light": "text",
+      "dark": "text"
+    },
+    "infoColor": {
+      "light": "text",
+      "dark": "text"
+    },
+    "successColor": {
+      "light": "text",
+      "dark": "text"
+    },
+    "warningColor": {
+      "light": "text",
+      "dark": "text"
+    },
+    "dangerColor": {
+      "light": "text",
+      "dark": "text"
+    },
+    "tint": {
+      "color": {
+        "light": "text",
+        "dark": "text"
+      }
+    },
+    "corners": "straight",
+    "depth": "subtle",
+    "links": "default",
+    "icons": "regular",
+    "sidebar": {
+      "background": "default",
+      "list": "default"
+    },
+    "search": "prominent",
+    "codeTheme": {
+      "default": {
+        "light": "default-light",
+        "dark": "default-light"
+      },
+      "openapi": {
+        "light": "default-light",
+        "dark": "default-light"
+      }
+    }
+  },
+  "favicon": {
+    "icon": {
+      "light": "https://example.com",
+      "dark": "https://example.com"
+    }
+  },
+  "announcement": {
+    "enabled": true,
+    "message": "text",
+    "localizedMessage": {
+      "ANY_ADDITIONAL_PROPERTY": "text"
+    },
+    "link": {
+      "title": "text",
+      "localizedTitle": {
+        "ANY_ADDITIONAL_PROPERTY": "text"
+      },
+      "to": {
+        "kind": "file",
+        "file": "text",
+        "space": "text"
+      }
+    },
+    "style": "info"
+  },
+  "header": {
+    "logo": {
+      "light": "https://example.com",
+      "dark": "https://example.com"
+    },
+    "primaryLink": {
+      "kind": "file",
+      "file": "text",
+      "space": "text"
+    },
+    "backgroundColor": {
+      "light": "text",
+      "dark": "text"
+    },
+    "linkColor": {
+      "light": "text",
+      "dark": "text"
+    },
+    "links": [
+      {
+        "title": "text",
+        "localizedTitle": {
+          "ANY_ADDITIONAL_PROPERTY": "text"
+        },
+        "style": "link",
+        "to": {
+          "kind": "file",
+          "file": "text",
+          "space": "text"
+        },
+        "links": [
+          {
+            "title": "text",
+            "localizedTitle": {
+              "ANY_ADDITIONAL_PROPERTY": "text"
+            },
+            "to": {
+              "kind": "file",
+              "file": "text",
+              "space": "text"
+            }
+          }
+        ],
+        "condition": "text"
+      }
+    ]
+  },
+  "footer": {
+    "logo": {
+      "light": "https://example.com",
+      "dark": "https://example.com"
+    },
+    "groups": [
+      {
+        "title": "text",
+        "localizedTitle": {
+          "ANY_ADDITIONAL_PROPERTY": "text"
+        },
+        "links": [
+          {
+            "title": "text",
+            "localizedTitle": {
+              "ANY_ADDITIONAL_PROPERTY": "text"
+            },
+            "to": {
+              "kind": "file",
+              "file": "text",
+              "space": "text"
+            }
+          }
+        ]
+      }
+    ],
+    "copyright": null
+  },
+  "themes": {
+    "default": "light",
+    "toggeable": null
+  },
+  "feedback": {
+    "enabled": null
+  },
+  "externalLinks": {
+    "target": "self"
+  },
+  "pagination": {
+    "enabled": null
+  },
+  "trademark": {
+    "enabled": null
+  },
+  "privacyPolicy": {
+    "url": "https://example.com"
+  },
+  "socialPreview": {
+    "url": "https://example.com"
+  }
+}
+```
+
+```
+{
+  "title": "text",
+  "localizedTitle": {
+    "ANY_ADDITIONAL_PROPERTY": "text"
+  },
+  "styling": {
+    "theme": "clean",
+    "primaryColor": {
+      "light": "text",
+      "dark": "text"
+    },
+    "secondaryColor": {
+      "light": "text",
+      "dark": "text"
+    },
+    "tint": {
+      "color": {
+        "light": "text",
+        "dark": "text"
+      }
+    },
+    "infoColor": {
+      "light": "text",
+      "dark": "text"
+    },
+    "successColor": {
+      "light": "text",
+      "dark": "text"
+    },
+    "warningColor": {
+      "light": "text",
+      "dark": "text"
+    },
+    "dangerColor": {
+      "light": "text",
+      "dark": "text"
+    },
+    "corners": "straight",
+    "depth": "subtle",
+    "links": "default",
+    "font": "ABCFavorit",
+    "headingFont": "ABCFavorit",
+    "monospaceFont": "FiraCode",
+    "icons": "regular",
+    "codeTheme": {
+      "default": {
+        "light": "default-light",
+        "dark": "default-light"
+      },
+      "openapi": {
+        "light": "default-light",
+        "dark": "default-light"
+      }
+    },
+    "sidebar": {
+      "background": "default",
+      "list": "default"
+    },
+    "search": "prominent"
+  },
+  "favicon": {
+    "icon": {
+      "light": "https://example.com",
+      "dark": "https://example.com"
+    }
+  },
+  "header": {
+    "logo": {
+      "light": "https://example.com",
+      "dark": "https://example.com"
+    },
+    "primaryLink": {
+      "kind": "file",
+      "file": "text",
+      "space": "text"
+    },
+    "links": [
+      {
+        "title": "text",
+        "localizedTitle": {
+          "ANY_ADDITIONAL_PROPERTY": "text"
+        },
+        "style": "link",
+        "to": {
+          "kind": "file",
+          "file": "text",
+          "space": "text"
+        },
+        "links": [
+          {
+            "title": "text",
+            "localizedTitle": {
+              "ANY_ADDITIONAL_PROPERTY": "text"
+            },
+            "to": {
+              "kind": "file",
+              "file": "text",
+              "space": "text"
+            }
+          }
+        ],
+        "condition": "text"
+      }
+    ]
+  },
+  "footer": {
+    "logo": {
+      "light": "https://example.com",
+      "dark": "https://example.com"
+    },
+    "groups": [
+      {
+        "title": "text",
+        "localizedTitle": {
+          "ANY_ADDITIONAL_PROPERTY": "text"
+        },
+        "links": [
+          {
+            "title": "text",
+            "localizedTitle": {
+              "ANY_ADDITIONAL_PROPERTY": "text"
+            },
+            "to": {
+              "kind": "file",
+              "file": "text",
+              "space": "text"
+            }
+          }
+        ]
+      }
+    ],
+    "copyright": "text"
+  },
+  "announcement": {
+    "enabled": true,
+    "message": "text",
+    "localizedMessage": {
+      "ANY_ADDITIONAL_PROPERTY": "text"
+    },
+    "link": {
+      "title": "text",
+      "localizedTitle": {
+        "ANY_ADDITIONAL_PROPERTY": "text"
+      },
+      "to": {
+        "kind": "file",
+        "file": "text",
+        "space": "text"
+      }
+    },
+    "style": "info"
+  },
+  "themes": {
+    "default": "light",
+    "toggeable": true
+  },
+  "feedback": {
+    "enabled": true
+  },
+  "ai": {
+    "mode": "none",
+    "greeting": "text",
+    "localizedGreeting": {
+      "ANY_ADDITIONAL_PROPERTY": "text"
+    },
+    "suggestions": [
+      "text"
+    ],
+    "instructions": "text"
+  },
+  "advancedCustomization": {
+    "enabled": true
+  },
+  "pageActions": {
+    "items": [
+      "assistant"
+    ]
+  },
+  "externalLinks": {
+    "target": "self"
+  },
+  "pagination": {
+    "enabled": true
+  },
+  "trademark": {
+    "enabled": true
+  },
+  "privacyPolicy": {
+    "url": "https://example.com"
+  },
+  "socialPreview": {
+    "url": "https://example.com"
+  },
+  "socialAccounts": [
+    {
+      "platform": "twitter",
+      "handle": "text",
+      "display": {
+        "footer": true,
+        "header": false
+      }
+    }
+  ],
+  "insights": {
+    "trackingCookie": true
+  },
+  "updatedAt": "2026-01-01T00:00:00.000Z"
+}
+```
+
+Last updated <time>1 minute ago</time>
+
+Was this helpful?

@@ -1,0 +1,400 @@
+---
+title: Get an organization by its ID
+metaTitle: Get an organization by its ID | Developers | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+**GET** `/orgs/{organizationId}`
+
+**Parameters**
+
+<ParamField header="Authorization" param-type="string" />
+
+<ParamField path="organizationId" param-type="string" required={true}>
+  The unique id of the organization
+</ParamField>
+
+**Responses**
+
+`200` OK
+
+<ResponseField name="object" field-type="string" required={true} enum="organization">
+  Type of Object, always equals to "organization"
+</ResponseField>
+
+<ResponseField name="id" field-type="string" required={true}>
+  Unique identifier for the organization
+</ResponseField>
+
+<ResponseField name="title" field-type="string" required={true}>
+  Name of the organization
+</ResponseField>
+
+<ResponseField name="createdAt" field-type="string" required={true} />
+
+<ResponseField name="emailDomains" field-type="string[]" required={true} />
+
+<ResponseField name="hostname" field-type="string">
+  Default hostname for the organization's public content, e.g. &lt;org-hostname>.gitbook.io
+</ResponseField>
+
+<ResponseField name="type" field-type="string" required={true} enum="business,community" />
+
+<ResponseField name="useCase" field-type="string" enum="internalDocs,docsSite,audienceControlledSite,productDocs,teamKnowledgeBase,designSystem,openSourceDocs,notes,other" />
+
+<ResponseField name="communityType" field-type="string" enum="nonProfit,openSource,education" />
+
+<ResponseField name="defaultRole" field-type="string">
+  The role of a member in an organization, null for guests
+</ResponseField>
+
+<ResponseField name="defaultContent" field-type="string">
+  The default content for the organization
+</ResponseField>
+
+<ResponseField name="sso" field-type="boolean">
+  Whether SSO is enforced organization-wide
+</ResponseField>
+
+<ResponseField name="ai" field-type="boolean">
+  If true, the organization is configured to use all our AI features.
+</ResponseField>
+
+<ResponseField name="aiPreference" field-type="boolean">
+  Whether the master AI setting is turned on, regardless of plan availability. Contract overrides forcing AI off take precedence.
+</ResponseField>
+
+<ResponseField name="aiSettings" field-type="object">
+  AI preferences. Missing feature keys leave features enabled, subject to the master AI setting and feature eligibility.
+
+  <Expandable title="Object Properties">
+    <ResponseField name="ai-agent" field-type="boolean" enum="false" />
+
+    <ResponseField name="ai-assistant" field-type="boolean" enum="false" />
+
+    <ResponseField name="ai-broken-links" field-type="boolean" enum="false" />
+
+    <ResponseField name="ai-content-gap" field-type="boolean" enum="false" />
+
+    <ResponseField name="ai-insight" field-type="boolean" enum="false" />
+
+    <ResponseField name="ai-import" field-type="boolean" enum="false" />
+
+    <ResponseField name="ai-platform" field-type="boolean" enum="false" />
+
+    <ResponseField name="ai-style-guide" field-type="boolean" enum="false" />
+
+    <ResponseField name="ai-translation" field-type="boolean" enum="false" />
+
+    <ResponseField name="aiCreditAlertThreshold" field-type="string">
+      An AI credit threshold from 5% to 50%, or null when disabled.
+    </ResponseField>
+
+    <ResponseField name="aiCreditPauseEnabled" field-type="boolean">
+      Whether AI features pause automatically once all AI credits are used, before usage is billed as overage.
+    </ResponseField>
+
+    <ResponseField name="aiAlertNotificationAlertId" field-type="string" />
+
+    <ResponseField name="aiPauseNotificationAlertId" field-type="string" />
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="aiPaused" field-type="boolean">
+  Whether AI features have been paused automatically due to lack of AI credits.
+</ResponseField>
+
+<ResponseField name="inviteLinks" field-type="boolean" required={true}>
+  If true, invite links are enabled for this organization.
+</ResponseField>
+
+<ResponseField name="auditLogs" field-type="boolean">
+  Whether audit logs can currently be accessed for this organization.
+</ResponseField>
+
+<ResponseField name="plan" field-type="string" required={true} enum="free_2024,plus_2024,pro_2024,enterprise_2024,community_2024,internal">
+  Name of the product
+</ResponseField>
+
+<ResponseField name="billing" field-type="object">
+  <Expandable title="Object Properties">
+    <ResponseField name="interval" field-type="string" required={true} enum="monthly,yearly">
+      Interval for a billing subscription
+    </ResponseField>
+
+    <ResponseField name="endDate" field-type="string" required={true} />
+
+    <ResponseField name="hasPaymentFailed" field-type="boolean" required={true}>
+      If true, we were unable to collect the last payment
+    </ResponseField>
+
+    <ResponseField name="canCheckout" field-type="boolean" required={true}>
+      If true, organization can create a checkout session to subscribe/update billing.
+      If false, organization must resolve other billing issues before a checkout can be done.
+    </ResponseField>
+
+    <ResponseField name="isScheduledToCancel" field-type="boolean" required={true}>
+      If true, the billing is set to cancel at the end of its current period
+    </ResponseField>
+
+    <ResponseField name="pricing" field-type="object" required={true}>
+      Pricing information for an organization
+
+      <Expandable title="Object Properties">
+        <ResponseField name="members" field-type="object" required={true}>
+          Pricing for members (organization plan)
+
+          <Expandable title="Object Properties">
+            <ResponseField name="plus_2024" field-type="object" required={true}>
+              Pricing pair for monthly and yearly intervals
+
+              <Expandable title="Object Properties">
+                <ResponseField name="monthly" field-type="number" required={true}>
+                  Monthly price in USD
+                </ResponseField>
+
+                <ResponseField name="yearly" field-type="number" required={true}>
+                  Yearly price in USD (per month)
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+
+            <ResponseField name="pro_2024" field-type="object" required={true}>
+              Pricing pair for monthly and yearly intervals
+
+              <Expandable title="Object Properties">
+                <ResponseField name="monthly" field-type="number" required={true}>
+                  Monthly price in USD
+                </ResponseField>
+
+                <ResponseField name="yearly" field-type="number" required={true}>
+                  Yearly price in USD (per month)
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+
+        <ResponseField name="sites" field-type="object" required={true}>
+          Pricing for site types (site plans)
+
+          <Expandable title="Object Properties">
+            <ResponseField name="premium" field-type="object" required={true}>
+              Pricing pair for monthly and yearly intervals
+
+              <Expandable title="Object Properties">
+                <ResponseField name="monthly" field-type="number" required={true}>
+                  Monthly price in USD
+                </ResponseField>
+
+                <ResponseField name="yearly" field-type="number" required={true}>
+                  Yearly price in USD (per month)
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+
+            <ResponseField name="ultimate" field-type="object" required={true}>
+              Pricing pair for monthly and yearly intervals
+
+              <Expandable title="Object Properties">
+                <ResponseField name="monthly" field-type="number" required={true}>
+                  Monthly price in USD
+                </ResponseField>
+
+                <ResponseField name="yearly" field-type="number" required={true}>
+                  Yearly price in USD (per month)
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+
+    <ResponseField name="usageAddons" field-type="object" required={true}>
+      Configuration for the usage-based addons
+    </ResponseField>
+
+    <ResponseField name="minUsers" field-type="number">
+      The minimum number of members allowed for this organization.
+    </ResponseField>
+
+    <ResponseField name="maxUsers" field-type="number">
+      The maximum number of members allowed for this organization
+    </ResponseField>
+
+    <ResponseField name="minPremiumSites" field-type="number">
+      The minimum number of premium sites allowed for this organization.
+    </ResponseField>
+
+    <ResponseField name="maxPremiumSites" field-type="number">
+      The maximum number of premium sites allowed for this organization.
+    </ResponseField>
+
+    <ResponseField name="minUltimateSites" field-type="number">
+      The minimum number of ultimate sites allowed for this organization.
+    </ResponseField>
+
+    <ResponseField name="maxUltimateSites" field-type="number">
+      The maximum number of ultimate sites allowed for this organization.
+    </ResponseField>
+
+    <ResponseField name="paidMembers" field-type="number">
+      The number of paid members on the current subscription.
+    </ResponseField>
+
+    <ResponseField name="paidPremiumSites" field-type="number">
+      The number of paid premium sites on the current subscription.
+    </ResponseField>
+
+    <ResponseField name="paidUltimateSites" field-type="number">
+      The number of paid ultimate sites on the current subscription.
+    </ResponseField>
+
+    <ResponseField name="canChangeInterval" field-type="boolean" required={true}>
+      Whether changing billing interval is allowed
+    </ResponseField>
+
+    <ResponseField name="canUseSAML" field-type="boolean" required={true}>
+      Whether configuring SAML is allowed
+    </ResponseField>
+
+    <ResponseField name="canUseAI" field-type="boolean" required={true}>
+      Whether AI can be enabled for the organization
+    </ResponseField>
+
+    <ResponseField name="creditsBundle" field-type="string" required={true}>
+      The AI credit bundle the organization tops up every month, or null when the organization is not billed for AI usage. `none` means pay as you go.
+    </ResponseField>
+
+    <ResponseField name="aiCreditAllowance" field-type="string" required={true}>
+      The yearly AI credit allowance agreed in the organization's contract, or null when none is set.
+    </ResponseField>
+
+    <ResponseField name="aiCreditRollover" field-type="integer" required={true}>
+      The percentage of unused paid bundle credits carried over to the next monthly AI billing period.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="mergeRules" field-type="string" required={true} />
+
+<ResponseField name="supportCost" field-type="string">
+  What support costs the organization, per ticket or per hour of agent time, used to estimate how much AI answers save in site insights.
+</ResponseField>
+
+<ResponseField name="urls" field-type="object" required={true}>
+  URLs associated with the object
+
+  <Expandable title="Object Properties">
+    <ResponseField name="location" field-type="string" required={true}>
+      URL of the organization in the API
+    </ResponseField>
+
+    <ResponseField name="app" field-type="string" required={true}>
+      URL of the organization in the application
+    </ResponseField>
+
+    <ResponseField name="logo" field-type="string" />
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="trial" field-type="object" required={true}>
+  <Expandable title="Object Properties">
+    <ResponseField name="status" field-type="string" required={true} enum="notapplicable,none,active,ended,expired">
+      - notapplicable, no trial can be started for this organization. - none, no trial has been started yet. - active, trial is active. - ended, the trial has ended and the user has choosen to stay on the free plan or has upgraded to a paid plan. - expired, the trial has ended but the user hasn't deciced yet what to do.
+    </ResponseField>
+
+    <ResponseField name="count" field-type="integer" required={true}>
+      Number of trials the organization has consumed.
+    </ResponseField>
+
+    <ResponseField name="endDate" field-type="string" />
+
+    <ResponseField name="decision" field-type="string" enum="downgrade">
+      The decision taken by the user at the end of the trial
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="customHostname" field-type="string">
+  Custom hostname linked to this organization
+</ResponseField>
+
+<ResponseField name="blocked" field-type="object">
+  If the organization is blocked, information about the block will appear here
+
+  <Expandable title="Object Properties">
+    <ResponseField name="source" field-type="string" enum="backoffice,external,internal">
+      Source for an organization block
+    </ResponseField>
+
+    <ResponseField name="reason" field-type="string" required={true}>
+      A short description giving context on the reason for the block.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="permissions" field-type="object" required={true}>
+  The set of permissions for the organization
+
+  <Expandable title="Object Properties">
+    <ResponseField name="view" field-type="boolean" required={true}>
+      Can the user view the organization.
+    </ResponseField>
+
+    <ResponseField name="access" field-type="boolean" required={true}>
+      Can the user view the organization in the application.
+    </ResponseField>
+
+    <ResponseField name="admin" field-type="boolean" required={true}>
+      Can the user manage the title, members, etc.
+    </ResponseField>
+
+    <ResponseField name="ownTeam" field-type="boolean" required={true}>
+      Is the user a team owner.
+    </ResponseField>
+
+    <ResponseField name="createContent" field-type="boolean" required={true}>
+      Can the user create new spaces/collections in the organization.
+    </ResponseField>
+
+    <ResponseField name="createOpenAPISpec" field-type="boolean" required={true}>
+      Can the user create new OpenAPI specifications.
+    </ResponseField>
+
+    <ResponseField name="viewBilling" field-type="boolean" required={true}>
+      Can the user view the billing details of the organization.
+    </ResponseField>
+
+    <ResponseField name="listMembers" field-type="boolean" required={true}>
+      Can the user list the members of the organization.
+    </ResponseField>
+
+    <ResponseField name="listTeams" field-type="boolean" required={true}>
+      Can the user list the teams in the organization.
+    </ResponseField>
+
+    <ResponseField name="listIntegrations" field-type="boolean" required={true}>
+      Can the user list the integrations in the organization.
+    </ResponseField>
+
+    <ResponseField name="listInstallations" field-type="boolean" required={true}>
+      Can the user list the integration installations in the organization.
+    </ResponseField>
+
+    <ResponseField name="installIntegration" field-type="boolean" required={true}>
+      Can the user install integrations in the organization.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+`404` Not Found
+
+<ResponseField name="error" field-type="object" required={true}>
+  <Expandable title="Object Properties">
+    <ResponseField name="code" field-type="integer" required={true} enum="404" />
+
+    <ResponseField name="message" field-type="string" required={true} />
+  </Expandable>
+</ResponseField>

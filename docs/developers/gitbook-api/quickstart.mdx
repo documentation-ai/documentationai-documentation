@@ -1,0 +1,187 @@
+---
+title: Quickstart
+description: Get started with the GitBook API in minutes
+metaTitle: Quickstart | Developers | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+The GitBook API allows you to read and write information across the spaces and pages you have access to in GitBook.
+
+Use this guide to authenticate and make your first API call.
+
+<Steps>
+  <Step title="Getting started" titleType="h3">
+    You’ll need a GitBook account to start using the developer platform. If you don’t already have an account, you can sign up for free [here](https://app.gitbook.com/join).
+  </Step>
+
+  <Step title="Create a personal access token" titleType="h3">
+    After creating a GitBook account, you'll be able to create a personal access token in your [developer settings](https://app.gitbook.com/account/developer).
+
+    This token represents your user in GitBook, and allows you to make API calls, create integrations, and publish them to any GitBook spaces you're a part of to test them.
+
+    <Callout kind="alert">
+      As always with access tokens, this token is specific to your user and should not be shared for use outside of your personal account.
+    </Callout>
+
+    Once you have your personal access token, you'll want to understand the differences between the pieces of the GitBook Integrations Platform in order to start developing your first app.
+  </Step>
+
+  <Step title="Make your first API call" titleType="h3">
+    The example below shows how to make an API call that asks GitBook Assistant a question in a site within your organization.
+
+    <Callout kind="alert">
+      This example requires your organization ID and site ID. [Find them here](https://gitbook.com/docs/developers/gitbook-api/find-your-ids).
+    </Callout>
+
+    <Tabs>
+      <Tab title="HTTP">
+        To query a GitBook site using the Ask API, send a POST request to the `/v1/orgs/{organizationId}/sites/{siteId}/ask` endpoint. Include your developer token for authentication, provide the question you want answered, and optionally pass context and scope settings.
+
+        **Make a basic Ask API request**
+
+        1. Set your required headers:
+
+           - `Authorization: Bearer YOUR_SECRET_TOKEN`
+           - `Content-Type: application/json`
+        2. Send a POST request with your query details:
+
+        ```http
+        POST /v1/orgs/{organizationId}/sites/{siteId}/ask HTTP/1.1
+        Host: api.gitbook.com
+        Authorization: Bearer YOUR_SECRET_TOKEN
+        Content-Type: application/json
+        Accept: */*
+
+        {
+          "question": "How do I get started?",
+          "scope": {
+            "mode": "default"
+          }
+        }
+        ```
+
+        The API will return an answer generated from your site’s content.
+      </Tab>
+
+      <Tab title="JavaScript">
+        To send a question to the Ask API from JavaScript, you can use [GitBook’s client library](/docs/developers/integrations/development/client-library). After initializing the client with your personal access token, call the `askQueryInSpace()` method with your organization ID, site ID, and query payload.
+
+        **Ask a question using GitBook’s JavaScript SDK**
+
+        1. Install the GitBook API client:
+
+        ```
+        npm install @gitbook/api
+        ```
+
+        2. Initialize the client and send your Ask query:
+
+        ```javascript title="index.js"
+        import { GitBookAPI } from "@gitbook/api";
+
+        const ORGANIZATION_ID = "<your organization id>"
+        const SITE_ID = "<your site id>"
+        const API_TOKEN = "<your gitbook api token>"
+
+        const client = new GitBookAPI({
+            authToken: API_TOKEN
+        });
+
+        const stream = await client.orgs.streamAskInSite(
+            ORGANIZATION_ID,
+            SITE_ID,
+            {
+                question: "How do I get started?",
+                scope: {
+                    mode: "default",
+            },
+          }, 
+        );
+
+        // Stream chunks as they arrive
+        for await (const chunk of stream) {
+            console.log(chunk);
+        }
+        ```
+
+        The response will contain the generated answer based on your site’s content.
+      </Tab>
+
+      <Tab title="Python">
+        To send a question to the Ask API using Python, make a POST request to the `/v1/orgs/{organizationId}/sites/{siteId}/ask` endpoint. Include your API token for authentication and pass the question, context, and scope in the request body.
+
+        **Ask a question using Python**
+
+        ```python title="ask_query.py"
+        import json
+        import requests
+
+        ORGANIZATION_ID = "<your organization id>"
+        SITE_ID = "<your site id>"
+        API_TOKEN = "<your gitbook api token>"
+
+        response = requests.post(
+            f"https://api.gitbook.com/v1/orgs/{ORGANIZATION_ID}/sites/{SITE_ID}/ask",
+            headers={
+                "Authorization": f"Bearer {API_TOKEN}",
+                "Content-Type": "application/json"
+            },
+            json={
+                "question": "How do I get started?",
+                "scope": {"mode": "default"}
+            },
+            stream=True
+        )
+
+        # Get the last response before "done"
+        final = None
+        for line in response.iter_lines():
+            if line:
+                line = line.decode('utf-8')
+                if line.startswith('data: ') and line[6:] != 'done':
+                    final = json.loads(line[6:])
+
+        print(final)
+        ```
+
+        This will return the Ask API’s generated answer based on your site’s content.
+      </Tab>
+    </Tabs>
+
+    GitBook’s API has many different API calls that allow you to interact with GitBook in different ways. After sending your first request, head to the API reference to explore the different endpoints GitBook offers.
+  </Step>
+</Steps>
+
+### Build on the GitBook API
+
+Build a complete workflow with one of these guides:
+
+<Columns cols={3}>
+  <Card title="Pull analytics from your site" href="https://gitbook.com/docs/developers/gitbook-api/guides/pull-analytics-from-your-site" icon="chart-line">
+    Query event data to find your site’s most-visited pages.
+  </Card>
+
+  <Card title="Work on your site with an AI agent" href="https://gitbook.com/docs/developers/gitbook-api/guides/work-on-your-site-with-an-ai-agent" icon="robot">
+    Use a coding agent and GitBook skills to update your site.
+  </Card>
+
+  <Card title="Manage your team with the API" href="https://gitbook.com/docs/developers/gitbook-api/guides/manage-your-team-with-the-api" icon="users">
+    Create a team from existing organization members.
+  </Card>
+</Columns>
+
+### Explore GitBook’s API
+
+<Columns cols={3}>
+  <Card title="Create and edit content" href="https://gitbook.com/docs/developers/gitbook-api/api-reference/spaces" icon="file-lines">
+    Create and manage spaces, pages, and their content.
+  </Card>
+
+  <Card title="Update a site" href="/docs/developers/gitbook-api/api-reference/docs-sites" icon="globe">
+    Manage a published site’s settings, structure, and content.
+  </Card>
+
+  <Card title="Work with analytics" href="https://gitbook.com/docs/developers/gitbook-api/api-reference/docs-sites/site-insights" icon="chart-line">
+    Retrieve analytics data to understand content performance.
+  </Card>
+</Columns>

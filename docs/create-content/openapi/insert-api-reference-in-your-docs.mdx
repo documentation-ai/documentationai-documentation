@@ -1,0 +1,59 @@
+---
+title: Insert API reference in your docs
+description: Insert complete API reference from your OpenAPI spec or pick individual operation or schemas
+metaTitle: Insert API reference in your docs | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+GitBook allows you to automatically generate pages related to the endpoints you have in your OpenAPI spec. These pages will contain OpenAPI operation blocks, allowing you and your visitors to test your endpoints and explore them further based on the information found in the spec.
+
+<Callout kind="success">
+  Endpoints added from your spec will continue to be updated anytime your spec is updated. See the [Update your specification](/docs/create-content/openapi/add-an-openapi-specification#update-your-specification) section for more info.
+</Callout>
+
+### Automatically create OpenAPI pages from your spec
+
+After you’ve [added your OpenAPI spec](/docs/create-content/openapi/add-an-openapi-specification), you can generate endpoint pages by inserting an **OpenAPI Reference** in the table of contents of a section.
+
+<Image src="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686946013-e3a4dukzf3d-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FYy8gCqxfaO4xjv2eqiL5-2Fcreate_api_pages-402x.png?fm=auto&auto=compress%2Cformat" alt="A GitBook screenshot showing how to insert API references into the table of contents of a section" caption="Insert API References in the table of contents of a section." />
+
+<Steps>
+  <Step title="Generate pages from OpenAPI">
+    In the section you’d like to generate endpoint pages, click the <strong>Add new...</strong> button from the bottom of your section’s [table of contents](/docs/reference/gitbook-ui#table-of-contents).
+
+    From here, click **OpenAPI Reference**.
+  </Step>
+
+  <Step title="Choose your OpenAPI spec">
+    Choose your previously uploaded OpenAPI spec. Then choose a **Page structure**:
+
+    - **One page per tag**
+    - **One page per operation**
+
+    You can also choose to add a models page and a download link. Click **Insert** to generate the reference.
+  </Step>
+
+  <Step title="Manage your API operations">
+    GitBook will automatically generate pages based on your OpenAPI spec and the tags set inside its definition. If you choose **One page per operation**, GitBook groups the generated operation pages by tag.
+
+    Head to [OpenAPI layouts](/docs/create-content/openapi/guides/openapi-layouts) to compare layouts, or [Structuring your API reference](/docs/create-content/openapi/guides/structuring-your-api-reference) to organize pages with tags.
+  </Step>
+</Steps>
+
+### Add an individual OpenAPI block
+
+Alternatively, you can add OpenAPI operations or schemas from your spec individually to pages throughout your docs.
+
+<Steps>
+  <Step title="Add a new OpenAPI block">
+    Open the block selector by pressing <strong>/</strong>, and search for OpenAPI.
+  </Step>
+
+  <Step title="Choose your OpenAPI spec">
+    Choose your previously uploaded OpenAPI spec, and click **Continue** to choose the endpoints you’d like to use.
+  </Step>
+
+  <Step title="Choose the operations or schemas you’d like to insert">
+    Pick the operations and the schemas you want to insert in your docs and click **Insert**.
+  </Step>
+</Steps>

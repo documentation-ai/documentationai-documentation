@@ -1,0 +1,293 @@
+---
+title: Extensions reference
+description: The complete reference of OpenAPI extensions supported by GitBook
+metaTitle: Extensions reference | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+You can enhance your OpenAPI specification using extensions—custom fields that start with the `x-` prefix. These extensions let you add extra information and tailor your API documentation to suit different needs.
+
+GitBook allows you to adjust how your API looks and works on your published site through a range of different extensions you can add to your OpenAPI spec.
+
+Head to our [guides section](/docs/create-content/openapi/guides) to learn more about using OpenAPI extensions to configure your documentation.
+
+<Expandable title="x-page-title | x-displayName">
+  Change the display name of a tag used in the navigation and page title.
+
+  ```yaml title="openapi.yaml"
+  openapi: '3.0'
+  info: ...
+  tags:
+    - name: users
+      x-page-title: Users
+  ```
+</Expandable>
+
+<Expandable title="x-page-description">
+  Add a description to the page.
+
+  ```yaml title="openapi.yaml"
+  openapi: '3.0'
+  info: ...
+  tags:
+    - name: "users"
+      x-page-title: "Users"
+      x-page-description: "Manage user accounts and profiles."
+  ```
+</Expandable>
+
+<Expandable title="x-page-icon">
+  Add a Font Awesome icon to the page. See available icons [here](https://fontawesome.com/search).
+
+  ```yaml title="openapi.yaml"
+  openapi: '3.0'
+  info: ...
+  tags:
+    - name: "users"
+      x-page-title: "Users"
+      x-page-description: "Manage user accounts and profiles."
+      x-page-icon: "user"
+  ```
+</Expandable>
+
+<Expandable title="parent | x-parent">
+  Add hierarchy to tags to organize your pages in GitBook.
+
+  <Callout kind="alert">
+    `parent` is the official property name in OpenAPI 3.2+. If using OpenAPI versions prior to 3.2 (3.0.x, 3.1.x), use `x-parent` instead.
+  </Callout>
+
+  ```yaml title="openapi.yaml"
+  openapi: '3.2'
+  info: ...
+  tags:
+    - name: organization
+    - name: admin
+      parent: organization
+    - name: user
+      parent: organization    
+  ```
+</Expandable>
+
+<Expandable title="x-hideTryItPanel">
+  Show or hide the “Test it” button for an OpenAPI block.
+
+  ```yaml title="openapi.yaml"
+  openapi: '3.0'
+  info: ...
+  tags: [...]
+  paths:
+    /example:
+      get:
+        summary: Example summary
+        description: Example description
+        operationId: examplePath
+        responses: [...]
+        parameters: [...]
+        x-hideTryItPanel: true
+  ```
+</Expandable>
+
+<Expandable title="x-expandAllResponses">
+  Expand all response sections by default, instead of showing only one at a time.
+
+  Add it at the root to apply it to every operation. Add it on an operation to apply it to that one endpoint.
+
+  ```yaml
+  openapi: '3.0'
+  info: ...
+
+  # Expand all responses for every operation
+  x-expandAllResponses: true
+
+  paths:
+    /pets:
+      get:
+        summary: List pets
+        responses: [...]
+        # Opt out for a single operation
+        x-expandAllResponses: false
+  ```
+</Expandable>
+
+<Expandable title="x-expandAllModelSections">
+  Expand all model/schema sections by default, showing nested object properties without requiring user interaction.
+
+  Add it at the root to apply it to every operation. Add it on an operation to apply it to that one endpoint.
+
+  ```yaml
+  openapi: '3.0'
+  info: ...
+
+  # Expand all model sections for every operation
+  x-expandAllModelSections: true
+
+  paths:
+    /pets:
+      post:
+        summary: Create a pet
+        requestBody: [...]
+        responses: [...]
+        # Opt out for a single operation
+        x-expandAllModelSections: false
+  ```
+</Expandable>
+
+<Expandable title="x-enable-proxy">
+  Route “Test it” requests through GitBook’s OpenAPI proxy.
+
+  Add it at the root to apply it to every operation. Add it on an operation to apply it to that one endpoint. Operations override the root value.
+
+  ```yaml title="openapi.yaml"
+  openapi: '3.0.3'
+  info: ...
+
+  # Enable proxy for all operations
+  x-enable-proxy: true
+
+  paths:
+    /health:
+      get:
+        summary: Health check
+        # Opt out for a single operation
+        x-enable-proxy: false
+        responses:
+          '200':
+            description: OK
+  ```
+
+  Read more in [Using OpenAPI proxy](/docs/create-content/openapi/guides/using-openapi-proxy).
+</Expandable>
+
+<Expandable title="x-codeSamples">
+  Show, hide, or include custom code samples for an OpenAPI block.
+
+  **Fields**
+
+  | Field Name | Type | Description |
+  | --- | :---: | --- |
+  | `lang` | string | Code sample language. Value should be one of the following [list](https://github.com/github/linguist/blob/master/lib/linguist/popular.yml) |
+  | `label` | string | Code sample label, for example `Node` or `Python2.7`, *optional*, `lang` is used by default |
+  | `source` | string | Code sample source code |
+
+  ```yaml title="openapi.yaml"
+  openapi: '3.0'
+  info: ...
+  tags: [...]
+  paths:
+    /example:
+      get:
+        summary: Example summary
+        description: Example description
+        operationId: examplePath
+        responses: [...]
+        parameters: [...]
+        x-codeSamples:
+          - lang: 'cURL'
+            label: 'CLI'
+            source: |
+              curl -L \
+              -H 'Authorization: Bearer <token>' \
+              'https://api.gitbook.com/v1/user'
+  ```
+</Expandable>
+
+<Expandable title="x-enumDescriptions">
+  Add an individual description for each of the `enum` values in your schema.
+
+  ```yaml title="openapi.yaml"
+  openapi: '3.0'
+  info: ...
+  components:
+    schemas:
+      project_status:
+        type: string
+        enum:
+          - LIVE
+          - PENDING
+          - REJECTED
+        x-enumDescriptions:
+          LIVE: The project is live.
+          PENDING: The project is pending approval.
+          REJECTED: The project was rejected.
+  ```
+</Expandable>
+
+<Expandable title="x-internal | x-gitbook-ignore">
+  Hide an endpoint from your API reference.
+
+  ```yaml title="openapi.yaml"
+  openapi: '3.0'
+  info: ...
+  tags: [...]
+  paths:
+    /example:
+      get:
+        summary: Example summary
+        description: Example description
+        operationId: examplePath
+        responses: [...]
+        parameters: [...]
+        x-internal: true
+  ```
+</Expandable>
+
+<Expandable title="x-stability">
+  Mark endpoints that are unstable or in progress.
+
+  Supported values: `experimental`, `alpha`, `beta`.
+
+  ```yaml title="openapi.yaml"
+  openapi: '3.0'
+  info: ...
+  tags: [...]
+  paths:
+    /example:
+      get:
+        summary: Example summary
+        description: Example description
+        operationId: examplePath
+        x-stability: experimental
+  ```
+</Expandable>
+
+<Expandable title="deprecated">
+  Mark whether an endpoint is deprecated or not. Deprecated endpoints will give deprecation warnings in your published site.
+
+  ```yaml title="openapi.yaml"
+  openapi: '3.0'
+  info: ...
+  tags: [...]
+  paths:
+    /example:
+      get:
+        summary: Example summary
+        description: Example description
+        operationId: examplePath
+        responses: [...]
+        parameters: [...]
+        deprecated: true
+  ```
+</Expandable>
+
+<Expandable title="x-deprecated-sunset">
+  Add a sunset date to a deprecated operation.
+
+  Supported values: **ISO 8601** format (YYYY-MM-DD)
+
+  ```yaml title="openapi.yaml"
+  openapi: '3.0'
+  info: ...
+  tags: [...]
+  paths:
+    /example:
+      get:
+        summary: Example summary
+        description: Example description
+        operationId: examplePath
+        responses: [...]
+        parameters: [...]
+        deprecated: true
+        x-deprecated-sunset: 2030-12-05
+  ```
+</Expandable>

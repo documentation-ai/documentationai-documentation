@@ -1,0 +1,79 @@
+---
+title: Create a private share link for a site
+metaTitle: Create a private share link for a site | Developers | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+For the complete documentation index, see [llms.txt](https://gitbook.com/docs/llms.txt). This page is also available as [Markdown](/docs/developers/gitbook-api/api-reference/docs-sites/site-share-links/create-a-private-share-link-for-a-site).
+
+Creates a new named share link that grants access to the private site without requiring full user authentication. Share links are useful for sharing pre-publication content with reviewers or stakeholders. Each link has a unique key and can be activated or deactivated independently.
+
+Available in MCP
+
+post
+
+Authorizations
+
+AuthorizationstringRequired
+
+Bearer authentication header of the form Bearer &lt;token>.
+
+Path parameters
+
+organizationIdstringRequired
+
+A unique entity identifier
+
+Pattern: `^[a-zA-Z0-9_-]+$`
+
+siteIdstringRequired
+
+The unique id of the site
+
+Body
+
+namestring · max: 50Required
+
+Name of the share link
+
+Responses
+
+201
+
+The share link has been created
+
+application/json
+
+post/orgs/&#123;organizationId&#125;/sites/&#123;siteId&#125;/share-links
+
+```
+POST /v1/orgs/{organizationId}/sites/{siteId}/share-links HTTP/1.1
+Host: api.gitbook.com
+Authorization: Bearer YOUR_SECRET_TOKEN
+Content-Type: application/json
+Accept: */*
+Content-Length: 15
+
+{
+  "name": "text"
+}
+```
+
+201The share link has been created
+
+```
+{
+  "object": "share-link",
+  "id": "text",
+  "createdAt": "2026-01-01T00:00:00.000Z",
+  "name": "text",
+  "active": true,
+  "urls": {
+    "published": "https://example.com"
+  }
+}
+```
+
+Last updated <time>1 minute ago</time>
+
+Was this helpful?

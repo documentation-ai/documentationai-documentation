@@ -1,0 +1,404 @@
+---
+title: Site spaces
+description: Control which spaces are linked and displayed in a docs site.
+metaTitle: Site spaces | Developers | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+Associate or dissociate your organization's spaces to keep your content organized. This is particularly useful for larger organizations with numerous spaces.
+
+## The SiteSpace object
+
+<ResponseField name="object" field-type="string" required={true} enum="site-space">
+  The object type, which is always "site-space"
+</ResponseField>
+
+<ResponseField name="id" field-type="string" required={true}>
+  Unique identifier of the site-space
+</ResponseField>
+
+<ResponseField name="path" field-type="string" required={true}>
+  Path to the space on the site
+</ResponseField>
+
+<ResponseField name="section" field-type="string">
+  ID of the section the space belongs to in the site
+</ResponseField>
+
+<ResponseField name="space" field-type="object" required={true}>
+  <Expandable title="Object Properties">
+    <ResponseField name="object" field-type="string" required={true} enum="space">
+      Type of Object, always equals to "space"
+    </ResponseField>
+
+    <ResponseField name="id" field-type="string" required={true}>
+      Unique identifier for the space
+    </ResponseField>
+
+    <ResponseField name="title" field-type="string" required={true}>
+      Title of the space
+    </ResponseField>
+
+    <ResponseField name="emoji" field-type="string" required={true}>
+      Unicode codepoint or character of the emoji
+    </ResponseField>
+
+    <ResponseField name="visibility" field-type="string" required={true} enum="public,unlisted,share-link,visitor-auth,in-collection,private">
+      - `public`: Anyone can access the content, and the content is indexed by search engines.
+      - `unlisted`: Anyone can access the content, and the content is not indexed by search engines
+      - `share-link`: Anyone with a secret token in the url can access the content.
+      - `visitor-auth`: Anyone authenticated through a JWT token can access the content.
+      - `in-collection`: Anyone who can access the parent collection can access the content.
+        Only available for spaces in a collection.
+      - `private`: Authorized members can access the content.
+    </ResponseField>
+
+    <ResponseField name="createdAt" field-type="string" required={true} />
+
+    <ResponseField name="updatedAt" field-type="string" required={true} />
+
+    <ResponseField name="deletedAt" field-type="string" />
+
+    <ResponseField name="editMode" field-type="string" enum="live,locked">
+      Determines how a Space can be edited.
+
+      - `live`: Users can directly edit the space
+      - `locked`: All edits are locked for this space.
+    </ResponseField>
+
+    <ResponseField name="type" field-type="string" enum="styleguide">
+      Kind of space. Only set to `styleguide` for spaces holding a team's writing style guide; omitted for regular spaces.
+    </ResponseField>
+
+    <ResponseField name="mergeRules" field-type="string" required={true} />
+
+    <ResponseField name="urls" field-type="object" required={true}>
+      URLs associated with the object
+
+      <Expandable title="Object Properties">
+        <ResponseField name="location" field-type="string" required={true}>
+          URL of the space in the API
+        </ResponseField>
+
+        <ResponseField name="app" field-type="string" required={true}>
+          URL of the space in the application
+        </ResponseField>
+
+        <ResponseField name="published" field-type="string">
+          URL of the published version of the space. Only defined when visibility is not "private."
+        </ResponseField>
+
+        <ResponseField name="public" field-type="string">
+          URL of the public version of the space. Only defined when visibility is "public".
+        </ResponseField>
+
+        <ResponseField name="icon" field-type="string" />
+      </Expandable>
+    </ResponseField>
+
+    <ResponseField name="organization" field-type="string" required={true}>
+      ID of the organization owning this space
+    </ResponseField>
+
+    <ResponseField name="parent" field-type="string">
+      ID of the parent collection.
+    </ResponseField>
+
+    <ResponseField name="language" field-type="string" enum="en,fr,de,es,it,pt,pt-br,ru,ja,zh,zh-tw,yue,ko,ar,hi,nl,pl,tr,sv,no,da,fi,el,cs,hu,ro,th,vi,id,ms,he,uk,sk,bg,hr,lt,lv,et,sl,fr-ca,es-mx,es-419" />
+
+    <ResponseField name="gitSync" field-type="object">
+      <Expandable title="Object Properties">
+        <ResponseField name="repoName" field-type="string">
+          Repository name.
+        </ResponseField>
+
+        <ResponseField name="installationStatus" field-type="string" required={true} enum="unauthenticated,active,pending" />
+
+        <ResponseField name="installationProvider" field-type="string" required={true} enum="github,gitlab,github-legacy">
+          The provider of the Git Sync installation.
+        </ResponseField>
+
+        <ResponseField name="integration" field-type="string" deprecated={true}>
+          The integration name providing the Git Sync.
+        </ResponseField>
+
+        <ResponseField name="installationId" field-type="string" required={true}>
+          The ID of the Git Sync installation.
+        </ResponseField>
+
+        <ResponseField name="parentInstallationId" field-type="string">
+          The ID of the parent Git Sync installation, if any.
+        </ResponseField>
+
+        <ResponseField name="url" field-type="string">
+          The URL to the repository tree, used when rendering public content.
+        </ResponseField>
+
+        <ResponseField name="installationProjectDirectory" field-type="string">
+          Directory in the repository this content syncs from, resolved against the parent installation when the installation is managed by a site. Absent when the content syncs from the root of the repository.
+        </ResponseField>
+
+        <ResponseField name="operation" field-type="object">
+          The latest operation on the Git Sync installation.
+
+          <Expandable title="Object Properties">
+            <ResponseField name="state" field-type="string" required={true} enum="running,failure,success,timeout">
+              - `running`: The operation is still running
+              - `failure`: The operation failed
+              - `success`: The operation was successful
+              - `timeout`: The operation timed out
+            </ResponseField>
+
+            <ResponseField name="direction" field-type="string" required={true} enum="export,import" />
+
+            <ResponseField name="startedAt" field-type="string" required={true} />
+
+            <ResponseField name="endedAt" field-type="string" />
+
+            <ResponseField name="error" field-type="string">
+              Why the operation failed, when it did.
+            </ResponseField>
+
+            <ResponseField name="errorAction" field-type="object">
+              An action the user can take to resolve a failed Git Sync operation.
+
+              <Expandable title="Object Properties">
+                <ResponseField name="label" field-type="string" required={true}>
+                  Label for the action.
+                </ResponseField>
+
+                <ResponseField name="url" field-type="string" required={true}>
+                  URL where the user can resolve the failure.
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+
+        <ResponseField name="operationTimeout" field-type="integer">
+          How long an operation is allowed to run before it is terminated (in milliseconds).
+        </ResponseField>
+
+        <ResponseField name="updatedAt" field-type="string" />
+      </Expandable>
+    </ResponseField>
+
+    <ResponseField name="previousGitSync" field-type="object">
+      What is still known about a target's Git Sync after its installation was removed. Never returned alongside `gitSync`, which describes a live installation.
+
+      <Expandable title="Object Properties">
+        <ResponseField name="url" field-type="string" required={true}>
+          The URL to the directory of the repository tree the content synced with before its Git Sync installation was removed, at the branch it synced.
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+
+    <ResponseField name="imports" field-type="array">
+      Import runs targeting this space, still running or ended recently, most recent first. Only returned when fetching a single space.
+
+      <Expandable title="Array Items">
+        <ResponseField name="object" field-type="string" enum="import-run">
+          Type of Object, always equals to "import-run"
+        </ResponseField>
+
+        <ResponseField name="id" field-type="string" required={true}>
+          Unique ID of the import
+        </ResponseField>
+
+        <ResponseField name="startedAt" field-type="string" />
+
+        <ResponseField name="completedAt" field-type="string" />
+
+        <ResponseField name="createdAt" field-type="string" />
+
+        <ResponseField name="updatedAt" field-type="string" />
+
+        <ResponseField name="status" field-type="string" required={true} enum="pending,in-progress,completed,failed,cancelled">
+          Status of the import
+        </ResponseField>
+
+        <ResponseField name="reason" field-type="string">
+          Reason for the import failure when `status` is `failed`.
+        </ResponseField>
+
+        <ResponseField name="source" field-type="string" />
+
+        <ResponseField name="target" field-type="object">
+          <Expandable title="Object Properties">
+            <ResponseField name="space" field-type="string" required={true}>
+              ID of the space to import in
+            </ResponseField>
+
+            <ResponseField name="changeRequest" field-type="string">
+              ID of the change request to import in
+            </ResponseField>
+
+            <ResponseField name="page" field-type="string">
+              ID of the page to import in
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+
+        <ResponseField name="site" field-type="string">
+          ID of the site the target space belongs to, when it belongs to exactly one.
+        </ResponseField>
+
+        <ResponseField name="createdBy" field-type="string">
+          ID of the user who started the import.
+        </ResponseField>
+
+        <ResponseField name="urls" field-type="object">
+          URLs associated with the object
+
+          <Expandable title="Object Properties">
+            <ResponseField name="location" field-type="string" required={true}>
+              URL of the import run in the API
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+
+        <ResponseField name="pages" field-type="array">
+          Pages included in the import
+
+          <Expandable title="Array Items">
+            <ResponseField name="id" field-type="string" required={true}>
+              ID of page
+            </ResponseField>
+
+            <ResponseField name="sourceURL" field-type="string">
+              Source URL where the page has been imported from
+            </ResponseField>
+
+            <ResponseField name="type" field-type="string" required={true} enum="page,folder">
+              Type of page
+            </ResponseField>
+
+            <ResponseField name="status" field-type="string" required={true} enum="complete,pending">
+              Status of the page
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+
+    <ResponseField name="visitorAuth" field-type="string" />
+
+    <ResponseField name="revision" field-type="string" required={true}>
+      ID of the active revision in the space.
+    </ResponseField>
+
+    <ResponseField name="defaultLevel" field-type="string" required={true}>
+      Default level for a piece of content
+    </ResponseField>
+
+    <ResponseField name="comments" field-type="number" required={true}>
+      Count of opened comments on the space.
+    </ResponseField>
+
+    <ResponseField name="changeRequests" field-type="number" required={true}>
+      Total count of change requests on the space.
+    </ResponseField>
+
+    <ResponseField name="changeRequestsOpen" field-type="number" required={true}>
+      Count of open change requests on the space.
+    </ResponseField>
+
+    <ResponseField name="changeRequestsDraft" field-type="number" required={true}>
+      Count of draft change requests on the space.
+    </ResponseField>
+
+    <ResponseField name="internal_poweredByV2" field-type="boolean">
+      Whether the space is powered by V2 of the content system.
+    </ResponseField>
+
+    <ResponseField name="internal_singleWebsocket" field-type="boolean">
+      Whether the space uses a single websocket connection for all real-time communication.
+    </ResponseField>
+
+    <ResponseField name="permissions" field-type="object" required={true}>
+      The set of permissions for the space
+
+      <Expandable title="Object Properties">
+        <ResponseField name="view" field-type="boolean" required={true}>
+          Can the user view the space content.
+        </ResponseField>
+
+        <ResponseField name="access" field-type="boolean" required={true}>
+          Can the user access the space in the application.
+        </ResponseField>
+
+        <ResponseField name="admin" field-type="boolean" required={true}>
+          Can the user edit the title, install integrations, and manage the space.
+        </ResponseField>
+
+        <ResponseField name="viewInviteLinks" field-type="boolean" required={true}>
+          Can the user view the invite links of the space.
+        </ResponseField>
+
+        <ResponseField name="edit" field-type="boolean" required={true}>
+          Can the user edit the content of the space by creating a change request.
+        </ResponseField>
+
+        <ResponseField name="triggerGitSync" field-type="boolean" required={true}>
+          Can the user trigger a git sync.
+        </ResponseField>
+
+        <ResponseField name="comment" field-type="boolean" required={true}>
+          Can the user comment on the content.
+        </ResponseField>
+
+        <ResponseField name="merge" field-type="boolean" required={true}>
+          Can the user merge change requests.
+        </ResponseField>
+
+        <ResponseField name="review" field-type="boolean" required={true}>
+          Can the user review change requests.
+        </ResponseField>
+
+        <ResponseField name="installIntegration" field-type="boolean" required={true}>
+          Can the user install integrations in the space.
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="title" field-type="string" required={true} />
+
+<ResponseField name="localizedTitle" field-type="object">
+  Localized string value with a 128 character limit, keyed by locale. Contains overrides for non-default languages only.
+</ResponseField>
+
+<ResponseField name="default" field-type="boolean">
+  Whether this is the default space for the site
+</ResponseField>
+
+<ResponseField name="condition" field-type="string">
+  Expression to evaluate
+</ResponseField>
+
+<ResponseField name="pageId" field-type="string">
+  Custom home page within the space, rendered at the site space's path root instead of the space's default landing page.
+</ResponseField>
+
+<ResponseField name="draft" field-type="boolean" required={true}>
+  Whether the site space is draft and not live.
+</ResponseField>
+
+<ResponseField name="hasAdvancedCustomizationFeature" field-type="boolean">
+  Whether the space has advanced customization feature enabled
+</ResponseField>
+
+<ResponseField name="urls" field-type="object" required={true}>
+  URLs associated with the object
+
+  <Expandable title="Object Properties">
+    <ResponseField name="published" field-type="string">
+      URL of the published version of the site-space. Only defined when site is published.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="hidden" field-type="boolean">
+  Whether the site space is hidden. If true, the site space will not be shown in the site's navigation.
+</ResponseField>

@@ -1,0 +1,41 @@
+---
+title: Authenticated access
+description: Set up custom authentication for your published content
+metaTitle: Authenticated access | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+Authenticated access allows you to publish your content while requiring authentication from any visitors who want to view it. When enabled, GitBook lets your authentication provider handle who has access to the content.
+
+<Image src="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686989261-k3dae6im63-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FhtkyhDNCjMpzhHtUkBSe-2F26_01_06_authenticated_access-402x.png?fm=auto&auto=compress%2Cformat" alt="A screenshot showing a login screen for docs behind authenticated access" caption="Add a sign in to your published documentation." />
+
+### Use cases
+
+Common use cases for authenticated access include:
+
+- Publishing sensitive product documentation that should only be accessible to paying customers, sales prospects or partners.
+- Publishing internal knowledge base content that should only be accessible to employees of your company.
+
+### How it works
+
+There are two methods you can choose from when setting up authenticated access:
+
+1. Installing one of our authentication integrations — we currently support Okta, Azure, and Auth0. We **highly recommend** this option if you’re using an authentication provider we support.
+2. Create and host your own server to handle the authentication. Many different technologies can be used, but it’s up to you to code and maintain the solution you choose.
+
+### Built-in login and logout URLs
+
+GitBook gives you built-in URLs for sign-in and sign-out on your published site:
+
+- `<publishedSiteURL>/~gitbook/auth/login`
+- `<publishedSiteURL>/~gitbook/auth/logout`
+
+Use the login URL anywhere you want a sign-in link, such as a header link on your site.
+
+When a visitor opens the login URL, GitBook redirects them to the authentication backend configured for that site. This works with integration backends and custom backends.
+
+GitBook also adds a `location` query parameter that matches the page the visitor started from. Your backend can use that value to send them back to the same page after sign-in.
+
+Use the logout URL to sign a visitor out of their GitBook session.
+
+Head to [Enabling authenticated access](/docs/publish/site-audience/authenticated-access/enabling-authenticated-access) to start setting up protected access for your site.

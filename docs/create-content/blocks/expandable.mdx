@@ -1,0 +1,55 @@
+---
+title: Expandable
+description: Add an expandable block to a page to keep your pages shorter, hide longer content, or create FAQs
+metaTitle: Expandable | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+Expandable blocks are helpful in condensing what could otherwise be a lengthy paragraph. They are also great in step-by-step guides and FAQs.
+
+By default, expandable blocks will be collapsed on your published docs site. If you want an expandable block to be expanded by default, open the block’s **Options menu** <Image src="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686730174-vrkxfi8f0e-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FaS1QvPIBVYwhpFTGcPBN-2Foptions-menu.svg?rasterize-bypass=true" alt="" /> and choose **Expanded by default**.
+
+### Example
+
+<Expandable title="Step 1: Start using expandable blocks" defaultOpen={true}>
+  To add an expandable block hit `/` on an empty block, or click the `+` on the left of the editor, and select **Expandable**.
+
+  Optionally, you can set expanded blocks to be **Expanded by default** in the block’s **Options menu** <Image src="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686730174-vrkxfi8f0e-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FaS1QvPIBVYwhpFTGcPBN-2Foptions-menu.svg?rasterize-bypass=true" alt="" /> — just like this block.
+</Expandable>
+
+<Expandable title="Step 2: Add content to your block">
+  Once you’ve inserted an expandable block, you can add content to it — including lists and code blocks.
+</Expandable>
+
+## Representation in Markdown
+
+```markdown
+# Expandable blocks
+
+<details open>
+
+<summary>Add your expandable title here</summary>
+
+Add your expandable body text here. This expandable is expanded by default.
+
+</details>
+
+<details>
+
+<summary>Add your expandable title here</summary>
+
+Add your expandable body text here. This expandable is collapsed by default.
+
+</details>
+```
+
+### Limitations
+
+There are some limitations on which blocks you can create inside of an expandable block. You can insert the following types of content into expandable blocks:
+
+- Paragraphs
+- Headings (1, 2, and 3)
+- Unordered, ordered, and task lists
+- Inline images
+
+To check the full list at any time, start a new line in an expandable block and press `/` to bring up the insert palette.

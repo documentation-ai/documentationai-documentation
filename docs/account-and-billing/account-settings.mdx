@@ -1,0 +1,112 @@
+---
+title: Personal settings
+description: View and manage the settings for your personal GitBook account
+metaTitle: Personal settings | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+You can manage your login details, third-party login options, GitBook subdomain, interface theme, notification, integrations and API access tokens.
+
+<Image src="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686834733-2tkxhjtfct4-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2F2E6zG4rAbCopn4gDLXWJ-2F22_01_06_account_settings-402x.png?fm=auto&auto=compress%2Cformat" alt="A GitBook screenshot showing the personal settings page" caption="Your personal settings page." />
+
+### How to access your personal account settings
+
+Go back to your organization **Home** and click **Settings**, under **Admin** in the sidebar. Account and organization settings share one screen, grouped into **Account** and **Organization** in the left-hand sidebar. Your personal settings live under **Account**. Click **Back to app** to return to your content.
+
+<Expandable title="General">
+  **Your profile**
+
+  You can update your profile picture and your full name.
+
+  **Login details**
+
+  You can update the email address and password used to log into your GitBook account. <strong>Note:</strong> if you created your account on or after October 9th 2021, your account does not have a password and you’ll instead use a magic link to sign in.
+
+  **Third-party login**
+
+  You can also use your Google and/or GitHub credentials to log into GitBook.
+
+  **Publishing**
+
+  Each published GitBook section that lives within your personal library will have a domain in two parts:
+
+  1. `[something].gitbook.io` (this is the GitBook subdomain)
+  2. `/[spaceURL]` (this is set within the settings for the section itself)
+
+  You can update the GitBook subdomain here, as well as the default content, which is the section that visitors will see if they navigate to your GitBook subdomain directly.
+
+  **Preferences**
+
+  You can choose your preferred interface theme — dark, light, or matching your system preference. <strong>Note:</strong> this setting only affects your experience when logged into the GitBook app, and will not affect your published content in any way.
+
+  **Troubleshooting**
+
+  Optionally, you can enable the recording of advanced logs. These advanced logs help our team to more effectively troubleshoot issues.
+
+  **Account actions**
+
+  From this section you can sign out, or delete your account. <strong>Note: there is no turning back if you delete your account!</strong> All associated data will be deleted as well.
+</Expandable>
+
+<Expandable title="Notifications">
+  GitBook can provide you with two types of [notifications](/docs/collaborate/notifications) — email notifications, and in-app notifications. From this settings screen you can decide which kinds of notifications you would like to receive when different events happen.
+</Expandable>
+
+<Expandable title="Organizations">
+  Your personal account could be a member of any number of organizations, and this tab can be considered a shortcut to the [organization settings page](/docs/account-and-billing/organization-settings) for each organization. You can also create a new organization from this page.
+</Expandable>
+
+<Expandable title="Developer tools">
+  On this page you can manage and create access tokens for the [GitBook API](https://developer.gitbook.com/).
+</Expandable>
+
+### <strong>How can I reset my password?</strong>
+
+Please note, that if your account was created after October 10th 2021, it doesn’t have a password. You should be able to log in by requesting a magic link:
+
+1. Visit [https://app.gitbook.com](https://app.gitbook.com)
+2. Enter the email address associated with the personal account you signed up for
+3. Click **continue**
+4. Click **send a link** (make sure you check your spam folder)
+
+If you *do* want to reset your password:
+
+1. Visit [https://app.gitbook.com](https://app.gitbook.com)
+2. Follow the <strong>forgot your password?</strong> link at the bottom of the page
+3. Enter the email address associated with the personal account you signed up for
+4. Click **send a link** (make sure you check your spam folder)
+
+### Troubleshooting sign-in
+
+#### Account protection and sign-in recovery
+
+**Account disabled by administrator** — GitBook automatically blocks accounts exhibiting suspicious behavior to prevent spam and scam accounts. If you believe your account was blocked unfairly, contact support; unblocking requests are assessed case by case.
+
+GitBook uses protections against spam and fraudulent publishing. The examples here are representative, not exhaustive. We don't publish detection rules or thresholds.
+
+The following patterns can result in an automatic block:
+
+- Don't share an account. Invite each collaborator as an individual member and assign the appropriate role.
+- Don't rapidly create multiple docs sites or organizations.
+- Avoid automation that could appear suspicious.
+- Don't frequently switch VPN servers during account or organization activity.
+
+**Sign-up email addresses**
+
+Email addresses containing more than three dots are blocked to prevent spam. If sign-up is rejected for this reason, use a different eligible email address.
+
+After creating your account, use the supported email and linking options in **Login details**. Don't create or share accounts to work around this restriction. GitBook might not link every alternative email address.
+
+**Recovering from a block or rejected sign-up**
+
+If the guidance above doesn't resolve an account block or rejected sign-up, take these steps:
+
+1. Contact [Contact support](/docs/help/contact-support).
+2. Include the account email and a concise description of the activity or error.
+3. Ask Support to review your eligibility. Support may unblock an account case by case.
+
+**The link to join an organization isn't working** — an `auth/invalid-email` error means the email address invited to the organization doesn't match the email of the signed-in GitBook account. Ask the person who invited you which address they used, or ask them to invite a different one.
+
+**Error: auth/expired-action-code** — the sign-in or invitation link has passed its validity period. Generate a new link, or ask the sender for a fresh one.
+
+**Error: auth/email-already-in-use** — the GitHub account you're signing in with is already linked to a different GitBook account. See [Potential duplicated accounts](/docs/docs-as-code/git-sync/troubleshooting#potential-duplicated-accounts-when-signing-in) for the steps to identify and unlink it.

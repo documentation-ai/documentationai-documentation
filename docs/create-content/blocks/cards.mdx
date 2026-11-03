@@ -1,0 +1,97 @@
+---
+title: Cards
+description: Display information more dynamically with a set of cards — with or without images
+metaTitle: Cards | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+You can use cards to create a visually pleasing page layout, combining text and images in a grid. They’re ideal for building landing pages or displaying any other content in a non-linear way.
+
+You can adjust [switch between medium or large cards](#changing-the-size-of-cards) and link them to the relevant resources.
+
+### Example of a card
+
+<Columns cols={3}>
+  <Card title="GitBook homepage" href="https://www.gitbook.com/" image="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686884423-4dav4k18687-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FHAbAKXyi5SHXH1rDhg4E-2FGitBook-20homepage.png?fm=auto&auto=compress%2Cformat">
+    Visit our website and find out more about GitBook.
+  </Card>
+
+  <Card title="Developer docs" href="https://developer.gitbook.com/" image="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686884484-v86rcdoxv6l-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2F1wL4yuiP0Pi9Oeu0wnmm-2FDeveloper-20docs.png?fm=auto&auto=compress%2Cformat">
+    Build your own GitBook integration.
+  </Card>
+
+  <Card title="Sign up to GitBook" href="https://app.gitbook.com/join" image="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686884517-boadh0ppz6g-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2Fg2kgdfMsxOpWQx1Meq8s-2FSign-20up.png?fm=auto&auto=compress%2Cformat">
+    Click here to get started for free.
+  </Card>
+</Columns>
+
+### Adding links
+
+Hover over a card and open its **Options menu** <Image src="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686730174-vrkxfi8f0e-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FaS1QvPIBVYwhpFTGcPBN-2Foptions-menu.svg?rasterize-bypass=true" alt="The Options menu icon in GitBook" />. Here you can add a target link, so readers can jump directly to a location when they click the card.
+
+<Callout kind="success">
+  When creating cards, we recommend you use **target links instead of hyperlinks**. With a target link, your readers can click anywhere on the card to access the linked URL.
+</Callout>
+
+### Adding images
+
+Hover over a card and open its **Options menu** <Image src="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686730174-vrkxfi8f0e-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FaS1QvPIBVYwhpFTGcPBN-2Foptions-menu.svg?rasterize-bypass=true" alt="The Options menu icon in GitBook" />. Here you can add a cover image to your card. Alternatively, just click the **Add cover image** option on the card itself.
+
+This will open the **Select file** modal. Here you can drag and drop a new image into this, or use an image file you’ve previously uploaded to your section.
+
+#### Adding images for dark mode
+
+You can also add cover images that will only show in dark mode.
+
+To do this, open the card’s **Options menu** <Image src="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686730174-vrkxfi8f0e-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FaS1QvPIBVYwhpFTGcPBN-2Foptions-menu.svg?rasterize-bypass=true" alt="" /> and choose **Cover** \> **Edit cover** \> **Add cover for dark mode**. This will open the **Select file** modal, where you can drag and drop a new image or select a previously-uploaded image.
+
+#### Choosing the right image size
+
+GitBook will automatically crop landscape images to a 16:9 ratio on desktop and mobile. If the images you upload are portrait or have a 1:1 ratio, they will be cropped to 16:9 on desktop and display as square or portrait on mobile.
+
+<Image src="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686899893-43os82ajt81-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FnX5tZdJgW1Yhf61ZXpGJ-2F26_01_06_cards_desktop-402x.png?fm=auto&auto=compress%2Cformat" alt="A GitBook screenshot showing card images on desktop" caption="On desktop, all card images will display in a landscape 16:9 ratio, regardless of their dimensions. We recommend using the same dimensions for consistency." />
+
+<Image src="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686900252-99gzd61mrol-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FxUUSyA6H7QwA8p9Nihz1-2F26_01_06_cards_mobile-402x.png?fm=auto&auto=compress%2Cformat" alt="A GitBook screenshot showing card images on mobile" caption="On mobile, square or portrait images display as shown on the left. Landscape images display as shown on the right." />
+
+To keep things consistent across desktop and mobile, we recommend uploading all the images for your cards in a 16:9 format (e.g. 1920px x 1080px).
+
+If you want your cards to adapt their layout depending on the screen size, we’d recommend uploading images with a 1:1 ratio, and the content of your image centered.
+
+### Changing the size of cards
+
+You can select the card size by opening the **Options menu** <Image src="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686730174-vrkxfi8f0e-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FaS1QvPIBVYwhpFTGcPBN-2Foptions-menu.svg?rasterize-bypass=true" alt="The Options menu icon in GitBook" /> to the left of your card block. The **Medium** option creates three cards in one horizontal line, while the **Large** option shows two larger cards on each line.
+
+### Representation in Markdown
+
+```markdown
+<table data-view="cards">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th data-hidden data-card-target data-type="content-ref"></th>
+      <th data-hidden data-card-cover data-type="files"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Example title 1</strong></td>
+      <td>Example description 1.</td>
+      <td><a href="https://example.com">https://example.com</a></td>
+      <td><a href="https://example.com/image1.svg">example_image1.svg</a></td>
+    </tr>
+    <tr>
+      <td><strong>Example title 2</strong></td>
+      <td>Example description 2.</td>
+      <td><a href="https://example.com">https://example.com</a></td>
+      <td><a href="https://example.com/image2.svg">example_image2.svg</a></td>
+    </tr>
+    <tr>
+      <td><strong>Example title 3</strong></td>
+      <td>Example description 3.</td>
+      <td><a href="https://example.com">https://example.com</a></td>
+      <td><a href="https://example.com/image3.svg">example_image3.svg</a></td>
+    </tr>
+  </tbody>
+</table>
+```

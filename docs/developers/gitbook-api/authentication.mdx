@@ -1,0 +1,26 @@
+---
+title: Authentication
+metaTitle: Authentication | Developers | GitBook Documentation
+metaDescription: Authenticate your requests with your user account when using the GitBook API
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+Authenticate your requests with your user account when using the GitBook API
+
+The GitBook API uses personal access tokens to authenticate requests.
+
+You can view and manage your access tokens in the [Developer settings](https://app.gitbook.com/account/developer) of your GitBook user account.
+
+API requests are authenticated using the [Bearer Auth scheme](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication#authentication_schemes). To authenticate a request, provide the token in the `Authorization` header of the request:
+
+```bash
+curl -H "Authorization: Bearer <your_access_token>" https://api.gitbook.com/v1/user
+```
+
+Access tokens are tied to the GitBook user account for which they were created. <strong>A token provides the same level of access & privileges that its associated GitBook user account would have.</strong>
+
+<Callout kind="alert">
+  Please be sure to keep your API access tokens secure! Do not share them in emails, chat messages, client-side code or publicly accessible sites.
+
+  If you have accidentally shared an API access token publicly, you can revoke it in the [Developer settings](https://app.gitbook.com/account/developer) of your GitBook user account by clicking the “X” button beside the token.
+</Callout>

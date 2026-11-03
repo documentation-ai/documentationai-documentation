@@ -1,0 +1,68 @@
+---
+title: Using OpenAPI proxy
+metaTitle: Using OpenAPI proxy | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+GitBook can proxy **Test It** requests so they work even when your API server doesn't support CORS.
+
+### Why this exists
+
+Browsers block cross-origin requests unless the API server opts in with CORS headers. Without CORS configured, **Test It** requests fail in the browser. The proxy routes those requests server-side through GitBook, bypassing that restriction.
+
+### Enable the proxy for your whole spec
+
+Add `x-enable-proxy: true` at the root of your OpenAPI spec.
+
+```yaml
+openapi: '3.0.3'
+x-enable-proxy: true
+info:
+  title: Example API
+  version: '1.0.0'
+servers:
+  - url: https://api.example.com
+```
+
+### Enable or disable for a specific operation
+
+Add `x-enable-proxy` on an operation.
+
+```yaml
+openapi: '3.0.3'
+info:
+  title: Example API
+  version: '1.0.0'
+servers:
+  - url: https://api.example.com
+paths:
+  /reports:
+    get:
+      summary: List reports
+      x-enable-proxy: true
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Create report
+      x-enable-proxy: false
+      responses:
+        '201':
+          description: Created
+```
+
+<Callout kind="info">
+  Operation-level `x-enable-proxy` takes precedence over the root-level value.
+</Callout>
+
+### What the proxy supports
+
+GitBook forwards all `HTTP` methods (`GET`, `POST`, `PUT`, `DELETE`, `PATCH`), headers, cookies, and request bodies.
+
+### Security
+
+The proxy only forwards requests to the URLs listed in your spec’s `servers` array. It can’t be used to reach arbitrary URLs.
+
+<Callout kind="info">
+  Make sure your `servers` array includes every base URL you want to test against. If a URL isn't listed, **Test It** requests to that host will bypass the proxy.
+</Callout>

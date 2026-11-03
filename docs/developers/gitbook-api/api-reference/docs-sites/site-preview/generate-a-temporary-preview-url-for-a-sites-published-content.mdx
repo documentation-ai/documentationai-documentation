@@ -1,0 +1,94 @@
+---
+title: Generate a temporary preview URL for a site's published content
+metaTitle: Generate a temporary preview URL for a site's published content | Developers | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+For the complete documentation index, see [llms.txt](https://gitbook.com/docs/llms.txt). This page is also available as [Markdown](/docs/developers/gitbook-api/api-reference/docs-sites/site-preview/generate-a-temporary-preview-url-for-a-sites-published-content).
+
+Generates a time-limited URL (valid for 1 hour) to preview how a site will look when published. Use this to verify changes before making the site publicly accessible.
+
+Available in MCP
+
+get
+
+Authorizations
+
+AuthorizationstringRequired
+
+Bearer authentication header of the form Bearer &lt;token>.
+
+Path parameters
+
+organizationIdstringRequired
+
+A unique entity identifier
+
+Pattern: `^[a-zA-Z0-9_-]+$`
+
+siteIdstringRequired
+
+The unique id of the site
+
+Query parameters
+
+siteSpacestringOptional
+
+ID of the site-space to preview. If not provided, the default site-space will be used.
+
+claimsstringOptional
+
+Rison encoded string of attributes/assertions about the visitor for which we want to preview the site.
+
+countrystringOptional
+
+ISO 3166-1 alpha-2 code of the country of the visitor for which we want to preview the site. It is matched against the `regions` of the site adaptive schema to resolve `visitor.region`.
+
+visitorAuthenticatedbooleanOptional
+
+Whether the visitor for which we want to preview the site is signed in, as `visitor.isAuthenticated` reports it. Claims outside `unsigned` already imply a signed-in visitor; set this to preview one that is signed in while carrying no claim.
+
+draftbooleanOptional
+
+Whether to include draft content in the preview. Defaults to true
+
+Default: `true`
+
+targetstringOptional
+
+Target URL of the preview. If not provided, the default site preview URL will be used.
+
+Responses
+
+200
+
+OK
+
+application/json
+
+urlstring · uri · max: 2048Required
+
+400
+
+Bad Request
+
+application/json
+
+get/orgs/&#123;organizationId&#125;/sites/&#123;siteId&#125;/publishing/preview
+
+```
+GET /v1/orgs/{organizationId}/sites/{siteId}/publishing/preview HTTP/1.1
+Host: api.gitbook.com
+Authorization: Bearer YOUR_SECRET_TOKEN
+Accept: */*
+```
+
+```
+{
+  "url": "https://example.com"
+}
+```
+
+Last updated <time>1 minute ago</time>
+
+Was this helpful?

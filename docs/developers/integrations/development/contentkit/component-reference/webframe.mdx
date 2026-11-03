@@ -1,0 +1,64 @@
+---
+title: Webframe
+description: ContentKit webframe component and frame communication
+metaTitle: Webframe | Developers | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+`webframe` embeds external content:
+
+```tsx
+<webframe source={{ url: 'https://www.gitbook.com' }} aspectRatio={16 / 9} />
+```
+
+| Props | Type | Description |
+| --- | --- | --- |
+| `source`\* | `object` | URL source. |
+| `source.url`\* | `string` | External site URL. |
+| `aspectRatio`\* | `number` | Aspect ratio. |
+| `buttons` | `Array<Button>` | Overlay buttons. |
+| `data` | `Record<string, string>` | State dependencies. |
+
+### Receive data
+
+Pass state through `data` with `element.dynamicState('content')`. The frame receives data and context through `message`:
+
+```javascript
+window.addEventListener('message', (event) => {
+  const state = event.data?.state;
+  if (!state) return;
+  const content = state.content;
+  const page = state.page;
+});
+```
+
+GitBook provides `state.page` as `{ id, path, title }`. GitBook provides `state.visitor` with the `site:visitor:claims` scope.
+
+### Send actions
+
+Send a custom action to the integration with `postMessage`:
+
+```javascript
+window.parent.postMessage({ action: { type: 'doSomething' } }, '*');
+```
+
+Resize the container when frame content changes size:
+
+```javascript
+window.parent.postMessage({
+  action: {
+    action: '@webframe.resize',
+    aspectRatio: 1.7,
+    maxHeight: 400,
+    maxWidth: 300
+  }
+}, '*');
+```
+
+Send `@webframe.ready` when the frame can receive updates. See [Actions](/docs/developers/integrations/development/contentkit/actions).
+
+For requests that don't need frame messaging, use your integration’s public HTTP endpoint. Follow [Handle an HTTP request](/docs/developers/integrations/guides/receiving-requests).
+
+The frame can navigate a published site with `@webframe.navigate`. Send `path` after the site’s base URL and an optional `anchor`.
+
+Follow [Send data to a webframe](/docs/developers/integrations/guides/send-data-to-a-webframe) for a complete example.

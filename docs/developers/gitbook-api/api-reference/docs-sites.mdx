@@ -1,0 +1,265 @@
+---
+title: Docs sites
+description: Manage your published docs sites.
+metaTitle: Docs sites | Developers | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+The Docs Sites API lets you programmatically manage published documentation sites within your organization. You can list and update all sites created under a specific organization, making it easy to audit or interact with site metadata at scale.
+
+## The Site object
+
+<ResponseField name="object" field-type="string" required={true} enum="site" />
+
+<ResponseField name="id" field-type="string" required={true}>
+  Unique identifier of the site
+</ResponseField>
+
+<ResponseField name="type" field-type="string" required={true} enum="basic,premium,ultimate,sponsored">
+  The type of the site
+</ResponseField>
+
+<ResponseField name="appliedType" field-type="string" required={true} enum="basic,premium,ultimate,sponsored">
+  The type of the site
+</ResponseField>
+
+<ResponseField name="unpublishedBy" field-type="string" enum="user,system">
+  Who unpublished this site last. Cleared when the site is published again.
+</ResponseField>
+
+<ResponseField name="title" field-type="string" required={true}>
+  Title of the site
+</ResponseField>
+
+<ResponseField name="icon" field-type="string" />
+
+<ResponseField name="hostname" field-type="string">
+  Custom hostname for the site, for e.g. docs.mycompany.com
+</ResponseField>
+
+<ResponseField name="basename" field-type="string">
+  Basename for the site. For e.g. api
+</ResponseField>
+
+<ResponseField name="proxy" field-type="object">
+  <Expandable title="Object Properties">
+    <ResponseField name="origin" field-type="string" required={true}>
+      Proxy URL for the site, for e.g. company.com/docs or [www.company.com/developer/docs](http://www.company.com/developer/docs) etc.
+    </ResponseField>
+
+    <ResponseField name="target" field-type="string" required={true}>
+      The target URL to which the requests at the origin URL should be proxied to.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="visibility" field-type="string" required={true} enum="public,unlisted,share-link,visitor-auth">
+  The visibility setting of the site determines the audience of the site.
+
+  - `public`: Anyone can access the site, and the site is indexed by search engines.
+  - `unlisted`: Anyone can access the site, and the site is not indexed by search engines
+  - `share-link`: Anyone with a secret token in the url can access the site.
+  - `visitor-auth`: Anyone authenticated through a JWT token can access the site.
+</ResponseField>
+
+<ResponseField name="defaultLevel" field-type="string" required={true}>
+  Default level for a piece of content
+</ResponseField>
+
+<ResponseField name="permissions" field-type="object" required={true}>
+  The set of permissions for the site.
+
+  <Expandable title="Object Properties">
+    <ResponseField name="view" field-type="boolean" required={true}>
+      Can the user view the site.
+    </ResponseField>
+
+    <ResponseField name="access" field-type="boolean" required={true}>
+      Can the user access the site in the application.
+    </ResponseField>
+
+    <ResponseField name="edit" field-type="boolean" required={true}>
+      Can the user edit content and create draft content in the site.
+    </ResponseField>
+
+    <ResponseField name="create" field-type="boolean" required={true}>
+      Can the user create draft content, publish content, and manage the site's content structure.
+    </ResponseField>
+
+    <ResponseField name="admin" field-type="boolean" required={true}>
+      Can the user manage the site content, settings and publish the site.
+    </ResponseField>
+
+    <ResponseField name="installIntegration" field-type="boolean" required={true}>
+      Can the user install integrations on the site.
+    </ResponseField>
+
+    <ResponseField name="viewAdaptiveSchema" field-type="boolean" required={true}>
+      Can the user view the adaptive schema of the site.
+    </ResponseField>
+
+    <ResponseField name="editAdaptiveSchema" field-type="boolean" required={true}>
+      Can the user edit the adaptive schema of the site.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="published" field-type="boolean" required={true}>
+  Whether the site is live or not. If true, the site is accessible to the audience defined by the visibility setting.
+</ResponseField>
+
+<ResponseField name="siteSpaces" field-type="number" required={true} />
+
+<ResponseField name="gitSync" field-type="object">
+  <Expandable title="Object Properties">
+    <ResponseField name="repoName" field-type="string">
+      Repository name.
+    </ResponseField>
+
+    <ResponseField name="installationStatus" field-type="string" required={true} enum="unauthenticated,active,pending" />
+
+    <ResponseField name="installationProvider" field-type="string" required={true} enum="github,gitlab,github-legacy">
+      The provider of the Git Sync installation.
+    </ResponseField>
+
+    <ResponseField name="integration" field-type="string" deprecated={true}>
+      The integration name providing the Git Sync.
+    </ResponseField>
+
+    <ResponseField name="installationId" field-type="string" required={true}>
+      The ID of the Git Sync installation.
+    </ResponseField>
+
+    <ResponseField name="parentInstallationId" field-type="string">
+      The ID of the parent Git Sync installation, if any.
+    </ResponseField>
+
+    <ResponseField name="url" field-type="string">
+      The URL to the repository tree, used when rendering public content.
+    </ResponseField>
+
+    <ResponseField name="installationProjectDirectory" field-type="string">
+      Directory in the repository this content syncs from, resolved against the parent installation when the installation is managed by a site. Absent when the content syncs from the root of the repository.
+    </ResponseField>
+
+    <ResponseField name="operation" field-type="object">
+      The latest operation on the Git Sync installation.
+
+      <Expandable title="Object Properties">
+        <ResponseField name="state" field-type="string" required={true} enum="running,failure,success,timeout">
+          - `running`: The operation is still running
+          - `failure`: The operation failed
+          - `success`: The operation was successful
+          - `timeout`: The operation timed out
+        </ResponseField>
+
+        <ResponseField name="direction" field-type="string" required={true} enum="export,import" />
+
+        <ResponseField name="startedAt" field-type="string" required={true} />
+
+        <ResponseField name="endedAt" field-type="string" />
+
+        <ResponseField name="error" field-type="string">
+          Why the operation failed, when it did.
+        </ResponseField>
+
+        <ResponseField name="errorAction" field-type="object">
+          An action the user can take to resolve a failed Git Sync operation.
+
+          <Expandable title="Object Properties">
+            <ResponseField name="label" field-type="string" required={true}>
+              Label for the action.
+            </ResponseField>
+
+            <ResponseField name="url" field-type="string" required={true}>
+              URL where the user can resolve the failure.
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+
+    <ResponseField name="operationTimeout" field-type="integer">
+      How long an operation is allowed to run before it is terminated (in milliseconds).
+    </ResponseField>
+
+    <ResponseField name="updatedAt" field-type="string" />
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="createdAt" field-type="string" required={true} />
+
+<ResponseField name="lastScanAt" field-type="string">
+  When GitBook last completed a scan of the site's content
+  gaps. Absent until the site has been scanned at least once.
+</ResponseField>
+
+<ResponseField name="adaptiveContent" field-type="object">
+  <Expandable title="Object Properties">
+    <ResponseField name="enabled" field-type="boolean" required={true}>
+      Whether adaptive content should be enabled on the site.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="ads" field-type="string" />
+
+<ResponseField name="styleguide" field-type="object">
+  <Expandable title="Object Properties">
+    <ResponseField name="kind" field-type="string" required={true} enum="space" />
+
+    <ResponseField name="space" field-type="string" required={true} />
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="features" field-type="array" required={true}>
+  A list of all premium features enabled on this site. For each feature we list the plan they belong to and whether the feature is frozen. A frozen feature is still enabled but cannot be changed or modified.
+
+  <Expandable title="Array Items">
+    <ResponseField name="id" field-type="string" required={true} enum="sites-adaptive-content,sites-advanced-customization,sites-advanced-insights,sites-ads,sites-ai-search,sites-ai-assistant,sites-ai-insights,sites-fix-broken-links,sites-connections,sites-content-gaps,sites-channels,sites-embed,sites-api-playground,sites-basic-customization,sites-broken-links,sites-custom-domain,sites-custom-subdirectory,sites-full-text-search,sites-multivariant-site,sites-no-custom-domain,sites-page-feedback,sites-page-traffic-insights,sites-pdf-export,sites-preview-deployments,sites-public-visibility,sites-redirects,sites-search-insights,sites-sections,sites-seo,sites-share-links,sites-style-guide,sites-unlisted-visibility,sites-user-contribution,sites-visitor-authentication,sites-visitors">
+      The site feature identifier
+    </ResponseField>
+
+    <ResponseField name="plan" field-type="string" required={true} enum="basic,premium,ultimate,sponsored">
+      The type of the site
+    </ResponseField>
+
+    <ResponseField name="frozen" field-type="boolean" required={true}>
+      A frozen feature is still enabled but cannot be changed or modified.
+    </ResponseField>
+
+    <ResponseField name="customizations" field-type="string[]" enum="header-logo,header-primary-link,theme-preset,premium-fonts,custom-icons,footer-logo,footer-links,footer-copyright,semantic-colors">
+      A list of the actual advanced customizations used (only applicable for sites-advanced-customization)
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="urls" field-type="object" required={true}>
+  URLs associated with the object
+
+  <Expandable title="Object Properties">
+    <ResponseField name="location" field-type="string" required={true}>
+      URL of the site in the API
+    </ResponseField>
+
+    <ResponseField name="app" field-type="string" required={true}>
+      URL of the site in the application
+    </ResponseField>
+
+    <ResponseField name="published" field-type="string">
+      URL of the published version of the site. Only defined when site is published.
+    </ResponseField>
+
+    <ResponseField name="preview" field-type="string" required={true}>
+      URL of the preview version of the site.
+    </ResponseField>
+
+    <ResponseField name="login" field-type="string">
+      URL of the login endpoint for visitors to authenticate with the site auth backend.
+    </ResponseField>
+
+    <ResponseField name="logout" field-type="string">
+      URL of the logout endpoint for visitors to sign out from the site auth backend.
+    </ResponseField>
+  </Expandable>
+</ResponseField>

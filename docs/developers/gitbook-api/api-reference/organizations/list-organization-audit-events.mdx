@@ -1,0 +1,195 @@
+---
+title: List organization audit events
+metaTitle: List organization audit events | Developers | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+Lists recorded changes for an activated organization. Access is restricted to organization administrators and GitBook staff, and results are ordered by occurrence time, newest first. An active Enterprise plan is required except for GitBook's own organization.
+
+**GET** `/orgs/{organizationId}/audit-events`
+
+**Parameters**
+
+<ParamField header="Authorization" param-type="string" required={true} />
+
+<ParamField path="organizationId" param-type="string" required={true}>
+  The unique id of the organization
+</ParamField>
+
+<ParamField query="page" param-type="string">
+  Identifier of the page results to fetch.
+</ParamField>
+
+<ParamField query="limit" param-type="integer">
+  Number of events to return, up to 100.
+</ParamField>
+
+<ParamField query="from" param-type="string">
+  Include events occurring at or after this time.
+</ParamField>
+
+<ParamField query="to" param-type="string">
+  Include events occurring at or before this time.
+</ParamField>
+
+<ParamField query="action" param-type="string">
+  Filter by an exact audit action name.
+</ParamField>
+
+<ParamField query="actor" param-type="string">
+  Filter by an exact stable actor identifier.
+</ParamField>
+
+<ParamField query="target" param-type="string">
+  Filter by an exact stable target identifier.
+</ParamField>
+
+<ParamField query="includeFacets" param-type="boolean">
+  Include matching counts for action and actor options, excluding the option's own filter.
+</ParamField>
+
+<ParamField query="actions" param-type="string[]">
+  Include any of these action names. Combined with other filters using AND.
+</ParamField>
+
+<ParamField query="actors" param-type="string[]">
+  Include any of these stable actor identifiers, including system actors. Combined with other filters using AND.
+</ParamField>
+
+**Responses**
+
+`200` Paginated audit events.
+
+<ResponseField name="next" field-type="object">
+  <Expandable title="Object Properties">
+    <ResponseField name="page" field-type="string" required={true}>
+      Unique identifier to query the next results page
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="count" field-type="number">
+  Total count of objects in the list
+</ResponseField>
+
+<ResponseField name="facets" field-type="object">
+  <Expandable title="Object Properties">
+    <ResponseField name="actions" field-type="object" required={true} />
+
+    <ResponseField name="actors" field-type="object" required={true} />
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="items" field-type="array" required={true}>
+  <Expandable title="Array Items">
+    <ResponseField name="object" field-type="string" required={true} enum="audit-event" />
+
+    <ResponseField name="id" field-type="string" required={true}>
+      Unique identifier of the audit event.
+    </ResponseField>
+
+    <ResponseField name="occurredAt" field-type="string" required={true} />
+
+    <ResponseField name="action" field-type="string" required={true}>
+      Stable action name describing the recorded change.
+    </ResponseField>
+
+    <ResponseField name="actor" field-type="object" required={true}>
+      <Expandable title="Object Properties">
+        <ResponseField name="type" field-type="string" required={true} enum="user,integration,installation,system,support">
+          Kind of actor that initiated the change.
+        </ResponseField>
+
+        <ResponseField name="id" field-type="string" required={true}>
+          Stable identifier of the actor.
+        </ResponseField>
+
+        <ResponseField name="label" field-type="string">
+          Display label captured when the event was recorded.
+        </ResponseField>
+
+        <ResponseField name="impersonator" field-type="object">
+          GitBook staff member acting as this user. Present only for recorded impersonation; older events may not have this information. The actor ID remains the effective user for filtering.
+
+          <Expandable title="Object Properties">
+            <ResponseField name="id" field-type="string" required={true}>
+              Stable ID of the impersonating staff member.
+            </ResponseField>
+
+            <ResponseField name="label" field-type="string">
+              Staff display name captured when the event was recorded, if available.
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+
+    <ResponseField name="source" field-type="string" required={true} enum="ui,api,integration,webhook,workflow,script,support">
+      Entry point that initiated the change.
+    </ResponseField>
+
+    <ResponseField name="target" field-type="object" required={true}>
+      <Expandable title="Object Properties">
+        <ResponseField name="type" field-type="string" required={true}>
+          Kind of resource affected by the change.
+        </ResponseField>
+
+        <ResponseField name="id" field-type="string" required={true}>
+          Stable identifier of the affected resource.
+        </ResponseField>
+
+        <ResponseField name="label" field-type="string">
+          Display label captured when the event was recorded.
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+
+    <ResponseField name="urls" field-type="object" required={true}>
+      <Expandable title="Object Properties">
+        <ResponseField name="location" field-type="string" required={true}>
+          URL of the audit event in the API.
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+`400` Bad Request
+
+<ResponseField name="error" field-type="object" required={true}>
+  <Expandable title="Object Properties">
+    <ResponseField name="code" field-type="integer" required={true} enum="400" />
+
+    <ResponseField name="message" field-type="string" required={true} />
+  </Expandable>
+</ResponseField>
+
+`401` Unauthorized
+
+<ResponseField name="error" field-type="object" required={true}>
+  <Expandable title="Object Properties">
+    <ResponseField name="code" field-type="integer" required={true} enum="401" />
+
+    <ResponseField name="message" field-type="string" required={true} />
+  </Expandable>
+</ResponseField>
+
+`403` Forbidden
+
+<ResponseField name="error" field-type="object" required={true}>
+  <Expandable title="Object Properties">
+    <ResponseField name="code" field-type="integer" required={true} enum="403" />
+
+    <ResponseField name="message" field-type="string" required={true} />
+  </Expandable>
+</ResponseField>
+
+`404` Not Found
+
+<ResponseField name="error" field-type="object" required={true}>
+  <Expandable title="Object Properties">
+    <ResponseField name="code" field-type="integer" required={true} enum="404" />
+
+    <ResponseField name="message" field-type="string" required={true} />
+  </Expandable>
+</ResponseField>

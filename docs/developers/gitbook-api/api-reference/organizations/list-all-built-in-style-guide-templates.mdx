@@ -1,0 +1,45 @@
+---
+title: List all built-in style guide templates
+metaTitle: List all built-in style guide templates | Developers | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+Lists the built-in style guide starter templates that can seed a new styleguide, including the markdown content used to render each template's preview.
+
+**GET** `/orgs/{organizationId}/styleguide-templates`
+
+**Parameters**
+
+<ParamField header="Authorization" param-type="string" />
+
+<ParamField path="organizationId" param-type="string" required={true}>
+  The unique id of the organization
+</ParamField>
+
+**Responses**
+
+`200` OK
+
+<ResponseField name="templates" field-type="array" required={true}>
+  <Expandable title="Array Items">
+    <ResponseField name="id" field-type="string" required={true}>
+      Identifier of the template, passed to createSiteStyleguideById to seed a style guide from it.
+    </ResponseField>
+
+    <ResponseField name="title" field-type="string" required={true}>
+      Human-readable name of the template.
+    </ResponseField>
+
+    <ResponseField name="subtitle" field-type="string">
+      Short one-line description of the template.
+    </ResponseField>
+
+    <ResponseField name="emoji" field-type="string">
+      Emoji illustrating the template.
+    </ResponseField>
+
+    <ResponseField name="markdown" field-type="string" required={true}>
+      Markdown content of the template, rendered as a preview.
+    </ResponseField>
+  </Expandable>
+</ResponseField>

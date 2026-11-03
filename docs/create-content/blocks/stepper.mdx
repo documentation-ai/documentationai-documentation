@@ -1,0 +1,46 @@
+---
+title: Stepper
+description: Add a step-by-step guide to a page — perfect for guides, walkthroughs and technical troubleshooting processes
+metaTitle: Stepper | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+Stepper blocks let you break down a tutorial or guide into separate, but clearly linked steps. Each step can contain multiple different blocks, allowing you to add detailed information.
+
+### Example
+
+<Steps>
+  <Step title="Add a stepper block" titleType="h3">
+    To add a stepper block, hit `/` on an empty line or click the `+` on the left of the editor and select **Stepper** from the insert menu.
+  </Step>
+
+  <Step title="Add some content" titleType="h3">
+    Once you’ve inserted your stepper block, you can start adding content to it — including code blocks, drawings, images and much more.
+  </Step>
+
+  <Step title="Add more steps" titleType="h3">
+    Click the `+` below the step numbers or hit `Enter` twice to add another step to your stepper block. You can remove or change the style of the step header or step body if you wish.
+  </Step>
+</Steps>
+
+## Representation in Markdown
+
+```markdown
+## Example
+
+{% stepper %}
+{% step %}
+### Step 1 title
+Step 1 text
+{% endstep %}
+
+{% step %}
+### Step 2 title
+Step 2 text
+{% endstep %}
+{% endstepper %}
+```
+
+### Limitations
+
+There are some limitations on which blocks you can create inside of a stepper block — for example, you cannot add expandable blocks or another stepper block. See all the blocks you can add by starting a new line within a stepper block and pressing `/` to bring up the insert palette.

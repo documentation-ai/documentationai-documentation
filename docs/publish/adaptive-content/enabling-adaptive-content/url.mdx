@@ -1,0 +1,40 @@
+---
+title: URL
+description: Pass visitor data into your docs through URL query parameters
+metaTitle: URL | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+<Callout kind="info">
+  Head to our guides to find a [full walk-through](https://gitbook.com/docs/guides/docs-personalization-and-authentication/how-to-personalize-your-gitbook-site-using-url-parameters-and-adaptive-content) on setting up adaptive content with cookies.
+</Callout>
+
+You can pass visitor data to your docs through URL query parameters. Below is an overview of the method:
+
+| Method | Use-cases | Ease of setup | Security | Format |
+| --- | --- | --- | --- | --- |
+| Query parameters `visitor.<prop>=` | Feature flags, roles | Easy to use | ❌ Visitor can override the properties | JSON |
+
+### Query parameters
+
+To pass data to GitBook through URL parameters, you’ll need to pass the data in the URL in the format `visitor.<prop>`.
+
+For example:
+
+```url
+https://docs.acme.org/?visitor.language=fr
+```
+
+This will allow you to use these claims in the [condition editor](/docs/publish/adaptive-content/adapting-your-content#working-with-the-condition-editor) under the unsigned object:
+
+```javascript
+visitor.claims.unsigned.language === "fr"
+```
+
+<Callout kind="alert">
+  Data passed through query parameters must be defined in your visitor schema through an [unsigned](/docs/publish/adaptive-content/enabling-adaptive-content#set-an-unsigned-claim) object. Additionally, query parameters can be easily changed by the visitor and are best suited for non-sensitive information.
+</Callout>
+
+### Video tutorial
+
+<Iframe src="https://www.youtube.com/embed/hCd2_AAHU_I" title="Embedded content" />

@@ -1,0 +1,25 @@
+---
+title: Button
+description: ContentKit button component
+metaTitle: Button | Developers | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+```tsx
+<button label="Update text" onPress={{ action: 'update-message' }} />
+```
+
+| Props | Type | Description |
+| --- | --- | --- |
+| `label`\* | `string` | Button text. |
+| `onPress`\* | `Action` | Triggered action. |
+| `style` | `'primary' \| 'secondary' \| 'danger'` | Button style. |
+| `tooltip` | `string` | Hover tooltip. |
+| `icon` | `'close' \| ...` | Icon. |
+| `confirm` | `object` | Confirmation modal. |
+| `confirm.title`\* | `string` | Confirmation title. |
+| `confirm.text`\* | `string` | Confirmation text. |
+| `confirm.confirm`\* | `string` | Confirmation label. |
+| `confirm.style`\* | `'primary' \| 'danger'` | Confirmation style. |
+
+Use `onPress` for custom actions. Use `@ui.url.open` for external URLs. Follow [Update text with a button](/docs/developers/integrations/guides/interactivity) for an example.

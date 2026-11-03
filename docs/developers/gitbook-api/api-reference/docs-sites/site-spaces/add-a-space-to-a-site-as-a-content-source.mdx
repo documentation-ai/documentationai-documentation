@@ -1,0 +1,246 @@
+---
+title: Add a space to a site as a content source
+metaTitle: Add a space to a site as a content source | Developers | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+For the complete documentation index, see [llms.txt](https://gitbook.com/docs/llms.txt). This page is also available as [Markdown](/docs/developers/gitbook-api/api-reference/docs-sites/site-spaces/add-a-space-to-a-site-as-a-content-source).
+
+Pass an existing space ID to link it, or pass `null` to create and link a new space. New spaces start with a blank page unless a template is provided or `empty` is `true`, which creates the space with no page at all (use it when you are about to add the pages yourself).
+
+Available in MCP
+
+post
+
+Authorizations
+
+AuthorizationstringRequired
+
+Bearer authentication header of the form Bearer &lt;token>.
+
+Path parameters
+
+organizationIdstringRequired
+
+A unique entity identifier
+
+Pattern: `^[a-zA-Z0-9_-]+$`
+
+siteIdstringRequired
+
+The unique id of the site
+
+Header parameters
+
+preferstring · enumOptional
+
+Control whether a successful response includes the updated resource representation.
+
+Possible values:
+
+Body
+
+spaceIdstring · nullableRequired
+
+Pass the ID of an existing space or `null` to create a new space.
+
+sectionIdstringOptional
+
+ID of the section to add the space to. If not provided, the space will be added to the default section or at the root level if the site has no sections.
+
+draftbooleanOptional
+
+Whether the site space should be created as draft. Defaults to false. Editors can set this to true to create draft content on a non-empty site. Creating live content and adding the first content require Creator permission.
+
+Default: `false`
+
+pageIdstring · nullableOptional
+
+Custom home page within an existing space, rendered at the site space's path root instead of the space's default landing page. Providing it when `spaceId` is `null` returns a 400 error.
+
+emptybooleanOptional
+
+Create the new space without any content, not even a blank page. Useful when the content is about to be populated, for example by an import. Only valid when `spaceId` is `null` and no template is provided.
+
+Default: `false`
+
+titlestring · min: 2 · max: 128Optional
+
+Site-specific title override for the variant. Also used as the space title when `spaceId` is `null` and no template is provided.
+
+Responses
+
+201
+
+Space added to the site
+
+application/json
+
+204
+
+Space added to the site without returning its representation
+
+post/orgs/&#123;organizationId&#125;/sites/&#123;siteId&#125;/site-spaces
+
+```
+POST /v1/orgs/{organizationId}/sites/{siteId}/site-spaces HTTP/1.1
+Host: api.gitbook.com
+Authorization: Bearer YOUR_SECRET_TOKEN
+Content-Type: application/json
+Accept: */*
+Content-Length: 219
+
+{
+  "spaceId": "text",
+  "template": {
+    "id": "text",
+    "params": {
+      "contentRefs": {
+        "ANY_ADDITIONAL_PROPERTY": {
+          "kind": "file",
+          "file": "text",
+          "space": "text"
+        }
+      }
+    }
+  },
+  "sectionId": "text",
+  "draft": false,
+  "pageId": "text",
+  "empty": false,
+  "title": "text"
+}
+```
+
+```
+{
+  "object": "site-space",
+  "id": "text",
+  "path": "text",
+  "section": "text",
+  "space": {
+    "object": "space",
+    "id": "text",
+    "title": "text",
+    "emoji": "🎉",
+    "visibility": "public",
+    "createdAt": "2026-01-01T00:00:00.000Z",
+    "updatedAt": "2026-01-01T00:00:00.000Z",
+    "deletedAt": "2026-01-01T00:00:00.000Z",
+    "editMode": "live",
+    "type": "styleguide",
+    "mergeRules": {
+      "type": "inherit"
+    },
+    "urls": {
+      "location": "https://example.com",
+      "app": "https://example.com",
+      "published": "https://example.com",
+      "public": "https://example.com",
+      "icon": "https://example.com"
+    },
+    "organization": "text",
+    "parent": "text",
+    "language": "en",
+    "gitSync": {
+      "repoName": "text",
+      "installationStatus": "unauthenticated",
+      "installationProvider": "github",
+      "installationId": "text",
+      "parentInstallationId": "text",
+      "url": "text",
+      "installationProjectDirectory": "text",
+      "operation": {
+        "state": "running",
+        "direction": "export",
+        "startedAt": "2026-01-01T00:00:00.000Z",
+        "endedAt": "2026-01-01T00:00:00.000Z",
+        "error": "text",
+        "errorAction": {
+          "label": "text",
+          "url": "https://example.com"
+        }
+      },
+      "operationTimeout": 1,
+      "updatedAt": "2026-01-01T00:00:00.000Z"
+    },
+    "previousGitSync": {
+      "url": "text"
+    },
+    "imports": [
+      {
+        "object": "import-run",
+        "id": "text",
+        "startedAt": "2026-01-01T00:00:00.000Z",
+        "completedAt": "2026-01-01T00:00:00.000Z",
+        "createdAt": "2026-01-01T00:00:00.000Z",
+        "updatedAt": "2026-01-01T00:00:00.000Z",
+        "status": "pending",
+        "reason": "text",
+        "source": {
+          "type": "website",
+          "url": "https://example.com"
+        },
+        "target": {
+          "space": "text",
+          "changeRequest": "text",
+          "page": "text"
+        },
+        "site": "text",
+        "createdBy": "text",
+        "urls": {
+          "location": "https://example.com"
+        },
+        "pages": [
+          {
+            "id": "text",
+            "sourceURL": "text",
+            "type": "page",
+            "status": "complete"
+          }
+        ]
+      }
+    ],
+    "visitorAuth": {
+      "backend": "custom"
+    },
+    "revision": "text",
+    "defaultLevel": "admin",
+    "comments": 1,
+    "changeRequests": 1,
+    "changeRequestsOpen": 1,
+    "changeRequestsDraft": 1,
+    "internal_poweredByV2": true,
+    "internal_singleWebsocket": true,
+    "permissions": {
+      "view": true,
+      "access": true,
+      "admin": true,
+      "viewInviteLinks": true,
+      "edit": true,
+      "triggerGitSync": true,
+      "comment": true,
+      "merge": true,
+      "review": true,
+      "installIntegration": true
+    }
+  },
+  "title": "text",
+  "localizedTitle": {
+    "ANY_ADDITIONAL_PROPERTY": "text"
+  },
+  "default": true,
+  "condition": "text",
+  "pageId": "text",
+  "draft": true,
+  "hasAdvancedCustomizationFeature": true,
+  "urls": {
+    "published": "https://example.com"
+  },
+  "hidden": true
+}
+```
+
+Last updated <time>0 minutes ago</time>
+
+Was this helpful?

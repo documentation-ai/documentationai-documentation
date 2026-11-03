@@ -1,0 +1,21 @@
+---
+title: CodeBlock
+description: ContentKit code block component
+metaTitle: CodeBlock | Developers | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+```tsx
+<codeblock content="const variable = 10" syntax="javascript" />
+```
+
+| Props | Type | Description |
+| --- | --- | --- |
+| `content`\* | `string` | Code content. |
+| `syntax` | `string` | Syntax highlighting. |
+| `lineNumbers` | `boolean \| number` | Shows line numbers. |
+| `buttons` | `Array<Button>` | Overlay buttons. |
+| `state` | `string` | Editable state key. |
+| `onContentChange` | `Action` | Edit action. |
+
+Use `codeblock` for prompts, commands, and reusable text. ContentKit doesn't expose a dedicated `prompt` component or clipboard action. Use an overlay button with `@ui.url.open` to open a target URL.

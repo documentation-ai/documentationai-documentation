@@ -1,0 +1,81 @@
+---
+title: Develop
+description: Develop and test integrations locally on your machine
+metaTitle: Develop | Developers | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+For the complete documentation index, see [llms.txt](https://gitbook.com/docs/llms.txt). This page is also available as [Markdown](/docs/developers/integrations/development).
+
+After [bootstrapping your integration with the GitBook CLI](/docs/developers/integrations/quickstart#bootstrap-your-app), you can continue using the CLI to develop and test your app.
+
+1
+
+#### Publish your integration
+
+Before you're able to develop your integration, you will first need to publish it. You can do this by running the following command in the root directory for your integration:
+
+```
+gitbook publish
+```
+
+By default (defined in the CLI-generated `gitbook-manifest.yaml`), your integration will be published privately, and owned by the organization specified in the manifest.
+
+After publishing your integration, the CLI will give you a link to install your integration into the organization you’ve set.
+
+You need to install your app into at least 1 space or site in order to develop it locally.
+
+2
+
+#### Start your integration’s development server
+
+While inside the root directory of your integration, run:
+
+```
+gitbook dev
+```
+
+This will start a development server tied to your organization.
+
+<Callout>
+  Running this command will start a development server for use by the integration only. <strong>You do not need to navigate to the port the server is running on.</strong>  All integration traffic will automatically be served from your local server instead of the published version.
+</Callout>
+
+3
+
+#### Develop your integration
+
+If you use an AI coding assistant, add GitBook’s [`build-integration`](https://github.com/GitbookIO/gitbook-skills/tree/main/skills/build-integration) skill. It gives your assistant integration-specific guidance.
+
+1. In your integration repository’s root directory, run:
+
+```
+npx skills add GitBookIO/gitbook-skills
+```
+
+1. Start a new agent session after the installation completes.
+2. Ask your assistant to read the `build-integration` skill before building your integration.
+
+It's recommended that you [disable browser caching](https://stackoverflow.com/a/7000899) for the most optimal experience when developing your app.
+
+Any logs sent to the console or made through your integration's `RuntimeContext` will be surfaced in your browser's console.
+
+<Callout>
+  Any UI changes made to your integration will need a browser refresh in order to be visible.
+</Callout>
+
+### FAQ
+
+<Expandable title="Why don't I see any logs in my console?">
+  Depending on where your console log is run in your integration, you may see it in your machine's console or your browser's console. Please check both to ensure your logs are working correctly.
+</Expandable>
+
+<Expandable title="I'm getting an error when visiting the URL listed in the console.">
+  The URL provided in the console is used as a server for your integration. You do not need to visit this URL.
+
+  Instead, visit the GitBook space you provided in the dev command when starting your development server (i.e. `app.gitbook.com/o/org_id/s/space_id`).
+</Expandable>
+
+Last updated <time>2 months ago</time>
+
+Was this helpful?

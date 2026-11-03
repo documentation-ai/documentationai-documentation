@@ -1,0 +1,129 @@
+---
+title: Search content in an organization
+metaTitle: Search content in an organization | Developers | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+**GET** `/orgs/{organizationId}/search`
+
+**Parameters**
+
+<ParamField header="Authorization" param-type="string" />
+
+<ParamField query="query" param-type="string" required={true} />
+
+<ParamField path="organizationId" param-type="string" required={true}>
+  The unique id of the organization
+</ParamField>
+
+<ParamField query="page" param-type="string">
+  Identifier of the page results to fetch.
+</ParamField>
+
+<ParamField query="limit" param-type="number">
+  The number of results per page
+</ParamField>
+
+**Responses**
+
+`200` OK
+
+<ResponseField name="next" field-type="object">
+  <Expandable title="Object Properties">
+    <ResponseField name="page" field-type="string" required={true}>
+      Unique identifier to query the next results page
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="count" field-type="number">
+  Total count of objects in the list
+</ResponseField>
+
+<ResponseField name="items" field-type="array" required={true}>
+  <Expandable title="Array Items">
+    <ResponseField name="type" field-type="string" required={true} enum="space" />
+
+    <ResponseField name="id" field-type="string" required={true} />
+
+    <ResponseField name="title" field-type="string" required={true} />
+
+    <ResponseField name="score" field-type="number" required={true}>
+      Relevance score for a search result. Higher is better and the score is unbounded.
+    </ResponseField>
+
+    <ResponseField name="pages" field-type="array" required={true}>
+      <Expandable title="Array Items">
+        <ResponseField name="id" field-type="string" required={true} />
+
+        <ResponseField name="title" field-type="string" required={true} />
+
+        <ResponseField name="description" field-type="string" required={true}>
+          Description of the page, suitable for presenting a page-root search destination.
+        </ResponseField>
+
+        <ResponseField name="path" field-type="string" required={true} />
+
+        <ResponseField name="score" field-type="number" required={true}>
+          Relevance score for a search result. Higher is better and the score is unbounded.
+        </ResponseField>
+
+        <ResponseField name="rank" field-type="integer" required={true}>
+          One-based position in the globally ranked result set, preserved when results are paginated and grouped by space.
+        </ResponseField>
+
+        <ResponseField name="resultType" field-type="string" enum="page,section">
+          Whether the page matched on its own fields (title, description) or on the content of one of its sections.
+        </ResponseField>
+
+        <ResponseField name="sections" field-type="array">
+          <Expandable title="Array Items">
+            <ResponseField name="id" field-type="string" required={true} />
+
+            <ResponseField name="title" field-type="string" required={true} />
+
+            <ResponseField name="path" field-type="string" required={true} />
+
+            <ResponseField name="score" field-type="number" required={true}>
+              Relevance score for a search result. Higher is better and the score is unbounded.
+            </ResponseField>
+
+            <ResponseField name="resultType" field-type="string" enum="page,section">
+              Whether the result matched on the page fields (title, description) or on the section content. When "page", the section is an arbitrary section of the matching page.
+            </ResponseField>
+
+            <ResponseField name="body" field-type="string" required={true} />
+
+            <ResponseField name="urls" field-type="object" required={true}>
+              URLs associated with the object
+
+              <Expandable title="Object Properties">
+                <ResponseField name="app" field-type="string" required={true}>
+                  URL of the section in the application
+                </ResponseField>
+              </Expandable>
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+
+        <ResponseField name="ancestors" field-type="array" required={true}>
+          Data about the ancestors of the current page, from top-level to direct parent.
+
+          <Expandable title="Array Items">
+            <ResponseField name="title" field-type="string" required={true} />
+          </Expandable>
+        </ResponseField>
+
+        <ResponseField name="urls" field-type="object" required={true}>
+          URLs associated with the object
+
+          <Expandable title="Object Properties">
+            <ResponseField name="app" field-type="string" required={true}>
+              URL of the page in the application
+            </ResponseField>
+          </Expandable>
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+  </Expandable>
+</ResponseField>

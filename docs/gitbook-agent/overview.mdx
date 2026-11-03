@@ -1,0 +1,93 @@
+---
+title: Overview
+description: Work with an AI teammate to keep your documentation accurate, complete, and up to date
+metaTitle: Overview | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+GitBook Agent is an AI teammate that works alongside you. It helps you keep your documentation accurate, complete, and current. GitBook Agent is deeply integrated into GitBook. You don’t need new workflows to use it.
+
+<Callout kind="info">
+  If you edit your docs locally with an AI assistant, use [GitBook’s skill.md file](/docs/docs-as-code/ai-coding-assistants-and-skillmd).
+</Callout>
+
+### What can GitBook Agent do?
+
+GitBook Agent can:
+
+- <strong>Write docs based on a prompt:</strong> Ask GitBook Agent to update a page, rename a product, or make any other change you need.
+- <strong>Import content into GitBook:</strong> Attach files like PDFs and Microsoft Word documents in the GitBook Agent chat sidebar. GitBook Agent extracts and formats the content into pages in your section.
+- <strong>Plan and implement bigger changes:</strong> Describe what you need. GitBook Agent opens a change request, explains its edits, responds to feedback, and implements the plan you create together.
+- <strong>Follow your styleguide:</strong> Define your team's writing rules in a [styleguide](/docs/create-content/styleguide), and GitBook Agent treats it as the source of truth when writing or reviewing content.
+- <strong>Follow custom, site-level instructions:</strong> Give GitBook Agent site-specific instructions, such as how to add links or which block types to avoid.
+- <strong>Translate your documentation:</strong> Choose the content you want to translate, select a language, and GitBook Agent localizes your docs.
+- <strong>Summon from a comment:</strong> Add a comment to any block on your page, type `@gitbook`, and tell GitBook Agent what you need.
+- <strong>Review change requests:</strong> Add GitBook Agent as a reviewer on your change request. It can act as a docs linter, flag style guide issues, and suggest or fix errors.
+
+#### Automatic documentation suggestions
+
+<Callout kind="alert">
+  <strong>Content gaps is in beta.</strong>
+
+  Head to [Content gaps](/docs/analytics/content-gaps) to learn more.
+</Callout>
+
+GitBook Agent can also connect to the signals your team uses to understand your product and your customers’ needs: support conversations, tickets, and threads from your connected tools.
+
+With this context, GitBook Agent can identify gaps, propose updates, and generate docs changes automatically.
+
+As your docs evolve with your product, your customers get the right information when they need it.
+
+### Explore GitBook Agent’s features
+
+<Columns cols={3}>
+  <Card title="Write with GitBook Agent" href="/docs/gitbook-agent/write-and-edit-with-ai">
+    Create content from a prompt, or edit a single block
+  </Card>
+
+  <Card title="Review with GitBook Agent" href="/docs/gitbook-agent/review-change-requests-with-gitbook-agent">
+    Ask GitBook Agent to check your work for spelling, grammar, and style
+  </Card>
+
+  <Card title="Translate your docs site" href="/docs/gitbook-agent/translations">
+    GitBook Agent can create auto-updating localizations
+  </Card>
+</Columns>
+
+### Add a style guide and custom instructions
+
+You can configure GitBook Agent with your team’s style guide or site-specific instructions.
+
+GitBook Agent uses this context whenever it creates or edits content for that site.
+
+To add a style guide or custom instructions, open your site’s **Settings** in the site sidebar and click **Agents**. Add your instructions in the custom instructions field.
+
+You can also open this screen from a change request. Open the GitBook Agent chat window, then open the **Actions menu** <Image src="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686610515-ggy419gxrp-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2F89MTSo5XRpPMVr1T0rxS-2Factions.svg?rasterize-bypass=true" alt="" /> and click **Configure GitBook Agent** <Image src="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686684626-3pm1j190coy-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FwkBqgOPry9HAcW4cxJk0-2Fsettings.svg?rasterize-bypass=true" alt="" />.
+
+#### Custom instructions example
+
+Here’s an example of the custom instructions you can add in GitBook Agent’s settings.
+
+```
+You are a technical writer at Stripe. Use clear, direct language and prioritize accuracy over flourish. For guides, always introduce the concept with a one-sentence summary and break content into well-structured sections. For quickstarts, always use a stepper and keep every step action-first and concise.
+```
+
+### FAQs
+
+<Expandable title="How does GitBook Agent use my data?">
+  We follow our data protection practices to keep your data private.
+
+  GitBook Agent does not use your data to train AI models. We share the information you add to GitBook Agent with OpenAI only to provide GitBook Agent. See OpenAI’s privacy policy for more information.
+</Expandable>
+
+<Expandable title="How much does GitBook Agent cost?">
+  GitBook Agent is free for all plans while in beta. If you’re not on Pro and not on a trial, free usage includes 10 messages per week.
+
+  [Translations](/docs/gitbook-agent/translations) are priced separately as a monthly add-on. Visit [the pricing section](/docs/gitbook-agent/translations#pricing) to find out more.
+</Expandable>
+
+<Expandable title="Can I override the default tone of GitBook Agent’s output?">
+  Yes. You can override GitBook Agent’s default personality and tone.
+
+  If you want more detailed output, or a specific style or tone, tell GitBook Agent in site-level instructions or in a prompt in a change request.
+</Expandable>

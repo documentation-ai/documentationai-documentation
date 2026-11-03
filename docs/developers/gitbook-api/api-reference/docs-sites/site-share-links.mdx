@@ -1,0 +1,36 @@
+---
+title: Site share links
+description: Control how you share docs externally by managing share links for a site.
+metaTitle: Site share links | Developers | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+Manage the lifecycle of share links for your published sites. This includes generating new links for external sharing and revoking or updating existing ones.
+
+## The ShareLink object
+
+<ResponseField name="object" field-type="string" required={true} enum="share-link">
+  Type of Object, always equals to "share-link"
+</ResponseField>
+
+<ResponseField name="id" field-type="string" required={true}>
+  Unique identifier for the share-link
+</ResponseField>
+
+<ResponseField name="createdAt" field-type="string" required={true} />
+
+<ResponseField name="name" field-type="string">
+  Name of the share link
+</ResponseField>
+
+<ResponseField name="active" field-type="boolean" />
+
+<ResponseField name="urls" field-type="object" required={true}>
+  URLs associated with the object
+
+  <Expandable title="Object Properties">
+    <ResponseField name="published" field-type="string">
+      URL of the published version of the share-link.
+    </ResponseField>
+  </Expandable>
+</ResponseField>

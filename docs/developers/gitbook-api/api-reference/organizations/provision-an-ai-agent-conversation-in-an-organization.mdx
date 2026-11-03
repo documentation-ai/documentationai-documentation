@@ -1,0 +1,58 @@
+---
+title: Provision an AI agent conversation in an organization
+metaTitle: Provision an AI agent conversation in an organization | Developers | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+For the complete documentation index, see [llms.txt](https://gitbook.com/docs/llms.txt). This page is also available as [Markdown](/docs/developers/gitbook-api/api-reference/organizations/provision-an-ai-agent-conversation-in-an-organization).
+
+Prepares a conversation so the client can connect to it, giving the agent the credentials it acts with. Call this before opening a conversation; connecting to one that was never provisioned yields an agent whose tools all fail. The conversation itself is only recorded once the user sends a first message, so opening the agent and closing it again leaves nothing behind. Safe to call again to refresh an expiring session.
+
+put
+
+Authorizations
+
+AuthorizationstringRequired
+
+Bearer authentication header of the form Bearer &lt;token>.
+
+Path parameters
+
+organizationIdstringRequired
+
+A unique entity identifier
+
+Pattern: `^[a-zA-Z0-9_-]+$`
+
+conversationIdstringRequired
+
+The unique ID of the agent conversation (its client-generated local id, or "default" for the default conversation)
+
+Responses
+
+204
+
+The conversation is ready to be connected to.
+
+```
+No content
+```
+
+put/orgs/&#123;organizationId&#125;/agent/conversations/&#123;conversationId&#125;
+
+```
+PUT /v1/orgs/{organizationId}/agent/conversations/{conversationId} HTTP/1.1
+Host: api.gitbook.com
+Authorization: Bearer YOUR_SECRET_TOKEN
+Accept: */*
+```
+
+204The conversation is ready to be connected to.
+
+```
+No content
+```
+
+Last updated <time>1 minute ago</time>
+
+Was this helpful?

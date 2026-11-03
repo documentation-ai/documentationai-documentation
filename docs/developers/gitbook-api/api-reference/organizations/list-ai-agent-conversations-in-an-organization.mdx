@@ -1,0 +1,69 @@
+---
+title: List AI agent conversations in an organization
+metaTitle: List AI agent conversations in an organization | Developers | GitBook Documentation
+ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+---
+
+Returns a paginated list of the calling user's AI agent conversations with the organization agent. Unlike change request conversations, these are not tied to a single change request: the agent works across the organization and only attaches a change request when it needs to edit content. A conversation belongs to the user who started it and is never visible to anyone else.
+
+**GET** `/orgs/{organizationId}/agent/conversations`
+
+**Parameters**
+
+<ParamField header="Authorization" param-type="string" />
+
+<ParamField path="organizationId" param-type="string" required={true}>
+  The unique id of the organization
+</ParamField>
+
+<ParamField query="page" param-type="string">
+  Identifier of the page results to fetch.
+</ParamField>
+
+<ParamField query="limit" param-type="number">
+  The number of results per page
+</ParamField>
+
+**Responses**
+
+`200` A list of agent conversations
+
+<ResponseField name="next" field-type="object">
+  <Expandable title="Object Properties">
+    <ResponseField name="page" field-type="string" required={true}>
+      Unique identifier to query the next results page
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="count" field-type="number">
+  Total count of objects in the list
+</ResponseField>
+
+<ResponseField name="items" field-type="array" required={true}>
+  <Expandable title="Array Items">
+    <ResponseField name="object" field-type="string" required={true} enum="agent-conversation">
+      Type of Object, always equals to "agent-conversation"
+    </ResponseField>
+
+    <ResponseField name="id" field-type="string" required={true}>
+      The unique ID of the conversation. This is the client-generated identifier used to address the conversation; for the default conversation of a change request it is "default".
+    </ResponseField>
+
+    <ResponseField name="title" field-type="string">
+      The title of the conversation, generated from the first message. Absent until generated.
+    </ResponseField>
+
+    <ResponseField name="shared" field-type="boolean" required={true}>
+      Whether the conversation is shared with everyone who has access to its context, rather than only its creator. Conversations are shared by default; a private conversation is only ever visible to its creator and stays private for good.
+    </ResponseField>
+
+    <ResponseField name="changeRequest" field-type="string">
+      The change request the conversation is currently editing in. Only set for organization agent conversations, which start without one and attach a change request the first time the agent needs to change content. Absent for change request conversations, whose change request is the conversation's context.
+    </ResponseField>
+
+    <ResponseField name="createdAt" field-type="string" required={true} />
+
+    <ResponseField name="updatedAt" field-type="string" required={true} />
+  </Expandable>
+</ResponseField>
