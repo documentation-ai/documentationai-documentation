@@ -2,7 +2,7 @@
 title: Setting up OIDC
 description: Set up an OIDC login screen for visitors to your docs
 metaTitle: Setting up OIDC | GitBook Documentation
-ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
 ---
 
 <Callout kind="alert">
@@ -33,7 +33,7 @@ There are some things that you need to set up on your Identity Provider in order
 
 You need to create a new app inside your Identity Provider. Its type should be "Web Application." In Google, you create these under "API and Services", "Credentials", and then under "OAuth 2.0 Client IDs."\\
 
-<Image src="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793687109723-r5trveemy8b-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2F8ra7t88ktqM7yX7w1l4m-2FScreen-20Shot-202024-05-15-20at-2011-19-59-20AM.png?fm=auto&auto=compress%2Cformat" alt="A screenshot showing creation of an OAuth client in an identity provider" />
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793687109723-r5trveemy8b-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2F8ra7t88ktqM7yX7w1l4m-2FScreen-20Shot-202024-05-15-20at-2011-19-59-20AM.png?fm=auto&auto=compress%2Cformat" alt="A screenshot showing creation of an OAuth client in an identity provider" />
 
 Click on Create Credentials, select OAuth Client ID, select Web Application as the type, name it appropriately, and under Authorized Redirect URIs, enter the Callback URL you got from GitBook.
 
@@ -43,7 +43,7 @@ Click Create. Make a note of the Client ID and Client Secret. We will need these
 
 Navigate to integrations within the GitBook app, select authenticated access as the category, and install the OIDC integration. Install the OIDC integration on your chosen docs site.
 
-<Image src="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793687086778-tstdkmlhwv-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FCZy21M4LIPwMVSxI3ec1-2FScreen-20Shot-202024-12-13-20at-203-37-39-20PM.png?fm=auto&auto=compress%2Cformat" alt="A GitBook screenshot showing the OIDC integration installation" />
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793687086778-tstdkmlhwv-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FCZy21M4LIPwMVSxI3ec1-2FScreen-20Shot-202024-12-13-20at-203-37-39-20PM.png?fm=auto&auto=compress%2Cformat" alt="A GitBook screenshot showing the OIDC integration installation" />
 
 Once you've installed it on your site, go to configuration and make a note of the Callback URL right above the Save button. We may need it to set up the Identity Provider.
 
@@ -51,7 +51,7 @@ Open up the OIDC integration's configuration screen for the section you installe
 
 It should look like the following image
 
-<Image src="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793687156985-x2op5i0g8ci-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2F04b2yAGjDIJQsA2aPIEO-2FScreen-20Shot-202024-12-13-20at-203-38-30-20PM.png?fm=auto&auto=compress%2Cformat" alt="A GitBook screenshot showing the OIDC configuration screen" />
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793687156985-x2op5i0g8ci-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2F04b2yAGjDIJQsA2aPIEO-2FScreen-20Shot-202024-12-13-20at-203-38-30-20PM.png?fm=auto&auto=compress%2Cformat" alt="A GitBook screenshot showing the OIDC configuration screen" />
 
 For Client ID and Client Secret, paste in the values you got for your identity provider.
 

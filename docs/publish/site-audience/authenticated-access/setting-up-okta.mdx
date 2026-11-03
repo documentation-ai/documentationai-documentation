@@ -2,7 +2,7 @@
 title: Setting up Okta
 description: Set up an Okta login screen for visitors to your docs
 metaTitle: Setting up Okta | GitBook Documentation
-ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
 ---
 
 <Callout kind="alert">
@@ -29,17 +29,17 @@ To setup your GitBook site with authenticated access using Okta, the process loo
 
 First, sign in to Okta platform (the admin version) and create a new app integration (or use an existing one) by clicking the Applications button in the left sidebar.
 
-<Image src="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793687095713-ppucs7in5qi-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2F8roQ3QDR5zsyFh2FoQS4-2FScreen-20Shot-202023-10-30-20at-201-32-55-20PM.png?fm=auto&auto=compress%2Cformat" alt="An Okta screenshot showing the create app integration screen" />
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793687095713-ppucs7in5qi-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2F8roQ3QDR5zsyFh2FoQS4-2FScreen-20Shot-202023-10-30-20at-201-32-55-20PM.png?fm=auto&auto=compress%2Cformat" alt="An Okta screenshot showing the create app integration screen" />
 
 Click Create App Integration and select OIDC - OpenID Connect as the Sign-In method. And then select Web Application as the application type.
 
-<Image src="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793687086846-b6xb3affozf-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FqgFHYo6HOUGF8dUTFEJM-2FScreen-20Shot-202023-10-30-20at-201-39-15-20PM.png?fm=auto&auto=compress%2Cformat" alt="An Okta screenshot showing the integration setup" />
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793687086846-b6xb3affozf-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FqgFHYo6HOUGF8dUTFEJM-2FScreen-20Shot-202023-10-30-20at-201-39-15-20PM.png?fm=auto&auto=compress%2Cformat" alt="An Okta screenshot showing the integration setup" />
 
 Name it appropriately and don't edit any other setting on that page. For assignments, choose the appropriate checkbox. Click Save.
 
 On the next screen, copy Client ID and Client Secret. Copy the Okta Domain right below your email address by clicking the dropdown in the top right.
 
-<Image src="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793687086888-8kqt85eu30y-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FJQWvrITuUlno737DbQKM-2FScreen-20Shot-202023-10-30-20at-204-52-14-20PM.png?fm=auto&auto=compress%2Cformat" alt="An Okta screenshot showing where to copy client credentials" />
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793687086888-8kqt85eu30y-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FJQWvrITuUlno737DbQKM-2FScreen-20Shot-202023-10-30-20at-204-52-14-20PM.png?fm=auto&auto=compress%2Cformat" alt="An Okta screenshot showing where to copy client credentials" />
 
 We will need these values to configure the Okta Integration.
 
@@ -47,13 +47,13 @@ We will need these values to configure the Okta Integration.
 
 Navigate to the Integrations tab in the site you want to publish and locate the Okta integration.
 
-<Image src="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793687102892-wd8zcjb8mef-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FeFArORtsvAcvgwbDZNce-2FScreen-20Shot-202024-12-13-20at-203-21-30-20PM.png?fm=auto&auto=compress%2Cformat" alt="A GitBook screenshot showing the site settings page" />
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793687102892-wd8zcjb8mef-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FeFArORtsvAcvgwbDZNce-2FScreen-20Shot-202024-12-13-20at-203-21-30-20PM.png?fm=auto&auto=compress%2Cformat" alt="A GitBook screenshot showing the site settings page" />
 
 Install the integration on your site.
 
 Upon installation on site, you will see a screen asking you enter the Client ID, Okta Domain, and Client Secret.
 
-<Image src="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793687094981-7fzbmc7vg0d-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FHrwQ0ASv1tD6kTZPVLMY-2FScreen-20Shot-202024-12-13-20at-203-34-37-20PM.png?fm=auto&auto=compress%2Cformat" alt="A GitBook screenshot showing the Okta credentials modal" />
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793687094981-7fzbmc7vg0d-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FHrwQ0ASv1tD6kTZPVLMY-2FScreen-20Shot-202024-12-13-20at-203-34-37-20PM.png?fm=auto&auto=compress%2Cformat" alt="A GitBook screenshot showing the Okta credentials modal" />
 
 For Client ID, Okta Domain (remove `https://`prefix, if any) and Client Secret, paste in the value you copied from Okta Dashboard.
 
@@ -61,7 +61,7 @@ Click Save.
 
 Copy the URL displayed in the modal and enter it as a Sign-In redirect URI in Okta (as shown in the below screenshot). Hit Save.
 
-<Image src="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793687088050-624a3l92lzx-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FpPZlqJlE6koyHrWhSp8i-2FScreen-20Shot-202024-01-14-20at-207-55-08-20PM.png?fm=auto&auto=compress%2Cformat" alt="An Okta screenshot showing the sign-in redirect URI configuration" />
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793687088050-624a3l92lzx-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FpPZlqJlE6koyHrWhSp8i-2FScreen-20Shot-202024-01-14-20at-207-55-08-20PM.png?fm=auto&auto=compress%2Cformat" alt="An Okta screenshot showing the sign-in redirect URI configuration" />
 
 Now, in GitBook, close the integrations modal and click on the Manage site button. Navigate to **Audience**, select **Authenticated access**, and choose Okta as the backend. Then, click **Update audience**. Go to the site’s screen and click **Publish**.<br /><br />The site is now published behind authenticated access controlled by your Auth0 application. To try it out, click on Visit. You will be asked to sign in with Okta, which confirms that your site is published behind authenticated access using Auth0.
 

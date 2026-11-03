@@ -11,47 +11,40 @@
   "navigation": {
     "tabs": [
       {
-        "icon": "lucide:book",
         "pages": [
           {
-            "icon": "lucide:book-marked",
             "path": "docs",
             "show-sidebar": false,
             "title": "GitBook documentation"
           },
           {
+            "expandable": false,
             "group": "Get started",
-            "icon": "lucide:rocket",
             "pages": [
               {
-                "icon": "lucide:zap",
                 "path": "docs/getting-started/quickstart",
                 "title": "Quickstart"
               },
               {
-                "icon": "lucide:brain",
                 "path": "docs/getting-started/llm-ready-docs",
                 "title": "LLM-ready docs"
               },
               {
-                "icon": "lucide:book-marked",
                 "path": "docs/getting-started/import",
                 "title": "Migrate to GitBook"
               },
               {
-                "icon": "lucide:layout-grid",
                 "path": "docs/getting-started/sites-first",
                 "title": "Site workspace"
               }
             ]
           },
           {
+            "expandable": false,
             "group": "Create content",
-            "icon": "lucide:file-text",
             "pages": [
               {
                 "group": "Content structure",
-                "icon": "lucide:file-text",
                 "pages": [
                   {
                     "path": "docs/create-content/content-structure/space",
@@ -63,7 +56,6 @@
                   },
                   {
                     "group": "Pages",
-                    "icon": "lucide:file-text",
                     "pages": [
                       {
                         "path": "docs/create-content/content-structure/page/tags",
@@ -81,15 +73,12 @@
               },
               {
                 "group": "Format content",
-                "icon": "lucide:file-text",
                 "pages": [
                   {
-                    "icon": "lucide:file-text",
                     "path": "docs/create-content/formatting/inline",
                     "title": "Inline content"
                   },
                   {
-                    "icon": "lucide:file-text",
                     "path": "docs/create-content/formatting/markdown",
                     "title": "Markdown"
                   }
@@ -98,7 +87,6 @@
               },
               {
                 "group": "Blocks",
-                "icon": "lucide:blocks",
                 "pages": [
                   {
                     "path": "docs/create-content/blocks/paragraph",
@@ -216,82 +204,66 @@
                 "path": "docs/create-content/blocks"
               },
               {
-                "icon": "lucide:file-text",
                 "path": "docs/create-content/reusable-content",
                 "title": "Reusable content"
               },
               {
-                "icon": "lucide:file-text",
                 "path": "docs/create-content/variables-and-expressions",
                 "title": "Variables and expressions"
               },
               {
                 "group": "Document an API",
-                "icon": "lucide:file-text",
                 "pages": [
                   {
-                    "icon": "lucide:file-text",
                     "method": "POST",
                     "openapi": "api-reference/715e581e0d464caa7f0f889903f2c6f13901d28e9abf812e5e8af857b54e01c5.json POST /pet",
                     "path": "docs/create-content/openapi",
                     "title": "Document an API"
                   },
                   {
-                    "icon": "lucide:braces",
                     "path": "docs/create-content/openapi/add-an-openapi-specification",
                     "title": "Add an OpenAPI specification"
                   },
                   {
-                    "icon": "lucide:code",
                     "path": "docs/create-content/openapi/insert-api-reference-in-your-docs",
                     "title": "Insert API reference in your docs"
                   },
                   {
-                    "icon": "lucide:puzzle",
                     "path": "docs/create-content/openapi/extensions-reference",
                     "title": "Extensions reference"
                   },
                   {
                     "group": "Guides",
-                    "icon": "lucide:book-open",
                     "pages": [
                       {
-                        "icon": "lucide:braces",
                         "path": "docs/create-content/openapi/guides/openapi-layouts",
                         "title": "OpenAPI layouts"
                       },
                       {
-                        "icon": "lucide:code",
                         "path": "docs/create-content/openapi/guides/structuring-your-api-reference",
                         "title": "Structuring your API reference"
                       },
                       {
-                        "icon": "lucide:code",
                         "path": "docs/create-content/openapi/guides/adding-custom-code-samples",
                         "title": "Adding custom code samples"
                       },
                       {
-                        "icon": "lucide:code",
                         "path": "docs/create-content/openapi/guides/managing-api-operations",
                         "title": "Managing API operations"
                       },
                       {
-                        "icon": "lucide:test-tube",
                         "path": "docs/create-content/openapi/guides/configuring-the-test-it-button",
                         "title": "Configuring the “Test it” button"
                       },
                       {
-                        "icon": "lucide:braces",
                         "path": "docs/create-content/openapi/guides/using-openapi-proxy",
                         "title": "Using OpenAPI proxy"
                       },
                       {
-                        "icon": "lucide:file-text",
                         "path": "docs/create-content/openapi/guides/describing-enums",
                         "title": "Describing enums"
                       },
                       {
-                        "icon": "lucide:workflow",
                         "path": "docs/create-content/openapi/guides/support-for-ci-cd-with-api-blocks",
                         "title": "Integrating with CI/CD"
                       }
@@ -301,26 +273,21 @@
                 ]
               },
               {
-                "icon": "lucide:palette",
                 "path": "docs/create-content/styleguide",
                 "title": "Style guide"
               },
               {
-                "icon": "lucide:git-branch",
                 "path": "docs/create-content/version-control",
                 "title": "Version control"
               },
               {
                 "group": "Searching internal content",
-                "icon": "lucide:file-text",
                 "pages": [
                   {
-                    "icon": "lucide:search",
                     "path": "docs/create-content/searching-your-content/quick-find",
                     "title": "Search & Quick find"
                   },
                   {
-                    "icon": "lucide:book-marked",
                     "path": "docs/create-content/searching-your-content/gitbook-ai",
                     "title": "GitBook AI"
                   }
@@ -328,88 +295,73 @@
                 "path": "docs/create-content/searching-your-content"
               },
               {
-                "icon": "lucide:book-open",
                 "path": "docs/create-content/guides",
                 "title": "Guides"
               }
             ]
           },
           {
+            "expandable": false,
             "group": "GitBook Agent",
-            "icon": "lucide:book-marked",
             "pages": [
               {
-                "icon": "lucide:info",
                 "path": "docs/gitbook-agent/overview",
                 "title": "Overview"
               },
               {
-                "icon": "lucide:book-marked",
                 "path": "docs/gitbook-agent/write-and-edit-with-ai",
                 "title": "Writing with GitBook Agent"
               },
               {
-                "icon": "lucide:book-marked",
                 "path": "docs/gitbook-agent/review-change-requests-with-gitbook-agent",
                 "title": "Review change requests with GitBook Agent"
               },
               {
-                "icon": "lucide:languages",
                 "path": "docs/gitbook-agent/translations",
                 "title": "Translations"
               },
               {
-                "icon": "lucide:file-text",
                 "path": "docs/gitbook-agent/channels",
                 "title": "Channels"
               },
               {
-                "icon": "lucide:book-open",
                 "path": "docs/gitbook-agent/guides",
                 "title": "Guides"
               }
             ]
           },
           {
+            "expandable": false,
             "group": "Work from your tools",
-            "icon": "lucide:folder",
             "pages": [
               {
                 "group": "GitHub & GitLab Sync",
-                "icon": "lucide:folder",
                 "pages": [
                   {
-                    "icon": "lucide:file-text",
                     "path": "docs/docs-as-code/git-sync/enabling-github-sync",
                     "title": "Enabling GitHub Sync"
                   },
                   {
-                    "icon": "lucide:file-text",
                     "path": "docs/docs-as-code/git-sync/enabling-gitlab-sync",
                     "title": "Enabling GitLab Sync"
                   },
                   {
-                    "icon": "lucide:file-text",
                     "path": "docs/docs-as-code/git-sync/content-configuration",
                     "title": "Content configuration"
                   },
                   {
-                    "icon": "lucide:git-pull-request",
                     "path": "docs/docs-as-code/git-sync/github-pull-request-preview",
                     "title": "GitHub pull request preview"
                   },
                   {
-                    "icon": "lucide:message-circle",
                     "path": "docs/docs-as-code/git-sync/commits",
                     "title": "Commit messages & Autolink"
                   },
                   {
-                    "icon": "lucide:file-text",
                     "path": "docs/docs-as-code/git-sync/monorepos",
                     "title": "Monorepos"
                   },
                   {
-                    "icon": "lucide:triangle-alert",
                     "path": "docs/docs-as-code/git-sync/troubleshooting",
                     "title": "Troubleshooting"
                   }
@@ -417,34 +369,29 @@
                 "path": "docs/docs-as-code/git-sync"
               },
               {
-                "icon": "lucide:book-marked",
                 "path": "docs/docs-as-code/gitbook-mcp",
                 "title": "GitBook MCP"
               },
               {
-                "icon": "lucide:book-marked",
                 "path": "docs/docs-as-code/gitbook-cli",
                 "title": "GitBook CLI"
               },
               {
-                "icon": "lucide:bot",
                 "path": "docs/docs-as-code/ai-coding-assistants-and-skillmd",
                 "title": "Agent skills"
               },
               {
-                "icon": "lucide:book-open",
                 "path": "docs/docs-as-code/guides",
                 "title": "Guides"
               }
             ]
           },
           {
+            "expandable": false,
             "group": "Collaborate and review",
-            "icon": "lucide:folder",
             "pages": [
               {
                 "group": "Change requests",
-                "icon": "lucide:folder",
                 "pages": [
                   {
                     "path": "docs/collaborate/change-requests/change-requests-screen",
@@ -458,46 +405,37 @@
                 "path": "docs/collaborate/change-requests"
               },
               {
-                "icon": "lucide:file-text",
                 "path": "docs/collaborate/merge-rules",
                 "title": "Merge rules"
               },
               {
-                "icon": "lucide:message-square",
                 "path": "docs/collaborate/comments",
                 "title": "Comments"
               },
               {
-                "icon": "lucide:file-text",
                 "path": "docs/collaborate/live-edits",
                 "title": "Live edits"
               },
               {
-                "icon": "lucide:bell",
                 "path": "docs/collaborate/notifications",
                 "title": "Notifications"
               },
               {
                 "group": "Member management",
-                "icon": "lucide:users",
                 "pages": [
                   {
-                    "icon": "lucide:users",
                     "path": "docs/collaborate/member-management/invite-members-to-your-organization",
                     "title": "Manage or remove members"
                   },
                   {
-                    "icon": "lucide:shield",
                     "path": "docs/collaborate/member-management/permissions-and-inheritance",
                     "title": "Permissions and inheritance"
                   },
                   {
-                    "icon": "lucide:shield",
                     "path": "docs/collaborate/member-management/roles",
                     "title": "Roles"
                   },
                   {
-                    "icon": "lucide:users",
                     "path": "docs/collaborate/member-management/teams",
                     "title": "Teams"
                   }
@@ -505,29 +443,25 @@
                 "path": "docs/collaborate/member-management"
               },
               {
-                "icon": "lucide:users",
                 "path": "docs/collaborate/share",
                 "title": "Inviting your team"
               },
               {
-                "icon": "lucide:book-open",
                 "path": "docs/collaborate/guides",
                 "title": "Guides"
               }
             ]
           },
           {
+            "expandable": false,
             "group": "Set up your site",
-            "icon": "lucide:folder",
             "pages": [
               {
-                "icon": "lucide:settings",
                 "path": "docs/manage-your-site/site-settings",
                 "title": "Site settings"
               },
               {
                 "group": "Site structure",
-                "icon": "lucide:folder",
                 "pages": [
                   {
                     "path": "docs/manage-your-site/site-structure/site-sections",
@@ -546,30 +480,24 @@
               },
               {
                 "group": "Site customization",
-                "icon": "lucide:folder",
                 "pages": [
                   {
-                    "icon": "lucide:shapes",
                     "path": "docs/manage-your-site/customization/icons-colors-and-themes",
                     "title": "Icons, colors, and themes"
                   },
                   {
-                    "icon": "lucide:layout",
                     "path": "docs/manage-your-site/customization/layout-and-structure",
                     "title": "Layout and structure"
                   },
                   {
-                    "icon": "lucide:file-text",
                     "path": "docs/manage-your-site/customization/sharing-and-social",
                     "title": "Sharing and social"
                   },
                   {
-                    "icon": "lucide:file-text",
                     "path": "docs/manage-your-site/customization/toolbar-on-published-sites-and-site-previews",
                     "title": "Toolbar"
                   },
                   {
-                    "icon": "lucide:settings",
                     "path": "docs/manage-your-site/customization/extra-configuration",
                     "title": "Extra configuration"
                   }
@@ -577,38 +505,32 @@
                 "path": "docs/manage-your-site/customization"
               },
               {
-                "icon": "lucide:download",
                 "path": "docs/manage-your-site/install-an-integration",
                 "title": "Install and manage integrations"
               },
               {
-                "icon": "lucide:shield",
                 "path": "docs/manage-your-site/site-permissions",
                 "title": "Site permissions"
               },
               {
-                "icon": "lucide:book-open",
                 "path": "docs/manage-your-site/guides",
                 "title": "Guides"
               }
             ]
           },
           {
+            "expandable": false,
             "group": "Publish and control access",
-            "icon": "lucide:send",
             "pages": [
               {
                 "group": "Site audience",
-                "icon": "lucide:folder",
                 "pages": [
                   {
-                    "icon": "lucide:send",
                     "path": "docs/publish/site-audience/share-links",
                     "title": "Private publishing with share links"
                   },
                   {
                     "group": "Authenticated access",
-                    "icon": "lucide:folder",
                     "pages": [
                       {
                         "path": "docs/publish/site-audience/authenticated-access/enabling-authenticated-access",
@@ -646,11 +568,9 @@
               },
               {
                 "group": "Adaptive content",
-                "icon": "lucide:file-text",
                 "pages": [
                   {
                     "group": "Enabling adaptive content",
-                    "icon": "lucide:file-text",
                     "pages": [
                       {
                         "path": "docs/publish/adaptive-content/enabling-adaptive-content/cookies",
@@ -672,17 +592,14 @@
                     "path": "docs/publish/adaptive-content/enabling-adaptive-content"
                   },
                   {
-                    "icon": "lucide:file-text",
                     "path": "docs/publish/adaptive-content/adapting-your-content",
                     "title": "Adapting your content"
                   },
                   {
-                    "icon": "lucide:test-tube",
                     "path": "docs/publish/adaptive-content/testing-with-segments",
                     "title": "Testing with segments"
                   },
                   {
-                    "icon": "lucide:circle-help",
                     "path": "docs/publish/adaptive-content/faq-and-troubleshooting",
                     "title": "FAQ and troubleshooting"
                   }
@@ -691,11 +608,9 @@
               },
               {
                 "group": "Set a custom domain",
-                "icon": "lucide:globe",
                 "pages": [
                   {
                     "group": "Setting a custom subdirectory",
-                    "icon": "lucide:folder",
                     "pages": [
                       {
                         "path": "docs/publish/custom-domain/setting-a-custom-subdirectory/configuring-a-subdirectory-with-cloudflare",
@@ -716,27 +631,22 @@
                 "path": "docs/publish/custom-domain"
               },
               {
-                "icon": "lucide:arrow-right-left",
                 "path": "docs/publish/site-redirects",
                 "title": "Site redirects"
               },
               {
-                "icon": "lucide:search-check",
                 "path": "docs/publish/seo",
                 "title": "SEO"
               },
               {
-                "icon": "lucide:upload",
                 "path": "docs/publish/pdf-export",
                 "title": "PDF export"
               },
               {
                 "group": "Embed in your product",
-                "icon": "lucide:box",
                 "pages": [
                   {
                     "group": "Implementation",
-                    "icon": "lucide:folder",
                     "pages": [
                       {
                         "path": "docs/publish/embedding/implementation/script",
@@ -754,26 +664,21 @@
                     "path": "docs/publish/embedding/implementation"
                   },
                   {
-                    "icon": "lucide:key",
                     "path": "docs/publish/embedding/using-with-authenticated-docs",
                     "title": "Authentication"
                   },
                   {
                     "group": "Configuration",
-                    "icon": "lucide:settings",
                     "pages": [
                       {
-                        "icon": "lucide:file-text",
                         "path": "docs/publish/embedding/configuration/customizing-docs-embed",
                         "title": "Customizing the Embed"
                       },
                       {
-                        "icon": "lucide:plug",
                         "path": "docs/publish/embedding/configuration/creating-custom-tools",
                         "title": "Connect to custom tools"
                       },
                       {
-                        "icon": "lucide:code",
                         "path": "docs/publish/embedding/configuration/reference",
                         "title": "API Reference"
                       }
@@ -784,58 +689,58 @@
                 "path": "docs/publish/embedding"
               },
               {
-                "icon": "lucide:send",
                 "path": "docs/publish/publish-a-docs-site",
                 "title": "Publish a docs site"
               },
               {
-                "icon": "lucide:book-open",
                 "path": "docs/publish/guides",
                 "title": "Guides"
+              },
+              {
+                "group": "Publish a docs site",
+                "pages": [
+                  {
+                    "path": "docs/publish/publish-a-docs-site/public-publishing",
+                    "title": "Public publishing"
+                  }
+                ]
               }
             ]
           },
           {
+            "expandable": false,
             "group": "Serve readers and agents",
-            "icon": "lucide:bot",
             "pages": [
               {
-                "icon": "lucide:sparkles",
                 "path": "docs/ai-for-your-readers/gitbook-ai-assistant",
                 "title": "AI Assistant"
               },
               {
-                "icon": "lucide:plug",
                 "path": "docs/ai-for-your-readers/connections",
                 "title": "Connections"
               },
               {
-                "icon": "lucide:server",
                 "path": "docs/ai-for-your-readers/mcp-servers-for-published-docs",
                 "title": "MCP servers for published docs"
               }
             ]
           },
           {
+            "expandable": false,
             "group": "Measure and improve",
-            "icon": "lucide:folder",
             "pages": [
               {
                 "group": "Site analytics",
-                "icon": "lucide:chart-column",
                 "pages": [
                   {
-                    "icon": "lucide:file-text",
                     "path": "docs/analytics/insights/traffic",
                     "title": "Traffic"
                   },
                   {
-                    "icon": "lucide:sparkles",
                     "path": "docs/analytics/insights/ai-insights",
                     "title": "AI Assistant"
                   },
                   {
-                    "icon": "lucide:bot",
                     "path": "docs/analytics/insights/agents-and-mcp",
                     "title": "Agents & MCP"
                   }
@@ -843,36 +748,30 @@
                 "path": "docs/analytics/insights"
               },
               {
-                "icon": "lucide:link",
                 "path": "docs/analytics/broken-links",
                 "title": "Broken links"
               },
               {
-                "icon": "lucide:file-text",
                 "path": "docs/analytics/content-gaps",
                 "title": "Content gaps"
               },
               {
-                "icon": "lucide:book-open",
                 "path": "docs/analytics/guides",
                 "title": "Guides"
               }
             ]
           },
           {
+            "expandable": false,
             "group": "Account and billing",
-            "icon": "lucide:user-check",
             "pages": [
               {
                 "group": "Plans",
-                "icon": "lucide:credit-card",
                 "pages": [
                   {
                     "group": "Community plan",
-                    "icon": "lucide:users",
                     "pages": [
                       {
-                        "icon": "lucide:credit-card",
                         "path": "docs/account-and-billing/plans/community/sponsored-site-plan",
                         "title": "Sponsored site plan"
                       }
@@ -880,39 +779,36 @@
                     "path": "docs/account-and-billing/plans/community"
                   },
                   {
-                    "icon": "lucide:credit-card",
                     "path": "docs/account-and-billing/plans/billing-policy",
                     "title": "Billing policy"
                   },
                   {
-                    "icon": "lucide:credit-card",
                     "path": "docs/account-and-billing/plans/cancelling-a-plan",
                     "title": "Subscription cancellations"
                   },
                   {
-                    "icon": "lucide:sparkles",
                     "path": "docs/account-and-billing/plans/ai-credits",
                     "title": "AI credits"
+                  },
+                  {
+                    "path": "docs/account-and-billing/plans/legacy-plans",
+                    "title": "Legacy pricing"
                   }
                 ],
                 "path": "docs/account-and-billing/plans"
               },
               {
-                "icon": "lucide:settings",
                 "path": "docs/account-and-billing/account-settings",
                 "title": "Personal settings"
               },
               {
-                "icon": "lucide:building",
                 "path": "docs/account-and-billing/organization-settings",
                 "title": "Organization settings"
               },
               {
                 "group": "SSO & SAML",
-                "icon": "lucide:key",
                 "pages": [
                   {
-                    "icon": "lucide:key",
                     "path": "docs/account-and-billing/sso-and-saml/sso-members-vs-non-sso",
                     "title": "SSO Members vs non-SSO"
                   }
@@ -921,25 +817,20 @@
               },
               {
                 "group": "Billing FAQ",
-                "icon": "lucide:credit-card",
                 "pages": [
                   {
-                    "icon": "lucide:file-text",
                     "path": "docs/account-and-billing/billing-faq/free-trial",
                     "title": "Free trials"
                   },
                   {
-                    "icon": "lucide:credit-card",
                     "path": "docs/account-and-billing/billing-faq/payments-and-invoices",
                     "title": "Payments and invoices"
                   },
                   {
-                    "icon": "lucide:users",
                     "path": "docs/account-and-billing/billing-faq/plan-and-member-costs",
                     "title": "Site and member costs"
                   },
                   {
-                    "icon": "lucide:sparkles",
                     "path": "docs/account-and-billing/billing-faq/ai-credits-and-usage",
                     "title": "AI credits and usage"
                   }
@@ -949,49 +840,71 @@
             ]
           },
           {
+            "expandable": false,
             "group": "Reference",
-            "icon": "lucide:book-marked",
             "pages": [
               {
-                "icon": "lucide:file-text",
                 "path": "docs/reference/keyboard-shortcuts",
                 "title": "Keyboard shortcuts"
               },
               {
-                "icon": "lucide:book-a",
                 "path": "docs/reference/glossary",
                 "title": "Glossary"
               },
               {
-                "icon": "lucide:cog",
                 "path": "docs/reference/concepts",
                 "title": "Core concepts"
+              },
+              {
+                "path": "docs/reference/gitbook-ui",
+                "title": "GitBook UI"
               }
             ]
           },
           {
+            "expandable": false,
             "group": "Help",
-            "icon": "lucide:folder",
             "pages": [
               {
-                "icon": "lucide:triangle-alert",
                 "path": "docs/help/troubleshooting",
                 "title": "Troubleshooting"
               },
               {
-                "icon": "lucide:chart-column",
                 "path": "docs/help/report-a-bug",
                 "title": "Report a bug"
               },
               {
-                "icon": "lucide:headset",
                 "path": "docs/help/contact-support",
                 "title": "Contact support"
               },
               {
-                "icon": "lucide:handshake",
                 "path": "docs/help/contribute",
                 "title": "Contribute to the docs"
+              }
+            ]
+          },
+          {
+            "group": "Skill",
+            "pages": [
+              {
+                "path": "docs/skill/write-docs",
+                "title": "Write & Edit Docs"
+              },
+              {
+                "path": "docs/skill/configure-site",
+                "title": "Configure a Site"
+              },
+              {
+                "path": "docs/skill/write-openapi",
+                "title": "Write OpenAPI Reference Docs"
+              },
+              {
+                "path": "docs/skill/cr-create",
+                "title": "Create & Manage Change Requests"
+              },
+              {
+                "path": "docs/skill/cr-review",
+                "title": "Review Change Requests"
               }
             ]
           }
@@ -999,29 +912,24 @@
         "tab": "Documentation"
       },
       {
-        "icon": "lucide:book",
         "pages": [
           {
-            "icon": "lucide:book",
             "path": "docs/developers",
             "show-sidebar": false,
             "title": "Developer documentation"
           },
           {
+            "expandable": false,
             "group": "Build a custom component",
-            "icon": "lucide:hammer",
             "pages": [
               {
-                "icon": "lucide:zap",
                 "path": "docs/developers/integrations/quickstart",
                 "title": "Quickstart"
               },
               {
                 "group": "Install the CLI",
-                "icon": "lucide:download",
                 "pages": [
                   {
-                    "icon": "lucide:terminal",
                     "path": "docs/developers/integrations/reference/cli-reference",
                     "title": "CLI reference"
                   }
@@ -1029,17 +937,14 @@
                 "path": "docs/developers/integrations/reference"
               },
               {
-                "icon": "lucide:file-text",
                 "path": "docs/developers/integrations/configurations",
                 "title": "Configure"
               },
               {
                 "group": "Develop",
-                "icon": "lucide:folder",
                 "pages": [
                   {
                     "group": "ContentKit",
-                    "icon": "lucide:folder",
                     "pages": [
                       {
                         "path": "docs/developers/integrations/development/contentkit/actions",
@@ -1047,7 +952,6 @@
                       },
                       {
                         "group": "Component reference",
-                        "icon": "lucide:component",
                         "pages": [
                           {
                             "path": "docs/developers/integrations/development/contentkit/component-reference/vstack",
@@ -1128,12 +1032,10 @@
                     "path": "docs/developers/integrations/development/contentkit"
                   },
                   {
-                    "icon": "lucide:puzzle",
                     "path": "docs/developers/integrations/development/runtime",
                     "title": "Integration runtime"
                   },
                   {
-                    "icon": "lucide:library",
                     "path": "docs/developers/integrations/development/client-library",
                     "title": "Client library"
                   }
@@ -1141,66 +1043,53 @@
                 "path": "docs/developers/integrations/development"
               },
               {
-                "icon": "lucide:send",
                 "path": "docs/developers/integrations/publishing",
                 "title": "Publish your component"
               },
               {
-                "icon": "lucide:file-text",
                 "path": "docs/developers/integrations/submit-your-app-for-review",
                 "title": "Submit for review"
               },
               {
-                "icon": "lucide:cog",
                 "path": "docs/developers/integrations/concepts",
                 "title": "Concepts"
               },
               {
                 "group": "Guides",
-                "icon": "lucide:book-open",
                 "pages": [
                   {
-                    "icon": "lucide:file-text",
                     "path": "docs/developers/integrations/guides/create-a-custom-unfurl-action-for-your-integration",
                     "title": "Create a custom unfurl action"
                   },
                   {
-                    "icon": "lucide:refresh-cw",
                     "path": "docs/developers/integrations/guides/interactivity",
                     "title": "Update text with a button"
                   },
                   {
-                    "icon": "lucide:webhook",
                     "path": "docs/developers/integrations/guides/webhook",
                     "title": "Receive webhook notifications"
                   },
                   {
-                    "icon": "lucide:file-text",
                     "path": "docs/developers/integrations/guides/receiving-requests",
                     "title": "Handle an HTTP request"
                   },
                   {
-                    "icon": "lucide:file-text",
                     "path": "docs/developers/integrations/guides/create-an-interactive-text-input",
                     "title": "Create an interactive text input"
                   },
                   {
-                    "icon": "lucide:database",
                     "path": "docs/developers/integrations/guides/send-data-to-a-webframe",
                     "title": "Send data to a webframe"
                   },
                   {
-                    "icon": "lucide:file-text",
                     "path": "docs/developers/integrations/guides/open-a-modal-from-a-button",
                     "title": "Open a modal from a button"
                   },
                   {
-                    "icon": "lucide:blocks",
                     "path": "docs/developers/integrations/guides/save-editable-block-content",
                     "title": "Save editable block content"
                   },
                   {
-                    "icon": "lucide:book-marked",
                     "path": "docs/developers/integrations/guides/markdown",
                     "title": "Reference your component in markown"
                   }
@@ -1210,63 +1099,51 @@
             ]
           },
           {
+            "expandable": false,
             "group": "GitBook API",
-            "icon": "lucide:book-marked",
             "pages": [
               {
-                "icon": "lucide:zap",
                 "path": "docs/developers/gitbook-api/quickstart",
                 "title": "Quickstart"
               },
               {
                 "group": "API reference",
-                "icon": "lucide:code",
                 "pages": [
                   {
                     "group": "Organizations",
-                    "icon": "lucide:folder",
                     "pages": [
                       {
                         "group": "Organization members",
-                        "icon": "lucide:building",
                         "pages": [
                           {
-                            "icon": "lucide:building",
                             "path": "docs/developers/gitbook-api/api-reference/organizations/organization-members/list-all-organization-members",
                             "title": "getList all organization members"
                           },
                           {
-                            "icon": "lucide:building",
                             "path": "docs/developers/gitbook-api/api-reference/organizations/organization-members/get-an-organization-member-by-its-id",
                             "title": "getGet an organization member by its ID"
                           },
                           {
-                            "icon": "lucide:building",
                             "path": "docs/developers/gitbook-api/api-reference/organizations/organization-members/remove-an-organization-member-or-request-an-organization-admin-to-do-it",
                             "title": "DELRemove an organization member or request an organization admin to do it"
                           },
                           {
-                            "icon": "lucide:building",
                             "path": "docs/developers/gitbook-api/api-reference/organizations/organization-members/update-an-organization-member",
                             "title": "patchUpdate an organization member"
                           },
                           {
-                            "icon": "lucide:building",
                             "path": "docs/developers/gitbook-api/api-reference/organizations/organization-members/update-an-organization-member-last-seen-at",
                             "title": "postUpdate an organization member last seen at"
                           },
                           {
-                            "icon": "lucide:users",
                             "path": "docs/developers/gitbook-api/api-reference/organizations/organization-members/set-a-user-as-an-sso-member-of-an-organization",
                             "title": "postSet a user as an SSO member of an organization"
                           },
                           {
-                            "icon": "lucide:building",
                             "path": "docs/developers/gitbook-api/api-reference/organizations/organization-members/list-an-organization-member-space-permissions",
                             "title": "getList an organization member space permissions"
                           },
                           {
-                            "icon": "lucide:building",
                             "path": "docs/developers/gitbook-api/api-reference/organizations/organization-members/list-all-organization-member-teams",
                             "title": "getList all organization member teams"
                           }
@@ -1275,35 +1152,28 @@
                       },
                       {
                         "group": "Organization invites",
-                        "icon": "lucide:building",
                         "pages": [
                           {
-                            "icon": "lucide:users",
                             "path": "docs/developers/gitbook-api/api-reference/organizations/organization-invites/invite-users-in-an-organization",
                             "title": "postInvite users in an organization"
                           },
                           {
-                            "icon": "lucide:building",
                             "path": "docs/developers/gitbook-api/api-reference/organizations/organization-invites/join-an-organization-with-an-invite",
                             "title": "postJoin an organization with an invite"
                           },
                           {
-                            "icon": "lucide:building",
                             "path": "docs/developers/gitbook-api/api-reference/organizations/organization-invites/list-organization-invites",
                             "title": "getList organization invites"
                           },
                           {
-                            "icon": "lucide:building",
                             "path": "docs/developers/gitbook-api/api-reference/organizations/organization-invites/create-an-organization-invite",
                             "title": "postCreate an organization invite"
                           },
                           {
-                            "icon": "lucide:building",
                             "path": "docs/developers/gitbook-api/api-reference/organizations/organization-invites/get-an-organization-by-its-id",
                             "title": "getGet an organization by its ID"
                           },
                           {
-                            "icon": "lucide:building",
                             "path": "docs/developers/gitbook-api/api-reference/organizations/organization-invites/update-an-organization-invite",
                             "title": "patchUpdate an organization invite"
                           }
@@ -1312,25 +1182,20 @@
                       },
                       {
                         "group": "Organization AI ask",
-                        "icon": "lucide:building",
                         "pages": [
                           {
-                            "icon": "lucide:building",
                             "path": "docs/developers/gitbook-api/api-reference/organizations/organization-ai-ask/ask-a-question-in-an-organization",
                             "title": "postAsk a question in an organization"
                           },
                           {
-                            "icon": "lucide:building",
                             "path": "docs/developers/gitbook-api/api-reference/organizations/organization-ai-ask/list-recommended-questions-to-ask-in-an-organization",
                             "title": "getList recommended questions to ask in an organization"
                           },
                           {
-                            "icon": "lucide:building",
                             "path": "docs/developers/gitbook-api/api-reference/organizations/organization-ai-ask/list-recommended-questions-to-ask-in-an-organization-streamed",
                             "title": "getList recommended questions to ask in an organization (streamed)"
                           },
                           {
-                            "icon": "lucide:building",
                             "path": "docs/developers/gitbook-api/api-reference/organizations/organization-ai-ask/ask-a-question-in-an-organization-streamed",
                             "title": "getAsk a question in an organization (streamed)"
                           }
@@ -1338,102 +1203,82 @@
                         "path": "docs/developers/gitbook-api/api-reference/organizations/organization-ai-ask"
                       },
                       {
-                        "icon": "lucide:users",
                         "path": "docs/developers/gitbook-api/api-reference/organizations/get-the-list-of-organizations-for-the-currently-authenticated-user",
                         "title": "getGet the list of organizations for the currently authenticated user"
                       },
                       {
-                        "icon": "lucide:building",
                         "path": "docs/developers/gitbook-api/api-reference/organizations/create-an-organization",
                         "title": "postCreate an organization"
                       },
                       {
-                        "icon": "lucide:building",
                         "path": "docs/developers/gitbook-api/api-reference/organizations/get-an-organization-by-its-id",
                         "title": "getGet an organization by its ID"
                       },
                       {
-                        "icon": "lucide:building",
                         "path": "docs/developers/gitbook-api/api-reference/organizations/update-an-organization",
                         "title": "patchUpdate an organization"
                       },
                       {
-                        "icon": "lucide:building",
                         "path": "docs/developers/gitbook-api/api-reference/organizations/list-organization-audit-event-actions",
                         "title": "getList organization audit event actions"
                       },
                       {
-                        "icon": "lucide:building",
                         "path": "docs/developers/gitbook-api/api-reference/organizations/list-organization-audit-events",
                         "title": "getList organization audit events"
                       },
                       {
-                        "icon": "lucide:building",
                         "path": "docs/developers/gitbook-api/api-reference/organizations/get-an-organization-audit-event",
                         "title": "getGet an organization audit event"
                       },
                       {
-                        "icon": "lucide:palette",
                         "path": "docs/developers/gitbook-api/api-reference/organizations/list-all-style-guides-in-an-organization",
                         "title": "getList all style guides in an organization"
                       },
                       {
-                        "icon": "lucide:palette",
                         "path": "docs/developers/gitbook-api/api-reference/organizations/list-all-built-in-style-guide-templates",
                         "title": "getList all built-in style guide templates"
                       },
                       {
-                        "icon": "lucide:building",
                         "path": "docs/developers/gitbook-api/api-reference/organizations/get-an-organizations-subscription",
                         "title": "getGet an organization's subscription"
                       },
                       {
-                        "icon": "lucide:building",
                         "path": "docs/developers/gitbook-api/api-reference/organizations/deletes-an-organization-invite",
                         "title": "DELDeletes an organization invite."
                       },
                       {
-                        "icon": "lucide:building",
                         "path": "docs/developers/gitbook-api/api-reference/organizations/join-an-organization",
                         "title": "postJoin an organization"
                       },
                       {
-                        "icon": "lucide:file-text",
                         "path": "docs/developers/gitbook-api/api-reference/organizations/search-content-in-an-organization",
                         "title": "getSearch content in an organization"
                       },
                       {
-                        "icon": "lucide:book",
                         "path": "docs/developers/gitbook-api/api-reference/organizations/get-docs-agent-instructions-for-an-organization",
                         "title": "getGet Docs agent instructions for an organization"
                       },
                       {
-                        "icon": "lucide:book",
                         "path": "docs/developers/gitbook-api/api-reference/organizations/update-docs-agent-instructions-for-an-organization",
                         "title": "putUpdate Docs agent instructions for an organization"
                       },
                       {
-                        "icon": "lucide:sparkles",
                         "path": "docs/developers/gitbook-api/api-reference/organizations/list-ai-agent-conversations-in-an-organization",
                         "title": "getList AI agent conversations in an organization"
                       },
                       {
-                        "icon": "lucide:sparkles",
                         "path": "docs/developers/gitbook-api/api-reference/organizations/provision-an-ai-agent-conversation-in-an-organization",
                         "title": "putProvision an AI agent conversation in an organization"
                       },
                       {
-                        "icon": "lucide:bot",
                         "path": "docs/developers/gitbook-api/api-reference/organizations/delete-an-agent-conversation-in-an-organization",
                         "title": "DELDelete an agent conversation in an organization"
                       },
                       {
-                        "icon": "lucide:sparkles",
                         "path": "docs/developers/gitbook-api/api-reference/organizations/update-an-ai-agent-conversation-in-an-organization",
                         "title": "patchUpdate an AI agent conversation in an organization"
                       },
                       {
-                        "icon": "lucide:mail",
                         "path": "docs/developers/gitbook-api/api-reference/organizations/get-all-organizations-by-email-domain",
                         "title": "getGet all organizations by email domain"
                       }
@@ -1442,29 +1287,23 @@
                   },
                   {
                     "group": "Docs sites",
-                    "icon": "lucide:book",
                     "pages": [
                       {
                         "group": "Site share links",
-                        "icon": "lucide:link",
                         "pages": [
                           {
-                            "icon": "lucide:link",
                             "path": "docs/developers/gitbook-api/api-reference/docs-sites/site-share-links/list-all-private-share-links-for-a-site",
                             "title": "getList all private share links for a site"
                           },
                           {
-                            "icon": "lucide:link",
                             "path": "docs/developers/gitbook-api/api-reference/docs-sites/site-share-links/create-a-private-share-link-for-a-site",
                             "title": "postCreate a private share link for a site"
                           },
                           {
-                            "icon": "lucide:link",
                             "path": "docs/developers/gitbook-api/api-reference/docs-sites/site-share-links/deletes-a-share-link",
                             "title": "DELDeletes a share link"
                           },
                           {
-                            "icon": "lucide:link",
                             "path": "docs/developers/gitbook-api/api-reference/docs-sites/site-share-links/update-a-private-share-link-for-a-site",
                             "title": "patchUpdate a private share link for a site"
                           }
@@ -1473,10 +1312,8 @@
                       },
                       {
                         "group": "Site structure",
-                        "icon": "lucide:folder",
                         "pages": [
                           {
-                            "icon": "lucide:menu",
                             "path": "docs/developers/gitbook-api/api-reference/docs-sites/site-structure/get-the-full-navigation-structure-of-a-site",
                             "title": "getGet the full navigation structure of a site"
                           }
@@ -1485,20 +1322,16 @@
                       },
                       {
                         "group": "Site auth",
-                        "icon": "lucide:key",
                         "pages": [
                           {
-                            "icon": "lucide:file-text",
                             "path": "docs/developers/gitbook-api/api-reference/docs-sites/site-auth/get-the-published-content-authentication-configuration-for-a-site",
                             "title": "getGet the published content authentication configuration for a site"
                           },
                           {
-                            "icon": "lucide:file-text",
                             "path": "docs/developers/gitbook-api/api-reference/docs-sites/site-auth/update-the-published-content-authentication-configuration-for-a-site",
                             "title": "patchUpdate the published content authentication configuration for a site"
                           },
                           {
-                            "icon": "lucide:key",
                             "path": "docs/developers/gitbook-api/api-reference/docs-sites/site-auth/regenerate-the-private-key-for-a-sites-published-content-authentication",
                             "title": "postRegenerate the private key for a site's published content authentication"
                           }
@@ -1507,10 +1340,8 @@
                       },
                       {
                         "group": "Site preview",
-                        "icon": "lucide:eye",
                         "pages": [
                           {
-                            "icon": "lucide:eye",
                             "path": "docs/developers/gitbook-api/api-reference/docs-sites/site-preview/generate-a-temporary-preview-url-for-a-sites-published-content",
                             "title": "getGenerate a temporary preview URL for a site's published content"
                           }
@@ -1519,30 +1350,24 @@
                       },
                       {
                         "group": "Site customization",
-                        "icon": "lucide:folder",
                         "pages": [
                           {
-                            "icon": "lucide:award",
                             "path": "docs/developers/gitbook-api/api-reference/docs-sites/site-customization/get-the-branding-and-visual-customization-settings-for-a-site",
                             "title": "getGet the branding and visual customization settings for a site"
                           },
                           {
-                            "icon": "lucide:award",
                             "path": "docs/developers/gitbook-api/api-reference/docs-sites/site-customization/update-the-branding-and-visual-customization-settings-for-a-site",
                             "title": "putUpdate the branding and visual customization settings for a site"
                           },
                           {
-                            "icon": "lucide:file-text",
                             "path": "docs/developers/gitbook-api/api-reference/docs-sites/site-customization/get-the-customization-overrides-for-a-site-space",
                             "title": "getGet the customization overrides for a site space"
                           },
                           {
-                            "icon": "lucide:settings",
                             "path": "docs/developers/gitbook-api/api-reference/docs-sites/site-customization/delete-a-site-space-customization-settings",
                             "title": "DELDelete a site space customization settings"
                           },
                           {
-                            "icon": "lucide:award",
                             "path": "docs/developers/gitbook-api/api-reference/docs-sites/site-customization/override-branding-and-customization-settings-for-a-specific-site-space",
                             "title": "patchOverride branding and customization settings for a specific site space"
                           }
@@ -1551,15 +1376,12 @@
                       },
                       {
                         "group": "Site agent settings",
-                        "icon": "lucide:bot",
                         "pages": [
                           {
-                            "icon": "lucide:sparkles",
                             "path": "docs/developers/gitbook-api/api-reference/docs-sites/site-agent-settings/get-the-ai-agent-configuration-for-a-site",
                             "title": "getGet the AI agent configuration for a site"
                           },
                           {
-                            "icon": "lucide:sparkles",
                             "path": "docs/developers/gitbook-api/api-reference/docs-sites/site-agent-settings/update-the-ai-agent-configuration-for-a-site",
                             "title": "putUpdate the AI agent configuration for a site"
                           }
@@ -1568,15 +1390,12 @@
                       },
                       {
                         "group": "Site spaces",
-                        "icon": "lucide:folder",
                         "pages": [
                           {
-                            "icon": "lucide:file-text",
                             "path": "docs/developers/gitbook-api/api-reference/docs-sites/site-spaces/list-all-spaces-linked-to-a-site-as-content-sources",
                             "title": "getList all spaces linked to a site as content sources"
                           },
                           {
-                            "icon": "lucide:file-text",
                             "path": "docs/developers/gitbook-api/api-reference/docs-sites/site-spaces/add-a-space-to-a-site-as-a-content-source",
                             "title": "postAdd a space to a site as a content source"
                           }
@@ -1590,7 +1409,6 @@
                 "path": "docs/developers/gitbook-api/api-reference"
               },
               {
-                "icon": "lucide:key",
                 "path": "docs/developers/gitbook-api/authentication",
                 "show-sidebar": false,
                 "title": "Authentication"
@@ -1599,89 +1417,6 @@
           }
         ],
         "tab": "Developers"
-      },
-      {
-        "icon": "lucide:book",
-        "pages": [
-          {
-            "group": "Docs",
-            "icon": "lucide:book",
-            "pages": [
-              {
-                "group": "Publish",
-                "icon": "lucide:send",
-                "pages": [
-                  {
-                    "group": "Publish a docs site",
-                    "icon": "lucide:send",
-                    "pages": [
-                      {
-                        "icon": "lucide:send",
-                        "path": "docs/publish/publish-a-docs-site/public-publishing",
-                        "title": "Public publishing"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "group": "Account and billing",
-                "icon": "lucide:user-check",
-                "pages": [
-                  {
-                    "group": "Plans",
-                    "icon": "lucide:credit-card",
-                    "pages": [
-                      {
-                        "icon": "lucide:credit-card",
-                        "path": "docs/account-and-billing/plans/legacy-plans",
-                        "title": "Legacy pricing"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "group": "Reference",
-                "icon": "lucide:book-marked",
-                "pages": [
-                  {
-                    "icon": "lucide:book-marked",
-                    "path": "docs/reference/gitbook-ui",
-                    "title": "GitBook UI"
-                  }
-                ]
-              },
-              {
-                "group": "Skill",
-                "icon": "lucide:folder",
-                "pages": [
-                  {
-                    "path": "docs/skill/write-docs",
-                    "title": "Write & Edit Docs"
-                  },
-                  {
-                    "path": "docs/skill/configure-site",
-                    "title": "Configure a Site"
-                  },
-                  {
-                    "path": "docs/skill/write-openapi",
-                    "title": "Write OpenAPI Reference Docs"
-                  },
-                  {
-                    "path": "docs/skill/cr-create",
-                    "title": "Create & Manage Change Requests"
-                  },
-                  {
-                    "path": "docs/skill/cr-review",
-                    "title": "Review Change Requests"
-                  }
-                ]
-              }
-            ]
-          }
-        ],
-        "tab": "Docs"
       }
     ]
   },
@@ -1737,9 +1472,9 @@
     "content": "this is testing ",
     "color": "#6b7280"
   },
-  "favicon": "https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686588206-2e45wyimuir-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Ficon-2Fzs1dcg66tiqYLsZQPyo6-2FGitBook-20--20Icon-20--20Dark-20-1-.png?fm=auto&auto=compress%2Cformat",
-  "logo-dark": "https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686588165-6y61rgyja87-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Flogo-2FjeMEyot5xbWcWdbY8fAL-2FGitBook-20--20Light.svg?rasterize-bypass=true",
-  "logo-light": "https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686588185-295xge69sb-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Flogo-2FQiQ01JRaxVbpTVczX2Eu-2FGitBook-20--20Dark.svg?rasterize-bypass=true",
+  "favicon": "https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686588206-2e45wyimuir-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Ficon-2Fzs1dcg66tiqYLsZQPyo6-2FGitBook-20--20Icon-20--20Dark-20-1-.png?fm=auto&auto=compress%2Cformat",
+  "logo-dark": "https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686588165-6y61rgyja87-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Flogo-2FjeMEyot5xbWcWdbY8fAL-2FGitBook-20--20Light.svg?rasterize-bypass=true",
+  "logo-light": "https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686588185-295xge69sb-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Flogo-2FQiQ01JRaxVbpTVczX2Eu-2FGitBook-20--20Dark.svg?rasterize-bypass=true",
   "navbar": {
     "actions": {
       "links": [

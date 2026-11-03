@@ -2,7 +2,7 @@
 title: Setting up Azure AD
 description: Set up an Azure AD login screen for visitors to your docs
 metaTitle: Setting up Azure AD | GitBook Documentation
-ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
 ---
 
 <Callout kind="alert">
@@ -52,13 +52,13 @@ Start by creating an app registration in your Microsoft Entra ID dashboard. This
 5. Leave the Redirect URI field empty for now—you will need to fill this in later.
 6. Click **Register** to complete the app registration.<br />
 
-   <Image src="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793687036613-o3g5q1hrng-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FuB6p6HxRmveHp1cfsiKa-2Fazure_ad_integration_register_app.png?fm=auto&auto=compress%2Cformat" alt="An Azure screenshot showing how to register an Azure AD app" caption="Register an app for the GitBook VA integration." />
+   <Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793687036613-o3g5q1hrng-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FuB6p6HxRmveHp1cfsiKa-2Fazure_ad_integration_register_app.png?fm=auto&auto=compress%2Cformat" alt="An Azure screenshot showing how to register an Azure AD app" caption="Register an app for the GitBook VA integration." />
 7. You should then see your new app registration **Overview** screen. Copy and make note of the **Application (client) ID** and **Directory (tenant) ID**.<br />
 
-   <Image src="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793687053284-udyvj9rzass-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FETQziXVuqGnho8GGOVBZ-2Fazure_ad_integration_app_reg_overview.png?fm=auto&auto=compress%2Cformat" alt="An Azure screenshot showing the app registration overview" caption="Overview of the newly created app registration." />
+   <Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793692566537-8i8e1ul81qa-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FETQziXVuqGnho8GGOVBZ-2Fazure_ad_integration_app_reg_overview.png?fm=auto&auto=compress%2Cformat" alt="An Azure screenshot showing the app registration overview" caption="Overview of the newly created app registration." />
 8. Click on **Add a certificate or secret**. You should see the following **Certificates & Secrets** screen:<br />
 
-   <Image src="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793687043509-73vys6rkiip-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FnXJbnpnGhOI6Udjrx8bS-2Fazure_ad_integration_client_secrets.png?fm=auto&auto=compress%2Cformat" alt="An Azure screenshot showing where to add a certificate or secret" caption="Add a certificate or secret." />
+   <Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793687043509-73vys6rkiip-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FnXJbnpnGhOI6Udjrx8bS-2Fazure_ad_integration_client_secrets.png?fm=auto&auto=compress%2Cformat" alt="An Azure screenshot showing where to add a certificate or secret" caption="Add a certificate or secret." />
 9. Click on <strong>\+ New client secret</strong>.
 10. Enter suitable description for the secret and click **Add**.
 11. Copy and make note of the **Value** field (<em>**not** the Secret ID</em>) of the secret you just created.
@@ -72,32 +72,32 @@ Once you've created the Azure AD app registration, the next step is to install t
 1. Navigate to the site where you’ve [enabled authenticated access](/docs/publish/site-audience/authenticated-access/enabling-authenticated-access#enable-authenticated-access) and want to use Azure AD as the identity provider.
 2. Click on the **Integrations** button in the top right from your site’s settings.<br />
 
-   <Image src="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793687051073-x0tgqskknpa-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FgBMsbydNsuqx7eqcz0JN-2Fva_site_integration_overview_screen.png?fm=auto&auto=compress%2Cformat" alt="A GitBook screenshot showing the site settings overview" />
+   <Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793687051073-x0tgqskknpa-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FgBMsbydNsuqx7eqcz0JN-2Fva_site_integration_overview_screen.png?fm=auto&auto=compress%2Cformat" alt="A GitBook screenshot showing the site settings overview" />
 3. Click on **Authenticated Access** from the categories in the sidebar.
 4. Select the **Azure** integration.
 5. Click **Install on this site**.<br />
 
-   <Image src="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793687051816-di1n5mrlp5k-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FCiveWUn0FWMEdS3YRU62-2FScreenshot-202025-03-24-20at-2018-10-09.png?fm=auto&auto=compress%2Cformat" alt="A GitBook screenshot showing installation of the Azure AD integration" />
+   <Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793692561977-708skt2ug9r-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FCiveWUn0FWMEdS3YRU62-2FScreenshot-202025-03-24-20at-2018-10-09.png?fm=auto&auto=compress%2Cformat" alt="A GitBook screenshot showing installation of the Azure AD integration" />
 6. After installing the integration on your site, you should see the integration's configuration screen:<br />
 
-   <Image src="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793687058375-0d5ekfot7uu9-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FvO9pXBCZkcprDDIVFkcf-2FScreenshot-202025-03-24-20at-2018-17-02.png?fm=auto&auto=compress%2Cformat" alt="A GitBook screenshot showing the Azure AD configuration dialog" />
+   <Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793692569005-k491d1kavo8-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FvO9pXBCZkcprDDIVFkcf-2FScreenshot-202025-03-24-20at-2018-17-02.png?fm=auto&auto=compress%2Cformat" alt="A GitBook screenshot showing the Azure AD configuration dialog" />
 7. Enter the **Client ID**, **Tenant ID**, and **Client Secret** values you copied after [creating the Azure AD app registration](#id-1.-create-an-app-registration-in-azure-a-d) earlier, and click “Save”.
 8. Copy the **URL** displayed **at the bottom of the dialog**.
 9. Head back to the Azure AD app registration you created earlier in the Microsoft Entra ID dashboard.
 10. Browse to **Manage** \> **Authentication** in the sidebar.
 11. Click <strong>\+ Add a platform</strong> and select **Web** card in the panel that opens.<br />
 
-    <Image src="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793687101961-d4p5y6f84qw-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FUssw9BNY66urLYH376sE-2FScreenshot-202025-03-24-20at-2018-28-58.png?fm=auto&auto=compress%2Cformat" alt="An Azure screenshot showing authentication platform settings" />
+    <Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793693328420-vs44hrnmzdf-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FUssw9BNY66urLYH376sE-2FScreenshot-202025-03-24-20at-2018-28-58.png?fm=auto&auto=compress%2Cformat" alt="An Azure screenshot showing authentication platform settings" />
 12. Paste the GitBook integration **URL** you copied earlier in the **Redirect URI** field, and click “Configure”<br />
 
-    <Image src="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793687102444-vx1iwwoucj-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2Fi9fVjsa351I6kVzJw64X-2Fimage.png?fm=auto&auto=compress%2Cformat" alt="An Azure screenshot showing where to enter the redirect URI" />
+    <Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793693329086-ijtnynhvypa-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2Fi9fVjsa351I6kVzJw64X-2Fimage.png?fm=auto&auto=compress%2Cformat" alt="An Azure screenshot showing where to enter the redirect URI" />
 13. Head back to **Azure integration** installation screen **in GitBook**.
 14. Close the integration dialogs and click on the **Settings** tab in the site screen.
 15. Browse to **Audience** and select **Authenticated access** (if not already selected).
 16. Select **Azure** from the dropdown in the **Authentication backend** section.
 17. Click **Update audience**.<br />
 
-    <Image src="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793687101575-493vbne9yhz-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2Finc5DrItbyXUIXP4K4ic-2FScreenshot-202025-03-24-20at-2018-41-45.png?fm=auto&auto=compress%2Cformat" alt="A GitBook screenshot showing authenticated access settings" />
+    <Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793693335742-jmftspmh92a-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2Finc5DrItbyXUIXP4K4ic-2FScreenshot-202025-03-24-20at-2018-41-45.png?fm=auto&auto=compress%2Cformat" alt="A GitBook screenshot showing authenticated access settings" />
 18. Head to the site's overview screen and click **Publish** if the site is not already published.
 
 Your site is now published behind authenticated access using your Azure AD as identity provider.

@@ -2,7 +2,7 @@
 title: Setting up AWS Cognito
 description: Set up an AWS Cognito login screen for visitors to your docs
 metaTitle: Setting up AWS Cognito | GitBook Documentation
-ogImage: https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793686612686-uh7g9d8pesj-organizations-2Fd8f63b60-89ae-11e7-8574-5927d48c4877-2Fsites-2Fsite_p4Xo4-2Fsocialpreview-2Fd5EKATKk828mNHJwRpc8-2FGitBook.jpg?fm=auto&auto=compress%2Cformat
 ---
 
 <Callout kind="alert">
@@ -43,7 +43,7 @@ Click on the created app client and make a note of the Client ID and Client Secr
 
 Navigate to integrations within the GitBook app, select authenticated access as the category, and install the AWS Cognito integration.
 
-<Image src="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793687086778-tstdkmlhwv-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FCZy21M4LIPwMVSxI3ec1-2FScreen-20Shot-202024-12-13-20at-203-37-39-20PM.png?fm=auto&auto=compress%2Cformat" alt="A GitBook screenshot showing the AWS Cognito integration install screen" />
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793687086778-tstdkmlhwv-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FCZy21M4LIPwMVSxI3ec1-2FScreen-20Shot-202024-12-13-20at-203-37-39-20PM.png?fm=auto&auto=compress%2Cformat" alt="A GitBook screenshot showing the AWS Cognito integration install screen" />
 
 Once you've installed it on your site, go to configuration and make a note of the Callback URL right above the Save button. We will need it to set up Cognito.
 
@@ -51,7 +51,7 @@ Open up the Cognito integration's configuration screen for the section you insta
 
 It should look like the following image:
 
-<Image src="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793687094601-r4hmhdlvo7b-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2Fgy177CzFZiy6U4IntLUE-2FScreen-20Shot-202024-12-13-20at-203-41-57-20PM.png?fm=auto&auto=compress%2Cformat" alt="A GitBook screenshot showing the AWS Cognito configuration screen" />
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793687094601-r4hmhdlvo7b-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2Fgy177CzFZiy6U4IntLUE-2FScreen-20Shot-202024-12-13-20at-203-41-57-20PM.png?fm=auto&auto=compress%2Cformat" alt="A GitBook screenshot showing the AWS Cognito configuration screen" />
 
 For Client ID, Cognito Domain, and Client Secret, paste in the values you got from Cognito.
 
@@ -90,6 +90,6 @@ export const handler = async (event, context) => {
 };
 ```
 
-<Image src="https://blob-cdn.documentation.ai/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793687094253-g1s28i58vi-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FwwKLiRUOJ27tjJCPc1Vd-2FScreenshot-202025-06-30-20at-2017-31-23.png?fm=auto&auto=compress%2Cformat" alt="" />
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793693328494-k4gsvtrxgm-spaces-2FNkEGS7hzeqa35sMXQZ4X-2Fuploads-2FwwKLiRUOJ27tjJCPc1Vd-2FScreenshot-202025-06-30-20at-2017-31-23.png?fm=auto&auto=compress%2Cformat" alt="" />
 
 Once added, these key-value pairs are included in the authentication token and passed to GitBook, allowing your site to dynamically adapt its content based on the authenticated user’s profile.
