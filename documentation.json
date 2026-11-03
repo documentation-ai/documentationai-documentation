@@ -14,7 +14,6 @@
         "pages": [
           {
             "path": "docs",
-            "show-sidebar": false,
             "title": "GitBook documentation"
           },
           {
@@ -915,7 +914,6 @@
         "pages": [
           {
             "path": "docs/developers",
-            "show-sidebar": false,
             "title": "Developer documentation"
           },
           {
@@ -1410,7 +1408,6 @@
               },
               {
                 "path": "docs/developers/gitbook-api/authentication",
-                "show-sidebar": false,
                 "title": "Authentication"
               }
             ]
