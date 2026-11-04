@@ -1,0 +1,66 @@
+---
+title: Custom HTML/CSS/JS
+description: Apply custom HTML, stylesheets, JavaScript, and include tags across projects
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774914107-43xq6qvhbq-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-10-27T17:27:08.000Z
+---
+
+Set appearance changes at the Enterprise Group level to apply them to all projects within that group. This lets you write your styles once and keep a consistent look across your entire documentation portal.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774915458-3ll8yw8iwyd-6f56b27-Custom_Appearance_Enterprise_GIF.gif?fm=auto&auto=compress%2Cformat" alt="" />
+
+---
+
+## How Group Styles Apply
+
+Enterprise Group CSS rules apply to all project's custom stylesheet rules. They do not overwrite child project styles. Instead, ReadMe applies group styles before project styles, so a child project's own rules take precedence where they overlap.
+
+**Setting**
+
+**Behavior**
+
+**Custom Stylesheet**
+
+Group CSS applies before child project CSS across all projects. Child rules override where they conflict.
+
+**Custom JavaScript**
+
+Group JavaScript runs across all child projects.
+
+**Include Tags**
+
+Group-level include tags apply across all child projects.
+
+<Callout>
+  ### Styling a single project?
+
+  To customize an individual child project's appearance, use the **Appearance** section within that project's dashboard. See [Project Customization](https://docs.readme.com/docs/design-themes) for guidance.
+</Callout>
+
+---
+
+## Custom HTML
+
+Add HTML to your docs' `<head>` (for meta tags or external resources) or just before `</body>` (for analytics and tracking scripts). Group-level include tags apply across all child projects automatically.
+
+See [**Custom HTML**](https://docs.readme.com/docs/custom-css-and-javascript#custom-include-tags) for more information.
+
+---
+
+## Custom CSS
+
+Write CSS to control the appearance of your docs. Use `.rm-` prefixed selectors — hashed class names change frequently and aren't reliable targets. Group CSS loads before child project styles; project-level rules take precedence where they overlap.
+
+See [**Custom CSS and JavaScript**](https://docs.readme.com/docs/custom-css-and-javascript) for more information.
+
+---
+
+## Custom JavaScript
+
+Add JavaScript to extend the behavior of your docs. Your script loads at the bottom of the page and runs across all child projects. ReadMe exposes global variables you can reference in your scripts, such as `RM_ReferenceSidebarScrollTopOffset` for controlling sidebar scroll behavior.
+
+See [**Custom CSS and JavaScript**](https://docs.readme.com/docs/custom-css-and-javascript) for more information.
+
+# Sibling pages
+
+- [Global Landing Page](/main/enterprise/creating-a-global-landing-page)

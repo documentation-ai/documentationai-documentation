@@ -1,0 +1,71 @@
+---
+title: Docs Audit
+description: Score your entire documentation against your style guide in one run.
+ogImage: >-
+  https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774011541-28nmyro46r7-create.jpg?fm=auto&auto=compress%2Cformat
+---
+Docs Audit runs your [Linter](/main/docs/linter) rules against every page in your project in a single pass, so you can find outdated content, broken links, and style inconsistencies across your entire site without reading every page yourself. Results are organized by page and scored against your existing rules — no separate setup. Click into any page to see specific issues, then fix them in the editor or with the [Agent](/main/docs/aiagent). Enterprise customers can schedule recurring audits and export results as CSV.
+
+|                  | Linter             | Docs Audit                   |
+| ---------------- | ------------------ | ---------------------------- |
+| **Scope**        | Single page        | Entire project               |
+| **When it runs** | While you edit     | On demand or on a schedule   |
+| **Best for**     | Real-time feedback | Big-picture quality analysis |
+
+## Getting Started
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774010434-jf6uba3vn8-f4621f40c7143409f93d7b310d8dfbe71753d98b3d6067474657d9b2f28337ac-docs_audit.png?fm=auto&auto=compress%2Cformat" width="3065" height="2101" alt="" />
+
+1. Open your project in ReadMe.
+2. Go to **Docs Audit**.
+3. Click **Run Audit**.
+4. Review results by page. Click into any page to see issues.
+5. Fix issues in the editor — the Linter gives real-time feedback as you edit.
+
+## What results look like
+
+When you run an audit, you get a scored list of every page in your project. Each page shows how it performed against your style guide, how many errors and warnings it has, and whether it contains broken links.
+
+For example, an audit might reveal that:
+
+- Your "Authentication" guide scores 92% on style but has 3 broken links to endpoints you renamed last month.
+- Your "Quickstart" page has 0 errors but 7 warnings for passive voice and hedging language.
+- 12 pages across your site still reference your old product name after a rebrand.
+- Your API Reference pages are clean, but your tutorial section has inconsistent heading styles.
+
+Click into any page to see the specific issues. From there, you can edit directly in the editor (where the Linter gives real-time feedback) or use the [Agent](/main/docs/aiagent) to fix issues automatically.
+
+Enterprise customers can schedule audits to run weekly or monthly and export results as CSV for team review.
+
+## Tracking Quality Over Time
+
+A single audit tells you how your documentation scores today. The **Past Runs** list keeps your earlier audits, each labelled with its date, the average score it produced, and the version it ran against. Select any run to load its results, so you can see whether your documentation is improving against your style guide rather than only reading the current number.
+
+Every run records an average score out of 10, total errors, and total warnings across the project, alongside the per-page breakdown. Use **Export CSV** to pull a run out for reporting.
+
+Audit history is available on Enterprise plans. It is not part of the Pro preview, which covers running an audit and reading its results.
+
+## FAQ
+
+<Expandable title="Does Docs Audit require separate configuration?" default-open="false">
+  No. It uses the same rules you configure in the Linter. Set up your style guide rules there, and Docs Audit applies them across your entire project.
+</Expandable>
+
+<Expandable title="What plan do I need?" default-open="false">
+  Docs Audit is available on Enterprise plans, with a preview on Pro. Enterprise plans add scheduled recurring audits, CSV export, and audit history for comparing runs over time. [Contact us](https://readme.com/enterprise) to learn more.
+</Expandable>
+
+# Sibling pages
+
+- [Restless by ReadMe](/main/docs/restless)
+- [Agent](/main/docs/aiagent)
+- [Linter](/main/docs/linter)
+- [AI Writer](/main/docs/github-ai-writer)
+- [Ask AI](/main/docs/ask-ai)
+- [AI-Ready Docs](/main/docs/ai-ready-docs)
+- [MCP](/main/docs/mcp)
+- [AI Discoverability](/main/docs/ai-discoverability)
+- [LLMs.txt](https://docs.readme.com/main/docs/llmstxt.md)
+- [AI Dropdown](https://docs.readme.com/main/docs/askai.md)
+- [ReadMe's MCP Server](/main/docs/readme-mcp)
+

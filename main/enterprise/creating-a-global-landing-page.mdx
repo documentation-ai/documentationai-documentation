@@ -1,0 +1,119 @@
+---
+title: Global Landing Page
+description: Configure a single docs portal where users can view and search all of your projects
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774914642-p851bczofo-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-10-26T20:37:48.000Z
+---
+
+If you set up an Enterprise Group project, you can configure a global landing that your users can use to view and search across your individual projects.
+
+Your group is a shell for your other projects. It contains no documentation pages itself, but does contain the global landing page.  <br />
+
+---
+
+## Build Your Global Landing Page
+
+To populate the global landing page, choose one of these approaches:
+
+- Design the page and create the source code.
+- Redirect to one of your existing project landing pages.
+- Redirect to any custom landing page that you serve yourself.
+
+<Callout>
+  ### Global landing page code restrictions
+
+  If you create code to paste into the global landing page, all code must be contained in one file, and code is limited to HTML with embedded JavaScript and CSS. For greater flexibility, use the **Redirect Instead** field. In that case, you have to re-implement functionality such as the global search bar.
+</Callout>
+
+---
+
+## Configure Your Landing Page
+
+1. Go to `dash.readme.io/group/<YOUR_GROUP>/global-landing-page`.
+2. Choose one of the following:
+
+   - Copy and paste your source code into the **Global Landing Page** field.
+   - Add a link to the page you want to display in the **Redirect Instead** field.
+
+---
+
+## Templating With Liquid
+
+The global landing page supports a templating engine called [Liquid](https://github.com/Shopify/liquid) to build out your HTML. With Liquid, you can access and iterate over projects and their categories and pages.
+
+```html
+<div id="main" class="container">
+  <div class="row">
+    <div class="col-sm-5">
+      <h1>{{parentProject.name}}</h1>
+      <p>{{parentProject.description}}</p>
+    </div>
+    <div class="col-sm-7">
+      <h4>Projects</h4>
+      {% for child in parentProject.childrenProjects %}
+        <div class="col-sm-6">
+          <div class="project">
+            <h4 class="child">{{child.name}}</h4>
+            <div class="guides">
+              {% for category in child.guides %}
+                <h5 class="category">{{category.title}}</h5>
+                <ul>
+                  {% for page in category.pages %}
+                  <li><a href="{{page.slug}}" class="page">{{page.title}}</a></li>
+                  {% endfor %}
+                </ul>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+```
+
+### Available Properties
+
+This syntax gives you access to the following properties:
+
+**Property**
+
+**Description**
+
+`parentProject.name`
+
+Your group project name
+
+`parentProject.description`
+
+Your group project description
+
+`parentProject.subdomain`
+
+Your group project subdomain
+
+`parentProject.childrenProjects`
+
+Your child projects
+
+`parentProject.childrenProjects.guides`
+
+Your guide categories
+
+`parentProject.childrenProjects.guides.pages`
+
+The pages inside your guides
+
+`parentProject.childrenProjects.api_reference.pages`
+
+The pages inside your API explorer
+
+`currentLang`
+
+The language the user is currently in
+
+`user`
+
+The current user name, or false
+
+# Sibling pages
+
+- [Custom HTML/CSS/JS](/main/enterprise/custom-htmlcssjs)

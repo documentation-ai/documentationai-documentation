@@ -1,0 +1,90 @@
+---
+title: Editing Custom Code with AI
+description: Ask an AI agent like Claude to update your custom CSS, JavaScript, and HTML.
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774574835-3npa95mem1c-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-10-28T16:43:30.000Z
+---
+
+Your custom CSS, JavaScript, and HTML can be updated through the ReadMe API, so an AI agent connected to [ReadMe's MCP server](/main/docs/readme-mcp) can make changes for you. Tell it what you want, review the change, and approve it.
+
+<Callout>
+  ### These are production changes
+
+  Custom code is a project setting, so it isn't versioned or synced to Git. There's no branch or review step. Every save goes live on your docs right away, for every reader. Back up your current code before you change anything, or ask your agent to do it.
+</Callout>
+
+Paste this instruction into your agent before your first change:
+
+```text Agent instruction
+Before you change anything, save a backup of my current custom CSS, JS, and HTML to a local file and tell me where it is.
+```
+
+## What You Can Change
+
+| Setting | Field in `appearance.custom_code` | Plan |
+| :--- | :--- | :--- |
+| Custom CSS | `css` | Pro, Enterprise |
+| Custom JavaScript | `js` | Enterprise |
+| HTML in `<head>` | `html.header` | Pro, Enterprise |
+| HTML before `</body>` | `html.page_footer` | Pro, Enterprise |
+| HTML in the footer on every page | `html.home_footer` | Enterprise |
+
+<Callout>
+  If your plan doesn't include a setting, the save still succeeds but nothing changes. Your agent reads the setting back afterward to catch this.
+</Callout>
+
+## Set Up Your Agent
+
+1. Connect your agent to ReadMe's MCP server and install the ReadMe skills. Follow [Get Connected](/main/docs/readme-mcp#get-connected) for the setup prompt.
+2. Ask the agent which project it's connected to before you change anything.
+
+## Make a Change
+
+Ask your agent something like:
+
+- "Make the header background `#1d4ed8`. Keep the CSS that's already there."
+- "Add `<meta name="example-site-verification" content="abc123">` to the head of every page."
+- "Show me my custom CSS and JavaScript and explain what each part does. Don't change anything."
+
+<strong>What happens behind the scenes:</strong>
+
+1. **Confirms the project** by reading your current settings.
+2. **Shows the current and proposed code** and waits for your approval.
+3. <strong>Saves only the fields you approved.</strong>
+4. **Reads the settings back** to confirm the change saved.
+
+Check the change on your docs when it's done.
+
+## Use the API Directly
+
+Agents use the [Update project](/main/reference/updateproject) endpoint, and you can call it yourself. Back up your current code first, then send only the fields you're changing. Each field you send replaces its current value.
+
+The backup command uses `jq` to save only your custom code. The full response also includes your other project settings, including secrets.
+
+```shell Back up custom code
+curl https://api.readme.com/v2/projects/me \
+  --header "Authorization: Bearer <API_KEY>" \
+  | jq '.data.appearance.custom_code' > custom-code-backup.json
+```
+
+```shell Update custom CSS
+curl -X PATCH https://api.readme.com/v2/projects/me \
+  --header "Authorization: Bearer <API_KEY>" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "appearance": {
+      "custom_code": {
+        "css": ".rm-Header { background: #1d4ed8; }"
+      }
+    }
+  }'
+```
+
+# Sibling pages
+
+- [Custom Icons](/main/docs/custom-icons)
+
+# What's Next
+
+- [ReadMe's MCP Server](/main/docs/readme-mcp)
+- [Custom CSS, HTML, and JavaScript](/main/docs/custom-css-and-javascript)

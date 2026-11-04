@@ -1,0 +1,69 @@
+---
+title: Postman
+description: Keep your documentation updated alongside your Postman collections.
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774164328-ovkksi3jo7-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-03-16T23:24:05.000Z
+---
+
+Use ReadMe’s Postman integration to automatically sync your Postman collections and keep your API documentation up-to-date alongside your API. This integration transforms your Postman collections into interactive documentation with dynamic code samples for a better developer experience.
+
+You can also deploy collections directly to ReadMe, making them accessible to developers as part of your [API Reference](/main/docs/api-reference). Additionally, ReadMe allows you to fork Postman collections from within docs, enabling developers to explore and test your API in their own Postman workspace.
+
+## Deploy Postman Collections to ReadMe
+
+### Install the ReadMe app in Postman
+
+<Callout>
+  Note: You'll need to be a Postman admin in order to install this app. Then, you can configure it for your team members to use.
+</Callout>
+
+1. In your ReadMe project, go to **Settings** \> **Integrations** \> **Postman** click "Generate Postman API Key".
+2. In your [Postman workspace](https://go.postman.co/settings/team/installed-apps), go to **Team Settings** \> **Installed Apps** \> **Install New App**.
+
+   1. At the "What permission does ReadMe require?" page in Postman click "Allow".
+   2. Input the Postman API Key generated in ReadMe as the Application Secret and click "Next".
+   3. Input the Client ID and Client Secret in Postman into the ReadMe Postman form and click Connect to Postman.  If the connection is able to connect, click "save" in ReadMe.
+   4. Click "Continue" in Postman. Postman will validate that they are able to connect to ReadMe.  If successful, you should see a message of "Installation successful!" and you're all set.
+3. **Sync Collections to ReadMe**
+
+   Once connected, select which Postman collections you want to sync to your documentation and push it to your developer portal.
+
+<Iframe src="https://www.youtube.com/embed/1NbgOIWpdgY" title="Embedded content" />
+
+## Fork a Postman Collection from ReadMe
+
+ReadMe includes a Try It Now feature that enables users to send live API requests directly from the browser, helping them quickly receive their first `200 OK` response.
+
+For developers who prefer to manage all API testing in a single place, you can add a Run in Postman button to your docs. This allows users to instantly fork your API's Postman Collection, making it easy to try endpoints and test requests.
+
+This button is a [custom component](https://github.com/readmeio/marketplace/tree/main/components/PostmanRunButton) that you can add directly into your docs.
+
+<Callout kind="alert" title="Needs review">
+  **Needs review**: no mapping rule for signature 19276127a12b; nothing representable after sanitisation
+
+  ```
+  <PostmanRunButton collectionId="123456-abcd-efgh-ijkl" collectionUrl="entityId=123456-abcd-efgh-ijkl&entityType=collection&workspaceId=abcdef-1234-5678" />
+  ```
+</Callout>
+
+```jsx
+<PostmanRunButton 
+  collectionId="123456-abcd-efgh-ijkl" 
+  collectionUrl="entityId=123456-abcd-efgh-ijkl&entityType=collection&workspaceId=abcdef-1234-5678"
+/>
+```
+
+# Sibling pages
+
+- [Amazon API Gateway](/main/docs/aws)
+- [Google Analytics](/main/docs/google-analytics)
+- [Google Site Verification](/main/docs/google-site-verification)
+- [Searching ReadMe in the Intercom Messenger](/main/docs/searching-readme-within-the-intercom-widget-changing-so-404-results-rb)
+- [Localize](/main/docs/localize)
+- [reCaptcha](/main/docs/recaptcha)
+- [Segment](/main/docs/segment)
+- [Slack](/main/docs/slack)
+- [Transifex](/main/docs/transifex)
+- [Typekit](/main/docs/typekit-key)
+- [Zendesk](/main/docs/zendesk)
+- [Microsoft Teams](/main/docs/microsoft-teams)

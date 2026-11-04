@@ -1,0 +1,76 @@
+---
+title: Integrate into Your Workflow
+description: Everything you need to integrate ReadMe into your deployment workflows
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774302995-qjq343mcqng-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-10-15T22:34:15.000Z
+---
+
+As documentation scales, it requires the same rigor as product development. Without a defined workflow, content quickly falls out of sync with releases.
+
+This guide documents the standard documentation workflows used by teams integrating ReadMe into CI/CD pipelines. These workflows are designed to:
+
+- Keep documentation versioned with releases
+- Enforce clear ownership and review processes
+- Scale across teams, products, and content
+
+If you’re setting this up for the first time, follow the **recommended** workflow below. It reflects how most organizations successfully operate at scale.
+
+---
+
+## Workflow Patterns
+
+<Columns cols={2}>
+  <Card title="Branching" href="/main/docs/branching" icon="code-branch">
+    Structured review for documentation updates
+  </Card>
+
+  <Card title="Docs-as-Code" href="/main/docs/docs-as-code" icon="code">
+    Docs as Code with CI/CD publishing
+  </Card>
+
+  <Card title="Hybrid" href="/main/docs/hybrid">
+    Split ownership across teams and tooling
+  </Card>
+
+  <Card title="ReadMe's MCP Server" href="/main/docs/readme-mcp" icon="lucide:cpu">
+    <br />Create and maintain docs from your AI coding agent or CI pipeline
+  </Card>
+</Columns>
+
+---
+
+## Key Terms
+
+These are building blocks shared across all setups:
+
+- <strong>ReadMe CLI (</strong>`@readme/cli`<strong>):</strong> Lints pages, validates OpenAPI definitions, and keeps API Reference pages in step with them in a repository connected with Bi-Directional Sync. See [ReadMe CLI](/main/docs/cli).
+- <strong>rdme Upload CLI (</strong>`rdme`<strong>):</strong> Automates OpenAPI validation, uploads, and documentation updates from CI/CD pipelines. See [rdme Upload CLI](/main/docs/rdme).
+- <strong>Git, GitHub, GitLab:</strong> Acts as the source of truth for OpenAPI specifications and Markdown documentation (optional).
+- <strong>CI/CD (GitHub Actions, GitLab CI, etc):</strong> Runs validation, linting, and publishing steps on pull requests and merges.
+- <strong>Bi-Directional Sync:</strong> Keeps content aligned when edits happen in both Git and the ReadMe Editor.
+- <strong>ReadMe plugin and skills:</strong> Connect AI coding agents such as Claude Code, Cursor, and Codex to your project through [ReadMe's MCP server](/main/docs/readme-mcp). Agents can create and update pages on a branch for review, or edit files in a synced repository.
+
+---
+
+## FAQ
+
+<Expandable title="What does a synced repository look like?">
+  With Bi-Directional Sync, the folder names are set by ReadMe, one top-level folder per type of content: `docs`, `reference`, `recipes`, `custom_pages`, `custom_blocks`, and `changelogs`. Your OpenAPI files live at the top level of `reference/`, so there's no separate `openapi` folder.
+
+  See [Documentation Structure](/main/docs/documentation-structure) for the full layout, sidebar ordering, and frontmatter.
+</Expandable>
+
+<Expandable title="What if I use rdme instead of syncing?">
+  Then the folder names are up to you. `rdme` uploads whatever file or folder you point it at, such as `rdme openapi upload openapi.yaml`, so you can organize your repository however suits your team.
+</Expandable>
+
+# Sub pages
+
+- [Branching](/main/docs/branching)
+- [Docs-as-code](/main/docs/docs-as-code)
+- [Hybrid](/main/docs/hybrid)
+
+# Sibling pages
+
+- [Bi-Directional Sync](/main/docs/bi-directional-sync)
+- [Keep Your API Docs Synced With OpenAPI](/main/docs/sync-docs-with-openapi)

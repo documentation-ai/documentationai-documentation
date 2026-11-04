@@ -1,0 +1,72 @@
+---
+title: GitHub AI Writer
+description: Proposes documentation updates when pull requests change your codebase.
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774014170-b7y9zt1kd9-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-10-21T02:24:58.000Z
+---
+
+The GitHub AI Writer keeps your documentation in sync with your codebase by watching your pull requests and proposing updates when code changes affect your docs. It analyzes the diff, identifies new endpoints that need documentation or setup steps that have changed, and drafts the update on a [review branch](/main/docs/branches) in ReadMe. Your public docs are never modified directly — you review a side-by-side diff and merge when ready, like a PR from a teammate.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774015920-l25xh6pf8n-a28adfa81534181e158eaf8f64eb50c4e25504f9e4bb2eb304b62e781a1602cf-ai_writer_gh.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+## Getting Started
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774017079-ujoynlmbh4b-cf3675a4fce5790a76e1f1a983639927f4702801ed1e12457369fa3d28f87f80-ai_writer.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+1. In your ReadMe project, go to **AI** → **AI Writer**
+2. Authenticate with GitHub and grant access to the organizations and repositories you want the AI Writer to monitor
+3. Select the repositories after successful connection
+4. Open a pull request in a connected repo — the AI Writer picks it up automatically
+
+## Example
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774018138-ejem40ddyll-78c0e5d3fd82902bfaad2488cb3b334f86bdcb4cb11d830b36a63328a87ee965-ai_writer_ex.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+A developer opens a pull request that adds a new `/payments/refund` endpoint to your API. The PR includes the route handler, request validation, and a new `RefundRequest` schema.
+
+The AI Writer analyzes the diff and:
+
+1. Finds your existing "Payments" guide that documents `/payments/charge` but has no mention of refunds.
+2. Drafts a new section covering the refund endpoint — request parameters, expected responses, and a code example.
+3. Updates the "API Overview" page to include the refund endpoint in the list of available operations.
+4. Creates a review branch in ReadMe and posts a comment on the GitHub PR with a link to preview the changes.
+
+The developer clicks the link, reviews the proposed documentation in ReadMe's side-by-side diff, edits the code example to add an error handling note, and merges the branch. The public docs now cover the new endpoint before the PR is even merged to main.
+
+If the PR only changes internal logic with no user-facing impact, the AI Writer stays silent.
+
+## GitHub Enterprise
+
+The AI Writer does not install directly onto a GitHub Enterprise account. Instead, install it on the individual organizations within your enterprise. You can connect as many child organizations as you need and select repositories from any of them.
+
+To set up the AI Writer across a GitHub Enterprise, grant access to each organization under your enterprise that contains repositories you want to monitor.
+
+Then, select the repositories you want to connect from any of the authorized organizations.
+
+You can repeat this process for multiple organizations, and repositories from all connected organizations will appear in your repository selection list.
+
+## FAQ
+
+<Expandable title="How do I get the best results?">
+  Write descriptive PR titles and clear commit messages. The clearer the diff, the better the documentation draft.
+</Expandable>
+
+<Expandable title="What happens if nothing needs updating?">
+  The AI Writer stays silent. No branch is created and no comment is posted.
+</Expandable>
+
+<Expandable title="Can I use it alongside bi-directional sync?">
+  Yes. They are separate integrations and can run on the same repository.
+</Expandable>
+
+<Expandable title="What plan do I need?">
+  Available on Pro plans and above.
+</Expandable>
+
+<Expandable title="Does it work with GitHub Enterprise?">
+  Yes, but you install the AI Writer on individual organizations within your enterprise rather than on the enterprise account itself. See the [GitHub Enterprise](#github-enterprise).
+</Expandable>
+
+# Sibling pages
+
+- [Slack AI Writer](/main/docs/slack-ai-writer)

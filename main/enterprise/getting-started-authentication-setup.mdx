@@ -1,0 +1,140 @@
+---
+title: End User Access
+description: Manage authentication, permissions, and access for your documentation's end users
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793775001134-fdncip4284q-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-10-26T20:48:36.000Z
+---
+
+End User Access controls how external readers authenticate and interact with your documentation. Configure your login page appearance, set access permissions, and manage your user list all from the group dashboard.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793775005671-h5zv0918dxt-2b10f110982ce50902d60f04c5e0da4fe7c04a609423392eabc4ba56f0d788bb-end-users.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+---
+
+## ReadMe Hosted Login
+
+Configure authentication for your end users under **Settings > End User Access**. Select **ReadMe** as the login method to use a ReadMe hosted login page. 
+
+### Login Settings
+
+Configure the following settings to authenticate your end users using a ReadMe hosted login page.
+
+- <strong>Domain Safelist -</strong> Restrict sign-ups to specific email domains. Users can only create an account if their email matches a safelisted domain. Separate multiple domains with a comma, such as `a.com, b.com`.
+- <strong>Login Method -</strong> The authentication method presented to end users on the login page. Defaults to ReadMe's built-in email login.
+- <strong>New User Access -</strong>The permission level assigned to new end users when they sign up. Set to **Needs Manual Approval** to review users before granting access.
+- <strong>Logo -</strong> Upload a logo to display on the login page. Use an SVG or PNG format, with 300px width recommended. ReadMe uses your theme editor logo by default.
+- <strong>Google Login -</strong> Enable to allow end users to authenticate with Google.
+- <strong>Button Color -</strong> Set a custom hex color for the login button. Click **Clear** to revert to the value set in the theme editor.
+
+### Advanced Settings
+
+Fine-tune session behavior and post-logout redirects for your end users.
+
+- <strong>Custom Logout URL -</strong> Redirect users to a specific URL when they log out. Leave blank to use ReadMe's default logout behavior.
+- <strong>User Data Expiration -</strong> Enter the number of minutes before a user must re-authenticate. Leave blank to keep sessions active indefinitely.
+
+---
+
+## Custom Hosted Login
+
+To use your own login page, set the **Login Method** to **Custom** and add the URL where you host your page.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793775006386-rqaq1b56sxj-450e915a5d166a491909ac6d60881a18344b81876ecdb0275ff2a2059dc59443-ReadMe_Documentation_2026-07-07_09-22-40.webp?fm=auto&auto=compress%2Cformat" alt="" />
+
+---
+
+## Single Sign-On Access
+
+Configure SAML-based single sign-on for your end users under **Settings** \> **End User Access**. Select **SAML** as the login method to let end users authenticate through your identity provider.
+
+<Callout>
+  ### 
+
+  If you haven't configured SAML yet, see [Single Sign-On (SSO)](/main/enterprise/setting-up-sso) to get started. This section assumes you have an Enterprise Group set up with ReadMe.
+</Callout>
+
+1. <strong>Set your docs to private.</strong> Go to the **Projects** page in your Enterprise Group dashboard, open the Public/Private dropdown, and select **Private** so only Teammates and End Users with permissions can access the developer hub. You can also set a password for private docs.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793775007251-zm0ptea4wjr-5b72d04-CleanShot_2023-02-23_at_19-52-19.gif?fm=auto&auto=compress%2Cformat" alt="" />
+
+2. <strong>Confirm your login mechanism.</strong> Once you set up your project, you control how end users log in to the private project. If you already configured SAML, ReadMe automatically prompts end users to log in with SAML, so minimal changes are required.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793775007918-no4horbhccg-6c1fdcbd962805c4f62c8acda49d3632bd2760fca87df182ce7eaaba240ae3a1-73eac4667b395b7aa7526e65d29f5403.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+---
+
+## OAuth Access
+
+OAuth Access lets your users log in to ReadMe through a third-party OAuth provider, like GitHub, instead of ReadMe's own login page. To set it up, you deploy a small bridge server that authenticates the user with your OAuth provider, then passes their info back to ReadMe as a JWT. You can host this bridge yourself, or deploy it directly from ReadMe using the starter code on [GitHub](https://github.com/readmeio/starter-jwt-bridge). For most implementations, editing `config.js` is enough to get it working.
+
+### Set Up the Bridge Server
+
+Once you've decided where to host it, configure the bridge with your OAuth provider's credentials and deploy it.
+
+1. <strong>Get your config from GitHub.</strong> Set up an OAuth App in GitHub so you can authenticate with their OAuth server. Create apps at [https://github.com/settings/developers](https://github.com/settings/developers).
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793775013110-87ji6ita85j-892ef4d77ab9d18839abe11336ab5f90762ab8dc69c6e8c2cd95b6bd2f64cc0d-5bebd8acce01d7e53bd709b4d538ef72.png?fm=auto&auto=compress%2Cformat" alt="" width={500} />
+
+Click **New OAuth App** and fill out the form. Set the callback URL to `http://oauth.readme.io/p/<YOUR_PROJECT_SUBDOMAIN>/oauth/callback`, replacing `YOUR_PROJECT_SUBDOMAIN` with your project subdomain.
+
+2. <strong>Give ReadMe your Client ID and Client Secret.</strong>
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793775012792-gu3qsbhsrtn-a0458ef32bc8fd32f27b7cc93408c2a21099049c8f89919d30415e233a4eeb93-10fef353c6ce3cd6160191f5b54a67e9.png?fm=auto&auto=compress%2Cformat" alt="" width={500} />
+
+After you create your OAuth App, GitHub shows you a **Client ID** and **Client Secret**. Navigate to **User Controls** \> **OAuth Login** in your ReadMe dashboard and enter these values in the **Config** section:
+
+```javascript
+exports.config = {
+  clientID: 'CLIENT_ID',
+  clientSecret: 'CLIENT_SECRET',
+  authorizationPath: 'https://github.com/login/oauth/authorize',
+  tokenPath: 'https://github.com/login/oauth/access_token',
+  profilePath: 'https://api.github.com/user',
+  scope: '',
+};
+```
+
+3. <strong>Modify the user object.</strong> Beneath the config is a callback that passes a user object to ReadMe. This is the user who logs in after they complete the OAuth flow. Since the GitHub user API doesn't return `user.project_name`, use their name instead:
+
+```javascript
+// At this point the user has been authenticated and body contains
+// the info your server returned about them.
+// Return the user info you want to pass to readme
+exports.loginCallback = function(body, accessToken) {
+  return {
+    email: body.email,
+    name: body.name,
+    apiKey: accessToken,
+    version: 1,
+  };
+};
+```
+
+4. <strong>Deploy the OAuth code.</strong> Press **Deploy** at the bottom of the page to push the OAuth code to a sandboxed server that bridges ReadMe with the OAuth provider. Once deployed, test it and confirm the correct user object.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793775013435-n32jzdps2ib-18e3c2c-Screenshot_2018-01-26_17-02-43.png?fm=auto&auto=compress%2Cformat" alt="" width={500} />
+
+5. <strong>Enable OAuth.</strong>
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793775013739-gzo0gypneua-b90efd11528c4d894b32cc61c083728aa2fc03d65f95d07cc22b6ca933ffa01e-2df00e967cbe6c9f8bc20b3cc556a7b0.png?fm=auto&auto=compress%2Cformat" alt="" width={500} />
+
+Once it's working, scroll to the bottom of the page and enable OAuth for your project. All login links then use OAuth instead of ReadMe's login page, so users can log in with GitHub to leave Suggested Edits or post on the support forum.
+
+---
+
+## Manage End Users
+
+The **End Users** page lets you invite users and view everyone who has access to your docs. Navigate to **Settings** \> **End Users** to manage your user list.
+
+<Callout>
+  ### 
+
+  ReadMe grants access immediately to users you invite. Users who sign up on their own follow the **New User Access** setting configured above.
+</Callout>
+
+# Sibling pages
+
+- [Overview](/main/enterprise/user-management-overview)
+- [Authentication & Access](/main/enterprise/enterprise-authentication-access-overview-q1-22)
+- [Single Sign-On (SSO)](/main/enterprise/setting-up-sso)
+- [Teammates and Roles](/main/enterprise/user-roles)

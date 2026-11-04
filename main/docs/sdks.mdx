@@ -1,0 +1,61 @@
+---
+title: SDKs
+description: This section explains the prerequisites to consider when setting up a ReadMe SDK for the first time.
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774449820-shnax4ih5sg-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2025-06-04T18:39:31.000Z
+---
+
+You must create a ReadMe account before you set up a SDK. A ReadMe account is required to configure any ReadMe SDK. You can [create an account here](https://dash.readme.com/signup).
+
+# Getting Started with ReadMe SDKs
+
+With the ReadMe SDK, you can:
+
+- Simplify authentication by providing API keys directly in your docs and creating a unique API onboarding experience with [Personalized Docs](/main/docs/personalized-docs)
+- See where developers get stuck as they’re trying to make their first API call and surface API insights to help them debug with [API Logs](/main/docs/sending-api-logs)
+
+Here's an overview of how to set up ReadMe:
+
+## For Personalized Docs:
+
+- You create a webhook, which is an endpoint that will need to be set up within an application that has secure access to user data, that ReadMe will make a POST request to when an API consumer logs in to your documentation.
+- This endpoint will receive POST requests from ReadMe any time a user logs in, and will need to return a JSON object with information about the user, which will then be surfaced in the documentation.
+
+## For API Logs:
+
+- You add ReadMe middleware to your application.
+- The middleware will send to ReadMe the request and response objects that your server generates each time a user makes a request to your API. The entire objects are sent, unless you deny or allow specific keys from the request. We’ll send a HAR representation to the ReadMe service.
+- ReadMe uses these request and response details to create an API Metrics Dashboard which can be used to analyze specific API calls, monitor aggregate usage data, or identify error messages. If a user logs into your documentation, ReadMe will show them logs of the requests they made in My Requests so they can troubleshoot.
+
+# Available SDKs
+
+Here’s a list of supported SDKs below. If the language or framework you use is not yet supported, [let us know](/main/docs/need-more-support) what you’re using!
+
+You can also send API logs directly to ReadMe [via our API](/main/reference/post-request).
+
+[Node.js](/main/docs/sending-logs-to-readme-with-nodejs)<br />[PHP (Laravel)](/main/docs/sending-logs-to-readme-with-php-laravel)<br />[Python (Django)](/main/docs/python-django-api-metrics)<br />[Python (Flask)](/main/docs/python-flask-api-metrics)<br />[Ruby (Rails/Rack)](/main/docs/ruby-api-metrics-set-up)<br />[.NET](/main/docs/net-setup)
+
+# Additional Resources
+
+| Language / Framework | GitHub Repo | Package Manager | Sample Apps for Personalized Docs |
+| :--- | :--- | :--- | :--- |
+| [NodeJS](/main/docs/sending-logs-to-readme-with-nodejs) | [readmeio](https://github.com/readmeio/metrics-sdks/tree/main/packages/node) | [https://www.npmjs.com/package/readmeio](https://www.npmjs.com/package/readmeio) | [Express ](https://github.com/readmeio/metrics-sdks/tree/main/packages/node/examples/express)<br />[Fastify ](https://github.com/readmeio/metrics-sdks/tree/main/packages/node/examples/fastify)<br />[Hapi](https://github.com/readmeio/metrics-sdks/tree/main/packages/node/examples/hapi) |
+| [PHP (Laravel)](/main/docs/sending-logs-to-readme-with-php-laravel) | [readme/metrics](https://github.com/readmeio/metrics-sdks/tree/main/packages/php) | [https://packagist.org/packages/readme/metrics](https://packagist.org/packages/readme/metrics) | [Laravel](https://github.com/readmeio/metrics-sdks/tree/main/packages/php/examples/laravel) |
+| [Python (Django)](/main/docs/python-django-api-metrics) [Python (Flask)](/main/docs/python-flask-api-metrics) | [readme-metrics](https://github.com/readmeio/metrics-sdks/tree/main/packages/python) | [https://pypi.org/project/readme-metrics/](https://pypi.org/project/readme-metrics/) |  |
+| [Ruby (Rails/Rack)](/main/docs/ruby-api-metrics-set-up) | [readme-metrics](https://github.com/readmeio/metrics-sdks/tree/main/packages/ruby) | [https://rubygems.org/gems/readme-metrics](https://rubygems.org/gems/readme-metrics) | [Rails](https://github.com/readmeio/metrics-sdks/tree/main/packages/ruby/examples/metrics-rails) |
+| [.NET](/main/docs/net-setup) | [ReadMe.Metrics](https://github.com/readmeio/metrics-sdks/tree/main/packages/dotnet) | [https://www.nuget.org/packages/ReadMe.Metrics](https://www.nuget.org/packages/ReadMe.Metrics) | [.NET 6.0](https://github.com/readmeio/metrics-sdks/tree/main/packages/dotnet/examples/net6.0) |
+
+# Sub pages
+
+- [Node.js Setup](/main/docs/sending-logs-to-readme-with-nodejs)
+- [Python (Django) Setup](/main/docs/python-django-api-metrics)
+- [Python (Flask) Setup](/main/docs/python-flask-api-metrics)
+- [PHP (Laravel) Setup](/main/docs/sending-logs-to-readme-with-php-laravel)
+- [Ruby (Rails/Rack) Setup](/main/docs/ruby-api-metrics-set-up)
+- [.NET Setup](/main/docs/net-setup)
+
+# Sibling pages
+
+- [My Requests Overview](/main/docs/my-requests)
+- [Show API Request History To Users](/main/docs/showing-api-logs-to-users)
+- [Other Ways to Send API Requests](/main/docs/other-ways-to-use-api-metrics)

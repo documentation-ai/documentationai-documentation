@@ -1,0 +1,117 @@
+---
+title: Custom Domain & SSL
+description: Host your docs on your own domain, covering CNAME setup, apex domains versus subdomains, and SSL certificates.
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774090817-kp0lloobpu-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-10-02T21:55:27.000Z
+---
+
+# Custom Domain
+
+Custom domains are available on every ReadMe plan, including the free Starter plan. No paid upgrade is required.
+
+Hosting docs on your company domain is an important part of making your docs polished and professional. You can set up a custom domain from **Settings > Custom Domain**.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774076907-vebc2dy7df-89a3dc885036739359e15a61f9a43a8e96ff8115daed999f95752793be94416a-Getting_Started_with_Owlberts_Journeys_2026-06-24_16-18-12.webp?fm=auto&auto=compress%2Cformat" alt="" />
+
+For most configurations, you’ll need to set up a CNAME record for your desired subdomain pointing to the target `subdomain-hash.readmessl.com`. Refer to your DNS hosting provider’s documentation for information on how to add a CNAME in your domain's settings. For example, if your DNS is hosted by GoDaddy, then refer to its "[Add a CNAME Record](https://www.godaddy.com/help/add-a-cname-record-19236)" article.
+
+## Hostname validation and proxies
+
+<Callout>
+  ### If possible, don't use a reverse proxy
+
+  ReadMe works best when you point your subdomain directly at it with the provided CNAME values. ReadMe is tightly integrated with our CDN, allowing for maximum speed and security. Check out our guide [Using a Reverse Proxy](/main/docs/using-a-reverse-proxy) for more information.
+</Callout>
+
+Typically, hostname validation completes immediately and your custom domain is ready to use within minutes. If your domain sits behind a reverse proxy (NGINX, Fastly, Cloudflare CDN), validation will fail in most cases. 
+
+The best practice in the case of reverse proxies is to first point the domain at the provided CNAME value so that ReadMe and our CDN provider may validate ownership. Once that process has completed, and the domain is hosted live, you can then attempt to move ReadMe behind your reverse proxy. If this is not possible, and/or if DNS validation is required for certificate renewal (HTTP passthrough to `/.well-know/*` isn't possible), Enterprise customers may contact ReadMe Support for special DNS records to manually validate ownership and certificate renewal at our CDN.
+
+## Apex Domains vs. Subdomains
+
+You can set the base URL for your ReadMe project to a subdomain (e.g., `docs.example.com`) or an apex domain (e.g., `example.com`), but not to a path (e.g., `example.com/docs`).
+
+If you want to use an apex domain as your custom domain, your DNS host must support alias records for the top-level domain. The top level domain will need to be configured as an alias pointing to the target listed on this configuration page. Additionally, you will need to prove domain ownership at ReadMe via addition of a TXT record where the answer matches the ReadMe-provided CNAME value:
+
+`TXT name`: `_readme.subdomain.example.com`
+
+`TXT value`: `subdomain-hash.readmessl.com`
+
+Please refer to your DNS hosting provider's documentation for instructions on how to set up an alias.
+
+Typically if the domain is just an Apex domain and not also behind a reverse proxy, the above should be sufficient, however if the SSL certificate isn't building, please contact ReadMe Support and we can assist with manually configuring ownership and certificate renewal at our CDN.
+
+# SSL
+
+Upon saving your `Custom Domain` in ReadMe, if you’ve correctly configured a DNS record in your registrar, we will attempt to generate an SSL certificate on your behalf! ReadMe uses [Cloudflare](https://www.cloudflare.com/ssl-for-saas-providers/) to provision and manage the certificates for custom domains.
+
+<Callout>
+  ### Using Cloudflare for your DNS Setup?
+
+  Cloudflare does not allow one Cloudflare proxy to sit in front of another, a setup Cloudflare calls "Orange-to-Orange" traffic. If your DNS record is proxied through your own Cloudflare account, you must [disable the proxy](https://docs.readme.com/guides/docs/turn-off-cloudflare-proxy) in your settings so ReadMe can issue your certificate.
+</Callout>
+
+# Using NGINX as a Custom Proxy
+
+If you have an existing proxy in place for your domain and you would prefer to forward traffic to the target instead of creating a traditional DNS record, there are a couple steps you'll need to complete for proper configuration.
+
+## Creating an SSL Certificate for Your Domain
+
+Before making full use of your proxy with ReadMe, you will need to generate a certificate through our system traditionally. This means you will need to complete the above steps (Custom Hostname, SSL). Once your certificate has been created, you can change your DNS record to point to your proxy location and proceed.
+
+<Callout>
+  ### Certificate Status
+
+  You can check the status of your certificate by navigating directly to your custom domain. If you can access your ReadMe's documentation via your custom domain, and there is a lock in the URL bar, you're good to go!
+
+  In the future, we plan on adding direct verification via the `Custom Domain` page!
+</Callout>
+
+## Configuring NGINX Routing
+
+Cloudflare relies on `Server Name Indication` (SNI) to authorize use of its proxy and certificates. Without passing the correct information, you may receive a `403 - Forbidden` error on navigating to your domain. Depending on your version, NGINX supports SNI. You will, however, need to explicitly declare two new variables in your configuration: `proxy_ssl_server_name` and `proxy_ssl_name`. In tandem, these act as an SNI declaration.
+
+Here's a configuration you can use for NGINX using these settings:
+
+```shell nginx.conf
+http {
+  server {
+    listen 443 ssl;
+    server_name example.com;
+
+    location / {
+      proxy_pass https://ssl.readmessl.com;
+      proxy_ssl_server_name on;
+      proxy_ssl_name example.com;
+      proxy_set_header Host example.com;
+    }
+  }
+}
+```
+
+<Callout>
+  ### Read this before putting a proxy in front of ReadMe
+
+  A proxy adds latency, limits what ReadMe Support can diagnose, and has to forward every path, method, and cookie without caching anything. [Using a Reverse Proxy](/main/docs/using-a-reverse-proxy) covers the trade-offs and what your proxy must do.
+</Callout>
+
+# Sub pages
+
+- [Having Problems Generating SSL?](/main/docs/having-problems-generating-ssl)
+- [URL Paths in ReadMe](/main/docs/url-paths-in-readme)
+- [Turn Off Cloudflare Proxy](/main/docs/turn-off-cloudflare-proxy)
+- [Using a Reverse Proxy](/main/docs/using-a-reverse-proxy)
+
+# Sibling pages
+
+- [Creating a Project](/main/docs/creating-a-project)
+- [Navigate Your Docs](/main/docs/navigating-your-hub)
+- [System Configuration](/main/docs/system-configuration)
+- [OpenAPI Support](/main/docs/openapi)
+- [Custom Login Page](/main/docs/custom-login-page)
+- [Custom Data in Your Docs](/main/docs/user-data-options)
+- [Integrations](/main/docs/integrations)
+
+# What's Next
+
+- [Having problems generating SSL?](/main/docs/having-problems-generating-ssl)

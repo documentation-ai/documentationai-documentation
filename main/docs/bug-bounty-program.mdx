@@ -1,0 +1,120 @@
+---
+title: Bug Bounty Program
+description: ReadMe cares deeply about the safety and security of our customers' data. We value input from the security community that helps us find and fix vulnerabilities in our product and services, and we look forward to working with you to keep ReadMe and our customers safe. How to Report an Issue If you ha…
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774613001-6ceh0y20zge-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-09-29T18:23:11.000Z
+---
+
+ReadMe cares deeply about the safety and security of our customers' data. We value input from the security community that helps us find and fix vulnerabilities in our product and services, and we look forward to working with you to keep ReadMe and our customers safe.
+
+# How to Report an Issue
+
+If you have discovered a vulnerability that is in scope (see [Scopes](#scopes) below), email [security@readme.io](mailto:security@readme.io) with the details listed under [Report Format](#report-format).
+
+Once we receive your report, our team will investigate. We will keep you updated on our progress and may ask for further details or a retest of the finding.
+
+All original reports will be considered, and bounties may be issued at our sole discretion.
+
+# Report Format
+
+<Callout>
+  <strong>Every report must include a clearly demonstrated, working proof of concept (PoC).</strong> A theoretical issue, a "concept," a scanner result, or a description of what *could* happen is not a vulnerability report. <strong>Reports without a working PoC will not be eligible for a reward.</strong>
+</Callout>
+
+Reports must include:
+
+- A summary of the vulnerability and its potential impact, including a calculated CVSS score and how you arrived at that score
+- Step-by-step instructions to reproduce the issue, including screenshots. Video-only recordings are not sufficient.
+- Details of your environment, including OS, browser, and device
+- The proof-of-concept code or payloads used to exploit the vulnerability
+
+Please also:
+
+- Submit one vulnerability per report, unless you need to chain vulnerabilities to demonstrate impact.
+- Expect that when duplicates occur, only the first report received is eligible (provided it can be fully reproduced).
+- Expect that multiple vulnerabilities caused by one underlying issue will be treated as a single report.
+
+# Risk Assessment and Bounties
+
+- Risk assessment and bounties are determined on a case-by-case basis by our security team, using the CVSS v3 and v4 scoring systems together with internal knowledge of our systems.
+- Whether a bounty is issued, and for how much, is entirely at ReadMe's sole discretion.
+- Previous bounty amounts, from ReadMe or from any other bug bounty program, are not precedent when determining a bounty.
+- Bounty amounts and payments, if any, are subject to change at our sole discretion and will be communicated to you by email.
+- Bounties, when issued, are paid after the vulnerability has been retested and remediation has been confirmed.
+
+# Testing Guidelines
+
+Set up a [free trial](https://dash.readme.com/signup) on ReadMe. With a free trial you will have access to everything available to a paid ReadMe project. If you wish to research vulnerabilities against an Enterprise plan, contact us directly at [security@readme.io](mailto:security@readme.io).
+
+Only test vulnerabilities on your own test projects. Reach out to [security@readme.io](mailto:security@readme.io) if you need to extend a trial for testing purposes. <strong>Any testing against our main site or customer sites without written consent will result in a ban from our program.</strong>
+
+## We Ask That You
+
+- Test only on accounts and projects you own. If you need to test against another account, obtain explicit permission from the account holder first.
+- Do not copy, modify, or destroy production data.
+- Do not engage in any activity that could cause downtime or degrade our service.
+- Do not run automated scanners against our services.
+- Do not use social engineering (phishing, vishing, smishing) against ReadMe employees or customers.
+- Make a good-faith effort to avoid privacy violations and to comply with our privacy policy, terms of service, and applicable data privacy regulations.
+- Do not make a vulnerability public before reporting it to us through the process above and giving us enough time to properly address the issue.
+
+# Disclosure Policy
+
+This is a private program. Please do not discuss this program or any vulnerabilities (even resolved ones) outside of the program without express consent from ReadMe.
+
+# Out of Scope Vulnerabilities
+
+When reporting vulnerabilities, please consider (1) the attack scenario and exploitability, and (2) the security impact of the bug. The following issues are considered out of scope and will not be eligible for a reward:
+
+- <strong>Theoretical attacks or "concepts" without a working proof of exploitability.</strong>
+- <strong>Output from automated scanners without a working proof of concept.</strong>
+- <strong>Reflected and stored cross-site scripting within your own project dashboard.</strong>
+- Clickjacking on pages with no sensitive actions
+- Cross-Site Request Forgery (CSRF) on unauthenticated forms or forms with no sensitive actions
+- Attacks requiring MITM, interception of a valid user's network traffic, or physical access to a user's device
+- Previously known vulnerable libraries without a working proof of concept
+- Comma Separated Values (CSV) injection without demonstrating a vulnerability
+- Missing best practices in SSL/TLS configuration
+- Any activity that could lead to the disruption of our service (DoS or DDoS)
+- Brute force attacks
+- Content spoofing and text injection issues without showing an attack vector or without being able to modify HTML/CSS
+
+  - Also excluded are content spoofing and text injection issues from within a project's dashboard, as we allow project owners to write JS on their projects
+- Rate limiting or brute force issues on non-authentication endpoints
+- Missing best practices in Content Security Policy
+- Missing headers in responses, except where material harm or exploitation is demonstrated
+- Missing HttpOnly or Secure flags on cookies
+- Missing email best practices (invalid, incomplete, or missing SPF/DKIM/DMARC records, etc.)
+- Vulnerabilities only affecting users of outdated or unpatched browsers [less than 2 stable versions behind the latest released stable version]
+- Software version disclosure, banner identification issues, or descriptive error messages and headers (e.g. stack traces, application or server errors)
+- Public zero-day vulnerabilities that have had an official patch for less than 1 month will be considered on a case-by-case basis
+- Tabnabbing
+- Open redirect, unless an additional security impact can be demonstrated
+- Password or account policies, such as password complexity
+- Issues that require unlikely user interaction
+
+# Safe Harbor
+
+Any activities conducted in a manner consistent with this policy will be considered authorized conduct and we will not initiate legal action against you. If legal action is initiated by a third party against you in connection with activities conducted under this policy, we will take steps to make it known that your actions were conducted in compliance with this policy.
+
+# Scopes
+
+## In Scope
+
+| Type | Link | Description | Severity |
+| --- | --- | --- | --- |
+| Domain | metrics.readme.io | To use our Metrics API, you can find your API key in your ReadMe project configuration. Documentation for the Metrics API can be found at [https://docs.readme.com/main/reference/](https://docs.readme.com/main/reference/). | Critical |
+| Domain | dash.readme.io | dash.readme.io and dash.readme.com are synonymous with each other so when testing use dash.readme.com in lieu of this domain. | Critical |
+| Domain | dash.readme.com |  | Critical |
+| Domain | readme.com | We’re not interested in vulnerabilities being reported on this asset because it’s a static site without access to any customer information. | Low |
+| Source code | [https://github.com/readmeio/rdme](https://github.com/readmeio/rdme) | rdme is a CLI frontend for our API that is installable via NPM. Any vulnerabilities that exist here would be upstream within our API. We’re not interested in receiving vulnerabilities on this repository, therefore the bounty eligibility is very minimal. | Low |
+| Other | Hosted projects | This covers project documentation sites (for example docs.readme.com) that are powered by our platform. Do not attempt to reproduce or exploit vulnerabilities on a customer's documentation site without express permission from both the customer and ReadMe. | Critical |
+
+## Out of Scope
+
+| Type | Link | Description |
+| --- | --- | --- |
+| Domain | \*.readme.com | Anything not explicitly listed as in scope, but is available on the readme.com domain. |
+| Domain | preview.readme.io | preview.readme.io is a demo site for our API Explorer code repository and is hosted on GitHub pages. |
+
+Thank you for helping keep ReadMe and our users safe!

@@ -1,0 +1,89 @@
+---
+title: Groups Mapping
+description: Automatically provision project permissions by group mappings
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774995331-attrnhyiazj-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-10-26T20:37:48.000Z
+---
+
+Group mapping lets you automatically provision permissions, read-only or admin, for your members (both internal and external) based on the groups attribute that your identity provider sends. 
+
+It's especially useful for enterprise organizations with a large number of members across multiple projects who need those members automatically routed to the right project with the right permissions.
+
+Within the group mapping controls, you'll configure three fields:
+
+**Field**
+
+**Description**
+
+Group Name
+
+Which group is this member associated with in your SAML settings?
+
+Project
+
+What ReadMe project do you want to provision the user to?
+
+Permission
+
+What permission, read-only or admin, do you want to apply to this user?
+
+For example: you want users with the group attribute `X` to have access to project `Y`, with permission `Z`.
+
+---
+
+## Mappings Setup
+
+<Callout>
+  ### Requires group support in your Identity Provider
+
+  This feature only applies if your identity provider supports groups. 
+</Callout>
+
+1. Make sure you have a SAML implementation set up in your ReadMe enterprise parent project.
+2. Set **Group Name** to a group that matches the group name in your SAML application in your IdP. For instance, if you have a group named `contractors` and want members of that group to have access to a project, set **Group Name** to `contractors`. Group names are case-sensitive, so double-check the casing.
+3. Specify which projects to give them access to. To give access to all projects, set the project to the parent project.
+4. Specify which permission they'll receive: **read-only** or **admin**.
+
+---
+
+## Example Setup in Okta
+
+<Callout>
+  ### Groups mapping must be of type array
+
+  Group implementations must use a mapping type of array. Otherwise, the connection will fail with a validation error.
+</Callout>
+
+In the **Attributes & Claims** section of your Okta application's SAML settings, add the following mapping:
+
+**Name**
+
+**Filter**
+
+groups
+
+Matches regex: .+
+
+If you have an Okta SAML connection, you must send us all of your groups. Setting the filter value to `.+` does this.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774999862-rzppukkesfo-f86b180-Screen_Shot_2019-12-06_at_11-56-50_AM.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+Users map to these groups automatically, if they belong to them.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793775000211-j3rebwjsr2i-668b97a-Screen_Shot_2019-12-06_at_11-56-36_AM.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+---
+
+## Mapping Behavior
+
+If you manually overwrite a user's permission, that overwrite takes precedence over the group mapping. ReadMe checks whether a user already has permissions assigned, and if they do, the mapping won't overwrite them.
+
+Group mappings also make the **Members** section easier to navigate. If a project has a large number of members, mappings collapse users who share the same permissions into a single row.
+
+# Sibling pages
+
+- [Okta](/main/enterprise/setting-up-okta)
+- [Google SAML](/main/enterprise/setting-up-google-saml)
+- [Microsoft Entra](/main/enterprise/setting-up-microsoft-entra)
+- [Auth0](https://docs.readme.com/main/enterprise/auth0.md)
+- [JumpCloud](https://docs.readme.com/main/enterprise/jumpcloud.md)

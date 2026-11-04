@@ -1,0 +1,188 @@
+---
+title: Troubleshoot MDX Errors
+description: Fix the MDX errors that appear after migration, covering unclosed tags, attributes, comments, variables, and invalid HTML.
+metaDescription: ReadMe's migration process attempts to convert Markdown to MDX automatically, but some content may not render correctly, requiring manual adjustments such as rewriting incompatible HTML to JSX, ensuring all tags are closed, and using camel case for attributes.
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774274197-292t71c8mp3-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-09-15T21:46:14.000Z
+---
+
+During the migration process, ReadMe attempts to automatically convert your Markdown to MDX. Some content is unable to be converted faithfully and may fail to render.
+
+When that happens, you’ll see errors that look like the image below if you have invalid MDX and our parser is unable to render your page. Your customers will not see pages with errors in your doc’s navigation and will not be able to access the page’s content.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774272823-nctdc3f6j-0fa2d61ff0b24cb05b837173b1bdaa77afca753ec9ef01d42bf373c9cfacb210-kevin_DM_-_ReadMe_-_Slack-20241121-1206382x_1.png?fm=auto&auto=compress%2Cformat" alt="" width={400} />
+
+If you have HTML that is not compatible with JSX<sup>1                                                            </sup> (the syntax MDX is written in), you’ll need to rewrite some HTML. JSX is written similarly to HTML, but with some key differences.
+
+> 📣
+> 
+> You can continue to write HTML in the HTML block. Any HTML outside the block, will need to be converted to JSX.
+
+## Closing Tags
+
+JSX requires that every tag be closed explicitly. The most common issue when converting Markdown to MDX is updating any self-closing tags for void elements<sup>2                                                            </sup>. Here are a few of the most common examples:
+
+<Columns cols={2}>
+   Markdown (HTML)
+
+  ```
+  <br />
+  <img />
+  <hr />
+  ```
+
+  \> MDX (JSX)
+
+  ```
+  <br />
+  <img />
+  <hr />
+  ```
+</Columns>
+
+All JSX-style tags must be explicitly closed, including self-closing tags.
+
+<Columns cols={2}>
+   Markdown (HTML)
+
+  ```
+  <p>Content
+  <ul>
+    <li>1
+    <li>2
+    <li>3
+   </ul>
+  <option>Small owl
+  <option>Large owl
+
+  ```
+
+   MDX (JSX)
+
+  ```
+  <p>Content</p>
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+  </ul>
+  <option>Small owl</option>
+  <option>Large owl</option>
+  ```
+</Columns>
+
+## Attributes
+
+Most attributes will need to be camelCase<sup>3                                                             </sup>—*except* `data-` and `aria-`. Inline styles will need to be an object `{}` and those properties also must be camelCase when written in JSX (does not apply if you’re writing CSS in a `<style />` tag.
+
+<Columns cols={2}>
+   Markdown (HTML)
+
+  ```
+  <img 
+    aria-label="my label" 
+    class="my-class" 
+    style="
+      margin-left: auto; 
+      margin-right: auto;
+    " />
+  ```
+
+   MDX (JSX)
+
+  ```
+  <img 
+    aria-label="my label" 
+    className="my-class" 
+    style={{ 
+      marginLeft: 'auto', 
+      marginRight: 'auto' 
+    }}
+  />
+  ```
+</Columns>
+
+## Comments
+
+JSX also has a different syntax for comments. Any HTML comments will be escaped and displayed as paragraph text in your docs. ReadMe will continue to strip comment content from your markup.
+
+<Columns cols={2}>
+   Markdown (HTML)
+
+  ```
+  {/* Comment */}
+  ```
+
+   MDX (JSX)
+
+  ```
+  {/* Comment */}
+  ```
+</Columns>
+
+## Variables
+
+Our variable syntax has changed, and will instead use a JavaScript object syntax for using variables.
+
+<Columns cols={2}>
+   Markdown (HTML)
+
+  ```
+  <<variable>>
+  ```
+
+   MDX (JSX)
+
+  ```
+  {example.variable}
+  ```
+</Columns>
+
+## Invalid HTML
+
+Writing invalid HTML in your markup won’t render in your docs, and cause render errors in MDX. They can be escaped to appear as plain text (written as `/<world>`) or need to be removed.
+
+<Columns cols={2}>
+   Invalid
+
+  ```
+  Hello <world>!
+  ```
+</Columns>
+
+<Callout kind="info">
+
+
+  <strong>Tip:</strong> You can use an [online converter](https://transform.tools/html-to-jsx) to convert HTML to JSX. And you can always reach out to [support@readme.io](mailto:support@readme.io) if you need help or have questions.
+</Callout>
+
+---
+
+<Callout kind="alert" title="Needs review">
+  **Needs review**: a div carrying an id is a heading anchor only when a heading leads it; this one does not
+
+  ```
+  <span class="footnote" id="1">\[1] JavaScript Syntax eXtension lets you write HTML-like markup in JavaScript</span>
+  ```
+</Callout>
+
+<Callout kind="alert" title="Needs review">
+  **Needs review**: a div carrying an id is a heading anchor only when a heading leads it; this one does not
+
+  ```
+  <span class="footnote" id="2">\[2] Void elements are HTML elements that cannot have any child nodes [**MDN** List of void elements](https://developer.mozilla.org/en-US/docs/Glossary/Void_element)                                                           </span>
+  ```
+</Callout>
+
+<Callout kind="alert" title="Needs review">
+  **Needs review**: a div carrying an id is a heading anchor only when a heading leads it; this one does not
+
+  ```
+  <span class="footnote" id="3">\[3] Camel case is a way of writing phrases without spaces or punctuation. The first word starts with lower case, and subsequent ones in uppercase. For example: `backgroundColor` and `strokeWidth` </span>
+  ```
+</Callout>
+
+# Sibling pages
+
+- [Built-in Components](/main/docs/built-in-components)
+- [Custom Components](/main/docs/building-custom-mdx-components)

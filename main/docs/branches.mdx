@@ -1,0 +1,138 @@
+---
+title: Branches
+description: Branches allow your team to save changes across pages without them going live immediately.
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774333990-ujfo2z6p5cl-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-10-28T19:02:10.000Z
+---
+
+With branches, you can continue to edit as you always have! Branches are an optional workflow that offer flexibility in your writing process. Writers use branches to:
+
+- Make changes and review them in a preview environment before they’re live.
+- Send changes to teammates for review.
+- Make changes across multiple pages.
+
+<Callout kind="alert" title="Needs review">
+  **Needs review**: no mapping rule for signature ff2864b2aeda; nothing representable after sanitisation
+
+  ```
+  <PlanTable currentPlan="Pro" />
+  ```
+</Callout>
+
+---
+
+## Creating a Branch
+
+There are five ways to create a branch:
+
+1. From the Branches page.
+2. From the versions and branches menu in the sidebar. Once there, you can create new branches from a version by typing in the branch you want to create.
+3. While editing an individual guide, endpoint, etc., you can **Save to Branch**.
+4. If you’re [syncing with GitHub](/main/docs/bi-directional-sync) , branches created in GitHub will show up in ReadMe. And branches created in the ReadMe UI will automatically show up in GitHub!
+5. From an AI agent connected to [ReadMe's MCP server](/main/docs/readme-mcp). Ask the agent to create a branch off the version you want to edit, and it makes its changes there.
+
+Once your branch is created, you can start writing! Changes will not be live until you merge your branch into a public version.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774332140-bqrjvydpg9g-fbc705842afcd6d4ec86cc2756c7c194fd1146b6f21e7bf9150fae4308736f28-branches_menu.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+There are no time limit or expiration on branches. Any admin on your team can view, edit, merge, and delete any branch.
+
+### Updating Branches
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774333190-s39is4ll7ao-5fd4b26d90b24ef95333f282882a53baf3330828c19d01cbb015c0f6e450e5b1-Quickstart_2026-08-14_09-35-04.webp?fm=auto&auto=compress%2Cformat" alt="" />
+
+If your branch is out of date with its parent version, update it from the overflow menu in the upper-right corner. If parent-version changes conflict with branch changes, resolve the conflicts in ReadMe or in Git when you sync with GitLab or GitHub. When no conflicts exist, ReadMe pulls parent-version changes into the branch automatically before it merges.
+
+---
+
+## Reviewing Changes
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774333427-33yijzh3uza-5344f3fd034404ae9527eb037e50106429dff7e4c9367f65aaad69a979948ef7-review_changes_2.png?fm=auto&auto=compress%2Cformat" alt="Review tab showing the diff between two pages line-by-line" />
+
+When editing a branch, you can access the Review tab to compare the changes made in your branch.
+
+<Callout>
+  When reordering files, they’re represented as changes to the `_order` file in your docs. Each item in the `_order` file represents a page in your docs and matches the slug of each page
+</Callout>
+
+Customers with the Review feature can also mark branches as ready for review, which adds a badge in the versions and branches menu, and starts the [AI Reviewer](https://docs.readme.com/main/docs/ai-reviewer). Users can bypass the merge requirements by checking the "Merge without requirements met" box to enable the **Merge** button. [Learn more about reviews](https://docs.readme.com/main/update/docs/reviews).
+
+## Resolving Merge Conflicts
+
+When merging from GitHub, resolve conflicts in the GitHub editor or with a local merge tool before you push.
+
+When merging from ReadMe, the preview matches the content that goes live after the merge. Conflicting changes from GitHub do not appear in the ReadMe preview.
+
+If changes in the parent version conflict with your branch changes, the menu in the top-right corner or merge modal notifies you that you must first resolve conflicts. You can resolve conflicts in the ReadMe editor or with the AI agent.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774339333-4mi9z5egh52-d78585cb3e0df8a40c923e4758e576672e986c94afa1d42e591049938173caf7-Screenshot_2026-09-17_at_2-27-05_PM.png?fm=auto&auto=compress%2Cformat" alt="" width={300} />
+
+## Merging Changes
+
+Once you’re ready for the changes to go live, you can merge from the branch menu:
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774339670-vzgcxn4uzg-0c4c2909e376be33b974e008b8b9b9f14860b13c3eff12b5be8a377395fd68e4-Getting_Started_with_Owlberts_Journeys-20250528-1418472x.png?fm=auto&auto=compress%2Cformat" alt="" width={300} />
+
+On merge, a check will be run to ensure there are no merge conflicts. If there are conflicts that must be resolved, we recommend resolving the conflicts in the ReadMe conflict resolution view. Otherwise, you can choose to merge anyway. ReadMe will try to update the branch from the parent version first. If that isn't possible, conflicting files overwrite changes in the parent version with preference to the changes in the branch.
+
+Once merged, your branches are not deleted so you can review the changes before deleting them.
+
+<Callout>
+  ### GitHub users can merge a branch into a version too—including via Pull Requests.
+</Callout>
+
+### Restricting Merge and Version Edit Access to Admins
+
+Enterprise Customers can restrict merge access and the ability to edit versions per project to [Only Admins or Admins & Editors](/main/enterprise/user-roles). The settings can be found on the Enterprise Dashboard’s Project Page. Open **Settings** \> **Enterprise Name** (at the bottom) > **Projects**.
+
+It's important to note that merge access is a ReadMe permission, not a GitHub branch protection rule. If you've enabled bi-directional sync and an Editor chooses to merge a branch in GitHub, the merge would succeed on GitHub's side because GitHub doesn’t know about ReadMe’s role restrictions. The sync process would then push the merged state back to ReadMe, effectively bypassing the restriction.
+
+---
+
+## Sharing Branches
+
+Every branch has a shareable URL that allows access to your branch for both logged in and external users. From the Branches page, select the three dots next to your branch name and copy the Shareable URL. You can also find the shareable URL on the branch Review page.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774339993-ixw4e8btvxa-9ae4fb9b2eb0adb7ff8b1aa4bcddbb736d9033547e8678b58c594661692c9247-image.png?fm=auto&auto=compress%2Cformat" alt="" width={300} />
+
+<Callout>
+  <strong>Note:</strong> The shareable URL has a `key` query parameter that is saved to a cookie and then stripped from the URL. External users can access the branch without the key for 7 days. Once the cookie expires, the user must use the shareable URL with the `key` query parameter to view the branch.
+</Callout>
+
+Branches can only be shared when your docs project is public. Enterprise teams can disable external sharing per-project on the Projects page in the Enterprise Dashboard.
+
+---
+
+## Syncing with GitHub
+
+You do not have to sync with GitHub to use branches.
+
+When creating branches from GitHub, their name has to be formatted to include their version: `{version}_{branch}`. Examples:
+
+```text
+v2.0_rewrite-getting-started
+v2.0_add-new-feature
+v2.0_fix-typo
+```
+
+### Access & Permissions
+
+ReadMe and GitHub permissions are independent. Users with access to your GitHub project’s branches will have access to any content changes. In order for users to view content changes made in branches via GitHub, they will need a ReadMe account with access to your project’s branch.
+
+---
+
+## FAQ
+
+<Expandable title="Who can view a branch?">
+  Teammates with access to your project can view your branches—including the team Editor and Viewer roles. On the Branch page, you can also find a shareable URL for a non-teammate audience. Enterprise customers can enable public branch visibility to disable the shareable URL.
+</Expandable>
+
+<Expandable title="How can I protect my main (live) version from accidental changes?">
+  Branches are the primary method to protect changes from going live. ReadMe allows you to enforce reviews from another teammate and the AI Linter. [More information on reviews](/main/docs/reviews)
+</Expandable>
+
+# Sibling pages
+
+- [Versioning](/main/docs/versions)
+- [Reviews](/main/docs/reviews)
+- [Suggest in GitHub](/main/docs/suggest-in-github)

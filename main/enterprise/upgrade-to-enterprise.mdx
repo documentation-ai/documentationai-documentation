@@ -1,0 +1,170 @@
+---
+title: Upgrade to Enterprise
+description: Combine your documentation projects into one Enterprise Group
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774894575-ripbfvk43fq-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-10-27T17:27:08.000Z
+---
+
+An Enterprise Group ties multiple doc projects together under a single custom domain. Each project keeps its own Guides and Reference sections, so a group works well when you need manage multiple products at scale.
+
+Upgrading to an Enterprise Group unlocks features such as:
+
+- Global search across every project.
+- A global landing page with shared CSS and JS.
+- OAuth 2 login for customers and SSO login for employees.
+- Audit logs to track changes.
+
+<Callout>
+  ### 
+
+  This guide covers migrating existing projects into a group. Skip it if you're a new Enterprise customer with no prior projects.
+</Callout>
+
+---
+
+## Before You Start
+
+Plan these items before you begin the upgrade process:
+
+- <strong>Custom domain -</strong> Decide whether to keep your current domain or move to a new global domain such as `developers.mypets.com`.
+- <strong>ReadMe subdomains -</strong> Your project's ReadMe subdomain becomes visible in your URLs after migration.  See [How Your URLs Change](/main/enterprise/upgrade-to-enterprise#how-your-urls-change)​.
+- <strong>Redirects -</strong> [Author Your Redirects in Advance](/main/enterprise/upgrade-to-enterprise#author-your-redirects-in-advance) in a text editor to ensure smooth transition into your Enterprise Group.
+
+<Callout>
+  ### Expect some downtime
+
+  Your custom domain is unavailable to readers while you move it between projects. Tell your users about the maintenance window before you remove the domain.
+</Callout>
+
+---
+
+## Migrate Your Projects
+
+Work through these steps in order. ReadMe creates the group and reserves any new subdomains for you. You can request a test group to rehearse the move before you go live. Everything else you can do from the Enterprise Group dashboard.
+
+1. Remove the custom domain from your current project.
+2. Once your enterprise group exists, add your custom domain to the group's dashboard.
+3. Add your redirects. After you have access to the group project, paste the redirects you drafted into the group's dash. If you changed your custom domain, add your 301 redirects to your own web server as well.
+4. Add your doc projects at `dash.readme.io/group/<YOUR_GROUP>/settings` so they appear as links on your global landing page.
+5. Move your integrations to `dash.readme.io/group/<YOUR_GROUP>/integrations`. If multiple projects each have integrations, pick one project's settings to apply across the group.
+6. Set up [Custom OAuth](/main/enterprise/getting-started-authentication-setup) at the group level instead of the project level.
+7. Choose how readers land on your docs: use the [global landing page](/main/enterprise/creating-a-global-landing-page), or redirect past it to a child project or your own landing page.
+8. Review navigation between projects at `dash.readme.io/project/<your_project>/v2.0/usability`, and consider adding links in the project header.
+9. Click **Publish** to launch your docs.
+
+---
+
+## How Your URLs Change
+
+When an existing project joins a group, its URLs gain the project's ReadMe subdomain as a path segment:
+
+`projectCustomDomain.com/docType` → `groupCustomDomain.com/projectSubdomain/docType`
+
+Your ReadMe subdomain was hidden behind your custom domain before, but it becomes visible in the URL path once you're in a group. Rename it before migration so it reads well in public URLs.
+
+### URL Change Example
+
+Consider the company **myPets**, which has one **cats** project at `docs.mypets.com` and administers it at `dash.readme.io/project/project1pets`. Left unchanged, that project would land at `developers.mypets.com/project1pets` after the upgrade.
+
+To fix this, rename the ReadMe subdomain to `cats` before upgrading, so you administer it at `dash.readme.io/project/cats`. Add new projects with subdomains like `dogs`, `birds`, and `other-animals`. After the upgrade your projects resolve to `developers.mypets.com/cats`, `developers.mypets.com/dogs`, and so on. Renaming the subdomain doesn't affect readers, who still reach you through your custom domain.
+
+<Callout>
+  ### Subdomains must be unique
+
+  Subdomains are unique across all of ReadMe. Reserve any new ones early so they're held for your upgrade.
+</Callout>
+
+For more detail, see [**URL Paths in ReadMe**](/main/docs/url-paths-in-readme).
+
+---
+
+## Author Your Redirects in Advance
+
+Draft your redirects before the migration so you can paste them in as soon as your group is ready. Where you add them depends on what you change. Here's how the scenarios look for the **myPets** example above:
+
+**Scenario**
+
+**Example redirect**
+
+**Where it goes**
+
+Change your custom domain, for example `docs.mypets.com` to `developers.mypets.com`.
+
+301 redirect per doc type.
+
+Your own web server, not the group dash.
+
+Add an existing project to a group (always required).
+
+`/docs/(\S*) -> /cats/docs/$1`<br />`/reference/(\S*) -> /cats/reference/$1`
+
+Group dash. One redirect per doc type, since the `cats` subdomain is now in the URL.
+
+Existing project already has page redirects.
+
+`cats/docs/care-and-feeding-of-cats -> cats/docs/cat-care`
+
+Group dash. Prefix each existing redirect with the subdomain.
+
+Existing project has several versions.
+
+`/(v\d\S*?)/(\S*) -> /cats/$1/$2`
+
+Group dash. One pattern catches v1, v2, v3, and so on.
+
+Existing project is localized with Transifex.
+
+Varies by setup.
+
+Translated URLs need special handling. Check [Redirect Scenarios](https://docs.readme.com/docs/redirect-scenarios).
+
+### Custom Domain Changes
+
+When your custom domain changes from `docs.mypets.com` to `developers.mypets.com`, author a 301 redirect for each doc type on your own web server. These push traffic from your old domain to your new one and can't live in the group dash.
+
+### Subdomain Redirects
+
+If you keep your original custom domain instead of changing it, you handle every redirect in the group dash. Your subdomain becomes visible, so `docs.mypets.com/docs` becomes `docs.mypets.com/cats/docs`.
+
+In your group project at `dash.readme.io/group/myPets-parent/errorpages`, author a redirect for each doc type using these patterns:
+
+```text
+/docType/(\S*) -> /childSubdomain/docType/$1
+/docType -> /childSubdomain/docType
+```
+
+For a **cats** project with docs and API reference enabled:
+
+```text
+/docs/(\S*) -> /cats/docs/$1
+/docs -> /cats/docs
+/reference/(\S*) -> /cats/reference/$1
+/reference -> /cats/reference
+```
+
+These patterns catch both deep links like `docs.mypets.com/docs/cat-habits` and the top-level landing page at `docs.mypets.com/docs`. The `(\S*)` and `$1` are regular expressions, so one line covers every page under a doc type instead of one redirect per page.
+
+### Existing Page Redirects
+
+Copy any per-page redirects from `dash.readme.io/project/cats/errorpages` into your group at `dash.readme.io/group/mypets-parent/errorpages`, and prefix each with the project subdomain. For example:
+
+```text
+docs/care-and-feeding-of-cats -> docs/cat-care
+```
+
+becomes:
+
+```text
+cats/docs/care-and-feeding-of-cats -> cats/docs/cat-care
+```
+
+For more on redirect formats, see [**Redirect Scenarios**](https://docs.readme.com/docs/redirect-scenarios) and [**Error Pages**](/main/docs/error-pages).
+
+# Sibling pages
+
+- [ReadMe Enterprise](/main/enterprise/intro-to-readme-enterprise)
+- [Enterprise Quick Start](/main/enterprise/enterprise-quick-start)
+- [Security Overview](/main/enterprise/security-overview)
+- [Migrate to ReadMe](/main/enterprise/migrate-to-readme)
+- [Integrate ReadMe Enterprise into Your Workflow](/main/enterprise/integrating-readme-into-your-workflow)
+- [Analytics](/main/enterprise/analytics)

@@ -1,0 +1,107 @@
+---
+title: Authentication
+description: Set up the welcome page for your API to help users make their first call.
+metaTitle: Managing Your ReadMe API Keys
+metaDescription: Managing Your ReadMe API Keys
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774659294-xm4fesxzf4n-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-03-17T18:04:19.000Z
+---
+
+# API Key Quick Start
+
+API keys are an essential part of your [GitHub Actions workflows](/main/docs/rdme), [`api` scripts](https://www.npmjs.com/package/api), or any other integrations you choose to build with the ReadMe API. Thankfully, the [ReadMe dashboard](https://dash.readme.com) and ReadMe docs provide a variety of tools so you can quickly get up and running with authenticated API requests.
+
+## Making An Authenticated API Request 🪄
+
+The first thing you should do is [log into the ReadMe docs](https://docs.readme.com/login?redirect_uri=/reference/authentication) if you haven't already done so. Any API keys associated with your account should automatically be populated above.
+
+Once you've selected an API key, you'll see it's been automatically populated in the authentication field in the top-right corner (where it says **How to Authenticate**). Below that is a little API playground where you can send an authenticated request. Click that big blue "Try It!" button and see what happens!
+
+You can copy the cURL request, which is fully runnable. Try pasting that into a terminal of your choice and you should see the exact same results. 🚀
+
+<Callout kind="info">
+  Like what you see?
+
+  Everything that you're seeing in these reference docs is possible to set up with your API and your developer hubs! If you want your users to have a customized developer hub experience, complete with:
+
+  - A list of their API keys
+  - "Try It!" functionality to quickly make authenticated requests
+  - Request history logs on your endpoint pages
+
+  Everything you're seeing is powered by our API Reference, [Personalized Docs](/main/docs/personalized-docs), and [Developer Dashboard](/main/docs/developer-dashboard).
+
+  Need help setting up? Grab some time on our [calendly](https://calendly.com/d/34d-tvv-w7v/readme-developer-dashboard) and we'll walk you through!
+</Callout>
+
+## Generating New API Keys 🔑
+
+If this is your first time using the ReadMe API, you'll likely need to generate a new API key for your project. You can do this by navigating to the following in the project dashboard:
+
+1. Click **Configuration**
+2. Click **API Keys**
+3. Generate your first API key! You can do this by clicking the big blue button in the top right corner and following the steps in the pop-up modal:
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774647355-lkomaqvv2go-9cc2033c6baef8588c9c74a09ca04fd8a846d396b482021c1e035c18dac44798-dash-api-keys-screen.png?fm=auto&auto=compress%2Cformat" alt="The dashboard state when you have not generated any API keys for your project" />
+
+4. You've generated your first API key! Try sending a sample request:
+
+```shell
+curl https://api.readme.com/v2/projects/me -X GET --header "Authorization: Bearer README_API_KEY"
+```
+
+We recommend generating different API keys for different purposes so you don't have a single point of failure if one of your API keys is exposed. Once you've generated a few keys (and added some helpful labels!).
+
+## Rotating API Keys 🔄
+
+If one of your API keys has been leaked or if you have any security concerns about a particular API key, we strongly recommend you rotate out your API keys. You can do so by taking the following steps:
+
+1. Delete the exposed API key in your dashboard (there is a **Delete** option if you click the three dots on the right-hand side).
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774653067-hnvni8g2qzp-55eeeb9-image.png?fm=auto&auto=compress%2Cformat" alt='The "Edit" and "Delete" options that are available when you click the three dots on the right-hand side of an API key' />
+
+2. Re-generate a new API key in its place.
+3. Replace any usage of the leaked API key with the new one
+
+### GitHub Secret Scanning
+
+<strong>[We've partnered with GitHub](https://github.blog/changelog/2022-08-17-readme-is-now-a-github-secret-scanning-partner/) to ensure your API keys remain safe. 🔐</strong>
+
+If a ReadMe API key is accidentally pushed to a public GitHub repository, we will automatically be notified via [GitHub's secret scanning program](https://docs.github.com/en/code-security/secret-scanning/secret-scanning-patterns#supported-secrets-for-partner-patterns). We will immediately invalidate the API key and notify the project administrators of the leak via email. If this happens to you, [follow the steps above](#rotating-api-keys-) to regenerate your API key.
+
+# OpenAPI definition
+
+This is the part of the API’s OpenAPI definition that covers servers and authentication. Each endpoint page has its own operation.
+
+```json
+{
+  "openapi": "3.0.2",
+  "info": {
+    "description": "Create beautiful product and API documentation with our developer friendly platform.",
+    "version": "5.947.0",
+    "title": "Legacy API",
+    "contact": {
+      "name": "API Support",
+      "url": "https://docs.readme.com/main/docs/need-more-support",
+      "email": "support@readme.io"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://dash.readme.com/api/v1"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "apiKey": {
+        "type": "http",
+        "scheme": "basic"
+      }
+    }
+  }
+}
+```
+
+# Sibling pages
+
+- [Getting Started](/main/reference/getting-started)
+- [My Requests](https://docs.readme.com/main/reference/my-requests.md)

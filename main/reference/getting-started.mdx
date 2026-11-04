@@ -1,0 +1,46 @@
+---
+title: Getting Started
+description: Set up the welcome page for your API to help users make their first call.
+metaTitle: Getting Started with ReadMe's API
+metaDescription: Getting Started with ReadMe's API
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774659021-cw8cuhjxp3q-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-03-17T18:04:19.000Z
+---
+
+# OpenAPI definition
+
+This is the part of the API’s OpenAPI definition that covers servers and authentication. Each endpoint page has its own operation.
+
+```json
+{
+  "openapi": "3.0.2",
+  "info": {
+    "description": "Create beautiful product and API documentation with our developer friendly platform.",
+    "version": "5.947.0",
+    "title": "Legacy API",
+    "contact": {
+      "name": "API Support",
+      "url": "https://docs.readme.com/main/docs/need-more-support",
+      "email": "support@readme.io"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://dash.readme.com/api/v1"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "apiKey": {
+        "type": "http",
+        "scheme": "basic"
+      }
+    }
+  }
+}
+```
+
+# Sibling pages
+
+- [Authentication](/main/reference/authentication)
+- [My Requests](https://docs.readme.com/main/reference/my-requests.md)

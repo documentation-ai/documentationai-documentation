@@ -1,0 +1,72 @@
+---
+title: My Requests Overview
+description: Let your users see their recently made API requests and debug issues right from your docs
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774424076-cy1gjeyojel-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-09-17T15:44:45.000Z
+---
+
+Thanks to the [Getting Started and Authentication pages](/main/docs/reference-core-pages) in your API Reference, it’s a lot easier for new users to get started with your API. They’ve got their [API keys front and center](/main/docs/personalized-docs), can make authenticated requests from your docs, copy and paste code snippets, and see responses in real-time.
+
+Once they’re really cooking with your API, it’s somewhat inevitable that they’ll run into issues, and when they do, it’s helpful to offer tools that enable them to debug on their own, rather than solely relying on your support team for assistance.
+
+**Allow us to introduce My Requests to the rescue** 🦸
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774420144-3glfidu5atf-e62a99566ba9e3c26f432ff8e1d3f96f294168048891313539f78dd64145bcda-3026c7a3fb781b8179a5bdaacac2221e.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+# Dig Into the Details of Your Requests 🔍
+
+The My Requests page gives logged-in users direct access to their API logs, right from your hub, so they can get a jumpstart on debugging issues, in addition to having a record of all of their API calls.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774422676-u470rn17rx-799e3f91531739e46b62cd417ef058daff129e3beea890573f033058e74f5d90-ac9e3b84df5818b378f4402e0238d4cf.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+When a logged-in user navigates to the My Requests page, they’ll see a dropdown menu in the top left where they’ll be able to view and toggle between all API keys they have access to.
+
+Additionally, the information adjacent to your API keys dropdown menu highlights total requests made by the selected API key and the request percentage by user agent (which will always total 100%).
+
+Below the API Key dropdown, there’s an expandable window that highlights successful calls vs. calls where you hit an error. You can expand the picture-in-picture window to reveal a bar chart that tracks successful vs. unsuccessful calls by date. It’s an easy way to spot a spike in errors and quickly be able to cross-reference that with your logs!
+
+For each API request, users will be able to see when it was made, its status code and method, the endpoint called, the email address of who made the request, and the user agent. Users can also filter requests by these values.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774425408-eys6j227poc-f7031cd8c75a977d16446622b6c2aba3be2e0119d631436b7f5be6efa46c1f28-140603ef5fccd28402c4ed720f2faff5.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+<Callout>
+  ### Request History Visibility 🧐
+
+  Your ReadMe plan includes 24 hours of API request history in the hub, and if you [upgrade to our paid Developer Dashboard plan](/main/docs/my-developers#pricing), your developers will be able to see 30 days of requests, across all API keys.
+</Callout>
+
+## Debug Right From Your Docs 🐛
+
+At a glance, your My Requests page provides a high-level overview of all of your recent API logs. If you want to dive further into a specific log, you can click any of the fields in a single row to reveal a pop-up menu <em>(we like to call it a Popover 😉)</em> that includes lots more details. This should (hopefully!) provide all of the details you need to troubleshoot a call and figure out what happened.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774426400-vv7a9izolog-43f6f893822d7aad4bed1582ec94846cead4dda57b20cb9a7fe1da5ce6bba06a-78456e25d300b456f149a1f53b5b645a.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+The first tab lists Request Headers. The headers your user sees correspond to the headers you or someone from your team chose to pass through in the uploaded OpenAPI spec (OAS file). You can use the field in the top right to filter through headers. Or, you can pop over (pun intended) to the Response Body and further inspect your API request to understand what went wrong. You can also copy the Response Body in case you want to paste and inspect it in another tool. Additionally, the Copy to cURL Request functionality allows you to copy the documented request and replay it elsewhere.
+
+# Setting Your My Requests Page Live
+
+In order to enable the My Requests page for your hub, you need to complete a few preliminary setup steps for your ReadMe project:
+
+1. Your ReadMe project must contain at least one OpenAPI file (OAS spec), done [via one of our upload methods](/main/docs/openapi-upload-and-management) or using the [API Designer](/main/docs/api-designer)
+2. You need to complete the Set Up API Keys configuration step by [deploying the Personalized Docs Webhook](/main/docs/personalized-docs). The setup for this lives nested in the My Developers page in the Developer Dashboard section of your project dashboard
+3. While not mandatory, we highly recommend [sending API logs](/main/docs/sending-api-logs) to ReadMe by integrating the Metrics SDK
+
+Once you’ve completed steps 1 and 2 (and ideally 3, too!), head to the My Requests page in the API Reference section of your project dashboard. This page will always be anchored at the top of your reference section, underneath the Getting Started and Authentication pages. The page will be hidden by default but you can click the dropdown menu at the top, select Public, press Save and the My Requests page will now be live in your hub!
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774429076-15rrk47eb62-fffc95e6b0ff41018889416db10f854350c313978605e45a5efee479349ce687-af0dfd5bf07f9411d989212f78e32a6b.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+<Callout>
+  ### Goodbye API Logs, Hello My Requests :tada:
+
+  We’ve made the decision to deprecate the API Logs feature in developer hubs in favor of the much more enhanced experience that My Requests provides.
+
+  If you previously had API Logs enabled for your hub, the My Requests page will automatically be set live in your hub.
+
+  There is no longer an option to toggle API Logs on from your project dashboard’s Site Navigation page. Now, API Requests lives in your dashboard’s API Reference section and you can publish it like any other page!
+</Callout>
+
+# Sibling pages
+
+- [Show API Request History To Users](/main/docs/showing-api-logs-to-users)
+- [SDKs](/main/docs/sdks)
+- [Other Ways to Send API Requests](/main/docs/other-ways-to-use-api-metrics)

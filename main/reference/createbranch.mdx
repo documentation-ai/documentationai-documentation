@@ -1,0 +1,1007 @@
+---
+title: Create a branch
+description: Create a new branch in your ReadMe project.  >📘 > This route is only available to projects that are using [ReadMe Refactored](https://docs.readme.com/main/docs/welcome-to-readme-refactored).
+metaDescription: |-
+  Create a new branch in your ReadMe project.
+
+  >📘
+  > This route is only available to projects that are using [ReadMe Refactored](https://docs.readme.com/main/docs/welcome-to-readme-refactored).
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774688698-a3pwsgaddep-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-04-28T21:07:34.000Z
+---
+
+Create a new branch in your ReadMe project.
+
+<Callout kind="info">
+  This route is only available to projects that are using [ReadMe Refactored](https://docs.readme.com/main/docs/welcome-to-readme-refactored).
+</Callout>
+
+# OpenAPI definition
+
+```json
+{
+  "openapi": "3.1.0",
+  "info": {
+    "description": "Create beautiful product and API documentation with our developer friendly platform.",
+    "version": "2.0.0",
+    "title": "ReadMe API",
+    "x-readme-deploy": "5.947.0",
+    "termsOfService": "https://readme.com/tos",
+    "contact": {
+      "name": "API Support",
+      "url": "https://docs.readme.com/main/docs/need-more-support",
+      "email": "support@readme.io"
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearer": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "A bearer token that will be supplied within an `Authentication` header as `bearer <token>`."
+      }
+    }
+  },
+  "paths": {
+    "/branches": {
+      "post": {
+        "operationId": "createBranch",
+        "summary": "Create a branch",
+        "tags": [
+          "Branches"
+        ],
+        "description": "Create a new branch in your ReadMe project.\n\n>📘\n> This route is only available to projects that are using [ReadMe Refactored](https://docs.readme.com/main/docs/welcome-to-readme-refactored).",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "base": {
+                        "type": "string",
+                        "nullable": true,
+                        "description": "The version to base this version on. Defaults to the stable version; null starts from scratch."
+                      },
+                      "display_name": {
+                        "type": "string",
+                        "description": "A non-semver display name for the version."
+                      },
+                      "name": {
+                        "type": "string",
+                        "pattern": "stable|\\bmain(?:-[a-z]{2})?(?![\\w.-])|([0-9]+)(?:\\.([0-9]+))?(?:\\.([0-9]+))?(-.*)?",
+                        "description": "The semver name for the version."
+                      },
+                      "privacy": {
+                        "type": "object",
+                        "properties": {
+                          "view": {
+                            "type": "string",
+                            "enum": [
+                              "default",
+                              "hidden",
+                              "public"
+                            ],
+                            "default": "hidden",
+                            "description": "Whether the version is public, hidden, or the stable version that's visible by default."
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      "release_stage": {
+                        "type": "string",
+                        "enum": [
+                          "beta",
+                          "release"
+                        ],
+                        "default": "release",
+                        "description": "Whether the version is released or in beta."
+                      },
+                      "state": {
+                        "type": "string",
+                        "enum": [
+                          "current",
+                          "deprecated"
+                        ],
+                        "default": "current",
+                        "description": "Whether the version is current or deprecated."
+                      }
+                    },
+                    "required": [
+                      "name"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "pattern": "(v{0,1})(stable|\\bmain(?:-[a-z]{2})?(?![\\w.-])|([0-9]+)(?:\\.([0-9]+))?(?:\\.([0-9]+))?(-.*)?)(_(.*))?",
+                        "description": "The name of the branch."
+                      }
+                    },
+                    "required": [
+                      "name"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "object",
+                          "properties": {
+                            "ai_translation": {
+                              "type": "object",
+                              "properties": {
+                                "status": {
+                                  "type": "string",
+                                  "enum": [
+                                    "in_progress",
+                                    "completed",
+                                    "partial",
+                                    "failed",
+                                    "skipped"
+                                  ],
+                                  "description": "The status of the AI translation for this version.",
+                                  "nullable": true
+                                },
+                                "started_at": {
+                                  "type": "string",
+                                  "format": "date-time",
+                                  "description": "An ISO 8601 formatted date for when the AI translation started.",
+                                  "nullable": true
+                                },
+                                "completed_at": {
+                                  "type": "string",
+                                  "format": "date-time",
+                                  "description": "An ISO 8601 formatted date for when the AI translation completed.",
+                                  "nullable": true
+                                }
+                              },
+                              "required": [
+                                "status",
+                                "started_at",
+                                "completed_at"
+                              ],
+                              "additionalProperties": false,
+                              "description": "AI translation status for this version. This feature is gated and still in active development, so the values in this object will generally be set to `null`."
+                            },
+                            "base": {
+                              "type": "string",
+                              "nullable": true,
+                              "description": "The name of the version this version was based off of."
+                            },
+                            "display_name": {
+                              "type": "string",
+                              "nullable": true,
+                              "description": "A non-semver display name for the version."
+                            },
+                            "i18n": {
+                              "type": "object",
+                              "properties": {
+                                "lang": {
+                                  "type": "string",
+                                  "nullable": true,
+                                  "description": "The language of the version."
+                                },
+                                "parsed_version": {
+                                  "type": "string",
+                                  "nullable": true,
+                                  "description": "The parsed version without the language code."
+                                }
+                              },
+                              "required": [
+                                "lang",
+                                "parsed_version"
+                              ],
+                              "additionalProperties": false,
+                              "description": "Internationalization information for the version. This feature is gated and still in active development, so the values in this object will generally be set to `null`."
+                            },
+                            "name": {
+                              "type": "string",
+                              "pattern": "stable|\\bmain(?:-[a-z]{2})?(?![\\w.-])|([0-9]+)(?:\\.([0-9]+))?(?:\\.([0-9]+))?(-.*)?",
+                              "description": "The semver name for the version."
+                            },
+                            "privacy": {
+                              "type": "object",
+                              "properties": {
+                                "view": {
+                                  "type": "string",
+                                  "enum": [
+                                    "default",
+                                    "hidden",
+                                    "public"
+                                  ],
+                                  "description": "Whether the version is public, hidden, or the stable version that's visible by default."
+                                }
+                              },
+                              "required": [
+                                "view"
+                              ],
+                              "additionalProperties": false
+                            },
+                            "release_stage": {
+                              "type": "string",
+                              "enum": [
+                                "beta",
+                                "release"
+                              ],
+                              "description": "Whether the version is released or in beta."
+                            },
+                            "sha": {
+                              "type": "string",
+                              "pattern": "^[a-f0-9]{40}$",
+                              "nullable": true,
+                              "description": "The SHA of the commit that this version points to."
+                            },
+                            "source": {
+                              "type": "string",
+                              "enum": [
+                                "readme",
+                                "bidi"
+                              ],
+                              "description": "Whether the version was created in ReadMe or via Bi-Directional Sync."
+                            },
+                            "state": {
+                              "type": "string",
+                              "enum": [
+                                "current",
+                                "deprecated"
+                              ],
+                              "description": "Whether the version is current or deprecated."
+                            },
+                            "updated_at": {
+                              "type": "string",
+                              "format": "date-time",
+                              "description": "An ISO 8601 formatted date for when the version was last updated."
+                            },
+                            "uri": {
+                              "type": "string",
+                              "pattern": "\\/branches\\/((v{0,1})(stable|\\bmain(?:-[a-z]{2})?(?![\\w.-])|([0-9]+)(?:\\.([0-9]+))?(?:\\.([0-9]+))?(-.*)?)(_(.*))?)",
+                              "description": "A URI to the version resource."
+                            }
+                          },
+                          "required": [
+                            "ai_translation",
+                            "base",
+                            "display_name",
+                            "i18n",
+                            "name",
+                            "privacy",
+                            "release_stage",
+                            "sha",
+                            "source",
+                            "state",
+                            "updated_at",
+                            "uri"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "version"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "data",
+                        "type"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "data": {
+                          "type": "object",
+                          "properties": {
+                            "base": {
+                              "type": "object",
+                              "properties": {
+                                "ai_translation": {
+                                  "type": "object",
+                                  "properties": {
+                                    "status": {
+                                      "type": "string",
+                                      "enum": [
+                                        "in_progress",
+                                        "completed",
+                                        "partial",
+                                        "failed",
+                                        "skipped"
+                                      ],
+                                      "description": "The status of the AI translation for this version.",
+                                      "nullable": true
+                                    },
+                                    "started_at": {
+                                      "type": "string",
+                                      "format": "date-time",
+                                      "description": "An ISO 8601 formatted date for when the AI translation started.",
+                                      "nullable": true
+                                    },
+                                    "completed_at": {
+                                      "type": "string",
+                                      "format": "date-time",
+                                      "description": "An ISO 8601 formatted date for when the AI translation completed.",
+                                      "nullable": true
+                                    }
+                                  },
+                                  "required": [
+                                    "status",
+                                    "started_at",
+                                    "completed_at"
+                                  ],
+                                  "additionalProperties": false,
+                                  "description": "AI translation status for this version. This feature is gated and still in active development, so the values in this object will generally be set to `null`."
+                                },
+                                "base": {
+                                  "type": "string",
+                                  "nullable": true,
+                                  "description": "The name of the version this version was based off of."
+                                },
+                                "display_name": {
+                                  "type": "string",
+                                  "nullable": true,
+                                  "description": "A non-semver display name for the version."
+                                },
+                                "i18n": {
+                                  "type": "object",
+                                  "properties": {
+                                    "lang": {
+                                      "type": "string",
+                                      "nullable": true,
+                                      "description": "The language of the version."
+                                    },
+                                    "parsed_version": {
+                                      "type": "string",
+                                      "nullable": true,
+                                      "description": "The parsed version without the language code."
+                                    }
+                                  },
+                                  "required": [
+                                    "lang",
+                                    "parsed_version"
+                                  ],
+                                  "additionalProperties": false,
+                                  "description": "Internationalization information for the version. This feature is gated and still in active development, so the values in this object will generally be set to `null`."
+                                },
+                                "name": {
+                                  "type": "string",
+                                  "pattern": "stable|\\bmain(?:-[a-z]{2})?(?![\\w.-])|([0-9]+)(?:\\.([0-9]+))?(?:\\.([0-9]+))?(-.*)?",
+                                  "description": "The semver name for the version."
+                                },
+                                "privacy": {
+                                  "type": "object",
+                                  "properties": {
+                                    "view": {
+                                      "type": "string",
+                                      "enum": [
+                                        "default",
+                                        "hidden",
+                                        "public"
+                                      ],
+                                      "description": "Whether the version is public, hidden, or the stable version that's visible by default."
+                                    }
+                                  },
+                                  "required": [
+                                    "view"
+                                  ],
+                                  "additionalProperties": false
+                                },
+                                "release_stage": {
+                                  "type": "string",
+                                  "enum": [
+                                    "beta",
+                                    "release"
+                                  ],
+                                  "description": "Whether the version is released or in beta."
+                                },
+                                "sha": {
+                                  "type": "string",
+                                  "pattern": "^[a-f0-9]{40}$",
+                                  "nullable": true,
+                                  "description": "The SHA of the commit that this version points to."
+                                },
+                                "source": {
+                                  "type": "string",
+                                  "enum": [
+                                    "readme",
+                                    "bidi"
+                                  ],
+                                  "description": "Whether the version was created in ReadMe or via Bi-Directional Sync."
+                                },
+                                "state": {
+                                  "type": "string",
+                                  "enum": [
+                                    "current",
+                                    "deprecated"
+                                  ],
+                                  "description": "Whether the version is current or deprecated."
+                                },
+                                "updated_at": {
+                                  "type": "string",
+                                  "format": "date-time",
+                                  "description": "An ISO 8601 formatted date for when the version was last updated."
+                                },
+                                "uri": {
+                                  "type": "string",
+                                  "pattern": "\\/branches\\/((v{0,1})(stable|\\bmain(?:-[a-z]{2})?(?![\\w.-])|([0-9]+)(?:\\.([0-9]+))?(?:\\.([0-9]+))?(-.*)?)(_(.*))?)",
+                                  "description": "A URI to the version resource."
+                                }
+                              },
+                              "required": [
+                                "ai_translation",
+                                "base",
+                                "display_name",
+                                "i18n",
+                                "name",
+                                "privacy",
+                                "release_stage",
+                                "sha",
+                                "source",
+                                "state",
+                                "updated_at",
+                                "uri"
+                              ],
+                              "additionalProperties": false,
+                              "description": "The representation of the version the branch was created from or the stable version."
+                            },
+                            "href": {
+                              "type": "object",
+                              "properties": {
+                                "external": {
+                                  "type": "object",
+                                  "properties": {
+                                    "diff": {
+                                      "type": "string",
+                                      "nullable": true,
+                                      "description": "A link to the external branch diff on bi-directionally synced projects."
+                                    },
+                                    "view": {
+                                      "type": "string",
+                                      "nullable": true,
+                                      "description": "A link to view the external branch on bi-directionally synced projects."
+                                    }
+                                  },
+                                  "required": [
+                                    "diff",
+                                    "view"
+                                  ],
+                                  "additionalProperties": false
+                                }
+                              },
+                              "required": [
+                                "external"
+                              ],
+                              "additionalProperties": false
+                            },
+                            "name": {
+                              "type": "string",
+                              "pattern": "(v{0,1})(stable|\\bmain(?:-[a-z]{2})?(?![\\w.-])|([0-9]+)(?:\\.([0-9]+))?(?:\\.([0-9]+))?(-.*)?)(_(.*))?",
+                              "description": "The name of the branch and its version prefix."
+                            },
+                            "sha": {
+                              "type": "string",
+                              "description": "The SHA of the commit that this branch points to."
+                            },
+                            "updated_at": {
+                              "type": "string",
+                              "format": "date-time",
+                              "description": "An ISO 8601 formatted date for when the branch was last updated."
+                            },
+                            "uri": {
+                              "type": "string",
+                              "pattern": "\\/branches\\/((v{0,1})(stable|\\bmain(?:-[a-z]{2})?(?![\\w.-])|([0-9]+)(?:\\.([0-9]+))?(?:\\.([0-9]+))?(-.*)?)(_(.*))?)",
+                              "description": "A URI to the branch resource."
+                            },
+                            "review": {
+                              "type": "object",
+                              "properties": {
+                                "branch": {
+                                  "type": "object",
+                                  "properties": {
+                                    "uri": {
+                                      "type": "string",
+                                      "description": "A URI to the version or branch resource that this custom block belongs to."
+                                    },
+                                    "name": {
+                                      "type": "string",
+                                      "description": "A friendly name automatically generated from your internal version number or branch name."
+                                    }
+                                  },
+                                  "required": [
+                                    "uri",
+                                    "name"
+                                  ],
+                                  "additionalProperties": false
+                                },
+                                "status": {
+                                  "type": "string",
+                                  "enum": [
+                                    "draft",
+                                    "ready",
+                                    "approved"
+                                  ],
+                                  "default": "draft",
+                                  "description": "The current review status."
+                                },
+                                "reviewers": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "user": {
+                                        "type": "object",
+                                        "properties": {
+                                          "email": {
+                                            "type": "string",
+                                            "nullable": true,
+                                            "default": null,
+                                            "description": "The email address of the user who approved the branch."
+                                          },
+                                          "id": {
+                                            "type": "string",
+                                            "pattern": "[a-f\\d]{24}",
+                                            "description": "Unique ID of the user who approved the branch."
+                                          },
+                                          "name": {
+                                            "type": "string",
+                                            "nullable": true,
+                                            "default": null,
+                                            "description": "The name of the user who approved the branch."
+                                          }
+                                        },
+                                        "required": [
+                                          "id"
+                                        ],
+                                        "additionalProperties": false,
+                                        "description": "Information about the user who approved the branch."
+                                      },
+                                      "action": {
+                                        "type": "string",
+                                        "enum": [
+                                          "approve",
+                                          "revoke"
+                                        ],
+                                        "description": "The action taken by the user when the review was made."
+                                      },
+                                      "is_ai_reviewer": {
+                                        "type": "boolean",
+                                        "description": "Whether the AI Reviewer took the action, rather than a teammate."
+                                      },
+                                      "created_at": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "description": "An ISO 8601 formatted date for when the reviewer was created."
+                                      },
+                                      "updated_at": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "nullable": true,
+                                        "default": null,
+                                        "description": "An ISO 8601 formatted date for when the reviewer was last updated."
+                                      }
+                                    },
+                                    "required": [
+                                      "user",
+                                      "action",
+                                      "is_ai_reviewer",
+                                      "created_at"
+                                    ],
+                                    "additionalProperties": false
+                                  },
+                                  "default": [],
+                                  "description": "A list of reviewers."
+                                },
+                                "ready_at": {
+                                  "type": "string",
+                                  "nullable": true,
+                                  "default": null,
+                                  "description": "An ISO 8601 formatted date for when the review was set to ready."
+                                },
+                                "ready_by": {
+                                  "type": "object",
+                                  "properties": {
+                                    "email": {
+                                      "type": "string",
+                                      "nullable": true,
+                                      "default": null,
+                                      "description": "User email who set the review to ready."
+                                    },
+                                    "name": {
+                                      "type": "string",
+                                      "nullable": true,
+                                      "default": null,
+                                      "description": "User name who set the review to ready."
+                                    }
+                                  },
+                                  "additionalProperties": false,
+                                  "description": "User who set the review to ready"
+                                },
+                                "created_by": {
+                                  "type": "object",
+                                  "properties": {
+                                    "email": {
+                                      "type": "string",
+                                      "nullable": true,
+                                      "default": null,
+                                      "description": "User email who created the branch."
+                                    },
+                                    "name": {
+                                      "type": "string",
+                                      "nullable": true,
+                                      "default": null,
+                                      "description": "User name who created the branch."
+                                    },
+                                    "is_external": {
+                                      "type": "boolean",
+                                      "default": false,
+                                      "description": "Whether the creator is a Git commit author with no account on this project, taken from a branch that arrived through sync."
+                                    }
+                                  },
+                                  "additionalProperties": false,
+                                  "description": "User who created the branch."
+                                },
+                                "merged_at": {
+                                  "type": "string",
+                                  "nullable": true,
+                                  "default": null,
+                                  "description": "An ISO 8601 formatted date for when the branch was last merged."
+                                },
+                                "contributors": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "user": {
+                                        "type": "object",
+                                        "properties": {
+                                          "email": {
+                                            "type": "string",
+                                            "nullable": true,
+                                            "default": null,
+                                            "description": "The email address of the user who contributed to the branch."
+                                          },
+                                          "name": {
+                                            "type": "string",
+                                            "nullable": true,
+                                            "default": null,
+                                            "description": "The email address of the user who contributed to the branch."
+                                          }
+                                        },
+                                        "additionalProperties": false,
+                                        "description": "Information about the user who contributed to the branch."
+                                      },
+                                      "updated_at": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "nullable": true,
+                                        "default": null,
+                                        "description": "An ISO 8601 formatted date for when the contributor last updated."
+                                      }
+                                    },
+                                    "required": [
+                                      "user"
+                                    ],
+                                    "additionalProperties": false
+                                  },
+                                  "default": [],
+                                  "description": "A list of contributors to the branch."
+                                },
+                                "branch_history": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "action": {
+                                        "type": "string",
+                                        "enum": [
+                                          "merged",
+                                          "needs review",
+                                          "draft",
+                                          "approve",
+                                          "revoke"
+                                        ],
+                                        "description": "The review or merge action recorded for the branch."
+                                      },
+                                      "is_ai_reviewer": {
+                                        "type": "boolean",
+                                        "description": "Whether the AI Reviewer took the action, rather than a teammate."
+                                      },
+                                      "date": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "description": "An ISO 8601 formatted date for when the action occurred."
+                                      },
+                                      "user": {
+                                        "type": "object",
+                                        "properties": {
+                                          "email": {
+                                            "type": "string",
+                                            "nullable": true,
+                                            "default": null,
+                                            "description": "The email address of the user who took the action."
+                                          },
+                                          "name": {
+                                            "type": "string",
+                                            "nullable": true,
+                                            "default": null,
+                                            "description": "The name of the user who took the action."
+                                          }
+                                        },
+                                        "additionalProperties": false,
+                                        "description": "The user who approved or revoked the branch. Both fields are null for other actions."
+                                      }
+                                    },
+                                    "required": [
+                                      "action",
+                                      "is_ai_reviewer",
+                                      "date",
+                                      "user"
+                                    ],
+                                    "additionalProperties": false
+                                  },
+                                  "nullable": true,
+                                  "default": null,
+                                  "description": "The recorded review and merge history, or null when history is unavailable."
+                                },
+                                "tagged_reviewers": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "user": {
+                                        "type": "object",
+                                        "properties": {
+                                          "email": {
+                                            "type": "string",
+                                            "nullable": true,
+                                            "default": null,
+                                            "description": "The email address of the tagged reviewer."
+                                          },
+                                          "id": {
+                                            "type": "string",
+                                            "pattern": "[a-f\\d]{24}",
+                                            "description": "Unique ID for the tagged reviewer."
+                                          },
+                                          "name": {
+                                            "type": "string",
+                                            "nullable": true,
+                                            "default": null,
+                                            "description": "The name of the tagged reviewer."
+                                          }
+                                        },
+                                        "required": [
+                                          "id"
+                                        ],
+                                        "additionalProperties": false,
+                                        "description": "Information about the tagged reviewer."
+                                      },
+                                      "requested_at": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "description": "An ISO 8601 formatted date for when the reviewer was tagged."
+                                      },
+                                      "requested_by": {
+                                        "type": "object",
+                                        "properties": {
+                                          "email": {
+                                            "type": "string",
+                                            "nullable": true,
+                                            "default": null,
+                                            "description": "The email address of the user who requested the review."
+                                          },
+                                          "name": {
+                                            "type": "string",
+                                            "nullable": true,
+                                            "default": null,
+                                            "description": "The name of the user who requested the review."
+                                          }
+                                        },
+                                        "additionalProperties": false,
+                                        "description": "The user who requested the review."
+                                      }
+                                    },
+                                    "required": [
+                                      "user",
+                                      "requested_at",
+                                      "requested_by"
+                                    ],
+                                    "additionalProperties": false
+                                  },
+                                  "default": [],
+                                  "description": "A list of tagged reviewers for this branch."
+                                },
+                                "created_at": {
+                                  "type": "string",
+                                  "format": "date-time",
+                                  "description": "An ISO 8601 formatted date for when the review was created."
+                                },
+                                "updated_at": {
+                                  "type": "string",
+                                  "format": "date-time",
+                                  "description": "An ISO 8601 formatted date for when the review was last updated."
+                                },
+                                "report": {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "string",
+                                      "nullable": true,
+                                      "default": null,
+                                      "description": "A report id or matching job id."
+                                    }
+                                  },
+                                  "additionalProperties": false,
+                                  "description": "Information about the reporting job"
+                                },
+                                "project": {
+                                  "type": "string",
+                                  "description": "The project ID that this review belongs to."
+                                },
+                                "notification_settings": {
+                                  "type": "object",
+                                  "properties": {
+                                    "branch_topic_key": {
+                                      "type": "string",
+                                      "nullable": true,
+                                      "default": null,
+                                      "description": "The Novu Topic Key associated with this branch for managing notification subscriptions."
+                                    }
+                                  },
+                                  "additionalProperties": false,
+                                  "description": "Notification settings for the branch review."
+                                },
+                                "summary": {
+                                  "type": "object",
+                                  "properties": {
+                                    "short": {
+                                      "type": "string",
+                                      "nullable": true,
+                                      "default": null,
+                                      "description": "A short (one sentence) AI-generated summary of branch changes."
+                                    },
+                                    "medium": {
+                                      "type": "string",
+                                      "nullable": true,
+                                      "default": null,
+                                      "description": "A medium-length AI-generated summary of branch changes."
+                                    },
+                                    "long": {
+                                      "type": "string",
+                                      "nullable": true,
+                                      "default": null,
+                                      "description": "A longer AI-generated summary of branch changes."
+                                    },
+                                    "updated_at": {
+                                      "type": "string",
+                                      "format": "date-time",
+                                      "nullable": true,
+                                      "default": null,
+                                      "description": "When this summary bundle started generating (generation start timestamp)."
+                                    }
+                                  },
+                                  "additionalProperties": false,
+                                  "description": "AI summaries of branch merge changes (null fields when none generated yet)."
+                                },
+                                "source": {
+                                  "type": "string",
+                                  "enum": [
+                                    "ai-writer",
+                                    "bidi",
+                                    "readme"
+                                  ],
+                                  "nullable": true,
+                                  "description": "Whether the branch was created in ReadMe or by AI Writer."
+                                }
+                              },
+                              "required": [
+                                "branch",
+                                "ready_by",
+                                "created_by",
+                                "created_at",
+                                "updated_at",
+                                "report",
+                                "project",
+                                "notification_settings",
+                                "summary",
+                                "source"
+                              ],
+                              "additionalProperties": false,
+                              "nullable": true,
+                              "description": "The review status to the branch resource or `null` when the caller cannot view branch review workflow data."
+                            },
+                            "share": {
+                              "type": "object",
+                              "properties": {
+                                "key": {
+                                  "type": "string",
+                                  "nullable": true,
+                                  "description": "The non-guessable secret used to build a public, shareable link to this branch (append as a `key` query param). Only returned to teammates permitted to share branch links; `null` for everyone else."
+                                }
+                              },
+                              "required": [
+                                "key"
+                              ],
+                              "additionalProperties": false,
+                              "description": "Public share-link details for the branch."
+                            }
+                          },
+                          "required": [
+                            "base",
+                            "href",
+                            "name",
+                            "sha",
+                            "updated_at",
+                            "uri",
+                            "review",
+                            "share"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
+                            "branch"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "data",
+                        "type"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.readme.com/v2",
+      "description": "The ReadMe API"
+    }
+  ],
+  "security": [
+    {
+      "bearer": []
+    }
+  ],
+  "x-readme": {
+    "proxy-enabled": true
+  },
+  "tags": [
+    {
+      "name": "Branches"
+    }
+  ]
+}
+```
+
+# Sibling pages
+
+- [Get branches](/main/reference/getbranches)
+- [Get a branch](/main/reference/getbranch)
+- [Updates an existing branch](/main/reference/updatebranch)
+- [Delete a branch](/main/reference/deletebranch)

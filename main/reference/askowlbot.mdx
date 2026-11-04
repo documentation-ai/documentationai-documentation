@@ -1,0 +1,191 @@
+---
+title: Ask Owlbot AI a question
+description: "Ask Owlbot a question about the content of your docs.  With `accept: text/event-stream` the answer is streamed as plain-text Markdown, not Server-Sent Events, so `EventSource` will not work. Read the…"
+metaDescription: "Ask Owlbot a question about the content of your docs.\n\nWith `accept: text/event-stream` the answer is streamed as plain-text Markdown, not Server-Sent Events, so `EventSource` will not work. Read the raw body. When sources were used, the stream ends with a blank line and a `sources:` line holding a JSON array of `\u007B title, url \u007D`. If generation fails part way, one of `error: Something went wrong`, `error: LLM provider didn't respond` or `error: AskAI couldn't finish generating the answer` is appended straight after the answer text with no separator, and the status stays 200. Match the whole marker, since an answer can contain `error: ` on its own."
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774753478-y1r7wj0qkvh-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-10-07T21:49:35.000Z
+---
+
+Ask Owlbot a question about the content of your docs.
+
+With `accept: text/event-stream` the answer is streamed as plain-text Markdown, not Server-Sent Events, so `EventSource` will not work. Read the raw body. When sources were used, the stream ends with a blank line and a `sources:` line holding a JSON array of `{ title, url }`. If generation fails part way, one of `error: Something went wrong`, `error: LLM provider didn't respond` or `error: AskAI couldn't finish generating the answer` is appended straight after the answer text with no separator, and the status stays 200. Match the whole marker, since an answer can contain ` error:  ` on its own.
+
+# OpenAPI definition
+
+```json
+{
+  "openapi": "3.1.0",
+  "info": {
+    "description": "Create beautiful product and API documentation with our developer friendly platform.",
+    "version": "2.0.0",
+    "title": "ReadMe API",
+    "x-readme-deploy": "5.947.0",
+    "termsOfService": "https://readme.com/tos",
+    "contact": {
+      "name": "API Support",
+      "url": "https://docs.readme.com/main/docs/need-more-support",
+      "email": "support@readme.io"
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearer": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "A bearer token that will be supplied within an `Authentication` header as `bearer <token>`."
+      }
+    }
+  },
+  "paths": {
+    "/owlbot/ask": {
+      "post": {
+        "operationId": "askOwlbot",
+        "summary": "Ask Owlbot AI a question",
+        "tags": [
+          "Owlbot AI"
+        ],
+        "description": "Ask Owlbot a question about the content of your docs.\n\nWith `accept: text/event-stream` the answer is streamed as plain-text Markdown, not Server-Sent Events, so `EventSource` will not work. Read the raw body. When sources were used, the stream ends with a blank line and a `sources:` line holding a JSON array of `{ title, url }`. If generation fails part way, one of `error: Something went wrong`, `error: LLM provider didn't respond` or `error: AskAI couldn't finish generating the answer` is appended straight after the answer text with no separator, and the status stays 200. Match the whole marker, since an answer can contain `error: ` on its own.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "question": {
+                    "type": "string",
+                    "description": "The question being asked to Owlbot."
+                  },
+                  "chat_id": {
+                    "type": "string",
+                    "maxLength": 200,
+                    "description": "An identifier for the conversation, used for tracing."
+                  },
+                  "message_id": {
+                    "type": "string",
+                    "maxLength": 200,
+                    "description": "An identifier for the message, used for tracing and to match votes to the logged answer."
+                  },
+                  "customization": {
+                    "type": "object",
+                    "properties": {
+                      "hide_sources": {
+                        "type": "boolean",
+                        "description": "If `true`, the \"More information\"/source links are omitted from the answer text"
+                      },
+                      "advanced_instruction": {
+                        "type": "string",
+                        "maxLength": 20000,
+                        "description": "Add your own custom prompt to control how Ask AI responds"
+                      }
+                    },
+                    "additionalProperties": false,
+                    "description": "Custom settings for Ask AI"
+                  }
+                },
+                "required": [
+                  "question"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": true
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "application/json",
+                "text/event-stream"
+              ],
+              "default": "application/json"
+            },
+            "in": "header",
+            "name": "accept",
+            "required": false,
+            "description": "The format the response should be returned in. If `text/event-stream` the answer is streamed as plain text, not Server-Sent Events. See the endpoint description for the body format."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "answer": {
+                          "type": "string"
+                        },
+                        "sources": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "title": {
+                                "type": "string",
+                                "description": "The page title for the given source."
+                              },
+                              "url": {
+                                "type": "string",
+                                "description": "A link to the source."
+                              }
+                            },
+                            "required": [
+                              "title",
+                              "url"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "description": "List of the documentation pages provided to Ask AI while generating the answer — everything the agent retrieved or read up to 10 sources"
+                        }
+                      },
+                      "required": [
+                        "answer",
+                        "sources"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "data"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.readme.com/v2",
+      "description": "The ReadMe API"
+    }
+  ],
+  "security": [
+    {
+      "bearer": []
+    }
+  ],
+  "x-readme": {
+    "proxy-enabled": true
+  },
+  "tags": [
+    {
+      "name": "Owlbot AI"
+    }
+  ]
+}
+```
+
+# Sibling pages
+
+- [Export Owlbot QA logs as CSV](/main/reference/exportowlbotlogs)
+- [Retrieve an Owlbot export](/main/reference/getowlbotexport)

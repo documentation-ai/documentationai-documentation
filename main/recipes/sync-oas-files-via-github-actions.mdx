@@ -1,0 +1,69 @@
+---
+title: Sync OAS files via GitHub Actions
+updatedAt: 2025-02-27T20:55:02.000Z
+---
+
+```node Node
+// Start a new repo in a new folder (you can also use an existing repo)
+mkdir [your repo name]
+git init
+// Add your spec! Example: https://petstore.swagger.io/v2/swagger.json
+git add -A
+
+// GitHub Action in .github/workflows/readme.yml
+name: Sync OAS to ReadMe
+on:
+  push:
+    branches:
+      - master
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: readmeio/github-readme-sync@v2
+        with:
+          readme-oas-key: ${{ secrets.README_OAS_KEY }}
+           
+          # OPTIONAL CONFIG, use if necessary
+          # oas-file-path: './[your spec name].json'
+          # api-version: 'v1.0.0'
+
+```
+
+# Create a GitHub Repo with your OAS
+
+{/* node@1-5 */}
+
+You can use the PetStore example if you don't have a spec ready yet: [https://petstore.swagger.io/v2/swagger.json](https://petstore.swagger.io/v2/swagger.json)
+
+# Create a GitHub Action
+
+{/* node@7 */}
+
+Create a readme.yml file in .github/workflows/
+
+# Add the Action's Code
+
+{/* node@8-25 */}
+
+Copy and paste the action (lines 8–25)
+
+# Add your ReadMe Secret
+
+{/* node@21 */}
+
+You can add your secret as an environment variable by going to settings > secrets in the GitHub UI for your repo. You can also paste in your ReadMe secret directly.
+
+Get your ReadMe key from Configuration > API Key in the ReadMe UI.
+
+# (Optional) Specify Config Options
+
+{/* node@23-25 */}
+
+Remember to remove the # comment!
+
+# Commit and Push!
+
+Once you've committed your changes, your workflow should start to build and you'll see your OAS file in ReadMe.

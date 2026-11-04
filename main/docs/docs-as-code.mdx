@@ -1,0 +1,40 @@
+---
+title: Docs-as-code
+description: Run documentation entirely through Git, with Markdown and OpenAPI in your repository and pull requests as the review step.
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774303301-hffhx5t88y4-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-09-29T19:40:35.000Z
+---
+
+# Docs as Code (Git-focused)
+
+## Best for teams that:
+
+- Practice Docs as Code
+- Manage Markdown and OpenAPI definitions in Git
+- Use pull requests as the primary review mechanism
+
+## How it works
+
+All documentation and OpenAPI changes live in Git.  Your existing CI/CD workflow stays the same:
+
+- Make changes locally
+- Open a pull request
+- Review and merge
+- CI/CD publishes updates to ReadMe using rdme
+- ReadMe acts as the publishing and hosting layer while Git remains the source of truth
+
+<Callout>
+  Using [Bi-Directional Sync](/main/docs/bi-directional-sync)? You don't need `rdme`. Merging to your synced branch publishes your changes, and the [ReadMe CLI (`@readme/cli`)](/main/docs/cli) handles linting and OpenAPI validation in CI.
+</Callout>
+
+## Features to set up
+
+- [rdme Upload CLI `(rdme)`](/main/docs/rdme)
+- CI/CD (GitHub Actions, GitLab CI, etc.)
+- Learn More: [GitHub Actions OpenAPI](/main/docs/github-actions-openapi-example) & [GitHub Actions Markdown](/main/docs/github-actions-docs-example)
+- Learn More: [The ReadMe CLI blog! ](https://readme.com/blog/cli)
+
+# Sibling pages
+
+- [Branching](/main/docs/branching)
+- [Hybrid](/main/docs/hybrid)

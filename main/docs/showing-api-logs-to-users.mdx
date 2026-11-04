@@ -1,0 +1,57 @@
+---
+title: Show API Request History To Users
+description: Surface a developer's real API request history inside your docs so they can debug their own calls.
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774431716-9rkeexwfdb-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-09-17T08:00:15.000Z
+---
+
+ReadMe hubs go beyond static docs sites — they're interactive, so users can try your API in real time. On top of the default Try It playground, one of the best ways to make your developer experience stand out is by surfacing a user's real API request history to them directly in your hub. As long as they're logged in, they can view full logs of their past API calls and responses to debug issues and learn through trial and error.
+
+This includes all interactions that the user made with your API, not just the ones made inside ReadMe. In other words, if a user made a failed API call via cURL, then went to read your API reference to understand why the call failed, they would see that failed cURL request in your hub! It's a pretty cool experience 🙂
+
+<Callout kind="success">
+  API Request Data Required
+
+  Showing request history to users in your hub is only possible if you send your API request data to ReadMe. [Here's how to set it up!](/main/docs/personalized-docs)
+</Callout>
+
+# Where can users see their past API requests?
+
+Once you're sending API request data to ReadMe, authenticated (logged in) users will see their request history in a My Requests page in the Reference Section.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774430591-twc1yhcw3f-d1e6a3c545e7631ed827c577760ff9147284874f30f6f12b9e598daa66038d55-2c0542625773f9281d3a977626d7bee1.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+When you click an individual request, you're taken directly to the endpoint the request was made to in your API Reference — with the complete history of that specific request in the Try It playground, so developers can see exactly what happened.
+
+If they need more help, they can use the Share This Request toggle to generate a unique link for that request that can be shared directly with your developer support team, so everyone's on the same page, looking at the same information.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774442533-pkn2krslz1-7318ed57219ba3a62b329b3944952d074b58f52a0f965e85c3d4998d2c19ad5b-8d5068813a1cdcba42c7900fa4e78bba.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+Users will also see past API Requests next to each endpoint in the API Reference. Like in the logs section, clicking on an individual request will populate all of its actual metadata in the Try It playground for visibility and easy debugging.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774442453-r8lbapaxapa-28dfee55abc8b56997e15bd55865e92302514d398e4f3f8764061bf929088212-52c4efa4e920b9fd52527211a8618c21.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+Note: this requires an [OpenAPI spec](https://docs.readme.com/docs/openapi) — so if you don't have one, consider this one more reason to invest the time in building one out!
+
+# How to set this up
+
+Follow these steps to enable users to see their own API requests in the docs:
+
+1. <strong>(Highly Recommended!) Upload an OpenAPI document to ReadMe</strong> — [learn more](/main/docs/openapi).
+2. **Send your API request data to ReadMe** — [get started here](/main/docs/sending-api-logs).
+
+<Callout kind="danger">
+  ️ Scrub your API logs of confidential information before sending to ReadMe
+
+  API logs are viewable by anyone with ReadMe admin privileges. You can find out how to remove secure information from your request data [here](/main/docs/sending-api-logs).
+</Callout>
+
+3. **Set Up Authentication In Docs** — To protect your data privacy, all hub users must be authenticated in order to see real API request history data. ReadMe supports logging in with JWT, which you can set up [with this guide](/main/docs/custom-login-page). All you need to do is pass in an `id`  in the user's JWT object that matches the  `apiKey` parameter passed into the API Metrics middleware's grouping function. The user will then be able to view all of the API requests matching that value.
+
+Need help getting this setup? Send us an email at [support@readme.io](mailto:support@readme.io).
+
+# Sibling pages
+
+- [My Requests Overview](/main/docs/my-requests)
+- [SDKs](/main/docs/sdks)
+- [Other Ways to Send API Requests](/main/docs/other-ways-to-use-api-metrics)

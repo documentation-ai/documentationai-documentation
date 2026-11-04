@@ -1,0 +1,98 @@
+---
+title: Restless by ReadMe
+description: Modern API toolkit to make your API agent-ready
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774000381-pkvohduwep7-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-10-12T17:31:26.000Z
+---
+
+Your API is the front door to your product now. Developers still call it, but agents now make up 72% of traffic to API docs. They never file a ticket and never tell you when something breaks. When an agent hits an error it can't make sense of, it switches to a competitor's API. 
+
+Restless runs in your API's request path, where your product actually gets used. It captures every API and MCP call, puts the fix right in the error response and gives your team one view of who's calling and what's failing.
+
+## How it works
+
+[Restless is an SDK](https://www.npmjs.com/package/restless) you add once before your routes and every request passes through it.
+
+1. <strong>A request comes in.</strong> Restless figures out who's calling from your setup callback: which customer, and which masked API key.
+2. <strong>Restless decides whether it gets through.</strong> Return `{ block: true }` and the request stops before your code runs.
+3. <strong>Your handler runs as usual.</strong> Your routes don't change.
+4. <strong>Errors come with a way forward.</strong> Any 4xx or 5xx response includes a hint, a link to the right docs and a link to the captured log, so the caller can fix the request without searching.
+5. <strong>Everything is logged safely.</strong> Sensitive fields are redacted on your server, then the log is sent in batches in the background. Logging never slows down the response.
+
+## Core features
+
+### Agent Recovery
+
+When a request fails, Restless puts the docs for moving forward directly into the API response:
+
+- A `recovery` object in JSON error bodies with the `field` that failed, a `hint` and a `docs` path (for example, `/v1/invoices#currency`)
+- An `x-log-url` header that links to the full captured request
+- An `x-debug` header with a CLI command to inspect it
+
+An agent gets something it can parse and act on. A developer gets a direct link to what went wrong. Your support team gets one link that shows the whole request, response and caller.
+
+### See every caller
+
+Restless logs every API and MCP request in one place, across every caller: developers and agents. Traffic is grouped by customer, so you can see which integrations are growing, which are failing and where agents get stuck. 
+
+### Debugging for agents
+
+Agents can query your live API logs to find error patterns and failed requests, so they can debug their own integration instead of guessing.
+
+### Workbench
+
+The Workbench lives at the bottom of your docs. Your users can filter their logs, inspect requests and responses and open a support ticket with the failing call already attached.
+
+### Human Support
+
+When an AI chat can't solve the problem, it hands off to a person on your team. Their answer is stripped of personal data and saved as context, so the next agent with the same question gets it right on its own.
+
+### Safe by default
+
+Restless redacts sensitive data on your server, before anything is sent:
+
+- <strong>Headers:</strong> `Authorization`, cookies and API key headers
+- <strong>Fields:</strong> passwords, tokens, secrets, SSNs and card numbers, in request bodies and query params
+
+API keys are hashed with `mask()`. The CLI also reads your OpenAPI spec and flags your custom auth fields for redaction, so your own secrets are covered from the first request.
+
+### Installs in one command
+
+Run `npx restless init` and it:
+
+- Generates your OpenAPI file
+- Installs the [Restless SDK](https://www.npmjs.com/package/restless)
+- Creates an API Agent Portal and a Restless account for you
+
+## Supported stacks
+
+| **Language** | **Frameworks** |
+| --- | --- |
+| JavaScript / TypeScript | Express, Fastify, Koa, Hono, NestJS, Next.js (App or Pages Router) |
+| Python | Flask, Django, FastAPI, Starlette, and anything else speaking WSGI or ASGI |
+| Ruby | Rails, Sinatra, Hanami, Grape, Roda, and anything else speaking Rack |
+| Go | net/http, chi, gorilla/mux, Echo, Gin |
+
+## Pricing
+
+<Callout>
+  ### ReadMe customers
+
+  ReadMe isn't going anywhere, and you don't need to migrate anything. Connect your existing docs as a source and Restless builds on top of them. (Fern and Mintlify work too.) As a ReadMe customer, you get 4,000 extra credits every month, so you can see what Restless does with your real traffic before you spend anything.
+</Callout>
+
+Every Restless project gets 1,000 free credits a month. Credits cover log ingestion and the dashboard AI. Need more? Buy them in $100 increments.
+
+# Sibling pages
+
+- [Agent](/main/docs/aiagent)
+- [Linter](/main/docs/linter)
+- [Docs Audit](/main/docs/docs-audit)
+- [AI Writer](/main/docs/github-ai-writer)
+- [Ask AI](/main/docs/ask-ai)
+- [AI-Ready Docs](/main/docs/ai-ready-docs)
+- [MCP](/main/docs/mcp)
+- [AI Discoverability](/main/docs/ai-discoverability)
+- [LLMs.txt](https://docs.readme.com/main/docs/llmstxt.md)
+- [AI Dropdown](https://docs.readme.com/main/docs/askai.md)
+- [ReadMe's MCP Server](/main/docs/readme-mcp)

@@ -1,0 +1,226 @@
+---
+title: Custom CSS, HTML, and JavaScript
+description: Apply your own CSS, JavaScript, and include tags to your hub, with the plan requirements and toggles for each.
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774526856-pi3ko0s8w5-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-10-20T05:59:36.000Z
+---
+
+|  | Starter | Pro | Enterprise |
+| :--- | :--- | :--- | :--- |
+| **Custom CSS** |  |  |  |
+| **Custom JavaScript** |  |  |  |
+| **Custom HTML** |  |  |  |
+
+Set these in your project under **Appearance → CSS, JS, HTML**.
+
+---
+
+## Custom CSS
+
+Customize your docs with CSS using either CSS variables or custom CSS rules. The most flexible is to use CSS variables.
+
+For example: if you want to change your header background, you can set the CSS variable like so:
+
+```css
+.App .rm-Header {
+  --Header-background: #fff;
+}
+```
+
+The other option is to write custom CSS. We expose global class names for you to use as selectors (prefixed with `rm`):
+
+```css
+.rm-Header {
+  background: #fff;
+}
+```
+
+<Callout>
+  ### Global Selectors
+
+  Use `.rm-` prefixed selectors. Hashed selectors change constantly and **should not** be relied on as selectors (ie. `Header-bottom2eLKOFXMEmh5`).
+</Callout>
+
+<Callout>
+  ### Scope variables to the element that uses them
+
+  ReadMe sets many variables on the element that uses them, such as `--Header-*` on `.rm-Header` and `--TryIt-*` on `.rm-TryIt`. An override on `:root`, `body`, or `.App` alone can be ignored, so target the element itself, as in the examples above.
+</Callout>
+
+### Typography
+
+The recommended way to customize fonts is through the **Typography** section in your [Theme settings](/main/docs/design-themes). There you can choose from Google Fonts or upload custom font files for headings, body text, and code.
+
+If you need further control, you can override the typeface throughout your docs through CSS variables:
+
+```css Custom CSS
+.App .rm-ReadMe {
+  --font-family: 'Your Typeface';
+}
+```
+
+Additional font family variables are available for more granular control. Set them on the same `.App .rm-ReadMe` selector:
+
+| Variable | Description |
+| :--- | :--- |
+| `--font-family` | Base font family for the project. Defaults to system typefaces. |
+| `--font-family-heading` | Font family for headings (h1–h6). |
+| `--font-family-mono` | Font family for code and monospace. |
+| `--font-base` | `15px` (**Condensed**) / `16px` (**Comfortable**). <br />Base font size used to calculate the type scale. |
+| `--font-scale` | `1.2` (Condensed) / `1.25` (Comfortable). <br />Scale ratio for the modular type scale. |
+| `--font-reading-width` | `80ch` (Condensed) / `75ch` (Comfortable). <br />Maximum width for readable content. |
+| `--font-weight` | `500` |
+| `--font-weight-bold` | `600` |
+
+### Header
+
+Some variables vary depending on the primary color of your header background (set in the Appearance page, if it's dark or light). You can base your CSS variable overrides on light or dark by doing:
+
+```css
+.ThemeContext_dark {
+  --Header-button-color: #fff;
+}
+```
+
+### CSS Variables
+
+This is not a comprehensive list of variables.
+
+| Name | Default Value | Description |
+| :--- | :--- | :--- |
+| `--Header-background` | `var(--color-primary)` | `--color-primary` is your header background from the Appearance page of the dash. |
+| `--Header-border-color` | `rgba(0, 0, 0, 0.1)` |  |
+| `--Header-border-width` | `1px` |  |
+| `--Header-button-color` |  | Color of button text in the header. |
+| `--Header-button-hover` |  | Color of the button text when it's hovered over. |
+| `--Header-button-active` |  | Color of of the button text when it is selected. |
+| `--Header-button-focus` |  |  |
+| `--Header-jumpTo-background` | `var(--color-primary-inverse)` |  |
+| `--Header-jumpTo-color` | `var(--color-primary)` |  |
+| `--Header-tab-padding` | `5px 2px` | Amount of padding within each navigation tab (available with the Line header option). |
+| `--Header-tab-underline` | `var(--color-primary)` | Color of the tab underline when using tabbed navigation (available with the Line header option). |
+| `--Sidebar-border-color` | `rgba(0, 0, 0, 0.1)` | The border color of your sidebar. |
+| `--Sidebar-indent` | `10px` | The indentation space of for subpages. |
+| `--Sidebar-link-padding-y` | `0.429em` | Vertical padding of each item in the sidebar |
+| `--TryIt-background` | Your brand color. | Background color of the Try It button. `--color-primary` is your header background from the Appearance page of the dash. |
+| `--TryIt-background-hover` |  | The hover background color of your brand (darkened). |
+| `--TryIt-background-active` |  | Same as hover, but even darker. |
+| `--TryIt-background-focus` |  | The focus ring color; also based on your brand color. |
+| `--TryIt-background-disabled` |  |  |
+| `--TryIt-border-radius` | `var(--border-radius-lg)` |  |
+| `--TryIt-color` |  | Calculated text legible color; based on your brand color. |
+| `--TryIt-spinner-color` |  |  |
+| `--transition-fast` | `.15s` |  |
+| `--transition-slow` | `.3s` |  |
+| `--transition-timing` | `cubic-bezier(.16,1,.3,1)` |  |
+| `--Changelog-excerpt-height` | `14rem` | Max height of a changelog list preview that starts with a custom block. |
+
+### Global Classes
+
+This is not a comprehensive list of classes.
+
+| Name | Description |
+| --- | --- |
+| `.rm-ReadMe` | Root element that wraps your hub. |
+| `.rm-Header` | Header element. |
+| `.rm-Header_landing` | Applied to the header on the landing page. Sticky header CSS does not apply when this class is present. |
+| `.rm-Logo` | Logo element. |
+| `.rm-Logo-img` | Image element within the logo container. |
+| `.rm-Header-top-link` | Links in the top section of your header. |
+| `.rm-Header-bottom-link` | Links in the bottom section of your header. |
+| `.rm-SearchToggle` | The search input. |
+| `.rm-Header-top-link_login` | Login link in the top section of your header. |
+| `.rm-JumpTo` | Accessible link that takes users to the main content. |
+| `.rm-Sidebar` | Left-hand sidebar element. |
+| `.rm-Sidebar-link` | Page links within the sidebar element. |
+| `.rm-Sidebar-heading` | Category elements in the sidebar. |
+| `.rm-Sidebar-list` | Semantic list of links within a category. |
+| `.rm-ToC` | Top-level nav element for the table of contents. |
+| `.rm-APISectionHeader` | The headings before each section in API Reference pages. |
+| `.rm-APILogInfo` |  |
+| `.rm-APILogsTable` | Request history table. |
+| `.rm-ParamContainer` | Container that wraps parameters. |
+| `.rm-ParamInput` | Text form inputs per parameter. |
+| `.rm-ParamSelect` | Select form inputs per parameter. |
+| `.rm-APIResponseSchemaPicker` | Response schema button. |
+| `.rm-Pagination` | Wrapper for the previous / next navigation buttons at the bottom of the page. |
+| `.rm-LanguageButton` | Language buttons. |
+| `.rm-LanguageButton-more` | Overflow language button. |
+| `.rm-PlaygroundRequest` | Request example for the endpoint. |
+| `.rm-TryIt` | Try It button. |
+| `.rm-PlaygroundResponse` | Response example for the endpoint. |
+| `.rm-Changelog` | Root element of the changelog list and post pages. |
+
+### Color Schemes
+
+There are two selectors you should use when targeting dark mode styles. The first applies when the color scheme is set to system and a user is not toggling dark or light modes.
+
+```css
+@media (prefers-color-scheme: dark) {
+  [data-color-mode="system"] YOUR_SELECTOR {
+    /* CSS goes here */
+  }
+}
+```
+
+The second selector to use is for users who want to use dark mode, even when their system is set to light:
+
+```css
+[data-color-mode="dark"] YOUR_SELECTOR {
+  /* CSS goes here */
+}
+```
+
+That’s it! You’ll need to use both selectors for everything to work. Here’s an example with everything together, to change the background color of the “Try It” button:
+
+```css
+.App .rm-TryIt {
+  --TryIt-background: yellow;
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-color-mode="system"] .App .rm-TryIt {
+    --TryIt-background: purple;
+  }
+}
+
+[data-color-mode="dark"] .App .rm-TryIt {
+  --TryIt-background: purple;
+}
+```
+
+## Custom Javascript
+
+Your Javascript will be included at the bottom of the page.
+
+Your hub is a single-page app, so this script runs once when the hub first loads, not each time a reader moves to another page. To run code on every page, use the `pageLoad` event:
+
+```javascript
+$(window).on('pageLoad', () => {
+  // Runs on the first page load and after each navigation
+});
+```
+
+## Custom Include Tags
+
+**Head Tag**
+
+Any html here will be included in the head tag, which is good for things like meta tags and loading external CSS or JS.
+
+**End of Body Tag**<br />​<br />This will go right before the `</body>` tag. Good for things like analytics and tracking.
+
+## Toggling Custom Javascript and CSS
+
+Add the `?disableCustomCss=true&disableCustomJs=true` query params to the end of any URL.
+
+This works in public view, for example in a private or incognito window. When you're logged in to ReadMe, your hub loads inside the editor's preview, which doesn't pick up these params.
+
+# Sub pages
+
+- [Custom Icons](/main/docs/custom-icons)
+- [Editing Custom Code with AI](/main/docs/custom-code-with-ai)
+
+# Sibling pages
+
+- [Themes](/main/docs/design-themes)
+- [Site Navigation](/main/docs/site-navigation)

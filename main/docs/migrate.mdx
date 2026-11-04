@@ -1,0 +1,241 @@
+---
+title: Migrating to ReadMe
+description: This guide helps you bring your existing docs into ReadMe through a few options, depending on your needs.
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774000585-69mi2qejtl5-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-10-26T20:48:36.000Z
+---
+
+<Callout kind="alert" title="Needs review">
+  **Needs review**: no mapping rule for signature 08e021cc726a; nothing representable after sanitisation
+
+  ```
+  <CoolCard header="Importer" href="#importing-from-a-website" icon="fa-duotone fa-solid fa-upload" text="Import your existing docs with a URL or OpenAPI specs" />
+  ```
+</Callout>
+
+<Callout kind="alert" title="Needs review">
+  **Needs review**: no mapping rule for signature 08e021cc726a; nothing representable after sanitisation
+
+  ```
+  <CoolCard header="Start Fresh" href="#add-your-content-manually" icon="fa-duotone fa-solid fa-file-circle-plus" text="Give your docs a new beginning and build your docs with intention" />
+  ```
+</Callout>
+
+<Callout kind="alert" title="Needs review">
+  **Needs review**: no mapping rule for signature 08e021cc726a; nothing representable after sanitisation
+
+  ```
+  <CoolCard header="Importing via GitHub" href="#add-your-content-from-git" icon="fa-duotone fa-solid fa-arrows-rotate" text="Sync with a Git repo to quickly import Markdown content" />
+  ```
+</Callout>
+
+<Callout kind="alert" title="Needs review">
+  **Needs review**: no mapping rule for signature 08e021cc726a; nothing representable after sanitisation
+
+  ```
+  <CoolCard header="AI Agent" href="#migrate-with-an-ai-coding-agent" icon="fa-duotone fa-solid fa-message-code" text="Have your agent convert and create your pages for you" />
+  ```
+</Callout>
+
+<Callout kind="alert" title="Needs review">
+  **Needs review**: no mapping rule for signature 08e021cc726a; nothing representable after sanitisation
+
+  ```
+  <CoolCard header="Professional Services" href="mailto:growth@readme.io" icon="fa-duotone fa-solid fa-square-envelope" text="Reach out to sales for a hands off approach to importing docs" />
+  ```
+</Callout>
+
+<Callout kind="alert" title="Needs review">
+  **Needs review**: no mapping rule for signature f7a1d5a7d1d9; nothing representable after sanitisation
+
+  ```
+  <CoolCard header="Migrate from an existing provider" href="#migrate-from-a-specific-platform" icon="fa-duotone fa-solid fa-arrows-turn-to-dots" text="Check out our migration guides" />
+  ```
+</Callout>
+
+---
+
+## Create a project
+
+It’s easy to create your first ReadMe project. You can do this either through the ReadMe web interface, or via your AI Agent of choice.
+
+- From your AI agent
+
+  - Install the [ReadMe MCP](/main/docs/readme-mcp) and agent skills
+  - Tell your agent to make your account and first project project.
+- Through ReadMe's web interface:
+
+  - [Sign Up](https://dash.readme.com/signup) with your work email
+  - Create a project for your organization
+
+## Recommended setup
+
+ReadMe makes it easy to setup starting from our Starter plan. You can start with these steps or complete them at anytime while you’re importing content.
+
+- Connect to GitHub or GitLab to [make it easy to import existing Markdown files](#add-your-content-from-git).
+- Upload your logo and set your brand colors to personalize your docs.
+- Set up a [custom domain](/main/docs/setting-up-custom-domain).
+- Invite [teammates](/main/docs/manage-team).
+
+Consider our Pro or Enterprise plans if:
+
+- You need to connect to your [SAML provider to manage teammates](/main/enterprise/setting-up-sso).
+- You want to ensure doc quality and [collaboration through branches](/main/docs/branches).
+- You want to customize your docs using [custom CSS or JS](/main/docs/custom-css-and-javascript).
+
+## Importing from a website
+
+Use [our importer](https://readme.com/importer) to drop in a URL to your existing docs, upload an OpenAPI spec or markdown files of your content. We'll build your ReadMe project automatically.
+
+For new/existing projects you can also use the [ReadMe MCP](/main/docs/readme-mcp) and agent skills to import content from existing websites; it can be helpful to tell your agent to copy branding from your existing website.
+
+## Add your content manually
+
+If you’ve decided to start fresh, you can start adding content manually. It’s a good time to start new docs with intention, without any baggage or out-dated content.
+
+If you have an OpenAPI Specification (OAS) file that defines your API, you can upload it by navigating to edit mode, and then API Reference. From there, you can provide a URL for import, or upload the file from your computer.
+
+For all other content:
+
+1. Navigate to edit mode in the top navigation bar to start editing your docs
+2. Add new pages in the left-hand sidebar
+3. Add content (you can paste Markdown)
+
+These actions are also possible via the [ReadMe MCP](/main/docs/readme-mcp) server; including OAS file upload.
+
+## Add your content from Git
+
+Once you’ve [connected your project to Git](/main/docs/bi-directional-sync), you can upload Markdown files locally or from your Git provider. ReadMe can parse files organized like so:
+
+```text
+📂 project
+├── 📁 changelogs
+├── 📁 custom_blocks
+├── 📁 custom_pages
+├── 📁 docs
+│   ├── 📂 category-folder
+│   │   ├── 📄 page.mdx
+│   │   └── 📃 _order.yaml
+│   └── 📃 _order.yaml
+├── 📁 recipes
+└── 📁 reference
+```
+
+For your first import:
+
+- `docs`: Contains your main documentation content, organized in categories.
+- `reference`: Contains API reference documentation.
+- `changelogs`: Contains your Changelog entries, one flat Markdown file per entry.
+
+Markdown files use required frontmatter to store important information about your docs:
+
+```text
+---
+title: string # Title of the page
+excerpt: string # Text displayed under title
+deprecated: boolean # Mark page as deprecated
+hidden: boolean # Visibility of page
+category: string # Category page is organized in
+metadata:
+  title: string # SEO title
+  description: string # SEO description
+  keywords:
+    - string
+  robots: index | noindex # Whether this page should be indexed
+  image: url
+
+# For API Reference pages only
+api:
+  file: string # OAS file name ("hoot.json")
+  operationId: string # Endpoint ID ("get_owls")
+  webhook: boolean # If endpoint is a webhook
+---
+```
+
+ReadMe will generate your `_order.yaml` files to control page order as you save changes on the platform.
+
+## Migrate with an AI coding agent
+
+Connect Claude Code, Cursor, Codex, or another AI coding agent to [ReadMe's MCP server](/main/docs/readme-mcp) with ReadMe's agent skills, and point it at your existing docs: a repository, exported files, or a public site. 
+
+The agent can create your project if you're new to ReadMe, and perform the vast majority of readme operations. This includes creating and editing content, configuring styling and general project setting, import content from existing websites and more.
+
+You can also use the ReadMe MCP to manage a [Bi-Directional sync](/main/docs/bi-directional-sync) repository; however, the MCP server cannot connect the repository to ReadMe for you. Connect your documentation repository before making any edits.
+
+---
+
+## Migrate from a specific platform
+
+Moving from Docusaurus, Fern, GitBook, Mintlify, or somewhere else? Each guide covers the easiest import path, what transfers automatically, and what you'll need to rebuild. If you're migrating an OpenAPI definition of any real size, read [Developer Nuances](/main/docs/migration-developer-nuances) as well — it covers the things that fail quietly.
+
+<Callout kind="alert" title="Needs review">
+  **Needs review**: no mapping rule for signature 0ea0611026ca; nothing representable after sanitisation
+
+  ```
+  <CoolCard header="Docusaurus" href="/docs/migrate-from-docusaurus" icon="fa-duotone fa-solid fa-book" text="Move your Markdown, MDX, and OpenAPI reference to ReadMe" />
+  ```
+</Callout>
+
+<Callout kind="alert" title="Needs review">
+  **Needs review**: no mapping rule for signature 0ea0611026ca; nothing representable after sanitisation
+
+  ```
+  <CoolCard header="Fern" href="/docs/migrate-from-fern" icon="fa-duotone fa-solid fa-leaf" text="Migrate your docs and decide your SDK strategy on your own terms" />
+  ```
+</Callout>
+
+<Callout kind="alert" title="Needs review">
+  **Needs review**: no mapping rule for signature 0ea0611026ca; nothing representable after sanitisation
+
+  ```
+  <CoolCard header="GitBook" href="/docs/migrate-from-gitbook" icon="fa-duotone fa-solid fa-book-open" text="Export your spaces and convert GitBook blocks to MDX" />
+  ```
+</Callout>
+
+<Callout kind="alert" title="Needs review">
+  **Needs review**: no mapping rule for signature 0ea0611026ca; nothing representable after sanitisation
+
+  ```
+  <CoolCard header="Mintlify" href="/docs/migrate-from-mintlify-to-readme" icon="fa-duotone fa-solid fa-wind" text="Migrate your MDX repository through Git-based import or the CLI" />
+  ```
+</Callout>
+
+<Callout kind="alert" title="Needs review">
+  **Needs review**: no mapping rule for signature f3053fddcf69; nothing representable after sanitisation
+
+  ```
+  <CoolCard header="Another platform" href="/docs/migrate-to-readme-other" icon="fa-duotone fa-solid fa-arrows-turn-to-dots" text="Document360, Redocly, Scalar, Slate, or a platform you built yourself" />
+  ```
+</Callout>
+
+<Callout kind="alert" title="Needs review">
+  **Needs review**: no mapping rule for signature 0ea0611026ca; nothing representable after sanitisation
+
+  ```
+  <CoolCard header="Developer Nuances" href="/docs/migration-developer-nuances" icon="fa-duotone fa-solid fa-wrench" text="Vendor OpenAPI extensions, tag grouping, and the CLI commands that solve the hard parts" />
+  ```
+</Callout>
+
+---
+
+<Callout>
+  ### Reach out to [support@readme.io](mailto:support@readme.io) if you have any questions or need help!
+</Callout>
+
+Once your content is migrated; keep exploring ReadMe’s documentation features. You can run an AI-powered [Docs Audit](/main/docs/docs-audit) to check the quality of your docs, create step-by-step guides for users with [Recipes](/main/docs/recipes), see how developers are using your API with [My Developers Overview](/main/docs/my-developers) and more!
+
+Migration is just the beginning. With ReadMe, you're setting yourself up for documentation success with tools that grow with your API.
+
+# Sibling pages
+
+- [Welcome to ReadMe](/main/docs/about-readme)
+- [Quickstart](/main/docs/quickstart)
+- [Build with AI](/main/docs/ai-overview)
+
+# What's Next
+
+- [Build with AI](/main/docs/ai-overview)
+- [Creating a Recipe](/main/docs/creating-recipes)
+- [Versioning](/main/docs/versions)
+- [My Developers Overview](/main/docs/my-developers)
+- [Plans and Pricing](/main/docs/plans-and-pricing)

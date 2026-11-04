@@ -1,0 +1,95 @@
+---
+title: Security
+description: Find how ReadMe handles data access, data storage, and third-party integrations, with the answers customers ask for most.
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774608968-lo2wqayfpvq-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-10-22T18:45:28.000Z
+---
+
+<Callout kind="info">
+  This is an evolving document!
+
+  This is a growing document answering common security questions! If you have a questions that you can't find an answer to on this page, please send a message to [support@readme.io](mailto:support@readme.io) and we'll try to get your question answered—and add it to this page—very soon!
+</Callout>
+
+## 🔎 Data Access
+
+<strong>Who at my company can view API data?</strong>
+
+Everyone that is listed as an Admin in your ReadMe project(s) will be able to view all of the Metrics data for that project(s). In certain cases, this API data will also be shown to viewers of your public-facing hub.
+
+<strong>When is API data visible to viewers of my ReadMe hub(s)?</strong>
+
+ReadMe shows users their API calls in the API reference section of your developer hub, enabling their ability to quickly troubleshoot issues. For data privacy reasons, there are different behaviors depending on if you've implemented custom login for your ReadMe projects and whether/not the end user accessing your hub is logged in.
+
+- <strong>No custom login (ReadMe login only):</strong> A user's "Try It" API calls are visible in your project's hub until they close the tab or refresh the page. They won't be able to see their previous API calls on future sessions
+- <strong>Logged out users with custom login setup:</strong> Same as above
+- <strong>Logged in users with custom login setup:</strong> Once the user is authenticated and we can link their API usage directly to their identity, the logged in user will be able to see all of their past API calls from both the "Try It" functionality and any Metrics integration
+
+## 📦 Data Storage
+
+<strong>For how long does ReadMe retain data?</strong>
+
+ReadMe retains all data indefinitely.
+
+<strong>Where will this data be stored?</strong>
+
+API request and key data is stored indefinitely in an Amazon Web Services (AWS) facility in Virginia (USA). Our managed data provider is Altinity for our Clickhouse database hosted on these servers.
+
+<strong>Does ReadMe store any Personally Identifiable Information (PII), including Clearbit data?</strong>
+
+Clearbit data is stored in the same AWS facility in Virginia (USA), in a MongoDB database.
+
+<strong>Is any sensitive data encrypted and/or hashed?</strong>
+
+Data is encrypted at rest by our database providers (Clickhouse and MongoDB). ReadMe does not additionally encrypt or hash any data. To be safe, any sensitive data should be excluded from the requests sent to ReadMe.
+
+<strong>Is it possible to obtain an export of all Try It requests stored on readme.io servers in a secure format and over a secured channel?</strong>
+
+Currently ReadMe does not provide a way to export all Metrics data outside of your project's dashboard, however this is a feature that we are exploring!
+
+<strong>Can a customer remove specific API calls or API keys from ReadMe?</strong>
+
+A customer can not automatically do this, but if the need comes up, please send us a message to let us know. We will do what we can to accommodate the request!
+
+## 🔌 Integrations
+
+<strong>What data is sent by default from an integration?</strong>
+
+By default all data included in the API request and response is sent to Metrics. However, this can be customized in all of our code-based SDKs (Node, Ruby, Python, etc) during setup.
+
+Note that with the Cloudflare and Proxy integrations, you aren't able to allow or deny specific items in the request. If this is a requirement we'd recommend using an SDK.
+
+<strong>How do I prevent sensitive data from being sent to ReadMe?</strong>
+
+In all of the code-based SDKs, you can pass a configuration option either to remove specific items in the request or to allow specific elements (denylist or allowlist). This is useful if there is sensitive data in the request that you don't want ReadMe to receive, as this configuration will prevent that data from being sent to ReadMe.
+
+You can read more about this in the documentation for each SDK, in [this section](/main/docs/sending-api-logs) of our docs.
+
+<strong>What data is sent by default from the Try It functionality (zero config metrics)?</strong>
+
+By default we send all data included in the API request and response, as well as information about how the API call was made. Currently it's not possible to customize what data is sent to ReadMe via Try It, so if you're concerned about sensitive data, the best path would be to disable this feature by turning off the Try It proxy. This would prevent the API call from going through ReadMe in any capacity. Custom configuration is available in the full SDK integration with Metrics if you're interested in exploring that!
+
+<strong>How can I disable Try It request history?</strong>
+
+To disable the Request History section in your API reference section, go to your **Appearance > Theme** and turn off **Request History**, at the bottom of the page.
+
+## 🛡️ Vulnerabilities
+
+<strong>Is ReadMe affected by the PHP2Shell vulnerabilities?</strong>
+
+No. ReadMe does not use PHP anywhere in its infrastructure, so the PHP2Shell vulnerabilities don't affect ReadMe.
+
+<Callout kind="success">
+  Interested in Learning More About our Security Measures?
+
+  Head to [https://trust.readme.com/](https://trust.readme.com/) to review our security and compliance measures and to request access to view security documents such as our SOC2 report.
+</Callout>
+
+# Sub pages
+
+- [Bug Bounty Program](/main/docs/bug-bounty-program)
+
+# Sibling pages
+
+- [Need More Support?](/main/docs/need-more-support)
+- [Accessibility Report](/main/docs/vpat)

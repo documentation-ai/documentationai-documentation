@@ -1,0 +1,166 @@
+---
+title: ReadMe MCP Plugin for Cursor
+description: Add ReadMe to Cursor and search your guides, inspect OpenAPI specs, and manage documentation updates from your IDE.
+metaTitle: "ReadMe MCP Plugin for Cursor: Install & Setup"
+metaDescription: Install the ReadMe MCP plugin for Cursor to search guides and API reference, inspect OpenAPI specs, draft changelogs, and manage documentation updates directly in your code editor.
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774048229-89bwhnz38cq-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-10-16T03:54:18.000Z
+---
+
+Access your documentation, API specs, and documentation tools directly from Cursor.
+
+The ReadMe MCP plugin connects Cursor to your ReadMe hub using the [Model Context Protocol](https://modelcontextprotocol.io/), an open standard for AI agents to access external tools and data. Once installed, you can search your guides and API Reference, inspect OpenAPI specifications, draft changelog entries, and open documentation updates for review—all without leaving your editor.
+
+## What the ReadMe plugin does
+
+The ReadMe MCP plugin gives you:
+
+- <strong>Search your guides and API Reference.</strong> Find documentation pages and endpoints by keyword or natural language query. Get results from your entire hub instantly.
+- <strong>Inspect your OpenAPI specification.</strong> View endpoint details, parameters, authentication methods, and request/response schemas inline while you code.
+- <strong>Draft changelog entries.</strong> Create new changelog entries with formatted content and preview them before publishing to your hub.
+- <strong>Configure project settings and appearance.</strong> Change your project settings, including color themes, logos, and more.
+- <strong>Create, maintain, and set up docs with ReadMe skills.</strong> The plugin installs the [ReadMe skills](/main/docs/readme-mcp#readme-skills), which let Cursor's agent start a new project, write pages in ReadMe's MDX, reorganize navigation, and update project settings.
+
+The plugin provides read-only access by default (no authentication required for public hubs). Write operations like drafting changelogs and pushing updates require a ReadMe API key.
+
+## Install the ReadMe plugin
+
+1. Open **Customize** in Cursor's sidebar.
+2. Search for **ReadMe**.
+3. Select **Add** on the ReadMe plugin by ReadMe.
+4. Enter your **ReadMe API key** when prompted. You can leave it blank for read-only access, or if you're about to create a new project with the agent, and add it later.
+
+You can also run `/add-plugin readme` in the chat. A plugin installed at user scope works across the Cursor IDE, Cursor web, and the Cursor CLI. Reload the window or start a new chat if the plugin doesn't appear straight away.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774046160-pqg3lgkl8qm-6f35b827947f979493c64b57d30369e2f969b431a1eb6bebe71b6aed85093a48-Cursor_Marketplace_Cursor_Plugins_2026-09-18_09-04-50.webp?fm=auto&auto=compress%2Cformat" alt="The Cursor marketplace showing the ReadMe plugin listed under Recently Added. The card displays the ReadMe icon, plugin name, and description 'Search, read, and update your ReadMe docs, API reference, and changelog' with an Add to Cursor button." caption="_The ReadMe plugin is available in the Cursor marketplace for quick installation._" />
+
+## Authentication and write operations
+
+By default, the plugin provides read-only access to public documentation. No authentication is required for searching, viewing API specs, and reading guides.
+
+To enable write operations (drafting changelogs and pushing documentation updates), you must configure your ReadMe API key.
+
+### Generate your API key
+
+1. Sign into your ReadMe hub.
+2. Go to **Settings → API Keys** in your project.
+3. Click **Create Key** and give it a name (e.g., "Cursor MCP").
+4. Copy the key and keep it safe—you won't see it again.
+
+### Add your API key to the plugin
+
+Enter the key when you install the plugin, or open the ReadMe plugin in **Customize** and select **Configure** to add or change it. Each key gives access to one ReadMe project.
+
+### Configure your API key manually
+
+If you'd rather manage the server yourself, a `readme` entry in your own MCP configuration overrides the plugin's settings.
+
+1. Open your Cursor MCP configuration file. It's located at:
+
+   - <strong>Project-level:</strong> `.cursor/mcp.json` (in your project root)
+   - <strong>User-level:</strong> `~/.cursor/mcp.json` (in your home directory)
+2. If the file doesn't exist, create it.
+3. Set your API key as an environment variable. In your terminal or shell profile, add:
+
+```bash
+export README_API_KEY="your-api-key-here"
+```
+
+Do not commit this to version control. If you use a `.env` file, add it to `.gitignore`.
+
+4. Update your `mcp.json` file. Replace or add the ReadMe server entry with authenticated access:
+
+```json
+{
+  "mcpServers": {
+    "readme": {
+      "type": "http",
+      "url": "https://docs.readme.com/mcp",
+      "headers": {
+        "Authorization": "Bearer ${env:README_API_KEY}"
+      }
+    }
+  }
+}
+```
+
+5. Restart Cursor to apply the changes.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774048685-zzxz4v4ckn-5d83adef17426c08aae37fbec8bf149f6d1c857faec5be3a98e055bc1869f84e-Screenshot_2026-09-18_at_12-55-53_PM.png?fm=auto&auto=compress%2Cformat" alt='The ReadMe plugin details page in the Cursor marketplace showing the plugin name, description "Search, read, and update your ReadMe docs, API reference, and changelog," the installation command /add-plugin readme, and three skills: mcp-auth, mcp-server, and onboarding, with the MCP server endpoint listed below.' caption="The ReadMe plugin details page showing installation command and available skills." />
+
+Once configured, you can draft changelogs and push documentation updates from Cursor using the plugin's write tools.
+
+## Search your documentation
+
+Use the plugin to find guides, API reference pages, and changelog information.
+
+In Cursor, invoke the plugin's search tool and ask natural language queries like:
+
+- "Find guides about authentication"
+- "Show me the create user endpoint"
+- "Search for rate limiting documentation"
+- "What endpoints use OAuth?"
+
+The plugin searches across your entire ReadMe hub and returns matching pages, sections, and endpoints with links to view them in your hub.
+
+## Inspect your OpenAPI spec
+
+Reference your API specification while writing code.
+
+Ask the plugin to show you:
+
+- Details about a specific endpoint (parameters, authentication, response schema)
+- All endpoints matching a pattern (e.g., "all user endpoints")
+- Authentication methods and how to implement them
+- Request and response formats for an operation
+
+The plugin returns the relevant spec details, including parameter types, required fields, examples, and descriptions.
+
+## Draft changelog entries
+
+Create changelog entries without switching to your hub.
+
+Use the plugin to:
+
+1. Ask it to draft a new changelog entry with a description of your changes.
+2. Specify the type (New Features, Improvements, Bugs Fixed, etc.) and affected areas.
+3. Review the draft in Cursor before pushing it to your hub for review or publishing.
+
+If you've configured write access, you can push the draft directly to your hub.
+
+## Push documentation updates
+
+When you have write access configured, you can open documentation updates for review or push them directly.
+
+Provide the plugin with:
+
+- The page you want to update
+- The changes you want to make
+- Whether to create a draft or push for immediate review
+
+The plugin creates the update in your hub, either as a draft for team review or as a proposed change depending on your hub's workflow.
+
+## Troubleshooting
+
+<strong>The plugin is not appearing in Cursor.</strong>
+
+Confirm that you ran `/add-plugin readme` and that the command completed without errors. Restart Cursor if the plugin doesn't appear. If it still doesn't show, check your Cursor version—the MCP plugin system requires Cursor version 0.42 or later.
+
+<strong>Search returns no results.</strong>
+
+Verify that your ReadMe hub has public content. If your hub is behind authentication, ensure the plugin has access (either by making the hub public or by setting up API credentials).
+
+<strong>I can't draft changelogs or push updates.</strong>
+
+Write operations require API key authentication. Open the ReadMe plugin in **Customize**, select **Configure**, and check that your ReadMe API key is set. Confirm that the key has permissions to edit content in your hub.
+
+<strong>I'm getting authentication errors on write operations.</strong>
+
+Your API key may be expired or may lack the required permissions. Generate a new API key under **Settings → API Keys** in your project and update the plugin configuration.
+
+## Next steps
+
+- <strong>Try a search.</strong> Ask the plugin to find documentation about your most common use case and verify it returns relevant results.
+- <strong>Share with your team.</strong> If your team uses Cursor, let them know the plugin is available so they can install it too. Read-only access works for anyone with your public hub URL.
+- **Configure write access** (optional). If your team needs to draft changelogs or updates from Cursor, set up API key authentication.
+- <strong>Keep your docs current.</strong> Use the plugin's search to verify your documentation is up-to-date as you code, and use changelog drafting to announce changes.

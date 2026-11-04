@@ -1,0 +1,115 @@
+---
+title: Quickstart
+description: "Get your API documentation live in three steps: create a project, upload your API definition, and write your first guide."
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793773998453-61lnxh83d5o-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-10-16T01:29:42.000Z
+---
+
+Get your API documentation live in three steps.
+
+<Columns cols={2}>
+  <Card title="1: Create Your Project" href="#step-1-create-your-project" icon="palette">
+    Sign into ReadMe, name your project, and upload your logo.
+  </Card>
+
+  <Card title="2: Add Your API Spec" href="#step-2-add-your-api-spec" icon="file">
+    Upload an OpenAPI file or URL to generate interactive API reference docs.
+  </Card>
+
+  <Card title="3: Write Your First Guide" href="#step-3-write-your-first-guide" icon="pen">
+    Create a getting started page using the editor or the AI Agent.
+  </Card>
+</Columns>
+
+## Step 1: Create Your Project
+
+1. Sign into your ReadMe account.
+2. Click **Create New Project**.
+3. Name your project.
+4. Upload your logo — ReadMe matches your brand colors automatically.
+
+<Callout>
+  ### <strong>Starting from your AI agent?</strong>
+
+  You can use [ReadMe's MCP server](/main/docs/readme-mcp) and agent skills to create an account, make a project and have it create documentation from your code, existing docs website, OpenAPI file and more.
+</Callout>
+
+## Step 2: Add Your API Spec
+
+Upload your OpenAPI specification to generate an interactive API reference with endpoint descriptions, request/response examples, and a built-in API explorer.
+
+<Tabs>
+  <Tab title="Upload File">
+    1. Click **Upload OpenAPI file**.
+    2. Select your OpenAPI/Swagger spec file.
+    3. ReadMe validates and processes the spec.
+  </Tab>
+
+  <Tab title="Import via URL">
+    1. Paste your OpenAPI specification URL.
+    2. Click **Import OpenAPI file**.
+    3. ReadMe fetches and validates the spec.
+  </Tab>
+</Tabs>
+
+After upload, you'll see a preview of your endpoints and documentation structure. Click **Go to Docs** to see the live result.
+
+No OpenAPI file yet? Click **Skip to Docs** — you can add one later from project settings.
+
+## Step 3: Write Your First Guide
+
+Guides are the pages that sit alongside your API reference — getting started tutorials, authentication walkthroughs, and conceptual explanations. You have three ways to create them:
+
+### Option A: Use Readme's Agent
+
+Open the Agent from the chat icon in your editor. Describe what you need and the Agent will draft it, pulling from your uploaded API spec for accuracy.
+
+Try a prompt like:
+
+- "Write a getting started guide for my API"
+- "Create an authentication walkthrough with code examples"
+- "Draft a guide explaining our webhook system"
+
+The Agent writes in Markdown with ReadMe's MDX components. Review the output, edit as needed, and save.
+
+### Option B: Write in the Editor
+
+1. Toggle into **Edit Mode** from the top navigation.
+2. Click <strong>\+ NEW CATEGORY</strong> and name it (e.g., "Getting Started").
+3. Click <strong>+</strong> next to the category to create a page.
+4. Type `/` to insert code blocks, callouts, images, tabs, and other components.
+5. Toggle between **Edit** and **View** to preview.
+
+### Option C: Use Your AI Coding Agent
+
+Connect your AI agent (ChatGPT, Claude Code, Cursor, etc.) to [ReadMe's MCP server](/main/docs/readme-mcp) and install the agent skills to create and manage your project from your own agent. Configure your project settings, ask it to import docs from an existing website, write guides from your codebase or API spec and more. Have it work on a branch so you can review the pages before they go live.
+
+## What's Next
+
+<Columns cols={2}>
+  <Card title="Set Up AI for Your Readers" href="/main/docs/ai-overview" icon="lucide:sparkles">
+    Enable Ask AI, MCP servers, and LLMs.txt so your users can query your docs with AI tools.
+  </Card>
+
+  <Card title="Configure the Linter" href="/main/docs/linter" icon="wand-sparkles">
+    Set up your style guide rules and validate documentation as you write.
+  </Card>
+
+  <Card title="Customize Your Hub" href="/main/docs/design-themes" icon="paintbrush">
+    Add your brand colors and custom domain.
+  </Card>
+
+  <Card title="Sync with GitHub" href="/main/docs/sync-with-github" icon="code-compare">
+    Connect to a GitHub repo for collaborative editing via pull requests.
+  </Card>
+
+  <Card title="Preview Docs Locally" href="/main/docs/cli#preview-docs-locally" icon="laptop-code">
+    Run `npx @readme/cli dev` to preview Guides and API Reference changes locally with hot reload.
+  </Card>
+</Columns>
+
+# Sibling pages
+
+- [Welcome to ReadMe](/main/docs/about-readme)
+- [Build with AI](/main/docs/ai-overview)
+- [Migrating to ReadMe](/main/docs/migrate)

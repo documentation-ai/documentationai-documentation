@@ -1,0 +1,237 @@
+---
+title: Migrate from Docusaurus
+description: Move Docusaurus docs to ReadMe without losing your Markdown or OpenAPI reference. See what transfers, what needs rebuilding, and the easiest path to get there.
+metaTitle: Migrate from Docusaurus to ReadMe
+metaDescription: Guide to moving documentation from Docusaurus to ReadMe, covering sidebars.js, admonitions, versioned docs, i18n, React components, and redirects.
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774619020-59jq0chagok-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-10-26T20:48:36.000Z
+---
+
+Move Docusaurus documentation to ReadMe by choosing the import path that fits your repository, converting unsupported MDX, and verifying the result before cutover. You stop maintaining a build pipeline, a search index, and hosting. You gain an API Reference generated from your OpenAPI file with Try It! built in, and content review through Branches and Reviews.
+
+## Choose the easiest migration path
+
+| Your situation | Recommended path |
+| --- | --- |
+| You want to evaluate a public site quickly | Use the [Importer](https://readme.com/importer) with your documentation URL, Markdown files, or OpenAPI definition. |
+| Your repository is ready for ReadMe's Git-based import | Prepare the supported repository structure and use the Git-based import workflow. |
+| You need a scripted or CI-based migration | Convert a copy of the repository and upload it with `rdme@10`. |
+| You have only a few pages | Create and review them in the ReadMe editor. |
+| You want an AI agent to convert Docusaurus MDX and create pages for you | Connect your agent to [ReadMe's MCP server](/main/docs/readme-mcp) with the ReadMe skills and start your import and configure appeareance. |
+| You have many pages, custom components, versions, or access rules | Ask about [Enterprise migration assistance](/main/enterprise/migrate-to-readme). |
+
+Use bi-directional Git Sync after migration when you want ongoing two-way editing. It connects ReadMe to a new, empty GitHub or GitLab repository; it does not import an existing Docusaurus repository.
+
+## What doesn't transfer, and what replaces it
+
+Markdown, MDX, images, files, and OpenAPI definitions move to ReadMe. Custom React components, swizzled theme code, plugins, and build-time behavior need rebuilding:
+
+| What doesn't transfer | Rebuild it with |
+| --- | --- |
+| Custom React components and swizzled theme in `src/theme/` | [Custom MDX components](/main/docs/building-custom-mdx-components) |
+| Hand-written endpoint pages | An [API Reference](/main/docs/api-reference) generated from your OpenAPI file, with Try It! |
+| Your own search implementation | ReadMe's built-in search |
+| Ad hoc pull-request review of docs changes | [Branches](/main/docs/branches) and [Reviews](/main/docs/reviews) |
+| `docusaurus.config.js` theming | [Themes](/main/docs/design-themes) and Appearance settings |
+| Plugin-generated content, including blog posts | Rebuild manually, or move release notes to the ReadMe Changelog |
+| Localized content (i18n) | Plan translations as a separate step; ReadMe handles localization differently |
+
+## Inventory your Docusaurus site
+
+1. Copy the repository and keep the original unchanged.
+2. Record public URLs for high-traffic pages and every version you plan to retain.
+3. List pages that import from `@theme`, `@site`, or your component directories.
+4. Review `src/theme/`, `src/components/`, and `docusaurus.config.js` for swizzled code, plugins, generated content, and custom search behavior.
+
+## Convert content and navigation
+
+| Docusaurus | ReadMe |
+| --- | --- |
+| `title` | `title` |
+| `description` | `excerpt` |
+| `tags` | `metadata.keywords` |
+| `draft: true` | `hidden: true` |
+| `image` | `metadata.image` |
+| `slug` | Preserve it when you need a specific ReadMe URL. |
+| `sidebar_label` | Preserve it as the intended page or navigation title. |
+| `sidebar_position` | Map it to the ReadMe navigation order. |
+
+Convert Docusaurus admonitions, tabs, details blocks, and other supported content to ReadMe MDX components. Replace imports only after you replace the imported component or rewrite the affected content. Review all custom JSX and component props individually.
+
+Use `sidebars.js` and the deployed site to reproduce your navigation. For CLI uploads, every new Guide needs `title` and `category.uri`; use `position` and `parent.uri` for order and hierarchy. For Git-based import, prepare the documented folders and `_order.yaml` files.
+
+## Migrate versions and API Reference
+
+Create a ReadMe version for each Docusaurus version you will continue to publish. Migrate and review one version at a time, and build redirects from the deployed URLs because current and versioned Docusaurus content can have different path patterns.
+
+Upload a validated OpenAPI definition to create API Reference content. Compare generated operations with hand-written endpoint pages, and retain workflows, explanations, and examples that are not represented in the definition as Guides.
+
+## Validate and cut over
+
+For a CLI migration, preview uploads before publishing changes:
+
+```bash
+# See what's actually in your definition before you change anything
+npx rdme@10 openapi inspect ./openapi.yaml
+
+npx rdme@10 openapi validate ./openapi.yaml
+
+# --slug pins the definition's identity so its file path can change later
+npx rdme@10 openapi upload ./openapi.yaml --slug my-api --key="$README_API_KEY"
+
+npx rdme@10 docs upload ./docs --key="$README_API_KEY" --dry-run
+```
+
+<Callout>
+  ### How your definition becomes navigation
+
+  One definition becomes one top-level category, named from `info.title`. The **first** tag on each operation becomes a page inside it, and each operation becomes a subpage titled from its `summary`. Operations without tags are grouped by URL; without a `summary`, subpages are titled by URL or by HTTP method.
+
+  Knowing this before you upload saves rearranging afterward. See [Categories, Pages, and Subpages](/main/docs/openapi-categories-pages-subpages), the [OpenAPI Compatibility Chart](/main/docs/openapi-compatibility-chart) for what we support in the API Explorer, and [OpenAPI Extensions](/main/docs/openapi-extensions) for the `x-readme` options — including `apply-tag-changes`, which you'll want enabled while you're still restructuring.
+</Callout>
+
+Resolve the reported errors, then run the Guides upload without `--dry-run`. Configure API authentication before testing Try It!, and integrate the Metrics SDK separately if you need API-log data in the Developer Dashboard.
+
+Under **Settings > Errors & Redirects**, add redirects as `oldurl -> newurl`, one per line. Redirects are project settings rather than content, so they are **not** stored in your Git Sync repository and are not copied when a project is cloned — keep the map in source control as a plain text file so you can re-enter it. Verify that pages render, assets load, navigation and versions match the content you retained, API Reference includes necessary guidance, and redirects cover high-traffic URLs. Keep Docusaurus available until the cutover is complete.
+
+## Optional: continue in Git
+
+After migration, connect a new empty repository through **Settings > Git Connection** to enable bi-directional Git Sync. Use the Git Sync repository structure and keep branch names aligned with the ReadMe versions you synchronize.
+
+---
+
+## Developer nuances
+
+<Callout>
+  Details specific to a Docusaurus migration. For vendor extension compatibility, circular references, multi-file specs, and a full CI pipeline, see [Developer Nuances](/main/docs/migration-developer-nuances).
+</Callout>
+
+<Expandable title="Don't migrate your generated endpoint pages">
+  If you use an OpenAPI plugin, the MDX endpoint pages in your repository are build artifacts, not source. Migrating them gives you hand-written pages that immediately drift from your API.
+
+  Upload the OpenAPI definition instead and let ReadMe generate the reference. Then go back through the generated MDX and keep only the prose your plugin didn't produce — authentication walkthroughs, pagination patterns, worked examples — as Guides or as pages in `reference/`.
+</Expandable>
+
+<Expandable title="Extensions your OpenAPI plugin relies on">
+  If you generate reference docs with a Docusaurus OpenAPI plugin, your definition probably carries extensions that plugin understands and ReadMe doesn't.
+
+  | Docusaurus plugin | On ReadMe |
+  | :--- | :--- |
+  | `x-enumDescriptions` | **Works** — this one carries over as-is. |
+  | `x-enumDescription` | The singular spelling is ignored. Rename it to the plural. |
+  | `x-codeSamples` | Ignored. Rename to `x-readme.code-samples` and remap `lang`/`source`/`label` to `language`/`code`/`name`. |
+  | `x-tagGroups` | Ignored — see [Developer Nuances](/main/docs/migration-developer-nuances#grouping-tags-without-x-taggroups). |
+  | `x-displayName` | Ignored. Rename the tag in `tags[].name`. |
+  | `x-webhooks` | Ignored. Move them to the native `webhooks` object, which needs OpenAPI 3.1. |
+  | `x-position` | Ignored. Order pages with `_order.yaml` or in the dashboard. |
+  | `x-logo`, `x-dark-logo` | Ignored. Upload logos under Appearance settings. |
+  | `x-deprecated-description` | Ignored. Use `deprecated: true` plus the operation `description`. |
+
+  Check the `x-enumDescription` spelling carefully: a single character separates a rendered description table from no output at all.
+
+  **Custom code samples need two changes, not one**
+
+  ReadMe reads custom code samples from `x-readme.code-samples`. As with every ReadMe extension, you can also write it at the root as `x-code-samples`.
+
+  Redocly's extension was *also* called `x-code-samples` once, so older Redocly specs happen to line up and work unchanged. Redocly has since renamed it to `x-codeSamples` in camelCase — and that matches neither ReadMe spelling. On a current Redocly spec, every hand-written sample disappears on upload and the operation silently falls back to auto-generated snippets.
+
+  Renaming the key is only half the job — the field names inside each sample differ too:
+
+  | Yours | ReadMe |
+  | :--- | :--- |
+  | `lang` | `language` |
+  | `source` | `code` |
+  | `label` | `name` |
+
+  So this:
+
+  ```yaml
+  x-codeSamples:
+    - lang: python
+      label: Python 3
+      source: |
+        import requests
+  ```
+
+  becomes this:
+
+  ```yaml
+  x-readme:
+    code-samples:
+      - language: python
+        name: Python 3
+        code: |
+          import requests
+  ```
+
+  Convert one operation by hand and confirm it renders before scripting the rest, then check them all with `npx rdme@10 openapi inspect ./openapi.yaml --feature readme`.
+</Expandable>
+
+<Expandable title="Admonitions need converting, not copying">
+  Docusaurus admonitions (`:::note`, `:::tip`, `:::warning`) look close enough to ReadMe's syntax that they're easy to leave alone. Don't.
+
+  ReadMe's handling of `:::` blocks is inconsistent across shapes: a single-paragraph admonition renders, but one containing a paragraph break can print the `:::` markers as literal text on the page. Convert them to `<Callout>` components explicitly:
+
+  ```md
+  <Callout icon="📘" theme="info">
+    Your note content, however many paragraphs it runs to.
+  </Callout>
+  ```
+
+  Convert one of each type, check the rendered result, then script the rest.
+</Expandable>
+
+<Expandable title="sidebar_position and _order.yaml are different models">
+  `sidebar_position` is a number on each page; ReadMe's `_order.yaml` is an explicit ordered list per folder. They don't translate one-to-one — pages without a `sidebar_position` fall back to alphabetical in Docusaurus, which is a rule `_order.yaml` has no way to express.
+
+  Sort each directory by `sidebar_position` (then alphabetically for the unset ones) and write out the resulting order explicitly. Do this from the **deployed sidebar**, not from the files, if the two have drifted.
+</Expandable>
+
+<Expandable title="Versioned URLs have two shapes">
+  Current docs live at `/docs/<slug>` while versioned docs live at `/docs/<version>/<slug>`. Because the path patterns differ, a redirect map built from your file tree will miss your versioned traffic entirely.
+
+  Build redirects from the deployed URLs and your analytics, one version at a time.
+</Expandable>
+
+## After you migrate
+
+Run a [Docs Audit](/main/docs/docs-audit) to check content quality against your style guide, build guided walkthroughs with [Recipes](/main/docs/recipes), and use [My Developers](/main/docs/my-developers) to see how developers use your API once your Metrics integration is live.
+
+## Frequently asked questions
+
+#### Can we retain custom React components?
+
+Rebuild the behavior with [custom MDX components](/main/docs/building-custom-mdx-components) when it fits the content model. Rework or remove components that depend on the Docusaurus build, theme, plugins, or client-side application state.
+
+#### Can we keep a pull-request workflow?
+
+Yes. After you complete the migration, Git Sync can keep ReadMe and a connected empty GitHub or GitLab repository synchronized for ongoing edits.
+
+#### What happens to the Docusaurus blog?
+
+Move release-oriented posts to your ReadMe Changelog. Changelog entries are synced to git in a flat `changelogs/` folder at the root of your repository, one Markdown file per entry, so you can migrate a Docusaurus blog by converting its posts and committing them:
+
+```yaml
+---
+title: Webhooks are now generally available
+type: added        # added | fixed | improved | deprecated | removed
+hidden: false
+published_at: '2026-05-17T13:45:05.830Z'
+---
+```
+
+Map your post's `date` to `published_at` and pick a `type` for each entry. Note that Changelog entries are unversioned — they live only on `main` and don't fork when you create a version — and that only English entries are represented in the repository. You can also upload them with `npx rdme@10 changelog upload ./changelogs`.
+
+Move longer-form posts to your marketing site or another publishing system, and redirect their existing URLs as needed.
+
+#### We have translations. What happens?
+
+Plan localization as its own project step. ReadMe handles translated content differently than Docusaurus i18n, so a straight file-for-file conversion will not produce the same structure. ReadMe Enterprise offers [built-in translations](/main/enterprise/language-support-and-localization) for English, German, Spanish, French, Indonesian, Italian, Japanese, Portuguese, Chinese, Korean, Dutch, and Swahili, with navigation, search, and platform-provided content translated automatically. Teams that manage translation workflows externally can also integrate with Localize or Smartling.
+
+# Sibling pages
+
+- [Migrate from Mintlify](/main/docs/migrate-from-mintlify-to-readme)
+- [Migrate from GitBook](/main/docs/migrate-from-gitbook)
+- [Migrate from Fern](/main/docs/migrate-from-fern)
+- [Migrate from another platform](/main/docs/migrate-to-readme-other)
+- [Developer Nuances](/main/docs/migration-developer-nuances)

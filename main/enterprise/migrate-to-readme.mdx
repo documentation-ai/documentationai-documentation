@@ -1,0 +1,125 @@
+---
+title: Migrate to ReadMe
+description: This guide helps you bring your existing docs into ReadMe
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774886559-7w5fe2bjmej-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-10-26T20:37:48.000Z
+---
+
+Migrating your documentation to ReadMe Enterprise is streamlined and secure. Whether you're transitioning from Docusaurus, GitBook, Mintlify, Nextra, Zendesk, or custom solutions, our enterprise platform provides the tools and support you need.
+
+<Callout>
+  ### 
+
+  ReadMe offers Professional Services to help you migrate your content with dedicated support from our team. Please reach out to [growth@readme.io](mailto:growth@readme.io) to schedule your migration consultation.
+</Callout>
+
+---
+
+## Professional Services for Enterprise
+
+ReadMe Enterprise includes comprehensive migration support. ReadMe partners with your team throughout the migration process, from discovery to launch:
+
+- **Discovery session** to understand your documentation architecture
+- **Content audit** to identify migration priorities and custom requirements
+- **Automated migration** of bulk content with manual review
+- **QA validation** to ensure content accuracy post-migration
+- **Training sessions** for your team
+
+---
+
+## Self-Serve Migration
+
+If you're moving from an existing docs platform, ReadMe's self-serve tools make it straightforward to bring your content over. The steps below walk you through getting your content ready to import.
+
+### Create a Project
+
+In ReadMe, a project is a documentation site where your API references, guides, and changelogs live. It's easy to create your first one:
+
+1. [Sign Up](https://dash.readme.com/signup)  using your work email (recommended).
+2. Create a project for your organization.
+
+### Recommended Setup
+
+Before importing content, here are a few ways to configure your ReadMe project to fit your team's workflow:
+
+- Connect to GitHub or GitLab to [make it easy to import existing Markdown files](#add-your-content-from-git).
+- Upload your logo and set your brand colors to personalize your docs.
+- Set up a [custom domain](/main/docs/setting-up-custom-domain).
+- Invite [teammates](/main/docs/manage-team).
+
+For our enterprise plans, you can:
+
+- Connect to your [SAML provider to manage teammates](https://docs.readme.com/ent/docs/setting-up-sso)
+- Ensure doc quality and [collaboration through branches](/main/docs/branches)
+- Customize your docs using [custom CSS or JS](/main/docs/custom-css-and-javascript)
+
+### Add Your Content Manually
+
+If you’ve decided to start fresh, you can start adding content manually. It’s a good time to start new docs with intention, without any baggage or out-dated content.
+
+If you have an OpenAPI Specification (OAS) file that defines your API, you can upload it by navigating to edit mode, and then API Reference. From there, you can provide a URL for import, or upload the file from your computer.
+
+For all other content:
+
+1. Navigate to edit mode in the top navigation bar to start editing your docs
+2. Add new pages in the left-hand sidebar
+3. Add content (you can paste Markdown)
+
+### Add Your Content From Git
+
+If you have existing documentation, syncing with Git lets you import it into ReadMe directly. Once you’ve [connected your project to Git](/main/docs/bi-directional-sync), you can upload Markdown files locally or from your Git provider. ReadMe can parse files organized like so:
+
+```
+📂 project
+├── 📁 custom_blocks
+├── 📁 custom_pages
+├── 📁 docs
+│   ├── 📂 category-folder
+│   │   ├── 📄 page.mdx
+│   │   └── 📃 _order.yaml
+│   └── 📃 _order.yaml
+├── 📁 recipes
+└── 📁 reference
+```
+
+For your first import:
+
+- `docs`: Contains your main documentation content, organized in categories.
+- `reference`: Contains API reference documentation.
+
+Markdown files use required frontmatter to store important information about your docs:
+
+```
+---
+title: string # Title of the page
+excerpt: string # Text displayed under title
+deprecated: boolean # Mark page as deprecated
+hidden: boolean # Visibility of page
+category: string # Category page is organized in
+metadata:
+  title: string # SEO title
+  description: string # SEO description
+  keywords:
+    - string
+  robots: index | noindex # Whether this page should be indexed
+  image: url
+
+# For API Reference pages only
+api:
+  file: string # OAS file name ("hoot.json")
+  operationId: string # Endpoint ID ("get_owls")
+  webhook: boolean # If endpoint is a webhook
+---
+```
+
+ReadMe will generate your `_order.yaml` files to control page order as you save changes on the platform.
+
+---
+
+## Next Steps
+
+Continue to explore ReadMe’s documentation features after you migrate your content. You can run an AI-powered [Docs Audit](/main/docs/docs-audit) to check the quality of your docs, create step-by-step guides for users with [Recipes](/main/docs/recipes), see how developers are using your API with [My Developers Overview](/main/docs/my-developers) and more!
+
+<Callout>
+  Reach out to [support@readme.io](mailto:support@readme.io) if you have any questions or need help!
+</Callout>

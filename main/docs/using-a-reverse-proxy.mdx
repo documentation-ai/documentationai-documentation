@@ -1,0 +1,190 @@
+---
+title: Using a Reverse Proxy
+description: What to weigh before putting your own proxy or CDN in front of ReadMe, and what the proxy has to do if you go ahead.
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774100356-ad1a7u0mijg-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-10-05T04:50:14.000Z
+---
+
+Some teams want to serve their ReadMe docs through a reverse proxy or CDN they already run (nginx, Fastly, Akamai, Cloudflare, an internal API gateway) instead of pointing DNS straight at ReadMe.
+
+For most teams, a plain CNAME to ReadMe as described on [Custom Domain & SSL](/main/docs/setting-up-custom-domain) is the simpler and faster setup. A proxy adds latency and configuration to maintain, and it limits what ReadMe Support can see when something goes wrong, so it is worth weighing those trade-offs before you commit to one. If you do go ahead, [let ReadMe Support know](mailto:support@readme.io) so we can note it on your account. This page covers the trade-offs, then what a proxy has to do to keep your site working.
+
+## What to Weigh First
+
+<Callout>
+  ### Expect added latency
+
+  ReadMe's CDN caches your pages using cache directives and invalidation signals that our servers send with every response. A proxy in front of ReadMe cannot see or act on those signals, and, as explained below, it must not cache content itself. Every request makes two hops and reaches our servers uncached. The added latency is easy to miss from inside your own network, so measure from a reader's perspective.
+</Callout>
+
+<Callout>
+  ### Support has less visibility
+
+  When a reader hits a problem, ReadMe Support traces the request through our edge and servers. With a proxy in the way, we see the proxy, not the reader. Requests your proxy drops, times out, or blocks never reach us, so there is nothing for us to trace. Most proxy-related tickets we receive turn out to be requests that the proxy stopped before ReadMe saw them, and diagnosing those starts with the team that runs the proxy.
+</Callout>
+
+<Callout>
+  ### There is more to forward than pages
+
+  ReadMe is a single application, not a folder of static pages. Search, Ask AI, analytics, login, the API explorer, and the in-hub editor all make requests to your docs hostname at paths, methods, and headers that a page-oriented proxy config overlooks. The sections below cover what the site needs today, and the list grows as we ship features.
+</Callout>
+
+## Proxy the Whole Hostname, at the Root
+
+A proxy needs to forward the entire hostname, with ReadMe served at `/`. ReadMe cannot run from a path on a hostname that serves something else, such as `www.example.com/docs` with your marketing site at `www.example.com/`. This is a common request, and we understand the appeal, but the platform does not support it. This setup partially worked on older projects. On ReadMe Refactored, the admin and editing tools do not work in it. Use a dedicated hostname like `docs.example.com`.
+
+## Before You Start
+
+Get your custom domain working with a plain CNAME first, as described on [Custom Domain & SSL](/main/docs/setting-up-custom-domain), and confirm ReadMe has issued the SSL certificate. Then switch DNS to your proxy.
+
+ReadMe uses Cloudflare to issue and renew your certificate, and Cloudflare validates the hostname over HTTP. Once your proxy is in front, that validation depends on your proxy forwarding the challenge paths listed below. If you skip the CNAME step and go straight to a proxy, Cloudflare cannot issue the certificate over HTTP. The alternative is DNS validation, which ReadMe Support arranges for Enterprise customers only. Most Enterprise customers who run a proxy switch to DNS validation for renewals so the proxy is never in the certificate path. Self-serve projects need to keep the HTTP challenge paths reachable.
+
+# How Your Proxy Must Behave
+
+Each requirement maps to a feature that stops working, or a security risk that appears, without it.
+
+| Requirement | What breaks without it |
+| :--- | :--- |
+| **Do not cache responses**, at the proxy or in readers' browsers. | This one is about security rather than performance. ReadMe sends `Cache-Control: s-maxage=...` on public pages. The `s-maxage` directive tells shared caches, such as CDNs and proxies, how long to keep a copy. ReadMe sets it for its own CDN, which pairs it with rules that bypass the cache whenever a reader has a session cookie. Your proxy has no such rules, and most reverse proxies treat `s-maxage` as their own cache lifetime by default. Left at defaults, the proxy can store a page and serve it to the next reader, including pages behind a password or a login. Configure the proxy to ignore `s-maxage` and cache nothing, and pass ReadMe's `Cache-Control` header through to the browser unchanged so `no-store` on protected pages still reaches it. |
+| Allow `/.well-known/*` to pass through over HTTPS and HTTP | Necessary for certificate renewal (most importantly) as well as agent discoverability. |
+| Send the original `Host` header (your docs hostname), and set `X-Forwarded-Proto` and `X-Forwarded-For` | ReadMe resolves which project to serve from the hostname. A rewritten `Host` returns the wrong project, a validation error, or a redirect loop. Absolute URLs in the page and in OAuth metadata come from the forwarded protocol and host. |
+| Pass cookies in both directions, including `Set-Cookie` on responses | Logged-in state for readers and editors, password-protected projects, unlocked shared branches, and the cross-site request forgery (CSRF) token the docs send back on every API request. |
+| Forward the `Accept` header unchanged | Markdown responses for large language models (LLMs) and AI agents (`Accept: text/markdown`, or a `.md` suffix on any page URL). |
+| Stream responses rather than buffering them | Ask AI streams its answers, and some page responses stream too. A proxy that waits for the full response before forwarding shows a spinner for many seconds, then a timeout. |
+| Allow every HTTP method (`GET`, `POST`, `PUT`, `PATCH`, `DELETE`, `OPTIONS`) | Search analytics, page view metrics, Ask AI, discussion posts, suggested edits, and every save from the editor. |
+| Allow WebSocket upgrades | Live API request logs in the My Developers panel. Collaborative editing connects to a separate host (see below), so the proxy does not affect it, but the proxy needs to preserve `Upgrade` headers on the paths it does handle. |
+| Exempt `/*/api-next/*` from web application firewall (WAF) body inspection | Editors saving code samples that contain header names, URLs, or shell commands trip common WAF signatures. The firewall rejects the save and ReadMe never sees it. |
+| Use a client timeout of at least 60 seconds | Streamed Ask AI answers regularly take 10 to 15 seconds to finish. |
+| Send Server Name Indication (SNI) when connecting to ReadMe | ReadMe's edge needs the hostname in the TLS handshake. Without it you get `403 Forbidden`. See the nginx example on [Custom Domain & SSL](/main/docs/setting-up-custom-domain). |
+
+# Forward Every Path
+
+We recommend forwarding every request on the hostname to ReadMe rather than restricting by path or method.
+
+<Callout>
+  ### Path allowlists add little and break easily
+
+  Restricting which paths reach ReadMe adds little security. Every path on your docs hostname is already public or already gated by ReadMe's own login, password, and permission checks. Blocking paths mostly hides features from your readers and editors, and it does so quietly: a blocked feature does not show an error, it simply never works. Because ReadMe adds routes as we ship features, an allowlist also falls out of date over time.
+
+  If a security review still calls for a path allowlist, [reach out to ReadMe Support](mailto:support@readme.io) before you configure it. We can walk through what your site needs and note the proxy on your account, which makes any future troubleshooting faster.
+</Callout>
+
+## Paths ReadMe Serves on Your Hostname
+
+If you are auditing an existing proxy or need to justify forwarding a path, this is what lives where. It describes the application; it is not a suggested allowlist. Paths are relative to your docs hostname.
+
+<Callout>
+  ### Paths carry optional prefixes
+
+  Almost every path accepts up to three optional prefix segments, in this order: an Enterprise child project subdomain, a language (`lang-de`), and a version (`v2.0`). So `/docs/welcome`, `/v2.0/docs/welcome`, `/lang-de/docs/welcome`, and `/payments/lang-de/v2.0/docs/welcome` are all valid.
+
+  The API paths are different. They always start with the project's ReadMe subdomain: `/<subdomain>/api-next/v2/...`. This is true even for a single project on its own custom domain. If your project lives at `dash.acme-docs.readme.io`, the API is at `docs.acme.com/acme-docs/api-next/v2/...`. For Enterprise groups, the segment is each child project's subdomain. See [URL Paths in ReadMe](/main/docs/url-paths-in-readme) for how these segments fit together.
+</Callout>
+
+<strong>The API.</strong> This is the part most often missed, and blocking it breaks every dynamic feature on the site.
+
+| Path | Used for |
+| :--- | :--- |
+| `/*/api-next/*` | Search, Ask AI, page view and search analytics, the current user's session, the sidebar, the API explorer's request logging, image and file uploads, and every read and write from the editor and project settings. |
+| `/api/*` and `/*/api/*` | Health check widget, suggested edits, legacy image upload, and other older endpoints. |
+| `/chatgpt/ask` and `/*/chatgpt/ask` | Ask AI on projects that still use the earlier chat interface. |
+| `/graphql` | GraphQL reference pages. |
+
+<strong>Documentation pages.</strong>
+
+| Path | Used for |
+| :--- | :--- |
+| `/` | Landing page. |
+| `/docs/*` | Guides. |
+| `/reference/*`, `/reference-link/*` | API reference and links into it. |
+| `/recipes/*` | Recipes, including the data endpoints the recipe player calls. |
+| `/changelog`, `/changelog/*`, `/changelog.rss`, `/blog*` | Changelog and its RSS feed. `/blog` paths redirect to the changelog. |
+| `/page/*` | Custom pages. |
+| `/discuss*`, `/comments/*` | Discussion forum, voting, and comments. |
+| `/*.md` | Markdown version of any page, for LLMs and AI agents. |
+| `/oauth2-redirect` | Return URL for OAuth flows started from the API explorer. |
+| `/openapi`, `/openapi/*` | Raw OpenAPI file download. |
+| `/og-image/*` | Social preview images. |
+| `/logs*` | Redirects to a reader's own API request history. |
+
+<strong>Editing at your custom domain.</strong> Anyone on your team who edits docs at your custom domain, rather than at your `readme.io` subdomain, uses these.
+
+| Path | Used for |
+| :--- | :--- |
+| `/update/*`, `/create/*`, `/compare/*` | Editing, creating, and comparing pages in every section. |
+| `/review/*` | Branch review. |
+| `/edit/*`, `/suggested-edits*` | Suggested edits from readers and their review. |
+
+<strong>Login and access control.</strong>
+
+| Path | Used for |
+| :--- | :--- |
+| `/login`, `/logout` | Reader and editor login. |
+| `/auth/*` | SAML single sign-on start and callback. |
+| `/oauth` | Redirect to your configured OAuth login URL. |
+| `/password`, `/custom-login`, `/login-webhook`, `/api/request-access` | Password-protected projects, custom login pages, and personalized docs. |
+| `/inactive`, `/unvalidated`, `/admin` | Status pages ReadMe redirects to when access is not yet available. |
+
+<strong>Agents, LLMs, and MCP.</strong> Requested by tools rather than browsers. `/llms.txt` and most `/.well-known/*` files can carry the child, language, and version prefixes like any page. The `/mcp` paths are always at the hostname root.
+
+| Path | Used for |
+| :--- | :--- |
+| `/llms.txt`, `/*/llms.txt`, `/*/*/llms.txt` | Documentation index for LLMs, per section and per category. |
+| `/mcp`, `/mcp/*` | The Model Context Protocol (MCP) server for your docs and API, and its OAuth pages. |
+| `/.well-known/*` | OAuth discovery, agent skills, the API catalog, and the challenge files Cloudflare uses to issue and renew your SSL certificate. |
+
+<strong>Static files and search engines.</strong>
+
+| Path | Used for |
+| :--- | :--- |
+| `/public/*` | Scripts, styles, fonts, and images. Most of these load from `cdn.readme.io`, but some projects load them from the docs hostname instead. |
+| `/favicon.ico`, `/apple-touch-icon.png`, `/icon-192.png`, `/icon-512.png`, `/site.webmanifest`, `/robots.txt`, `/sitemap.xml` | Browser and search engine metadata. The favicon and manifest paths carry the project prefix so Enterprise child projects serve their own icons. `/sitemap.xml` lives at the hostname root only; `/robots.txt` can carry the prefixes. |
+| `/directive/*`, `/healthz`, `/dash` | Templates for older projects, a health endpoint, and a redirect to the ReadMe dashboard. |
+
+# Hosts Your Readers Must Reach Directly
+
+Your proxy only sees requests to your docs hostname. The page in the browser also loads from these hosts directly, so they need to be reachable from your readers' networks and allowed by any Content Security Policy you add.
+
+| Host | Used for | Who needs it |
+| :--- | :--- | :--- |
+| `cdn.readme.io` | All JavaScript, CSS, and font bundles, plus social preview images. | Everyone. Nothing renders without it. |
+| `files.readme.io` | Images and files uploaded to your docs. | Everyone. |
+| `fonts.readme.io` | Custom fonts you upload in Appearance settings. | Everyone, if you use custom fonts. |
+| `try.readme.io` | The API explorer's cross-origin (CORS) proxy for Try It requests. | Readers using Try It, unless you disabled the proxy in your OpenAPI file. |
+| `m.readme.io` (WebSocket) | Live API request logs in the My Developers panel. | Editors using API Metrics. |
+| `*.collab.tiptap.cloud` (WebSocket) | Real-time collaborative editing. Without it, the editor shows "Collaborative session failed" and falls back to single-user editing. | Editors working in the editor at your custom domain or your `readme.io` subdomain. |
+| `*.ingest.sentry.io` | Browser error reporting. | Optional. Blocking it only hides errors from ReadMe. |
+| `*.amplitude.com` | Product analytics for ReadMe. | Optional. |
+| `fonts.googleapis.com`, `fonts.gstatic.com`, `use.typekit.net` | Google Fonts and Adobe Fonts. | Everyone, if your theme uses one of these fonts. |
+
+Integrations you turn on yourself (Google Analytics, Segment, Heap, Zendesk, Localize, Koala) add their own hosts.
+
+<Callout>
+  ### Requests from ReadMe to you
+
+  This page covers requests going to ReadMe. If your API or webhook endpoint restricts inbound traffic by IP, see [Outbound IP Addresses](/main/docs/ip-addresses) for the addresses ReadMe calls you from.
+</Callout>
+
+# Troubleshooting
+
+Symptoms we see most often when a proxy is in the way, and their likely causes.
+
+| What you see | Likely cause |
+| :--- | :--- |
+| Search opens but never returns results. Ask AI says "Failed to send message." | The proxy does not forward `/*/api-next/*`, or it times out before the streamed answer finishes. |
+| Pages load, but nothing shows in Metrics or Insights. | The proxy blocks `POST` requests to `/*/api-next/*` or rewrites them to `GET`. |
+| Readers are logged out on every page, or the site redirects in a loop. | The proxy strips cookies or rewrites `Host` to its own origin. |
+| A reader sees another reader's name, or a logged-out reader sees protected content. | The proxy is caching responses. Disable caching at the proxy right away. See the first row of the requirements table. |
+| The page renders with no styling or a blank body. | Readers cannot reach `cdn.readme.io`, or the proxy blocks `/public/*`. |
+| Saving a page or recipe fails with an "Unauthorized Access" or "Access Denied" HTML page in the error toast. | Your WAF matched a rule against the page body and blocked the save before it reached ReadMe. Exempt `/*/api-next/*` from body inspection. |
+| "Collaborative session failed" in the editor, but saves still work. | The editor's network blocks the WebSocket to `*.collab.tiptap.cloud`. This is not a proxy path issue. |
+| Try It requests fail with a cross-origin or network error while the page itself works. | Readers cannot reach `try.readme.io`. |
+| Your SSL certificate is about to expire. | The proxy blocks `/.well-known/*`, so Cloudflare cannot complete the HTTP challenge. ReadMe monitors expiring certificates and will contact you before it lapses. The fix happens at the proxy: forward the path, or, for Enterprise customers, ask Support to move you to DNS validation. |
+
+To confirm whether a request is reaching ReadMe at all, open your browser's network panel, reproduce the problem, and look at the failing request. A response from your proxy or WAF, an HTML error page on an API call, or a request that never gets a response all mean something stopped the request before it reached ReadMe. If the response includes a `cf-ray` header, which Cloudflare adds to every response it handles, the request did reach ReadMe's edge, and [Support](mailto:support@readme.io) can trace it from there.
+
+# Sibling pages
+
+- [Having Problems Generating SSL?](/main/docs/having-problems-generating-ssl)
+- [URL Paths in ReadMe](/main/docs/url-paths-in-readme)
+- [Turn Off Cloudflare Proxy](/main/docs/turn-off-cloudflare-proxy)

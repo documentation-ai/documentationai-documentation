@@ -1,0 +1,67 @@
+---
+title: The Agent in the Editor
+description: Make edits with AI to rewrite, shorten, expand, or improve selected text
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774005380-18txewl5kpi-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-06-25T21:28:21.000Z
+---
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793773994626-pp3l8g6dglf-a06ac7f2f53298ccbda10bf5d47582dface9afbc8e1e1cfa57aaa6d4b199406f-New_Page_2026-06-25_12-43-46.webp?fm=auto&auto=compress%2Cformat" alt="" />
+
+The Agent can also be accessed from the ReadMe editor. When starting from a blank page, the Agent can help draft content. 
+
+When you select text, a prompt field appears in the formatting toolbar where you can type plain-language instructions and let the Agent apply the edits. 
+
+The result is shown as an inline diff, so you can easily review the change before accepting it. You can iterate on the result with follow-up instructions, accept, or revert any Agent powered edits.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774006839-tpl00x64z2-304bbd75bc3590cfe9353e9dc4d73ebe04af1419ff0a63d63a3eb9d55a896bb1-inline_ai_update_2.gif?fm=auto&auto=compress%2Cformat" alt="" />
+
+---
+
+## Accessing the Inline Agent
+
+The Agent is available from the floating toolbar that appears when you select text in the editor.
+
+1. Select the text you want to edit.
+2. The formatting toolbar appears above your selection.
+3. Below the formatting buttons, type an instruction in the prompt field.
+4. Press **Enter** or click the up arrow button to submit the prompt.
+
+<Callout>
+  ### 
+
+  Use **Shift+Enter** to add a line break in your prompt without submitting the prompt.
+</Callout>
+
+---
+
+## Writing Prompts
+
+Prompts are plain-language instructions that describe how you want the selected text to change. Some examples:
+
+- `Shorten this to one sentence.`
+- `Rewrite this to be more formal.`
+- `Expand this with a brief explanation.`
+- `Fix the grammar.`
+
+After the Agent returns a result, you can type a follow-up instruction in the same prompt field to refine it further. Each iteration compares against your original selection.
+
+---
+
+## Reviewing, Accepting, and Reverting
+
+The Agent’s changes are shown as an inline diff. Any additions and removals are visible before any edits are made to the page.
+
+- Click **Accept** to apply the change.
+- Click **Revert** to discard the result and restore your original text.
+
+Nothing is saved unless you explicitly accept.
+
+---
+
+## Current Considerations
+
+The Agent works with standard prose and markdown content. A few things to note:
+
+- <strong>Tables are not supported.</strong> Text inside tables cannot be selected for inline editing.
+- <strong>Custom components cannot be generated.</strong> AI can modify text within custom MDX/JSX components, but it cannot produce new components.
+- **Selection length is capped at 10,000 characters** and prompts at 1,000 characters. If you exceed either limit, a validation message will appear.

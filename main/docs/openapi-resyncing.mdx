@@ -1,0 +1,55 @@
+---
+title: Re-syncing Your OpenAPI Document
+description: What happens to your API Reference pages when you upload a changed OpenAPI document, and the three ways to trigger the update.
+metaDescription: How ReadMe matches API Reference pages to operations on re-sync, what happens to tags, deleted endpoints, and manual edits, and how to re-sync from the dashboard, rdme, or @readme/cli.
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774130845-rcq8tg9zsv-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-09-17T19:37:09.000Z
+---
+
+When you upload a changed OpenAPI document, ReadMe updates the existing API Reference pages in place rather than creating a second set. Which page each operation lands on is decided by its `operationId`, so the one thing that protects your reference through a re-sync is giving every operation a stable ID.
+
+## How Pages Are Matched
+
+ReadMe keeps one API Reference page per operation. On re-sync, it compares the `operationId` of every operation in the new document against the pages it already has.
+
+| In the new document | Result |
+| --- | --- |
+| `operationId` matches an existing page | The page is updated with the new definition. Its URL is unchanged. |
+| `operationId` is new | A new page is created. |
+| `operationId` from the previous document is gone | Its page is deleted. |
+
+If an operation has no `operationId`, ReadMe generates one from the path and method: the path is lowercased, non-alphanumeric characters are removed, and the HTTP method is prefixed. `POST /pet` becomes `post_pet`.
+
+⚠️ Set `operationId` on every operation yourself. A generated ID changes whenever the path changes, and to ReadMe a changed ID is a deleted endpoint plus a new one. The old page, its URL, and any edits made to it are removed.
+
+## What Happens to Tags
+
+By default, a re-sync does not move pages between categories when an operation's tags change. Many teams reorder endpoints by hand in the dashboard and want that order to survive future uploads, so ReadMe leaves placement alone.
+
+If you want tag changes in the document to move pages, add the `x-readme.apply-tag-changes` extension to the document. See [OpenAPI Extensions](/main/docs/openapi-extensions).
+
+## What Happens to Manual Edits
+
+Reference pages generated from a document can also hold content written in the editor, such as an introduction above the generated request panel. That Markdown is kept through every kind of re-sync: a dashboard upload, `rdme openapi upload`, and `oas:sync` through bi-directional sync all leave it alone. The parts of the page that come from the document, such as the summary, parameters, and request and response panels, update to match the new definition.
+
+## Three Ways to Re-sync
+
+| Method | When to use it | How |
+| --- | --- | --- |
+| Dashboard | A spec that changes rarely, or a one-off update | In your hub's **API Reference** section, open **API Definitions**, click <strong>⋮</strong> on the definition, and select Update OAS File. Don't use + Add for this; it only creates new definitions, and a file name that already exists is rejected. |
+| Bi-directional sync with `@readme/cli` | Default for projects on [Bi-Directional Sync](/main/docs/bi-directional-sync) | Replace the document in the repository's OpenAPI folder, run `npx @readme/cli oas:sync`, commit, and merge to your version's branch. |
+| `rdme` | Projects not on sync that push files from CI | Run `rdme openapi upload openapi.yaml --key=$README_API_KEY`. The definition is matched by a slug inferred from the file name and path, so upload from the same location each time, or pass `--slug` to name it explicitly. |
+
+The full setup for the sync path is in [Keep Your API Docs Synced With OpenAPI](/main/docs/sync-docs-with-openapi). Command details are on [ReadMe CLI (@readme/cli)](/main/docs/cli) and [rdme Upload CLI and GitHub Action](/main/docs/rdme).
+
+📘 `rdme@9` identified definitions with an API definition ID passed as `--id`. That flag does not exist in `rdme@10`, which Refactored projects use. If your CI still passes `--id`, see the version table on [rdme Upload CLI and GitHub Action](/main/docs/rdme).
+
+## Confirming the Re-sync Worked
+
+Open the **API Definitions** list. The definition's **Updated** time should be now. Then open an endpoint you changed and check that the request panel reflects the new definition. If an endpoint you expected to update is missing, or has a new URL and none of its hand-written content, its `operationId` changed between documents. ReadMe removed the old page and created a new one. Fix the ID in the document before the next upload.
+
+# Sibling pages
+
+- [Categories, Pages, and Subpages](/main/docs/openapi-categories-pages-subpages)
+- [OpenAPI Compatibility Chart](/main/docs/openapi-compatibility-chart)
+- [OpenAPI Extensions](/main/docs/openapi-extensions)

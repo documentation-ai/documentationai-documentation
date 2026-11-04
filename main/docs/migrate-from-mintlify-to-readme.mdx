@@ -1,0 +1,173 @@
+---
+title: Migrate from Mintlify
+description: Move Mintlify docs to ReadMe and run Guides, API Reference, Changelog, and Recipes on one platform, with per-developer usage data in My Developers.
+metaTitle: Migrate from Mintlify to ReadMe
+metaDescription: Step-by-step guide to moving documentation from Mintlify to ReadMe, including component mapping, navigation, OpenAPI, and redirects.
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774613532-r3j8z6fry7-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-10-26T20:48:36.000Z
+---
+
+Move your Mintlify documentation to ReadMe and unlock a unified platform for your API docs. Import your public content for evaluation or migrate your MDX repository through Git-based import or `rdme@10`. ReadMe delivers everything you need: OpenAPI-generated API Reference with Try It!, embedded AI assistant, and Git-backed content review. Consolidate your Guides, API Reference, Changelog, and Recipes on one platform, with usage data tied to individual developers in My Developers.
+
+## Choose the easiest migration path
+
+| Your situation | Recommended path |
+| --- | --- |
+| You want to preview how public content appears in ReadMe | Use the [Importer](https://readme.com/importer) with your documentation URL, Markdown, or OpenAPI definition. |
+| You have the Mintlify repository | Prepare the content for Git-based import or use `rdme@10` for a controlled scripted upload. |
+| You have only a few pages | Create and review them in the ReadMe editor. |
+| You want an AI coding agent to convert Mintlify components and create pages for you | Connect your agent to [ReadMe's MCP server](/main/docs/readme-mcp) with the ReadMe skills, and have it create pages on a branch for review. |
+| You have extensive custom MDX, API navigation, versions, or complex content governance | Ask about [Enterprise migration assistance](/main/enterprise/migrate-to-readme). |
+
+Use bi-directional Git Sync after migration when you want ongoing two-way editing. It requires a new, empty GitHub or GitLab repository; it does not import an existing Mintlify repository.
+
+## What doesn't transfer, and what replaces it
+
+| What doesn't transfer | Rebuild it with |
+| --- | --- |
+| Custom React components and JSX | [Custom MDX components](/main/docs/building-custom-mdx-components) |
+| Hand-written `<ParamField>` and `<ResponseField>` pages | An [API Reference](/main/docs/api-reference) generated from your OpenAPI file, with Try It! |
+| Theme configuration from `docs.json` (colors, fonts, logo, layout) | Reconfigure with ReadMe [Themes](/main/docs/design-themes) and Appearance settings — settings don't carry over automatically, but comparable customization is available |
+| Mintlify's Ask AI configuration (starter questions, deflection email, tone controls) | Reconfigure with [Ask AI](/main/docs/ask-ai), ReadMe's embedded assistant — settings and indexed content don't carry over automatically |
+| Mintlify's page-view analytics integrations (GA4, Mixpanel, PostHog, and similar) | ReadMe's Metrics SDK and Developer Dashboard, which tie API request logs to individual developers rather than page views alone |
+| Mintlify's suggesting mode and PR-based review | ReadMe [Branches](/main/docs/branches) and [Reviews](/main/docs/reviews) — review continues in ReadMe's workflow instead of Mintlify's editor |
+
+## Inventory your Mintlify site
+
+1. Copy the repository and keep the original unchanged.
+2. Preserve `docs.json`; it is the source for navigation, configuration, and OpenAPI entries.
+3. Inventory MDX pages, assets, snippets, custom JSX, custom components, endpoint pages, and OpenAPI files.
+4. Record public URLs for high-traffic pages and every version, group, tab, dropdown, and API Reference entry you plan to retain.
+
+## Convert content and navigation
+
+| Mintlify | ReadMe |
+| --- | --- |
+| `title` | `title` |
+| `description` | `excerpt` |
+| `icon` | Convert to a supported Font Awesome class. |
+| `noindex: true` | `metadata.robots: noindex` |
+| `sidebarTitle` | Preserve it as the intended page or navigation title. |
+| `openapi` | Upload the API definition separately. |
+| `mode` | Remove. |
+
+Convert components one type at a time and verify the result before applying a bulk replacement. Map callouts, tabs, cards, accordions, columns, code groups, steps, and frames only when ReadMe supports the needed syntax and props. Rewrite custom JSX, tooltips, badges, and updates when they do not have an equivalent implementation.
+
+Use `docs.json` as the source of navigation. For CLI uploads, each new Guide needs `title` and `category.uri`; use `position` and `parent.uri` to reproduce navigation. For Git-based import, prepare the supported folder structure and `_order.yaml` files. Review OpenAPI navigation entries separately because they represent generated operations rather than MDX pages.
+
+## Upload OpenAPI and Guides
+
+Validate and upload the OpenAPI definition, then compare generated API Reference pages with Mintlify endpoint content:
+
+```bash
+# See what's actually in your definition before you change anything
+npx rdme@10 openapi inspect ./openapi.yaml
+
+npx rdme@10 openapi validate ./openapi.yaml
+
+# --slug pins the definition's identity so its file path can change later
+npx rdme@10 openapi upload ./openapi.yaml --slug my-api --key="$README_API_KEY"
+
+npx rdme@10 docs upload ./docs --key="$README_API_KEY" --dry-run
+```
+
+<Callout>
+  ### How your definition becomes navigation
+
+  One definition becomes one top-level category, named from `info.title`. The **first** tag on each operation becomes a page inside it, and each operation becomes a subpage titled from its `summary`. Operations without tags are grouped by URL; without a `summary`, subpages are titled by URL or by HTTP method.
+
+  Knowing this before you upload saves rearranging afterward. See [Categories, Pages, and Subpages](/main/docs/openapi-categories-pages-subpages), the [OpenAPI Compatibility Chart](/main/docs/openapi-compatibility-chart) for what we support in the API Explorer, and [OpenAPI Extensions](/main/docs/openapi-extensions) for the `x-readme` options — including `apply-tag-changes`, which you'll want enabled while you're still restructuring.
+</Callout>
+
+Resolve reported errors, then upload Guides without `--dry-run`. Keep conceptual workflows and examples that do not exist in the OpenAPI definition as Guides. Configure authentication before testing Try It!, and integrate the Metrics SDK separately if you need API-log data in the Developer Dashboard.
+
+## Set up redirects and cut over
+
+Build redirects from published Mintlify URLs, `docs.json`, and traffic data. Under **Settings > Errors & Redirects**, add rules as `oldurl -> newurl`, one per line. Redirects are project settings rather than content, so they are **not** stored in your Git Sync repository and are not copied when a project is cloned — keep the map in source control as a plain text file so you can re-enter it. Verify MDX rendering, assets, navigation, retained versions, API Reference coverage, and high-traffic redirects before changing your domain.
+
+Keep Mintlify available while you verify the migration and complete cutover.
+
+## Optional: continue in Git
+
+After migration, connect a new empty repository through **Settings > Git Connection** to enable bi-directional Git Sync. Use folders and `_order.yaml` files to manage navigation in that workflow.
+
+---
+
+## Developer nuances
+
+<Callout>
+  Details specific to a Mintlify migration. For vendor extension compatibility, circular references, multi-file specs, and a full CI pipeline, see [Developer Nuances](/main/docs/migration-developer-nuances).
+</Callout>
+
+<Expandable title="Your x- extensions: one works, three don't">
+  Mintlify's OpenAPI extensions don't carry over, with one useful exception.
+
+  | Mintlify | On ReadMe |
+  | :--- | :--- |
+  | `x-default` | <strong>Works.</strong> ReadMe uses the same extension to pre-fill auth in the API Explorer. Leave it. |
+  | `x-hidden` | Ignored. Use `x-internal: true`, which does the same job — per operation or at the root. |
+  | `x-group` | Ignored. On ReadMe the tag name *is* the page name, so rename the tag in `tags[].name`. |
+  | `x-mint` | Ignored, including `metadata`, `content`, `href`, `playground`, `pre`, and `post`. |
+
+  Check `x-hidden` before you publish. Because ReadMe ignores it, endpoints hidden in Mintlify are **visible** by default after upload. Search your definition for `x-hidden` and replace each one with `x-internal: true`.
+
+  If you used `x-mint.content` to put prose above an endpoint, that content is worth keeping — move it into a `reference/` page rather than dropping it with the rest of the extension.
+</Expandable>
+
+<Expandable title="Hand-written endpoint pages vs a generated reference">
+  Pages built from `<ParamField>` and `<ResponseField>` describe your API by hand. ReadMe generates the equivalent from your OpenAPI definition, with Try It! attached.
+
+  Upload the definition first, then diff the generated pages against your Mintlify ones. Anything in the hand-written page that isn't in the definition — an explanation of *why* a parameter exists, a worked example, an error-handling walkthrough — is content worth keeping. Move it into `reference/` as prose rather than deleting it with the rest of the page.
+</Expandable>
+
+<Expandable title="Snippets become reusable content">
+  Files under `/snippets` imported into MDX pages don't carry over as imports. ReadMe has [reusable content](/main/docs/reusable-content) for the same job, but it's a content object rather than a file you import.
+
+  Inventory every snippet and how many pages use it. Snippets used in several places are worth recreating as reusable content; ones used once are usually simpler to inline during conversion.
+</Expandable>
+
+<Expandable title="docs.json is your navigation source, not your file tree">
+  Navigation lives in `docs.json`, so the folder layout in your repository may not match the published sidebar at all. Build `_order.yaml` files (or `position` and `parent.uri` frontmatter for CLI uploads) from the `navigation` block, not from the directory structure.
+
+  Review OpenAPI entries in that block separately — they point at generated operations, not MDX pages, and are replaced by your uploaded definition.
+</Expandable>
+
+<Expandable title="Frontmatter that needs converting or removing">
+  | Mintlify | Do this |
+  | :--- | :--- |
+  | `icon` | Convert to a Font Awesome class ReadMe supports. |
+  | `mode` | Remove — layout is a theme setting on ReadMe, not a page property. |
+  | `openapi` | Remove — upload the definition instead. |
+  | `noindex: true` | Becomes `metadata.robots: noindex`. |
+  | `sidebarTitle` | No direct equivalent; decide whether it or `title` is the page name. |
+</Expandable>
+
+## After you migrate
+
+Run a [Docs Audit](/main/docs/docs-audit) to check content quality, build guided walkthroughs with [Recipes](/main/docs/recipes), and use [My Developers](/main/docs/my-developers) to see how developers use your API once your Metrics integration is live.
+
+## Frequently asked questions
+
+#### Can we migrate hand-written Mintlify endpoint pages?
+
+Review each page against the generated ReadMe API Reference. Retain information that is not present in the OpenAPI definition as Guides rather than deleting it.
+
+#### Do we have to move our API Reference and Guides at the same time?
+
+No. Uploading your OpenAPI definition is independent. Some teams stand up the API Reference first, run it alongside their existing Mintlify guides for a period, and migrate the guides after.
+
+#### What happens to pages that were hidden or unpublished?
+
+They migrate like any other file. Set `hidden: true` in frontmatter to keep them unpublished on ReadMe.
+
+#### Can we continue editing in Git?
+
+Yes. After the migration is complete, you can enable bi-directional Git Sync with a new empty GitHub or GitLab repository for ongoing two-way editing.
+
+# Sibling pages
+
+- [Migrate from GitBook](/main/docs/migrate-from-gitbook)
+- [Migrate from Fern](/main/docs/migrate-from-fern)
+- [Migrate from Docusaurus](/main/docs/migrate-from-docusaurus)
+- [Migrate from another platform](/main/docs/migrate-to-readme-other)
+- [Developer Nuances](/main/docs/migration-developer-nuances)

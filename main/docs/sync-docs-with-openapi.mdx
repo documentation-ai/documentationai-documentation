@@ -1,0 +1,155 @@
+---
+title: Keep Your API Docs Synced With OpenAPI
+---
+
+<Callout kind="alert" title="Needs review">
+  **Needs review**: the page could not be read: https://docs.readme.com/main/docs/sync-docs-with-openapi: Expected a closing tag for \`&lt;tag>\` (69:115-69:120) before the end of \`paragraph\`
+
+  ````
+  ---
+  updatedAt: 2026-09-25T22:37:10.000Z
+  agentTools:
+    siteIndex: https://docs.readme.com/llms.txt
+    siteSearch: https://docs.readme.com/agentSearch?query=term1%20term2
+    projectIndex: https://docs.readme.com/main/llms.txt
+    projectSearch: https://docs.readme.com/main/agentSearch?query=term1%20term2
+  ---
+
+  # Keep Your API Docs Synced With OpenAPI
+
+  Publish an interactive API Reference with a Try It! console from your OpenAPI spec, then keep it in sync with your code through Git and CI so the docs never drift.
+
+  Your OpenAPI spec is the source of truth for your API Reference, and this page shows you how to keep the published docs matching it automatically. You'll publish a reference with a working Try It! console, connect the repository the spec lives in, and add a CI check so a broken spec never reaches your hub.
+
+  This is a tutorial. It follows one path, GitHub with bi-directional sync, and calls out where GitLab or a CLI-only setup differs. When it's done, a merged change to your spec updates your reference without anyone opening the ReadMe dashboard.
+
+  ## Which CLI Do I Need?
+
+  ReadMe has two command-line tools, and this tutorial uses the first one. They move content in opposite directions.
+
+  | If your project...                                                           | Use                                                                                                   | Page                                            |
+  | ---------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
+  | Has Git Connection set up, so a repository and your hub are the same content | `@readme/cli`, which lints, validates, and previews in your clone. Publishing happens when you merge. | [ReadMe CLI (@readme/cli)](https://docs.readme.com/main/docs/cli)           |
+  | Isn't on sync, and you push files to ReadMe from CI with an API key          | `rdme`, which uploads OpenAPI and Markdown files to ReadMe one way                                    | [rdme Upload CLI and GitHub Action](https://docs.readme.com/main/docs/rdme) |
+
+  New projects should use Git Connection and @readme/cli. rdme still works and is still maintained, but edits made in the ReadMe editor don't flow back to your files, and you don't get branches or reviews.
+
+  ## Prerequisites
+
+  * A ReadMe project on any plan. Bi-directional sync, the API Reference, and Try It! are included on Starter, Pro, and Enterprise (checked against readme.com/pricing on September 15, 2026).
+  * An OpenAPI 3.0 or 3.1 document, as a single JSON or YAML file, that describes the API you want to publish.
+  * A GitHub or GitLab repository you can install an app on. If you're connecting for the first time, the repository ReadMe writes into has to be empty. See [Bi-Directional Sync](https://docs.readme.com/main/docs/bi-directional-sync) for why.
+  * Node.js 20 or later on your machine, for the ReadMe CLI.
+  * A running API endpoint the Try It! console can send requests to. A sandbox or staging server is fine and usually better.
+
+  ## Step 1: Validate the Spec Before You Publish It
+
+  Everything the reference renders comes from the spec, so start by making sure the spec is valid and says what you mean.
+
+  1. From inside your cloned docs repository (Step 2), with your spec in the top level of the `reference/` folder, run:
+
+     ```bash
+     npx @readme/cli oas:validate
+     ```
+
+     The command takes no file argument. It validates every JSON or YAML file in `reference/` that has a top-level `openapi` or `swagger` key. Add `--dereference` to also resolve every `$ref`, which is the same check ReadMe runs when the spec reaches the server
+
+  2. Fix anything it reports. Missing `operationIds`, malformed `$refs`, and path parameters that aren't declared are the usual findings.
+
+  3. Check the fields the reference renders directly. Every operation should have a `summary` and a `description`. Every request body and response should carry an `example`. Servers should list the URL you want Try It! to call, in `servers[].url`.
+
+  The command exits `0`when every spec is valid or has only warnings, and non-zero when any has an error. In CI, `lint` runs the same validation, which you'll set up in Step 4.
+
+  📘 `oas:validate`**&#x20;checks structure, not prose.** A valid spec with empty descriptions renders a reference that is a list of parameter names. The [AI Linter](https://docs.readme.com/main/docs/linter) flags thin descriptions once the reference is published; it doesn't run on the raw file.
+
+  ## Step 2: Connect Your Repository
+
+  Bi-directional sync makes a Git repository and your hub two views of the same content. Edit in either place and the other updates.
+
+  1. In your ReadMe project, open **Settings** and select **Git Connection**.
+  2. Choose **GitHub** or **GitLab** and authorize the ReadMe app on the organization that owns your docs repository.
+  3. Select the empty repository ReadMe should write into, then confirm.
+
+  ReadMe pushes an initial commit containing your project's current content as MDX files with YAML frontmatter, a `docs/` folder for Guides and a `reference/` folder for the API Reference. From this point, every save in the ReadMe editor is a commit, and every merge to the branch named after your docs version publishes to your hub. ReadMe writes each version to a Git branch with the same name, so a project on v1.0 syncs to a branch called v1.0, and the repository's main branch stays empty. If your project has no pages yet, the repository will look empty after the first sync. Add a page in the ReadMe editor and pull again.
+
+  Clone the repository and check out your version's branch. The rest of the steps happen there.
+
+  ## Step 3: Publish the API Reference With Try It!
+
+  The API Reference is generated from the spec, and `Try It!` is part of the reference, so publishing one gives you the other.
+
+  1. Copy your spec into the top level of the `reference/` folder, next to any spec that's already there. The CLI only looks at the top level of `reference/`, not its subfolders.
+
+  2. Generate the reference pages from it:
+
+     ```bash
+     npx @readme/cli oas:sync
+     ```
+
+     Like `oas:validate`, this takes no arguments. It creates one page per opertion under `reference/`<API title>`/`<tag>`/`, plus an index.md landing page for each tag and the  `_order.yaml `files that set sidebar order. Each generated page is frontmatter only, an `api.file `and `api.operationId `that tie it to the spec; the hub renders the title, description, schemas, and code samples from the spec itself.
+
+     `oas:sync` never rewrites a page that already exists, so anything you've hand-written on a reference page or a tag's `index.md` stays as you left it. The one thing it removes is the page for an operation that's no longer in the spec, and that page's body goes with it. Move any content you want to keep before you delete the operation.
+
+  3. Commit and push, then merge to your version's branch.
+
+  4. Open your hub and go to the **API Reference** section. Pick any endpoint. You'll see the request and response schemas, generated code samples, and a **Try It!** button in the request panel.
+
+  5. Enter an API key in the authentication field and select **Try It!**. The console sends the request to the first URL in `servers` and shows the real response, status code, and headers.
+
+  If the request fails with a CORS error, your API needs to allow requests from your hub's domain. If it returns a `401`, check that the `securitySchemes` in your spec match how your API actually authenticates.
+
+  Try It! sends real requests. Point `servers[].url` at a sandbox unless you want your docs to create production records.
+
+  ## Step 4: Keep It Synced on Every Change
+
+  With sync connected, the reference already updates when a spec change merges. This step adds the check that makes the update safe: a linter that runs on every pull request and fails it if a page or a spec is broken.
+
+  1. From the repository root, run:
+
+     ```bash
+     npx @readme/cli setup:github
+     ```
+
+     This writes `.github/workflows/readme-lint.yml`, a workflow that runs `lint` on every pull request and posts the results as a comment on it. `lint` also validates every OpenAPI document in `reference/ `with the same checks as `oas:validate`, so a broken spec fails the pull request without any extra configuration. On GitLab, run `setup:gitlab` instead. Bitbucket, CircleCI, and RWX have matching `setup:` commands.
+
+  2. To see a change before you open the pull request, start the [local dev server.](https://docs.readme.com/main/docs/cli#preview-docs-locally)
+
+  3. Commit the workflow and open a pull request that changes your spec. The check runs and comments on the pull request. Merge it.
+
+  4. Reload the endpoint in your hub. The change is live.
+
+  That's the whole loop. Your API's repository can also own the spec: have its release pipeline copy the built spec into the docs repository's `reference/` folder and open a pull request, then run `oas:sync` there when the set of operations changes. `oas:sync` can't be pointed at a file outside `reference/`, so the copy is the step that moves the spec across. Either way, the spec moves and the reference follows.
+
+  Run `npx @readme/cli lint --fix` locally before pushing to correct the deterministic findings, such as frontmatter formatting and duplicate slugs.
+
+  ## Step 5: Confirm the Sync Is Working
+
+  1. In your hub, open any reference page and check the spec-driven fields match the spec: summary, path, method, and parameter descriptions.
+  2. In GitHub, open the docs repository. The last commit on your version's branch should be the merge you just made, and the ReadMe app should show a successful sync on it.
+  3. Make a one-line edit to a guide in the ReadMe editor and save. A new commit appears in the repository within a few seconds. Sync runs in both directions when this works.
+  4. Run `npx @readme/cli versions` to list your published versions and branches. Confirm the version you edited is the one you expected.
+
+  ## Choosing a Sync Method
+
+  | Method                                 | When to use it                                           | What triggers an update                                 | Command                                                  |
+  | -------------------------------------- | -------------------------------------------------------- | ------------------------------------------------------- | -------------------------------------------------------- |
+  | Bi-directional sync with `@readme/cli` | Default for every new project                            | A merge to your version's branch in the docs repository | `npx @readme/cli oas:sync`                               |
+  | `rdme openapi upload`                  | Legacy projects that haven't enabled bi-directional sync | A CI job or a manual run                                | `rdme openapi upload openapi.yaml --key=$README_API_KEY` |
+  | Dashboard upload                       | One-off import, or a spec that changes rarely            | A person uploading a file                               | None                                                     |
+
+  See [Which CLI Do I Need](https://docs.readme.com/main/docs/sync-docs-with-openapi#which-cli-do-i-need)? for how rdme differs from @readme/cli.
+
+  ## Adding the Developer's Own Keys to Try It!
+
+  Try It! gets more useful when the key field is already filled in. With [Personalized Docs](https://docs.readme.com/main/docs/personalized-docs), a developer who logs in to your hub sees their own API keys in the code samples and the console, so the first request works without copying anything. Requests they send from Try It! also appear in their [My Requests](https://docs.readme.com/main/docs/my-requests) log alongside production traffic, which is how your support team can answer "why did this return a `403`" by looking at the request instead of asking for a reproduction.
+
+  # Sub pages
+
+  * [ReadMe CLI (@readme/cli)](https://docs.readme.com/main/docs/cli.md)
+
+  # Sibling pages
+
+  * [Integrate into Your Workflow](https://docs.readme.com/main/docs/integrate-your-workflow.md)
+  * [Bi-Directional Sync](https://docs.readme.com/main/docs/bi-directional-sync.md)
+  ````
+</Callout>

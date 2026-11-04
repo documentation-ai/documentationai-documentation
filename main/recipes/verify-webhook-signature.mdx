@@ -1,0 +1,68 @@
+---
+title: Verify Webhook Signature
+updatedAt: 2025-02-27T20:55:01.000Z
+---
+
+```node Node
+const { json } = require("micro");
+const crypto = require("crypto");
+
+module.exports = async (req, res) => {
+  if (req.method !== "POST") return {};
+  
+  const body = await json(req);
+
+  // Verify signature
+  const [fullMatch, time, readmeSignature] = /t\=(.*),v0\=(.*)/.exec(req.headers["readme-signature"]);
+  
+  const unsigned = `${time}.${JSON.stringify(body)}`;
+  const hmac = crypto.createHmac('sha256', 'PROJECT_SECRET');
+  const verifySignature = hmac.update(unsigned).digest('hex');
+  if (verifySignature !== readmeSignature) {
+    return {};
+  }
+  
+  // Look up user for body.email
+  // db.find({ email: body.email });
+
+  return {
+    name: '<<name>>',
+    email: 'user@example.com',
+    apiKey: 'API_KEY'
+  };
+};
+```
+
+```json Response Example
+{
+  name: '<<name>>',
+  email: 'user@example.com',
+  apiKey: 'API_KEY'
+}
+```
+
+# Parse components in readme-signature header
+
+{/* node@10 */}
+
+The header contains a timestamp and a signed version of the request with a secret key associated with your project.
+
+You can see your project's secret key [here](https://dash.readme.io/).
+
+# Sign request to compare against header
+
+{/* node@12-13 */}
+
+The signed request is in the format 'time.body', so we can construct the unsigned version and then sha256 encode it with the secret key of the project.
+
+# Compare header to our expected signature
+
+{/* node@14-15 */}
+
+If the signature we've created doesn't match the value in the header, it means the request didn't originate from ReadMe or was tampered with in route. In this case we should return an error or empty object instead of the user's API key.
+
+# Send User data if successful
+
+{/* node@19-26 */}
+
+If the headers match, all is good! We can send the user's API key and any other information to make the documentation as useful as possible.

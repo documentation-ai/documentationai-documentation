@@ -1,0 +1,252 @@
+---
+title: Migrate from another platform
+description: Move documentation from Document360, Redocly, Scalar, Slate, a static site generator, or a custom platform to ReadMe with reusable content, Branches and Reviews, and an OpenAPI-generated API…
+metaTitle: Migrate to ReadMe from any documentation platform
+metaDescription: Generic migration path to ReadMe from Document360, Redocly, Scalar, Slate, Hugo, Jekyll, Sphinx, or a homegrown docs site.
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774619340-7plo3v6hk68-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-10-26T20:48:36.000Z
+---
+
+Move documentation from Document360, Redocly, Scalar, Slate, a static site generator, or a custom platform to ReadMe with reusable content, Branches and Reviews, and an OpenAPI-generated API Reference.
+
+Move documentation from another platform to ReadMe by selecting the easiest supported import path, converting source-specific syntax, and verifying content before cutover. Whatever you're moving from, you gain an OpenAPI-generated API Reference with Try It!, reusable content blocks, and structured review through Branches and Reviews.
+
+## Choose the easiest migration path
+
+| Your situation | Recommended path |
+| --- | --- |
+| You want to evaluate public documentation quickly | Use the [Importer](https://readme.com/importer) with a URL, Markdown files, or an OpenAPI definition. |
+| You have a prepared Markdown or MDX repository | Use Git-based import with the supported repository structure. |
+| You need repeatable bulk uploads or CI automation | Use `rdme@10`. |
+| You have a small content set | Create and review pages in the ReadMe editor. |
+| You want an AI coding agent to convert and create pages for you | Connect your agent to [ReadMe's MCP server](/main/docs/readme-mcp) with the ReadMe skills and start your import and configure appeareance. |
+| You have a large, complex, or enterprise migration | Ask about [Enterprise migration assistance](/main/enterprise/migrate-to-readme). |
+
+Use bi-directional Git Sync after migration when you need ongoing two-way editing. It connects ReadMe to a new, empty GitHub or GitLab repository and does not import an existing repository.
+
+## What commonly doesn't transfer, and what replaces it
+
+| What doesn't transfer | Rebuild it with |
+| --- | --- |
+| Custom components or theme-specific markup | [Custom MDX components](/main/docs/building-custom-mdx-components) |
+| Platform-specific theming and branding | [Themes](/main/docs/design-themes) and Appearance settings |
+| Hand-written endpoint documentation | An [API Reference](/main/docs/api-reference) generated from your OpenAPI file, with Try It! |
+| Includes or content snippets | [Reusable content](/main/docs/reusable-content) |
+| No OpenAPI file yet | Build one with the [API Designer](/main/docs/api-designer) |
+| Ad hoc review of documentation changes | [Branches](/main/docs/branches) and [Reviews](/main/docs/reviews) |
+
+## Export and inventory source content
+
+| Source | Start with |
+| --- | --- |
+| Document360 | Export articles, categories, and media. |
+| Redocly | Collect Markdown, the OpenAPI definition, and `redocly.yaml`. |
+| Scalar | Collect the OpenAPI definition and separately maintained Markdown guides. |
+| Slate | Convert the Markdown source and includes into individual Guide pages. |
+| Hugo, Jekyll, or MkDocs | Export Markdown and retain site configuration for navigation and redirects. |
+| Sphinx | Convert reStructuredText to Markdown, then review directives and cross-references. |
+| Stoplight | Export the OpenAPI definition — often multi-file — plus any Markdown guides stored alongside it. |
+| SwaggerHub | Export the OpenAPI definition. Hand-written guides usually live elsewhere; inventory them separately. |
+| Postman | Export the collection and convert it with `rdme openapi convert`. |
+| Apiary | Export the API Blueprint or OpenAPI definition, and the Markdown around it. |
+| Bump.sh | Collect the OpenAPI or AsyncAPI definition and any separately maintained Markdown. |
+| Confluence | Export spaces to HTML or Markdown, then map the page tree to categories before converting. |
+| Nextra, VitePress, Starlight, or Docsify | Export Markdown and retain site configuration for navigation and redirects. |
+| Antora or AsciiDoc | Convert AsciiDoc to Markdown, then review includes, attributes, and cross-references. |
+| A custom CMS | Export one Markdown file per page with metadata, assets, and its source URL. |
+
+Keep the original export unchanged. Inventory page metadata, navigation, reusable content, images, downloads, OpenAPI files, custom markup, access rules, and public URLs before conversion.
+
+## Convert content and navigation
+
+Convert one representative page for each source-specific construct, verify the result, and then automate only the conversions you have tested. Resolve build-time variables before upload, replace includes with reusable or inline content, and rebuild custom components only when they fit the ReadMe MDX model.
+
+For CLI uploads, every new Guide needs `title` and `category.uri`; use `position` and `parent.uri` to define navigation. For Git-based import, prepare the supported folders and `_order.yaml` files.
+
+```yaml
+---
+title: Install the SDK
+category:
+  uri: Getting Started
+position: 2
+---
+```
+
+## Upload and validate
+
+Validate and upload an OpenAPI definition when you have one, then preview Guides before publishing:
+
+```bash
+# See what's actually in your definition before you change anything
+npx rdme@10 openapi inspect ./openapi.yaml
+
+npx rdme@10 openapi validate ./openapi.yaml
+
+# --slug pins the definition's identity so its file path can change later
+npx rdme@10 openapi upload ./openapi.yaml --slug my-api --key="$README_API_KEY"
+
+npx rdme@10 docs upload ./docs --key="$README_API_KEY" --dry-run
+```
+
+<Callout>
+  ### How your definition becomes navigation
+
+  One definition becomes one top-level category, named from `info.title`. The **first** tag on each operation becomes a page inside it, and each operation becomes a subpage titled from its `summary`. Operations without tags are grouped by URL; without a `summary`, subpages are titled by URL or by HTTP method.
+
+  Knowing this before you upload saves rearranging afterward. See [Categories, Pages, and Subpages](/main/docs/openapi-categories-pages-subpages), the [OpenAPI Compatibility Chart](/main/docs/openapi-compatibility-chart) for what we support in the API Explorer, and [OpenAPI Extensions](/main/docs/openapi-extensions) for the `x-readme` options — including `apply-tag-changes`, which you'll want enabled while you're still restructuring.
+</Callout>
+
+An OpenAPI upload creates API Reference content from the operations in the definition. Compare it with hand-written endpoint content before removing that content, and retain workflows and conceptual guidance that the definition does not contain. Configure authentication before testing Try It!, and integrate the Metrics SDK separately when you need API-log data in the Developer Dashboard.
+
+## Set up redirects and cut over
+
+Create redirects from the source sitemap, navigation, and traffic data. Under **Settings > Errors & Redirects**, add each redirect as `oldurl -> newurl`. Redirects are project settings rather than content, so they are **not** stored in your Git Sync repository and are not copied when a project is cloned — keep the map in source control as a plain text file so you can re-enter it. Verify source-specific markup is gone, assets load, navigation and access settings are correct, API Reference has the necessary supporting content, and redirects cover high-traffic URLs.
+
+Keep the existing site available until you verify the migration and complete domain cutover.
+
+## Optional: continue in Git
+
+After migration, connect a new empty repository through **Settings > Git Connection** for bi-directional Git Sync. Use folders and `_order.yaml` files to manage navigation in that ongoing workflow.
+
+---
+
+## Developer nuances
+
+<Callout>
+  Details specific to your migration. For vendor extension compatibility, circular references, multi-file specs, and a full CI pipeline, see [Developer Nuances](/main/docs/migration-developer-nuances).
+</Callout>
+
+<Expandable title="Every Redocly & Redoc extension, and what to do with it">
+  Covers both Redoc CE and Redocly. Find your extension in the left column — ReadMe either reads it, or there's something to do instead.
+
+  | Extension | What it does for you | On ReadMe |
+  | :--- | :--- | :--- |
+  | `x-usePkce` | PKCE on an OAuth 2 `authorizationCode` flow | ✅ <strong>Supported.</strong> Leave it as-is. |
+  | `x-enumDescriptions` | Readable labels for enum values | ✅ **Supported**, same spelling, at the schema level. |
+  | `x-internal` | Hides an operation | ✅ **Supported**, per operation or at the root. |
+  | `x-code-samples` | Custom code samples (Redocly's **old** spelling) | ✅ Works by coincidence — it matches ReadMe's own root-level alias for `x-readme.code-samples`. |
+  | `x-codeSamples` | Custom code samples (Redocly's **current** name) | ⚠️ Not read — matches neither ReadMe spelling. Rename **and remap the fields** — see below. |
+  | `x-tagGroups` | Groups tags in the sidebar | Split your spec per group with `rdme openapi reduce` — see the next section. |
+  | `x-traitTag` | Marks a tag as a label, not a grouping | ⚠️ Every tag becomes a page on ReadMe, so a trait tag creates an **empty page**. Remove it. |
+  | `x-displayName` | Human-friendly tag name | Rename the tag itself in `tags[].name` — on ReadMe the tag name is the page name. |
+  | `x-badges` | Badges on operations | Put them in the operation `description`, which renders as Markdown. |
+  | `x-logo` | Logo above the side menu | Upload your logo under **Appearance** settings. |
+  | `x-servers` | Extra target hosts (OAS 2.x backport) | Use the standard `servers` array. |
+  | `x-webhooks` | Webhooks on older OpenAPI versions | Use the native `webhooks` object. Requires OpenAPI 3.1. |
+  | `x-hideReplay` | Disables Replay on an operation | Use `x-readme.explorer-enabled: false`, per operation or at the root. |
+  | `x-summary` | Short response summary for the button label | Use the response `description`. |
+  | `x-keywords` | Boosts or excludes search results | Use `metadata.keywords` in the page's frontmatter. |
+  | `x-seo` | SEO meta tags on operation pages | Use `metadata.title` and `metadata.description` in the page's frontmatter. |
+  | `x-metadata` | Custom metadata in `info` | Use the page's `metadata` frontmatter. |
+  | `x-rbac` | Access control on OpenAPI objects | Use `x-internal` plus [Internal Documentation](/main/docs/internal-documentation) access controls. |
+  | `x-mcp` | Documents MCP servers and tools | ReadMe generates [its own MCP server](/main/docs/mcp) from your definition. |
+  | `x-explicitMappingOnly` | Limits discriminator mappings to explicit ones | Define `discriminator.mapping` explicitly — ReadMe supports discriminators and mappings natively. |
+  | `x-additionalPropertiesName` | Names the key in an `additionalProperties` map | No equivalent. Describe the key format in the schema `description`. |
+  | `x-tags` | Puts schemas in the nav beside operations | No equivalent. Document shared schemas in a Guide instead. |
+  | `x-assertionType` | OAuth flow assertion type | No equivalent. |
+  | `x-nullable` | Nullable schema (OAS 2.x) | Resolved on conversion. Use `nullable: true` (3.0) or `type: [string, "null"]` (3.1). |
+  | `x-examples` | Request examples on body params (OAS 2.x) | Resolved on conversion. Use the standard `examples` map. |
+
+  <Callout>
+    Anything not listed here is ignored rather than rejected, so it will never fail an upload — convenient if you're publishing the same file to more than one tool.
+  </Callout>
+
+  **Custom code samples need two changes, not one**
+
+  ReadMe reads custom code samples from `x-readme.code-samples`. As with every ReadMe extension, you can also write it at the root as `x-code-samples`.
+
+  Redocly's extension was *also* called `x-code-samples` once, so older Redocly specs happen to line up and work unchanged. Redocly has since renamed it to `x-codeSamples` in camelCase — and that matches neither ReadMe spelling. On a current Redocly spec, every hand-written sample disappears on upload and the operation silently falls back to auto-generated snippets.
+
+  Renaming the key is only half the job — the field names inside each sample differ too:
+
+  | Redocly | ReadMe |
+  | :--- | :--- |
+  | `lang` | `language` |
+  | `source` | `code` |
+  | `label` | `name` |
+
+  So this:
+
+  ```yaml
+  x-codeSamples:
+    - lang: python
+      label: Python 3
+      source: |
+        import requests
+  ```
+
+  becomes this:
+
+  ```yaml
+  x-readme:
+    code-samples:
+      - language: python
+        name: Python 3
+        code: |
+          import requests
+  ```
+
+  Convert one operation by hand and confirm it renders before scripting the rest, then check them all with `npx rdme@10 openapi inspect ./openapi.yaml --feature readme`.
+</Expandable>
+
+<Expandable title="Redocly: keeping one source of truth without x-tagGroups">
+  ReadMe's reference navigation is one definition per category, tags as pages, operations as subpages. `x-tagGroups` adds a level above tags that has nowhere to land.
+
+  Don't split your spec by hand — you'd lose your single source of truth. Split it at build time instead, using `--title` to name each resulting category:
+
+  ```bash
+  npx rdme@10 openapi reduce ./openapi.yaml \
+    --tag store --tag inventory \
+    --title "Store & Inventory" \
+    --out ./dist/store.json
+
+  npx rdme@10 openapi upload ./dist/store.json \
+    --slug store --key="$README_API_KEY"
+  ```
+
+  Repeat per group and run it in CI. Your repository still holds exactly one definition. See [Developer Nuances](/main/docs/migration-developer-nuances#grouping-tags-without-x-taggroups) for the full walkthrough.
+</Expandable>
+
+<Expandable title="Stoplight and SwaggerHub: your spec is already the hard part">
+  Both are OpenAPI-native, which makes these the most straightforward migrations. Export the definition, run `openapi inspect` on it, and upload.
+
+  The one thing to check is how the definition is stored. Stoplight projects are frequently multi-file with relative `$ref`s, which the dashboard and API reject — use `rdme openapi upload`, which bundles them. Hand-written Markdown guides stored alongside the spec migrate like any other Markdown.
+</Expandable>
+
+<Expandable title="Sphinx: convert first, fix cross-references second">
+  Convert reStructuredText to Markdown with a tool like Pandoc, then treat cross-references as a separate pass. `:ref:` and `:doc:` roles become plain relative links, and most can be resolved from the reference labels with a script once you know the final slug for each page.
+
+  Directives without a Markdown equivalent (`.. toctree::`, `.. autodoc::`) need a decision each: `toctree` becomes your `_order.yaml`, and generated API documentation is usually better replaced by an OpenAPI definition than converted.
+</Expandable>
+
+<Expandable title="A custom CMS or no Markdown export at all">
+  Write one Markdown file per page out of your platform's API, and capture more than the body text. You need the title, the source URL (for redirects), the parent page, its ordering, its visibility state, and the assets it references.
+
+  Export the source URL especially — it's the only thing that lets you build a redirect map afterward, and it's the field people most often forget until the old site is already down.
+</Expandable>
+
+## After you migrate
+
+Run a [Docs Audit](/main/docs/docs-audit) to check content quality, build guided walkthroughs with [Recipes](/main/docs/recipes), and use [My Developers](/main/docs/my-developers) to see how developers use your API once your Metrics integration is live.
+
+## Frequently asked questions
+
+#### We do not have a Markdown export. What should we do?
+
+Use the platform API or an export tool to create one Markdown file per page. Include the title, source URL, parent page, ordering data, assets, and visibility state so you can reproduce the published site accurately.
+
+#### We're on Sphinx and our cross-references are everywhere.
+
+Convert with a tool such as Pandoc, then handle cross-references as a second pass. They usually become plain relative links, and a script can resolve most of them from the reference labels.
+
+#### Do we need to migrate everything at once?
+
+No. You can publish API Reference content from a validated OpenAPI definition separately from your Guides. Keep the existing documentation available until you have reviewed both areas and prepared redirects.
+
+# Sibling pages
+
+- [Migrate from Mintlify](/main/docs/migrate-from-mintlify-to-readme)
+- [Migrate from GitBook](/main/docs/migrate-from-gitbook)
+- [Migrate from Fern](/main/docs/migrate-from-fern)
+- [Migrate from Docusaurus](/main/docs/migrate-from-docusaurus)
+- [Developer Nuances](/main/docs/migration-developer-nuances)

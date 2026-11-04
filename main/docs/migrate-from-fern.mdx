@@ -1,0 +1,139 @@
+---
+title: Migrate from Fern
+description: Move Fern docs to ReadMe and decide your SDK strategy on your own terms. Run Guides and API Reference on one platform, and see exactly what needs rebuilding.
+metaTitle: Migrate from Fern to ReadMe
+metaDescription: Guide to moving documentation from Fern to ReadMe, covering docs.yml navigation, MDX components, OpenAPI, SDK generation, and redirects.
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774618744-psqltrozezd-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-10-26T20:48:36.000Z
+---
+
+Move Fern documentation to ReadMe to unify your Guides and API Reference on a single platform. Streamline your workflow with content review through Branches and Reviews, and gain usage insights tied to individual developers in My Developers. Before cutover, select the right import path and decide on your SDK generation strategy.
+
+## Choose the easiest migration path
+
+| Your situation | Recommended path |
+| --- | --- |
+| You want to evaluate public documentation quickly | Use the [Importer](https://readme.com/importer). |
+| Your Fern documentation is ready in a repository | Prepare the supported repository structure and use Git-based import. |
+| You need scripted or CI-based uploads | Convert a copy of the repository and upload it with `rdme@10`. |
+| You have a small content set | Create and review pages in the ReadMe editor. |
+| You want an AI agent to convert Fern components and create pages for you | Connect your agent to [ReadMe's MCP server](/main/docs/readme-mcp) with the ReadMe skills and start your import and configure appeareance. |
+| You have SDKs, generated documentation, custom components, or complex governance needs | Ask about [Enterprise migration assistance](/main/enterprise/migrate-to-readme). |
+
+Use bi-directional Git Sync after migration for ongoing two-way editing. It requires a new, empty GitHub or GitLab repository and does not import an existing Fern repository.
+
+## Decide what happens to SDKs
+
+Fern can generate SDKs, snippets, and documentation from `generators.yml` and `docs.yml`. ReadMe creates interactive API Reference content from OpenAPI definitions and doesn't generate a full client SDK library, but you can enable [SDK-generated code](/main/docs/openapi#sdk-generated-code) under **Appearance > API Reference** \> Use SDK-generated code for requests\*\* to show a Node `api` option in your code samples.
+
+Before moving content, decide whether you will keep Fern for SDK generation, use another SDK generator, or stop publishing generated SDKs. Include generated MDX and SDK snippets in your migration inventory.
+
+## What doesn't transfer, and what replaces it
+
+| What doesn't transfer | Rebuild it with |
+| --- | --- |
+| SDK generation and `generators.yml` | Keep Fern for SDKs, switch generators, or retire generated SDKs — ReadMe doesn't generate a full client SDK, though [SDK-generated code](/main/docs/openapi#sdk-generated-code) can add a Node `api` code-sample option |
+| Theming, custom CSS, and navigation styling from `docs.yml` | [Themes](/main/docs/design-themes) and Appearance settings |
+| Custom components you wrote yourself | [Custom MDX components](/main/docs/building-custom-mdx-components) |
+
+## Inventory and convert content
+
+1. Copy the repository and keep the original unchanged.
+2. Review `docs.yml` for navigation, API definitions, pages, and site configuration.
+3. Review `generators.yml` for SDK generation, generated content, and publishing workflows.
+4. Inventory MDX pages, assets, snippets, custom components, CSS, and header or footer code.
+5. Export or create the OpenAPI definition you will upload to ReadMe.
+
+Map `title`, descriptions, images, indexing settings, slugs, and navigation metadata to ReadMe equivalents. Convert standard MDX components only after checking the supported ReadMe syntax and props. Rebuild custom components where appropriate, and rewrite content that depends on Fern-specific rendering or generated output.
+
+For CLI uploads, each new Guide requires `title` and `category.uri`; use `position` and `parent.uri` to recreate navigation from `docs.yml`. For Git-based import, prepare the documented folder structure and `_order.yaml` files.
+
+## Upload and review
+
+Validate and upload your OpenAPI definition, then preview the Guide upload:
+
+```bash
+# See what's actually in your definition before you change anything
+npx rdme@10 openapi inspect ./openapi.yaml
+
+npx rdme@10 openapi validate ./openapi.yaml
+
+# --slug pins the definition's identity so its file path can change later
+npx rdme@10 openapi upload ./openapi.yaml --slug my-api --key="$README_API_KEY"
+
+npx rdme@10 docs upload ./docs --key="$README_API_KEY" --dry-run
+```
+
+<Callout>
+  ### How your definition becomes navigation
+
+  One definition becomes one top-level category, named from `info.title`. The **first** tag on each operation becomes a page inside it, and each operation becomes a subpage titled from its `summary`. Operations without tags are grouped by URL; without a `summary`, subpages are titled by URL or by HTTP method.
+
+  Knowing this before you upload saves rearranging afterward. See [Categories, Pages, and Subpages](/main/docs/openapi-categories-pages-subpages), the [OpenAPI Compatibility Chart](/main/docs/openapi-compatibility-chart) for what we support in the API Explorer, and [OpenAPI Extensions](/main/docs/openapi-extensions) for the `x-readme` options — including `apply-tag-changes`, which you'll want enabled while you're still restructuring.
+</Callout>
+
+Resolve errors before publishing the Guides upload. Uploading OpenAPI creates API Reference content from the operations in the definition. Configure authentication before testing Try It!, and integrate the Metrics SDK separately when you need API-log data in the Developer Dashboard.
+
+## Set up redirects and cut over
+
+Build redirects from the published Fern URLs, navigation, and traffic data. Under **Settings > Errors & Redirects**, enter redirects as `oldurl -> newurl`, one per line. Redirects are project settings rather than content, so they are **not** stored in your Git Sync repository and are not copied when a project is cloned — keep the map in source control as a plain text file so you can re-enter it. Verify the ReadMe navigation, components, assets, generated API Reference, SDK publishing path, and high-traffic redirects before changing your domain.
+
+Keep Fern available while you verify the migration and complete cutover.
+
+## Optional: continue in Git
+
+After migration, connect a new empty repository through **Settings > Git Connection** to enable bi-directional Git Sync. Use Git Sync folders and `_order.yaml` files to manage navigation, and align repository branches with ReadMe versions.
+
+---
+
+## Developer nuances
+
+<Callout>
+  Details specific to a Fern migration. For vendor extension compatibility, circular references, multi-file specs, and a full CI pipeline, see [Developer Nuances](/main/docs/migration-developer-nuances).
+</Callout>
+
+<Expandable title="Fern extensions in your OpenAPI file are harmless">
+  If your definition carries `x-fern-*` extensions for SDK generation, you don't need to strip them. ReadMe ignores extensions it doesn't recognize rather than rejecting them, so an upload won't fail and the keys simply won't render.
+
+  That means you can keep publishing the same definition to both Fern (for SDKs) and ReadMe (for docs) without maintaining two files.
+</Expandable>
+
+<Expandable title="Export OpenAPI before you migrate anything">
+  If your API is defined in the Fern Definition format rather than OpenAPI, export to OpenAPI first and make **that** your source of truth going forward. Everything else on this page — validation, reduction, uploads, CI — operates on an OpenAPI file.
+
+  Check the exported definition before relying on it: run `npx rdme@10 openapi inspect` against it and compare the operation count to what your published docs show.
+</Expandable>
+
+<Expandable title="Code samples: what replaces generated SDK snippets">
+  ReadMe auto-generates request snippets in around twenty languages, and you can control which appear by default with `x-readme.samples-languages`. Enabling **Use SDK-generated code for requests** under Admin Settings adds a Node `api` option.
+
+  If you have hand-written or SDK-generated samples worth keeping, they belong in `x-readme.code-samples` on the operation. That's a per-operation array, so if you're carrying over a large set it's worth scripting from your existing generated output.
+</Expandable>
+
+<Expandable title="docs.yml drives navigation, generators.yml doesn't move">
+  Rebuild navigation from the `navigation` section of `docs.yml` — it's the published structure, which may not match your folder layout.
+
+  `generators.yml` has no ReadMe equivalent because ReadMe doesn't generate client SDKs. Decide before cutover whether you're keeping Fern for SDK generation, moving to another generator, or retiring generated SDKs, because that decision changes what you tell readers on your landing page.
+</Expandable>
+
+## After you migrate
+
+Run a [Docs Audit](/main/docs/docs-audit) to check content quality, build guided walkthroughs with [Recipes](/main/docs/recipes), and use [My Developers](/main/docs/my-developers) to see how developers use your API once your Metrics integration is live.
+
+## Frequently asked questions
+
+#### Can we use Fern for SDKs and ReadMe for docs?
+
+Yes. Keep Fern's generator configuration and publishing workflow for SDKs, and upload the OpenAPI definition to ReadMe for API Reference content.
+
+#### Should we remove hand-written endpoint pages?
+
+Compare each page with the generated API Reference first. Keep explanations, workflows, and examples that the OpenAPI definition does not contain as Guides.
+
+# Sibling pages
+
+- [Migrate from Mintlify](/main/docs/migrate-from-mintlify-to-readme)
+- [Migrate from GitBook](/main/docs/migrate-from-gitbook)
+- [Migrate from Docusaurus](/main/docs/migrate-from-docusaurus)
+- [Migrate from another platform](/main/docs/migrate-to-readme-other)
+- [Developer Nuances](/main/docs/migration-developer-nuances)

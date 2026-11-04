@@ -1,0 +1,57 @@
+---
+title: Google SAML
+description: Log in to ReadMe using Google SAML
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774971522-qdk556x7zv-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-10-26T20:48:36.000Z
+---
+
+Connect Google Workspace as a SAML SSO provider so members of your organization authenticate with Google Workspace and access your ReadMe projects.
+
+<Callout>
+  ### 
+
+  You'll need ReadMe IDP info as part of the set up. [Instructions on finding IDP configuration values are here.](/main/enterprise/setting-up-sso#implement-sso)
+</Callout>
+
+---
+
+## Create a Google SAML App
+
+Start by adding a new custom SAML app in the Google Admin console.
+
+1. Visit [admin.google.com](https://admin.google.com) and go to **Apps** \> **Web and mobile apps** \> **Add app** \> **Add custom SAML app**.
+2. Enter a name for the app. You can use the ReadMe logomark as the app logo: [ReadMe logomark](https://files.readme.io/61cbe90-ReadMe_Logo-brandmark.png)
+
+---
+
+## Configure SAML Settings
+
+Next, map your Google SAML app to the SAML configuration ReadMe generated for your connection.
+
+3. Enter the **SSO URL** and **Entity ID** from your ReadMe dashboard.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774964905-vh37r04ck3r-00915e1-Screen_Shot_2019-12-06_at_6-04-14_PM.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+4. Set up the attribute mappings.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774960011-6cwv0zyvgrv-d8d7dee-Screen_Shot_2019-12-06_at_6-01-10_PM.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+---
+
+## Enable Access
+
+Finally, turn the app on for the Teammates who should be able to log in through Google Workspace.
+
+5. Click **Edit Service**, then enable the app for everyone, or for the subset of users you want to have access to your ReadMe dashboard.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774970496-htu5r8felqr-33993c0-ss.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+Your Teammates can now log in to ReadMe with their Google Workspace credentials.
+
+# Sibling pages
+
+- [Okta](/main/enterprise/setting-up-okta)
+- [Microsoft Entra](/main/enterprise/setting-up-microsoft-entra)
+- [Auth0](https://docs.readme.com/main/enterprise/auth0.md)
+- [JumpCloud](https://docs.readme.com/main/enterprise/jumpcloud.md)
+- [Groups Mapping](/main/enterprise/groups-mapping)

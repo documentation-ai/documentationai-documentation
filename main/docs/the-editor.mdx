@@ -1,0 +1,61 @@
+---
+title: The Editor
+description: How the ReadMe editor is laid out, how its modes differ, and where to find the blocks and settings it exposes.
+metaTitle: The ReadMe Editor
+metaDescription: An overview of the ReadMe page editor, including Edit and View modes, Raw Mode, multiplayer editing, the Insert panel and / menu, AI tools, and saving to a branch.
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774200420-5gfwb4gqmap-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-09-18T20:21:32.000Z
+---
+
+# The ReadMe Editor
+
+The editor is where you write and configure every page in your hub, whether it lives in Guides, Recipes, Changelog, Custom Pages, or the prose sections of your API Reference. This page explains how it is laid out and how it behaves. For the list of blocks you can insert, see [Editor Blocks](/main/docs/editor-blocks); for the settings on each page, see [Page Settings](/main/docs/page-settings).
+
+## Edit and View
+
+Every page has two modes, switched with the **View** / **Edit** toggle at the top of the screen or with `Ctrl+1` and `Ctrl+2`. **View** shows the page as readers see it. **Edit** opens the editor. Changes you make in Edit are not visible to readers until you save.
+
+## Anatomy of the Editing Surface
+
+Above the page title sits a row of page-level controls: the page icon, the page type, the visibility, and a <strong>⋮</strong> menu holding **History**, **Page Settings**, **Hide Table of Contents**, and **Raw Mode**. Each of these is documented on [Page Settings](/main/docs/page-settings).
+
+The right rail has three icons. **Insert** opens a panel of blocks you can drag into the document. The gear opens the **Page Settings** panel. Below them, the page outline lists the headings on the page and jumps to them.
+
+The bottom bar shows which syntax the page uses (for example **Editor: MDX-ish**), a **Run AI Linter** button, and two save buttons, **Save to Branch** and **Save**.
+
+## Three Ways to Add Content
+
+You can type Markdown directly, and the editor converts it as you go: `##` becomes a heading, `-` starts a list, ```` ``` ```` opens a code block. You can type `/` on an empty line to open a searchable menu of every block, component, and embed. Or you can open the **Insert** panel and drag a block to the spot you want. All three produce the same result. [Editor Blocks](/main/docs/editor-blocks) lists what each menu contains and the Markdown shortcut for each block.
+
+## Raw Mode
+
+**Raw Mode**, in the <strong>⋮</strong> menu, replaces the rich-text editor with the page's Markdown source. Use it when you need to see or edit exactly what will be stored, or when you are pasting in content written elsewhere.
+
+⚠️ Turning on Raw Mode locks the page for everyone else until you turn it off. Raw edits and rich-text edits cannot be merged, so the editor prevents them from happening at the same time.
+
+## Editing Together
+
+More than one person can edit the same page at once, we call this multiplayer editing. Changes from other editors appear as they are made. This applies to branches as well as the main version of your docs. 
+
+## AI in the Editor
+
+Three AI entry points live inside the editor. **Generate with AI** is the first item in the `/` menu and drafts content at the cursor. **Edit with AI** appears on the selection toolbar and rewrites the text you have selected. **Ask AI**, in the lower left of the admin sidebar, answers questions about your project and can draft or rewrite pages. All three are powered by [Agent Owlbert](/main/docs/aiagent).
+
+## Saving
+
+**Save** publishes your changes to the current version immediately. **Save to Branch** holds them on a branch for review, so the live page does not change until the branch is merged. Enterprise customers can choose to disable saving directly to a version for their editors. See [Branches](/main/docs/branches) and [Reviews](/main/docs/reviews).
+
+## What the Editor Does Not Do
+
+The editor does not merge Raw Mode edits with rich-text edits; that is why Raw Mode locks the page. Invalid MDX is flagged rather than silently dropped, and you will be unable to save; see [Troubleshoot MDX Errors](/main/docs/rendering-errors-invalid-mdx). 
+
+# Sub pages
+
+- [Editor Blocks](/main/docs/editor-blocks)
+- [Page Settings](/main/docs/page-settings)
+- [Creating Mermaid Diagrams](/main/docs/creating-mermaid-diagrams)
+
+# Sibling pages
+
+- [Creating and Managing Guides](/main/docs/creating-and-managing-guides)
+- [Structuring Your Documentation](/main/docs/structuring-your-docs)

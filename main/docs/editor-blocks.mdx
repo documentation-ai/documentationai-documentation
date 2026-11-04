@@ -1,0 +1,114 @@
+---
+title: Editor Blocks
+description: Every block you can add to a page in the ReadMe editor, with the three ways to insert each one and the Markdown it produces in Raw Mode
+metaTitle: Editor Blocks Reference
+metaDescription: "Reference for every block in the ReadMe editor's Insert panel and / menu, with Markdown shortcuts, Raw Mode equivalents, and formatting toolbar actions. next: pages"
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774199522-fcsj7jh7xx7-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-09-18T20:51:54.000Z
+---
+
+Every block available in the ReadMe editor is listed here with the exact label you'll see on screen, what it does, and the Markdown shortcut that inserts it while typing. Blocks that carry their own options (Callout, Image, Code, and the four layout components) link to the page that documents those options.
+
+## Three Ways to Insert a Block
+
+| Method | How | When to use it |
+| --- | --- | --- |
+| Insert panel | Click the Blocks icon (the four small squares where the top-right one is slightly separated) located in the upper-right toolbar. | Placing a block precisely between existing content |
+| `/menu` | Type `/`on an empty line, then type to filter.  Press Return to insert. | Keeping your hands on the keyboard.  This is the only menu that lists every block, including headings, lists, and embeds |
+| Markdown shortcut | Type the Markdown syntax at the start of a line.  The editor converts it as you type. | Fastest for headings, lists, callouts, dividers, and code. |
+
+The Insert panel and the `/` menu contain different sets. The Insert panel holds the thirteen blocks below plus your project's Reusable Content and Custom Components. The `/` menu adds headings, lists, links, blockquotes, and four more embed types. Reusable Content and Custom Components are project-specific, so they are not documented on this page; see [Reusable Content](/main/docs/reusable-content) and [Custom Components.](/main/docs/building-custom-mdx-components)
+
+## Blocks
+
+Labels are exactly as they appear in the `/` menu.  Where the Insert panel uses a different label, it is noted. 
+
+### Text and Structure
+
+| Block | What it does | Markdown shortcut | Raw Mode |
+| --- | --- | --- | --- |
+| Heading 1 | Top-level section heading | `#` | `# Heading` |
+| Heading 2 | Section heading.  Appears in the page's table of contents | `##` | `## Heading` |
+| Heading 3 | Subsection heading.  Appears in the page's table of contents. | `###` | `### Heading` |
+| Bulleted List | Unordered list | `-` | `- item` |
+| Numbered List | Ordered List | `1.` | `1. item` |
+| Checklist | Task list with checkboxes | `- [ ]` | `- [ ] item` |
+| Blockquote | Indented quotation | `>` | `> text` |
+| Divider | Horizontal rule between sections | `- - -` | `- - -` |
+| Link | Inserts a hyperlink. Also available as Add Link on the selection toolbar. | None | `[text](url)` |
+| Callout | Highlighted box for information or warnings. Icon and color are configurable. | `> 📘` |  |
+| Code | Code block with a language selector. | \`\`\` | \`\`\`text \`\`\` |
+| Table | Grid of rows and columns. | None |  |
+| Image | Uploaded or linked image with alt text, caption, and frame options. | `! [ ] (url)` | `! [alt] (url)` |
+| Custom HTML | Raw HTML rendered in place. `< script >` tags are stripped. | None |  |
+| Recipe | Embeds a Recipe from your project's Recipes section. | None |  |
+| Mermaid Diagram | Text-defined flowchart, sequence diagram, or other Mermaid chart. Labeled Mermaid Diag… in the Insert panel when truncated. See [Creating Mermaid Diagrams](/main/docs/creating-mermaid-diagrams) | None |  |
+
+## Components
+
+These four are MDX components. Their props are documented on [Built-in Components.](/main/docs/built-in-components)
+
+| Block | What it does |
+| --- | --- |
+| Accordion | Collapsible section with a title |
+| Cards | Grid of linked cards with an icon, title, and description. |
+| Columns | Side-by-side column layout |
+| Tabs | Tabbed Content panels |
+
+## Embeds
+
+| Block | What it embeds | In the Insert Panel |
+| --- | --- | --- |
+| YouTube | A YouTube video by URL | Yes |
+| GitHub Gist | A public Gist by URL | No |
+| PDF | A PDF viewer by URL | No |
+| JSFiddle | A JSFiddle by URL | No |
+| iFrame | Any embeddable URL in an iframe | No |
+
+## AI and Reuse
+
+| Item | What it does |
+| --- | --- |
+| Generate with AI | First item in the `/`menu. Press Tab to draft content in place with Agent Owlbert |
+| Reuse Content | Inserts an existing Reusable Context block.  Shortcut: `<` |
+| New Content | Creates a new Reusable Content block from the current position |
+| Glossary term | Type &lt;&lt; to search and insert a term from your Glossary.  Not listed in the `/` menu. |
+
+## Selection Toolbar
+
+Select any text to open the toolbar. From left to right:
+
+| Control | Action | Shortcut |
+| --- | --- | --- |
+| Turn into (shows the current block type, such as Text) | Converts the block to another type, such as a heading or list. | None |
+| Bold | Bold | `⌘B` |
+| Italic | Italic | `⌘I` |
+| Strikethrough | Strikethrough | None |
+| Blockquote | Converts the block to a blockquote. | None |
+| List | Converts the block to a bulleted, numbered, or check list. | None |
+| Add link | Wraps the selection in a link. | None |
+| Inline code | Formats the selection as inline code. | None |
+| Edit with AI | Opens the AI editor on the selection. | None |
+
+## Block Handle Menu
+
+Hover any block and click the ≡ handle at its left edge. The handle also drags the block to a new position.
+
+| Item | Action |
+| --- | --- |
+| Copy | Copies the block |
+| Duplicate | Inserts an identical block below |
+| Turn into | Converts the block to another type |
+| Make Reusable | Saves the block as Reusable Content |
+| Add Line Above | Inserts an empty paragraph above |
+| Add Line Below | Inserts an empty paragraph below |
+| Delete | Removes the block |
+
+## What the Editor Does Not Do
+
+The editor does not merge Raw Mode edits with rich-text edits. Turning on Raw Mode from the page's ⋮ menu locks the page for other editors until you turn it off. The Editor indicator in the bottom bar (for example, Editor: MDX-ish) shows which syntax the page is using. 
+
+# Sibling pages
+
+- [Page Settings](/main/docs/page-settings)
+- [Creating Mermaid Diagrams](/main/docs/creating-mermaid-diagrams)

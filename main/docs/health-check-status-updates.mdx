@@ -1,0 +1,42 @@
+---
+title: Health Check Status Updates
+description: Communicate real-time status to your users
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774515221-wf4jr220xx-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-09-17T07:52:16.000Z
+---
+
+> 💁‍♂️ Keep in Mind!
+> 
+> This feature is only available on Pro and Enterprise plans.
+
+It's important to let your users know when your API or product is having stability issues or downtime. ReadMe allows you to show a notification to your users if that's the case. This can be accessed in your dash by going to **Settings > Health Check**.
+
+There are two different types of health check that we currently support:
+
+1. Manual Update
+2. Statuspage.io Sync
+
+## Manual Update
+
+You manually tell us whether your API is healthy or not, optionally providing a status URL which we'll link to your users to get further details. You let your users know of your API status by logging into your ReadMe account and updating the toggle.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774514930-5esmhoqmgn7-5b1ed609566da09b6534eae3effba5760abc932aa489913f3d2ebbddfb1e64ba-1e1054d83e24dbea143bf16bb0f9e949.png?fm=auto&auto=compress%2Cformat" alt="Screenshot showing manual health check provider." caption="Find Health Check in **Settings &gt; Health Check**" />
+
+## Statuspage.io Sync
+
+If you already have a status page setup at [https://www.statuspage.io/](https://www.statuspage.io/), you can select this and give us your "page ID." You can grab your page ID from the URL when you're administering your status page. It is the part at the end of the URL: [https://manage.statuspage.io/pages/xxxxxxxxxxxx](https://manage.statuspage.io/pages/xxxxxxxxxxxx)
+
+Once you give us that, we'll periodically check Statuspage's API to make sure your page isn't reporting any issues.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774515582-hqw4fp504eu-7fed0d08c945c690377fe90c97167cb98c8e17206166334c061494ab6b0c9aa4-health-check-card.png?fm=auto&auto=compress%2Cformat" alt="Screenshot showing statuspage.io health check provider." caption="Screenshot showing statuspage.io health check provider." />
+
+## What it Looks Like On the Hub
+
+We display an alert to your issues when we detect that your API is having issues. If you provided us with a URL (for manual) we link to it. If you're using statuspage.io, we automatically fetch your URL from the API.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774519109-bsdrw2tni2g-4cf7429a848736b03fd171b97abfe7a78cedea08715b1e87a270fa9de74c61d0-f360a8e1fafc8946d2f88cebd8eb90aa.png?fm=auto&auto=compress%2Cformat" alt="Screenshot showing unhealthy alert on the front end." caption="Screenshot showing unhealthy alert on the front end." />
+
+# Sibling pages
+
+- [Discussion Forums](/main/docs/discussion-forums)
+- [Supporting Your Developers](/main/docs/supporting-your-developers)

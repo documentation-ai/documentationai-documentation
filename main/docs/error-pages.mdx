@@ -1,0 +1,77 @@
+---
+title: Error Pages and Redirects
+description: Choose what endusers see when they encounter a 404 in your project
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774111534-lvw0z37weu-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-10-05T17:44:31.000Z
+---
+
+<Callout>
+  These features are only available on Pro and Enterprise plans
+</Callout>
+
+## Custom Error Pages
+
+You can choose what endusers see when they encounter a broken link in your project by going to your **Settings > Errors & Redirects**
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774111229-f2yrjvmy95-ddb4819c51467be53c623b86507660c15e3fb7483cd1630743d1149e9eae2fa8-21c55076eb6db296389e82cdfd1e12c4.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+### 404 Page
+
+By default, we serve a 404 page when an enduser encounters a broken link. You can keep the default 404 or select a [Custom Page](/main/docs/custom-page) from the dropdown to use as your project's 404 page.
+
+### 404 Options
+
+When using the default generic page, you can customize the logo appearance and whether similar pages are suggested.
+
+| Toggle | Description | Default |
+| :--- | :--- | :--- |
+| **Show logo** | Display your project logo on the generic 404 page. | Off |
+| **Suggest similar pages** | Show up to three page links that match the missing URL. Suggestions appear on the first page load with no extra client request. | On |
+
+When **Suggest similar pages** is on, the generic 404 page displays a prompt with links to pages that closely match the missing URL. 
+
+## Redirects
+
+If an enduser attempts to open a URL in your project and no page exists for that URL, you can define a redirect for that specific URL instead, with some requirements and limitations:
+
+- Redirects must originate from a relative path (everything after the project domain). For example `docs.example.com/owlbert` would be defined as `/owlbert`.
+- The origin URL **cannot** be a hashed URL (i.e. `/owlbert#hoot`).
+- The origin URL **cannot** be a page that already exists in your project.
+- The target can URL can be a relative path within your project, or a fully qualified URL elsewhere on the internet.
+- The redirect should be formatted as `oldurl -> newurl`, with one redirect defined per-line.
+- Redirects are performed in the order they are written; if there are multiple matches for an origin URL, the first match is used.
+
+Here are some example redirects:
+
+```text
+/docs/top-feature-requests -> /docs/feature-requests
+/docs/getting-started -> /docs/get-started
+/docs/ios-sdk -> https://github.com/company/ios-sdk
+
+/old(/\S*)? -> /new$1
+/([^/\s]+)/([^/\s]+) -> /docs/$2
+```
+
+ 
+
+### Regular Expressions
+
+You can use [regular expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions)! It uses JavaScript-style regexes, and must be a full match. To use a captured value on the redirect, use `$1` (or `$2`, `$3`, etc).
+
+If you your URL includes symbols, remember to escape them using the backslash `\`.
+
+If you want a catch-all, use `\S+` to represent "the rest of the path."
+
+### Troubleshooting
+
+- Browsers cache these redirects, so changes might not work immediately.
+- Regexes must be a complete match, not a partial match. You can't use `^` or `$`, because they're appended automatically.
+- Redirects are tested in order they're written, and the first match is used.
+- Redirects are for 404 pages only, if the page exists, it will not redirect.
+
+# Sibling pages
+
+- [Login Expiration](/main/docs/login-expiration)
+- [Internal Documentation](/main/docs/internal-documentation)
+- [Redirect Scenarios](/main/docs/redirect-scenarios)
+- [Outbound IP Addresses](/main/docs/ip-addresses)

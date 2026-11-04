@@ -1,0 +1,97 @@
+---
+title: Manage Projects
+description: Manage the projects that live inside your Enterprise Group
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774920740-abww0f1sftq-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-10-26T20:37:48.000Z
+---
+
+Your Enterprise plan includes access to your Enterprise Group, also known as a parent group, as well as related projects, referred to as child projects. The parent Enterprise Group manages multiple child projects under one dashboard and acts as a wrapper that provides a single custom domain and global landing page. 
+
+<Callout kind="alert" title="Needs review">
+  **Needs review**: no mapping rule for signature d08bc435033b; nothing representable after sanitisation
+
+  ```
+  <CSMCallout />
+  ```
+</Callout>
+
+---
+
+## Group and Project Inheritance
+
+A Enterprise Group provides shared functionality across all of its projects:
+
+- Provide global CSS rules across all of your child projects.
+- Provide global third-party integration settings across your child projects.
+- Provide custom JavaScript across all of your child projects.
+- Provide a global landing page to house the child projects under.
+
+Set the custom domain in the parent Enterprise Group. Each child project shows up as a subpath in the URL after the custom domain.
+
+### URL Structure
+
+Here is an example of a parent Enterprise Group URL structure with three child projects: <br />
+
+**URL**
+
+**Description**
+
+`parent.readme.io/`
+
+Your global landing page
+
+`parent.readme.io/child1/docs/getting-started`
+
+Page URL with default version
+
+`parent.readme.io/child2/v1.0/docs/getting-started`
+
+Page URL with version specified
+
+`parent.readme.io/child3/lang-ja/v1.0/docs/getting-started`
+
+Page URL with language and version specified
+
+---
+
+## Add a Project to a Group
+
+1. Go to [dash.readme.com](https://dash.readme.com) and create a new project.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774920449-k4j0hqwypg-d2f2832b6678ecc9c9874c02f935c684ce8242191cb71f6e5b8682ee7d69deca-new_project.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+2. Go to the **Projects** page in your Enterprise Group dashboard. This page lists all child projects currently associated with your Enterprise Group.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774920989-g7akrbe7y3-45c0a4f432639c5ea0b6e7f876d1ed1e9849ffa0b922759fb18f626b6294865b-projects.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+3. Click **Manage Projects** to pull up a list of all child projects you have access to.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774921625-utr7xrvx6qr-22dd0ce955d0a6ca79cb9773a5906538675691098980b27101d4976c6abfe9e9-manage-projects.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+4. Check the box next to the project you want to add and click **Save** to add it to your Enterprise Group. Once added, it appears on the **Projects** page of your Enterprise Group.
+
+---
+
+## Remove a Project
+
+To remove a child project, go to the **Projects** page in your Enterprise Group dashboard. Click **Manage Projects**, uncheck the box next to the project you want to remove, then click **Save** to remove it from your Enterprise Group. 
+
+---
+
+## Specify Project Path Names
+
+You can customize the URL structure for groups so that a project maps to a particular value.
+
+By default, projects in a group map to a subdomain of the larger group domain. If your group's subdomain is `parent-test` and the child project's subdomain is `child-test`, a page URL maps to `https://parent-test.readme.io/child-test`.
+
+If you customize the child path name to `custom-name`, that URL changes to `https://parent-test.readme.io/custom-name`. Navigate to the group custom domain view to set the child path names.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774926387-hey9lk2jfcj-b03df6a-Screen_Shot_2022-11-23_at_1-08-50_PM.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+# Sibling pages
+
+- [Overview](/main/enterprise/enterprise-group-overview)
+- [Group Settings](/main/enterprise/group-settings)
+- [Group Appearance](/main/enterprise/enterprise-design-settings)
+- [Localization](/main/enterprise/language-support-and-localization)
+- [Audit Logs](/main/enterprise/audit-logs)

@@ -1,0 +1,135 @@
+---
+title: Upload a custom font
+description: Upload a custom font file for your ReadMe project.
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774741310-wurzrdxli3g-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-04-28T21:07:34.000Z
+---
+
+# OpenAPI definition
+
+```json
+{
+  "openapi": "3.1.0",
+  "info": {
+    "description": "Create beautiful product and API documentation with our developer friendly platform.",
+    "version": "2.0.0",
+    "title": "ReadMe API",
+    "x-readme-deploy": "5.947.0",
+    "termsOfService": "https://readme.com/tos",
+    "contact": {
+      "name": "API Support",
+      "url": "https://docs.readme.com/main/docs/need-more-support",
+      "email": "support@readme.io"
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearer": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "A bearer token that will be supplied within an `Authentication` header as `bearer <token>`."
+      }
+    }
+  },
+  "paths": {
+    "/fonts/{slot}": {
+      "post": {
+        "operationId": "uploadFont",
+        "summary": "Upload a custom font",
+        "tags": [
+          "Fonts"
+        ],
+        "description": "Upload a custom font file for your ReadMe project.",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {}
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "heading",
+                "body_regular",
+                "body_medium",
+                "body_semibold",
+                "code"
+              ]
+            },
+            "in": "path",
+            "name": "slot",
+            "required": true,
+            "description": "The font slot to upload to."
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "url": {
+                          "type": "string"
+                        },
+                        "filename": {
+                          "type": "string"
+                        },
+                        "format": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "url",
+                        "filename",
+                        "format"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "data"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.readme.com/v2",
+      "description": "The ReadMe API"
+    }
+  ],
+  "security": [
+    {
+      "bearer": []
+    }
+  ],
+  "x-readme": {
+    "proxy-enabled": true
+  },
+  "tags": [
+    {
+      "name": "Fonts"
+    }
+  ]
+}
+```

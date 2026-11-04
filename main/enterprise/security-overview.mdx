@@ -1,0 +1,113 @@
+---
+title: Security Overview
+description: How ReadMe handles data access, storage, and sensitive information
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774887645-pwj4r38cl3-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-10-27T17:27:08.000Z
+---
+
+ReadMe is committed to keeping your data and your users' data secure. This page covers how API data is accessed and displayed, how data is stored and protected, and how to configure your settings to handle sensitive information responsibly.
+
+<Callout>
+  ### <strong>Interested in Learning More About our Security Measures?</strong>
+
+  Head to [https://security.readme.com/](https://security.readme.com/) to review our security and compliance measures and to request access to view security documents such as our SOC2 report.
+</Callout>
+
+---
+
+## Data Access
+
+All users listed as an Admin on a ReadMe project can view that project's Metrics data in full. In certain cases, API data is also surfaced to viewers of your public-facing hub.
+
+### API Data Visibility
+
+ReadMe surfaces a user's API calls in the API Reference section of your developer hub to help them troubleshoot issues. What a user can see depends on whether you have custom login configured and whether they are logged in.
+
+Scenario
+
+What the user can see
+
+<strong>No custom login (ReadMe login only)</strong>
+
+API calls are visible until the tab is closed or the page is refreshed. No previous session data is shown on return visits.
+
+**Logged out with custom login configured**
+
+Same behavior as above.
+
+**Logged in with custom login configured**
+
+Once authenticated, users can see all past API calls from both 'Try It' and any Metrics integration
+
+---
+
+## Data Storage
+
+Understanding where and how ReadMe stores your data can help your team meet internal compliance and privacy requirements.
+
+### ReadMe Data Retention
+
+ReadMe retains all data indefinitely.
+
+### Data Storage Location
+
+API request and key data is stored in an Amazon Web Services (AWS) facility in Virginia, USA. ReadMe's managed data provider is Altinity, using a Clickhouse database hosted on these servers. Clearbit data is stored in the same AWS facility in a MongoDB database.
+
+### Data Encryption
+
+Data is encrypted at rest by ReadMe's database providers (Clickhouse and MongoDB). ReadMe does not additionally encrypt or hash any data beyond what those providers handle. To be safe, any sensitive data should be excluded from requests sent to ReadMe.
+
+---
+
+## Data Controls
+
+By default, all data included in the API request and response is sent to Metrics. This can be customized in any of ReadMe's code-based SDKs (Node, Ruby, Python, etc.) during setup.
+
+<Callout>
+  ### 
+
+  The Cloudflare and Proxy integrations do not support allowlists or denylists for specific request items. If granular control over what data is sent is a requirement, use an SDK-based integration instead.
+</Callout>
+
+### Sensitive Data Controls
+
+In all code-based SDKs, you can pass a configuration option to either remove specific items from a request (denylist) or restrict sending to only specific elements (allowlist). This prevents sensitive data from reaching ReadMe entirely.
+
+For more detail, see the SDK-specific documentation. For example, view [Sending Logs with Node.js](https://docs.readme.com/docs/sending-logs-to-readme-with-nodejs#additional-express-options).
+
+---
+
+## Frequently Asked Security Questions
+
+<Expandable title="Can I export Metrics data?">
+  ReadMe does not currently provide a way to export all Metrics data outside of your project dashboard. This is a feature that is being explored.
+</Expandable>
+
+<Expandable title="Can I remove specific API calls or keys?">
+  This cannot be done automatically, but ReadMe can accommodate removal requests on a case-by-case basis. Contact support via the Intercom messenger in your project dashboard.
+</Expandable>
+
+<Expandable title="What data is sent by default from 'Try It'?">
+  By default, 'Try It' sends all data included in the API request and response, along with metadata about how the call was made. Custom configuration is not currently available for 'Try It' data. If you are concerned about sensitive data being sent, the recommended path is to disable the 'Try It' proxy entirely — this prevents API calls from passing through ReadMe in any capacity.
+</Expandable>
+
+<Expandable title="How do I disable 'Try It' request history?">
+  To disable the Request History section in your API Reference, navigate to your Project Dashboard and click API Reference under the Appearance subsection. From there, check or uncheck Show Request History.
+
+  <Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774886495-h0prs66aaw-9bce439da3883814dde8e1e710f56df4c8540765135f033cf7fd5ab4385de479-07ce6c65b6d094fa1730f51229f48780.png?fm=auto&auto=compress%2Cformat" alt="" width={700} />
+</Expandable>
+
+<Callout>
+  ### 
+
+  This is a growing document answering common security questions! If you have a questions that you can't find an answer to on this page, please send a message to [support@readme.io](mailto:support@readme.io)
+</Callout>
+
+# Sibling pages
+
+- [ReadMe Enterprise](/main/enterprise/intro-to-readme-enterprise)
+- [Enterprise Quick Start](/main/enterprise/enterprise-quick-start)
+- [Migrate to ReadMe](/main/enterprise/migrate-to-readme)
+- [Integrate ReadMe Enterprise into Your Workflow](/main/enterprise/integrating-readme-into-your-workflow)
+- [Analytics](/main/enterprise/analytics)
+- [Upgrade to Enterprise](/main/enterprise/upgrade-to-enterprise)

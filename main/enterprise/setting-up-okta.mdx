@@ -1,0 +1,109 @@
+---
+title: Okta
+description: Log in to ReadMe using Okta
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774947469-cv33k7rtiol-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-10-26T20:48:36.000Z
+---
+
+Connect Okta as a SAML SSO provider so members of your organization authenticate with Okta and access your ReadMe projects.
+
+<Callout>
+  ### 
+
+  You'll need ReadMe IDP info as part of the set up. [Instructions on finding IDP configuration values are here.](/main/enterprise/setting-up-sso#implement-sso)
+</Callout>
+
+---
+
+## Create An Okta Application
+
+Start by creating a new, custom SAML application in Okta. Don't use Okta's pre-built ReadMe app, as your connection needs the custom SAML settings that only a custom app supports.
+
+1. Go to **Applications** in your Okta admin dashboard. Make sure you're using the **Classic UI**.
+2. Click **Create New App**, and choose a custom app rather than the default **ReadMe** app in the Okta catalog.
+3. Select **SAML 2.0** as the sign-in method.
+
+---
+
+## Configure SAML Settings
+
+Next, map your Okta application to the SAML configuration ReadMe generated for your connection.
+
+4. Set the **Single Sign-On URL** to the value listed under **IDP Configuration** on the Teammates page. It should look something like this:`https://readmeio.auth0.com/login/callback?connection=parentsubdomain-1`
+5. Set the **Audience URI** to the corresponding value from the same section. It should look something like this: `urn:auth0:readmeio:parentsubdomain-1`
+6. Add the following attribute statements:
+
+**Name**
+
+<strong>Name Format (optional)</strong>
+
+**Value**
+
+name
+
+Unspecified
+
+user.firstName
+
+username
+
+Unspecified
+
+user.login
+
+email
+
+Unspecified
+
+user.email
+
+7. If you're using group mappings, add the following group attribute statement. Read more about [group mappings](/main/enterprise/groups-mapping).
+
+**Name**
+
+<strong>Name Format (optional)</strong>
+
+**Filter**
+
+groups
+
+Unspecified
+
+Matches regex: .+
+
+---
+
+## Finish Okta Setup
+
+With your SAML settings configured, save the application and retrieve the credentials ReadMe needs.
+
+8. Save the application in Okta to finish creating it.
+9. Open the **Sign On** tab in your application settings and select **View Setup Instructions**. This gives you all the credentials you need to complete setup on the ReadMe side.
+
+---
+
+## ReadMe Setup
+
+Finally, bring the credentials from Okta back into your ReadMe configuration.
+
+10. Enter the values from Okta's setup instructions into your SAML configuration in ReadMe.
+
+<Callout>
+  ### 
+
+  The screenshots below are from ReadMe's Okta dev console test account, but all settings are the same from the Classic Okta UI.
+</Callout>
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774946960-f4n0wfyfryq-6dec57d-Screen_Shot_2021-07-08_at_3-45-17_PM.png?fm=auto&auto=compress%2Cformat" alt="Click Create New App" />
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774957821-znrfgzggs1-1b56d70-Screen_Shot_2021-07-08_at_3-48-31_PM.png?fm=auto&auto=compress%2Cformat" alt="Set up your Single Sign-On URL and Audience URI" />
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774964644-x8eabtf4t7-3dbcfb5-Screen_Shot_2021-07-08_at_3-00-27_PM.png?fm=auto&auto=compress%2Cformat" alt="View Setup Instructions" />
+
+# Sibling pages
+
+- [Google SAML](/main/enterprise/setting-up-google-saml)
+- [Microsoft Entra](/main/enterprise/setting-up-microsoft-entra)
+- [Auth0](https://docs.readme.com/main/enterprise/auth0.md)
+- [JumpCloud](https://docs.readme.com/main/enterprise/jumpcloud.md)
+- [Groups Mapping](/main/enterprise/groups-mapping)

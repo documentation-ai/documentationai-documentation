@@ -1,0 +1,124 @@
+---
+title: MDX
+description: Write MDX in ReadMe, including the JSX syntax and the places where it behaves differently from plain Markdown.
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774265033-9t8bydyk0wh-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-09-15T21:45:42.000Z
+---
+
+Writing docs in ReadMe is done in [Markdown eXtended](https://mdxjs.com) (MDX), which is based on the [CommonMark specification](https://commonmark.org). Unlike pure Markdown, MDX uses a slightly different syntax called [Javascript XML](https://react.dev/learn/writing-markup-with-jsx) (JSX). There are some slight differences when writing MDX compared to Markdown if you’re attempting to write HTML.
+
+## Markdown vs MDX
+
+All pages in ReadMe use MDX to offer you the ability to write reusable and interactive components. Generally, it shouldn’t make a difference when writing Markdown—unless you’re writing HTML. It *looks* like HTML, but is stricter. The most common issue is that you cannot have self-closing tags in JSX:
+
+<Columns cols={2}>
+   Invalid
+
+  ```
+  <br />
+  <img />
+  <hr />
+  ```
+
+   Valid
+
+  ```
+  <br />
+  <img />
+  <hr />
+  ```
+</Columns>
+
+All JSX-style tags must be explicitly closed, including self-closing tags.
+
+<Columns cols={2}>
+   Invalid
+
+  ```
+  <p>Content
+  <ul>
+    <li>1
+    <li>2
+    <li>3
+  </ul>
+  ```
+
+   Valid
+
+  ```
+  <p>Content</p>
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+  </ul>
+  ```
+</Columns>
+
+Most attributes will need to be camelCase—except `data-` and `aria-`. Inline styles will need to be an object `{}` and those properties also must be camelCase when written in JSX (does not apply if you’re writing CSS in a `<style />` tag.
+
+<Columns cols={2}>
+   Invalid
+
+  ```
+  <img 
+    aria-label="my label" 
+    class="my-class" 
+    style="
+      margin-left: auto; 
+      margin-right: auto;
+    " />
+  ```
+
+   Valid
+
+  ```
+  <img 
+    aria-label="my label" 
+    className="my-class" 
+    style={{ 
+      marginLeft: 'auto', 
+      marginRight: 'auto' 
+    }}
+  />
+  ```
+</Columns>
+
+<Callout kind="info">
+
+
+  <strong>Tip:</strong> If you're running into other quirks or errors when working with MDX, check out [Troubleshoot MDX Errors](/main/docs/rendering-errors-invalid-mdx) for more common issues.
+</Callout>
+
+## Writing JSX
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774265299-vow3ye35yy-a29c8744b62ec4b51e366e91a012533f9c6e21638db2c425358cec92a7058d7d-CleanShot_2024-11-08_at_20-10-29.gif?fm=auto&auto=compress%2Cformat" alt="" />
+
+When editing your docs, you can write dynamic components in JSX, in a few ways:
+
+1. <strong>On the page:</strong> Write your JSX in plain text. The editor will automatically parse your syntax and highlight your JSX.
+2. <strong>[Reusing Components](/main/docs/building-custom-mdx-components):</strong> To write a component you can reuse in any page, open your **Settings** and navigate to the **Custom Components** page. Once you write your first component, you can reuse them on any page: `<ExampleComponent />`
+3. <strong>[Out-of-the-box](/main/docs/built-in-components):</strong> Our editor makes it easy to use components we’ve built into ReadMe. You can find them by opening the command menu by typing `/` in the editor. Under the **Component** section, you can choose the `Tabs`, `Accordion`, `Columns`, or `Cards` components.
+4. <strong>Public Components:</strong> We also maintain a [component marketplace](https://github.com/readmeio/marketplace) where anyone can submit a component.
+
+# Sub pages
+
+- [Built-in Components](/main/docs/built-in-components)
+- [Custom Components](/main/docs/building-custom-mdx-components)
+- [Troubleshoot MDX Errors](/main/docs/rendering-errors-invalid-mdx)
+
+# Sibling pages
+
+- [Guides](/main/docs/guides)
+- [API Reference](/main/docs/api-reference)
+- [Recipes](/main/docs/recipes)
+- [Changelog](/main/docs/changelog)
+- [Landing Page](/main/docs/landing-page)
+- [Custom Pages](/main/docs/custom-page)
+- [Reusable Content](/main/docs/reusable-content)
+
+# What's Next
+
+- [Built-in Components](/main/docs/built-in-components)
+- [Custom Components](/main/docs/building-custom-mdx-components)
+- [Troubleshoot Rendering Errors](/main/docs/rendering-errors-invalid-mdx)

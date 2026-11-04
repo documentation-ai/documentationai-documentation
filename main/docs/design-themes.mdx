@@ -1,0 +1,110 @@
+---
+title: Themes
+description: Set your hub's look from four theme presets, then tune brand colors and typography in Appearance settings.
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774521597-o2hc1pt9rkf-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-10-19T01:21:33.000Z
+---
+
+Customize your project in **Theme** settings. Open **Appearance** → **Theme** in the admin sidebar.
+
+## Theme Presets
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774520560-m2zylziejf-37c6a8ff9edb674e047cec9df53dd1618332e7b65335da90245a7022643ca26f-Themes_2026-09-02_09-02-05.webp?fm=auto&auto=compress%2Cformat" alt="" width={500} />
+
+Four theme presets are available: Boreal, Snow, Hawk, and Classic. You can preview them by hovering over each theme on the Theme page:
+
+- **Boreal**: Modern and airy with a centered layout, soft glow tint, and tab navigation.
+- **Snow**: Warm and rounded with pill navigation and circular button radius.
+- **Hawk**: Sharp and compact with a square border radius, full-width layout, and flat API Reference sections.
+- **Classic**: Solid header color and a classic header layout.
+
+When switching themes, if you have customized settings that differ from the theme, a diff table shows what changes before you confirm.
+
+## Theme Features
+
+- **Logo Size**: Small, medium, and large options
+- **Navigation Link Styles**: Choose between pills and tabs
+- **Sticky Header**: Keeps header pinned to the top of the page when scrolling on all pages except the landing page
+- **Center Header Links**: Center-align your navigation links
+- **Border Radius**: Change button radius to default, circular, or square
+- **Table of Contents Styles**: Line, dots, or angled
+- **Advanced Color Options**: Customize background, sidebar border, borders, breadcrumbs, tint, and Ask AI colors with separate light and dark mode values
+- **Light/Dark Mode Toggle**: Preview your color settings in both modes from the settings table
+- **Override Indicators**: See which settings have been customized away from the active theme, with a reset button to revert to the theme default
+- **API Reference Display Options**: Configure method badge style, parameter font, reference sections, request history, and API Reference interactions (parameter inputs, authentication credentials, and Try It)
+
+On the **Page Settings** page, you can also add breadcrumbs, collapse categories, hide the table of contents, show or hide the print button, and more.
+
+---
+
+## Brand
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774525160-ww5ujmv5dd-8f0cbe4b50d6295d5c7b3f21d28b78846e71b0bc1c77f140514ff66d3d0bb4f4-Theme_Presets_2026-09-02_09-05-30.webp?fm=auto&auto=compress%2Cformat" alt="" width={400} />
+
+### Logo
+
+An option to upload a white logo is available when an alternative is needed for certain themes and header color settings.
+
+**Format**
+
+- SVG is preferred for the best quality.
+- If your logo is too complex for an SVG, WEBP is a good alternative—use 2x of your desired logo size for clarity in high-resolution displays.
+- GIFs are not supported.
+- We recommend not including padding as part of your logo.
+
+**CSS Variables**
+
+- Customers with access to Custom CSS can use our global classes and css variables to tweak their logo display further:
+
+```css
+.rm-Logo-img {
+  --Header-logo-height: YOUR_CUSTOM_HEIGHT
+}
+```
+
+### Favicon
+
+Upload a favicon in **Appearance** → **Theme** under the **Brand** section. The favicon appears in browser tabs, search results, and when readers save your docs to a phone's home screen.
+
+**Format**
+
+- PNG and SVG are recommended. SVG favicons scale to any size without losing quality.
+- ICO and GIF files are also accepted. An uploaded `.ico` is served as-is.
+- For PNG, SVG, and GIF uploads, ReadMe generates all the sizes browsers and devices need from the full-resolution original: a multi-size `favicon.ico`, an `apple-touch-icon.png` for iOS, and icons for the web app manifest.
+
+---
+
+## Typography
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774526519-3wbfdj3psu7-548f9ea38bc30c5bfa951abf1680095f86973735044473b2840f64c6d9ae1fc6-Welcome_to_ReadMe_2026-09-02_09-08-37.webp?fm=auto&auto=compress%2Cformat" alt="" width={500} />
+
+### Spacing
+
+Choose between two spacing modes that control font size, line height, reading width, and overall content density:
+
+| Setting | Description |
+| :--- | :--- |
+| **Comfortable**  | Larger base font size (16px), wider heading scale, and a narrower reading width (~90 characters) for a more spacious feel. This is the default for all projects. |
+| **Condensed** | Smaller base font size (15px), tighter heading scale, and a wider reading width (~110 characters) for a more compact layout. |
+
+### Typeface
+
+You can choose between the default system typeface or select custom fonts for your docs. When selecting **Custom**, you can independently configure:
+
+| Font Slot | Description |
+| :--- | :--- |
+| **Headings** | Font used for all heading elements (h1–h6). |
+| **Body & UI** | Font used for body text and UI elements. |
+| **Code** | Font used for inline code and code blocks. |
+
+Custom fonts can be selected from Google Fonts, or customers on plans that support custom stylesheets can upload their own font files.
+
+# Sibling pages
+
+- [Custom CSS, HTML, and JavaScript](/main/docs/custom-css-and-javascript)
+- [Site Navigation](/main/docs/site-navigation)
+
+# What's Next
+
+- [Custom CSS and JavaScript](/main/docs/custom-css-and-javascript)
+- [Site Navigation](/main/docs/site-navigation)

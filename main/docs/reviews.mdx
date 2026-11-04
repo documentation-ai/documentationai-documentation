@@ -1,0 +1,89 @@
+---
+title: Reviews
+description: Reviews allow you to check your changes for issues with the AI Linter or get approval from a teammate.
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774340303-ppeenclfxhj-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-11-02T23:47:54.000Z
+---
+
+Reviews are an optional, but highly recommended, feature to help maintain quality in your docs. Teams use reviews to:
+
+<Callout>
+  ### Reviews work with [Branches](/main/docs/branches). Create a branch to make changes, then use a review to check and approve those changes before merging.
+</Callout>
+
+- Self-review their content for issues.
+- Run changes against their team’s style guide using the [AI Linter](/main/docs/linter).
+- Get their content reviewed by another teammate.
+
+<Callout kind="alert" title="Needs review">
+  **Needs review**: no mapping rule for signature ff2864b2aeda; nothing representable after sanitisation
+
+  ```
+  <PlanTable currentPlan="Pro" />
+  ```
+</Callout>
+
+<Callout>
+  ### <strong>Note:</strong> Some review options are only available on Enterprise plans.
+</Callout>
+
+---
+
+## Review Settings
+
+Projects on Enterprise plans can enforce review requirements and merge access restrictions. Only the Group Admin role can access and modify these settings.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774345155-5n5k6bnw65v-5d5590bbcb6d8b1ec94fe9e5df7517cc5ad7cf76a3d00b2381d83074813e33e8-Screenshot_2026-10-27_at_1-06-12_PM.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+### Review Requirements
+
+These settings help your organization maintain quality and review protocols before allowing teammates to merge changes. Changes can be applied per-project, or across the entire Enterprise group.
+
+- **Zero Lint Errors**: When enabled, prevents users from merging changes if there are lint errors on the branch.
+- **Teammate Approval**: When enabled, prevents users from merging changes until another teammate has approved the changes. You can also decide whether an admin, or admin or editor can approve a review.
+- <strong>Dismiss Stale Approvals:</strong> if Teammate Approval is also enabled, any new edits to a branch will dismiss all approvals and require re-approval before merging
+
+### Merge Access
+
+Separately from a review, you also have the option to restrict merging to admins even if review requirements are met (or there are no requirements). Admins can also bypass requirements at any time using the Skip Requirements & Merge button, regardless of the review settings configured.
+
+### Version Edit Access
+
+You can also control whether editors can edit content directly on a published version, independent of merge access. For example, you can allow editors to merge approved branches while restricting direct version edits to admins only. Both settings can be found on the Enterprise Dashboard's Project Page.
+
+---
+
+## Start a Review
+
+To start a review, navigate to the Review tab in the top-center of the ReadMe UI. Once there, you can request a review from the Review UI. Then you can share the URL of the review with a teammate for their approval.
+
+If your team uses the AI Linter, it will automatically begin checking your changes for errors, warnings, and against your team’s style guide.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774345564-8dfeqgpr5rs-7bd2ce3c48eee961d94e033bf62b0eaf5ea7285b98cf1b684183b46581d11744-Review_Tab.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+---
+
+## Review Changes
+
+When reviewing a change, you’ll be able to see all the files changed, the diff of what’s changed in each file, the Linter results, and the option to approve changes. Use the information provided when deciding whether to approve the changes. Depending on your organization’s settings, you or an admin will be able to merge the changes after doing so.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774346095-f0octezmx3t-4f67cbe6ab5f4d4e793b86a1a1ecb426b3538668cbcd7f59ec4c4896f2ffe74e-review_changes.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+<Callout>
+  ### When the order of files have changed, they’re represented as changes to the `_order` file in your docs. Each item in the file represents a page in your docs and matches the slug of each page
+</Callout>
+
+### Merge Changes
+
+Once you’re ready for the changes to go live, you can merge from the Review UI, or the branch menu. ReadMe will check to ensure there are no merge conflicts. If there are conflicts that must be resolved, we recommend [resolving the conflicts from GitHub](/main/docs/branches#/handling-conflicts). If your project does not sync with GitHub, you can choose to ignore the conflict and forcefully merge their changes—with preference to the changes in the branch.
+
+# Sub pages
+
+- [Notifications](/main/docs/notifications)
+- [Tagging Reviewers](/main/docs/tagging-reviewers)
+
+# Sibling pages
+
+- [Versioning](/main/docs/versions)
+- [Branches](/main/docs/branches)
+- [Suggest in GitHub](/main/docs/suggest-in-github)

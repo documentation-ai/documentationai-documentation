@@ -1,0 +1,53 @@
+---
+title: Sync Directory of Files via Code
+updatedAt: 2025-02-27T20:55:02.000Z
+---
+
+```node-simple Node
+const fs = require('fs');
+const sdk = require('api')('https://docs.readme.com/developers/openapi/5e1a4f6284248b0018149174');
+
+sdk.auth("API_KEY");
+
+const createDocs = async () => {
+  const categories = await sdk.getCategories({ perPage: "10", page: "1" });
+  const docs = fs.readdirSync("./docs");
+  
+  for (const doc of docs) {
+    const docContent = fs.readFileSync(doc);
+
+    sdk
+      .createDoc({
+        title: doc,
+        body: docContent,
+        category: categories[0]._id,
+      })
+      .then((res) => {
+        console.log(res);
+      });
+	}
+};
+
+createDocs();
+
+```
+
+# Get category to sync docs to
+
+{/* node-simple@7 */}
+
+We need to sync the new docs to a category, so lets fetch all of our categories. If we know the id of a specific category already, we can skip this step and hard code it instead! Before we attempt this make sure you've installed the api module:
+
+$ npm install api --save;
+
+# Fetch files from filesystem
+
+{/* node-simple@8 */}
+
+We need to get all of the docs that will be synced, so we can iterate over them and sync them to ReadMe one by one.
+
+# Sync docs to ReadMe
+
+{/* node-simple@10-22 */}
+
+For each doc we need to get the contents and send them to ReadMe's API to create it in your documentation.

@@ -1,0 +1,100 @@
+---
+title: Delete a changelog entry
+description: Delete a changelog entry from your ReadMe project.
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774707689-m5rl5k1f3d-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-09-24T03:21:04.000Z
+---
+
+# OpenAPI definition
+
+```json
+{
+  "openapi": "3.1.0",
+  "info": {
+    "description": "Create beautiful product and API documentation with our developer friendly platform.",
+    "version": "2.0.0",
+    "title": "ReadMe API",
+    "x-readme-deploy": "5.947.0",
+    "termsOfService": "https://readme.com/tos",
+    "contact": {
+      "name": "API Support",
+      "url": "https://docs.readme.com/main/docs/need-more-support",
+      "email": "support@readme.io"
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearer": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "A bearer token that will be supplied within an `Authentication` header as `bearer <token>`."
+      }
+    }
+  },
+  "paths": {
+    "/changelogs/{identifier}": {
+      "delete": {
+        "operationId": "deleteChangelog",
+        "summary": "Delete a changelog entry",
+        "tags": [
+          "Changelog"
+        ],
+        "description": "Delete a changelog entry from your ReadMe project.",
+        "parameters": [
+          {
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "[a-f\\d]{24}",
+                  "description": "A unique identifier for the resource."
+                },
+                {
+                  "type": "string",
+                  "pattern": "([a-z0-9-_ ]|[^\\\\x00-\\\\x7F])+",
+                  "description": "A URL-safe representation of the resource."
+                }
+              ]
+            },
+            "in": "path",
+            "name": "identifier",
+            "required": true,
+            "description": "The unique identifier for the resource."
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.readme.com/v2",
+      "description": "The ReadMe API"
+    }
+  ],
+  "security": [
+    {
+      "bearer": []
+    }
+  ],
+  "x-readme": {
+    "proxy-enabled": true
+  },
+  "tags": [
+    {
+      "name": "Changelog"
+    }
+  ]
+}
+```
+
+# Sibling pages
+
+- [Get a changelog entry](/main/reference/getchangelog)
+- [Create a changelog entry](/main/reference/createchangelog)
+- [Update a changelog entry](/main/reference/updatechangelog)
+- [Get all changelog entries](/main/reference/getchangelogs-1)

@@ -1,0 +1,65 @@
+---
+title: Sync with GitLab
+description: Connect your project to a GitLab repository for bi-directional sync, including how protected branches behave.
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774309819-cvv628nihg-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-09-15T21:46:47.000Z
+---
+
+## How to Set Up Bi-Directional Sync with GitLab
+
+### Prerequisites
+
+- You will need a GitLab account.
+- When syncing to a repository in an organization, you will need permission to create an **empty repository**.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774309269-5oz8krvxquj-1abc233993bf825d6747fc965a34b24bb716de17a4b9240f06b847e2764aa47b-Gitlab.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+### Set Up
+
+1. Navigate to **Settings** \> **Git Connection** page.
+2. Select GitLab.
+3. If you haven’t already, create an empty repository in [GitLab](https://docs.gitlab.com/user/project/)—make sure to uncheck the option to create a README.
+4. **Sync** with your provider and authenticate.
+5. Create a personal access token with the `api` scope. You can delete this token after completing setup. ReadMe uses this token once during setup to create the webhook on your repository and it is not stored.
+
+   1. For project access tokens, you will need the Maintainer role. However, this is not recommended as there’s a cap on the number of project access tokens created, depending on GitLab pricing.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774309572-egn9o982pe9-6f42628f7d818b2f5b9808433f38156184ced40b6789d72020f9d9a08f009a61-gitlab_scope.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+6. Add the access token to ReadMe and click on the webhook icon to create the webhooks we need to keep your content in sync with GitLab.
+
+---
+
+## Changing Repositories
+
+If you need to connect your ReadMe project to a different repository, you must disconnect the original repository using the trash icon.
+
+1. Within ReadMe, disconnect the project via the trash icon.
+2. Within GitLab, create a new empty project.
+3. Return to ReadMe and select the project you'd like to sync to.
+
+---
+
+## Protected Branches
+
+All branch rules should allow the user (who is syncing to GitLab from ReadMe) to push.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774314711-glzp5rpeuz7-14568c99136eb55c1e772537f778d9759975157298923cb07a934541c7a5ac6e-gitlab_branch_rules.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+---
+
+## FAQ
+
+<Expandable title="What permissions are required when syncing with GitLab?">
+  ReadMe requests access to:
+
+  - `read_api` for listing projects
+  - `read_user` and `read_profile` to display user information
+  - `read_repository` to sync content in GitLab to ReadMe
+  - `write_repository` to sync content in ReadMe to GitLab
+</Expandable>
+
+# Sibling pages
+
+- [Sync with GitHub](/main/docs/sync-with-github)
+- [Documentation Structure](/main/docs/documentation-structure)

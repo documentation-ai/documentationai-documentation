@@ -1,0 +1,81 @@
+---
+title: Single Sign-On (SSO)
+description: Connect your identity provider and let Teammates sign in with SSO
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774940404-1iak7e59s8t-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-10-26T20:48:36.000Z
+---
+
+Single sign-on (SSO) lets your Teammates log in to ReadMe using your organization's existing SAML 2.0 identity provider, instead of a separate ReadMe password. Set it up once in your Enterprise Group dashboard, and it applies across all projects in your group.
+
+<Callout>
+  Single Sign-On is an Enterprise feature. View [Upgrade to Enterprise](/main/enterprise/upgrade-to-enterprise) and contact [growth@readme.io](mailto:growth@readme.io) to learn more. 
+</Callout>
+
+---
+
+## Supported Providers
+
+ReadMe supports most SAML 2.0 based SSO providers, including:
+
+- [Okta](/main/enterprise/setting-up-okta)
+- [Google Workspace](/main/enterprise/setting-up-google-saml)
+- [Microsoft Entra](/main/enterprise/setting-up-microsoft-entra)
+- [Auth0](https://docs.readme.com/main/enterprise/auth0)
+- [JumpCloud](https://docs.readme.com/main/enterprise/jumpcloud)
+
+---
+
+## Implement SSO
+
+With SAML selected, configure your identity provider to work with the SSO connection ReadMe generates for your Enterprise Group.
+
+1. Navigate to the **Teammates** setting in your Enterprise Group dashboard.
+2. Choose **SAML** from the Single Sign-On dropdown, then click **Configure**.
+3. Within the configuration, add the following to your identity provider:
+
+   - IDP Configuration
+   - Attribute Statements
+   - Group Attribute Statements
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774945921-y2yelgke4xd-7c1996c-image.png?fm=auto&auto=compress%2Cformat" alt="" width={500} />
+
+<Callout>
+  Make sure the Single Sign-On URL and Entity ID include your Enterprise Group name with `-teammates` at the end. This is your connection name.
+</Callout>
+
+---
+
+## Log In Via SSO
+
+Once your connection is set up, Teammates log in through your SSO login URL at `https://dash.readme.com/login/sso/<CONNECTION_NAME>`. They'll see every project associated with the Enterprise account, but only gain access to a project after an Admin adds them.
+
+---
+
+## SSO Login Permissions
+
+By default, a member who signs in with SAML has no access to your projects. Access to SAML does not grant access to a ReadMe project.
+
+There are two ways to grant a user access through the permission system:
+
+1. <strong>Approve a request.</strong> As Teammates log in through your identity provider, they can request access to a project. An Admin approves or rejects each request.
+2. <strong>Invite directly.</strong> After your SAML connection is set up, add new Teammates with the **Invite** option.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774946196-gv60w4hcb7-7737ae7cc628c84f304348956c9f7be4d4732a1a20b4e68e48f30a136c330f3e-012c448f1cdfb72f0d279a68b96ca1eb.png?fm=auto&auto=compress%2Cformat" alt="" width={400} />
+
+On the **Teammates** page, Admins specify whether a new user is a Group Admin, Group Viewer, Project Admin, or Project Viewer. For details on automatically provisioning permissions from your identity provider, see [Groups Mapping](/main/enterprise/groups-mapping).
+
+# Sub pages
+
+- [Okta](/main/enterprise/setting-up-okta)
+- [Google SAML](/main/enterprise/setting-up-google-saml)
+- [Microsoft Entra](/main/enterprise/setting-up-microsoft-entra)
+- [Auth0](https://docs.readme.com/main/enterprise/auth0.md)
+- [JumpCloud](https://docs.readme.com/main/enterprise/jumpcloud.md)
+- [Groups Mapping](/main/enterprise/groups-mapping)
+
+# Sibling pages
+
+- [Overview](/main/enterprise/user-management-overview)
+- [Authentication & Access](/main/enterprise/enterprise-authentication-access-overview-q1-22)
+- [Teammates and Roles](/main/enterprise/user-roles)
+- [End User Access](/main/enterprise/getting-started-authentication-setup)

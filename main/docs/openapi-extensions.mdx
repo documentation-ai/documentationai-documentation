@@ -1,0 +1,575 @@
+---
+title: OpenAPI Extensions
+description: We've added a few OpenAPI extensions to help you better integrate with ReadMe.
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774134538-inupkuhyuw-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-10-08T17:27:06.000Z
+---
+
+## Getting Started
+
+[Extensions](https://swagger.io/docs/specification/openapi-extensions) are properties added to an OpenAPI spec that customize your API Reference user experience. All of these properties are optional.
+
+ReadMe extensions are defined by the `x-readme` object and most can be placed either on the root level of your spec, or on the operation level. See the [Usage](#usage) section below for specific details.
+
+Want to see a spec file that utilizes these extensions? Take a look at the example demo spec file [here](https://github.com/readmeio/oas/blob/main/packages/oas-examples/3.0/json/readme-extensions.json).
+
+## Usage
+
+Unless otherwise noted below all of our custom OpenAPI extensions can be defined on the root level of your API definition within a `x-readme` object:
+
+```json
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Owl Parliament",
+    "description": "This is a sample Owl Parliament Server",
+    "version": "1.0.0"
+  },
+  "x-readme": {
+    "explorer-enabled": false,
+    "proxy-enabled": false,
+    "samples-languages": ["shell", "python", "go"]
+  }
+}
+```
+
+If you don't want to use `x-readme` in your spec, you can define each extension as `x-<extension_name>` instead:
+
+```json
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Owl Parliament",
+    "description": "This is a sample Owl Parliament Server",
+    "version": "1.0.0"
+  },
+  "x-explorer-enabled": false,
+  "x-proxy-enabled": false,
+  "x-samples-languages": ["shell", "python", "go"]
+}
+```
+
+### Operation-level usage
+
+You can also define each extension on the operation-level to individually control their functionality on an operation-by-operation basis. If an extension is defined at both the operation and root levels, the operation-level extension takes presedence.
+
+```json
+{
+  "paths": {
+    "/owl": {
+      "post": {
+        "summary": "Add a new owl to the parliament",
+        "description": "Adds a new owl to the parliament",
+        "operationId": "addOwl",
+        "x-readme": {
+          "samples-languages": ["shell", "python", "go"]
+        }
+      }
+    }
+  }
+}
+```
+
+You can also define the extension using the `x-<extension_name>` format instead:
+
+```json
+{
+  "paths": {
+    "/owl": {
+      "post": {
+        "summary": "Add a new owl to the parliament",
+        "description": "Adds a new owl to the parliament",
+        "operationId": "addOwl",
+        "x-proxy-enabled": false,
+        "x-samples-languages": ["shell", "python", "go"]
+      }
+    }
+  }
+}
+```
+
+## Available Extensions
+
+### Disable the API Explorer
+
+Disables the API Explorer's "Try It" button, preventing users from making API requests from within your docs. Users will still be able to fill out any entry fields (path or query parameters, etc.), and code snippets will be auto-generated based on the user's input, however to interact with your API the user will need to copy the code snippet and execute it outside of your docs.
+
+This **does not** disable your API Reference documentation.
+
+<Callout>
+  The theme-level **API Reference Interactions** setting in **Appearance** → **Theme** can also affect Try It visibility. The extension setting wins out over the UI setting.
+</Callout>
+
+| Extension | Default value |
+| :--- | :--- |
+| `x-readme.explorer-enabled` | `true` |
+
+```json
+{
+  "x-readme": {
+    "explorer-enabled": true
+  }
+}
+```
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774136795-9ciapu2jhd5-5d42862189a26c9df9df1f2fad7af896a224681ed090d52075dc9640c45699b3-20b5bac3a2d0f73d15d5ce9253ee9c31.png?fm=auto&auto=compress%2Cformat" alt="1161" caption='Screenshot of the API Explorer with the "Try It" button disabled and omitted. Note that filled out fields will still update the code sample.' />
+
+### CORS proxy enabled
+
+Toggles the CORS proxy used when making API requests from within your docs (via the "Try It" button). If your API is already set up to return CORS headers, you can safely disable this feature.
+
+Disabling the CORS proxy will make the request directly from the user's browser and will prevent [Metrics](/main/docs/developer-dashboard) data from being logged by us unless [Metrics have already set up on your backend](/main/docs/sending-api-logs).
+
+| Extension | Default value |
+| :--- | :--- |
+| `x-readme.proxy-enabled` | `true` |
+
+```json
+{
+  "x-readme": {
+    "proxy-enabled": true
+  }
+}
+```
+
+### Code sample languages
+
+Toggles what languages are shown by default for code samples in the API Explorer. This only affects what languages are initially shown to the user; if the user picks another language from the three-dot menu, that language and the respective auto-generated code snippet will also appear as an option in the API Explorer.
+
+<Callout>
+  We built a Node package called [`api`](https://www.npmjs.com/package/api) that magically generates an SDK from an OpenAPI definition! To see `api` in action visit our [API documentation](https://docs.readme.com/developers/reference/projects)!
+</Callout>
+
+| Extension | Default value |
+| :--- | :--- |
+| `x-readme.samples-languages` | `['shell', 'node', 'ruby', 'javascript', 'python']` |
+
+```json
+{
+  "x-readme": {
+    "samples-languages": ["shell", "node", "ruby", "javascript", "python"]
+  }
+}
+```
+
+These are the languages supported by way of the [httpsnippet](https://github.com/readmeio/httpsnippet) library:
+
+| Language | Available language mode(s) | Libraries (if applicable)\* |
+| :--- | :--- | :--- |
+| C | `c` | [Libcurl](http://curl.haxx.se/libcurl) |
+| Clojure | `clojure` | [clj-http](https://github.com/dakrone/clj-http) |
+| C++ | `cplusplus` | [Libcurl](http://curl.haxx.se/libcurl) |
+| C# | `csharp` | [HttpClient](https://docs.microsoft.com/en-us/dotnet/api/system.net.http.httpclient), [RestSharp](http://restsharp.org/) |
+| HTTP | `http` | [HTTP/1.1](https://tools.ietf.org/html/rfc7230) |
+| Go | `go` | [NewRequest](http://golang.org/pkg/net/http/#NewRequest) |
+| Java | `java` | [AsyncHttp](https://github.com/AsyncHttpClient/async-http-client), [java.net.http](https://openjdk.java.net/groups/net/httpclient/intro.html), [OkHttp](http://square.github.io/okhttp/), [Unirest](http://unirest.io/java.html) |
+| JavaScript | `javascript` | [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest), [Axios](https://github.com/axios/axios), [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch), [jQuery](http://api.jquery.com/jquery.ajax/) |
+| JSON | `json` | [Native JSON](https://www.json.org/json-en.html) |
+| Kotlin | `kotlin` | [OkHttp](http://square.github.io/okhttp/) |
+| Node.js | `node` | [`api`](https://api.readme.dev), [HTTP](http://nodejs.org/api/http.html#http_http_request_options_callback), [Request](https://github.com/request/request), [Unirest](http://unirest.io/nodejs.html), [Axios](https://github.com/axios/axios), [Fetch](https://github.com/bitinn/node-fetch) |
+| Objective-C | `objectivec` | [NSURLSession](https://developer.apple.com/library/mac/documentation/Foundation/Reference/NSURLSession_class/index.html) |
+| OCaml | `ocaml` | [CoHTTP](https://github.com/mirage/ocaml-cohttp) |
+| PHP | `php` | [cURL](http://php.net/manual/en/book.curl.php), [Guzzle](http://docs.guzzlephp.org/en/stable/), [HTTP v1](http://php.net/manual/en/book.http.php), [HTTP v2](http://devel-m6w6.rhcloud.com/mdref/http) |
+| Powershell | `powershell` | [Invoke-WebRequest](https://docs.microsoft.com/en-us/powershell/module/Microsoft.PowerShell.Utility/Invoke-WebRequest), [Invoke-RestMethod](https://docs.microsoft.com/en-us/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) |
+| Python | `python` | [Requests](http://docs.python-requests.org/en/latest/api/#requests.request) |
+| R | `r` | [httr](https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html) |
+| Ruby | `ruby` | [net::http](http://ruby-doc.org/stdlib-2.2.1/libdoc/net/http/rdoc/Net/HTTP.html) |
+| Shell | `shell` | [cURL](http://curl.haxx.se/), [HTTPie](http://httpie.org/), [Wget](https://www.gnu.org/software/wget/) |
+| Swift | `swift` | [URLSession](https://developer.apple.com/documentation/foundation/urlsession) |
+
+\*This column documents any supported HTTP libraries for a given language mode. The `x-readme.samples-languages` array should contain language values (i.e. values from the second column like `node` or `php`) and **not** library names (i.e., values from the third column like `axios` or `guzzle`).
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774153111-p396ka6t6j-3fa45ad357d08bdf37c962d90477a0ff491b8fec797130e42683db70202f43a0-7e22701ceef2d67e29406532b07d8ee6.png?fm=auto&auto=compress%2Cformat" alt="1160" caption='Screenshot of the API Explorer with "x-readme.sample-languages" set to Swift; note the Swift language shows up first above the code snippet.' />
+
+### Custom code samples
+
+Enables custom-written code samples to be set for your operations. Use this if you have specific formatting that may not be followed by the auto-generated code samples.
+
+<Callout>
+  Custom code samples are treated as static content, so it's not possible to populate a code sample with [enduser data from a custom login (JWT)](/main/docs/user-data-options#using-variables-with-your-api).
+</Callout>
+
+<Callout>
+  This extension can only be set on the operation level
+</Callout>
+
+| Extension | Default value |
+| :--- | :--- |
+| `x-readme.code-samples` | `[]` |
+
+This must be provided as an array of JSON objects containing:
+
+| Key | Requirement | Description |
+| :--- | :--- | :--- |
+| `language` | **Required** | The language of the code sample. See the list of supported languages [above](#code-sample-languages). |
+| `code` | **Required** | Your custom code. It should preferrably be neat and tidy. |
+| `name` | *Optional* | A short name for your code sample. If none is provided we use the creative name `default`. |
+| `install` | *Optional* | If an external library is required for your code sample to function this can be a single command your users can run to install that library. For example of your code sample requires a custom Ruby SDK you can set this as `gem install our-inhouse-sdk`. |
+| `correspondingExample` | *Optional* | If a response example should be displayed alongside this code sample, specify the response example's unique identifier using this field. When users select this code sample, the corresponding response example will automatically be selected. |
+
+```json
+"x-readme": {
+  "code-samples": [
+    {
+      "language": "curl",
+      "code": "curl -X POST https://api.example.com/v2/alert",
+      "name": "Custom cURL snippet",
+      "install": "brew install curl",
+      "correspondingExample": "TestExample"
+    },
+    {
+      "language": "php",
+      "code": "<?php echo \"This is our custom PHP code snippet.\"; ?>",
+      "name": "Custom PHP snippet"
+    }
+  ]
+}
+```
+
+#### Corresponding response examples
+
+Note how the `correspondingExample` value in the above definition is `TestExample` and the [Responses Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#responses-object) below contains that `TestExample` response example. With this setup, the response example below is automatically selected when a user selects that first cURL code sample above. In order to use this feature, you must use [the `examples` map](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#fixed-fields-12) approach to defining examples.
+
+```yaml
+responses:
+  '200':
+    description: OK
+    content:
+      application/json:
+        examples:
+          TestExample: # the identifier is on this line!
+            summary: An example of a cat
+            value:
+              name: Fluffy
+              petType: Cat
+              color: White
+              gender: male
+              breed: Persian
+```
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774149517-nvltqmspw1l-2462f63-CleanShot_2024-03-26_at_14-19-012x.png?fm=auto&auto=compress%2Cformat" alt="Screenshot of the API Explorer with an example spec utilizing the x-code-samples extension." caption="Screenshot of the API Explorer with an example spec utilizing the x-code-samples extension. Note the tabs showing different snippets for the cURL (Shell) language." />
+
+### Apply tag changes
+
+Moves existing endpoint pages to match changes to their operation tags when you update an OpenAPI definition. (By default, ReadMe does not process tag changes after the initial sync. Some customers move endpoints manually in the dashboard and want to retain this manual ordering after future syncs.) Pages moved to another top-level category are not affected. This extension can only be defined at the API definition root. 
+
+| Extension | Default value |
+| :--- | :--- |
+| `x-readme.apply-tag-changes` | `false` |
+
+```json
+{
+  "x-readme": {
+    "apply-tag-changes": true
+  }
+}
+```
+
+### Apply endpoint order
+
+Reorders endpoint pages within their current parent to match your OpenAPI definition when you re-sync it. Applies to paths and webhooks, preserving manual nesting. Pages moved to another top-level category are not affected.
+
+This extension can only be defined at the API definition root and works independently of [`apply-tag-changes`](#apply-tag-changes). Enable both to sync tag grouping and endpoint order.
+
+| Extension | Default value |
+| :--- | :--- |
+| `x-readme.apply-endpoint-order` | `false` |
+
+```json
+{
+  "x-readme": {
+    "apply-endpoint-order": true
+  }
+}
+```
+
+### Enum descriptions
+
+Generates a table so descriptions can be added for each enum option. This will need to placed at the schema level where the enum is defined.
+
+<Callout>
+  This extension [may look familiar](https://redocly.com/docs/api-reference-docs/specification-extensions/x-enum-descriptions/) for folks coming from Redocly! Because this extension is used by other vendors, it should **not** be contained within an `x-readme` object and instead should live at the schema level.
+</Callout>
+
+| Extension | Default value |
+| :--- | :--- |
+| `x-enumDescriptions` | `{}` |
+
+```json
+{
+  "type": "string",
+  "enum": ["Owlbert", "Lorem Ipsum"],
+  "x-enumDescriptions": {
+    "Owlbert": "ReadMe's mascot",
+    "Lorem Ipsum": "dolor sit amet"
+  }
+}
+```
+
+### Parameter ordering
+
+Controls the order of parameters on your API Reference pages.
+
+Your custom ordering **must** contain all of our available parameter types:
+
+- `path`: Path parameters
+- `query`: Query parameters
+- `body`: Non-`application/x-www-form-urlencoded` request body payloads
+- `cookie`: Cookie parameters
+- `form`: `application/x-www-form-urlencoded` request body payloads
+- `header`: Header parameters
+
+| Extension | Default value |
+| :--- | :--- |
+| `x-readme.parameter-ordering` | `['path', 'query', 'body', 'cookie', 'form', 'header']` |
+
+```json
+{
+  "x-readme": {
+    "parameter-ordering": ["path", "query", "header", "cookie", "body", "form"]
+  }
+}
+```
+
+### Static headers
+
+Adds static headers to add to each request. Use this when there are specific headers unique to your API.
+
+| Extension | Default value |
+| :--- | :--- |
+| `x-readme.headers` | `[]` |
+
+Headers must be provided as an array of objects with `key` and `value` properties.
+
+```json
+{
+  "x-readme": {
+    "headers": [
+      {
+        "key": "X-Static-Header-One",
+        "value": "owlbert"
+      },
+      {
+        "key": "X-Static-Header-Two",
+        "value": "owlivia"
+      }
+    ]
+  }
+}
+```
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774153799-7pvyhu9z9r4-0b22079-static-headers.png?fm=auto&auto=compress%2Cformat" alt="1159" caption='Screenshot of the API Explorer with a custom static header "x-api-key" defined in its spec.' />
+
+### Internal pages
+
+Ensures that pages created from your API definition are marked as internal and hidden from your public documentation.
+
+| Extension | Default value |
+| :--- | :--- |
+| `x-internal` | `false` |
+
+This extension can be set at the operation level to mark a single page as internal, or at the root level to declare all operation pages as internal.
+
+```json
+{
+  "x-internal": true
+}
+```
+
+### Authentication defaults
+
+Sets default authentication credentials used when making API requests from your docs. Unlike the other extensions we provide, authentication defaults are set using `x-default` in your `securitySchemes` object.
+
+Defaults can be set for `oauth2`, `apiKey`, and `http` (Basic) authentication types.
+
+#### OAuth2 token defaults
+
+For `oauth2` schemes, a string `x-default` value prefills the bearer token:
+
+```json
+{
+  "securitySchemes": {
+    "oauth": {
+      "type": "oauth2",
+      "x-default": "TXlOYW1lSXNPd2xiZXJ0IQ==",
+      "flows": {
+        "authorizationCode": {
+          "authorizationUrl": "https://example.com/oauth/authorize",
+          "tokenUrl": "https://example.com/oauth/token",
+          "scopes": {
+            "write:owls": "modify owls in your account",
+            "read:owls": "read your owls"
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+#### OAuth2 client credential defaults
+
+For `oauth2` schemes, an object `x-default` value can prefill the client ID and client secret fields. Both `snake_case` and `camelCase` keys are supported:
+
+```json
+{
+  "securitySchemes": {
+    "oauth": {
+      "type": "oauth2",
+      "x-default": {
+        "client_id": "my-client-id",
+        "client_secret": "my-client-secret"
+      },
+      "flows": {
+        "clientCredentials": {
+          "tokenUrl": "https://example.com/oauth/token",
+          "scopes": {}
+        }
+      }
+    }
+  }
+}
+```
+
+```json
+{
+  "securitySchemes": {
+    "oauth": {
+      "type": "oauth2",
+      "x-default": {
+        "clientId": "my-client-id",
+        "clientSecret": "my-client-secret"
+      },
+      "flows": {
+        "clientCredentials": {
+          "tokenUrl": "https://example.com/oauth/token",
+          "scopes": {}
+        }
+      }
+    }
+  }
+}
+```
+
+<Callout>
+  When `x-default` is an object with client credentials, the values are used to prefill the client ID and client secret fields only — they are not used as the OAuth bearer token. User-entered credentials always take priority over `x-default` values.
+</Callout>
+
+#### API Key defaults
+
+For `apiKey` schemes, `x-default` accepts a string value that prefills the API key field:
+
+```json
+{
+  "securitySchemes": {
+    "api_key": {
+      "type": "apiKey",
+      "name": "api_key",
+      "in": "header",
+      "description": "An API key that will be supplied in a named header.",
+      "x-default": "TXlOYW1lSXNPd2xiZXJ0IQ=="
+    }
+  }
+}
+```
+
+#### HTTP Basic auth defaults
+
+For `http` schemes with `basic` scheme, `x-default` accepts an object with `user` and `pass` keys to prefill the username and password fields:
+
+```json
+{
+  "securitySchemes": {
+    "basicAuth": {
+      "type": "http",
+      "scheme": "basic",
+      "x-default": {
+        "user": "default-username",
+        "pass": "default-password"
+      }
+    }
+  }
+}
+```
+
+### OAuth Configuration Options
+
+| Key | Default Value | Description |
+| :--- | :--- | :--- |
+| `scopeSeparator` | ` ` | Scope separator for passing scopes (defaults to a single space character). This value will be URL-encoded. |
+| `useInsecureClientAuthentication` | `false` | When enabled, the client credentials (i.e., `client_id` and `client_secret`) are sent in the request body (NOT recommended). When disabled (the default), client credentials are sent using the HTTP Basic Authentication scheme. |
+| `usePkce` | `false` | When enabled, uses PKCE (Proof Key for Code Exchange) for OAuth 2.0 authorization code flows. With PKCE, the client secret is replaced with an auto-generated code verifier and code challenge, providing enhanced security for public clients that cannot securely store secrets. See [RFC 7636](https://datatracker.ietf.org/doc/html/rfc7636). |
+
+```json
+{
+  "x-readme": {
+    "oauth-options": {
+      "scopeSeparator": ",",
+      "useInsecureClientAuthentication": true,
+      "usePkce": false
+    }
+  }
+}
+```
+
+### Disable API Metrics
+
+Disables API requests from the API Explorer's "Try It" button from being sent into our [API Metrics](https://readme.com/metrics) for you and your users. Additionally on any API endpoint that this is disabled on your users will not see lists or graphs of previous requests they've made against that API endpoint — either through the API Explorer's interactivity or through one of our [Metrics SDKs](/main/docs/sending-api-logs) (if you have those installed on your API).
+
+| Extension | Default value |
+| :--- | :--- |
+| `x-readme.metrics-enabled` | `true` |
+
+## Deprecated and Unsupported Extensions
+
+The extensions below are deprecated or are no longer supported in the most recent version of the API Reference Design. These are documented for reference purposes only.
+
+### Send defaults
+
+<Callout>
+  This extension is deprecated and all defaults will be sent via the API Explorer.
+</Callout>
+
+Whether to send the defaults specified in your OpenAPI document, or render them as placeholders.
+
+| Extension | Default value |
+| :--- | :--- |
+| `x-readme.send-defaults` | `false` |
+
+```json
+{
+  "x-readme": {
+    "send-defaults": false
+  }
+}
+```
+
+### Disable code examples
+
+<Callout>
+  This extension is no longer supported.
+</Callout>
+
+Disable auto-generated code samples from appearing on your API Reference operation documentation.
+
+| Extension | Default value |
+| :--- | :--- |
+| `x-readme.samples-enabled` | `true` |
+
+```json
+{
+  "x-readme": {
+    "samples-enabled": true
+  }
+}
+```
+
+## Support
+
+Questions? [Contact Support](/main/docs/need-more-support), we don't bite!
+
+# Sibling pages
+
+- [Categories, Pages, and Subpages](/main/docs/openapi-categories-pages-subpages)
+- [Re-syncing Your OpenAPI Document](/main/docs/openapi-resyncing)
+- [OpenAPI Compatibility Chart](/main/docs/openapi-compatibility-chart)

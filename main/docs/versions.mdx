@@ -1,0 +1,100 @@
+---
+title: Versioning
+description: Maintain more than one version of your docs, covering version settings, the reader-facing dropdown, and common use cases.
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774322105-1diz3874q9e-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-10-26T20:48:36.000Z
+---
+
+Maintaining multiple versions of your documentation is critical for many different technical products. This page goes into the details of how versioning works in ReadMe, as well as several use cases.
+
+<Callout kind="info">
+
+
+  <strong>Affected Sections:</strong>  Guides, Recipes, and Reference sections are versioned. Content for Landing Page, Discussions, and Changelog will persist across versions.
+</Callout>
+
+## Making a New Version
+
+Create new versions on the Versions page, which you can find from the versions & branch menu in the sidebar, or navigating to **Settings** → **Versions**.
+
+Click **New Version**, then select the version you want to fork from and give your new version a name.
+
+### Semver-ish
+
+Our versioning is based on [Semver](http://semver.org/), but is more flexible than Semver in terms of the acceptable inputs. This means your versions can be as simple as `v1.0`, but as complex as `v1.0-hello-this-is-a-version`.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774321016-izu7lhl7th-c9d8faa148305a59a65d691ee1057cb59ec355d3f745e0102717ceb3c00c663a-New_Version.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+---
+
+## Version Settings
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774326608-yriml2scx8-4005bbb26b8d843bc191dc2cf0bfa8983b0c622908da714f546a744fd6a3bdc5-Versions.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+The versions page shows the name, display name, number of branches, beta, deprecated, and visibility settings for each version.
+
+- **Display Name**: This is the name that is shown in your docs instead of the semver version name.
+- **Beta**: Indicates that a version is in beta and adds a badge next to that version in your docs.
+- **Deprecated**: Indicates that a version is deprecated and adds a badge next to that version in your docs. Users will also see a red banner across the top of your docs while viewing this version indicating that it’s deprecated.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774327031-3p1inenzdyo-6fad697e38abe89f8897372e779f8a9dbecdd4f8ee3b22833a4e33e5830da04f-4e2a233b062a35974d74b6745995874a.png?fm=auto&auto=compress%2Cformat" alt="" caption="The deprecated banner" />
+
+### Visibility
+
+#### Default
+
+This is the version that your domain will direct to. Users can change to a different version by clicking the version dropdown selector.
+
+#### Public
+
+Selecting this will make this available in the version dropdown selector and to anyone that can view your docs. If unselected, this version will be marked as **Hidden** and only be visible to project teammates (including Admins, Editors, and Viewers).
+
+#### Hidden
+
+When a version is hidden it won’t be accessible to the public and will not be shown to the public in the version menu in your docs.
+
+---
+
+## Displaying Version Dropdown
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774327314-otk4tbe6q3g-c539bc90c71e75f3c433ed2919735d4c4529226aa66fae730b82eae64165f855-version_menu.png?fm=auto&auto=compress%2Cformat" alt="" caption="Admin view: Hidden and Deprecated are not visible to end-users" />
+
+By default, we show the aforementioned version dropdown picker in the subnavigation bar. You can toggle to display or hide this in **Appearance  > Navigation**.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774327604-hfoa1wo8168-bbce3710fae7ea95f10fa7da4acbff9490f77fcd4763de8d650bbf10a723c1e4-subnav.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+---
+
+## Reusable Content
+
+Any [Reusable Content](/main/docs/reusable-content) created within one Version can only be used within that Version's documentation; it's not possible to define Reusable Content blocks that can be used across Versions within a single project.
+
+If a new Version is created when forked from an existing Version, the new Version inherits all the Reusable Content blocks defined in the existing Version. However, the Reusable Content blocks in the new Version are completely independent from the old Version.
+
+<Callout kind="info">
+  Global Reusable Content
+
+  Projects on an Enterprise plan have the ability to define **Global Reusable Content** that *can* be used across Projects and Versions. See our [Reusable Content for Enterprise Groups docs](https://docs.readme.com/main/enterprise/reusable-content-enterprise) for more information!
+</Callout>
+
+---
+
+## Use Cases
+
+There are lots of different scenarios where doc versioning might be useful — some are more obvious than others. The most obvious use case is for when your documentation version needs to match the versioning that might be taking place with your API or other technical product, and you need to maintain copies of your docs for each respective version.
+
+Another use case is for bigger content restructuring or migrations, especially when these changes are more involved than simply updating a few pages (in which case we'd recommend [Suggested Edits](https://docs.readme.com/main/docs/suggested-edits). You can fork a new version of your docs, do some major restructuring (e.g. reorganizing page categories, combining pages, deleting outdated content, etc.), and still have your old docs as your public-facing changes. And when you're ready to flip the switch over, it's as easy as renaming the versions and toggling a few version settings!
+
+---
+
+## FAQ
+
+<Expandable title="How many versions can I create?">
+  Starter plan users can create 1 version. Upgrade to the Pro plan or higher to unlock unlimited versions.
+</Expandable>
+
+# Sibling pages
+
+- [Branches](/main/docs/branches)
+- [Reviews](/main/docs/reviews)
+- [Suggest in GitHub](/main/docs/suggest-in-github)

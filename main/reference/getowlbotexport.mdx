@@ -1,0 +1,112 @@
+---
+title: Retrieve an Owlbot export
+description: Check the status of an Owlbot QA log export. Returns a signed download URL when the export is ready, or a 202 if still processing.
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774758230-bqi2ddeeodq-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-09-24T03:21:04.000Z
+---
+
+# OpenAPI definition
+
+```json
+{
+  "openapi": "3.1.0",
+  "info": {
+    "description": "Create beautiful product and API documentation with our developer friendly platform.",
+    "version": "2.0.0",
+    "title": "ReadMe API",
+    "x-readme-deploy": "5.947.0",
+    "termsOfService": "https://readme.com/tos",
+    "contact": {
+      "name": "API Support",
+      "url": "https://docs.readme.com/main/docs/need-more-support",
+      "email": "support@readme.io"
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearer": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "A bearer token that will be supplied within an `Authentication` header as `bearer <token>`."
+      }
+    }
+  },
+  "paths": {
+    "/owlbot/export/{id}": {
+      "get": {
+        "operationId": "getOwlbotExport",
+        "summary": "Retrieve an Owlbot export",
+        "tags": [
+          "Owlbot AI"
+        ],
+        "description": "Check the status of an Owlbot QA log export. Returns a signed download URL when the export is ready, or a 202 if still processing.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "pattern": "^owlbot-logs-"
+            },
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "description": "The export ID returned by `POST /owlbot/export`."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "url": {
+                          "type": "string",
+                          "description": "A signed URL to download the exported CSV. Expires in 10 minutes."
+                        }
+                      },
+                      "required": [
+                        "url"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "data"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "202": {
+            "description": "Accepted"
+          }
+        }
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.readme.com/v2",
+      "description": "The ReadMe API"
+    }
+  ],
+  "security": [
+    {
+      "bearer": []
+    }
+  ],
+  "x-readme": {
+    "proxy-enabled": true
+  },
+  "tags": [
+    {
+      "name": "Owlbot AI"
+    }
+  ]
+}
+```

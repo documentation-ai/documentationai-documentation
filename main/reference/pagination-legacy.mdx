@@ -1,0 +1,53 @@
+---
+title: Limiting API Results
+description: "The ReadMe API uses pagination on those endpoints that return lists. The following endpoints return paginated lists: Get API specification metadata Get all categories Get changelogs Get custom pages Requests that return multiple items will be paginated to 10 items by default. If you want to return m…"
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774805829-z0rztpdll1-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2025-07-10T16:13:31.000Z
+---
+
+The ReadMe API uses pagination on those endpoints that return lists. The following endpoints return paginated lists:
+
+- [Get API specification metadata](https://docs.readme.com/main/reference/api-specification#get_api-specification)
+- [Get all categories](/main/reference/getcategories)
+- [Get changelogs](https://docs.readme.com/main/reference/getchangelogs)
+- [Get custom pages](/main/reference/getcustompages)
+
+Requests that return multiple items will be paginated to 10 items by default. If you want to return multiple pages, you can use the `page` query parameter. You can also set a custom page size up to 100 with the `perPage` query parameter.
+
+Like the [GitHub API](https://docs.github.com/en/rest/guides/traversing-with-pagination), the [`Link` header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Link) also includes pagination information:
+
+```
+Link: </api/v1/changelogs?perPage=10&page=3>; rel="next",
+  </api/v1/changelogs?perPage=10&page=1>; rel="prev",
+  </api/v1/changelogs?perPage=10&page=8>; rel="last"
+```
+
+<em>The above example includes line breaks for readability.</em>
+
+The possible `rel` values are:
+
+| Name | Description |
+| :--- | :--- |
+| `next` | The link relation for the immediate next page of results. |
+| `prev` | The link relation for the immediate previous page of results. |
+| `last` | The link relation for the very last page of results. |
+
+Additionally, the `x-total-count` header provides the total number of items, ignoring pagination. See below for an example:
+
+```
+x-total-count: 84
+```
+
+# Sibling pages
+
+- [API v1 → v2 Update Guide](/main/reference/api-upgrade-guide)
+- [API Registry](https://docs.readme.com/main/reference/api-registry-legacy.md)
+- [API Specification](https://docs.readme.com/main/reference/api-specification-legacy.md)
+- [Categories](https://docs.readme.com/main/reference/categories-legacy.md)
+- [Changelog](https://docs.readme.com/main/reference/changelog-legacy.md)
+- [Custom Pages](https://docs.readme.com/main/reference/custom-pages-legacy.md)
+- [Docs](https://docs.readme.com/main/reference/docs-legacy.md)
+- [IP Addresses](https://docs.readme.com/main/reference/ip-addresses-legacy.md)
+- [Owlbot AI](https://docs.readme.com/main/reference/owlbot-ai-legacy.md)
+- [Projects](https://docs.readme.com/main/reference/projects-legacy.md)
+- [Version](https://docs.readme.com/main/reference/version-legacy.md)

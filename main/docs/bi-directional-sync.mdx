@@ -1,0 +1,161 @@
+---
+title: Bi-Directional Sync
+description: Connect your project to a GitHub, GitLab, or Bitbucket repository so content stays in step whether you edit in ReadMe or in your repo.
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774303913-ioe06q6i06k-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-10-29T18:36:08.000Z
+---
+
+Bi-directional sync creates a two-way connection between your ReadMe project and a GitHub, GitLab, or Bitbucket repository. This optional workflow keeps content consistent across both platforms. With Bi-directional sync you can:
+
+- Write in your preferred environment whether that’s ReadMe or your local development environment.
+- Developers, engineers, and technical writers can collaborate using the tools they prefer.
+- Changes sync automatically between ReadMe and Git creating a single source of truth.
+- All content types sync, including guides, API reference pages, custom pages, recipes, and changelogs.
+
+<Callout kind="alert" title="Needs review">
+  **Needs review**: no mapping rule for signature ff2864b2aeda; nothing representable after sanitisation
+
+  ```
+  <PlanTable currentPlan="Starter" />
+  ```
+</Callout>
+
+## Setting Up Bi-Directional Sync
+
+ReadMe supports bi-directional sync with [GitHub](/main/docs/sync-with-github), [GitLab](/main/docs/sync-with-gitlab), and Bitbucket.
+
+For syncing with GitHub, you can connect to GitHub Cloud. If you are on the Enterprise plan, ReadMe supports bi-directional sync to [GitHub Enterprise Server](https://docs.readme.com/main/enterprise/github-enterprise-sync).
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774291517-ve9p1906uh-d41694d6702695879301e46fed133883fe74d7917dc71f769cdc6903f31f4332-Bidi.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+<Callout>
+  ### The repository you’re syncing to must be empty—no commits or files (e.g., README.md)—before connecting to ReadMe. You can add files after setup.
+</Callout>
+
+<Callout>
+  ### Connecting to a repository owned by an organization (e.g., a GitHub organization or GitLab group) may require organization-level permissions such as the ability to install or configure third-party apps. If you encounter a permissions error during setup, coordinate with an organization owner or admin on your Git provider. See the provider-specific setup pages linked above for details.
+</Callout>
+
+## Branching with bi-directional sync
+
+Combining bi-directional sync with [branching](/main/docs/branches) gives you access to ReadMe's powerful collaboration system. Branches in ReadMe correlate directly to branches in your bi-directional sync repo, and your team can either use ReadMe's merging/conflict resolution system within our UI, or Pull Requests at Github, whichever fits your team's workflow! Once a feature branch has been merged into a main branch, changes go live on your published developer hub.
+
+### Branch Requirements `main`
+
+Every connected repository needs a `main` branch, even if your team doesn’t use one. Versioned content syncs to branches named after your ReadMe versions, but unversioned content like [Changelog](/main/docs/changelog) entries syncs to `main`. Keep `main` in your repository, and make sure [branch protection](#push-rejected-the-target-branch-is-protected) isn’t blocking ReadMe Sync from pushing to it.
+
+## Editing Your Docs
+
+<Callout>
+  ### Use the ReadMe cli tool when editing your repo
+
+  It's easy to make mistakes when editing your repo directly, that's why we created [a cli tool ](/main/docs/cli)you can use to make sure everything is consistent before pushing content. The cli tool is also necessary any time you sync OpenAPI specification files
+</Callout>
+
+Once your Git Connection is set up, all changes made in the ReadMe editor will automatically sync to your Git repository, and vice versa. When editing documentation in Git, you can use your preferred code editor or Git tools.
+
+To ensure successful syncing from *Git to ReadMe*, follow these structure guidelines:
+
+<strong>Markdown Files:</strong>
+
+- Files must include required frontmatter: `title` and `summary`
+- Content should be written in standard Markdown format
+- File names must match the intended URL slug for proper routing
+
+<strong>Navigation:</strong>
+
+- Page order is defined using `_order.yaml` files
+- Each category folder can have its’ own `order.yaml`
+- [Navigation structure](/main/docs/documentation-structure) in Git mirrors your ReadMe project hierarchy
+
+[Branches](/main/docs/branches)
+
+- The initial commit from ReadMe is to establish branch synchronization with GitHub
+- Branch names must exactly match the version names defined in ReadMe
+- Any mismatched version and names will exist in GitHub and will not sync with ReadMe.
+
+ Unsynced
+
+```
+ReadMe: v2.0_new-branch
+GitHub: v2-new-branch
+	
+```
+
+ Synced
+
+```
+ReadMe: v2.0_new-branch
+GitHub: v2.0_new-branch
+	
+```
+
+### Editing with AI Agents
+
+AI agents benefit from installing the [ReadMe MCP Server](/main/docs/readme-mcp) and related skills. This allows editing of project settings (cannot do via bi-directional sync), and the skills provide information on the structure of bi-directionally synced repositories.
+
+## Troubleshooting
+
+### Push rejected: the target branch is protected
+
+If a synced branch has branch protection rules or rulesets, your Git provider can reject the commits ReadMe pushes to it. When that happens, **Settings > Git Connection** shows an error naming the affected branch:
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774291713-osz7eaoxyxb-4c526af577ad473c856ce2cf0f85abe31c1bec9d1d7a92e7a2d448cfdea184ad-CleanShot_2026-09-29_at_10-42-54_AM2x.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+**What you'll notice**
+
+- Changes saved in ReadMe don't appear in your repository.
+- Changes merged in Git can also stop appearing in ReadMe. This is most visible with API definitions: syncing an API definition requires ReadMe to write generated reference files back to the branch, so when that push is rejected the definition isn't updated, even though Markdown guides in the same commit may sync fine.
+- The Git Connection still shows as **Connected**. The error is on the branch, not the connection.
+
+**Why it happens**
+
+ReadMe Sync pushes commits directly to your synced branches, and it doesn't automatically bypass the rules you've set on the repository. Any rule that blocks direct pushes will reject them: requiring a pull request, requiring reviews or status checks, requiring signed commits or linear history, or restricting who can push.
+
+**How to fix it**
+
+1. Allow the ReadMe integration to push to every synced branch. For GitHub, add the ReadMe Sync app to the bypass list by following [this guide](/main/docs/sync-with-github#github-branch-protection). Rulesets and legacy branch protection are configured in different places, so check which one your repository uses. For GitLab or Bitbucket, allow the account used by the ReadMe integration to push to the protected branch.
+2. Check for rules defined at the organization level. Organization rulesets apply on top of repository rules and need their own bypass entry.
+3. If your repository settings are managed by an automated tool (a repo-settings config, a policy bot, or infrastructure-as-code), make the change there. Otherwise the next run of that tool will revert it.
+4. Trigger a sync by saving a small change to the affected branch in ReadMe, or by pushing a new commit to it. Commits ReadMe couldn't push are sent on the next successful sync.
+5. Confirm the error has cleared on **Settings > Git Connection**. If a change merged in Git still isn't showing, re-save the affected page or API definition in ReadMe once the push succeeds.
+
+## FAQ
+
+<Expandable title="How does ReadMe integrate with GitHub and what permissions are required?">
+  ReadMe uses a GitHub App with repo-level access: read-only for metadata(required) and read/write for syncing content. Webhooks handle syncs, change detection, and conflict resolution.
+</Expandable>
+
+<Expandable title="What permissions are required when syncing with GitLab?">
+  ReadMe requests access to:
+
+  - `read_api` for listing projects
+  - `read_user` and `read_profile` to display user information
+  - `read_repository` to sync content in GitLab to ReadMe
+  - `write_repository` to sync content in ReadMe to GitLab
+</Expandable>
+
+<Expandable title="Sync says a push was rejected because the branch is protected.">
+  Your branch protection rules are blocking ReadMe's pushes. Add the ReadMe integration to the bypass list for that branch and trigger a new sync. See [Troubleshooting](#troubleshooting) above for the full steps.
+</Expandable>
+
+<Expandable title="Why don’t I see a `changelogs` folder in my repository?">
+  Changelog entries only sync to the `main` branch, so check `main` rather than your version branches. If the folder still isn’t there, make sure `main` hasn’t been deleted and that branch protection isn’t blocking ReadMe Sync from pushing to it. Once that’s resolved, save an edit to any Changelog entry in ReadMe to trigger a sync. See [Branch Requirements](#main-branch-requirements) for details.
+</Expandable>
+
+# Sub pages
+
+- [Sync with GitHub](/main/docs/sync-with-github)
+- [Sync with GitLab ](/main/docs/sync-with-gitlab)
+- [Documentation Structure](/main/docs/documentation-structure)
+
+# Sibling pages
+
+- [Integrate into Your Workflow](/main/docs/integrate-your-workflow)
+- [Keep Your API Docs Synced With OpenAPI](/main/docs/sync-docs-with-openapi)
+
+# What's Next
+
+- [Documentation Structure](/main/docs/documentation-structure)
+- [Branches](/main/docs/branches)
+- [Versioning](/main/docs/versions)

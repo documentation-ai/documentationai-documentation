@@ -1,0 +1,63 @@
+---
+title: Limiting API Results
+description: "The ReadMe API uses pagination on endpoints that return collections of data. Get your API keys Get all changelog entries Get uploaded images All pagination data will be returned within a paging object in your response: \u007B \"total\": 5, \"page\": 2, \"per_page\": 2, \"paging\": \u007B \"next\": \"/images?page=3&per_p…"
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774664020-kp7tfr4h36q-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2025-07-02T21:19:31.000Z
+---
+
+The ReadMe API uses pagination on endpoints that return collections of data.
+
+- [Get your API keys](/main/reference/getapikeys)
+- [Get all changelog entries](/main/reference/getchangelogs-1)
+- [Get uploaded images](/main/reference/getimages)
+
+All pagination data will be returned within a `paging` object in your response:
+
+```json
+{
+  "total": 5,
+  "page": 2,
+  "per_page": 2,
+  "paging": {
+    "next": "/images?page=3&per_page=2",
+    "previous": "/images?page=1&per_page=2",
+    "first": "/images?page=1&per_page=2",
+    "last": "/images?page=3&per_page=2"
+  },
+  "data": [
+    {
+      /* image object */
+    },
+    {
+      /* image object */
+    }
+  ]
+}
+```
+
+- `next` is the page of content immediately following the current page. If the current page is the last page, this will be `null`.
+- `previous` is the page of content immediately before the current page. If the current page is the first page, this will be `null`.
+- `first` is the very first page of content. This will always have a value.
+- `last` is the very last page of content. This will always have a value.
+
+Requests that return multiple resources will be paginated to 10 items by default. If you would like to different pages you can utilize the `page` query parameter. You can also customize your page size, up to 100, with the `per_page` query parameter.
+
+# Sibling pages
+
+- [Intro to the ReadMe API](/main/reference/intro-to-the-readme-api)
+- [API Keys](https://docs.readme.com/main/reference/api-keys.md)
+- [API Reference](https://docs.readme.com/main/reference/api-reference.md)
+- [APIs](https://docs.readme.com/main/reference/apis.md)
+- [Branches](https://docs.readme.com/main/reference/branches.md)
+- [Categories](https://docs.readme.com/main/reference/categories.md)
+- [Changelog](https://docs.readme.com/main/reference/changelog-2.md)
+- [Custom Pages](https://docs.readme.com/main/reference/custom-pages.md)
+- [Discuss](https://docs.readme.com/main/reference/discuss.md)
+- [Fonts](https://docs.readme.com/main/reference/fonts.md)
+- [Guides](https://docs.readme.com/main/reference/guides.md)
+- [Images](https://docs.readme.com/main/reference/images.md)
+- [IP Addresses](https://docs.readme.com/main/reference/ip-addresses.md)
+- [Owlbot AI](https://docs.readme.com/main/reference/owlbot-ai.md)
+- [Projects](https://docs.readme.com/main/reference/projects.md)
+- [Recipes](https://docs.readme.com/main/reference/recipes.md)
+- [Search](https://docs.readme.com/main/reference/search-2.md)

@@ -1,0 +1,151 @@
+---
+title: Migrate from GitBook
+description: Move GitBook docs to ReadMe and build fully custom MDX components beyond GitBook's block editor, with Guides and API Reference on one platform.
+metaTitle: Migrate from GitBook to ReadMe
+metaDescription: Step-by-step guide to moving documentation from GitBook to ReadMe, covering SUMMARY.md, GitBook block syntax, assets, variants, and redirects.
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774615161-5m9b1wslgv2-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-10-26T20:48:36.000Z
+---
+
+Move GitBook content to ReadMe by exporting each space, converting GitBook blocks and conditions, and choosing the import workflow that fits your team. You gain the ability to build fully custom MDX components beyond GitBook's block editor, and you can run Guides and an OpenAPI-generated API Reference on one platform with unified versioning.
+
+## Choose the easiest migration path
+
+| Your situation | Recommended path |
+| --- | --- |
+| You want to evaluate a public GitBook site | Use the [Importer](https://readme.com/importer) with a URL. |
+| You can export GitBook spaces through GitBook Git Sync | Convert the Markdown export and use Git-based import or `rdme@10`. |
+| You have a few pages | Create and review content in the ReadMe editor. |
+| You want an AI agent to convert GitBook blocks and create pages for you | Connect your agent to [ReadMe's MCP server](/main/docs/readme-mcp) with the ReadMe skills and start your import and configure appeareance. |
+| You have variants, conditions, permissions, or a large content set | Ask about [Enterprise migration assistance](/main/enterprise/migrate-to-readme). |
+
+GitBook's own Git Sync exports content from GitBook to a repository. ReadMe bi-directional Git Sync is a separate, post-migration workflow that starts with a new, empty repository — it does not import an existing GitBook export.
+
+## What doesn't transfer, and what replaces it
+
+| What doesn't transfer | Rebuild it with |
+| --- | --- |
+| Custom blocks built in GitBook's editor | [Custom MDX components](/main/docs/building-custom-mdx-components) |
+| Page-level visibility rules and permissions | Page-level `hidden` frontmatter, project privacy settings, and [Internal Documentation](/main/docs/internal-documentation) access controls |
+| Conditional content and visitor claims | Recreate the intended behavior per version or page; GitBook's runtime condition evaluation does not carry over |
+| GitBook comments and change-request history (not carried over by export) | Continue content review with [Branches](/main/docs/branches) and [Reviews](/main/docs/reviews) going forward |
+
+## Export and inventory GitBook content
+
+1. Export every required GitBook space through GitBook Git Sync.
+2. Export each variant separately when you publish different versions or languages.
+3. Keep the exported repository unchanged as your migration snapshot.
+4. Inventory `SUMMARY.md`, `.gitbook.yaml`, `.gitbook/assets/`, `.gitbook/includes/`, OpenAPI files, custom blocks, conditions, access rules, and public URLs.
+
+The export can include content, navigation, assets, and reusable content. Comments, change-request history, visitor claims, and runtime condition evaluation do not transfer and need deliberate review and recreation in ReadMe.
+
+## Convert blocks and navigation
+
+Convert GitBook `{% ... %}` blocks to supported ReadMe MDX or Markdown. Start with representative pages, verify the output, then apply a script to repeated patterns. Move assets, update their references, and search the converted files for remaining `{%` markers.
+
+Use `SUMMARY.md` as the source for navigation. For CLI uploads, each new Guide needs `title` and `category.uri`; use `position` and `parent.uri` to recreate hierarchy. For Git-based import, prepare the supported folder structure and `_order.yaml` files.
+
+## Recreate variants and access rules
+
+Create a ReadMe version for each GitBook variant you will publish. Migrate and review one version before continuing with the others. Recreate visibility, access controls, and conditional content because GitBook's visitor claims and runtime condition evaluation do not transfer automatically.
+
+## Upload and review
+
+Upload a validated OpenAPI definition if you have one, then preview Guide content before publishing:
+
+```bash
+# See what's actually in your definition before you change anything
+npx rdme@10 openapi inspect ./openapi.yaml
+
+npx rdme@10 openapi validate ./openapi.yaml
+
+# --slug pins the definition's identity so its file path can change later
+npx rdme@10 openapi upload ./openapi.yaml --slug my-api --key="$README_API_KEY"
+
+npx rdme@10 docs upload ./docs --key="$README_API_KEY" --dry-run
+```
+
+<Callout>
+  ### How your definition becomes navigation
+
+  One definition becomes one top-level category, named from `info.title`. The **first** tag on each operation becomes a page inside it, and each operation becomes a subpage titled from its `summary`. Operations without tags are grouped by URL; without a `summary`, subpages are titled by URL or by HTTP method.
+
+  Knowing this before you upload saves rearranging afterward. See [Categories, Pages, and Subpages](/main/docs/openapi-categories-pages-subpages), the [OpenAPI Compatibility Chart](/main/docs/openapi-compatibility-chart) for what we support in the API Explorer, and [OpenAPI Extensions](/main/docs/openapi-extensions) for the `x-readme` options — including `apply-tag-changes`, which you'll want enabled while you're still restructuring.
+</Callout>
+
+An OpenAPI upload creates API Reference content from its operations. Retain workflows and conceptual guidance that do not exist in the definition as Guides. Configure authentication before testing Try It!, and integrate the Metrics SDK separately if you need API-log data in the Developer Dashboard.
+
+## Set up redirects and cut over
+
+Build redirects from published GitBook URLs, `SUMMARY.md`, and traffic data. Under **Settings > Errors & Redirects**, add rules as `oldurl -> newurl`, one per line. Redirects are project settings rather than content, so they are **not** stored in your Git Sync repository and are not copied when a project is cloned — keep the map in source control as a plain text file so you can re-enter it. Verify converted blocks, assets, variants, access settings, API Reference coverage, and high-traffic redirects before changing your domain.
+
+Keep GitBook available until you complete verification and cutover.
+
+## Optional: continue in Git
+
+After migration, connect a new empty repository through **Settings > Git Connection** to use bi-directional Git Sync. Use folders and `_order.yaml` files to manage navigation in that ongoing workflow.
+
+---
+
+## Developer nuances
+
+<Callout>
+  Details specific to a GitBook migration. For vendor extension compatibility, circular references, multi-file specs, and a full CI pipeline, see [Developer Nuances](/main/docs/migration-developer-nuances).
+</Callout>
+
+<Expandable title="Every GitBook block needs a decision">
+  GitBook's export is Markdown with `{% ... %}` blocks embedded in it. None of them render on ReadMe — they'll appear as literal text if left in place.
+
+  Work through them by type rather than page by page:
+
+  - `{% hint %}` → `<Callout>`
+  - `{% tabs %}` / `{% tab %}` → `<Tabs>` / `<Tab>`
+  - `{% code %}` → a fenced code block
+  - `{% content-ref %}` → an ordinary Markdown link
+  - `{% include %}` → [reusable content](/main/docs/reusable-content), or inline it
+  - `{% swagger %}` / `{% openapi %}` → delete, and upload the OpenAPI definition instead
+
+  When you think you're done, grep the whole converted tree for `{%`. There is always something left.
+</Expandable>
+
+<Expandable title="Variants aren't versions, and conditions don't carry">
+  Export each variant separately and create a matching ReadMe version for the ones you'll keep publishing. The content moves; the behavior around it doesn't.
+
+  Conditional content driven by visitor claims is evaluated by GitBook at request time. ReadMe has no equivalent runtime evaluation, so decide per block whether the content becomes: always visible, a separate version, or a page gated by [Internal Documentation](/main/docs/internal-documentation) access controls. Do this deliberately — the default of "convert it to plain content" can publish something that was previously shown to a subset of readers.
+</Expandable>
+
+<Expandable title="What the export doesn't contain">
+  Comments and change-request history aren't in the export and can't be migrated. If a decision only exists in a comment thread, capture it before you stop paying for GitBook.
+
+  Assets under `.gitbook/assets/` do export — move them and rewrite the references, then check for broken image paths after conversion.
+</Expandable>
+
+## After you migrate
+
+Run a [Docs Audit](/main/docs/docs-audit) to check content quality, build guided walkthroughs with [Recipes](/main/docs/recipes), and use [My Developers](/main/docs/my-developers) to see how developers use your API once your Metrics integration is live.
+
+## Frequently asked questions
+
+#### Can we keep our GitBook site up during the migration?
+
+Yes. Nothing about uploading content to ReadMe affects your GitBook space. Keep both available until you're satisfied with the migration.
+
+#### Can we migrate comments and change requests?
+
+No. Preserve decisions or screenshots that your team needs before you stop using GitBook.
+
+#### Do GitBook variants automatically become ReadMe versions?
+
+No. Export each variant, create the ReadMe version you need, migrate its content, and recreate its access behavior.
+
+#### What about our custom blocks?
+
+Rebuild them with [custom MDX components](/main/docs/building-custom-mdx-components). The capability exists, but the implementation model is different, so plan each one as a small, individual piece of work.
+
+# Sibling pages
+
+- [Migrate from Mintlify](/main/docs/migrate-from-mintlify-to-readme)
+- [Migrate from Fern](/main/docs/migrate-from-fern)
+- [Migrate from Docusaurus](/main/docs/migrate-from-docusaurus)
+- [Migrate from another platform](/main/docs/migrate-to-readme-other)
+- [Developer Nuances](/main/docs/migration-developer-nuances)

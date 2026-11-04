@@ -1,0 +1,573 @@
+---
+title: Get all changelog entries
+description: Get all changelog entries from your ReadMe project.
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774709263-zioizdszric-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-10-19T20:53:30.000Z
+---
+
+# OpenAPI definition
+
+```json
+{
+  "openapi": "3.1.0",
+  "info": {
+    "description": "Create beautiful product and API documentation with our developer friendly platform.",
+    "version": "2.0.0",
+    "title": "ReadMe API",
+    "x-readme-deploy": "5.947.0",
+    "termsOfService": "https://readme.com/tos",
+    "contact": {
+      "name": "API Support",
+      "url": "https://docs.readme.com/main/docs/need-more-support",
+      "email": "support@readme.io"
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearer": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "A bearer token that will be supplied within an `Authentication` header as `bearer <token>`."
+      }
+    }
+  },
+  "paths": {
+    "/changelogs": {
+      "get": {
+        "operationId": "getChangelogs",
+        "summary": "Get all changelog entries",
+        "tags": [
+          "Changelog"
+        ],
+        "description": "Get all changelog entries from your ReadMe project.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "number",
+              "minimum": 1,
+              "default": 1
+            },
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "description": "Used to specify further pages (starts at 1)."
+          },
+          {
+            "schema": {
+              "type": "number",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 10
+            },
+            "in": "query",
+            "name": "per_page",
+            "required": false,
+            "description": "Number of items to include in pagination (up to 100, defaults to 10)."
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "public",
+                "anyone_with_link",
+                "all"
+              ],
+              "default": "all"
+            },
+            "in": "query",
+            "name": "visibility",
+            "required": false,
+            "description": "The visibility setting (`privacy.view`) for the changelog entries you wish to retrieve. Defaults to `all`."
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "true",
+                "false"
+              ]
+            },
+            "in": "query",
+            "name": "include_custom_blocks",
+            "required": false,
+            "description": "Return `custom_blocks` alongside the entries: every custom block this page of entries references. Off by default so callers that only want the entries pay nothing for it. Has no effect on projects whose changelogs are not in git."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "if-none-match",
+            "required": false,
+            "description": "An ETag value to compare against the resource."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "total": {
+                      "type": "number"
+                    },
+                    "page": {
+                      "type": "number"
+                    },
+                    "per_page": {
+                      "type": "number"
+                    },
+                    "paging": {
+                      "type": "object",
+                      "properties": {
+                        "next": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "previous": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "first": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "last": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "next",
+                        "previous",
+                        "first",
+                        "last"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "allow_crawlers": {
+                            "type": "string",
+                            "enum": [
+                              "enabled",
+                              "disabled"
+                            ],
+                            "default": "enabled",
+                            "description": "Allow indexing by robots."
+                          },
+                          "author": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "pattern": "^[a-f\\d]{24}$",
+                                "nullable": true,
+                                "description": "User ID of the changelog author."
+                              },
+                              "name": {
+                                "type": "string",
+                                "nullable": true,
+                                "description": "Full name of the user who created the changelog."
+                              }
+                            },
+                            "required": [
+                              "name"
+                            ],
+                            "additionalProperties": false,
+                            "description": "Changelog attribution. Public responses follow the project `show_author` setting and omit `id`; complete author data is available only to callers with changelog edit permission."
+                          },
+                          "content": {
+                            "type": "object",
+                            "properties": {
+                              "body": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "html": {
+                                "type": "string",
+                                "nullable": true
+                              }
+                            },
+                            "required": [
+                              "body",
+                              "html"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "created_at": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "An ISO 8601 formatted date for when the changelog was created."
+                          },
+                          "metadata": {
+                            "type": "object",
+                            "properties": {
+                              "description": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "image": {
+                                "type": "object",
+                                "properties": {
+                                  "uri": {
+                                    "type": "string",
+                                    "pattern": "\\/images\\/([a-f\\d]{24})",
+                                    "nullable": true,
+                                    "description": "A URI to the `getImages` endpoint for this image. If the is a legacy image then this `uri` will be `null`. And if you wish to delete this image then you should set this to `null`."
+                                  },
+                                  "url": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "nullable": true
+                                  }
+                                },
+                                "required": [
+                                  "uri",
+                                  "url"
+                                ],
+                                "additionalProperties": false
+                              },
+                              "keywords": {
+                                "type": "string",
+                                "nullable": true,
+                                "description": "A comma-separated list of keywords to place into your changelog metadata."
+                              },
+                              "title": {
+                                "type": "string",
+                                "nullable": true
+                              }
+                            },
+                            "required": [
+                              "description",
+                              "image",
+                              "keywords",
+                              "title"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "privacy": {
+                            "type": "object",
+                            "properties": {
+                              "view": {
+                                "type": "string",
+                                "enum": [
+                                  "public",
+                                  "anyone_with_link"
+                                ],
+                                "default": "anyone_with_link",
+                                "description": "The visibility of this changelog."
+                              }
+                            },
+                            "additionalProperties": false
+                          },
+                          "slug": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "i18n": {
+                            "type": "object",
+                            "properties": {
+                              "lang": {
+                                "type": "string",
+                                "enum": [
+                                  "en",
+                                  "de",
+                                  "es",
+                                  "fr",
+                                  "id",
+                                  "it",
+                                  "ja",
+                                  "ko",
+                                  "nl",
+                                  "pt",
+                                  "ru",
+                                  "sw",
+                                  "vi",
+                                  "zh"
+                                ],
+                                "default": "en",
+                                "description": "The language of the changelog. Languages other than `en` are only available to projects that have the language enabled for translations."
+                              }
+                            },
+                            "additionalProperties": false
+                          },
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "none",
+                              "added",
+                              "fixed",
+                              "improved",
+                              "deprecated",
+                              "removed"
+                            ],
+                            "default": "none",
+                            "description": "The type of changelog that this is."
+                          },
+                          "links": {
+                            "type": "object",
+                            "properties": {
+                              "project": {
+                                "type": "string",
+                                "pattern": "\\/projects\\/(me|[a-zA-Z0-9]+(-[a-zA-Z0-9]+)*)",
+                                "description": "A URI to the project that this changelog belongs to."
+                              }
+                            },
+                            "required": [
+                              "project"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "updated_at": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "An ISO 8601 formatted date for when the changelog was updated."
+                          },
+                          "uri": {
+                            "type": "string",
+                            "pattern": "\\/changelogs\\/([a-f\\d]{24}|([a-z0-9-_ ]|[^\\\\x00-\\\\x7F])+)"
+                          }
+                        },
+                        "required": [
+                          "content",
+                          "created_at",
+                          "metadata",
+                          "privacy",
+                          "slug",
+                          "title",
+                          "i18n",
+                          "links",
+                          "updated_at",
+                          "uri"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "custom_blocks": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "pattern": "^(?=.*[a-zA-Z0-9]).*$",
+                            "description": "The name of the custom block."
+                          },
+                          "source": {
+                            "type": "string",
+                            "maxLength": 250000,
+                            "description": "The source of the custom block."
+                          },
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "component",
+                              "content"
+                            ],
+                            "description": "The custom block type."
+                          },
+                          "project": {
+                            "type": "string",
+                            "pattern": "[a-f\\d]{24}"
+                          },
+                          "links": {
+                            "type": "object",
+                            "properties": {
+                              "project": {
+                                "type": "string",
+                                "pattern": "\\/projects\\/(me|[a-zA-Z0-9]+(-[a-zA-Z0-9]+)*)",
+                                "description": "A URI to the project that this custom block belongs to."
+                              }
+                            },
+                            "required": [
+                              "project"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "tag": {
+                            "type": "string",
+                            "description": "The tag of the custom block, used in your page content to render this block."
+                          },
+                          "updated_at": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "An ISO 8601 formatted date for when the custom block was updated."
+                          },
+                          "usage": {
+                            "type": "object",
+                            "properties": {
+                              "page_count": {
+                                "type": "number",
+                                "nullable": true,
+                                "description": "The number of pages that use this custom block."
+                              },
+                              "project_count": {
+                                "type": "number",
+                                "nullable": true,
+                                "description": "The number of projects that use this custom block."
+                              }
+                            },
+                            "required": [
+                              "page_count",
+                              "project_count"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "processing_status": {
+                            "type": "object",
+                            "properties": {
+                              "operation": {
+                                "type": "string",
+                                "enum": [
+                                  "import",
+                                  "ai_translation"
+                                ],
+                                "description": "The background operation currently affecting this page."
+                              },
+                              "source": {
+                                "type": "string",
+                                "nullable": true,
+                                "description": "Source URI for import operations, when available."
+                              },
+                              "status": {
+                                "type": "string",
+                                "enum": [
+                                  "in_progress",
+                                  "failed"
+                                ],
+                                "description": "The current processing state."
+                              }
+                            },
+                            "required": [
+                              "operation",
+                              "source",
+                              "status"
+                            ],
+                            "additionalProperties": false,
+                            "nullable": true,
+                            "description": "The AI translation state for this custom block on a language version. Only set on the custom block list and single-block reads, `null` everywhere else."
+                          },
+                          "renderable": {
+                            "type": "object",
+                            "properties": {
+                              "status": {
+                                "type": "boolean",
+                                "default": true,
+                                "description": "A flag for if the resource is renderable or not."
+                              },
+                              "error": {
+                                "type": "string",
+                                "nullable": true,
+                                "description": "The rendering error."
+                              },
+                              "message": {
+                                "type": "string",
+                                "nullable": true,
+                                "description": "Additional details about the rendering error."
+                              }
+                            },
+                            "additionalProperties": false
+                          },
+                          "uri": {
+                            "type": "string",
+                            "pattern": "\\/(versions|branches)\\/((v{0,1})(stable|\\bmain(?:-[a-z]{2})?(?![\\w.-])|([0-9]+)(?:\\.([0-9]+))?(?:\\.([0-9]+))?(-.*)?)(_(.*))?)\\/custom_blocks\\/(\\w+)",
+                            "description": "A URI to the custom block resource."
+                          },
+                          "branch": {
+                            "type": "object",
+                            "properties": {
+                              "uri": {
+                                "type": "string",
+                                "description": "A URI to the version or branch resource that this custom block belongs to."
+                              },
+                              "name": {
+                                "type": "string",
+                                "description": "A friendly name automatically generated from your internal version number or branch name."
+                              }
+                            },
+                            "required": [
+                              "uri",
+                              "name"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "required": [
+                          "name",
+                          "source",
+                          "type",
+                          "project",
+                          "links",
+                          "tag",
+                          "updated_at",
+                          "usage",
+                          "processing_status",
+                          "renderable",
+                          "uri",
+                          "branch"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "description": "Every custom block the returned changelogs reference, deduplicated across them. Only present when `include_custom_blocks` is requested, and only for projects whose changelogs live in git — blocks are a git-only concept. The blocks themselves are the same representation the single-entry `custom_blocks` endpoint returns."
+                    }
+                  },
+                  "required": [
+                    "total",
+                    "page",
+                    "per_page",
+                    "paging",
+                    "data"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "304": {
+            "description": "Not Modified",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.readme.com/v2",
+      "description": "The ReadMe API"
+    }
+  ],
+  "security": [
+    {
+      "bearer": []
+    }
+  ],
+  "x-readme": {
+    "proxy-enabled": true
+  },
+  "tags": [
+    {
+      "name": "Changelog"
+    }
+  ]
+}
+```
+
+# Sibling pages
+
+- [Get a changelog entry](/main/reference/getchangelog)
+- [Create a changelog entry](/main/reference/createchangelog)
+- [Update a changelog entry](/main/reference/updatechangelog)
+- [Delete a changelog entry](/main/reference/deletechangelog)

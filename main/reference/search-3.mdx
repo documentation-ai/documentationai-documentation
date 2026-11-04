@@ -1,0 +1,416 @@
+---
+title: Perform a search query
+description: Searches the ReadMe project.
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774775702-143ojge4orz-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-05-26T23:09:42.000Z
+---
+
+# OpenAPI definition
+
+```json
+{
+  "openapi": "3.1.0",
+  "info": {
+    "description": "Create beautiful product and API documentation with our developer friendly platform.",
+    "version": "2.0.0",
+    "title": "ReadMe API",
+    "x-readme-deploy": "5.947.0",
+    "termsOfService": "https://readme.com/tos",
+    "contact": {
+      "name": "API Support",
+      "url": "https://docs.readme.com/main/docs/need-more-support",
+      "email": "support@readme.io"
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearer": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "A bearer token that will be supplied within an `Authentication` header as `bearer <token>`."
+      }
+    }
+  },
+  "paths": {
+    "/search": {
+      "get": {
+        "operationId": "search",
+        "summary": "Perform a search query",
+        "tags": [
+          "Search"
+        ],
+        "description": "Searches the ReadMe project.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "query",
+            "required": true,
+            "description": "The plain text search query used to search across the project."
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "true",
+                "false"
+              ]
+            },
+            "in": "query",
+            "name": "include_breadcrumbs",
+            "required": false,
+            "description": "Include category and page titles, and the page icon, for each result when available."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "section",
+            "required": false,
+            "description": "The section of your ReadMe project to search within. If omitted, all enabled sections are searched."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "version",
+            "required": false,
+            "description": "The version to search within. For enterprise, this only applies to the current project."
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "in": "query",
+            "name": "projects",
+            "required": false,
+            "description": "Limit search to only these projects in an Enterprise group. If omitted, all child projects with the appropriate permissions are searched. This parameter is only applicable to Enterprise projects.",
+            "style": "form",
+            "explode": true
+          },
+          {
+            "schema": {
+              "type": "number",
+              "minimum": 1,
+              "default": 1
+            },
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "description": "Used to specify further pages (starts at 1). The product of `page` and `per_page` may not exceed 1000."
+          },
+          {
+            "schema": {
+              "type": "number",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 15
+            },
+            "in": "query",
+            "name": "per_page",
+            "required": false,
+            "description": "Number of items to include in pagination (up to 50)."
+          },
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "true",
+                "false"
+              ]
+            },
+            "in": "query",
+            "name": "include_counts",
+            "required": false,
+            "description": "Return `section_hit_counts` alongside the results: how many matches this query has in each section. Cannot be combined with `section`, which narrows the query the counts describe."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "total": {
+                      "type": "number"
+                    },
+                    "page": {
+                      "type": "number"
+                    },
+                    "per_page": {
+                      "type": "number"
+                    },
+                    "paging": {
+                      "type": "object",
+                      "properties": {
+                        "next": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "previous": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "first": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "last": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "next",
+                        "previous",
+                        "first",
+                        "last"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "url": {
+                            "type": "object",
+                            "properties": {
+                              "full": {
+                                "type": "string",
+                                "description": "The full URL of the page."
+                              },
+                              "relative": {
+                                "type": "string",
+                                "description": "The relative URL of the page without the version or base URL."
+                              }
+                            },
+                            "required": [
+                              "full",
+                              "relative"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "breadcrumbs": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            },
+                            "description": "Category and page titles, from the root to this page. Empty when not requested with include_breadcrumbs or when the hierarchy is unavailable."
+                          },
+                          "icon": {
+                            "type": "string",
+                            "nullable": true,
+                            "description": "The icon set on the page, as a Font Awesome class list or an emoji. Included when requested with include_breadcrumbs. Null when the page has no icon or the hierarchy is unavailable."
+                          },
+                          "excerpt": {
+                            "type": "string"
+                          },
+                          "highlights": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "value": {
+                                  "type": "string"
+                                },
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "hit",
+                                    "text"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "value",
+                                "type"
+                              ],
+                              "additionalProperties": false
+                            }
+                          },
+                          "slug": {
+                            "type": "string"
+                          },
+                          "section": {
+                            "type": "string",
+                            "description": "`guides`, `reference`, `recipes`, `custom_pages`, `discuss`, `changelog`, or a custom section's directory."
+                          },
+                          "version": {
+                            "type": "string",
+                            "nullable": true,
+                            "description": "The semver version number this search is scoped to."
+                          },
+                          "project": {
+                            "type": "object",
+                            "properties": {
+                              "subdomain": {
+                                "type": "string"
+                              },
+                              "name": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "subdomain",
+                              "name"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "api": {
+                            "type": "object",
+                            "properties": {
+                              "method": {
+                                "type": "string",
+                                "nullable": true
+                              }
+                            },
+                            "required": [
+                              "method"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "link": {
+                            "type": "object",
+                            "properties": {
+                              "url": {
+                                "type": "string",
+                                "nullable": true,
+                                "description": "The redirect URL for external link pages."
+                              },
+                              "new_tab": {
+                                "type": "boolean",
+                                "nullable": true,
+                                "description": "Whether the external link should open in a new tab."
+                              }
+                            },
+                            "required": [
+                              "url",
+                              "new_tab"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "uri": {
+                            "type": "string"
+                          },
+                          "oas_matches": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "string",
+                                  "nullable": true,
+                                  "description": "The name of the parameter or request body property that matched, e.g. \"perPage\". Null for response matches, which are identified by `status_code` instead."
+                                },
+                                "section": {
+                                  "type": "string",
+                                  "enum": [
+                                    "body",
+                                    "cookie",
+                                    "header",
+                                    "path",
+                                    "query",
+                                    "response"
+                                  ],
+                                  "nullable": true,
+                                  "description": "Which section of the API reference page the matching entity lives in (the request body, a parameter location, or a response). Null when the location cannot be determined."
+                                },
+                                "status_code": {
+                                  "type": "string",
+                                  "nullable": true,
+                                  "description": "The response status code (e.g. \"200\" or \"default\") when the match is part of a response. Null for request-side matches."
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "section",
+                                "status_code"
+                              ],
+                              "additionalProperties": false
+                            },
+                            "description": "Metadata about the OAS entity (parameter or schema property) that matched, when the result matched through its API definition rather than its page content. The matching text itself is carried in `highlights`. Empty when the result did not match through an OAS entity; contains at most one entry today."
+                          }
+                        },
+                        "required": [
+                          "url",
+                          "title",
+                          "breadcrumbs",
+                          "excerpt",
+                          "highlights",
+                          "slug",
+                          "section",
+                          "version",
+                          "project",
+                          "api",
+                          "link",
+                          "uri",
+                          "oas_matches"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "section_hit_counts": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "number"
+                      },
+                      "nullable": true,
+                      "description": "How many results this query has in each counted section. `null` unless `include_counts` is set, and also when the counts could not be computed — which is not the same as every section being empty."
+                    }
+                  },
+                  "required": [
+                    "total",
+                    "page",
+                    "per_page",
+                    "paging",
+                    "data",
+                    "section_hit_counts"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.readme.com/v2",
+      "description": "The ReadMe API"
+    }
+  ],
+  "security": [
+    {
+      "bearer": []
+    }
+  ],
+  "x-readme": {
+    "proxy-enabled": true
+  },
+  "tags": [
+    {
+      "name": "Search"
+    }
+  ]
+}
+```
+
+# Sibling pages
+
+- [Suggest pages for a missing URL](/main/reference/getnotfoundsuggestions)
+- [List the custom sections a search covers](/main/reference/getsearchsections)

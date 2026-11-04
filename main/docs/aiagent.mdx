@@ -1,0 +1,117 @@
+---
+title: Agent
+description: Draft, edit, and research documentation from the AI chat panel.
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774003978-axd7rfntnun-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-10-15T21:22:41.000Z
+---
+
+The Agent drafts, edits, and researches documentation from the AI chat panel in your editor. It uses the context of your current page and OpenAPI spec to produce output that matches your actual endpoints and parameters. You can ask it to write a getting started guide from your API spec, translate a page into Spanish, replace outdated terminology across your entire site, or scan every page for missing code examples — all in a single prompt.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793773992686-bcoe4lf4aqk-813e6938cb13b70884064203821567340b4be49eaa1226485ba6572a0b8ff79b-Agent.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+<Callout>
+  The agent is available on the Pro plans. Starter plan users have access to a limited number of complimentary answers.
+</Callout>
+
+## Getting Started
+
+1. Open any page in your ReadMe project.
+2. The AI Agent panel lives in the right side AI Tools panel
+3. Type a prompt. The Agent responds using the context of your documentation and OAS file.
+
+To choose a specific model, use the model picker at the bottom of the chat input. Otherwise ReadMe auto-selects one.
+
+## Configure
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793773992569-zj3truyijr-40734397cfd6e93664b80da433d4d6933062677bc9fbc593a311ca7fd67becbc-agent_configuration.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+Open **AI** → **Agent Settings** to:
+
+- Disable specific models that aren't compatible with your documentation.
+- Index your codebase to give the Agent additional context.
+- Add custom content that the Agent can reference.
+
+## Examples
+
+**Draft a guide from your API spec**
+
+```text
+Write a getting started guide for our authentication API. Include code
+examples for getting an API key, making a first request, and handling errors.
+```
+
+The Agent reads your OpenAPI spec, finds the auth endpoints, and produces a full page with accurate parameter names, request/response examples, and proper MDX formatting.
+
+**Audit your docs for consistency**
+
+```text
+Find every page that mentions "API key" and check if they all describe
+the same process for getting one. List any inconsistencies.
+```
+
+The Agent scans your entire site, compares the content across pages, and returns a report showing which pages are out of sync.
+
+**Rewrite a section from a URL**
+
+```text
+Read https://example.com/changelog and update our "What's New" page
+with the latest three releases.
+```
+
+The Agent fetches the URL, extracts the relevant content, and writes it into your page formatted to match your existing style.
+
+**Fix linter issues across your site**
+
+```text
+Run the linter on every page and fix all errors automatically.
+```
+
+The Agent applies your style guide rules, identifies violations, and resolves them in place across your entire project.
+
+**Adjust project settings**
+
+```text
+Make the top-level categories in the left navigation collapsible, update the main brand color to #3CB371 (medium green), and disable the Changelog and Discussions sections in the top nav.
+```
+
+The Agent updates your ReadMe project options, allowing you to describe your preferred settings.
+
+## FAQ
+
+<Expandable title="What models are available?">
+  Claude Opus 5, Gemini 3.8 Flash, GPT5.6 Terra, and more. ReadMe auto-selects a model by default, or you can choose one manually from the chat panel.
+</Expandable>
+
+<Expandable title="What data is sent to the model?">
+  The current page content and relevant documentation are included in the prompt. No data is shared unless you actively use the Agent.
+</Expandable>
+
+<Expandable title="Can it access external websites?">
+  Yes. It can search the web and analyze URLs you provide.
+</Expandable>
+
+<Expandable title="Can it edit multiple pages at once?">
+  Yes. Prompt it to make changes across your entire site — replacing terms, auditing for gaps, or rebranding.
+</Expandable>
+
+<Expandable title="What plan do I need?">
+  The Agent is available on all plans.
+</Expandable>
+
+# Sub pages
+
+- [The Agent in the Editor](/main/docs/inline-ai)
+
+# Sibling pages
+
+- [Restless by ReadMe](/main/docs/restless)
+- [Linter](/main/docs/linter)
+- [Docs Audit](/main/docs/docs-audit)
+- [AI Writer](/main/docs/github-ai-writer)
+- [Ask AI](/main/docs/ask-ai)
+- [AI-Ready Docs](/main/docs/ai-ready-docs)
+- [MCP](/main/docs/mcp)
+- [AI Discoverability](/main/docs/ai-discoverability)
+- [LLMs.txt](https://docs.readme.com/main/docs/llmstxt.md)
+- [AI Dropdown](https://docs.readme.com/main/docs/askai.md)
+- [ReadMe's MCP Server](/main/docs/readme-mcp)

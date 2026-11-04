@@ -1,0 +1,111 @@
+---
+title: Guides
+description: Write long-form tutorials, walkthroughs, and explanations that sit beside your API Reference, in Markdown with MDX support.
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774193453-p4wqluzc2dj-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-10-16T04:00:21.000Z
+---
+
+Guides are long-form documentation pages — tutorials, walkthroughs, and conceptual explanations that sit alongside your API reference. They live in categories in your sidebar and are written in Markdown with MDX support.
+
+## Writing a Guide
+
+There are three ways to create guide content in ReadMe:
+
+### With the Agent
+
+Open the Agent from any page and describe what you need. The Agent can draft entire guides, rewrite existing content, translate pages, and insert MDX components — all while referencing your OpenAPI spec and existing docs for accuracy.
+
+Examples of what you can ask:
+
+- "Write a getting started guide based on my API spec"
+- "Add a Python code example to the authentication section"
+- "Translate this page to Japanese"
+- "Find every page missing a code example and list them"
+
+The Agent works on single pages or across your entire docs site. See [Agent](/main/docs/aiagent) for the full feature reference.
+
+### In the Editor
+
+1. Toggle into **Edit Mode** from the top navigation.
+2. Click <strong>+</strong> next to a category to create a new page.
+3. Write in the editor — type `/` to insert code blocks, callouts, images, tabs, and other components.
+4. Toggle between **Edit** and **View** to preview how the page will render.
+
+You can also switch to **Raw Mode** (three-dot menu → Raw Mode) to edit the underlying Markdown directly.
+
+See [Creating and Managing Guides](/main/docs/creating-and-managing-guides) for the full walkthrough.
+
+### From Your AI Agent
+
+Connect to [ReadMe's MCP server](/main/docs/readme-mcp) to write and maintain guides from your AI agent of choice.
+
+## Organizing Content
+
+Guides are organized into **categories** (sidebar sections) and **pages** within those categories.
+
+- **Categories**: Click <strong>\+ NEW CATEGORY</strong> in the sidebar to create one. Name them by user task or skill level (e.g., "Getting Started", "Authentication", "Advanced Usage").
+- **Pages**: Each page gets a title, a URL slug (auto-generated from the title), and can be hidden while you draft.
+- **Subcategories**: Nest pages under a parent page for multi-page tutorials. The sidebar supports up to 5 levels of nesting.
+- **Ordering**: Drag pages in the sidebar to reorder, or edit `_order.yaml` if you use [bi-directional sync](/main/docs/bi-directional-sync).
+
+## Checking Quality
+
+The [Linter](/main/docs/linter) validates each page against your style guide as you edit. Configure rules for tone, formatting, terminology, and common errors. Issues can be fixed manually or resolved by the Agent directly from the linter results.
+
+To score your entire docs site at once, run a [Docs Audit](/main/docs/docs-audit). It aggregates linter results across all pages and surfaces gaps, inconsistencies, and broken links.
+
+## Interactive Content with MDX
+
+Guides support MDX — Markdown with inline JSX components. Use built-in components like `<Tabs>`, `<Callout>`, `<Image>`, and `<Cards>`, or create your own reusable components.
+
+<Tabs>
+  <Tab title="Node.js">
+    ```javascript
+    const client = new ReadMeAPI(apiKey);
+    ```
+  </Tab>
+
+  <Tab title="Python">
+    ```python
+    client = ReadMeAPI(api_key)
+    ```
+  </Tab>
+</Tabs>
+
+See [MDX](/main/docs/mdx) for the component reference.
+
+## Reusing Content
+
+<Callout kind="info">
+  Enterprise Feature
+
+  Reusable Content is available on Enterprise plans.
+</Callout>
+
+Create reusable content blocks for content that appears on multiple pages (authentication steps, environment setup, standard warnings). Update the block once and it changes everywhere. Insert blocks from the `/` command menu.
+
+See [Reusable Content](/main/docs/reusable-content) for setup.
+
+## Next Steps
+
+1. [Create your first guide](https://docs.readme.com/docs/creating-and-managing-guides#/creating-your-first-guide) in the editor.
+2. [Set up the Agent](/main/docs/aiagent) to draft and edit content with AI.
+3. [Configure the Linter](/main/docs/linter) with your style guide rules.
+4. [Add interactive elements](/main/docs/mdx) with MDX components.
+5. [Connect to GitHub](/main/docs/bi-directional-sync) for collaborative editing via pull requests.
+
+# Sub pages
+
+- [Creating and Managing Guides](/main/docs/creating-and-managing-guides)
+- [Structuring Your Documentation](/main/docs/structuring-your-docs)
+- [The Editor](/main/docs/the-editor)
+
+# Sibling pages
+
+- [API Reference](/main/docs/api-reference)
+- [Recipes](/main/docs/recipes)
+- [Changelog](/main/docs/changelog)
+- [Landing Page](/main/docs/landing-page)
+- [Custom Pages](/main/docs/custom-page)
+- [MDX](/main/docs/mdx)
+- [Reusable Content](/main/docs/reusable-content)

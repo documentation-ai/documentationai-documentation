@@ -1,0 +1,62 @@
+---
+title: Sync OAS files via Bitbucket Pipelines
+updatedAt: 2025-02-27T20:55:02.000Z
+---
+
+```node readme.yml
+image: node:10.15.3
+
+pipelines:
+  branches:
+    main:
+      - step:
+          name: Sync files to ReadMe!
+          caches:
+              - node
+          script:
+              - npx rdme swagger ./path-to/petstore.json --key <your-project-API-key> --version 1.0 --id <your-file-ID>
+```
+
+# Create a Bitbucket Repo with your OAS
+
+You can use the PetStore example if you don't have a spec ready yet: [https://petstore.swagger.io/v2/swagger.json](https://petstore.swagger.io/v2/swagger.json)
+
+# Create a Bitbucket Pipeline file
+
+Create a readme.yml file in the Bitbucket Repo you've created.
+
+# Add the Pipeline's Code
+
+{/* node@1-11 */}
+
+Copy and paste the pipeline (lines 1–11)
+
+# Add the path to the OAS file you're syncing
+
+{/* node@11 */}
+
+In this example, it is indicated by adding:
+./path-to/petstore.json
+
+# Add the version of the OAS file you want to sync
+
+{/* node@11 */}
+
+The version must match a version that's present in your ReadMe project.
+
+In this example, it's indicated by adding:
+--version 1.0
+
+# Add project API key and file ID to Pipelines Code
+
+{/* node@11 */}
+
+From the Dashboard of your ReadMe Project, go to your API reference section and under "Your API Definitions" click on "Add more endpoints", then "OpenAPI Upload".
+
+You will see code to install "Github Actions" but the portion of the code you want is "readme-oas-key".  Copy the values from this modal to your readme.yml file.
+
+readme-oas-key: &lt;your-project-API-key>:&lt;your-file-ID>
+
+# Commit and Push!
+
+Once you've committed your changes, your Pipelines workflow should start to build and you'll see your OAS file in ReadMe.

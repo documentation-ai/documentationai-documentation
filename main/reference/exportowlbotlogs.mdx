@@ -1,0 +1,137 @@
+---
+title: Export Owlbot QA logs as CSV
+description: Kicks off an async export of Owlbot QA logs as a CSV file. Returns an export ID that can be used to poll for the result via `GET /owlbot/export/:id`.
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774758865-u13rglnxmlf-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-09-24T03:21:04.000Z
+---
+
+# OpenAPI definition
+
+```json
+{
+  "openapi": "3.1.0",
+  "info": {
+    "description": "Create beautiful product and API documentation with our developer friendly platform.",
+    "version": "2.0.0",
+    "title": "ReadMe API",
+    "x-readme-deploy": "5.947.0",
+    "termsOfService": "https://readme.com/tos",
+    "contact": {
+      "name": "API Support",
+      "url": "https://docs.readme.com/main/docs/need-more-support",
+      "email": "support@readme.io"
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearer": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "A bearer token that will be supplied within an `Authentication` header as `bearer <token>`."
+      }
+    }
+  },
+  "paths": {
+    "/owlbot/export": {
+      "post": {
+        "operationId": "exportOwlbotLogs",
+        "summary": "Export Owlbot QA logs as CSV",
+        "tags": [
+          "Owlbot AI"
+        ],
+        "description": "Kicks off an async export of Owlbot QA logs as a CSV file. Returns an export ID that can be used to poll for the result via `GET /owlbot/export/:id`.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "range_start": {
+                    "type": "string",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}(T\\d{2}:\\d{2}(:\\d{2}(\\.\\d+)?)?(Z|[+-]\\d{2}:?\\d{2}))?$",
+                    "description": "Start of the range: an ISO 8601 datetime with offset (e.g. \"2025-01-01T00:00:00-08:00\") or a date (e.g. \"2025-01-01\", the start of that day in `x-timezone`). Defaults to 30 days before `range_end`."
+                  },
+                  "range_end": {
+                    "type": "string",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}(T\\d{2}:\\d{2}(:\\d{2}(\\.\\d+)?)?(Z|[+-]\\d{2}:?\\d{2}))?$",
+                    "description": "End of the range: an ISO 8601 datetime with offset (e.g. \"2025-01-31T23:59:59-08:00\") or a date (e.g. \"2025-01-31\", through the end of that day in `x-timezone`). Defaults to now."
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "default": "UTC"
+            },
+            "in": "header",
+            "name": "x-timezone",
+            "required": false,
+            "description": "IANA timezone used to resolve calendar dates and to bucket the daily sparkline."
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "pattern": "^owlbot-logs-",
+                          "description": "The export ID. Poll `GET /owlbot/export/:id` to retrieve the download URL."
+                        }
+                      },
+                      "required": [
+                        "id"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "data"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.readme.com/v2",
+      "description": "The ReadMe API"
+    }
+  ],
+  "security": [
+    {
+      "bearer": []
+    }
+  ],
+  "x-readme": {
+    "proxy-enabled": true
+  },
+  "tags": [
+    {
+      "name": "Owlbot AI"
+    }
+  ]
+}
+```
+
+# Sibling pages
+
+- [Ask Owlbot AI a question](/main/reference/askowlbot)
+- [Retrieve an Owlbot export](/main/reference/getowlbotexport)

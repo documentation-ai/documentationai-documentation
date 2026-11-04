@@ -1,0 +1,141 @@
+---
+title: Microsoft Entra
+description: Log in to ReadMe using Microsoft Entra
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774971138-hrp4vz0vlai-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-10-26T20:37:48.000Z
+---
+
+Connect Microsoft Entra ID as a SAML SSO provider so members of your organization authenticate with Entra ID and access your ReadMe projects.
+
+<Callout>
+  ### Reference Microsoft's setup guide
+
+  For a full walkthrough of creating and configuring an enterprise application in Entra, see [Enable SAML single sign-on for an enterprise application](https://learn.microsoft.com/en-us/entra/identity/enterprise-apps/add-application-portal-setup-sso).
+</Callout>
+
+---
+
+## Create an Entra Enterprise Application
+
+Start by creating a new enterprise application in Entra for ReadMe.
+
+1. In Entra ID, go to **Enterprise applications** \> **All applications** \> **New application**.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774965836-9trissy6evp-ebb586be302a703c0a49f33f2412d6c00826a183f825aa9131c3ebe8082a4c7f-new_entra_app.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+2. Name it. A name like **ReadMe SSO** works well.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774957996-ewn9e2q5806-e8fd128f4bf09932d0a5bfbee187a9f04d08120493882645487ab94b5f428023-create_your_own_app.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+3. Click **Create** to create your app.
+4. Find your app under **All applications** and open it to confirm it's set up as a SAML app.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774969713-ba6da0ieq5h-3535a05e57c7144d6b4a01571ae7d12b5d88538cf2f68163787c69b2d70679ed-find_app_in_all_apps.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+5. Select **Single sign-on** from the left menu, then choose **SAML** as the sign-on method.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774963768-cvb54wwm3o-2e9d96b2cf630a928ebb172f2632531b769e5cfbb5e69b51e62ea603b4c45007-select_saml.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+---
+
+## Configure SAML Settings
+
+Next, exchange configuration values between ReadMe and Entra.
+
+6. Go to **Teammates** in your ReadMe group dashboard.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774957998-my2kqej5fxc-67cfb7faf1d806c71a0809eda8bfa6a2aeb5d780f72315a46f6ebb965b248262-81b62ced572118379556bd10aad785aa.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+7. Select **SAML** from the Single Sign-On menu, then click **Configure**.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774975815-f7ey3s7nesh-93cdc5451484910ac9ada39e5b0a4ed691cabe872fbb2b24ce07a9156a213613-readme_sso_config_link.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+8. Record your <strong>Identifier (Entity ID)</strong> value to use in your Entra configuration.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774977115-y8ek9p5hpql-d4e2bf9ae0af68e172cab424b551747a4fb846629719343b0dd22681f12965d9-identity_ID.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+9. Record your **Single Sign-On URL** to use in your Entra configuration.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774977411-fpbn4y9979-86178659357cafc259cb3481a1c169e62bffc31943888d5c196ad111a9828471-SSO_URL.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+10. From Entra, open your app's **Single sign-on** page and click the edit icon in the first section.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774977773-nmohi603mi7-339aeb3ad869d11e1559086de761d3f86ad977baafb40e9e797ded5bd30a31e6-Edit_basic_saml_config.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+11. Fill out the **Basic SAML Configuration** form: enter your ReadMe Identifier in the first field and your ReadMe Single Sign-On URL in the second field, then save your changes.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774982179-87l6o251613-e035b7594923e3a07cbcf0ba6d319a704af866c5ead47fc582d1e038e5c6b0fc-entra_ID_URL_config.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+---
+
+## Certificate and Login URL
+
+With the basic configuration saved, bring your certificate and login URL back to ReadMe.
+
+12. On the same page in Entra, download your <strong>Certificate (Base64)</strong> and record the **Login URL**.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774982896-fuoiyhw69h4-7c8079a73e29f6f912dd38bdf6611afd249ffc3342bd8c367a5f9cb9dd247c0b-dl_cert_and_login_url.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+13. Back in your ReadMe SSO configuration page, enter the login URL you recorded into the **Single Sign-On URL** field.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774983143-7o6p7f9utjv-21f5523d5de0ee65bc866eb58efb30a42013fd27e3e736cff98d608e7431a462-readme_sso_signin_url.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+14. Open the downloaded certificate file in a plain text editor, copy its contents exactly, and paste them into the **Public Key Certificate** field in ReadMe. Save your changes.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774984094-0wj9eobqk2dm-22b763151838f086fbabe3b3099a579fea15fd3348d38500514e697ca94f3bdc-readme_public_key.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+---
+
+## Attributes and Claims
+
+Now match the attribute names ReadMe expects to the claims Entra sends.
+
+15. In your ReadMe SSO configuration page, note the values in the **Attribute Statements** section. You'll need these for the **Attributes & Claims** section in Entra.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774988296-2kwmmpqxx6d-fb1fd8a5a0053d48663d1a2d5ddbec5d0d9a5a43c165104414f88a4693a1b510-sso_attributes.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+16. Back in Entra, open **Single sign-on** for your app and configure the **Attributes & Claims** section to match. At minimum, you should have:
+
+    - `email = user.mail`
+    - `name = user.givenname`
+    - `username = user.userprincipalname`
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774989038-tqoht8a1dgg-5117d8c960fac5fc70b0ad47d8759beb28dbd57c13eabc3297be1bdaae7cc85d-attributes_and_claims.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+17. Save your changes.
+
+---
+
+## Add Users to the Entra App
+
+Finally, assign the Teammates who should have access.
+
+18. In your Entra app, click **Users and groups** in the left nav, then click **Add user/group**.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774988755-341ez0mfmxl-fcf87735f00f0ba7141faf3e3fc0d6c66d461ac8a037fb38773a45ddb542dd5b-entra_add_new_user.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+19. Select the users you want to give access to, then save your entry.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774989688-0ikuwvvfuk2p-5e06cef7ecec2e92c553da2d646c6702be8a7d5ec696243de741dd24888b055a-select_users.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+20. Confirm the users appear in the **Users and groups** section of your app.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774993756-5cm04z1l8ah-725e6e4a3f7bfa11b21ba86810add24a903ae6486e958ab59e09b8827acbdcfa-entra_users_added_to_app.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+For example, Owlberto's record shows type **User** and role **User**.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774994200-uaoyvy6pzfj-1afd67a67cc85b040b66d92bc4e46a27f377e8dc7aefe56bc49f3117197456fd-user_assigned_role.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+Click into a user's record to see which applications are assigned to them.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774994756-p5n99epghhb-77bc64ec64c77315304cd17f610d3533f8277ce32949053c54c6e02c71c8f8e0-user_record_overview.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+Your Teammates can now access the Entra app tile and log in to ReadMe.
+
+# Sibling pages
+
+- [Okta](/main/enterprise/setting-up-okta)
+- [Google SAML](/main/enterprise/setting-up-google-saml)
+- [Auth0](https://docs.readme.com/main/enterprise/auth0.md)
+- [JumpCloud](https://docs.readme.com/main/enterprise/jumpcloud.md)
+- [Groups Mapping](/main/enterprise/groups-mapping)

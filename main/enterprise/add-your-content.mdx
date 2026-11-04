@@ -1,0 +1,116 @@
+---
+title: Add Your Content
+description: Import, upload, or write the content that powers your docs
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774886983-q22ezrhfs7o-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-10-27T17:27:08.000Z
+---
+
+Once your Group and Projects are set up, it's time to add your documentation. ReadMe supports several approaches to adding content, whether you're migrating from another platform, connecting an existing repository, or starting from scratch. This page walks through each path so you can identify the one that fits your team's workflow.
+
+---
+
+## Content Addition Overview
+
+Content in ReadMe lives at the project level. Each project has its own set of pages, organized into a few core content types:
+
+- **Guides** \- Long-form documentation, tutorials, and conceptual content written in Markdown or MDX
+- **API Reference** \- API reference documentation built manually or from an OpenAPI specification
+- **Changelog** \- A running log of product updates and release notes
+- **Custom Pages** \- Flexible pages for landing pages, legal content, or anything outside of the standard documentation structure
+
+All content ends up in one of these types regardless of how you add content. Knowing which type fits your content before you start will save you re-organization effort later.
+
+---
+
+## Migrations
+
+If you're moving documentation from another platform, ReadMe offers migration support and tools to help get your existing content into your projects without starting from scratch.
+
+ReadMe's implementation team can assist with content migration as part of your Enterprise onboarding. This typically covers moving Markdown-based content, restructuring navigation, and importing OpenAPI definitions.
+
+The <strong>[full migration guide](/main/enterprise/migrate-to-readme)</strong>  covers everything you need to migrate your existing content to ReadMe independently.
+
+<Callout>
+  ### 
+
+  Work with your ReadMe team to execute a migration plan during onboarding. Reach out before starting a large migration to make sure you're using the most efficient path.
+</Callout>
+
+---
+
+## Create New Content
+
+If you're starting fresh or adding new content to an existing project, you can author directly in ReadMe's editor without any external tooling.
+
+### Writing in the ReadMe Editor
+
+The ReadMe editor supports Markdown, MDX, and a rich set of built-in components that includes callouts, code blocks, tables, cards, and more. Pages are organized into categories and can be nested as subpages to build out your navigation structure.
+
+To create a new page:
+
+1. Navigate to your **Project Dashboard**
+2. Click **Edit docs**
+3. Select the content type you want to add from the top navigation (Guides, API Reference, Changelog, Recipes or Custom Pages)
+4. Follow the prompt to create a new page and give it a title
+5. Write your content using Markdown, MDX, or the visual editor
+6. **Save** as a draft, and **Publish** when ready
+
+### Reusable Content
+
+If you find yourself writing the same content across multiple pages or projects, ReadMe's Reusable Content feature lets you define a block of content once and reference it anywhere. Updates to the source block automatically propagate to every page where it's used.
+
+This is especially useful for Enterprise teams maintaining shared content like authentication instructions, legal disclaimers, or API key setup steps across multiple projects.
+
+See [**Reusable Content**](https://docs.readme.com/main/enterprise/reusable-content-enterprise) for setup instructions.
+
+### Branching
+
+Enterprise plans include branching, which lets you draft and review content changes without affecting your live documentation. Branches can be created in ReadMe or in GitHub if you're using bi-directional sync, and merged when the content is ready to publish.
+
+See [**Branching for Enterprise**](https://docs.readme.com/main/enterprise/manage-your-content#branches) for more details.
+
+---
+
+## Workflow Integration
+
+For teams that manage documentation alongside code, ReadMe supports connecting your projects directly to a GitHub or GitLab repository. This keeps your docs versioned with your releases and gives your team a reviewable, code-style workflow for content changes.
+
+### Bi-Directional Sync
+
+ReadMe's [bi-directional sync](https://docs.readme.com/docs/bi-directional-sync)  keeps content aligned between your repository and your ReadMe project. Changes made in ReadMe sync back to GitHub, and changes pushed to GitHub appear in ReadMe.
+
+This is the recommended setup for teams that:
+
+- Prefer managing docs in source control
+- Want to review documentation changes via pull requests
+- Release frequently and need docs to stay in sync with code
+
+See [**GitHub Enterprise**](https://docs.readme.com/main/enterprise/github-enterprise-sync) or [**GitLab Sync**](https://docs.readme.com/main/enterprise/gitlab-enterprise-sync) for connection details.
+
+### ReadMe CLI
+
+The ReadMe CLI (`rdme`) allows you to automate OpenAPI uploads, validate specs, and push content updates from a CI/CD pipeline. It can be integrated with GitHub Actions, GitLab CI, or any other pipeline tooling your team uses.
+
+For setup instructions, see [**Integrate into Your Workflow**](/main/enterprise/integrating-readme-into-your-workflow).
+
+---
+
+## What's Next
+
+🎉 Congratulations on completing the Quick Start! Here are some recommended next steps depending on your priorities:
+
+- **Set up authentication** \- Configure SSO, OAuth, or custom login for your projects. See [Authentication & Access](/main/enterprise/enterprise-authentication-access-overview-q1-22).
+- **Connect GitHub** \- Set up bi-directional sync to manage docs alongside your code. See [Sync with GitHub](https://docs.readme.com/docs/bi-directional-sync).
+- **Configure your Global Landing Page** \- Set up the entry point that houses all of your projects under your custom domain. See [Creating a Global Landing Page](/main/enterprise/creating-a-global-landing-page).
+- **Invite your team** \- Add teammates and assign roles across your Group and projects. See [Teammates and Roles](/main/enterprise/user-roles).
+
+<Callout kind="info">
+
+
+  Reach out to [support@readme.io](mailto:support@readme.io) if you have any questions or need help!
+</Callout>
+
+# Sibling pages
+
+- [Manage Your Group](/main/enterprise/manage-your-group)
+- [Build Your Projects](/main/enterprise/build-your-projects)

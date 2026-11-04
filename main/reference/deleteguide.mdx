@@ -1,0 +1,110 @@
+---
+title: Delete a guides page
+description: Delete a page from the Guides section of your ReadMe project.  >📘 > This route is only available to projects that are using [ReadMe…
+metaDescription: |-
+  Delete a page from the Guides section of your ReadMe project.
+
+  >📘
+  > This route is only available to projects that are using [ReadMe Refactored](https://docs.readme.com/main/docs/welcome-to-readme-refactored).
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774747591-y9a5961tb79-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-09-24T03:21:04.000Z
+---
+
+Delete a page from the Guides section of your ReadMe project.
+
+<Callout kind="info">
+  This route is only available to projects that are using [ReadMe Refactored](https://docs.readme.com/main/docs/welcome-to-readme-refactored).
+</Callout>
+
+# OpenAPI definition
+
+```json
+{
+  "openapi": "3.1.0",
+  "info": {
+    "description": "Create beautiful product and API documentation with our developer friendly platform.",
+    "version": "2.0.0",
+    "title": "ReadMe API",
+    "x-readme-deploy": "5.947.0",
+    "termsOfService": "https://readme.com/tos",
+    "contact": {
+      "name": "API Support",
+      "url": "https://docs.readme.com/main/docs/need-more-support",
+      "email": "support@readme.io"
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearer": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "A bearer token that will be supplied within an `Authentication` header as `bearer <token>`."
+      }
+    }
+  },
+  "paths": {
+    "/branches/{branch}/guides/{slug}": {
+      "delete": {
+        "operationId": "deleteGuide",
+        "summary": "Delete a guides page",
+        "tags": [
+          "Guides"
+        ],
+        "description": "Delete a page from the Guides section of your ReadMe project.\n\n>📘\n> This route is only available to projects that are using [ReadMe Refactored](https://docs.readme.com/main/docs/welcome-to-readme-refactored).",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "pattern": "(v{0,1})(stable|\\bmain(?:-[a-z]{2})?(?![\\w.-])|([0-9]+)(?:\\.([0-9]+))?(?:\\.([0-9]+))?(-.*)?)(_(.*))?"
+            },
+            "in": "path",
+            "name": "branch",
+            "required": true,
+            "description": "Project version number, `stable` for your project's stable version, or a valid branch name."
+          },
+          {
+            "schema": {
+              "type": "string",
+              "pattern": "([a-z0-9-_ ]|[^\\\\x00-\\\\x7F])+"
+            },
+            "in": "path",
+            "name": "slug",
+            "required": true,
+            "description": "A URL-safe representation of the resource."
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.readme.com/v2",
+      "description": "The ReadMe API"
+    }
+  ],
+  "security": [
+    {
+      "bearer": []
+    }
+  ],
+  "x-readme": {
+    "proxy-enabled": true
+  },
+  "tags": [
+    {
+      "name": "Guides"
+    }
+  ]
+}
+```
+
+# Sibling pages
+
+- [Create a guides page](/main/reference/createguide)
+- [Get a guides page](/main/reference/getguide)
+- [Update a guides page](/main/reference/updateguide)

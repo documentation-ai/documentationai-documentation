@@ -1,0 +1,426 @@
+---
+title: Create a custom page
+description: Create a custom page in your ReadMe project.  >📘 > This route is only available to projects that are using [ReadMe Refactored](https://docs.readme.com/main/docs/welcome-to-readme-refactored).
+metaDescription: |-
+  Create a custom page in your ReadMe project.
+
+  >📘
+  > This route is only available to projects that are using [ReadMe Refactored](https://docs.readme.com/main/docs/welcome-to-readme-refactored).
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774735471-kbx4byb997-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-09-24T03:21:04.000Z
+---
+
+Create a custom page in your ReadMe project.
+
+<Callout kind="info">
+  This route is only available to projects that are using [ReadMe Refactored](https://docs.readme.com/main/docs/welcome-to-readme-refactored).
+</Callout>
+
+# OpenAPI definition
+
+```json
+{
+  "openapi": "3.1.0",
+  "info": {
+    "description": "Create beautiful product and API documentation with our developer friendly platform.",
+    "version": "2.0.0",
+    "title": "ReadMe API",
+    "x-readme-deploy": "5.947.0",
+    "termsOfService": "https://readme.com/tos",
+    "contact": {
+      "name": "API Support",
+      "url": "https://docs.readme.com/main/docs/need-more-support",
+      "email": "support@readme.io"
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearer": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "A bearer token that will be supplied within an `Authentication` header as `bearer <token>`."
+      }
+    }
+  },
+  "paths": {
+    "/branches/{branch}/custom_pages": {
+      "post": {
+        "operationId": "createCustomPage",
+        "summary": "Create a custom page",
+        "tags": [
+          "Custom Pages"
+        ],
+        "description": "Create a custom page in your ReadMe project.\n\n>📘\n> This route is only available to projects that are using [ReadMe Refactored](https://docs.readme.com/main/docs/welcome-to-readme-refactored).",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "appearance": {
+                    "type": "object",
+                    "properties": {
+                      "fullscreen": {
+                        "type": "boolean",
+                        "default": false,
+                        "description": "Whether a html custom page is fullscreen or not."
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "content": {
+                    "type": "object",
+                    "properties": {
+                      "body": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "markdown",
+                          "html"
+                        ],
+                        "default": "markdown",
+                        "description": "The type of content contained in this custom page."
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "metadata": {
+                    "type": "object",
+                    "properties": {
+                      "description": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "image": {
+                        "type": "object",
+                        "properties": {
+                          "uri": {
+                            "type": "string",
+                            "pattern": "\\/images\\/([a-f\\d]{24})",
+                            "nullable": true
+                          },
+                          "url": {
+                            "type": "string",
+                            "format": "uri",
+                            "nullable": true
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      "keywords": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "title": {
+                        "type": "string",
+                        "nullable": true
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "privacy": {
+                    "type": "object",
+                    "properties": {
+                      "view": {
+                        "type": "string",
+                        "enum": [
+                          "public",
+                          "anyone_with_link"
+                        ],
+                        "default": "public",
+                        "description": "The visibility of this custom page."
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "slug": {
+                    "type": "string",
+                    "pattern": "([a-z0-9-_ ]|[^\\\\x00-\\\\x7F])+"
+                  },
+                  "title": {
+                    "type": "string",
+                    "nullable": true
+                  }
+                },
+                "required": [
+                  "title"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": true
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "pattern": "(v{0,1})(stable|\\bmain(?:-[a-z]{2})?(?![\\w.-])|([0-9]+)(?:\\.([0-9]+))?(?:\\.([0-9]+))?(-.*)?)(_(.*))?"
+            },
+            "in": "path",
+            "name": "branch",
+            "required": true,
+            "description": "Project version number, `stable` for your project's stable version, or a valid branch name."
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "prefer",
+            "required": false,
+            "description": "By default, the supplied `slug` will be made unique during custom page creation if it already exists, however if you do not want this behavior you can supply `prefer: handling=strict` to receive a 409 Conflict instead."
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "appearance": {
+                          "type": "object",
+                          "properties": {
+                            "fullscreen": {
+                              "type": "boolean",
+                              "default": false,
+                              "description": "Whether a html custom page is fullscreen or not."
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "content": {
+                          "type": "object",
+                          "properties": {
+                            "body": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "markdown",
+                                "html"
+                              ],
+                              "default": "markdown",
+                              "description": "The type of content contained in this custom page."
+                            }
+                          },
+                          "required": [
+                            "body"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "metadata": {
+                          "type": "object",
+                          "properties": {
+                            "description": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "image": {
+                              "type": "object",
+                              "properties": {
+                                "uri": {
+                                  "type": "string",
+                                  "pattern": "\\/images\\/([a-f\\d]{24})",
+                                  "nullable": true,
+                                  "description": "A URI to the `getImages` endpoint for this image. If the is a legacy image then this `uri` will be `null`. And if you wish to delete this image then you should set this to `null`."
+                                },
+                                "url": {
+                                  "type": "string",
+                                  "format": "uri",
+                                  "nullable": true
+                                }
+                              },
+                              "required": [
+                                "uri",
+                                "url"
+                              ],
+                              "additionalProperties": false
+                            },
+                            "keywords": {
+                              "type": "string",
+                              "nullable": true,
+                              "description": "A comma-separated list of keywords to place into your custom page metadata."
+                            },
+                            "title": {
+                              "type": "string",
+                              "nullable": true
+                            }
+                          },
+                          "required": [
+                            "description",
+                            "image",
+                            "keywords",
+                            "title"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "privacy": {
+                          "type": "object",
+                          "properties": {
+                            "view": {
+                              "type": "string",
+                              "enum": [
+                                "public",
+                                "anyone_with_link"
+                              ],
+                              "default": "public",
+                              "description": "The visibility of this custom page."
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "slug": {
+                          "type": "string",
+                          "pattern": "([a-z0-9-_ ]|[^\\\\x00-\\\\x7F])+"
+                        },
+                        "title": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "links": {
+                          "type": "object",
+                          "properties": {
+                            "project": {
+                              "type": "string",
+                              "pattern": "\\/projects\\/(me|[a-zA-Z0-9]+(-[a-zA-Z0-9]+)*)",
+                              "description": "A URI to the project resource."
+                            }
+                          },
+                          "required": [
+                            "project"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "processing_status": {
+                          "type": "object",
+                          "properties": {
+                            "operation": {
+                              "type": "string",
+                              "enum": [
+                                "import",
+                                "ai_translation"
+                              ],
+                              "description": "The background operation currently affecting this page."
+                            },
+                            "source": {
+                              "type": "string",
+                              "nullable": true,
+                              "description": "Source URI for import operations, when available."
+                            },
+                            "status": {
+                              "type": "string",
+                              "enum": [
+                                "in_progress",
+                                "failed"
+                              ],
+                              "description": "The current processing state."
+                            }
+                          },
+                          "required": [
+                            "operation",
+                            "source",
+                            "status"
+                          ],
+                          "additionalProperties": false,
+                          "nullable": true,
+                          "description": "The active import or AI translation state for this page. `null` when the page is ready to read."
+                        },
+                        "renderable": {
+                          "type": "object",
+                          "properties": {
+                            "status": {
+                              "type": "boolean",
+                              "default": true,
+                              "description": "A flag for if the resource is renderable or not."
+                            },
+                            "error": {
+                              "type": "string",
+                              "nullable": true,
+                              "description": "The rendering error."
+                            },
+                            "message": {
+                              "type": "string",
+                              "nullable": true,
+                              "description": "Additional details about the rendering error."
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "updated_at": {
+                          "type": "string",
+                          "format": "date-time",
+                          "description": "An ISO 8601 formatted date for when the custom page was updated.",
+                          "nullable": true
+                        },
+                        "uri": {
+                          "type": "string",
+                          "pattern": "\\/(versions|branches)\\/((v{0,1})(stable|\\bmain(?:-[a-z]{2})?(?![\\w.-])|([0-9]+)(?:\\.([0-9]+))?(?:\\.([0-9]+))?(-.*)?)(_(.*))?)\\/custom_pages\\/([a-f\\d]{24}|([a-z0-9-_ ]|[^\\\\x00-\\\\x7F])+)"
+                        }
+                      },
+                      "required": [
+                        "appearance",
+                        "content",
+                        "metadata",
+                        "privacy",
+                        "slug",
+                        "title",
+                        "links",
+                        "processing_status",
+                        "renderable",
+                        "updated_at",
+                        "uri"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "data"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.readme.com/v2",
+      "description": "The ReadMe API"
+    }
+  ],
+  "security": [
+    {
+      "bearer": []
+    }
+  ],
+  "x-readme": {
+    "proxy-enabled": true
+  },
+  "tags": [
+    {
+      "name": "Custom Pages"
+    }
+  ]
+}
+```
+
+# Sibling pages
+
+- [Get all custom pages](/main/reference/getcustompages)
+- [Get a custom page](/main/reference/getcustompage)
+- [Delete a custom page](/main/reference/deletecustompage)
+- [Update a custom page](/main/reference/updatecustompage)

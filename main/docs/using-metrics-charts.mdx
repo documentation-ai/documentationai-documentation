@@ -1,0 +1,116 @@
+---
+title: API & Docs Metrics Charts
+description: Dig into the details of how your developers are using your API and docs with Metrics charts
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774456365-paa04mnpsp-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-10-22T05:04:37.000Z
+---
+
+# Overview
+
+So you've put in a lot of time and effort into building out beautiful documentation and an interactive developer hub for your API using ReadMe. Excellent!
+
+Now it’s time to make sure that your developers are actually visiting your hub and taking advantage of all of the great information available to them. On top of that, you probably want to understand how your users interact with your API and use that combined knowledge to make your developer experience even better
+
+With ReadMe’s API Metrics, you have reports on API call volume, endpoint usage, and errors that give you insights into your best use cases — and where developers might be getting stuck — at your fingertips. Plus, use the insights from your Doc Metrics to understand which guides are most popular, learn what terms and pages your devs are searching for most, and even dig into feedback on individual pages.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774442176-7dkkq0tsq47-6c5586df470729eb65dca182b47e37eff57ef0bc4ca010513940036dfafc496e-ca20a73869b5c376e2e9a099c226f115.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+## Accessing Documentation Metrics
+
+To access documentation metrics
+
+1. Click on the **Admin Settings** from main navigation bar.
+2. Select **Documentation Metrics** from the menu.
+
+### What You Can Learn from Documentation Metrics
+
+Here are a few questions to think about when looking at your Doc Metrics and API Metrics data — and how to look at them together to get even more powerful insights from your data:
+
+#### How is my API growing and performing?
+
+- API Calls + API Errors + Compare History
+
+#### Who’s using my API?
+
+- New Users: scroll down to view the feed + My Developers
+- Biggest Users: API Calls, grouped by User Agent
+
+#### What are my best API use cases?
+
+- Top Endpoints (usage) + Page Views (what your developers are reading)
+
+#### Are my docs getting users on the right track?
+
+- Search + Page Views + Page Quality
+- APIErrors over time
+
+### Using Metrics Charts
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774460552-9riumxlmoou-78ce9cf1b8b60c8e47f0ae93e7e7fe042288f087f810c8cb076796750ea27cee-473d4298a92961ff808f30709bd80e4c.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+Within each page of your Metrics, you can dive further into the data using various filters and charts.
+
+- <strong>History:</strong> tracking trends over time is a key way to measure the impact of improvements and new API features. Your ReadMe plan includes 24 hours worth of API request and Try It data, and you can [add additional API logs](/main/docs/plans-and-pricing#leveling-up-with-add-ons) in the Upgrade Plan page of your project dashboard to see even more history. you'll have access to a certain amount of data history. Toggle between time periods in the upper right corner to drill down on usage spikes, pull metrics over time for planning cycles, or see how much variability you have week to week.
+- <strong>Filters:</strong> dial into the answers you're looking for with filters specific to each chart to show, hide, or group the underlying data. These allow you to create custom views for the particular question you're investigating like breaking down API usage by method or tracking negative page votes over time. For Doc Metrics (Page Views, Page Quality, and Search), you can also use the **Exclude domain** filter to hide internal or teammate traffic by email domain (e.g., `@company.com`).
+- <strong>Chart Types:</strong> switch between line and bar charts to get the view of your data that's most helpful to you. Click the toggle to compare your data to the prior period (based on your chosen History window) to track trends over time.
+- <strong>Shortcuts:</strong> think of these as ReadMe pro tips — we've put together one-click shortcuts to popular filter and history settings. Just check the bottom of each chart to see the pre-made shortcuts!
+
+## Understanding Your Doc Metrics
+
+Have you ever wondered if users are finding what they need in your hub? Doc Metrics give you that visibility to inform your content strategy and make sure your hub is as useful as possible for your developers.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774461035-sh7jmhxlu2n-7a44efb4b32b42d91fec36ac7302152c9918e4d3bdf3c40997356dd330c4499d-d4b1cd1e76c6ad90c7c766b9cbed9642.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+Your Docs Metrics include:
+
+- <strong>Page Views:</strong> track usage of your docs over time to understand how developers engage with your content. To view metrics for a specific page, navigate to the **Page** section in the Metrics sidebar and use the filter to search by path. This helps you identify your most popular pages or determine if a page is safe to sunset.
+
+  - Every request counts as a page view, including page reloads by the same visitor. This means total page views can be inflated by repeated visits or refreshes.
+  - If your OpenAPI visibility is set to public, each successful fetch of a spec file (for example, `/openapi/petstore.json`) counts as a page view under its own `openapi` type, so it doesn't inflate your Docs or Reference numbers. The `/openapi` list page doesn't count, and neither do requests for missing files or files that failed to upload, or requests from visitors who don't have access.
+  - SDK generators, CI tools, and other scripts fetch spec files often, so most `openapi` views tend to come from automated clients rather than people. These views go through the same Agent vs. Human split as other page views.
+- <strong>Page Quality:</strong> page voting is one of the best ways to hear directly from your users with an in-the-moment thumbs up, thumbs down, or comment. Tracking this feedback over time helps you ensure your docs are useful to developers. You can enable or disable page voting directly from the Page Quality page in your Metrics section (click the gear icon dropdown).
+- <strong>Search:</strong> tracking common search terms is a great way to understand your users’ mindset: what are they trying to do? What information are they having a hard time finding? Where are they getting stuck? In addition to tracking search volume over time, looking at your top search terms can help answer these questions.
+
+## Understanding Your MCP Metrics
+
+If your project has an [MCP server](/main/docs/mcp) enabled and the [Ask AI add-on](/main/docs/ask-ai), the **MCP** page in your Metrics section gives you visibility into how AI clients are using your MCP tools. You can find it under **Docs** in the Metrics sidebar.
+
+The MCP metrics page includes:
+
+- <strong>KPI Strip:</strong> at-a-glance stat cards for Tool Calls, Error Rate, Response Time (p95), and AI Clients, each with a per-day sparkline showing trends over the selected date range.
+- <strong>Volume Graph:</strong> a per-tool line chart showing tool call volume over time, with an interactive legend for toggling individual tools.
+- <strong>Filters:</strong> a free-text search input (matches path, spec, operation ID, slug, user agent, and query text) plus dropdown filters for Method, Status, Tool, and Spec File.
+- <strong>Table:</strong> a detailed log of individual tool calls with columns for Time, Tool, Status, Method, Path, Operation ID, Response Time, Query, Results, Spec File, User Agent, and more. Use the column selector to show or hide forensic columns like Fingerprint, Client IP, and Trace ID.
+
+## Understanding Your API Metrics
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774461344-sas78mwkw09-ae94bff6122004bd48b46598a1790d9bc468e6041c434d1afe9a77216de26f27-39fc583911a0512c5887f41bbe84c5a5.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+Your API Metrics include:
+
+- <strong>API Calls:</strong> measure total call volume to understand usage of your API. Use the Calls By Status shortcut to group calls by status code to see the breakdown of successful calls vs. errors over time.
+- <strong>Top Endpoints:</strong> get visibility into usage of each endpoint in your API, so you can easily see which endpoints are most (or least) popular with developers. This data helps you prioritize support and improvements for your most important endpoints or support deprecation decisions for ones that aren't being used.
+- <strong>API Errors:</strong> see where your developers are running into trouble, and filter by endpoint or by status. Track errors over time, and spot an incident before it gets out of hand!
+- <strong>New Users:</strong> keep track of active users of your API and see how that’s changing over time — a key metric for many API and Platform teams to track and report on internally. You can also quickly spot spikes (or drops) in usage that might indicate a problem or outage your team should investigate.
+
+In addition to the rich insights you can unlock using [My Developers](/main/docs/my-developers), you can also use API Metrics to answer key questions about how people are using your API:
+
+- Who are the heaviest users of your API?
+- Which endpoints are most heavily used? Which endpoints are least popular?
+- How are your error rates? Which endpoints are causing the most trouble?
+
+You'll be able to apply these insights to make much more strategic decisions about your API. Here are a few examples:
+
+- <strong>Unique API users:</strong> determine if new or existing customers are fueling API usage and how this changes over time
+- <strong>Top API consumers:</strong> identify the top users and explore opportunities for upselling or endpoint improvements by observing how these power users interact with your API
+- <strong>API pain points:</strong> isolate endpoints that are causing the most trouble and identify opportunities for improvement
+
+# Sub pages
+
+- [Export Metrics Data](/main/docs/exporting-metrics-data)
+
+# Sibling pages
+
+- [Developer Dashboard](/main/docs/developer-dashboard)
+- [API Exploration Tools](/main/docs/api-exploration-tools)
+- [Community Building](/main/docs/community-building)

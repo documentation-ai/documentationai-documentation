@@ -1,0 +1,117 @@
+---
+title: Sync with GitHub
+description: Connect your project to a GitHub repository for bi-directional sync, including the permissions you need and how to change repositories.
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774303584-hjxkgkqsnft-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-10-26T20:48:36.000Z
+---
+
+## How to Set Up Bi-Directional Sync with GitHub
+
+### Prerequisites
+
+- You will need a GitHub account.
+- When syncing to a repository owned by a GitHub organization, you (or a GitHub organization owner) must be able to install and configure GitHub Apps for that organization.
+- You will need permission to create an **empty repository** in the target organization.
+
+### Set Up
+
+1. Navigate to **Settings** \> **Git Connection** page.
+2. Select GitHub.
+3. If you haven’t already, create an empty repository in [GitHub](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository)—make sure to uncheck the option to create a README.
+4. **Sync** with your provider and authenticate. Grant access to the repository you’d like to sync with and confirm your repository on the next screen.
+
+---
+
+## Changing Repositories
+
+1. Within ReadMe, disconnect the project via the trash icon.
+2. Within GitHub, create your new repository (must be empty).
+3. Navigate to **Applications > Installed GitHub Apps**.
+4. Find **ReadMe Sync** and click **Configure**.
+5. Under *Repository access*, select the new repository you’d like to sync to.
+6. Return to ReadMe and connect to your new repository.
+
+---
+
+## Editing Your Docs
+
+<strong>[Branches](/main/docs/branches)</strong>
+
+- The initial commit from ReadMe is to establish branch synchronization with GitHub
+- Branch names must exactly match the version names defined in ReadMe
+- Any mismatched version and names will exist in GitHub and will not sync with ReadMe.
+
+ Unsynced
+
+```
+ReadMe: v2.0_new-branch
+GitHub: v2-new-branch
+	
+```
+
+ Synced
+
+```
+ReadMe: v2.0_new-branch
+GitHub: v2.0_new-branch
+	
+```
+
+---
+
+### GitHub Enterprise Server
+
+If you’re using a self-hosted <strong>[GitHub Enterprise Server (GHES)](https://docs.readme.com/main/enterprise/github-enterprise-sync)</strong>, you can set up syncing from your Group dashboard under **Git Connection**. Syncing requires a new, empty repository, and each child project can only sync to one repository.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774291515-wq7zwkadeoq-ec3839490dc9798ee7e4adbd29c393c358a50bcf29a2f07d88e97a85594350f3-Enterprise_git_connection.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+If GHES isn’t available for your project, please contact your Customer Success Manager.
+
+### GitHub Branch Protection
+
+If your GitHub repository uses branch protection rules or rulesets, you’ll need to configure them to allow the ReadMe Sync app to push changes. ReadMe Sync pushes commits directly to your synced branches and doesn't bypass your rules automatically. If a rule blocks the push, **Settings > Git Connection** in ReadMe reports `push rejected: the target branch is protected` for the affected branch, and changes stop flowing in both directions for that branch. Here's how to set it up based on your GitHub configuration:
+
+#### For GitHub Rulesets (New Version)
+
+1. Navigate to your repository’s branch protection settings.
+2. Under the *Bypass list* section,<strong>\+ Add bypass</strong>.
+3. Search for *ReadMe Sync* (App • readmeio) and set the permission to **Always allow**.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774291510-a1g4c1y23xi-01fdee3c195bd02c5c694f02e48e06a8c9fbdf6a59b215458bbfa2101de53730-Github_bypass_list.png?fm=auto&auto=compress%2Cformat" alt="Adding ReadMe Sync to the GitHub Rulesets bypass list for direct push access." caption="Adding ReadMe Sync to the GitHub Rulesets bypass list for direct push access." />
+
+#### For Legacy Branch Protection
+
+1. Go to your repository’s branch protection rules.
+2. Find the *Allow specified actors to bypass required pull requests* section.
+3. Add *readme-sync* (ReadMe Sync) to the allowed actors list.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774308937-en16161n4za-f7ee6d3cc746ecbce5f8a396a87926ecdbd7238512badae3cc508303e3437c4b-Github_allow.png?fm=auto&auto=compress%2Cformat" alt="Configuring ReadMe Sync in legacy branch protection settings to bypass pull request requirements." caption="Configuring ReadMe Sync in legacy branch protection settings to bypass pull request requirements." />
+
+This configuration ensures that changes made in ReadMe’s editor can be synchronized to protected branches in your GitHub repository. A few things to check if the error persists:
+
+- Rulesets defined at the organization level apply on top of repository rules and need their own bypass entry for ReadMe Sync.
+- If your branch protection is managed by an automated tool (a repo-settings config, a policy bot, or infrastructure-as-code), make the change in that tool so it isn't reverted on the next run.
+- After updating the rules, save a small change in ReadMe or push a commit to trigger a new sync, then confirm the error has cleared on **Settings > Git Connection**.
+
+For the full list of symptoms, see [Troubleshooting](/main/docs/bi-directional-sync#troubleshooting) on the Bi-Directional Sync page.
+
+---
+
+## FAQ
+
+<Expandable title="How does ReadMe integrate with GitHub and what permissions are required?">
+  ReadMe uses a GitHub App with repo-level access: read-only for metadata (required) and read/write for syncing content. Webhooks handle syncs, change detection, and conflict resolution.
+</Expandable>
+
+<Expandable title="Why don’t my branches show on GitHub?">
+  New branches you create after enabling bi-directional sync automatically creates a corresponding branch on Github, but existing branches will not create a corresponding branch on GitHub until you save a change (however small) to that branch on the ReadMe side.
+</Expandable>
+
+<Expandable title="I’m seeing an error about repository rule violations or a protected branch.">
+  Our GitHub App doesn’t automatically bypass any rules you have set on your repository. To fix this issue, add the `readme-sync` app to your [branch protection bypass list from your GitHub repository settings](#github-branch-protection).
+</Expandable>
+
+# Sibling pages
+
+- [Sync with GitLab ](/main/docs/sync-with-gitlab)
+- [Documentation Structure](/main/docs/documentation-structure)

@@ -1,0 +1,88 @@
+---
+title: Page Settings
+---
+
+<Callout kind="alert" title="Needs review">
+  **Needs review**: the page could not be read: https://docs.readme.com/main/docs/page-settings: Expected a closing tag for \`&lt;meta>\` (45:187-45:193) before the end of \`tableData\`
+
+  ```
+  ---
+  updatedAt: 2026-10-29T17:45:41.000Z
+  agentTools:
+    siteIndex: https://docs.readme.com/llms.txt
+    siteSearch: https://docs.readme.com/agentSearch?query=term1%20term2
+    projectIndex: https://docs.readme.com/main/llms.txt
+    projectSearch: https://docs.readme.com/main/agentSearch?query=term1%20term2
+  ---
+
+  # Page Settings
+
+  Every setting on a Guides page, where to find it in the editor, and what it changes for readers.
+
+  # Page Settings Reference
+
+  Page-level settings live in two places in the editor: the controls above the page title, and the **Page Settings** panel. This page lists every one of them with its default and what it changes for readers.
+
+  ## Prerequisites
+
+  You need edit access to the project, and the page open in **Edit** mode.
+
+  ## Controls Above the Title
+
+  These sit in a row directly above the H1.
+
+  | Control    | Options                                                                  | Default     | What it does                                                                                                                                                                                                                                                                                                           |
+  | ---------- | ------------------------------------------------------------------------ | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Page icon  | Any emoji                                                                | None        | Shows an icon beside the page title in the sidebar.                                                                                                                                                                                                                                                                    |
+  | Page type  | **Page**, **External Link**                                              | **Page**    | **External Link** turns the sidebar entry into a link to a URL outside your docs instead of a page with content.                                                                                                                                                                                                       |
+  | Visibility | **Public**, **Hidden**                                                   | **Public**  | **Hidden** removes the page from the sidebar and table of contents, and excludes it from search in your hub, along with any subpages beneath it. The page is still reachable by direct link, so use Hidden to reduce noise, not to protect content. This is the same setting as **Hidden** in the Page Settings panel. |
+  | **⋮** menu | **History**, **Page Settings**, **Hide Table of Contents**, **Raw Mode** | Toggles off | **History** opens the page's version history. **Page Settings** opens the panel below. **Hide Table of Contents** removes the right-hand heading list from this page only. **Raw Mode** switches the page to a Markdown source editor and locks it for other editors while on.                                         |
+
+  ## Page Settings Panel
+
+  Open it from the gear icon in the right rail or from **⋮ → Page Settings**. It has four sections.
+
+  ### Page Options
+
+  | Setting        | Type   | Default | What it does                                                                                                                           |
+  | -------------- | ------ | ------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+  | **Hidden**     | Toggle | Off     | Not shown in the sidebar or table of contents, but accessible by direct link. Same setting as **Visibility → Hidden** above the title. |
+  | **Deprecated** | Toggle | Off     | Marks the page as deprecated. The page stays visible to readers.                                                                       |
+
+  ### Footer
+
+  | Setting               | Type   | Default | What it does                                                                                                   |
+  | --------------------- | ------ | ------- | -------------------------------------------------------------------------------------------------------------- |
+  | **Custom Pagination** | Toggle | Off     | Replaces the default **Previous** and **Next** page buttons at the bottom of the page with content you choose. |
+
+  ### Metadata
+
+  Controls how the page appears in search results and when its link is shared on social media.
+
+  | Setting               | Type                                                                                    | Default                              | What it does                                                                                                                                                                                                                                                   |
+  | --------------------- | --------------------------------------------------------------------------------------- | ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | **Display Image**     | Image upload                                                                            | None                                 | Image shown in the preview when the page's URL is shared on social media.                                                                                                                                                                                      |
+  | **SEO Title**         | Text                                                                                    | The page title                       | Sets the page's link preview \`<meta>\` tags such as: `og:title` to the value specified. Additionally, `<title>` tags are set to this value when **Use Metadata Titles** is switched on in **Settings → Project Settings**. Leave blank to use the page title. |
+  | **Slug**              | Text                                                                                    | Generated from the title on creation | The last segment of the page URL. Changing it changes the URL; see [Redirect Scenarios](https://docs.readme.com/main/docs/redirect-scenarios) for what happens to the old one.                                                                                                             |
+  | **Description**       | Text                                                                                    | The page excerpt                     | The meta description shown under the title in search results. Leave blank to use the excerpt.                                                                                                                                                                  |
+  | **Keywords**          | Comma-separated text                                                                    | None                                 | Meta keywords for the page.                                                                                                                                                                                                                                    |
+  | **Search Visibility** | Select: **Indexed by search engines**, **Not indexed by external search (Google, etc)** | **Indexed by search engines**        | **Not indexed** adds a `noindex` meta tag so external search engines skip the page; it does not affect search inside your hub.                                                                                                                                 |
+
+  ### Actions
+
+  | Action          | What it does                  |
+  | --------------- | ----------------------------- |
+  | **Delete Page** | Permanently deletes the page. |
+
+  ⚠️ Deleting a page removes it and its URL. The deletion cannot be undone from History, which only restores earlier revisions of pages that still exist. Deleting a page on a branch stages the deletion on that branch; the page remains live on the parent version until the branch is merged. To recover a deleted page, contact support.
+
+  ## Saving
+
+  Settings save with the page. Use **Save** to publish directly, or **Save to Branch** to hold the change for review. See [Branches](https://docs.readme.com/main/docs/branches).
+
+  # Sibling pages
+
+  * [Editor Blocks](https://docs.readme.com/main/docs/editor-blocks.md)
+  * [Creating Mermaid Diagrams](https://docs.readme.com/main/docs/creating-mermaid-diagrams.md)
+  ```
+</Callout>

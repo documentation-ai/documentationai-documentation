@@ -1,0 +1,377 @@
+---
+title: Developer Nuances
+description: "Advanced guidance for migrating an OpenAPI definition: which third-party extensions carry over, how tags become navigation, and the rdme commands for splitting, resolving, and validating your spec."
+metaTitle: Advanced migration nuances for ReadMe
+metaDescription: Vendor OpenAPI extension compatibility, x-tagGroups workarounds with rdme openapi reduce, tag-to-navigation mapping, circular references, and the full CI pipeline for migrating to ReadMe.
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774621071-4f8i5iiuo88-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-09-15T22:37:53.000Z
+---
+
+This page covers the details that matter most when you migrate a substantial OpenAPI definition: how your definition maps onto ReadMe's navigation, which specification extensions from other tools are read and which are ignored, and how to handle multi-file and recursive schemas.
+
+It applies regardless of which platform you're coming from. If your definition is more than a handful of operations, read this before your first upload.
+
+<Callout>
+  ### Everything on this page uses `rdme@10`
+
+  Install once with `npm i -g rdme@10`, or prefix each command with `npx`. Set `README_API_KEY` in your environment so you're not pasting keys into your shell history.
+</Callout>
+
+---
+
+## Start by inspecting your spec
+
+Before you change anything, find out what's actually in your definition:
+
+```bash
+npx rdme@10 openapi inspect ./openapi.yaml
+```
+
+This reports two things. First, which OpenAPI features you use — polymorphism, discriminators, callbacks, links, webhooks, XML payloads, server variables, parameter serialization, and circular references — each with a link to the relevant part of the spec. Second, which ReadMe extensions your file already contains.
+
+Run this first and the rest of this page becomes a checklist instead of a series of surprises. Circular references in the report mean you'll want [`openapi resolve`](#circular-and-recursive-references). A long polymorphism list means schema rendering is worth reviewing carefully before cutover.
+
+You can also narrow the report to a single feature:
+
+```bash
+npx rdme@10 openapi inspect ./openapi.yaml --feature circularRefs --feature polymorphism
+```
+
+---
+
+## Which extensions your platform uses
+
+ReadMe ignores specification extensions it doesn't recognize. Nothing errors and no upload fails — so if an extension was carrying content, the only sign is a page that renders without it.
+
+Your platform's complete extension mapping lives on its own migration guide: [Redocly, Redoc, Stoplight and others](/main/docs/migrate-to-readme-other), [Mintlify](/main/docs/migrate-from-mintlify-to-readme), [Docusaurus](/main/docs/migrate-from-docusaurus), [Fern](/main/docs/migrate-from-fern), or [GitBook](/main/docs/migrate-from-gitbook). Everything below this point applies whichever platform you're leaving.
+
+<Callout>
+  ### Every ReadMe extension has a root-level alias
+
+  Anything documented as `x-readme.<name>` can also be written at the root as `x-<name>` — so `x-readme.explorer-enabled` and `x-explorer-enabled` do the same thing. Worth knowing when you're reading someone else's definition and the two forms appear side by side. See [OpenAPI Extensions](/main/docs/openapi-extensions).
+</Callout>
+
+---
+
+## How tags become navigation
+
+Before you upload anything, it helps to know the shape ReadMe will build, because it's fixed:
+
+Your definition
+
+Becomes
+
+The whole file
+
+One top-level category, named from `info.title`
+
+The first tag on an operation
+
+A page inside that category
+
+Each operation
+
+A subpage, titled from its `summary`
+
+A few consequences worth knowing up front:
+
+- <strong>Only the first tag counts.</strong> An operation tagged `["pets", "public"]` lands under `pets`. The second tag is not used for placement.
+- <strong>No tags means grouping by URL.</strong> Operations are grouped under the path instead.
+- <strong>No summary means falling back.</strong> With tags but no `summary`, subpages are titled by URL. With neither, by HTTP method.
+- <strong>A multi-file definition is still one document.</strong> A spec assembled from `$ref`-linked files produces one category, not one per file.
+
+For the full breakdown, see [Categories, Pages, and Subpages](/main/docs/openapi-categories-pages-subpages).
+
+### Re-tagging doesn't move pages after the first sync
+
+This is easy to miss. By default ReadMe processes tags on the initial sync and then stops, because customers who hand-order their reference in the dashboard need that ordering to survive re-uploads.
+
+During a migration you usually want the opposite: you're restructuring, re-tagging operations, and re-uploading. Without this extension your changes upload cleanly and nothing moves.
+
+```json
+{
+  "x-readme": {
+    "apply-tag-changes": true
+  }
+}
+```
+
+Set it at the root of your definition — it can't be set per operation. Turn it on for the duration of your migration, then decide whether to leave it on once your structure has settled. Note that pages you've moved to a *different* top-level category are never affected by tag changes.
+
+---
+
+## Grouping tags without `x-tagGroups`
+
+Redocly's `x-tagGroups` adds a grouping level above tags. ReadMe's reference navigation doesn't have that level — one definition produces one category — so the extension is ignored.
+
+The instinct is to split the spec into several files by hand. Don't: you lose your single source of truth and every future change has to be made in several places.
+
+Instead, split at build time. `rdme openapi reduce` takes one definition and emits a subset of it, and `--title` overrides `info.title` — which is what names the resulting ReadMe category.
+
+```bash
+# Group 1 — keep the source spec untouched
+npx rdme@10 openapi reduce ./openapi.yaml \
+  --tag pets --tag petOwners \
+  --title "Pets" \
+  --out ./dist/pets.json
+
+npx rdme@10 openapi upload ./dist/pets.json \
+  --slug pets --key="$README_API_KEY"
+
+# Group 2
+npx rdme@10 openapi reduce ./openapi.yaml \
+  --tag store --tag inventory \
+  --title "Store & Inventory" \
+  --out ./dist/store.json
+
+npx rdme@10 openapi upload ./dist/store.json \
+  --slug store --key="$README_API_KEY"
+```
+
+Each uploaded file becomes its own top-level category, named by `--title`. Your repository still contains exactly one definition, and re-running the script after any change regenerates every group.
+
+<Callout>
+  ### Always pass `--slug`
+
+  Without it, the slug is inferred from the file path — `dist/pets.json` becomes `dist-pets.json`. Reorganize your build directory later and the next upload creates a **second** API definition instead of updating the first. Pin the slug explicitly and the path stops mattering.
+</Callout>
+
+The same technique solves two other problems. If your definition is too large to work with comfortably, reduce it into maintainable pieces without splitting the source. And if you publish different subsets to different audiences, reduce by `--path` and `--method` instead of by tag:
+
+```bash
+npx rdme@10 openapi reduce ./openapi.yaml \
+  --path /pet/{id} --method get --method put \
+  --out ./dist/public.json
+```
+
+You can pass tags, or paths and methods, but not both in the same command.
+
+---
+
+## Awkward specs
+
+<Expandable title="Multi-file definitions and relative $refs">
+  If you're arriving from Redocly, Stoplight, or Fern, your definition is probably split across files.
+
+  Uploading that through the dashboard or the API **fails**: relative file references like `$ref: "./schemas/Pet.yaml"` are rejected. External `$ref` pointers to URLs are bundled automatically, but relative file paths are not.
+
+  `rdme` resolves and bundles everything into a single self-contained payload before upload, so the CLI is the right tool for any multi-file spec:
+
+  ```bash
+  npx rdme@10 openapi upload ./openapi.yaml --slug my-api --key="$README_API_KEY"
+  ```
+
+  To produce the bundled file without uploading it — useful for inspecting what will actually be stored:
+
+  ```bash
+  npx rdme@10 openapi convert ./openapi.yaml --out ./dist/bundled.json
+  ```
+
+  One security note that catches internal APIs: external `$ref` pointers targeting private, loopback, or link-local addresses (`127.0.0.1`, `10.x.x.x`, `169.254.x.x`, `::1`) are rejected. Resolve those locally and upload the bundled result.
+</Expandable>
+
+<Expandable title="Circular and recursive references">
+  A schema that references itself renders as an **empty form** in the API Explorer rather than an error. If `openapi inspect` reported `circularRefs`, you'll hit this.
+
+  ```bash
+  npx rdme@10 openapi resolve ./openapi.yaml --out ./dist/resolved.json
+  ```
+
+  This replaces circular and recursive references with flattened object schemas, so users see what the object can contain — including the fact that it references itself — instead of a blank panel. Deeply nested circular structures may not resolve completely and are worth checking by eye afterward.
+</Expandable>
+
+<Expandable title="Swagger 2.0 and Postman collections">
+  Swagger 2.0 definitions are up-converted automatically on upload. You can also do it explicitly:
+
+  ```bash
+  npx rdme@10 openapi convert ./swagger.json --out ./dist/openapi.json
+  ```
+
+  Two things to know. The conversion targets **OpenAPI 3.0, not 3.1** — so converting does not give you access to 3.1-only features such as `webhooks` or full JSON Schema support. And `openapi reduce` only accepts OpenAPI 3.0+, so if you're coming from Swagger 2.0 and want the tag-grouping technique above, convert first and reduce second.
+
+  The same command converts Postman collections. If your API documentation currently lives in Postman, that's your starting point:
+
+  ```bash
+  npx rdme@10 openapi convert ./collection.json --out ./dist/openapi.json
+  ```
+</Expandable>
+
+---
+
+## The parts that aren't Guides
+
+Most migration advice concentrates on Guides and API Reference. These are the other sections and how content actually gets into them.
+
+Section
+
+Git Sync folder
+
+CLI command
+
+Guides
+
+`docs/`
+
+`rdme docs upload`
+
+API Reference pages
+
+`reference/`
+
+`rdme reference upload`
+
+Recipes
+
+`recipes/`
+
+—
+
+Custom Pages
+
+`custom_pages/`
+
+`rdme custompages upload`
+
+Custom Blocks
+
+`custom_blocks/`
+
+—
+
+Changelog
+
+`changelogs/`
+
+`rdme changelog upload`
+
+### Changelog entries
+
+Changelog entries are stored in a flat `changelogs/` folder at the root of your synced repository, one Markdown file per entry. There are no categories and no `_order.yaml` — ordering comes from `published_at`.
+
+```text
+📂 changelogs
+├── 📄 2026-04-20-v1-launch.md
+├── 📄 2026-05-17-webhooks-ga.md
+└── 📄 2026-06-10-deprecating-v0.md
+```
+
+```yaml
+---
+title: Webhooks are now generally available
+type: added        # added | fixed | improved | deprecated | removed
+hidden: false
+published_at: '2026-05-17T13:45:05.830Z'
+---
+```
+
+Three behaviors that differ from the rest of your content:
+
+- <strong>Changelog entries are unversioned.</strong> They live only on `main` and don't fork when you create a version.
+- <strong>Git-backed changelogs require a connected repository.</strong> They're part of Git Sync, not a standalone feature.
+- <strong>Only English entries are represented in git.</strong> If you publish translated changelog entries, those stay outside the synced repository.
+
+### Reference pages
+
+`reference/` holds the Markdown around your generated endpoints, not the endpoints themselves. A tag with more than one operation gets an `index.md`, and each endpoint page carries frontmatter pointing at the definition rather than duplicating its content:
+
+```yaml
+---
+api:
+  file: hoot.json          # the OpenAPI file in /reference
+  operationId: get_owls
+  webhook: false
+---
+```
+
+`title` and `excerpt` are deliberately absent — those come from the OpenAPI operation itself. This is where conceptual material that isn't expressible in your definition belongs: authentication walkthroughs, rate-limit explanations, pagination patterns, migration notes between API versions.
+
+---
+
+## Putting it together in CI
+
+The full pipeline, in the order the commands need to run:
+
+```yaml
+name: Sync API definition to ReadMe
+on:
+  push:
+    branches: [main]
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # 1. Convert and bundle (no-op if already OpenAPI 3.x and single-file)
+      - run: npx rdme@10 openapi convert ./openapi.yaml --out ./dist/bundled.json
+
+      # 2. Flatten circular references so schemas render
+      - run: npx rdme@10 openapi resolve ./dist/bundled.json --out ./dist/resolved.json
+
+      # 3. Split into one file per tag group
+      - run: |
+          npx rdme@10 openapi reduce ./dist/resolved.json \
+            --tag pets --title "Pets" --out ./dist/pets.json
+          npx rdme@10 openapi reduce ./dist/resolved.json \
+            --tag store --title "Store & Inventory" --out ./dist/store.json
+
+      # 4. Validate before anything is published
+      - run: |
+          npx rdme@10 openapi validate ./dist/pets.json
+          npx rdme@10 openapi validate ./dist/store.json
+
+      # 5. Upload, with slugs pinned so paths can change freely
+      - run: |
+          npx rdme@10 openapi upload ./dist/pets.json --slug pets \
+            --key=${{ secrets.README_API_KEY }}
+          npx rdme@10 openapi upload ./dist/store.json --slug store \
+            --key=${{ secrets.README_API_KEY }}
+```
+
+Add `--dry-run` to any upload to see what would happen without changing anything — worth doing on your first run.
+
+<Callout>
+  `--branch` and `--useSpecVersion` are mutually exclusive. Use `--branch` to target a specific ReadMe version, or `--useSpecVersion` to take it from `info.version` in your definition. Passing both fails.
+</Callout>
+
+---
+
+## Before you cut over
+
+<Expandable title="Redirects are not stored in your repository">
+  Redirects live in **Settings > Errors & Redirects**, entered as `oldurl -> newurl`, one per line. They are project settings, not content — which means they are **not** in your Git Sync repository, not in an export, and not copied when a project is cloned.
+
+  If you build your redirect map in a staging project and then promote or rebuild, you lose it. Keep the map in source control as a plain text file even though ReadMe won't sync it, so it can be re-entered.
+</Expandable>
+
+<Expandable title="A migration checklist">
+  - `openapi inspect` run, and its report reviewed
+  - Vendor extensions renamed or accounted for, especially `x-codeSamples`
+  - `apply-tag-changes` enabled while you're still restructuring
+  - Slugs pinned with `--slug` on every upload
+  - Circular references resolved, and the affected schemas checked by eye
+  - Authentication configured, and Try It! tested against a real request
+  - Redirects entered **and** saved outside ReadMe
+  - Changelog entries migrated, if you're keeping them
+  - The old site still live until all of the above is verified
+</Expandable>
+
+---
+
+<Callout>
+  ### Need a hand?
+
+  If you run into a migration case this page doesn't cover, get in touch at [support@readme.io](mailto:support@readme.io). We're happy to help.
+</Callout>
+
+# Sibling pages
+
+- [Migrate from Mintlify](/main/docs/migrate-from-mintlify-to-readme)
+- [Migrate from GitBook](/main/docs/migrate-from-gitbook)
+- [Migrate from Fern](/main/docs/migrate-from-fern)
+- [Migrate from Docusaurus](/main/docs/migrate-from-docusaurus)
+- [Migrate from another platform](/main/docs/migrate-to-readme-other)

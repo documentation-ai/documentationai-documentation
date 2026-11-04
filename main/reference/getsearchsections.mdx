@@ -1,0 +1,152 @@
+---
+title: List the custom sections a search covers
+description: Lists the custom sections that a search with the same `version`, `projects` and `lang` would cover, across every searched project.
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774776517-usnx0vtc91o-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-11-02T20:37:00.000Z
+---
+
+# OpenAPI definition
+
+```json
+{
+  "openapi": "3.1.0",
+  "info": {
+    "description": "Create beautiful product and API documentation with our developer friendly platform.",
+    "version": "2.0.0",
+    "title": "ReadMe API",
+    "x-readme-deploy": "5.947.0",
+    "termsOfService": "https://readme.com/tos",
+    "contact": {
+      "name": "API Support",
+      "url": "https://docs.readme.com/main/docs/need-more-support",
+      "email": "support@readme.io"
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearer": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "A bearer token that will be supplied within an `Authentication` header as `bearer <token>`."
+      }
+    }
+  },
+  "paths": {
+    "/search/sections": {
+      "get": {
+        "operationId": "getSearchSections",
+        "summary": "List the custom sections a search covers",
+        "tags": [
+          "Search"
+        ],
+        "description": "Lists the custom sections that a search with the same `version`, `projects` and `lang` would cover, across every searched project.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "version",
+            "required": false,
+            "description": "The version to search within. For enterprise, this only applies to the current project."
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "in": "query",
+            "name": "projects",
+            "required": false,
+            "description": "Limit to only these projects in an Enterprise group. If omitted, all child projects with the appropriate permissions are covered. This parameter is only applicable to Enterprise projects.",
+            "style": "form",
+            "explode": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "total": {
+                      "type": "number"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "directory": {
+                            "type": "string",
+                            "description": "The directory the section owns, and the `section` value its search results carry."
+                          },
+                          "icon": {
+                            "type": "string",
+                            "nullable": true,
+                            "description": "The icon the section declares, as an icon font class or an emoji."
+                          },
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "guide",
+                              "reference"
+                            ]
+                          },
+                          "name": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "directory",
+                          "icon",
+                          "kind",
+                          "name"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "total",
+                    "data"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.readme.com/v2",
+      "description": "The ReadMe API"
+    }
+  ],
+  "security": [
+    {
+      "bearer": []
+    }
+  ],
+  "x-readme": {
+    "proxy-enabled": true
+  },
+  "tags": [
+    {
+      "name": "Search"
+    }
+  ]
+}
+```
+
+# Sibling pages
+
+- [Perform a search query](/main/reference/search-3)
+- [Suggest pages for a missing URL](/main/reference/getnotfoundsuggestions)

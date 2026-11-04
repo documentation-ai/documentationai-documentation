@@ -1,0 +1,142 @@
+---
+title: Slack AI Writer
+description: Create, edit, and manage your documentation directly from Slack with an AI-powered writing assistant.
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774020175-5uq0qkiv04r-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-10-21T02:24:49.000Z
+---
+
+The Slack AI Writer puts ReadMe's documentation tools where your team already works. Create pages, edit content, manage branches, and check project metrics without leaving Slack. Every change goes through a [review branch](/main/docs/branches), so nothing hits your live docs until you approve it.
+
+When someone flags a doc issue in Slack, you fix it in the same thread. No tab switching, no lost context.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774022199-7ccfhw1orvx-eee948043dca4214bebd73ddebcb62d1f2a006903d59a9ae9e762a1c6adc4e11-Page_edits_5.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+## What You Get
+
+---
+
+### Create and edit pages
+
+Describe what you need in plain language. The Slack AI Writer reads your current content, applies changes on a working branch, and tells you exactly what changed.
+
+### Manage branches from Slack
+
+Merge a branch to publish your edits, or delete it to start over. The Slack AI Writer confirms before any destructive action.
+
+### Pull metrics on demand
+
+Use slash commands to check page views, search trends, and API log activity mid-conversation.
+
+### Stay in the loop with notifications
+
+Get real-time alerts in your configured Slack channels for events like suggested edits and discussion posts. Notification preferences are configured on the [Slack settings page](/main/docs/slack) under **Personal notifications**.
+
+---
+
+<Callout>
+  ### What the Slack AI Writer Doesn't Do
+
+  - It never merges a branch on its own. You always confirm first.
+  - It doesn't touch notification settings. Those are configured on the [Slack settings page](/main/docs/slack).
+  - It doesn't support writing with images right now. This will need to be manually added through the editor.
+</Callout>
+
+## Getting Started
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774022433-iecli0djli-14e9ac9f8569408de30847c83000f6a8b7376e6d55577a1165c1e92d07a9e95d-Integration_3.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+For full setup instructions, see the [Slack integration guide](/main/docs/slack).
+
+1. In your ReadMe project, go to **Settings** → **AI** → **AI Writer**
+2. Click on the Slack banner, and then **Connect Slack** to authorize the app in your workspace
+3. Select which projects the Slack AI Writer can write to using the **projects enabled** menu
+4. Mention `@ReadMe` in any channel it has access to, or send it a direct message to get started
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774023860-lhd7adg4n9-840e40b18de8fb3ff5f4eddf6c5b053bad3990ae10cd2f5effbee43287fa82b3-Hello_3.png?fm=auto&auto=compress%2Cformat" alt="" width={800} />
+
+Once connected, you can ask it to create a page, update a section, or pull up your project metrics.
+
+## Using the Slack AI Writer
+
+Mention `@ReadMe` in a channel or in an existing thread. Each thread keeps its context, so you can iterate across multiple messages.
+
+### Creating and Editing Docs
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774025506-7oyxoust2as-cefd64d2044ebca4c557152b738de3b2a39c096ec6a7e70a7199535cc324dd7b-Page_edits_1.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+Tell it what you need:
+
+- <em>"Create a new guide called 'Webhook Setup' that explains how to configure incoming webhooks"</em>
+- <em>"Update the Authentication page to add a section on API key rotation"</em>
+- <em>"Rewrite the Getting Started guide to be more beginner-friendly"</em>
+
+The Slack AI Writer reads the current page, applies your changes on a working branch, and reports back with a summary. Review the branch in ReadMe's side-by-side diff before merging.
+
+### Branch Management
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774028342-6q4xn1bd98k-f4106e05a92c24bbca7af2c7b47da44543b18d7e8695a92a61f69f6e767c31d2-Merge_1.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+Control your working branches via prompts without leaving Slack:
+
+- <em>"Merge the current branch"</em> publishes all drafted changes to your live docs
+- <em>"Delete the current branch"</em> discards pending changes so you can start clean
+
+The Slack AI Writer always confirms before executing destructive actions. Branch rules (merging and deletion permissions) are configured on the [Slack settings page](/main/docs/slack#branch-rules).
+
+### Slash Commands
+
+Use slash commands to pull metrics into your conversation:
+
+| Command | What it does |
+| --- | --- |
+| `/statuscodes [project]` | Get top status codes |
+| `/recentlogs [project]` | Returns a list of API logs from metrics |
+| `/topendpoints [project]` | Get top endpoints called from API metrics |
+| `/topusers [project]` | Get top users from API metrics |
+| `/readme-feedback [message]` | Leave feedback for the Slack AI Writer |
+
+## Cross-Project Workflows (Enterprise)
+
+With an Enterprise connection, you can work across multiple child projects from one Slack workspace. Each thread you start is pinned to one project via a project selector.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774028936-1orefl55zv4-3f829fb63e5a193ec4dbe2aa02509d7fb8e786fcc549784675acccbd6a79a628-Enterprise_2.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774029580-mq4xzvblqkb-65cb5db4e668c351c5829bf15f6afedb39318288d9de7d2926a089529c9522fc-Multi_1.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+For Enterprise setup and configuration, see the [Slack integration guide](/main/docs/slack#enterprise).
+
+<Callout>
+  ### Available on Enterprise
+
+  On Enterprise, you can connect the Slack AI Writer to any child project in your Enterprise Group. Don't have Enterprise yet? [Book a demo](https://readme.com/enterprise) to see what's included.
+</Callout>
+
+## FAQ
+
+<Expandable title="What plan do I need?">
+  The Slack AI Writer is available on Pro plans and above. Enterprise connection requires an Enterprise plan.
+</Expandable>
+
+<Expandable title="Does it modify my live docs directly?">
+  No. All changes land on a working branch. You review and merge before anything goes live.
+</Expandable>
+
+<Expandable title="Can I use it alongside the GitHub AI Writer?">
+  Yes. They are independent integrations. Use the GitHub AI Writer to watch PRs and the Slack AI Writer for ad-hoc edits from your team.
+</Expandable>
+
+<Expandable title="How do I configure notifications?">
+  Notifications are configured on the [Slack settings page](/main/docs/slack) under **Personal notifications** and **Channel updates**. The Slack AI Writer itself doesn't control notification settings.
+</Expandable>
+
+<Expandable title="Is my data shared with AI providers?">
+  Your documentation content is sent to the AI provider only when you actively use the Slack AI Writer to generate responses. No provider uses your data for model training.
+</Expandable>
+
+<Expandable title="What if I make a mistake?">
+  Every change lives on a branch. If something looks wrong, ask the Slack AI Writer to revert the change, delete the branch, or keep editing before you merge.
+</Expandable>
+
+# Sibling pages
+
+- [GitHub AI Writer](/main/docs/github-ai-writer-setup)

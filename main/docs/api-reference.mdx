@@ -1,0 +1,131 @@
+---
+title: API Reference
+description: Learn how to use your API Reference to transform your API into a clear and accessible solution for developers.
+ogImage: https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793774205505-8pr0pdeefle-create.jpg?fm=auto&auto=compress%2Cformat
+updatedAt: 2026-09-21T15:37:31.000Z
+---
+
+# What Is an API Reference?
+
+An API reference is the definitive technical guide to your API, documenting every endpoint, parameter, and response code in detail. It's your ultimate source of truth that developers turn to when they need to know exactly how to interact with your API.
+
+In ReadMe, your API reference is an interactive experience where developers can explore your API, make test calls right from the documentation, and see real responses without writing a single line of code.
+
+## Why Your API Reference Matters
+
+A well-crafted API reference can:
+
+- **Reduce support tickets** by answering technical questions before they're asked
+- **Speed up developer onboarding** by providing clear, accurate implementation guidance
+- **Build developer trust** by showing that your API is thoughtfully designed and maintained
+- **Showcase your API's full capabilities** so developers discover features they might otherwise miss
+
+## Getting Started with Your API Reference
+
+ReadMe offers several ways to create and maintain your API reference, whether you're working with OpenAPI (formerly Swagger) specifications or prefer to build your reference manually.
+
+### In This Section
+
+You'll learn how to:
+
+- **Upload and manage OpenAPI specifications** through multiple methods
+- **Work with our API Designer** if you don't have an OpenAPI specification
+- **Customize your API reference** to match your brand and enhance usability
+- **Create interactive examples** that developers can try right in your docs
+- **Keep your reference in sync** with your actual API as it evolves
+
+## OpenAPI Upload and Management
+
+ReadMe fully supports OpenAPI 3.0, OpenAPI 3.1, and Swagger 2.0 specifications. You can add your API spec to ReadMe in multiple ways:
+
+- **File upload**: Drag and drop your OpenAPI/Swagger JSON or YAML file
+- **URL import**: Point ReadMe to where your spec lives online
+- **GitHub/GitLab integration**: Connect directly to your GitHub or GitLab repository using [bi-directional sync](/main/docs/bi-directional-sync)
+- <strong>Command line (rdme)</strong>: Use our [CLI tool](/main/docs/rdme) for automated workflows, including GitHub Actions
+- **API Sync**: Keep your API reference automatically in sync with your codebase
+
+Once uploaded, ReadMe transforms your spec into beautifully formatted, interactive documentation that developers will love.
+
+## API Designer
+
+Don't have an OpenAPI specification? No problem! ReadMe's [API Designer](/main/docs/api-designer) lets you build your API reference from scratch with an intuitive interface. Document your endpoints, parameters, request bodies, and response objects without needing to write a single line of YAML or JSON.
+
+## Updating Request Parameters
+
+Need to update the request parameters for an endpoint? ReadMe gives you several ways to do this depending on how you manage your API reference:
+
+### Using the API Designer
+
+If you built your API reference in ReadMe or want to make quick edits:
+
+1. Navigate to **API Reference** in your project
+2. Click on the endpoint you want to update
+3. Find the **Query Parameters**, **Path Parameters**, or **Request Body** section
+4. Click the <strong>+</strong> button to add new parameters, or click an existing parameter to edit its name, type, description, or required status
+5. Save your changes
+
+For a full walkthrough, see [API Designer](/main/docs/api-designer).
+
+### Using Your OpenAPI Specification
+
+If you manage your API reference through an OpenAPI (or Swagger) file:
+
+1. Update the parameters in your OpenAPI specification file (YAML or JSON)
+2. Re-upload the updated file to ReadMe using one of these methods:
+
+   - **Dashboard**: Go to **API Reference** → **API Definitions**, click <strong>⋮</strong> on your definition, and select **Update OAS File**
+   - **CLI**: Run `rdme openapi upload openapi.yaml --key=$README_API_KEY`
+   - **Bi-directional sync**: Commit the updated file to your connected repository
+
+ReadMe updates existing pages in place when you re-sync, so your URLs and any hand-written content on the page are preserved. For details, see [Re-syncing Your OpenAPI Document](/main/docs/openapi-resyncing).
+
+### Editing the OAS File Directly in ReadMe
+
+You can also edit your OpenAPI specification directly in the ReadMe dashboard:
+
+1. Go to **API Reference** → **API Definitions**
+2. Click <strong>⋮</strong> on your definition and select **Edit OAS File**
+3. Make your parameter changes in the editor
+4. Click **Save** — ReadMe validates the file before saving
+
+For more on managing your API definitions, see [OpenAPI Upload and Management](/main/docs/openapi-upload-and-management).
+
+## Customizing Your API Reference
+
+Make your API reference truly yours with customization options:
+
+- Add authentication details and custom headers
+- Include code samples in multiple programming languages
+- Organize endpoints into logical groups
+- Add custom documentation and overviews to each group of endpoints
+
+## GraphQL Support
+
+Working with GraphQL? ReadMe offers limited but growing support for [GraphQL APIs](/main/docs/graphql). You can document your schemas, queries, and mutations to help developers navigate your GraphQL API.
+
+## Best Practices for API References
+
+To create an exceptional API reference:
+
+- **Be complete**: Document every endpoint, parameter, and response
+- **Include examples**: Show real request/response pairs for common use cases
+- **Explain errors**: Document all error codes and how to resolve them
+- **Keep it current**: Update documentation whenever your API changes
+- **Test it yourself**: Regularly use your own documentation to catch issues
+
+# Sub pages
+
+- [OpenAPI Upload and Management](/main/docs/openapi-upload-and-management)
+- [API Designer](/main/docs/api-designer)
+- [GraphQL API Reference (Limited Support)](/main/docs/graphql)
+- [OAuth Flows in Try It!](/main/docs/oauth-workflows-in-try-it)
+
+# Sibling pages
+
+- [Guides](/main/docs/guides)
+- [Recipes](/main/docs/recipes)
+- [Changelog](/main/docs/changelog)
+- [Landing Page](/main/docs/landing-page)
+- [Custom Pages](/main/docs/custom-page)
+- [MDX](/main/docs/mdx)
+- [Reusable Content](/main/docs/reusable-content)
