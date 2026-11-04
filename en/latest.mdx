@@ -1,0 +1,194 @@
+---
+title: "Requests: HTTP for Humans™"
+---
+
+Release v2.34.2. ([Installation](/en/latest/user/install#install))
+
+[<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793776449246-m1l3qcizz3-requests.svg?rasterize-bypass=true" alt="PyPI Version Badge" />](https://pypi.org/project/requests/) [<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793776449488-9gr66cu21ig-requests.svg?rasterize-bypass=true" alt="Supported Versions Badge" />](https://pypi.org/project/requests/) [<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793776449101-cqw81mguabw-month.svg?rasterize-bypass=true" alt="Downloads Per Month Badge" />](https://pepy.tech/project/requests) [<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793776455533-ywotjnm0ap-requests.svg?rasterize-bypass=true" alt="Contributors Badge" />](https://github.com/psf/requests/graphs/contributors) [<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793776449297-p205z5o97w-badge.svg?rasterize-bypass=true" alt="Documentation Badge" />](https://requests.readthedocs.io)
+
+**Requests** is an elegant and simple HTTP library for Python, built for human beings.
+
+---
+
+**Behold, the power of Requests**:
+
+```
+>>> r = requests.get('https://api.github.com/user', auth=('user', 'pass'))
+>>> r.status_code
+200
+>>> r.headers['content-type']
+'application/json; charset=utf8'
+>>> r.encoding
+'utf-8'
+>>> r.text
+'{"type":"User"...'
+>>> r.json()
+{'private_gists': 419, 'total_private_repos': 77, ...}
+```
+
+See [similar code, sans Requests](https://gist.github.com/973705).
+
+**Requests** allows you to send HTTP/1.1 requests extremely easily. There’s no need to manually add query strings to your URLs, or to form-encode your POST data. Keep-alive and HTTP connection pooling are 100% automatic, thanks to [urllib3](https://github.com/urllib3/urllib3).
+
+## Beloved Features
+
+Requests is ready for today’s web.
+
+- Keep-Alive & Connection Pooling
+- International Domains and URLs
+- Sessions with Cookie Persistence
+- Browser-style SSL Verification
+- Automatic Content Decoding
+- Basic/Digest Authentication
+- Elegant Key/Value Cookies
+- Automatic Decompression
+- Unicode Response Bodies
+- HTTP(S) Proxy Support
+- Multipart File Uploads
+- Streaming Downloads
+- Connection Timeouts
+- Chunked Requests
+- `.netrc` Support
+
+Requests officially supports Python 3.10+, and runs great on PyPy.
+
+## The User Guide
+
+This part of the documentation, which is mostly prose, begins with some background information about Requests, then focuses on step-by-step instructions for getting the most out of Requests.
+
+- [Installation of Requests](/en/latest/user/install)
+
+  - [$ python -m pip install requests](/en/latest/user/install#python-m-pip-install-requests)
+  - [Get the Source Code](/en/latest/user/install#get-the-source-code)
+- [Quickstart](/en/latest/user/quickstart)
+
+  - [Make a Request](/en/latest/user/quickstart#make-a-request)
+  - [Passing Parameters In URLs](/en/latest/user/quickstart#passing-parameters-in-urls)
+  - [Response Content](/en/latest/user/quickstart#response-content)
+  - [Binary Response Content](/en/latest/user/quickstart#binary-response-content)
+  - [JSON Response Content](/en/latest/user/quickstart#json-response-content)
+  - [Raw Response Content](/en/latest/user/quickstart#raw-response-content)
+  - [Custom Headers](/en/latest/user/quickstart#custom-headers)
+  - [More complicated POST requests](/en/latest/user/quickstart#more-complicated-post-requests)
+  - [POST a Multipart-Encoded File](/en/latest/user/quickstart#post-a-multipart-encoded-file)
+  - [Response Status Codes](/en/latest/user/quickstart#response-status-codes)
+  - [Response Headers](/en/latest/user/quickstart#response-headers)
+  - [Cookies](/en/latest/user/quickstart#cookies)
+  - [Redirection and History](/en/latest/user/quickstart#redirection-and-history)
+  - [Timeouts](/en/latest/user/quickstart#timeouts)
+  - [Errors and Exceptions](/en/latest/user/quickstart#errors-and-exceptions)
+- [Advanced Usage](/en/latest/user/advanced)
+
+  - [Session Objects](/en/latest/user/advanced#session-objects)
+  - [Request and Response Objects](/en/latest/user/advanced#request-and-response-objects)
+  - [Prepared Requests](/en/latest/user/advanced#prepared-requests)
+  - [SSL Cert Verification](/en/latest/user/advanced#ssl-cert-verification)
+  - [Client Side Certificates](/en/latest/user/advanced#client-side-certificates)
+  - [CA Certificates](/en/latest/user/advanced#ca-certificates)
+  - [Body Content Workflow](/en/latest/user/advanced#body-content-workflow)
+  - [Keep-Alive](/en/latest/user/advanced#keep-alive)
+  - [Streaming Uploads](/en/latest/user/advanced#streaming-uploads)
+  - [Chunk-Encoded Requests](/en/latest/user/advanced#chunk-encoded-requests)
+  - [POST Multiple Multipart-Encoded Files](/en/latest/user/advanced#post-multiple-multipart-encoded-files)
+  - [Event Hooks](/en/latest/user/advanced#event-hooks)
+  - [Custom Authentication](/en/latest/user/advanced#custom-authentication)
+  - [Streaming Requests](/en/latest/user/advanced#streaming-requests)
+  - [Proxies](/en/latest/user/advanced#proxies)
+  - [Compliance](/en/latest/user/advanced#compliance)
+  - [HTTP Verbs](/en/latest/user/advanced#http-verbs)
+  - [Custom Verbs](/en/latest/user/advanced#custom-verbs)
+  - [Link Headers](/en/latest/user/advanced#link-headers)
+  - [Transport Adapters](/en/latest/user/advanced#transport-adapters)
+  - [Blocking Or Non-Blocking?](/en/latest/user/advanced#blocking-or-non-blocking)
+  - [Header Ordering](/en/latest/user/advanced#header-ordering)
+  - [Timeouts](/en/latest/user/advanced#timeouts)
+- [Authentication](/en/latest/user/authentication)
+
+  - [Basic Authentication](/en/latest/user/authentication#basic-authentication)
+  - [Digest Authentication](/en/latest/user/authentication#digest-authentication)
+  - [OAuth 1 Authentication](/en/latest/user/authentication#oauth-1-authentication)
+  - [OAuth 2 and OpenID Connect Authentication](/en/latest/user/authentication#oauth-2-and-openid-connect-authentication)
+  - [Other Authentication](/en/latest/user/authentication#other-authentication)
+  - [New Forms of Authentication](/en/latest/user/authentication#new-forms-of-authentication)
+
+## The Community Guide
+
+This part of the documentation, which is mostly prose, details the Requests ecosystem and community.
+
+- [Recommended Packages and Extensions](/en/latest/community/recommended)
+
+  - [Certifi CA Bundle](/en/latest/community/recommended#certifi-ca-bundle)
+  - [CacheControl](/en/latest/community/recommended#cachecontrol)
+  - [Requests-Toolbelt](/en/latest/community/recommended#requests-toolbelt)
+  - [Requests-Threads](/en/latest/community/recommended#requests-threads)
+  - [Requests-OAuthlib](/en/latest/community/recommended#requests-oauthlib)
+  - [Betamax](/en/latest/community/recommended#betamax)
+- [Frequently Asked Questions](/en/latest/community/faq)
+
+  - [Encoded Data?](/en/latest/community/faq#encoded-data)
+  - [Custom User-Agents?](/en/latest/community/faq#custom-user-agents)
+  - [Why not Httplib2?](/en/latest/community/faq#why-not-httplib2)
+  - [Python 3 Support?](/en/latest/community/faq#python-3-support)
+  - [Python 2 Support?](/en/latest/community/faq#python-2-support)
+  - [What are “hostname doesn’t match” errors?](/en/latest/community/faq#what-are-hostname-doesn-t-match-errors)
+- [Integrations](/en/latest/community/out-there)
+- [Articles & Talks](/en/latest/community/out-there#articles-talks)
+- [Support](/en/latest/community/support)
+
+  - [Stack Overflow](/en/latest/community/support#stack-overflow)
+  - [File an Issue](/en/latest/community/support#file-an-issue)
+  - [Send a Tweet](/en/latest/community/support#send-a-tweet)
+- [Vulnerability Disclosure](/en/latest/community/vulnerabilities)
+- [Release Process and Rules](/en/latest/community/release-process)
+
+  - [Major Releases](/en/latest/community/release-process#major-releases)
+  - [Minor Releases](/en/latest/community/release-process#minor-releases)
+  - [Hotfix Releases](/en/latest/community/release-process#hotfix-releases)
+  - [Reasoning](/en/latest/community/release-process#reasoning)
+
+- [Community Updates](/en/latest/community/updates)
+- [Release History](/en/latest/community/updates#release-history)
+
+## The API Documentation / Guide
+
+If you are looking for information on a specific function, class, or method, this part of the documentation is for you.
+
+- [Developer Interface](/en/latest/api)
+
+  - [Main Interface](/en/latest/api#main-interface)
+  - [Exceptions](/en/latest/api#exceptions)
+  - [Request Sessions](/en/latest/api#request-sessions)
+  - [Lower-Level Classes](/en/latest/api#lower-level-classes)
+  - [Lower-Lower-Level Classes](/en/latest/api#lower-lower-level-classes)
+  - [Authentication](/en/latest/api#authentication)
+  - [Encodings](/en/latest/api#encodings)
+  - [Cookies](/en/latest/api#cookies)
+  - [Status Code Lookup](/en/latest/api#status-code-lookup)
+  - [Migrating to 1.x](/en/latest/api#migrating-to-1-x)
+  - [Migrating to 2.x](/en/latest/api#migrating-to-2-x)
+
+## The Contributor Guide
+
+If you want to contribute to the project, this part of the documentation is for you.
+
+- [Contributor’s Guide](/en/latest/dev/contributing)
+
+  - [Code of Conduct](/en/latest/dev/contributing#code-of-conduct)
+  - [Get Early Feedback](/en/latest/dev/contributing#get-early-feedback)
+  - [Contribution Suitability](/en/latest/dev/contributing#contribution-suitability)
+  - [Code Contributions](/en/latest/dev/contributing#code-contributions)
+
+    - [Steps for Submitting Code](/en/latest/dev/contributing#steps-for-submitting-code)
+    - [Code Review](/en/latest/dev/contributing#code-review)
+    - [Code Style](/en/latest/dev/contributing#code-style)
+    - [New Contributors](/en/latest/dev/contributing#new-contributors)
+  - [Documentation Contributions](/en/latest/dev/contributing#documentation-contributions)
+  - [Bug Reports](/en/latest/dev/contributing#bug-reports)
+  - [Feature Requests](/en/latest/dev/contributing#feature-requests)
+- [Authors](/en/latest/dev/authors)
+
+  - [Requests Maintainers](/en/latest/dev/authors#requests-maintainers)
+  - [Previous Maintainers](/en/latest/dev/authors#previous-maintainers)
+  - [Patches and Suggestions](/en/latest/dev/authors#patches-and-suggestions)
+
+There are no more guides. You are now guideless. Good luck.
