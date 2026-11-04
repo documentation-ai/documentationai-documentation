@@ -1,0 +1,292 @@
+---
+title: API reference
+---
+
+<Callout kind="info">
+  Note
+
+  The main entry point to the API is through [Events](/dev-guide/plugins#events) that are received by plugins. These events' descriptions link back to this page.
+</Callout>
+
+## `mkdocs.structure.files.Files` 
+
+A collection of [File](#mkdocs.structure.files.File) objects.
+
+### `src_paths: dict[str, File]`  <small>property</small>  
+
+Soft-deprecated, prefer `src_uris`.
+
+### `src_uris: Mapping[str, File]`  <small>property</small>  
+
+A mapping containing every file, with the keys being their [`src_uri`](#mkdocs.structure.files.File.src_uri).
+
+### `__iter__() -> Iterator[File]` 
+
+Iterate over the files within.
+
+### `__len__() -> int` 
+
+The number of files within.
+
+### `__contains__(path: str) -> bool` 
+
+Soft-deprecated, prefer `get_file_from_path(path) is not None`.
+
+### `get_file_from_path(path: str) -> File | None` 
+
+Return a File instance with File.src\_uri equal to path.
+
+### `append(file: File) -> None` 
+
+Add file to the Files collection.
+
+### `remove(file: File) -> None` 
+
+Remove file from Files collection.
+
+### `copy_static_files(dirty: bool = False, *, inclusion: Callable[[InclusionLevel], bool] = InclusionLevel.is_included) -> None` 
+
+Copy static files from source to destination.
+
+### `documentation_pages(*, inclusion: Callable[[InclusionLevel], bool] = InclusionLevel.is_included) -> Sequence[File]` 
+
+Return iterable of all Markdown page file objects.
+
+### `static_pages() -> Sequence[File]` 
+
+Return iterable of all static page file objects.
+
+### `media_files() -> Sequence[File]` 
+
+Return iterable of all file objects which are not documentation or static pages.
+
+### `javascript_files() -> Sequence[File]` 
+
+Return iterable of all javascript file objects.
+
+### `css_files() -> Sequence[File]` 
+
+Return iterable of all CSS file objects.
+
+### `add_files_from_theme(env: jinja2.Environment, config: MkDocsConfig) -> None` 
+
+Retrieve static files from Jinja environment and add to collection.
+
+<a id="mkdocs.structure.files.File"></a>
+
+## `mkdocs.structure.files.File` 
+
+A MkDocs File object.
+
+It represents how the contents of one file should be populated in the destination site.
+
+A file always has its `abs_dest_path` (obtained by joining `dest_dir` and `dest_path`), where the `dest_dir` is understood to be the *site* directory.
+
+`content_bytes`/`content_string` (new in MkDocs 1.6) can always be used to obtain the file's content. But it may be backed by one of the two sources:
+
+- A physical source file at `abs_src_path` (by default obtained by joining `src_dir` and `src_uri`). `src_dir` is understood to be the *docs* directory.
+
+  Then `content_bytes`/`content_string` will read the file at `abs_src_path`.
+
+  `src_dir` *should* be populated for real files and should be `None` for generated files.
+- Since MkDocs 1.6 a file may alternatively be stored in memory - `content_string`/`content_bytes`.
+
+  Then `src_dir` and `abs_src_path` will remain `None`. `content_bytes`/`content_string` need to be written to, or populated through the `content` argument in the constructor.
+
+  But `src_uri` is still populated for such files as well! The virtual file pretends as if it originated from that path in the `docs` directory, and other values are derived.
+
+For static files the file is just copied to the destination, and `dest_uri` equals `src_uri`.
+
+For Markdown files (determined by the file extension in `src_uri`) the destination content will be the rendered content, and `dest_uri` will have the `.html` extension and some additional transformations to the path, based on `use_directory_urls`.
+
+<a id="mkdocs.structure.files.File.src_uri"></a>
+
+### `src_uri: str`  <small>instance-attribute</small>  
+
+The pure path (always '/'-separated) of the source file relative to the source directory.
+
+<a id="mkdocs.structure.files.File.generated_by"></a>
+
+### `generated_by: str | None = None`  <small>class-attribute</small> <small>instance-attribute</small>  
+
+If not None, indicates that a plugin generated this file on the fly.
+
+The value is the plugin's entrypoint name and can be used to find the plugin by key in the PluginCollection.
+
+### `dest_path: str`  <small>property</small> <small>writable</small>  
+
+Same as `dest_uri` (and synchronized with it) but will use backslashes on Windows. Discouraged.
+
+### `src_path: str = path`  <small>instance-attribute</small> <small>property</small> <small>writable</small>  
+
+Same as `src_uri` (and synchronized with it) but will use backslashes on Windows. Discouraged.
+
+### `src_dir: str | None = src_dir`  <small>instance-attribute</small>  
+
+The OS path of the top-level directory that the source file originates from.
+
+Assumed to be the *docs\_dir*; not populated for generated files.
+
+### `dest_dir: str = dest_dir`  <small>instance-attribute</small>  
+
+The OS path of the destination directory (top-level site\_dir) that the file should be copied to.
+
+### `use_directory_urls: bool = use_directory_urls`  <small>instance-attribute</small>  
+
+Whether directory URLs ('foo/') should be used or not ('foo.html').
+
+If `False`, a Markdown file is mapped to an HTML file of the same name (the file extension is changed to `.html`). If True, a Markdown file is mapped to an HTML index file (`index.html`) nested in a directory using the "name" of the file in `path`. Non-Markdown files retain their original path.
+
+### `inclusion: InclusionLevel = inclusion`  <small>class-attribute</small> <small>instance-attribute</small>  
+
+Whether the file will be excluded from the built site.
+
+### `name = cached_property(_get_stem)`  <small>class-attribute</small> <small>instance-attribute</small>  
+
+Return the name of the file without its extension.
+
+<a id="mkdocs.structure.files.File.dest_uri"></a>
+
+### `dest_uri = cached_property(_get_dest_path)`  <small>class-attribute</small> <small>instance-attribute</small>  
+
+The pure path (always '/'-separated) of the destination file relative to the destination directory.
+
+### `url = cached_property(_get_url)`  <small>class-attribute</small> <small>instance-attribute</small>  
+
+The URI of the destination file relative to the destination directory as a string.
+
+<a id="mkdocs.structure.files.File.abs_src_path"></a>
+
+### `abs_src_path: str | None`  <small>cached</small> <small>property</small>  
+
+The absolute concrete path of the source file. Will use backslashes on Windows.
+
+Note: do not use this path to read the file, prefer `content_bytes`/`content_string`.
+
+### `abs_dest_path: str`  <small>cached</small> <small>property</small>  
+
+The absolute concrete path of the destination file. Will use backslashes on Windows.
+
+<a id="mkdocs.structure.files.File.content_bytes"></a>
+
+### `content_bytes: bytes`  <small>property</small> <small>writable</small>  
+
+Get the content of this file as a bytestring.
+
+May raise if backed by a real file (`abs_src_path`) if it cannot be read.
+
+If used as a setter, it defines the content of the file, and `abs_src_path` becomes unset.
+
+<a id="mkdocs.structure.files.File.content_string"></a>
+
+### `content_string: str`  <small>property</small> <small>writable</small>  
+
+Get the content of this file as a string. Assumes UTF-8 encoding, may raise.
+
+May also raise if backed by a real file (`abs_src_path`) if it cannot be read.
+
+If used as a setter, it defines the content of the file, and `abs_src_path` becomes unset.
+
+<a id="mkdocs.structure.files.File.generated"></a>
+
+### `generated(config: MkDocsConfig, src_uri: str, *, content: str | bytes | None = None, abs_src_path: str | None = None, inclusion: InclusionLevel = InclusionLevel.UNDEFINED) -> File`  <small>classmethod</small>  
+
+Create a virtual file, backed either by in-memory `content` or by a file at `abs_src_path`.
+
+It will pretend to be a file in the docs dir at `src_uri`.
+
+<a id="mkdocs.structure.files.File.edit_uri"></a>
+
+### `edit_uri() -> str | None` 
+
+A path relative to the source repository to use for the "edit" button.
+
+Defaults to `src_uri` and can be overwritten. For generated files this should be set to `None`.
+
+### `url_relative_to(other: File | str) -> str` 
+
+Return url for file relative to other file.
+
+### `copy_file(dirty: bool = False) -> None` 
+
+Copy source file to destination, ensuring parent directories exist.
+
+### `is_documentation_page() -> bool` 
+
+Return True if file is a Markdown page.
+
+### `is_static_page() -> bool` 
+
+Return True if file is a static page (HTML, XML, JSON).
+
+### `is_media_file() -> bool` 
+
+Return True if file is not a documentation or static page.
+
+### `is_javascript() -> bool` 
+
+Return True if file is a JavaScript file.
+
+### `is_css() -> bool` 
+
+Return True if file is a CSS file.
+
+## `mkdocs.config.base.Config` 
+
+ Bases: `UserDict`
+
+Base class for MkDocs configuration, plugin configuration (and sub-configuration) objects.
+
+It should be subclassed and have `ConfigOption`s defined as attributes. For examples, see mkdocs/contrib/search/**init**.py and mkdocs/config/defaults.py.
+
+Behavior as it was prior to MkDocs 1.4 is now handled by LegacyConfig.
+
+### `__new__(*args, **kwargs) -> Config` 
+
+Compatibility: allow referring to `LegacyConfig(...)` constructor as `Config(...)`.
+
+### `set_defaults() -> None` 
+
+Set the base config by going through each validator and getting the default if it has one.
+
+### `load_dict(patch: dict) -> None` 
+
+Load config options from a dictionary.
+
+### `load_file(config_file: IO) -> None` 
+
+Load config options from the open file descriptor of a YAML file.
+
+## `mkdocs.utils.templates.TemplateContext` 
+
+ Bases: `TypedDict`
+
+### `nav: Navigation`  <small>instance-attribute</small>  
+
+### `pages: Sequence[File]`  <small>instance-attribute</small>  
+
+### `base_url: str`  <small>instance-attribute</small>  
+
+### `extra_css: Sequence[str]`  <small>instance-attribute</small>  
+
+### `extra_javascript: Sequence[str]`  <small>instance-attribute</small>  
+
+### `mkdocs_version: str`  <small>instance-attribute</small>  
+
+### `build_date_utc: datetime.datetime`  <small>instance-attribute</small>  
+
+### `config: MkDocsConfig`  <small>instance-attribute</small>  
+
+### `page: Page | None`  <small>instance-attribute</small>  
+
+## `mkdocs.livereload.LiveReloadServer` 
+
+ Bases: `ThreadingMixIn`, `WSGIServer`
+
+### `watch(path: str, func: None = None, *, recursive: bool = True) -> None` 
+
+Add the 'path' to watched paths, call the function and reload when any file changes under it.
+
+### `unwatch(path: str) -> None` 
+
+Stop watching file changes for path. Raises if there was no corresponding `watch` call.

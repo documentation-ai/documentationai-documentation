@@ -1,214 +1,161 @@
 ---
-title: Getting Started with WP Travel Engine
-description: >-
-  Set up WP Travel Engine on your WordPress site, complete the first-time
-  onboarding, and learn where to manage trips, bookings, payments, and help.
-type: guide
+title: Getting Started with MkDocs
 ---
-## Start here
+An introductory tutorial!
 
-WP Travel Engine turns your WordPress website into a travel booking website.
+---
 
-A plugin is an add-on you install inside WordPress to give your site new features. With WP Travel Engine, you can add trips with a detailed itinerary and let travelers enquire about and book those trips on your website.
+## Installation
 
-You can also organize the trips you offer by destinations, activities, and trip types. For example, you might group a 1-day city tour under one destination and a 10-day trek under another, so visitors can find the right trip faster.
+To install MkDocs, run the following command from the command line:
 
-WP Travel Engine also helps you manage your customers from your WordPress dashboard. The WordPress dashboard is the admin area you see after logging in to your site. You can view how many bookings a customer has made, manage bookings, manage inquiries, manage customers, and define your own payment method.
+```bash
+pip install mkdocs
+```
 
-If this is one of your first WordPress setups, that is fine. You do not need to learn everything at once. Start with the basics below, then move through the onboarding screen and Home area one step at a time.
+For more details, see the [Installation Guide](/user-guide/installation).
 
-## Compatible themes
+## Creating a new project
 
-Your theme controls how your website looks on the front end. If you want the smoothest setup, start with a theme that is already tested to work with WP Travel Engine.
+Getting started is super easy. To create a new project, run the following command from the command line:
 
-WP Travel Engine works fully with the following themes:
+```bash
+mkdocs new my-project
+cd my-project
+```
 
-- [Travel Booking](https://wptravelengine.com/wordpress-travel-themes/travel-booking/) by WP Travel Engine
-- [Travel Booking Pro](https://wptravelengine.com/wordpress-travel-themes/travel-booking-pro/) by WP Travel Engine
-- [Travel Muni](https://wptravelengine.com/wordpress-travel-themes/travel-muni/) by WP Travel Engine
-- [Travel Muni Pro](https://wptravelengine.com/wordpress-travel-themes/travel-muni-pro/) by WP Travel Engine
-- [Travel Agency](https://raratheme.com/wordpress-themes/travel-agency/) by RaraTheme
-- [Travel Agency Pro](https://raratheme.com/wordpress-themes/travel-agency-pro/) by RaraTheme
-- [Tour Package](https://rarathemes.com/wordpress-themes/tour-package/) by RaraTheme
-- [Tour Operator](https://rarathemes.com/wordpress-themes/tour-operator/) by RaraTheme
-- [Travel Tour](https://thebootstrapthemes.com/downloads/free-travel-tour-wordpress-theme/) by The Bootstrap Themes
-- [Travel Tour Pro](https://thebootstrapthemes.com/travel-tour-pro/) by The Bootstrap Themes
-- [Travel Company](https://scorpionthemes.com/downloads/travel-company-wordpress-theme/) by Scorpion Themes
-- [Travel Company Pro](https://justwpthemes.com/downloads/travel-company-pro-wordpress-theme/) by Scorpion Themes
+Take a moment to review the initial project that has been created for you.
 
-If you already have one of these themes, you are in a good place to continue. If not, you can still move ahead and check your theme fit later.
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793776815780-hr96pd9gc7m-initial-layout.png?fm=auto&auto=compress%2Cformat" width="346" height="105" alt="The initial MkDocs layout" />
 
-## Install the plugin and open onboarding
+There's a single configuration file named `mkdocs.yml`, and a folder named `docs` that will contain your documentation source files (`docs` is the default value for the [docs\_dir](/user-guide/configuration#docs_dir) configuration setting). Right now the `docs` folder just contains a single documentation page, named `index.md`.
 
-What you'll need before you start: a WordPress site where you can log in to the dashboard and activate plugins.
+MkDocs comes with a built-in dev-server that lets you preview your documentation as you work on it. Make sure you're in the same directory as the `mkdocs.yml` configuration file, and then start the server by running the `mkdocs serve` command:
 
-<Steps>
-  <Step title="Activate WP Travel Engine" icon="play-circle" title-type="p">
-    After you activate the plugin, WP Travel Engine sends you straight to the onboarding screen. That saves you from hunting through menus on your first visit.
+```console
+$ mkdocs serve
+INFO    -  Building documentation...
+INFO    -  Cleaning site directory
+INFO    -  Documentation built in 0.22 seconds
+INFO    -  [15:50:43] Watching paths for changes: 'docs', 'mkdocs.yml'
+INFO    -  [15:50:43] Serving on http://127.0.0.1:8000/
+```
 
-    Once activated, you'll be redirected to the **WP Travel Engine Onboarding** screen.
-  </Step>
+Open up [http://127.0.0.1:8000/](http://127.0.0.1:8000/) in your browser, and you'll see the default home page being displayed:
 
-  <Step title="Use onboarding for the first setup" icon="settings" title-type="p">
-    If you're a first-time user, activating the plugin redirects you to the **WP Travel Engine Onboarding** page. This screen walks you through the basic settings needed to make your site ready for trips, inquiries, and bookings.
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793776816123-ewc5q5g3yg4-screenshot.png?fm=auto&auto=compress%2Cformat" width="1037" height="697" alt="The MkDocs live server" />
 
-    You are not locking everything in forever here. You can fine-tune many of these settings later as your tour business grows.
-  </Step>
-</Steps>
+The dev-server also supports auto-reloading, and will rebuild your documentation whenever anything in the configuration file, documentation directory, or theme directory changes.
 
-## Complete the WP Travel Engine onboarding
+Open the `docs/index.md` document in your text editor of choice, change the initial heading to `MkLorum`, and save your changes. Your browser will auto-reload and you should see your updated documentation immediately.
 
-The onboarding dashboard has 5 tabs. Each one handles a different part of your setup.
+Now try editing the configuration file: `mkdocs.yml`. Change the [`site_name`](/user-guide/configuration#site_name) setting to `MkLorum` and save the file.
 
-<Image src="https://blob-cdn.documentation.ai/org-fd8ba769-7008-47cf-98f1-e0d78d98350b/doc-08c376b3-8054-4dc6-b874-0c65a04a623e/1787563053135-odszlr0ixei-getting-started-tabs.getting-started-tabs?fm=auto&auto=compress%2Cformat" width="1600" height="656" alt="" />
+```yaml
+site_name: MkLorum
+```
+
+Your browser should immediately reload, and you'll see your new site name take effect.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793776809540-a166fkai7pk-site-name.png?fm=auto&auto=compress%2Cformat" width="252" height="122" alt="The site_name setting" />
 
 <Callout kind="info" collapsed="false">
-  Good to know: You do not need to understand every setting in depth before moving on. Pick the options that match how you sell tours today. You can come back later and refine them.
+  Note
+
+  The [`site_name`](/user-guide/configuration#site_name) configuration option is the only required option in your configuration file.
 </Callout>
 
-<Steps>
-  <Step title="Set your currency" icon="database" title-type="p">
-    This tab controls how prices appear across your site. It matters because travelers need to see clear prices before they book.
+## Adding pages
 
-    In **Currency**, choose the currency your business supports, the currency symbol to display, and the thousands separator. For example, if you sell treks in Nepal, you may want prices to display in your preferred local or international selling currency with the number format your customers expect.
+Now add a second page to your documentation:
 
-    See [Currency Settings](/currency-settings) for the full set of options.
+```bash
+curl 'https://jaspervdj.be/lorem-markdownum/markdown.txt' > docs/about.md
+```
 
-    <Image src="https://blob-cdn.documentation.ai/org-fd8ba769-7008-47cf-98f1-e0d78d98350b/doc-08c376b3-8054-4dc6-b874-0c65a04a623e/1787563079399-y4dlh7y9gz-getting-started-currency.getting-started-currency?fm=auto&auto=compress%2Cformat" width="1024" height="496" alt="" />
-  </Step>
+As our documentation site will include some navigation headers, you may want to edit the configuration file and add some information about the order, title, and nesting of each page in the navigation header by adding a [`nav`](/user-guide/configuration#nav) setting:
 
-  <Step title="Choose your email notifications" icon="mail" title-type="p">
-    This tab helps you stay on top of sales and inquiries. If someone books a tour or sends a question, this is how your site knows who to notify.
+```yaml
+site_name: MkLorum
+nav:
+  - Home: index.md
+  - About: about.md
+```
 
-    In **Email**, choose whether to send a sales notification email to the admin, send an inquiry notification email, and set up custom emails. You can refine these later under email notification settings.
+Save your changes and you'll now see a navigation bar with `Home` and `About` items on the left as well as `Search`, `Previous`, and `Next` items on the right.
 
-    For example, if a traveler asks about a private departure for a 5-day cultural tour, an inquiry email helps you catch that request quickly and reply before the traveler moves on.
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793776809570-39oxkthovvn-multipage.png?fm=auto&auto=compress%2Cformat" width="1037" height="217" alt="Screenshot" />
 
-    <Image src="https://blob-cdn.documentation.ai/org-fd8ba769-7008-47cf-98f1-e0d78d98350b/doc-08c376b3-8054-4dc6-b874-0c65a04a623e/1787563119958-wrwxtkjtrd-getting-started-email.getting-started-email?fm=auto&auto=compress%2Cformat" width="1024" height="506" alt="" />
-  </Step>
+Try the menu items and navigate back and forth between pages. Then click on `Search`. A search dialog will appear, allowing you to search for any text on any page. Notice that the search results include every occurrence of the search term on the site and links directly to the section of the page in which the search term appears. You get all of that with no effort or configuration on your part!
 
-  <Step title="Connect the right pages" icon="folder" title-type="p">
-    This tab tells the plugin which pages to use during the booking journey. That keeps travelers moving from inquiry to payment without confusion.
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793776815510-obhyqw9nhh-search.png?fm=auto&auto=compress%2Cformat" width="1003" height="698" alt="Screenshot" />
 
-    In **Pages**, set the pages used for checkout, terms and conditions, thank you, and purchase confirmation. See [Predefined Pages](/pages) for details.
+## Theming our documentation
 
-    For example, after a traveler books a rafting package, the thank you page confirms the booking went through, while the purchase confirmation page gives them the next details they need.
+Now change the configuration file to alter how the documentation is displayed by changing the theme. Edit the `mkdocs.yml` file and add a [`theme`](/user-guide/configuration#theme) setting:
 
-    <Image src="https://blob-cdn.documentation.ai/org-fd8ba769-7008-47cf-98f1-e0d78d98350b/doc-08c376b3-8054-4dc6-b874-0c65a04a623e/1787563147779-2o6uvulaxoj-getting-started-pages.getting-started-pages?fm=auto&auto=compress%2Cformat" width="1024" height="508" alt="" />
-  </Step>
+```yaml
+site_name: MkLorum
+nav:
+  - Home: index.md
+  - About: about.md
+theme: readthedocs
+```
 
-  <Step title="Set up payment" icon="lock" title-type="p">
-    This tab is where you prepare to take money online. Even if you only want to start with one payment option, this step matters.
+Save your changes, and you'll see the ReadTheDocs theme being used.
 
-    In **Payment**, configure payment gateway options. PayPal is enabled by default. Once you enter your PayPal email or ID, you're ready to accept payments.
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793776809586-qlfmywrssy-readthedocs.png?fm=auto&auto=compress%2Cformat" width="700" height="445" alt="Screenshot" />
 
-    If you sell day tours and want travelers to pay their deposit online before arrival, this is the setting that makes that possible.
+## Changing the Favicon Icon
 
-    <Image src="https://blob-cdn.documentation.ai/org-fd8ba769-7008-47cf-98f1-e0d78d98350b/doc-08c376b3-8054-4dc6-b874-0c65a04a623e/1787563162899-9fxdt0gia7-getting-started-payment.getting-started-payment?fm=auto&auto=compress%2Cformat" width="1024" height="512" alt="" />
-  </Step>
+By default, MkDocs uses the [MkDocs favicon](https://www.mkdocs.org/img/favicon.ico) icon. To use a different icon, create an `img` subdirectory in the `docs` directory and copy your custom `favicon.ico` file to that directory. MkDocs will automatically detect and use that file as your favicon icon.
 
-  <Step title="Finish on the Ready tab" icon="check-circle" title-type="p">
-    This is the last stop in onboarding. It points you to help and gives you a clear next move.
+## Building the site
 
-    In **Ready**, you land after completing the configuration. This tab links out to documentation and support, lets you share or tweet about the plugin, and gives you the option to create a new trip or return to the dashboard.
+That's looking good. You're ready to deploy the first pass of your `MkLorum` documentation. First build the documentation:
 
-    Once you reach this tab, your basic setup is in place. Next, it helps to get familiar with the Home screen.
-  </Step>
-</Steps>
+```bash
+mkdocs build
+```
 
-## Open the Home screen
+This will create a new directory, named `site`. Take a look inside the directory:
 
-The Home screen gives you one place to find help, videos, updates, and basic site information.
+```console
+$ ls site
+about  fonts  index.html  license  search.html
+css    img    js          mkdocs   sitemap.xml
+```
 
-In your WordPress dashboard, go to **Dashboard > WP Travel Engine > Home**. The dashboard menu sits on the left sidebar after you log in to WordPress.
+Notice that your source documentation has been output as two HTML files named `index.html` and `about/index.html`. You also have various other media that's been copied into the `site` directory as part of the documentation theme. You even have a `sitemap.xml` file and `mkdocs/search_index.json`.
 
-The Home screen is organized into these tabs: General, Tutorials, Themes, Go Premium, FAQs, System Info, and What's New. You do not need to use every tab right away, but knowing what each one does will save you time later.
+If you're using source code control such as `git` you probably don't want to check your documentation builds into the repository. Add a line containing `site/` to your `.gitignore` file.
 
-## Know what each Home tab does
+```bash
+echo "site/" >> .gitignore
+```
 
-<Steps>
-  <Step title="Use the General tab as your starting point" icon="home" title-type="p">
-    The **General** tab is a good first stop when you are getting settled. It brings together the main links you are most likely to need.
+If you're using another source code control tool you'll want to check its documentation on how to ignore specific directories.
 
-    This tab includes:
+## Other Commands and Options
 
-    - An **intro message** explaining what WP Travel Engine does.
-    - A **Create a Trip** button to add your first tour or activity.
-    - A **Visit our Website** button that opens the official site for themes, add-ons, and resources.
-    - An **intro video** - a short YouTube video showing how the plugin works.
-    - A **Join the Community** link to the Facebook community for questions and tips.
-    - A **Feature Request** link to submit ideas for new features.
-    - A **View Knowledge Base** link to the detailed product documentation.
+There are various other commands and options available. For a complete list of commands, use the `--help` flag:
 
-    If you are setting up your first package, start with **Create a Trip**. For example, you might use it to add a weekend wildlife safari or a half-day walking tour.
+```bash
+mkdocs --help
+```
 
-    <Image src="https://blob-cdn.documentation.ai/org-fd8ba769-7008-47cf-98f1-e0d78d98350b/doc-08c376b3-8054-4dc6-b874-0c65a04a623e/1787563211492-505356nbvr8-getting-started-general.getting-started-general?fm=auto&auto=compress%2Cformat" width="1024" height="757" alt="" />
-  </Step>
+To view a list of options available on a given command, use the `--help` flag with that command. For example, to get a list of all options available for the `build` command run the following:
 
-  <Step title="Watch the Tutorials tab when you want to see it done" icon="play-circle" title-type="p">
-    The **Tutorials** tab is useful when written settings start to feel abstract. Watching someone click through the process can make things much clearer.
+```bash
+mkdocs build --help
+```
 
-    You'll see a grid of YouTube videos, each with a title and thumbnail. Click a video to play it inline, or open it on YouTube to watch in full screen and enable captions.
+## Deploying
 
-    This tab is especially helpful if you learn by seeing the setup in action. After that, you can return to your own dashboard and copy the same steps.
+The documentation site that you just built only uses static files so you'll be able to host it from pretty much anywhere. Simply upload the contents of the entire `site` directory to wherever you're hosting your website from and you're done. For specific instructions on a number of common hosts, see the [Deploying your Docs](/user-guide/deploying-your-docs) page.
 
-    <Image src="https://blob-cdn.documentation.ai/org-fd8ba769-7008-47cf-98f1-e0d78d98350b/doc-08c376b3-8054-4dc6-b874-0c65a04a623e/1787563237821-nswf5gah2-getting-started-tutorials.getting-started-tutorials?fm=auto&auto=compress%2Cformat" width="1024" height="621" alt="" />
-  </Step>
+## Getting help
 
-  <Step title="Browse the Themes tab if you want a better site design fit" icon="monitor" title-type="p">
-    The **Themes** tab shows a curated list of themes that are fully compatible with WP Travel Engine. These are built to help you create a professional travel and tour booking website without compatibility issues.
+See the [User Guide](/user-guide) for more complete documentation of all of MkDocs' features.
 
-    The collection includes themes built by the WP Travel Engine team and selected third-party themes that have been tested to work with the plugin. Browsing this list gives you a clear view of the design options available.
-
-    Each theme has layouts, features, and styles suited to different kinds of travel businesses. For example, one theme may suit multi-day trekking packages, while another may better fit day tours, fixed departures, or a more image-led brand style.
-
-    <Image src="https://blob-cdn.documentation.ai/org-fd8ba769-7008-47cf-98f1-e0d78d98350b/doc-08c376b3-8054-4dc6-b874-0c65a04a623e/1787563255617-cnja2ldfxrr-getting-started-themes.getting-started-themes?fm=auto&auto=compress%2Cformat" width="1024" height="715" alt="" />
-  </Step>
-
-  <Step title="Check Go Premium when you need more booking tools" icon="rocket" title-type="p">
-    The **Go Premium** tab introduces premium add-ons and themes that extend WP Travel Engine's core functionality. These tools can help you manage bookings in more detail, customize trips, and improve the customer experience.
-
-    Alongside add-ons, a premium theme designed specifically for travel websites is also available here. Together, these resources help you build a more capable tour booking site as your business needs grow.
-
-    For example, if you start with a few fixed group departures and later want more advanced options, this is where you can explore what to add next.
-
-    <Image src="https://blob-cdn.documentation.ai/org-fd8ba769-7008-47cf-98f1-e0d78d98350b/doc-08c376b3-8054-4dc6-b874-0c65a04a623e/1787563273611-7da5gue69t9-getting-started-gopremuim.getting-started-gopremuim?fm=auto&auto=compress%2Cformat" width="1024" height="709" alt="" />
-  </Step>
-
-  <Step title="Use the built-in FAQs tab for quick answers" icon="help-circle" title-type="p">
-    The **FAQs** tab answers common questions about WP Travel Engine. It covers setup, compatibility, and available features.
-
-    This is a good place to check before opening a support request. If you are wondering whether a feature is included or whether a setup choice is normal, this tab can save you time.
-
-    <Image src="https://blob-cdn.documentation.ai/org-fd8ba769-7008-47cf-98f1-e0d78d98350b/doc-08c376b3-8054-4dc6-b874-0c65a04a623e/1787563292386-06evs46yls2p-getting-started-faq.getting-started-faq?fm=auto&auto=compress%2Cformat" width="1024" height="723" alt="" />
-  </Step>
-
-  <Step title="Open System Info when you need help or need to confirm your setup" icon="shield" title-type="p">
-    The **System Info** tab shows technical details about your website setup. You may not need it every day, but it becomes very useful when troubleshooting or asking for support.
-
-    You will see:
-
-    - **Site Info** - Basic site details, including the site title, site URL, and whether your WordPress installation is running as a multisite.
-    - **WordPress Configuration** - Your WordPress version, selected language, permalink structure, and active theme.
-    - **Extensions** - Installed versions of WP Travel Engine and any related extensions, such as Elementor Widgets.
-
-    Having all of this in one place makes it easier to confirm your setup, spot compatibility issues, and share accurate details with the support team. If something does not look right on your booking pages, this tab helps you and support start from the same information.
-
-    <Image src="https://blob-cdn.documentation.ai/org-fd8ba769-7008-47cf-98f1-e0d78d98350b/doc-08c376b3-8054-4dc6-b874-0c65a04a623e/1787563311316-whbopnn1xqb-getting-started-system-info.getting-started-system-info?fm=auto&auto=compress%2Cformat" width="1024" height="623" alt="" />
-  </Step>
-
-  <Step title="Read What's New before or after updates" icon="book-open" title-type="p">
-    The **What's New** tab shows the complete changelog for every version of WP Travel Engine.
-
-    Each entry is organized by version number and release date. Details are grouped under labels such as New Feature, Changed, Improved, Fixed, or Security. That helps you track what changed before or after updating.
-
-    If you notice a booking setting looks different after an update, this tab is the first place to check. It can help you confirm whether the change came from a recent plugin update.
-
-    <Image src="https://blob-cdn.documentation.ai/org-fd8ba769-7008-47cf-98f1-e0d78d98350b/doc-08c376b3-8054-4dc6-b874-0c65a04a623e/1787563347907-c9y860xhgns-getting-started-whats-new.getting-started-whats-new?fm=auto&auto=compress%2Cformat" width="1024" height="730" alt="" />
-  </Step>
-</Steps>
-
-<Callout kind="info" collapsed="false" color="#06b6d4">
-  If you're still stuck or have a question we didn't cover, our support team is happy to help. Reach out at [**our support page**](https://wptravelengine.com/support-ticket/) and we'll get you sorted.
-</Callout>
-
+To get help with MkDocs, please use the [GitHub discussions](https://github.com/mkdocs/mkdocs/discussions) or [GitHub issues](https://github.com/mkdocs/mkdocs/issues).
