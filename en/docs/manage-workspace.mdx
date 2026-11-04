@@ -1,0 +1,205 @@
+---
+title: Manage workspace
+description: Manage your workspaces effectively by editing names, customizing labels, and controlling navigation to keep your knowledge base organized and up-to-date.
+---
+
+Once your workspaces are set up, you can edit their settings, control how they appear on your Knowledge base site, and manage them as your documentation evolves. This article covers editing names and status, customizing the workspace label, and controlling how readers navigate between workspaces.
+
+---
+
+## Why manage your workspaces?
+
+Your documentation needs will change over time. Products get renamed, new versions are released, and your audience may evolve. Workspace management lets you keep your knowledge base accurate, well-organized, and consistent without disrupting readers.
+
+Common reasons to manage a workspace:
+
+- **Rename or rebrand**: When a product or version name changes, update the workspace name and label to stay consistent with your current terminology.
+- **Adjust visibility**: Move a workspace from Beta to Public when it's ready to go live, or set it to Deprecated when content is outdated but still worth retaining.
+- **Customize for your team**: Rename the "Workspace" label to "Version," "Release," or "Edition" so the portal UI matches your team's internal language.
+- **Control reader navigation**: Configure how readers are redirected when switching between workspaces to give them the most relevant experience.
+- **Keep structure tidy**: Reorder workspaces so the most relevant one appears first in the site dropdown, and delete workspaces that are no longer needed.
+
+---
+
+## Edit a workspace
+
+You can update a workspace's name, status, languages, and slug URL at any time.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777342413-0t4iqu13coz-Workspace-localization.png?fm=auto&auto=compress%2Cformat" alt="Workspace & Localization tab showing the Knowledge base and API documentation workspace lists with the Languages, Edit, and Delete icons next to each workspace" />
+
+1. Navigate to **Settings** () > **Knowledge base portal** in the left navigation bar.
+2. In the left navigation pane, select **Workspace & localization** ().
+3. Locate the workspace you want to edit. The following icons appear on the right of each workspace:
+
+   - **Languages** () — Opens a language list for the workspace. Use this to quickly add languages without opening the **Edit Workspace** dialog.
+   - **Edit** () — Opens the **Edit Workspace** dialog, where you can update the workspace name, status, languages, and slug URL.
+   - **Delete** () — Deletes the workspace.
+
+    NOTE
+
+   API documentation workspaces show only the **Edit** and **Delete** icons.
+4. To edit workspace details, click the **Edit** () icon. In the **Edit Workspace** dialog, update any of the following:
+
+   - **Name**
+   - **Workspace status** — Select or clear statuses in the dropdown.
+   - **Language** — Open the dropdown, select the checkbox next to each language you want to add, and click **Apply**. To configure or remove a language, click the **More options** () icon next to it.
+   - **Slug URL** — Available under **Advanced**.
+5. Click **Update** to save your changes.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777344240-40ta8a5ohrl-edit-workspace.png?fm=auto&auto=compress%2Cformat" alt="Edit Workspace dialog showing the Name, Workspace status, Language, and Slug URL fields with the Update button" />
+
+---
+
+## Reorder workspaces
+
+The order of workspaces on the **Workspace & localization** page controls how they appear in the workspace dropdown on your Knowledge base site.
+
+To reorder workspaces, hold and drag the **Reorder** () handle next to the workspace name and move it to the desired position.
+
+---
+
+## Delete a workspace
+
+1. On the **Workspace & localization** page, locate the workspace you want to delete.
+2. Click the **Delete** () icon on the right.
+
+ NOTE
+
+The **Delete** () option is inactive for the Main workspace. To delete it, first assign another workspace as the Main workspace, then delete the original.
+
+ WARNING
+
+Articles from a deleted workspace will appear as broken links across your knowledge base. Review all internal links before deleting a workspace.
+
+---
+
+## Switch between workspaces in the portal
+
+When working in the Knowledge base portal, you can switch between workspaces directly from the Documentation section.
+
+1. In the **Documentation** () section of the Knowledge base portal, click the **Project, workspace and language** selection dropdown in the top navigation bar.
+2. The dropdown shows all available workspaces and their associated languages.
+3. Expand the desired workspace and select the preferred language.
+
+ NOTE
+
+- A **Main** badge indicates the primary workspace displayed on the Knowledge base site.
+- **Beta** and **Deprecated** tags are shown next to their respective workspaces.
+- A **Default** badge next to a language indicates the default language for that workspace.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777344496-kn5lstw4shb-workspace-20dropdown.png?fm=auto&auto=compress%2Cformat" alt="Document360 interface showing workspace selection and article management options" />
+
+---
+
+## Customize the workspace label
+
+By default, the word **Workspace** appears throughout the Knowledge base portal UI. You can rename it to match your internal terminology, for example **Version**, **Release**, or **Edition**.
+
+ NOTE
+
+This feature is available only for projects created after **31st August 2024**, or for users who upgraded from a Legacy plan to the new pricing plan after that date.
+
+To customize the workspace label:
+
+1. Navigate to **Settings** () > **Knowledge base portal** > **General**.
+2. In the **Project settings** page, locate the **Customize workspace label** field.
+3. Enter your preferred term. Maximum **30 characters**, no special characters allowed.
+4. Click **Save**.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777347840-ngwj1ukmgxs-customize-20workspace-20label.png?fm=auto&auto=compress%2Cformat" alt="Settings page showing workspace customization options and navigation menu for knowledge base" />
+
+ NOTE
+
+- This change updates all instances of the term **Workspace** across the portal UI.
+- The default label is **Workspace**.
+- To update the workspace label on the Knowledge base site (reader-facing), use the **Localization variables** page. [Learn more](https://docs.document360.com/docs/localization-variables)
+
+---
+
+## Configure workspace switching behavior
+
+When readers switch between workspaces on the Knowledge base site, you can control where they land. This setting is configured alongside the workspace label.
+
+1. Navigate to **Settings** () > **Knowledge base portal** > **General**.
+2. Below the **Customize workspace label** field, select one of the following options:
+
+| Option | Behavior | When to use |
+| --- | --- | --- |
+| **Redirect to root article** (default) | Readers always land on the root article of the selected workspace, regardless of which article they were on. | Use when workspaces have different content structures and you don't want readers landing on a missing or unrelated article. |
+| **Redirect to same article** | Readers land on the same article in the target workspace if it exists. If it doesn't, they are redirected to the root article. | Use for versioned documentation where the same articles exist across workspaces and you want readers to stay in context when switching. |
+
+3. Click **Save** to apply.
+
+<strong>Example:</strong>
+
+You have two workspaces: **Workspace A** (articles: A1, A2, A3) and **Workspace B** (articles: A1, A2, A4). Workspace B is your main workspace.
+
+| Scenario | Configuration | Outcome |
+| --- | --- | --- |
+| You switch workspaces | Redirect to root article | Always redirects to the root article of the selected workspace |
+| You are on article A2 in Workspace B and switch to Workspace A | Redirect to same article | Redirects to article A2 in Workspace A |
+| You are on article A4 in Workspace B and switch to Workspace A | Redirect to same article | Redirects to the root article of Workspace A (A4 doesn't exist there) |
+
+---
+
+## Best practices
+
+- **Rename the workspace label before your team starts working**: Changing "Workspace" to "Version" after content is already built can cause momentary confusion. Do it early.
+- **Use "Redirect to same article" for versioned docs**: If you maintain the same article structure across workspaces, this keeps readers in context when switching versions.
+- **Deprecate before you delete**: Set a workspace to Deprecated first so your team knows it's being retired, then delete it once you've confirmed there are no critical inbound links.
+- **Keep the workspace order intentional**: The order on the Workspace & localization page reflects the order in the site dropdown. Put the most relevant workspace first.
+
+---
+
+## Troubleshooting
+
+### 404 error when navigating to a secondary workspace
+
+A 404 error on a secondary workspace is usually caused by one of the following:
+
+- **The workspace is not set to Public**: Navigate to **Settings** () > **Knowledge base portal** > **Workspace & localization**, click the **Edit** () icon next to the workspace, select **Public** in the **Workspace status** dropdown, and click **Update**.
+- **No articles are published in the workspace**: Publish at least one article to make the workspace accessible.
+- **All articles in the workspace are hidden**: Ensure at least one article is visible on the Knowledge base site.
+
+---
+
+## FAQ
+
+<Expandable title="How do I enable notifications when the workspace label is changed?">
+  1. Navigate to **Settings** () > **Knowledge base portal** > **Notifications**.
+  2. Go to the **Notification mapping** tab and expand the **Knowledge base portal settings** section.
+  3. Turn on the **Workspace label updated** toggle to receive notifications when a workspace label changes.
+  4. Turn on the **Workspace redirection setting updated** toggle to be notified when switching behavior is modified.
+</Expandable>
+
+<Expandable title="How do I track who changed the workspace label?">
+  1. Navigate to **Settings** () > **Knowledge base portal** > **Team auditing**.
+  2. Use the **Event filter** and select **Workspace label updated** or **Workspace redirection setting updated** to see a log of changes and who made them.
+</Expandable>
+
+<Expandable title="Can I delete the Main workspace?">
+  No. The **Delete** () option is inactive for the Main workspace. To delete it, first assign another workspace as the Main workspace, then delete the original.
+</Expandable>
+
+<Expandable title="Why don't I see the workspace label customization option in my project?">
+  This feature is available only for projects created after **31st August 2024**, or for users who upgraded from a Legacy plan to the new pricing plan after that date. If your project was created before this date and you have not upgraded, this option will not be visible.
+</Expandable>
+
+<Expandable title="Why can't I see the Localization and Workspace settings in the admin portal even though I have the required portal permissions?">
+  Access to the Localization and Workspace settings depends on two levels of permission working together — portal-level settings access and content-level access to the workspace.
+
+  If your Content Access for a workspace is set to **None**, you will not have access to the Documentation section of that workspace. As a result, the Localization and Workspace settings associated with it will also remain inaccessible, regardless of your portal-level permissions.
+
+  To resolve this, ensure that your user account has:
+
+  - The required portal permission to access Settings, and
+  - A Content Access level of at least the minimum required permission (other than None) for the relevant workspace.
+
+  Contact your project Owner or Administrator to review and update your workspace content access settings accordingly.
+</Expandable>
+
+<Expandable title="How do I find a workspace's ID for API access?">
+  A workspace's ID is available through the API, not the portal UI. Use the [List workspaces](https://apidocs.document360.com/apidocs/list-workspaces) endpoint, which returns all workspaces in your project along with their IDs.
+
+  Note: the GUID shown in the portal URL is the **Project ID**, not the workspace ID. The List workspaces endpoint uses that Project ID in its path and returns the workspace IDs in the response.
+</Expandable>

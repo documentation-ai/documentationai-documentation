@@ -1,0 +1,89 @@
+---
+title: Index category SEO
+description: Optimize your Document360 Index category pages with SEO settings to enhance visibility, improve search results, and boost knowledge base discoverability.
+---
+
+Index category pages in Document360 are publicly accessible landing pages that group related articles under a shared topic. Configuring SEO settings for these pages, including meta title, slug, and meta description, helps search engines understand your documentation structure and improves the discoverability of your knowledge base beyond individual articles. A well-written description also helps AI agents retrieve and cite the category page accurately.
+
+Without SEO settings, Index category pages are indexed using auto-generated titles and no descriptions, which limits their visibility and click-through rates in search results.
+
+---
+
+## When to use Index category SEO
+
+- Your knowledge base is public and you want category landing pages to appear in external search results alongside individual articles.
+- The category name alone is not descriptive enough for search engines or readers scanning results. Set a custom meta title.
+- You want to give search engines and AI agents context about what the category covers. Add a meta description to improve how it appears in results pages and AI-generated answers.
+- A category is internal or restricted and should not be publicly discoverable. Use the **Exclude from external search engine results** option.
+
+---
+
+## SEO settings at a glance
+
+| Setting | Description |
+| --- | --- |
+| **Exclude from external search engine results** | Prevents the Index category page from being indexed by external search engines. |
+| **Meta title** | The title shown in the browser tab and in search engine results for the category page. Defaults to the category name if left blank. |
+| **Slug** | The URL-friendly identifier for the category page. Auto-generated from the category name. Can be edited manually. |
+| **Meta description** | A brief summary of the category shown in search results and used by AI agents to retrieve and cite this category page. |
+
+---
+
+## Add SEO settings to an Index category
+
+1. Navigate to the Index category in the knowledge base portal.
+2. Click the **More** () icon in the category header and select **SEO**. The SEO configuration panel appears.
+
+<Image src="https://cdn.document360.io/860f9f88-412e-4570-8222-d5bf2f4b7dd1/Images/Documentation/index%20category.png" alt="Index category header showing the More menu with the SEO option" />
+
+3. Select **Exclude from external search engine results** if the category page should not appear in external search engines.
+4. Enter a **Meta title**.
+
+ NOTE
+
+Keep the meta title between 50 and 60 characters for optimal display in search results. The field accepts up to 70 characters.
+
+5. Review or edit the **Slug**. The slug is auto-generated from the category name when the category is created.
+6. Enter a **Meta description**.
+
+ NOTE
+
+Keep the meta description between 150 and 160 characters. A well-written description improves click-through rates from search results and AI retrieval accuracy.
+
+7. Click **Save**.
+
+<Image src="https://cdn.document360.io/860f9f88-412e-4570-8222-d5bf2f4b7dd1/Images/Documentation/seo%281%29.png" alt="SEO configuration panel showing meta title, slug, and meta description fields for an Index category" />
+
+---
+
+## Best practices
+
+- Treat Index category pages as topic hub pages. Write meta descriptions that describe the range of articles within the category, not just the category name.
+- Keep slugs short and descriptive. If a category is renamed, update the slug manually and set up a redirect rule to avoid broken links.
+- Avoid setting the same meta title for multiple categories. Duplicate page titles are flagged in SEO health check reports and reduce ranking clarity.
+- Prioritise SEO settings for top-level categories that act as entry points to major documentation sections. These pages receive the most organic traffic after the homepage.
+- Excluding a category from external search engines does not exclude the articles within it. Configure search visibility at the article level separately if needed.
+
+---
+
+## FAQ
+
+<Expandable title="Does configuring SEO for an Index category also apply to articles inside it?">
+  No. SEO settings on an Index category apply only to the category landing page. Articles within the category have their own independent SEO settings and must be configured separately.
+</Expandable>
+
+<Expandable title="If I exclude an Index category from external search, will its articles still appear in search results?">
+  Yes. Excluding an Index category from external search only prevents the category landing page from being indexed. Articles within the category are indexed independently and will still appear in search results unless individually excluded.
+</Expandable>
+
+<Expandable title="If I rename an Index category, does the slug update automatically?">
+  No. The slug does not update automatically when you rename a category. Update the slug manually in the SEO settings and set up a redirect rule for the old slug to avoid broken links.
+</Expandable>
+
+<Expandable title="What happens if I leave the meta title blank for an Index category?">
+  If the meta title is left blank, the category name is used as the page title in search results and the browser tab. Set a custom meta title if the category name is not keyword-rich or descriptive enough for search results.
+</Expandable>
+
+<Expandable title="Can I configure SEO settings for Folder categories?">
+  No. SEO settings are only available for Index and Page categories. Folder categories do not have a dedicated landing page and cannot be configured for external search indexing.
+</Expandable>

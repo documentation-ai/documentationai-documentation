@@ -1,0 +1,111 @@
+---
+title: "Prompt template: Gen AI friendly writing"
+description: Optimize your documentation with our AI prompt template, designed for drafting and revising content that's GenAI-friendly and publication-ready.
+---
+
+This article provides a ready-to-use prompt template for drafting or revising documentation using an AI writing tool. The prompt is designed to produce content that is optimized for both human readers and AI retrieval systems like Eddy AI.
+
+For the full rationale behind each rule in this prompt, refer to [Gen AI friendly content](/en/docs/gen-ai-friendly-content). To verify your output before publishing, use the [Gen AI friendly content checklist](/en/docs/gen-ai-friendly-content-checklist).
+
+---
+
+### When to use this prompt
+
+Use this prompt when you want to:
+
+- Draft a new article from a topic or outline using an AI writing agent.
+- Revise an existing article to make it GenAI-friendly.
+- Generate a first draft before applying your own edits and review.
+
+---
+
+### Master Prompt for AI Agent
+
+```plaintext
+You are a technical documentation writer tasked with creating GenAI-friendly content that works effectively for both human readers and AI-powered assistants.
+Follow these rules when drafting the article:
+
+Follow These
+Use clear, hierarchical headings (H1, H2, H3) with descriptive, keyword-rich titles.
+Write short, focused sentences (<20 words) and one idea per paragraph.
+Use bullet points for grouped info and numbered lists for steps (3–7 items max).
+Present structured data in tables with clear labels (no merged cells, no empty placeholders).
+Format code snippets cleanly, with syntax highlighting, consistent indentation, and meaningful comments.
+Provide descriptive alt text for images and clear anchor text for links.
+Write in a conversational, user-first tone, using plain language and "you" when guiding.
+Apply SEO practices: natural keyword use, meta descriptions, glossary-approved terms.
+Include a FAQ section (5–10 self-contained Q&A).
+Make content modular and reusable so AI can extract, summarize, and repurpose easily.
+
+Avoid These
+Don't use generic headings like "Overview" or repeat the same heading multiple times.
+Don't write long, complex sentences or dense paragraphs.
+Don't include filler, background fluff, or unnecessary context inside instructional steps (link to supporting content instead).
+Don't use vague anchor text like "here" or "this article."
+Don't add placeholders in tables (like "Y/N," "—", emojis, or icons).
+Don't format code blocks with line numbers or styling that prevents copy-paste.
+Don't switch between synonyms or variations of glossary terms inconsistently.
+Don't overuse jargon, acronyms, or unexplained abbreviations.
+Don't stuff keywords unnaturally or repeat them excessively.
+```
+
+### Task Instruction for the AI
+
+```plaintext
+Generate a [type of article: how-to guide, feature explanation, or FAQ] for [topic/product/feature].
+Ensure the output is clear, modular, and optimized for both human readers and AI systems. Include:
+
+Headings/subheadings
+Short paragraphs
+Bullet/numbered lists where needed
+Tables for structured data
+At least 5 FAQs with clear answers
+Proper SEO keywords (without stuffing)
+Consistent glossary
+```
+
+---
+
+### How to customize the prompt
+
+Adjust the **TASK** section at the bottom for each article you draft:
+
+| Variable | Example values |
+| --- | --- |
+| Article type | how-to guide, feature explanation, FAQ article, troubleshooting guide, release note |
+| Topic or feature | "setting up SSO," "configuring custom roles," "using the AI writing agent" |
+
+You can also append additional instructions to the TASK section, for example:
+
+- "The target audience is new Document360 users with no prior knowledge of the platform."
+- "Reference the following product terms: [list terms]."
+- "The article should be under 600 words."
+
+---
+
+### Package your prompt as a Skill
+
+The master prompt above works for one-off drafts. For repeated workflows like documenting features from PRDs, specs, or rough notes, package it as a **SKILL.md file** so AI agents like Claude follows the same process every time without re-pasting the prompt.
+
+A SKILL.md is a structured Markdown file with two parts: a **frontmatter block** (name, description, trigger phrases) and a **body** (steps, writing rules, output format). Install it once; reuse it across your whole team.
+
+**Example: Tech Writer - Feature Article skill**
+
+This skill helps Claude write complete, publication-ready documentation articles for any software feature — following MSTP (Microsoft Manual of Style for Technical Publications) conventions throughout.<br /> Install it when you need to document a feature from scratch or bring structure to rough notes. Once active, describe your feature (or paste a PRD, spec, or screenshot) and Claude produces a full article covering every section readers rely on: a sharp introduction, prerequisites, when to use the feature, step-by-step instructions, limitations, best practices, troubleshooting, and FAQs.
+
+To install it:
+
+1. Download the `.skill` file.
+
+   [tech-writer-feature-article.skill](https://cdn.document360.io/6a41a4ec-dfe1-4f2d-9818-4fc3e2c85382/Images/Documentation/tech-writer-feature-article.skill)  <br /> 2\. In Claude, go to **Settings** -> **Connectors** -> **Customize** -> **Skills** -> **Add skill** -> Select **Create skill** -> **Upload a skill**.<br /> You can now drag and drop or click to upload the installed skill file.<br /> 3\. Once the skill is added, simply share your feature name, PRD, or notes — Claude handles the rest.<br /> Works best when you give Claude a product requirement document or feature description. The more context you share, the less Claude needs to ask.
+
+---
+
+### After using the prompt
+
+AI output is a first draft, always review before publishing. Check for:
+
+- Incomplete thoughts or missing steps.
+- Hallucinated facts or inaccurate product details.
+- Tone or phrasing that doesn't match your documentation style guide.
+- Glossary terms that are missing or used inconsistently.

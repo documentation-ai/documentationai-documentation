@@ -1,0 +1,97 @@
+---
+title: Featured image
+description: Document360 article featured image does not appear at the top of the article.Instead, this image is crawled and used by web search engines and other platforms when you share the article link.
+metaTitle: Featured image - Add thumbnail images to articles while sharing
+---
+
+A featured image is a representative thumbnail used in most content management systems. In Document360, the featured image is used mainly for SEO purposes. Instead of appearing at the top of an article, it enhances link previews when the article is shared on external platforms and helps search engines display relevant imagery in results.
+
+---
+
+## When to use a featured image
+
+Add a featured image to an article when:
+
+- The article is likely to be shared externally and you want the link preview to display a specific, relevant image.
+- You want to improve how the article appears in search engine results.
+- Your knowledge base uses Open Graph metadata and you want article-level control over the thumbnail image shown when links are shared.
+
+---
+
+## Where the featured image appears
+
+The featured image does not appear at the top of the article on your knowledge base site. Instead, it is used as the Open Graph (OG) image when the article URL is shared on external platforms:
+
+- <strong>Social media:</strong> LinkedIn, Facebook, X (Twitter), and Slack display the featured image as the link preview thumbnail.
+- <strong>Search engines:</strong> Google and other search engines may use the featured image in rich results and search snippets.
+- <strong>Messaging apps:</strong> Apps that support link unfurling, such as Microsoft Teams, will also display the featured image.
+
+---
+
+## Add a featured image to an article
+
+1. Open any article in the knowledge base portal.
+2. Click the **More** () icon in the article header and select **More article options**.
+3. In the **Article settings** panel, select the **Featured image** tab.
+4. Add an image using any of the following options:
+
+   - Click **Upload from my device** to select an image from your computer.
+   - Click **Choose from Drive** to select an image from Document360 Drive.
+   - Drag and drop an image into the upload area.<br /> The maximum allowed image size is 2 MB.
+5. A preview of the image appears. Click **Save**.
+
+<Image src="https://cdn.document360.io/860f9f88-412e-4570-8222-d5bf2f4b7dd1/Images/Documentation/Featured-image-more-article-settings%281%29.png" alt="Featured image tab in the Article settings panel showing upload and preview options" />
+
+ NOTE
+
+Recommended image specifications: dimensions of 1,200×800 px to 2,000×1,200 px; JPEG or PNG format; file size under 1 MB. Other formats such as WebP or GIF may not render consistently across all social media platforms and search engines.
+
+ NOTE
+
+Featured images can be added only to publicly accessible articles. In mixed public projects, the option is available only when the article and its supported hierarchy are eligible for public access. If the article is private or falls under a restricted path, the upload option will remain disabled.
+
+---
+
+## Remove or replace a featured image
+
+1. Open the article in the knowledge base portal.
+2. Click the **More** () icon in the article header and select **More article options**.
+3. In the **Article settings** panel, select the **Featured image** tab.
+4. To replace the image, hover over the image, select and click **Replace**, and select a new image from Drive.
+5. To remove the image, hover over the image and select **Remove**, then click **Save**.
+
+---
+
+## Fallback behavior when no featured image is set
+
+If an article does not have a featured image, the behaviour when sharing the article link depends on your project configuration:
+
+- If a default featured image has been configured for your knowledge base, that image is used as the fallback thumbnail for all articles without an individual featured image.
+- If no default featured image is configured, the platform sharing the link may pick a random image from the article or display no image at all, which can result in poor-looking previews on social media.
+
+It is recommended to set a default featured image for your project.
+
+---
+
+## Best practices
+
+- Use article-specific images. Choose an image that represents the article topic clearly. A relevant screenshot or product image communicates context better than a generic stock photo.
+- Maintain consistent dimensions. Stick to the recommended 1,200×800 px minimum to ensure the thumbnail displays correctly across platforms and screen sizes.
+- Set a project-wide default. Configure a default featured image at the project level so articles without a specific image still display something relevant when shared.
+- Refresh cached previews after updating. Social media platforms cache Open Graph images when a link is first shared. After updating a featured image, use the platform's URL debugger tool such as Facebook's Sharing Debugger or LinkedIn's Post Inspector to force a preview refresh.
+
+---
+
+## FAQ
+
+<Expandable title="Why is the Featured image option disabled for my article?">
+  The Featured image option is available only for publicly accessible articles. If your article is private, or if it is placed under a restricted hierarchy in a mixed public project, the upload option will remain disabled. A contextual message is displayed in the article settings to explain the restriction.
+</Expandable>
+
+<Expandable title="Will changing the featured image update previews on previously shared links?">
+  Not immediately. Social media platforms cache Open Graph images when a link is first shared. Updating the featured image in Document360 will not automatically refresh those cached previews. Use the platform's URL debugger or cache-clearing tool, for example Facebook's Sharing Debugger or LinkedIn's Post Inspector, to force a refresh.
+</Expandable>
+
+<Expandable title="Can I reuse the same featured image across multiple articles?">
+  Yes. You can upload the same image from your Document360 Drive when setting the featured image for different articles. Alternatively, set a single default featured image that applies to all articles without an individual featured image configured.
+</Expandable>

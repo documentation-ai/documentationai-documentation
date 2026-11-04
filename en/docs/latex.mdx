@@ -1,0 +1,101 @@
+---
+title: Latex
+description: Render LaTeX expressions seamlessly in Document360's Advanced WYSIWYG editor for clear mathematical and scientific documentation. Enhance your articles today!
+---
+
+LaTeX is a typesetting system widely used for writing mathematical expressions, scientific notation, and complex equations. In Document360, the Advanced WYSIWYG editor supports LaTeX, allowing you to render properly formatted mathematical and scientific content directly within your articles.
+
+LaTeX expressions in Document360 are rendered visually in the editor and on the knowledge base site — readers see the formatted output, not the raw syntax.
+
+---
+
+## When would you use this
+
+- Render equations in technical or academic knowledge bases, such as formula references, calculation guides, or physics documentation
+- Document chemical formulas, constants, and scientific expressions that cannot be accurately represented with standard text formatting
+- Express mathematical models, statistical formulas, or algorithmic notation in developer or API documentation
+- Render step-by-step mathematical workings clearly in training materials or educational content
+- Express financial formulas such as compound interest, depreciation, or risk models using proper mathematical notation
+
+---
+
+## Insert a LaTeX expression
+
+<strong>In the Advanced WYSIWYG editor:</strong>
+
+1. Navigate to the desired article in the Advanced WYSIWYG editor.
+2. Type the slash command `/LaTeX` and press **Enter**.
+3. An **Insert LaTeX expression** panel appears.
+4. Enter your LaTeX syntax in the input field.
+5. Click **Insert** to add the rendered expression to your article.
+
+<Image src="https://cdn.document360.io/860f9f88-412e-4570-8222-d5bf2f4b7dd1/Images/Documentation/latex%281%29.png" alt="" />
+
+<strong>To insert spaces within a LaTeX formula:</strong> Use `\;` (a backslash followed by a semicolon) between terms to add spacing.
+
+ NOTE
+
+Do not include a space between `$` and the LaTeX syntax when writing expressions.
+
+---
+
+## Edit a LaTeX expression
+
+1. Click on the LaTeX expression in the editor.
+2. Click the **Edit** (pencil) icon that appears.
+3. The **Insert LaTeX expression** panel opens with the existing syntax.
+4. Make the required changes and click **Update**.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778026962-ifusmzmpvhf-edit-20latex.png?fm=auto&auto=compress%2Cformat" alt="Insert block" />
+
+---
+
+## Delete a LaTeX expression
+
+1. Click on the LaTeX expression in the editor.
+2. Click the **Remove** (trash bin) icon that appears.
+
+The expression is removed from the article.
+
+---
+
+## Common LaTeX syntax reference
+
+| Expression | LaTeX syntax | Output |
+| --- | --- | --- |
+| Fraction | `\frac{a}{b}` | a/b formatted as a fraction |
+| Square root | `\sqrt{x}` | √x |
+| Superscript (exponent) | `x^{2}` | x² |
+| Subscript | `x_{i}` | xᵢ |
+| Sum | `\sum_{i=1}^{n}` | Σ notation |
+| Greek letters | `\alpha`, `\beta`, `\gamma` | α, β, γ |
+| Infinity | `\infty` | ∞ |
+| Integral | `\int_{a}^{b}` | ∫ notation |
+
+ NOTE
+
+For a full list of LaTeX commands, refer to standard LaTeX documentation resources.
+
+---
+
+## Best practices
+
+- Always preview your LaTeX expression before publishing to confirm it renders correctly on the knowledge base site.
+- Keep expressions concise — break complex multi-step equations into separate LaTeX blocks with plain-text explanation between them, rather than combining everything into a single expression.
+- Add a plain-language explanation alongside complex expressions for readers who may not be familiar with LaTeX or mathematical notation.
+- Use `\;` to add spacing within formulas for better readability — do not add spaces between `$` and the syntax.
+- Test expressions after any article-level editor changes, as switching editors may affect how LaTeX is rendered.
+
+---
+
+## FAQ
+
+<Expandable title="How do I add spacing inside a LaTeX formula?">
+  Use `\;` between terms to insert a space. Do not use standard keyboard spaces, as they are not recognized within LaTeX syntax.
+</Expandable>
+
+<Expandable title="Can I use LaTeX inside tabs and snippets?">
+  Yes. LaTeX expressions can be added inside tabs and snippets in the Advanced WYSIWYG editor.
+</Expandable>
+
+Application Programming Interface - A set of defined rules and protocols that allows one software application to communicate with and request functionality from another. APIs are the backbone of modern integrations. When Document360 connects to Slack, Intercom, or Google Analytics, it does so through their APIs. Document360 also provides its own REST API, enabling teams to programmatically manage articles, categories, and reader accounts from external systems.

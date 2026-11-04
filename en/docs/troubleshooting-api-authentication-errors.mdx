@@ -1,0 +1,41 @@
+---
+title: Troubleshooting API authentication errors
+---
+
+### 403 error when using Try It!
+
+<strong>When it occurs:</strong> Clicking Try It! on an endpoint immediately returns a 403 error after a spec has been successfully uploaded.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778005252-531pu8yvmz-1_Screenshot-Troubleshooting_api_403_error.png?fm=auto&auto=compress%2Cformat" alt="API request interface showing authentication, request, and response sections with status codes." />
+
+<strong>Why it happens:</strong> The spec is missing a definition for the `BearerAuth` security mechanism under `components/securitySchemes`.
+
+<strong>How to fix it:</strong>
+
+1. Check your spec for a `BearerAuth` security scheme definition under `components/securitySchemes`.
+2. If it is missing, add it:
+
+```yaml
+   components:
+     securitySchemes:
+       BearerAuth:
+         type: http
+         scheme: bearer
+```
+
+3. Re-upload the spec.
+4. During import, check the **Alerts** section for any warnings related to Bearer Authentication and address them.<br /> <Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778007567-8wpypmti2ij-2_Screenshot-Troubleshooting_api_invalid_bearerauth_definition.png?fm=auto&auto=compress%2Cformat" alt="Error messages displayed during API reference import, highlighting invalid identifiers." />
+
+---
+
+### 401 Unauthorized error from incorrect server URL
+
+<strong>When it occurs:</strong> API requests return a 401 Unauthorized response when using Try It! or when making direct API calls.
+
+<strong>Why it happens:</strong> The wrong region-based server URL is being used. For example, sending a request to `https://api.yourdomain.com` when the correct endpoint is `https://api.us.yourdomain.com` will cause authentication failures because the region-specific endpoint validates credentials differently.
+
+<strong>How to fix it:</strong>
+
+1. Confirm you are using the correct region-based URL for your account.
+2. Ensure the correct client ID and client secret are being used with that URL.
+3. Verify the authentication token is correctly included in the request header.

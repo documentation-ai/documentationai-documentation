@@ -1,0 +1,171 @@
+---
+title: Create workspace
+description: Workspaces allow you to create separate documentation for specific product versions. This segregation helps to ensure that readers have access to the most relevant and up-to-date information.
+---
+
+When you create a new Document360 project, a default workspace named **v1** is automatically created for you. As your documentation grows, you can add more workspaces to separate content by product, version, or audience.
+
+---
+
+## When do you need a new workspace?
+
+The default **v1** workspace is sufficient for many teams. You need an additional workspace when your documentation has grown to a point where a single workspace no longer serves all your audiences or content areas cleanly. Here are the most common scenarios:
+
+- **Multiple product versions**: Maintain separate workspaces for v1, v2, and v3 of your product so readers always access the documentation that matches their version.
+- **Different audiences**: Create one workspace for end users and another for administrators or developers, keeping each audience's content focused and uncluttered.
+- **Multiple products**: If you manage documentation for more than one product within the same organization, separate workspaces keep each product's content independent.
+- **Internal vs. external documentation**: Use one workspace for customer-facing content and another for internal team documentation, each with its own access settings.
+- **Staging or beta content**: Set up a Beta workspace to draft and review upcoming documentation before it goes live, without affecting your published content.
+
+---
+
+## Create a new workspace
+
+1. Navigate to **Settings** () > **Knowledge base portal** in the left navigation bar.
+2. In the left navigation pane, select **Workspace & localization** ().
+3. Under the **Workspace & Localization** tab, click the button for the type of workspace you want to create:
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777342413-0t4iqu13coz-Workspace-localization.png?fm=auto&auto=compress%2Cformat" alt="Manage feedback pop-up showing assignee and status options for bulk updates." />
+
+Add Workspace
+
+Creates a Knowledge base workspace for standard documentation articles, guides, and knowledge base content for any audience.
+
+[Learn more →](/en/docs/workspaces#knowledge-base-workspace)
+
+Add API Workspace
+
+Creates an API documentation workspace for API references and specifications, with a structure optimized for API documentation.
+
+[Learn more →](/en/docs/workspaces#api-documentation-workspace)
+
+ NOTE
+
+The top of each dialog shows how many workspaces you have used out of the number your plan allows.
+
+---
+
+### Knowledge base workspace
+
+1. Click **Add Workspace**.<br /> The **Add new Workspace** dialog appears.
+2. Enter a name in the **Name** field — maximum 30 characters, alphanumeric characters and hyphens only.
+3. Under **Base Workspace**, choose whether to start from scratch or clone an existing workspace:
+
+   - **Start fresh** — Starts with a completely empty workspace. No categories, articles, or content are carried over. Use this when building a new documentation set from the ground up.
+   - **Clone from another Workspace** — Duplicates the content and structure of an existing workspace. Use this when creating a new product version and you want to start from the same foundation.
+
+   If you select **Clone from another Workspace**:
+
+   1. From the **Clone existing Workspace from** dropdown, select the workspace to clone.
+   2. Click <strong>Select category (optional)</strong> to clone only specific categories.
+   3. Use the **Include mirrored articles** toggle to choose whether the mirrored articles in the source workspace are copied into the new workspace. This toggle is on by default. When it's on, the mirrored articles are included and stay linked to their source articles, so they remain mirrors. When it's off, they are left out of the new workspace. For more information, see [Mirror articles](https://docs.document360.com/docs/en/replicate-articles).
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777348311-qyztfug7da-add-workspcae-dialog.png?fm=auto&auto=compress%2Cformat" alt="Add new Workspace dialog with Clone from another Workspace selected, showing the Clone existing Workspace from dropdown, the Select category option, and the Include mirrored articles toggle" />
+
+4. From the **Workspace status** dropdown, select one or more statuses:
+
+| Status | When to use |
+| --- | --- |
+| **Main Workspace** | The default workspace readers land on. Must be set to Public. Cannot be Deprecated. |
+| **Public** | Ready and visible to readers on the Knowledge base site. |
+| **Beta** | Still in progress — not yet ready to go live. |
+| **Deprecated** | Outdated content retained for reference only. |
+
+ NOTE
+
+The Main workspace must be set to **Public**. You cannot set a Deprecated workspace as the Main workspace.
+
+5. Your project's default language is automatically assigned. To add more languages, open the **Language** dropdown, select the checkbox next to each language you want, and click **Apply**.<br /> The languages appear under **Selected languages**. If you are cloning a workspace, the languages of the source workspace appear under **Languages available in base Workspace**.
+
+   For each language, click the **More options** () icon to configure:
+
+| Option | Description |
+| --- | --- |
+| **Set as default** | Sets this language as the default on the Knowledge base site. |
+| **Edit display name** | Updates the display name shown to readers. |
+| **Right to left** | Enables right-to-left text direction for languages like Arabic and Hebrew. |
+| **Hide** | Hides the language from the Knowledge base site. Hidden languages appear with a strikethrough in the portal. |
+| **Remove** | Removes the language from the workspace. You cannot remove the default language. |
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777313983-92w1dd7g0pb-lang-more-options.png?fm=auto&auto=compress%2Cformat" alt="Add new Workspace dialog showing the selected languages with the More options menu expanded" />
+
+6. Under **Advanced**, configure the following:
+
+   - **Slug URL** — Auto-populated from the name. You can customize it.
+   - **Internal links** — Available only when you clone a workspace. Select how cloned articles should handle links:
+
+     - **New** — Links point to the articles created in the new workspace.
+     - **Existing** — Links continue to point to the original articles in the source workspace.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777350131-b5iss80v405-advanced-inadd-wrkspace-dialog.png?fm=auto&auto=compress%2Cformat" alt="Add new Workspace dialog with the Advanced section expanded, showing the Slug URL field and the Internal links New and Existing options" />
+
+7. Click **Add** to create the workspace.
+
+---
+
+### API documentation workspace
+
+1. Click **Add API Workspace**.<br /> The **Add API Workspace** dialog appears.
+2. Enter a name in the **Name** field — maximum 30 characters, alphanumeric characters and hyphens only.
+3. From the **Workspace status** dropdown, select one or more statuses:
+
+| Status | When to use |
+| --- | --- |
+| **Main Workspace** | The default workspace readers land on. Must be set to Public. Cannot be Deprecated. |
+| **Public** | Ready and visible to readers. |
+| **Beta** | Still in progress — not yet ready to go live. |
+| **Deprecated** | Outdated content retained for reference only. |
+
+4. The **Slug URL** is auto-populated from the name. You can customize it.
+5. Click **Add** to create the workspace.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777350482-hl3cbj7yg9f-add-api-workspace-dialog.png?fm=auto&auto=compress%2Cformat" alt="Add API Workspace dialog showing the Name, Workspace status, and Slug URL fields" />
+
+---
+
+## Best practices
+
+- **Use descriptive workspace names** that clearly reflect the product, version, or audience — for example, `v2-enterprise` or `admin-docs`. This makes it easier for your team to navigate across workspaces.
+- **Set new workspaces to Beta** while you are building content so they do not appear to readers before they are ready.
+- **Clone an existing workspace** when creating a new version instead of starting from scratch. It preserves your category structure and saves setup time.
+- **Choose Internal links carefully** when cloning a workspace. Select **New** if you want the new workspace to be fully independent; select **Existing** if you want to keep references pointing to the source workspace.
+- <strong>Decide on mirrored articles when you clone a workspace.</strong> Leave **Include mirrored articles** on if the new workspace should keep showing the same shared content as the source workspace. Turn it off if you want the new workspace to contain only its own articles.
+
+---
+
+## FAQ
+
+<Expandable title="I'm trying to set a workspace as the Main workspace, but the option is inactive. What do I do?">
+  The Main workspace must also be set to **Public**. In the **Workspace status** dropdown, select **Public** first — this automatically enables the **Main Workspace** option.
+</Expandable>
+
+<Expandable title="How do I reorder workspaces?">
+  On the **Workspace & localization** page, hold and drag the **Reorder** () handle next to the workspace name and move it to the desired position.
+</Expandable>
+
+<Expandable title="How do I recover a deleted workspace?">
+  You can restore a deleted workspace using the Backup & Restore feature:
+
+  1. Navigate to **Settings** () > **Knowledge base portal** > **Backup & Restore**.
+  2. Find the desired backup, click the **Restore options** dropdown, and select **Documentation**.
+  3. In the **Restore documentation** panel, select the workspace you want to restore and click **Restore**.
+</Expandable>
+
+<Expandable title="What happens to mirrored articles when I clone a workspace?">
+  It depends on the **Include mirrored articles** toggle, which appears when you select **Clone from another Workspace** and is on by default. When it's on, the mirrored articles in the source workspace are copied into the new workspace and stay linked to their source articles, so they remain mirrors. When it's off, they are left out of the new workspace.
+</Expandable>
+
+<Expandable title="I'm getting a 404 error when navigating to a secondary workspace. How do I fix it?">
+  This is usually caused by one of the following reasons:
+
+  1. No articles are published in the workspace.
+  2. All articles in the workspace are hidden.
+
+  Ensure at least one article is published and visible on the Knowledge base site.
+
+  If the workspace isn't set to **Public** and the reader doesn't have access to it, the reader sees the **Access denied** page instead of a 404 error. By default, this page says there are no projects associated with the reader's email address and asks them to contact the project administrator. Give the reader access to the workspace, or set it to **Public**. To set it to **Public**, navigate to **Settings** () > **Knowledge base portal** > **Workspace & localization**, click the **Edit** () icon on the workspace, select **Public** in the **Workspace status** dropdown of the **Edit Workspace** dialog, and click **Update**.
+
+  <Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777353687-is3r0vhpetp-404-20error-20in-20Workspace.jpg?fm=auto&auto=compress%2Cformat" alt="Edit Workspace dialog showing the Workspace status dropdown for a secondary workspace" />
+
+  To customize the Access denied page, navigate to **Settings** () > **Knowledge base site** > **Site customization** > **Customize site** > **Error pages** > **Access denied**.
+</Expandable>

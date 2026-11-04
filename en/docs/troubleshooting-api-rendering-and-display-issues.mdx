@@ -1,0 +1,61 @@
+---
+title: Troubleshooting API rendering and display issues
+---
+
+### Incorrect HTML styling in API response
+
+<strong>When it occurs:</strong> When retrieving article HTML content via the API, the rendered output displays with broken styling or misplaced quotes.
+
+<strong>Why it happens:</strong> API responses are formatted in JSON, which uses escape characters (for example, `\"`) to handle certain characters safely. If these escaped characters are not converted back (unescaped) before rendering, the HTML structure breaks.
+
+For example, a paragraph like:
+
+```html
+<p>This is a "sample" paragraph.</p>
+```
+
+May appear in the JSON response as:
+
+```json
+"<p>This is a \"sample\" paragraph.</p>"
+```
+
+<strong>How to fix it:</strong>
+
+1. Retrieve the HTML content via the API and inspect the response.
+2. Look for escaped characters in the JSON response, such as:
+
+   - `\"` (escaped double quotes)
+   - `\\` (escaped backslashes)
+   - `\n` (newline)
+   - `\t` (tab)
+3. **Unescape** the JSON content before rendering it. This restores the original HTML structure.
+4. Verify the styling after unescaping to ensure the content appears correctly.
+5. If the issue persists, check if additional modifications in your code are altering the API response.<br /> <Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778010860-vuxnnpz8mv-1_Screenshot-Troubleshooting_espacing_and_Unescaping_Content.png?fm=auto&auto=compress%2Cformat" alt="JSON Escape and Unescape tool with highlighted buttons for user interaction." /><br /> Once unescaped properly, the HTML will display as expected, preventing styling discrepancies.
+
+---
+
+### Variables and snippets not rendering in API response
+
+<strong>When it occurs:</strong> When retrieving article content via the API, variables appear as unprocessed placeholders — for example, `{{variable.UserName}}` instead of the actual value.
+
+<strong>Why it happens:</strong> The `isForDisplay` parameter is not set correctly in the API request.
+
+- When `isForDisplay = true`: variables and snippets are fully rendered in the response, and placeholders are replaced with actual values.
+- When `isForDisplay = false` (or not set): the response contains unprocessed placeholders, which are not suitable for direct display.<br /> <strong>How to fix it:</strong>
+
+1. Retrieve the article content via the API and inspect the response.
+2. Check if variables or snippets appear unprocessed in the response.
+3. Ensure the API request includes `"isForDisplay": true`. Example request:
+
+```json
+   {
+     "articleId": "your-article-id",
+     "isForDisplay": true
+   }
+```
+
+4. Send the modified request and verify the API response now displays correctly rendered variables and snippets.
+5. If the issue persists, ensure that the system processing the API response handles and displays the rendered content properly.
+
+> ✅ **IMPORTANT**<br /> When updating articles via the API, do not pass fully rendered content back. This would replace dynamic placeholders with static values, breaking future rendering.

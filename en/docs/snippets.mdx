@@ -1,0 +1,156 @@
+---
+title: Create and manage snippets
+description: Snippet is a predefined set of content blocks the content manager or author identifies as reusable content.
+---
+
+Snippets in Document360 are created and managed from the **Snippets** page under Content tools. From this page you can create new snippets, choose your editor, use Eddy AI to refine content, check where snippets are used across your knowledge base, and edit or delete them individually or in bulk.
+
+---
+
+## The Snippets page
+
+1. Navigate to **Content tools** () in the left navigation bar.
+2. Select **Content resources** > **Snippets** in the left navigation pane.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777745379-q95g90q9mtf-snippets.png?fm=auto&auto=compress%2Cformat" alt="Snippets page showing the list of snippets with management options" />
+
+| Element | Description |
+| --- | --- |
+| **Create** | Creates a new snippet. |
+| **Duplicate content detection** | Identifies duplicate text across your documentation and suggests converting it into snippets. |
+| **Languages** | Filters the snippet list by Global or a specific language. |
+| **Search snippets** | Searches for snippets by name. |
+| **Selection box** | Selects one or more snippets for bulk delete. |
+| **Name** | Click a snippet name to preview its content. |
+| **Used in** | Shows where the snippet is used. Displays a dash if unused. If used, click **View** to see the articles or category pages where it has been inserted. Archived articles and category pages are not counted. |
+| **Language** | Indicates the language assigned to the snippet. |
+| **Last modified** | Displays the date and time the snippet was last updated. |
+| **Translation status** | Click the globe icon to check translation progress. A green check means the snippet has been translated into that language. An X means it has not. |
+| **Edit** | Opens the snippet for editing. |
+| **Delete** | Deletes the snippet. For bulk delete, select the checkboxes and click **Delete** at the top. |
+
+---
+
+## Duplicate content detection
+
+The **Duplicate content detection** banner at the top of the Snippets page helps you identify and manage repeated text across your documentation. This feature is powered by Eddy AI. It scans your project for paragraphs that appear multiple times across articles, generates a report showing where duplicate content exists, and suggests converting it into reusable snippets.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777745950-z3tk8ge59e-find-20duplicates.png?fm=auto&auto=compress%2Cformat" alt="Snippets page showing the Duplicate content detection banner with Find duplicates option" />
+
+1. Click **Find duplicates** on the banner to start scanning your project.
+2. Once the scan completes, the total number of duplicate text blocks detected is displayed.
+3. If a scan has already been performed, click **Scan again** to re-run the process.
+4. Click **Review suggestions** to open the **Duplicate Content Detection** report and review the findings.
+
+ NOTE
+
+For more information, read [Duplicate content detection →](/en/docs/duplicate-content-detection)
+
+---
+
+## Create a snippet
+
+1. On the **Snippets** page, click **Create** at the top right.
+2. In the **Create new snippet** dialog, configure the following:
+
+   - <strong>Name:</strong> Enter a name of up to 50 characters. You can use letters, numbers, hyphens, and underscores.
+   - <strong>Language:</strong> Select a language. The default is Global.
+   - <strong>Editor:</strong> Expand **Advanced** and choose **Markdown** or **Advanced WYSIWYG**. The default is based on your project settings.
+3. Click **Create**.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777746210-4f3x8vavjvu-create-20new-20snippet.png?fm=auto&auto=compress%2Cformat" alt="Create new snippet dialog showing name, language, and editor type options" />
+
+4. Enter your content in the editor.
+
+<strong>Markdown editor:</strong> Use the formatting tools to format your text.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777747331-dyirgc4zcdt-Snippet-20--20Markdown.png?fm=auto&auto=compress%2Cformat" alt="Markdown editor in snippet creation" />
+
+<strong>Advanced WYSIWYG editor:</strong> Use the toolbar or the quick insert menu to format your content.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777751487-nqybh4lngrh-create-20snipper.png?fm=auto&auto=compress%2Cformat" alt="Advanced WYSIWYG editor in snippet creation" />
+
+ NOTE
+
+Once you select the **Advanced WYSIWYG editor**, you cannot switch back to Markdown. If you start with Markdown, you can convert to Advanced WYSIWYG for translation purposes, as Markdown does not support Translate with Eddy AI. You cannot switch back to Markdown after converting.
+
+5. To switch the language of the snippet, use the language dropdown at the top of the editor.
+6. Click **Save** or press `Ctrl + S`.
+
+ NOTE
+
+You can also use custom HTML in Code view for formatting. Unsupported tags will be sanitised automatically.
+
+### Use Eddy AI in snippet content
+
+While drafting a snippet in the Advanced WYSIWYG editor, hover over any content and use Eddy AI to make the text longer or shorter, improve it, change the tone, convert speech, change the voice, split sentences, or generate elements such as tables, pie charts, and flowcharts.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777751834-gdo6k5gcmjg-eddy-20ai-20snippter.png?fm=auto&auto=compress%2Cformat" alt="Snippet editor showing Eddy AI tools for content improvement and generation" />
+
+---
+
+## View snippet usage
+
+Before editing or deleting a snippet, you can check exactly which articles and category pages use it.
+
+1. On the **Snippets** page, locate the snippet in the **Used in** column.
+2. Click **View**. The **View references** panel opens. For each reference you can see the article version, project workspace and language, the name of the user who added the snippet, the article state (Draft or Published), and the date and time the snippet was inserted.
+3. Click the  icon to open that article version in a new tab.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777752304-zgfeq3b7v1-image-1768556474352.png?fm=auto&auto=compress%2Cformat" alt="View references panel showing articles and category pages where a snippet is used" />
+
+ NOTE
+
+Archived articles and category pages are not listed in the View references panel and are not counted in the **Used in** column. A snippet used only in archived content shows a dash, as though it is unused. The references are preserved and reappear when the content is unarchived.
+
+---
+
+## Edit a snippet
+
+1. On the **Snippets** page, hover over the snippet and click the **Edit** () icon.
+2. Update the content as needed.
+3. Click **Update**.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777753447-eqznjexdhyh-edit-20snippet.png?fm=auto&auto=compress%2Cformat" alt="Snippet edit panel showing content and Update option" />
+
+ NOTE
+
+When you update a snippet, the changes are automatically reflected in all articles and category pages where it is used, including published ones, without needing to republish them.
+
+---
+
+## Delete a snippet
+
+1. On the **Snippets** page, hover over the snippet and click the **Delete** () icon.
+2. Click **Yes** in the confirmation dialog.
+
+To bulk delete, select the checkboxes next to the snippets you want to delete and click **Delete** at the top of the list.
+
+ NOTE
+
+When you delete a snippet, it is removed from all articles where it is referenced. The article retains its current version. On the knowledge base site, surrounding content adjusts automatically and no empty space remains. In the portal, a loading symbol appears in the content block where the snippet was removed. Select this block to insert another snippet or delete it manually.
+
+---
+
+## Considerations
+
+| Item | Detail |
+| --- | --- |
+| **Snippet name length** | Maximum 50 characters. |
+| **Snippet name characters** | Letters, numbers, hyphens, and underscores only. |
+| **Snippet name** | Cannot be changed after creation. |
+| **Editor type** | Once switched to Advanced WYSIWYG, cannot be reverted to Markdown. |
+| **Global snippets** | Cannot be translated. |
+| **Snippet count per project** | Up to 200 snippets. |
+| **Variables inside snippets** | Not supported. Variables will not render correctly in the editor preview or PDF exports. |
+| **Archived content** | Archived articles and category pages are excluded from the Used in column and the View references panel. |
+
+---
+
+## Best practices
+
+- Choose your editor carefully at creation. Switching from Markdown to Advanced WYSIWYG is possible but irreversible. Use Advanced WYSIWYG if you plan to translate the snippet or use rich formatting.
+- Name snippets descriptively. Use names that identify the content type and purpose, for example `Support_Contact_Block` or `API_Disclaimer`. This makes snippets easier to find and insert without previewing each one.
+- Use Global scope by default. Set the language to **Global** unless the snippet content genuinely differs by language. Language-specific snippets require separate management per language.
+- Check dependencies before deleting. Use **View** in the **Used in** column to confirm the impact across articles before deleting a snippet that may be widely used. Archived content is not listed, so check the Archive page as well if you have archived articles or categories.
+- Prefer snippets over copy-paste. If the same block of content appears in more than two articles, create a snippet rather than duplicating it manually.

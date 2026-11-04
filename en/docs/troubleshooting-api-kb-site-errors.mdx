@@ -1,0 +1,16 @@
+---
+title: Troubleshooting API KB site errors
+---
+
+### Knowledge base homepage redirects to /apidocs (page not found)
+
+<strong>When it occurs:</strong> After an account upgrade, visiting the knowledge base homepage automatically redirects to `/apidocs`, which returns a 404 or blank page.
+
+<strong>Why it happens:</strong> When an account is upgraded, the API documentation workspace may be set to Public reader access. This causes the knowledge base homepage to redirect visitors to `/apidocs`, which does not exist by default.
+
+<strong>How to fix it:</strong>
+
+1. Navigate to **Settings** (⚙️) > **Users & Permissions** in the left navigation bar of the Knowledge base portal.
+2. In the left navigation pane, go to **Reader access**.
+3. Locate the API documentation workspace.
+4. Set Reader access to **Private**.<br /> <Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778011330-xjzzzefdsu8-API-redirect-troubleshooting.png?fm=auto&auto=compress%2Cformat" alt="User permissions management interface showing private reader access settings and workspaces." /><br /> This will stop the unintended redirect and restore normal access to your knowledge base homepage.

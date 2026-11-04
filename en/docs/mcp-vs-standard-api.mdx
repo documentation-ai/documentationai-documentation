@@ -1,0 +1,118 @@
+---
+title: MCP vs standard API
+description: Learn when to use Document360's MCP vs. standard API for AI agents, optimizing workflows with a hybrid approach for better documentation management.
+---
+
+As more teams integrate AI agents into their documentation workflows, a common architectural question arises: when Document360 offers both MCP endpoints and standard API endpoints, which should an AI agent like Claude Code use, and when?
+
+This article walks through how to think about that decision, when to use each interface, and how a hybrid approach often delivers the best of both.
+
+---
+
+## Understanding the two interfaces
+
+The MCP interface exposes a curated set of tools - search, retrieve, create, update, manage workflows, and publish content - through a structured protocol that AI agents understand natively. When an agent connects via MCP, it can discover what operations are available, understand their input/output schemas, and invoke them as part of a reasoning chain, all without custom glue code.
+
+The standard API gives you direct, low-level access to Document360's full capabilities via REST endpoints. You explicitly control every request parameter, retry logic, pagination, and auth flow.
+
+Both interfaces talk to the same underlying knowledge base. The difference is in how an agent (or your code) interacts with it.
+
+---
+
+## Default to MCP when the agent supports it
+
+MCP is purpose-built for AI agents. When Document360's MCP server is available and covers the operation you need, it should be your first choice for agentic workflows. Here is why:
+
+**No glue code required** \- The agent discovers available tools dynamically. You do not need to write custom request builders or parse raw API responses for common operations such as searching for articles or fetching category structures.
+
+**Structured inputs and outputs** \- Each MCP tool has a defined schema. This reduces errors caused by malformed requests and makes agent behavior more predictable.
+
+**Natural fit for multi-step reasoning** \- AI agents excel at chaining actions such as searching for an article, reading its content, then updating it based on what was found. MCP tools are designed for exactly this kind of sequential, context-aware workflow.
+
+**Standardized auth and context passing** \- MCP handles OAuth and context consistently across services, reducing integration friction when your agent connects to multiple systems.
+
+---
+
+## Use the standard API when you need control
+
+The MCP server exposes a curated subset of Document360's full API surface. There are cases where dropping down to the standard API makes more sense:
+
+**The operation is not exposed via MCP** \- check whether the specific capability you need, a particular filter, a bulk export, or a webhook trigger, is available in the supported MCP tools. If it is not, the standard API is your path.
+
+**You need performance optimizations** \- If your workflow involves batching many requests, streaming large payloads, or aggressively caching responses, the standard API gives you the control levers that MCP abstractions lack.
+
+**You are building non-agentic automation** \- Cron jobs, data pipelines, and webhook handlers do not benefit from tool discovery or agentic reasoning. A direct API call is simpler and more maintainable in these contexts.
+
+**You need precise pagination or retry control** \- The standard API gives you full control over how you walk through large result sets and handle transient errors, which matters for reliability-sensitive automation.
+
+---
+
+## A hybrid approach often works best in practice
+
+For most teams building with AI agents, the ideal architecture is not a binary choice. It is layered:
+
+| Layer | Interface | Purpose |
+| --- | --- | --- |
+| Agent reasoning and acting | MCP | Search, retrieve, create, update, manage workflows, and publish content through natural tool use |
+| Precision operations | Standard API | Batch processing, unsupported operations, performance-critical paths |
+| Background automation | Standard API | Pipelines, cron jobs, webhooks that do not need tool discovery |
+
+Think of it this way: let the agent use MCP for what agents are good at - reasoning about which tool to call, chaining actions across multiple steps, and working with structured documentation content. Reserve direct API calls for deterministic, performance-sensitive, or unsupported operations where explicit control matters.
+
+---
+
+## Practical checklist before choosing
+
+Before deciding which interface to use for a given operation, work through these questions:
+
+1. Is the operation available as an MCP tool? Check the tools listed in the [Supported tools](/en/docs/supported-mcp-tools) article. If yes, prefer MCP.
+2. Does the agent need to reason about which action to take? If the agent decides dynamically what to do next based on context, MCP fits naturally.
+3. Do you need to process large volumes or control request-level behavior? If yes, use the standard API.
+4. Is this part of a non-agentic automation (pipeline, scheduler, webhook)? If yes, use the standard API directly — there is no benefit to tool discovery here.
+5. Are you connecting multiple services? MCP's standardized auth model reduces friction when your agent talks to Document360 alongside other MCP-enabled tools.
+
+---
+
+## How this looks in a real workflow
+
+Consider a support engineer using an AI agent to identify and fill documentation gaps from incoming tickets.
+
+The agent would:
+
+1. Use `document360-mcp-search` to check whether relevant documentation already exists
+2. Use `document360-mcp-get-article` to retrieve and read the closest matching article
+3. Use `document360-mcp-create-article` to draft a new article if a gap is found
+4. Use `document360-mcp-set-workflow-status` to move the article to review and assign the appropriate team member
+5. Use `document360-mcp-publish-article` to publish the article once it has been reviewed and approved
+
+All five steps happen through MCP. The agent reasons about what to do next at each stage, and the tool schemas guide the interaction.
+
+If that same team also runs a nightly pipeline to export all articles for an external audit system, that pipeline would call the standard API directly. It does not need tool discovery; it just needs reliable, paginated access to article content on a schedule.
+
+---
+
+## As MCP coverage grows
+
+MCP servers are evolving. Document360's current implementation covers the most common documentation operations for AI agents - search, retrieval, content management, workflow management, and publishing. Over time, more of the API surface is likely to be exposed through MCP, further shifting the balance toward MCP for most agentic use cases.
+
+For now, the practical rule is to start with MCP, fall back to the standard API for gaps, and design your system so switching between the two is straightforward.
+
+<Image src="https://cdn.document360.io/860f9f88-412e-4570-8222-d5bf2f4b7dd1/Images/Documentation/image%28122%29.png" alt="" />
+
+---
+
+## FAQ
+
+<Expandable title="Can an AI agent switch between MCP and the standard API within the same workflow?">
+  Yes. A single workflow can use MCP for the reasoning and acting steps, and for searching, reading, and writing, while calling the standard API directly for operations outside MCP's scope. The two interfaces are not mutually exclusive; they access the same underlying knowledge base.
+</Expandable>
+
+<Expandable title="Does using the standard API bypass Document360's permission and visibility rules?">
+  The two interfaces handle permissions differently. MCP relies on OAuth and includes full user context, so it honors all role-based access controls. The AI agent can only access content that the authenticated user is permitted to see.
+
+  The standard API operates with an API token, which controls the type of operations permitted (read, write, delete) but does not enforce portal-level or content-level role access. It does not carry user context in the same way. Keep this in mind when designing workflows involving sensitive or restricted content: MCP is the more appropriate interface when role-based visibility matters.
+</Expandable>
+
+<Expandable title="Our AI agent doesn't support MCP yet. Should we wait or build with the standard API now?">
+  Build with the standard API now if you have a working use case. MCP support is growing across AI platforms, but there's no reason to delay. Design your integration so that the agent's actions are modular, making it easier to swap in MCP tool calls later without restructuring the whole workflow.
+</Expandable>

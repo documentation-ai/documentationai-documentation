@@ -1,0 +1,107 @@
+---
+title: View file dependencies
+description: Understand file dependencies to prevent broken content, audit your media library, and track usage across articles, customization, and content reuse.
+---
+
+File dependencies show you how many times a file has been used across your knowledge base, including articles, homepage customization, and content reuse tools. Knowing where a file is used helps you make informed decisions before renaming, replacing, or removing it.
+
+---
+
+### Why view file dependencies
+
+- <strong>Prevent broken content:</strong> Before removing or replacing a file, check its dependencies to avoid breaking articles or pages that reference it.
+- <strong>Audit your media library:</strong> Identify files with no dependencies to clean up unused assets from Drive.
+- <strong>Track file usage:</strong> Understand the full scope of where a file appears across articles, homepage customization, and content reuse (variables, snippets, and glossary).
+
+---
+
+### Before you begin
+
+- Dependencies are tracked for all file types, not just images.
+- A file with no dependencies is shown with a <strong>–</strong> in the Dependencies column.
+- Dependencies are tracked across three areas: **Articles**, **KB Customization** (homepage), and **Content Reuse** (variables, snippets, and glossary).
+- Dependencies in archived articles and category pages are not counted.
+
+---
+
+### View file dependencies
+
+There are two ways to view file dependencies:
+
+1. From the drive list view
+2. From the file details panel
+
+#### From the drive list view
+
+1. Navigate to the **Drive** () icon in the Knowledge base portal.
+2. Browse through the folders to locate the intended file.
+3. In the **Dependencies** column, click on the number (e.g., 6) displayed next to the file. This number represents the count of related areas with dependencies.
+
+   - **Files with Dependencies**: If a file has dependencies, the Dependencies field will show the number of dependencies.
+   - **Files without Dependencies**: If a file has no dependencies, the Dependencies field will be indicated by a '-'.
+
+   Be cautious when handling folders, as they may contain files with dependencies. Always review individual file dependencies before making changes to a folder.
+4. Upon clicking the number, the **File dependencies** dialog will appear. This panel provides information about the file's associations in various areas, such as Articles, KB Customization, and Content reuse.
+
+<Image src="https://cdn.document360.io/860f9f88-412e-4570-8222-d5bf2f4b7dd1/Images/Documentation/File%20dependencies%20modal.png" alt="File dependencies modal showing article details and total dependencies for editing." />
+
+---
+
+## Understanding the file dependencies panel
+
+The panel organizes dependencies into three sections:
+
+1. [Articles](https://docs.document360.com/help/docs/view-file-dependencies#articles)
+2. [KB customization](https://docs.document360.com/help/docs/view-file-dependencies#kb-customization)
+3. [Content reuse](https://docs.document360.com/help/docs/view-file-dependencies#content-reuse)
+
+### Articles
+
+Expand any listed article to view:
+
+- Article status
+- Article version
+- The user associated with the article
+- The date
+- An **Open site** (↗) icon to navigate directly to the article
+
+ NOTE
+
+Archived articles and category pages are not listed in the Articles section and are not included in the dependency count. A file used only in archived content shows a dash in the Dependencies column, as though it is unused. The dependencies are preserved and reappear when the content is unarchived.
+
+### KB customization
+
+Lists any homepage where the file is used.
+
+### Content reuse
+
+Expand any content reuse tool to view the snippet name and the language it is used in. Content reuse covers variables, snippets, and glossary entries.
+
+ NOTE
+
+Any file used in articles, homepage customization, or content reuse tools (variables, snippets, glossary) is listed under file dependencies in Drive.
+
+---
+
+### Filter files by dependencies
+
+Use the filter to quickly identify files with or without dependencies across your Drive.
+
+1. Click the **Filter** () in the top right corner.
+2. Expand the **Dependencies** tab and choose the necessary option (All, Yes or No) to filter the files based on filtering options.
+3. Click **Apply** to view your desired results.<br /> This will help to keep the drive free from outdated images or files with no dependencies.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777780060-bnl3q0o2zhq-image-1735730861622.png?fm=auto&auto=compress%2Cformat" alt="Image showing dependencies filter in drive" />
+
+ CAUTION
+
+Files used only in archived articles or category pages are returned by the **No** dependency filter, because archived content is not counted. Deleting them removes the file from archived content that still references it, and the result is only visible once that content is unarchived. Check the Archive page before deleting files identified through this filter.
+
+---
+
+### Best practices
+
+- <strong>Always check dependencies before removing a file:</strong> A file showing a dependency count is actively used. Removing it will break any article or page that references it. Archived content is not counted, so check the Archive page as well if your project uses archiving.
+- <strong>Use the "Without dependencies" filter regularly:</strong> Periodically filtering for files with no dependencies helps you identify and clean up unused assets, keeping Drive lean and manageable. Files used only in archived content also appear in this list, so confirm before deleting.
+- <strong>Review folder-level dependencies carefully:</strong> Folders do not show a combined dependency count. Always review individual file dependencies before making bulk changes to a folder's contents.
+- <strong>Navigate directly from dependencies:</strong> Use the **Open site** icon in the Articles section to jump straight to the article and verify how the file is being used in context before making changes.

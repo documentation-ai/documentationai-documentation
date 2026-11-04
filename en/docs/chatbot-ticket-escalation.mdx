@@ -1,0 +1,213 @@
+---
+title: Ticket escalation
+description: Eddy AI Chatbot's ticket escalation feature allows users to raise support tickets seamlessly, ensuring human assistance when needed. Connect Zendesk or Freshdesk now!
+---
+
+Ticket escalation in Eddy AI Chatbot lets users raise support tickets directly from the chatbot interface when the chatbot cannot assist them. When you connect Zendesk, Freshdesk, or email-based ticket creation, users can raise a ticket from the chatbot after a set number of chatbot responses. The ticket is pre-filled with the chat transcript, an AI-generated subject line, and an AI-generated issue description that the user can edit before submitting.
+
+---
+
+## When to use ticket escalation
+
+- Use this when you want to give users a fallback option within the chatbot, so they do not need to leave the chat to contact support.
+- Use this when users frequently encounter questions the chatbot cannot answer, and you want those interactions to generate actionable support tickets automatically.
+- Use this to capture structured ticket data from chatbot conversations, including the full transcript, so agents have complete context when they pick up the ticket.
+
+---
+
+## Before you begin
+
+- You must have [created an Eddy AI Chatbot](/en/docs/create-chatbot) with at least one source connected.
+- Have the details ready for the option you plan to connect:
+
+  - <strong>Zendesk:</strong> Your Zendesk subdomain, and a Zendesk admin to approve the connection.
+  - <strong>Freshdesk:</strong> API Token and Subdomain URL.
+  - <strong>Email-based ticket creation:</strong> The email subject prefix, the individual or group email addresses to send ticket notifications to (To), and any additional addresses to copy (CC).
+- You can connect only one ticket escalation option at a time.
+
+---
+
+## Configure ticket escalation
+
+1. Navigate to **AI Chatbot** (<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777302035-k7orlbicyb-Frame-201707479697.png?fm=auto&auto=compress%2Cformat" alt="Frame image" />) in the left navigation bar and click **Customize**.
+2. In the **General** tab, select **Ticket Escalation** ().
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777314902-frj8r544dqv-ticket-escalation.png?fm=auto&auto=compress%2Cformat" alt="Ticket escalation tab showing Zendesk, Freshdesk, and Email-based ticket creation options." />
+
+3. Click **Connect** next to the option you want to use: **Zendesk**, **Freshdesk**, or **Email-based ticket creation**.
+
+ NOTE
+
+Only one ticket escalation option can be connected at a time.
+
+4. Enter your connection details:
+
+   <strong>For Zendesk:</strong>
+
+   The **Connect Zendesk** dialog opens.
+
+   - In the **Zendesk subdomain** field, enter your Zendesk subdomain. For example, for `acme.zendesk.com`, enter `acme`.
+   - Click **Connect**. A Zendesk window opens.
+   - Sign in to Zendesk as an admin and approve access.
+
+   Ticket escalation is saved as soon as the account is connected.
+
+   <Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777308442-q2i48c5pwno-zendesk-chatbot-connect.png?fm=auto&auto=compress%2Cformat" alt="Connect Zendesk dialog showing the Zendesk subdomain field and the Connect button." />
+
+    NOTE
+
+   - Zendesk no longer allows new API tokens to be created, and existing tokens stop working after April 30, 2027. Document360 connects to Zendesk with your Zendesk account instead.
+   - Only a Zendesk admin can approve the connection.
+   - All chatbots in the project use the same Zendesk connection for ticket escalation.
+   - If your browser blocks the Zendesk window, Document360 shows a link to open Zendesk instead. Approve access there, then return to Document360.
+
+   <strong>For Freshdesk:</strong>
+
+   The **Connect Freshdesk** dialog opens. Enter the following details:
+
+   - <strong>API Token:</strong> Your Freshdesk API token for authentication.
+   - <strong>Subdomain URL:</strong> Your Freshdesk subdomain.
+
+   <Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777312690-x8rs0cfwpek-freshdesk-chatbot.png?fm=auto&auto=compress%2Cformat" alt="Freshdesk connection form for ticket escalation showing API token and subdomain fields." />
+
+   Click **Validate**.
+
+   <strong>For Email-based ticket creation:</strong>
+
+   The **Custom email integration** dialog opens. Enter the following details:
+
+   - **Email subject prefix** (required): The text added to the start of each notification email subject, for example "New chatbot support request received". Eddy AI adds the rest of the subject based on the chat conversation.
+   - **Send notification email to** (required): The individual or group email addresses that receive the ticket notification. These addresses are added to the **To** field of the email.
+   - **Additional individual or group email addresses** (optional): Any other individual or group email addresses that should receive a copy of the notification. These addresses are added to the **CC** field of the email.
+
+   <Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777300271-yetnb6wpspq-chatbot-custom-email.png?fm=auto&auto=compress%2Cformat" alt="Custom email integration dialog showing email subject prefix and notification email fields." />
+
+   Click **Connect**.
+
+   Once connected, the card under **Ticketing integrations** shows a check mark ( ). To change the connection details later, click **Edit** () on the card.
+5. In the **Ticket trigger** section, select a number from the dropdown. The <strong>Raise a ticket?</strong> option appears on chatbot answers from that response onward.
+
+   <Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777306347-knuzzxvh92d-ticket-trigger.png?fm=auto&auto=compress%2Cformat" alt="Ticket trigger section showing the Display Raise ticket from conversation responses dropdown." />
+6. Once connected, users can raise a ticket when any of the following occur:
+
+   - The user reaches the number of responses set in **Ticket trigger**, and selects <strong>Raise a ticket?</strong> on an answer.
+   - A user asks to raise a ticket, and the chatbot has no answer for their question in its sources.
+
+ NOTE
+
+ NOTE
+
+The chatbot always tries to answer first. If a user asks to raise a ticket but the chatbot finds a relevant answer in its sources, it shows the answer instead of opening the **Create ticket** dialog. The dialog opens only when no answer is available.
+
+7. When a ticket is triggered, the ticket form is pre-filled with:
+
+   - The full chat transcript.
+   - An AI-generated subject line.
+   - An AI-generated issue description (editable by the user before submission).
+8. Once the user submits the ticket:
+
+   - <strong>Zendesk or Freshdesk:</strong> The chatbot confirms ticket creation in the chat with the ticket ID.
+   - <strong>Email-based ticket creation:</strong> The chatbot confirms that the request was sent, and the user receives the ticket details by email.
+
+---
+
+## User experience of ticket escalation
+
+### From a chatbot answer
+
+When a user hovers over a chatbot answer, the following options appear:
+
+- <strong>Copy:</strong> Copies the answer.
+- <strong>Like:</strong> Marks the answer as helpful.
+- <strong>Dislike:</strong> Opens a popup where the user can leave a comment and choose to be notified.
+
+Once the user reaches the number of responses set in **Ticket trigger**, a <strong>Raise a ticket?</strong> option also appears on that answer and every answer after it. Selecting it opens the **Create ticket** dialog, even if the chatbot has answered the question.
+
+On the latest answer, these options stay visible. On earlier answers, they appear on hover.
+
+For example, if **Ticket trigger** is set to 4:
+
+- Answers 1 to 3 show **Copy**, **Like**, and **Dislike** on hover.
+- From answer 4 onward, <strong>Raise a ticket?</strong> also appears.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777318036-ajrm7nyr39u-chatbot-raise-aticket.png?fm=auto&auto=compress%2Cformat" alt="Eddy AI Chatbot answer showing copy, like, and dislike icons and the Raise a ticket? option." />
+
+### Submit a ticket
+
+1. Click <strong>Raise a ticket?</strong>.
+2. In the **Create ticket** dialog, enter an email address in the **Enter email id** field. This field is required; the ticket cannot be submitted without it.
+3. Review the issue description. Eddy AI automatically generates it based on the issue discussed in the chat. Edit it if needed. The description has a 250-character limit.
+4. Click **Submit**.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777318499-f5o9w2fthho-ticket-escalation-draft-ticket.png?fm=auto&auto=compress%2Cformat" alt="User creates a ticket requesting clarification on chatbot ticket escalation process." />
+
+Once the user submits the ticket, the chatbot confirms it in the chat.
+
+- <strong>Zendesk or Freshdesk:</strong> The confirmation includes the generated ticket ID.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777319879-9kbhr5o0n7e-ticket-escalation-response.png?fm=auto&auto=compress%2Cformat" alt="Chatbot interaction showing ticket creation and escalation process for user inquiries." />
+
+- <strong>Email-based ticket creation:</strong> The chatbot displays "Your request has been sent successfully. You'll receive the ticket details via email shortly." The ticket details are sent to the email address the user entered.
+
+---
+
+## Agent view of an escalated ticket
+
+Once a user raises a ticket from the chatbot, it appears in Zendesk or Freshdesk as a standard ticket, created via API.
+
+To view an escalated ticket,
+
+1. Log in to the Zendesk or Freshdesk agent dashboard.
+2. Search for the ticket ID shown in the chatbot's confirmation message, or locate it in the **Unassigned tickets** or **New** view.
+3. Open the ticket to review its details.
+
+The ticket includes the following fields populated from the chatbot conversation:
+
+| Field | Source |
+| --- | --- |
+| Subject | AI-generated subject line summarizing the user's question |
+| Description | AI-generated (and user-edited, if changed) issue description entered in the chatbot's Create ticket dialog |
+| Requester | The email address the user entered in the chatbot's Create ticket dialog |
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777320844-mmh2eh16ixa-Chatbot-ticket-zendesk-1.png?fm=auto&auto=compress%2Cformat" alt="Zendesk ticket detail view showing Subject, Requester, and Description" />
+
+If you use email-based ticket creation, the ticket details are sent as a notification email to the addresses you added in the **Custom email integration** dialog.
+
+---
+
+## Ticket escalation walkthrough
+
+Watch the video below to see how ticket escalation works in Eddy AI Chatbot, from the user's request to the agent's view in the ticketing platform.
+
+<Callout kind="alert" title="Needs review">
+  **Needs review**: embed host "unknown" not allowlisted
+
+  ```
+  <iframe />
+  ```
+</Callout>
+
+---
+
+## Suggest a ticketing integration
+
+If you use a ticketing platform that is not listed, you can submit a suggestion to have it added:
+
+1. Click **Suggest more ticketing integrations**.
+2. Select from the available options:
+
+   - Jira
+   - Intercom
+   - GitHub
+   - HubSpot
+   - Others (enter the platform name and the purpose of integration)
+3. Submit your suggestion to help us add more integrations.
+
+---
+
+## Best practices
+
+- <strong>Connect ticket escalation before going live:</strong> Setting up ticket escalation at launch ensures users always have a path to human support from day one.
+- <strong>Test the escalation flow in the Playground:</strong> Send as many messages as your **Ticket trigger** value and verify that the <strong>Raise a ticket?</strong> option appears on the answer.
+- <strong>Use Zendesk or Freshdesk as both a source and an escalation target:</strong> If you connect Zendesk or Freshdesk as a training source (via the Source tab), the chatbot learns from past tickets. Connecting it for escalation routes new unresolved queries back to your support team, closing the loop.
+- <strong>Review escalated tickets to improve the chatbot:</strong> Analyze escalated tickets regularly to identify common questions the chatbot could not answer. Add that content as a Text, FAQ, or File source to reduce future escalations.

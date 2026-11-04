@@ -1,0 +1,109 @@
+---
+title: Videos
+description: Learn to add videos to Document360 articles. Enhance tutorials and guides with easy video insertion methods using URLs, embed codes, and files.
+---
+
+Videos help you explain steps, walkthroughs, and complex concepts more clearly than text alone, and they keep readers engaged longer while working through an article. In Document360, you can add videos directly to an article or category page using the **Insert video** () and **Insert file** () options in the toolbar. You can add a video from a hosting platform such as YouTube, Wistia, or Vimeo, or upload one from Drive. This article covers how to insert a video in the Markdown editor and the Advanced WYSIWYG editor, and how to resolve a common Vimeo embed issue.
+
+---
+
+## Insert video in Editor article
+
+1. Navigate to the desired article in the Advanced WYSIWYG editor.
+2. Use the **Slash** command `/video` and select **Video**. The **Insert video** panel appears with the following options:
+
+   - **Embed URL**:
+
+     - **Enter video URL**: Paste a self-hosted video URL from a platform such as Wistia, YouTube, or Vimeo, then update the pixel height and width in the editor.
+     - **Enter embed URL**: Paste the URL available on the video hosting platform.
+   - **Embed code**: Paste the embed code snippet provided by platforms such as Wistia, YouTube, or Vimeo.
+   - **Drive**: Choose a video already stored in Drive.
+3. Once the video uploads, a preview appears in the editor.
+
+<Image src="https://cdn.document360.io/860f9f88-412e-4570-8222-d5bf2f4b7dd1/Images/Documentation/video%282%29.png" alt="" />
+
+The video is now added to the article.
+
+---
+
+## Insert video Markdown editor
+
+You can insert a video in the Markdown editor in two ways: by pasting a video URL, or by selecting a video already available in Drive.
+
+**Insert a video by URL**
+
+1. Navigate to the desired article in the Markdown editor.
+2. Select the **Insert video** () icon in the toolbar. The **Insert video** panel appears.
+3. Paste the video URL (YouTube, Wistia, or Vimeo) in the first text field.
+4. Enter an alternative text for the video in the **Alt Text** field.
+5. Select **OK**.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778089598-o5cw2b6mnh-insert-20video-20md.png?fm=auto&auto=compress%2Cformat" alt="Inserting a video in the Markdown editor by pasting a video URL" />
+
+**Insert a video from Drive**
+
+1. Navigate to the desired article in the Markdown editor.
+2. Select the **Insert file** () icon in the toolbar.
+3. Select the desired video from Drive and select **Insert**.
+4. Update the pixel height and width as needed.
+
+---
+
+## Best practices
+
+- Use the **Insert URL**/**Embed URL** option for hosted videos (YouTube, Wistia, Vimeo) instead of pasting a full embed snippet with wrapper tags, since Document360 only supports the `<iframe>` tag.
+- Before publishing, test any pasted embed code to confirm slash commands, image editing, and other content blocks still work correctly in the article.
+- Use the link analytics feature to periodically check for broken video links across your articles.
+- Add descriptive alt text whenever you insert a video, for accessibility and search.
+
+---
+
+## Troubleshooting
+
+### Unable to insert a Vimeo video using the embed code
+
+ ERROR
+
+When you insert a Vimeo video, the embed code may not work if it contains unsupported tags such as `<div>` and `<script>`, or additional styling wrappers added by third-party platforms. This can also interfere with editor functionality, so features like slash commands (`/`), image editing options, or content blocks may stop working correctly in the article. Document360 only supports the `<iframe>` tag for embedding videos.
+
+To successfully insert a Vimeo video:
+
+1. **Remove unsupported tags**: Keep only the `<iframe>` tag from the Vimeo embed code.
+2. <strong>Set position to "relative"</strong>: Adjust the position setting so the video is responsive and displays correctly.
+
+<strong>Before (unsupported code):</strong>
+
+```html
+<div style="padding:56.25% 0 0 0;position:relative;">
+  <iframe src="https://player.vimeo.com/video/1053359488?badge=0&autopause=0&player_id=0&app_id=58479"
+  frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+  style="position:absolute;top:0;left:0;width:100%;height:100%;"
+  title="Document360-Microsoft-Customer-Story"></iframe>
+</div>
+<script src="https://player.vimeo.com/api/player.js"></script>
+```
+
+<strong>After (supported code):</strong>
+
+```html
+<iframe src="https://player.vimeo.com/video/1053359488?badge=0&autopause=0&player_id=0&app_id=58479"
+frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+style="position:relative;width:100%;height:100%;"
+title="Document360-Microsoft-Customer-Story"></iframe>
+```
+
+---
+
+## FAQ
+
+<Expandable title="Does Document360 search inside video captions?">
+  No, video captions are not fetched in search results.
+</Expandable>
+
+<Expandable title="Can Document360 detect broken video links in articles?">
+  Yes, Document360 can detect broken video links using the link analytics feature. This validates your project's links, including media files, videos, and images. For more information, read the article on [Link status](https://docs.document360.com/help/docs/links-status).
+</Expandable>
+
+<Expandable title="Is there a way to filter articles that contain embedded videos?">
+  Currently, there is no built-in option to filter articles based on embedded videos. You need to manually check and edit articles to identify and modify embedded video code as required.
+</Expandable>

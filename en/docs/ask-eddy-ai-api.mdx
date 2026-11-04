@@ -1,0 +1,141 @@
+---
+title: Ask Eddy AI API
+description: The Eddy Public API is an invaluable add-on designed to enhance the functionality and flexibility of our Eddy search feature.
+---
+
+The **Eddy AI Public API** lets you embed Eddy AI's assistive search directly into your own platform or service, so users can query your knowledge base without visiting your documentation site. You call the API endpoint with a prompt and receive an AI-generated answer drawn from your knowledge base content. This gives you full control over the search interface — including how it looks, where it appears, and how it behaves within your product. The API is available through the [Document360 API hub](https://apihub.document360.io/index.html).
+
+ NOTE
+
+For a full list of languages supported by Eddy AI, see [Multilingual support for Eddy AI Search Suite](https://docs.document360.com/help/docs/ai-search-suite#multilingual-support-for-eddy-ai-search-suite).
+
+---
+
+## When to use the Eddy AI Public API
+
+- **Embedded search in your product** — surface knowledge base answers inside your application UI, without redirecting users to a separate documentation site.
+- **Custom search interfaces** — build a search experience that matches your brand's color scheme, terminology, and layout.
+- **Automated support workflows** — integrate Eddy AI into chatbots, ticketing systems, or onboarding flows that query your knowledge base programmatically.
+
+---
+
+## Before you begin
+
+- The Eddy AI Public API must be enabled in your project settings (see [How to enable the Public API](/en/docs/ask-eddy-ai-api#how-to-enable-the-public-api) below).
+- You need an API token with the POST method enabled (see [How to create an API token](/en/docs/ask-eddy-ai-api#how-to-create-an-api-token) below).
+- The **AI assistive search** toggle requires at least one delivery checkbox (**Public API** or others) to remain selected — deselecting all checkboxes will automatically turn off the toggle.
+
+---
+
+## Enable the Public API
+
+1. In the Knowledge Base portal, select **Settings** () in the left navigation bar.
+2. In the left navigation pane, go to **AI settings** > **Eddy AI settings**.
+3. Expand the **AI search suite** accordion.
+4. In the **AI assistive search** section, select the **Public API** checkbox.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778072350-y4u6780bv0f-Screenshot-Eddy_ai_public_api.png?fm=auto&auto=compress%2Cformat" alt="Eddy AI settings page showing the AI assistive search section with the Public API checkbox selected." />
+
+ WARNING
+
+If the Public API is not enabled, all API calls will return a `500` (service error) or `400` (API access disabled) response. Ensure the checkbox is selected before making any API calls.
+
+---
+
+## Create an API token
+
+You need an API token to authenticate requests to the Eddy AI Public API.
+
+1. In the Knowledge Base portal, select **Settings** () in the left navigation bar.
+2. In the left navigation pane, go to **Knowledge base portal** > **API Tokens**.
+3. Click **Create API Token**, enter a token name, and set the method to **POST**.
+4. Click **Create**, then copy the generated API token and store it securely.
+
+---
+
+## Test the API
+
+You can test the Eddy AI Public API in two ways — through the Document360 API documentation or through the Swagger API hub.
+
+### Test via API documentation
+
+1. Go to the [Document360 API documentation](https://apidocs.document360.com/apidocs/perform-ai-assistive-search-ask-eddy-within-project-version).
+2. On the right side of the page, select the **Try it** section.
+3. In the **Token** field, enter your API token.
+4. Fill in the **Body** fields:
+
+| Field | Description |
+| --- | --- |
+| **Prompt** | The question or query to send to Eddy AI |
+| **Version ID** | The ID of your knowledge base project version |
+| **Language code** | The language code for the query (e.g. `en`) |
+
+5. Click **Try it & see response**. The AI-generated response appears below.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778072626-xzxkskr99s8-5_Screenshot-Ask_Eddy_in_API_Documentation.png?fm=auto&auto=compress%2Cformat" alt="Document360 API documentation showing the Try it section with Token, Prompt, Version ID, and Language code fields filled in." />
+
+### Test via Swagger
+
+1. Go to the [Swagger API hub](https://apihub.document360.io/index.html). The Ask Eddy AI API is listed under **Project versions**.
+2. In the top-right corner, click **Authorize**.
+3. In the **Available authorizations** panel, paste your API token and click **Authorize**.
+4. Navigate to **Project versions** > `/v2/ProjectVersions/ask-Eddy AI` and click **Try it out**.
+
+   The default request box appears with the following fields to complete:
+
+| Field | Description |
+| --- | --- |
+| **Prompt** | The question or query to send to Eddy AI |
+| **Version ID** | Retrieve this from the `/v2/ProjectVersions` endpoint |
+| **Language code** | The language code for the query |
+
+To retrieve your Version ID, call the `/v2/ProjectVersions` endpoint first:
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778074229-wxqbxcc9gjo-6_Screenshot-Updating_Getting_Project_version.png?fm=auto&auto=compress%2Cformat" alt="Swagger API hub showing the /v2/ProjectVersions endpoint response with the version ID highlighted." />
+
+5. Click **Execute**. A successful response contains the AI-generated answer and source article details.
+
+<Image src="https://cdn.document360.io/860f9f88-412e-4570-8222-d5bf2f4b7dd1/Images/Documentation/4_ScreenGIF-Using_Eddy_API_Token_in_Swagger.gif" alt="Screen recording of the Swagger API hub — authorizing with an API token and executing the Ask Eddy AI endpoint." />
+
+ NOTE
+
+If you receive a "service unavailable" error in Swagger, verify that the **Public API** checkbox is selected in **Settings** > **AI<br /> settings** > **Eddy AI settings** > **AI search suite**.
+
+---
+
+## Best practices
+
+- **Store API tokens securely** — treat your API token as a secret. Do not expose it in client-side code or public repositories. Rotate it if it is compromised.
+- **Use the correct ID type for your content** — standard articles use `articleID`, but Pagecategory articles require `categoryID`. Using the wrong ID returns null fields in the response. See the [FAQ](/en/docs/ask-eddy-ai-api#faq) for details.
+- **Specify the language code explicitly** — always pass the correct language code in the request body to ensure Eddy AI searches the right language version of your knowledge base.
+- **Handle error responses** — implement error handling for `400` (API access disabled) and `500` (service error) responses. Both typically indicate the Public API checkbox is not enabled.
+
+---
+
+## FAQ
+
+<Expandable title="Why do source article fields return null in the API response?">
+  This happens when you query a **Pagecategory** article using an `articleID`. For Page category content, the `article_id`, `article_title`, and `article_slug` fields return `null` because the content is category-level, not article-level. Use the `categoryID` instead to retrieve the correct details. A Page category API response looks like this:
+
+  ```plaintext
+  {
+    "category_id": "_categoryid",
+    "category_title": "Title",
+    "category_slug": "slug",
+    "version_name": "v1",
+    "version_slug": "v1",
+    "article_id": null,
+    "article_title": null,
+    "article_slug": null,
+    "version_display_name": null
+  }
+  ```
+</Expandable>
+
+<Expandable title="Why am I receiving a 400 or 500 error when calling the API?">
+  A `400` (API access disabled) or `500` (service error) response means the Public API is not enabled in your project. Go to **Settings** > **AI settings** > **Eddy AI settings** > **AI search suite** and confirm the **Public API** checkbox is selected.
+</Expandable>
+
+<Expandable title="Can the Documentation be integrated with a third-party tool or Chatbot?">
+  Yes, you can use the Ask Eddy AI endpoint to retrieve answers from the documentation and provide responses through the third-party tool or chatbot. 
+</Expandable>

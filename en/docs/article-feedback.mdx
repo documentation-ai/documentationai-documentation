@@ -1,0 +1,85 @@
+---
+title: Article feedback
+description: Manage reader feedback effectively with Document360's Article Feedback Manager, ensuring accurate content and improved reader satisfaction.
+---
+
+The **Article feedback** manager in Document360 is a tool that helps you track, evaluate, and respond to reader feedback on articles and categories in your knowledge base. It gives your team a single place to view, assign, and act on reader input, making it easier to maintain accurate and relevant content.
+
+The Article feedback manager has two tabs:
+
+- <strong>Feedback:</strong> Collects feedback specific to articles or categories in your knowledge base.
+- <strong>Unanswered queries:</strong> Captures feedback when readers find no results for their search queries.
+
+Both tabs share similar features, including filtering, assigning feedback, setting feedback status, and exporting feedback data for further analysis. You can also manage feedback from the **Feedback** tab in the tools your team already uses, such as ticketing or project management systems, through the API.
+
+---
+
+## When to use article feedback
+
+Use the Article feedback manager when you need to:
+
+- Monitor reader satisfaction on specific articles or categories.
+- Identify content that is unclear, inaccurate, or missing key information.
+- Assign feedback items to the right team members for follow-up.
+- Track the resolution progress of reader concerns over time.
+- Export feedback data for offline review or reporting.
+- Sync feedback with a ticketing or project management system through the API.
+
+---
+
+## Before you begin
+
+Ensure that the feedback feature is enabled for your knowledge base site. Readers cannot submit feedback unless the feature is turned on in your project settings.
+
+---
+
+## Access the article feedback manager
+
+1. Navigate to **Feedback manager** () in the left navigation bar on the Knowledge base portal.
+2. Click **Articles**.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777312230-2d9ndocumhc-eddy-unanswered-query.png?fm=auto&auto=compress%2Cformat" alt="Document360 Knowledge base portal showing the Feedback manager navigation and Articles option." />
+
+The Article feedback manager opens and displays the **Feedback** tab by default.
+
+---
+
+## Best practices
+
+- Review the Feedback tab regularly, at least weekly, to stay on top of actionable items for high-traffic articles.
+- Enable notification mapping so the right team members are alerted when new feedback is submitted.
+- Use the filter options to focus on **Dislike** feedback first, as these typically indicate content that needs improvement.
+- Keep the **Discussions & history** field updated with notes on actions taken, so all team members have context.
+- Export feedback data periodically to maintain records beyond the 90-day in-app window.
+
+---
+
+## FAQ
+
+<Expandable title="What is the Article feedback manager in Document360?">
+  The Article feedback manager is a tool in the Knowledge base portal that lets your team view, assign, track, and respond to reader feedback on articles and categories. It has two tabs: **Feedback** (for article-level likes, dislikes, and comments) and **Unanswered queries** (for search queries that returned no results).
+</Expandable>
+
+<Expandable title="Can I export the data from the Feedback manager?">
+  Yes. You can export feedback data from the Feedback manager for a maximum of 90 days at a time using the **Export CSV** () option.
+</Expandable>
+
+<Expandable title="Can I manage article feedback through the API?">
+  Yes. Use the Document360 API (v3) to list feedback from the **Feedback** tab, view its internal discussion, and update its status or assignee, or close it, from a ticketing or project management system. This covers feedback on both articles and page categories. Feedback from the **Unanswered queries** tab isn't available through the API. For more information, see [Manage article feedback](https://docs.document360.com/help/docs/manage-article-feedback).
+</Expandable>
+
+<Expandable title="Why did I receive an email notification but cannot find the feedback in the Feedback manager?">
+  If a reader withdraws their feedback (for example, by undoing a Like or Dislike) before your team has taken any action on it, the feedback is automatically removed from the Feedback manager. Email notifications are sent when feedback is first submitted, but the feedback may not remain available if the reader later withdraws it. If the feedback has already been addressed (assigned, given a status change, or a note added), withdrawing the like and dislike doesn't remove it from the feedback manager. Instead, Document360 logs the withdrawal in the particular feedback's Discussions & history field with a timestamp, and if the action was being undone, the item's status gets updated to closed automatically.
+</Expandable>
+
+<Expandable title="Is it possible to localize or customize the text in the feedback form for articles in the knowledge base site?">
+  Yes. You can customize and translate the text displayed in the feedback form on the **Feedback form** page. To update this text:
+
+  1. Navigate to **Settings** () in the left navigation bar in the Knowledge base portal.
+  2. In the left navigation pane, navigate to **Knowledge base site** > **Feedback form** ().
+  3. From the language dropdown, select the language you want to update.
+  4. Edit the fields you want to change, such as the form heading, the dislike reasons, *Notify me about updates*, and *Submit*. The preview updates as you type.
+  5. Click **Save**.
+
+  You can also rename and reorder the dislike reasons on the same page. For more information, see [Configuring feedback form](https://docs.document360.com/help/docs/configuring-feedback-form).
+</Expandable>

@@ -1,0 +1,151 @@
+---
+title: AI tag recommender
+description: The AI tag recommender features Artificial Intelligence to suggest relevant tags for your article or category page, improving categorization and searchability.
+metaTitle: AI tag recommender - Find the right tags for your articles
+---
+
+The **AI tag recommender** (powered by Eddy AI) automatically analyses your article or category page content and suggests the most relevant tags. Instead of manually brainstorming tags for every article, your team gets instant, consistent suggestions, saving time and improving knowledge base discoverability. You write the content; Eddy AI handles the tagging.
+
+---
+
+## When to use the AI tag recommender
+
+- **Knowledge base managers** overseeing large content libraries where tag consistency is hard to maintain manually.
+- **Technical writers** publishing multiple articles per week who need fast, accurate tagging without stopping to consult a tag taxonomy.
+- **Support teams** who need quick categorisation so readers can find troubleshooting content without browsing.
+- **New team members** unfamiliar with your existing tag structure who might otherwise introduce inconsistent tags from day one.
+
+---
+
+## Why tagging matters
+
+Tags directly impact how users and search engines find your content. Well-tagged articles:
+
+- Surface in relevant searches faster
+- Group related content automatically
+- Reduce duplicate article creation
+- Help both internal teams and external readers navigate large knowledge bases
+
+Without a consistent tagging strategy, even the best-written articles can go undiscovered.
+
+---
+
+## Before you begin
+
+- The **preprocessed word count** of the article must exceed **50 words**. See [What preprocessing means](/en/docs/ai-article-summarizer#what-is-a-preprocessed-word-count) for details.
+- You must have the **relevant access permissions** to generate tags. See [Who can generate tags](/en/docs/ai-tag-recommender#faq) in the FAQ for the required permission combinations.
+
+ NOTE
+
+For languages supported by Eddy AI, see [Multilingual support for Eddy AI Writer Suite](https://docs.document360.com/help/docs/ai-writer-suite#multilingual-support-for-eddy-ai-writer-suite).
+
+---
+
+## Get AI tag recommendations for an article
+
+1. Open the desired article in the Knowledge Base portal.
+2. Click the **More** (⋯) icon in the article header.
+3. Select **Tags** to open the **Article settings** page.
+4. Click **Ask Eddy AI**.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777625364-a3u1zctc52w-Screenshot-AI_tag_recommender.png?fm=auto&auto=compress%2Cformat" alt="Article settings page showing the Tags section with the Ask Eddy AI button highlighted in the Eddy AI recommends section." />
+
+AI-suggested tags based on the article content appear in the **Eddy AI recommends** section.
+
+ NOTE
+
+To use the AI tag recommender, your article must have a word count of at least **50 words**.
+
+5. Click the tags you want to apply, then click **Save**.
+6. To regenerate a new set of recommendations, reopen the article settings and click **Ask Eddy AI** again.
+
+ NOTE
+
+Tag recommendations are also available while publishing. In the Publish confirmation dialog, select **Tags** from the panel list on the left and click **Generate** to have Eddy AI recommend tags based on the article content — without opening article settings separately.
+
+---
+
+## What preprocessing means
+
+Preprocessing filters out specific elements before counting words for the tag generation threshold. The following are excluded from the word count:
+
+- HTML tags
+- Images
+- URLs and links
+- Code blocks
+
+For example, if your article shows 80 words at the bottom of the Document360 editor, this number includes HTML tags, links, and code blocks. After preprocessing, the actual word count may be lower. Ensure the preprocessed content exceeds **50 words** for tag generation to work.
+
+---
+
+## Best practices
+
+- **Create a tagging governance document first** — before relying on AI suggestions, define your tag categories (for example, by topic, product, or user role). This gives Eddy AI better article context and ensures suggestions align with your existing taxonomy.
+- **Use 3–5 tags per article** — more than 5 tags dilutes discoverability; fewer than 3 may miss key categories. AI recommendations are a starting point — always review and trim where needed.
+- **Prefer specific tags over broad ones** — if Eddy AI suggests "Update", consider whether "Security update" or "Feature release" is more accurate for your content. AI suggestions are strong signals, not final decisions.
+- **Schedule quarterly tag audits** — as your product evolves, some tags become outdated. Periodically re-run Eddy AI on older articles to check whether new, more relevant tags should replace existing ones.
+- **Always review suggestions manually** — the AI tag recommender is a productivity tool, not a replacement for editorial judgement. Review suggestions in the context of your knowledge base's overall structure before saving.
+
+---
+
+## Real-world scenarios
+
+### New team member tagging for the first time
+
+<strong>Situation:</strong> A new technical writer has just published their first three articles but is not familiar with your existing tag taxonomy. They are unsure whether to use "&#123;&#123; glossary.API&#125;&#125; Integration" or "Integration Guide" as a tag.
+
+<strong>How the AI tag recommender helps:</strong> Eddy AI analyses the article content and recommends tags based on what is already in the knowledge base. The writer gets consistent suggestions without needing to memorise your tag library, reducing inconsistencies from day one.
+
+### Bulk content update sprint
+
+<strong>Situation:</strong> Your team has just updated 30 product articles after a major release. Each article needs its tags reviewed and refreshed to reflect new features.
+
+<strong>How the AI tag recommender helps:</strong> While the tool currently generates tags one article at a time, the workflow is fast: open article → Ask Eddy AI → select → save. Team members can move through articles efficiently without spending time debating which tags apply.
+
+### Publishing under deadline
+
+<strong>Situation:</strong> A support manager needs to publish a critical troubleshooting article urgently and does not have time to open article settings separately.
+
+<strong>How the AI tag recommender helps:</strong> Tags can be generated and applied directly inside the Publish confirmation prompt. The article gets tagged correctly without breaking the publishing flow.
+
+### Maintaining a large, multi-author knowledge base
+
+<strong>Situation:</strong> A 500-article knowledge base managed by six different writers has developed inconsistent tagging over time. Some articles use "Onboarding", others use "Getting Started", and some are untagged entirely.
+
+<strong>How the AI tag recommender helps:</strong> As writers revisit and update articles, they can run Eddy AI on each one to get standardised tag suggestions. Over time, this normalises the tag structure across the knowledge base without requiring a dedicated audit project.
+
+### Tagging short or technical articles
+
+<strong>Situation:</strong> A developer has written a 90-word API reference article. When they try to generate tags, nothing appears.
+
+<strong>Why this happens:</strong> Articles must have at least 50 post-preprocessing words. Short articles, or articles with heavy code blocks and URLs, may fall below the threshold after preprocessing removes those elements.
+
+<strong>Solution:</strong> Expand the article with contextual explanations, use-case descriptions, or parameter details to meet the minimum word count before generating tags.
+
+---
+
+## FAQ
+
+<Expandable title="Who can generate tags?">
+  users with the following permission combinations can generate tags:
+
+  - Update article settings + Manage Tags
+  - Publish article + Manage Tags
+  - Update article settings + Publish article + Manage Tags
+</Expandable>
+
+<Expandable title="Can I generate tags for multiple articles at once?">
+  No. Currently, tags can only be generated one article at a time.
+</Expandable>
+
+<Expandable title="Does the AI tag recommender consume Eddy AI credits?">
+  No. The AI tag recommender does not consume any Eddy AI credits. It currently offers unlimited usage without any credit limitations.
+</Expandable>
+
+<Expandable title="Can I still add tags manually?">
+  Yes. You can add tags manually at any time, regardless of whether you use AI recommendations.
+</Expandable>
+
+<Expandable title="Can I turn off tag recommendations?">
+  No. Tag recommendations cannot be turned off.
+</Expandable>

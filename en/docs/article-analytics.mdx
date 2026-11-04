@@ -1,0 +1,107 @@
+---
+title: Article analytics
+description: Learn how to use Document360's article analytics to monitor reads, views, likes, dislikes, and link status for individual articles with detailed insights.
+metaTitle: "Document360 Article Analytics: Track Reads, Views, and More"
+---
+
+Article analytics in Document360 shows how an individual article is performing, based on reads, views, likes, dislikes, following, and link status. Unlike the project-level **Analytics** (), which gives an overview of your entire knowledge base, article analytics focuses on a single article at a time. Use these metrics to see which articles engage readers and which links need fixing, then prioritize content updates accordingly.
+
+---
+
+## Why use article analytics
+
+Use article analytics when you want to:
+
+- Find articles with low reads or a high number of dislikes that may need revision.
+- Catch broken or outdated links in an article before readers report them.
+- See how many readers follow an article, to gauge ongoing interest in the topic.
+- Decide which articles to prioritize during a content review or revamp.
+
+---
+
+## Before you begin
+
+- Access to article analytics depends on your content role. **Admins**, **Owners**, and **Contributors** with an **Editor** or **Draft writer** content role can access Analytics.
+- An admin can restrict this by creating a custom content role without the Analytics permission.
+- If you cannot access article analytics, contact your project administrator to check [your role and permissions.](/docs/roles)
+
+---
+
+## Access the analytics panel
+
+1. In the editor, click **More** () in the article header.
+2. Select **Analytics** from the dropdown menu.<br /> The article analytics panel opens, showing **Views**, **Reads**, **Likes**, **Dislikes**, **Following**, and **Link status**.
+3. Click **Go to analytics** to open the project-level analytics for a broader view of your knowledge base's performance. For a full breakdown of project-level metrics, see [Articles analytics](https://docs.document360.com/docs/articles-analytics).
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777664600-jesqzs3yt5-article-20analytics.png?fm=auto&auto=compress%2Cformat" alt="Article analytics panel showing views, reads, likes, dislikes, following, and link status" />
+
+### Understand the metrics
+
+Each metric gives you a different signal about how readers engage with the article.
+
+| Metric | What it measures |
+| --- | --- |
+| Reads | Reader engagement, based on scrolling, clicking, and time spent on the article. Updates daily and counts once per day per user. |
+| Views | The number of unique clicks per browser, counted once per browser per user. |
+| Likes | The total number of likes, as feedback on content relevance. |
+| Dislikes | The total number of dislikes, to help identify areas for improvement. |
+| Following | The number of readers who follow the article on the knowledge base site. |
+
+ NOTE
+
+- For reads, time spent varies based on user activity, and multiple clicks on the same article in one session count as a single read.
+- All metrics start tracking from the time the article is created.
+
+### Check and fix link status
+
+The **Link status** section shows the total number of links in the article, then breaks them down by status:
+
+| Status | Meaning |
+| --- | --- |
+| Total | The total number of links found in the article. |
+| Working | The link works and points to the intended webpage or file, internal or external. |
+| Broken | The link no longer works, due to a URL change, an incorrect URL, a removed page or item, or a restricted or private knowledge base article URL. Applies to URLs and media files. |
+| Unknown | The link does not return a status. |
+| Ignored | The link is excluded from the current or upcoming validation. |
+
+1. Click **Validate now** to check the link status automatically.
+2. Document360 lists every link in the article, grouped by status. Each entry shows the link type (for example, internal URL, internal file, or external URL) and the full URL.
+3. Identify any link listed under **Broken**, and copy its URL.
+4. Update the link, or set a redirect rule to guide readers to the correct destination.
+
+ NOTE
+
+For more information on redirecting article slug or url, read the article on [Article redirect rule](/en/docs/article-redirect-rules).
+
+---
+
+## Best practices
+
+- Run **Validate now** before publishing major edits, so broken links do not reach readers.
+- Review articles with a high dislike count first when planning revisions, since they signal the biggest gap between reader expectation and content.
+- Compare Reads against Views for a given article. A large gap between the two suggests readers open the article but do not engage with the content.
+- Set a recurring check, for example monthly, on articles with the highest Following counts, since readers are actively tracking them for updates.
+
+---
+
+## FAQ
+
+<Expandable title="How often is the analytics data updated?">
+  Analytics data refreshes in real time, with reads updating daily based on unique user sessions.
+</Expandable>
+
+<Expandable title="Why might my read count differ from views?">
+  Reads factor in engagement activities like scrolling and clicking, while views count unique browser clicks only.
+</Expandable>
+
+<Expandable title="Can I use article analytics to improve content engagement?">
+  Yes. Metrics like Reads, Likes, and Dislikes show which articles resonate most with your audience, so you can decide where to focus revisions.
+</Expandable>
+
+<Expandable title="Can I see who followed an article?">
+  No, you cannot view individual readers who follow an article. You can see the total follower count in the Following metric of article analytics.
+</Expandable>
+
+<Expandable title="What time period do the analytics figures in the panel cover?">
+  The article analytics panel opened from **More** > **Analytics** in the article editor shows cumulative totals from the time the article was created, kept up to date in real time. It does not have a date-range filter. To view metrics for a specific period, such as last week, last month, or a custom range, click **Go to analytics** to open the project-level Articles analytics page and apply the Date filter.
+</Expandable>

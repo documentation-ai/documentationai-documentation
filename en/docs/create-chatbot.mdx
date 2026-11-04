@@ -1,0 +1,313 @@
+---
+title: Create chatbot
+description: Create an Eddy AI Chatbot to enhance user engagement on your website, utilizing tailored content sources for effective responses and seamless integration.
+---
+
+Creating an Eddy AI Chatbot lets you set up an AI-powered assistant trained on your content, ready to answer user questions on your website or knowledge base. The creation process involves selecting content sources (the material the chatbot uses to generate answers) and then configuring how the chatbot looks and behaves. You can create a chatbot from the **AI Chatbot**(<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777302035-k7orlbicyb-Frame-201707479697.png?fm=auto&auto=compress%2Cformat" alt="Frame image" />) section in the Knowledge Base portal. If you create a new project with the **Eddy AI Chatbot** use case, you land in this section after the project is created.
+
+---
+
+## When to create an Eddy AI Chatbot
+
+- Use this when you are deploying a chatbot for the first time on your website or knowledge base.
+- Use this when you need a separate chatbot for a different brand, product, or website.
+
+---
+
+## Before you begin
+
+- Identify which content sources you want to use (knowledge base, website, files, FAQs, text, Zendesk, or Freshdesk).
+- If you plan to connect Zendesk, have your Zendesk subdomain ready and a Zendesk admin to approve the connection.
+- If you plan to connect Freshdesk, have your API token and subdomain URL ready.
+- Review the [AI Chatbot](/en/docs/ai-chatbot) to understand storage limits and supported sources.
+
+---
+
+## Create the Eddy AI Chatbot
+
+### Create a chatbot from the portal
+
+1. Navigate to **AI Chatbot** (<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777302035-k7orlbicyb-Frame-201707479697.png?fm=auto&auto=compress%2Cformat" alt="Frame image" />) in the left navigation bar of the Knowledge Base portal.
+2. Click **Create Eddy AI Chatbot**.<br /> The portal prompts you to add sources for your chatbot.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777324092-1s2gtymiqfm-create-chatbot.png?fm=auto&auto=compress%2Cformat" alt="Eddy AI Chatbot interface with highlighted options for creating a chatbot easily." />
+
+3. Select one or more source types and follow the steps for each source. See [Adding sources to your chatbot](/en/docs/create-chatbot#adding-sources-to-your-chatbot) below.
+4. Click **Create chatbot** to complete setup.
+
+The chatbot is created and you are taken to the chatbot configuration area.
+
+### Create a chatbot after onboarding
+
+If you select **Eddy AI Chatbot** as your use case when creating a project, you land in the **AI Chatbot** section once the project is created. Follow the steps in [Create a chatbot from the portal](/en/docs/create-chatbot#create-a-chatbot-from-the-portal) to add sources and create your chatbot. For project setup steps, see [Creating a project](https://docs.document360.com/help/docs/creating-a-project).
+
+---
+
+## Adding sources to your chatbot
+
+<Callout kind="alert" title="Needs review">
+  **Needs review**: embed host "unknown" not allowlisted
+
+  ```
+  <iframe />
+  ```
+</Callout>
+
+### Knowledge base
+
+1. Click **Knowledge base** (<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777324524-hmz54jg0a7-Icon.png?fm=auto&auto=compress%2Cformat" alt="Icon" />) from the list of available sources.
+2. Choose a content access option:
+
+   - <strong>Allow all content:</strong> Includes all articles from all workspaces and categories. The chatbot learns from your entire documentation, including any new content added later.
+   - <strong>Allow selected workspaces & languages:</strong> Includes content from the workspaces and languages you select. New languages added to those workspaces later are included automatically.
+   - <strong>Allow selected categories:</strong> Includes only the specific categories you select. New categories added later are **not** included automatically and must be selected manually.
+   - <strong>None:</strong> Excludes the knowledge base as a source. The chatbot is set up without your knowledge base and draws only on the other sources you configure.
+
+ NOTE
+
+When you select an entire workspace, any new languages added to that workspace later are included automatically. When you select specific categories, new articles added to those categories later are not included by default.
+
+3. Click **Create chatbot** to add the Knowledge Base source.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777325912-4d0ut98dcaj-chhatbot-knowledge-base.png?fm=auto&auto=compress%2Cformat" alt="Knowledge base source configuration screen showing allow all content and allow selected content options." />
+
+---
+
+### Website
+
+You can add website content in three ways: Crawl Links, Sitemap, or individual Webpages.
+
+#### Crawl Links
+
+Crawl Links let you provide a starting URL. The system automatically crawls linked pages within the same domain up to 3 levels deep.
+
+1. Click **Website** () from the list of sources.
+2. Select the **Crawl Links** tab.
+3. Click <strong>\+ Add new</strong>.
+4. Enter the following details:
+
+   - <strong>Source name:</strong> A descriptive name for this crawl link source.
+   - <strong>URL:</strong> The URL to start crawling from.
+   - **Include only paths** (optional): Path patterns to limit crawling to specific sections. Example: `blog/`, `docs/`.
+   - **Exclude paths** (optional): Path patterns to skip. Example: `admin/`, `privacy/`.
+5. Click **Add crawl link**.
+
+The system begins crawling the URL and shows a progress indicator. Once added, you can edit or delete the crawl link.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777326725-bwjxo6xjdno-website-chatbot.png?fm=auto&auto=compress%2Cformat" alt="Crawl link progress indicator showing number of links being crawled." />
+
+ NOTE
+
+A maximum of 200 links can be crawled per site. Individual crawl links can be recrawled up to 2 times per day.
+
+<strong>Additional considerations for Crawl Links:</strong>
+
+- Crawling is limited to the same domain as the starting URL. External domains are ignored.
+- The crawler follows links up to a maximum depth of 3 levels from the starting page.
+- Up to 1,000 URLs can be crawled per crawl session.
+- From any single page, a maximum of 200 discovered links are considered.
+- The crawler respects `robots.txt` rules and skips disallowed paths automatically.
+- Certain non-informational pages (such as social media, privacy policies, admin pages, and job listings) are excluded by default.
+
+---
+
+#### Sitemap
+
+Sitemap lets you provide a sitemap URL. The system extracts content from all pages listed in the sitemap.
+
+1. Click **Website** () from the list of sources.
+2. Select the **Sitemap** tab.
+3. Click <strong>\+ Add new</strong>.
+4. Enter the following details:
+
+   - <strong>Source name:</strong> A descriptive name for this sitemap source.
+   - <strong>URL:</strong> The sitemap URL.
+   - **Include only paths** (optional): Path patterns to include from the sitemap. Example: `blog/`, `help/`.
+   - **Exclude paths** (optional): Path patterns to exclude. Example: `archive/`, `test/`.
+5. Click **Add sitemap**.
+
+The system fetches all URLs from the sitemap and begins extracting content. Once added, you can edit or delete the sitemap.
+
+<strong>Additional considerations for Sitemaps:</strong>
+
+- Only single-level sitemaps are supported. Nested or index sitemaps referencing other sitemap files are not processed.
+- Sitemap file size must be under 1 MB.
+- Up to 1,000 URLs can be extracted from a sitemap.
+- Include and exclude path rules are applied before ingestion.
+
+---
+
+#### Webpage
+
+Webpage lets you add individual page URLs manually for precise control over which pages to include.
+
+1. Click **Website** () from the list of sources.
+2. Select the **Webpage** tab.
+3. Click <strong>\+ Add new</strong>.
+4. Enter the following details:
+
+   - <strong>Source name:</strong> A descriptive name for this webpage.
+   - <strong>URL:</strong> The exact page URL.
+5. Click **Add webpage**.<br /> Repeat for each additional page you want to include.
+
+ NOTE
+
+Website content is ingested only if it matches the languages enabled for the project. Pages in unsupported languages are skipped automatically across all website sources.
+
+---
+
+### Text
+
+1. Click **Text** () from the list of sources.
+2. Click <strong>\+ Add new</strong>.
+3. Enter the following details:
+
+   - <strong>Source name:</strong> A descriptive title for this text entry.
+   - <strong>Content:</strong> Enter or paste your text content.
+4. Format your text using the available toolbar options: **Bold**, **Italic**, **Underline**, **Font color**, **Highlight**, **Hyperlink**.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777329951-danvoxa6h8r-Modal.png?fm=auto&auto=compress%2Cformat" alt="Text source entry modal with formatting toolbar options." />
+
+5. Click **Add text**.<br /> Repeat for each additional text entry you want to include.
+
+---
+
+### FAQ
+
+1. Click **FAQ** () from the list of sources.
+2. Click <strong>\+ Add new</strong>.
+3. Enter the following details:
+
+   - <strong>Question:</strong> The question users might ask.
+   - <strong>Answer:</strong> The complete answer to the question.
+4. Format your answer using the available toolbar options: **Bold**, **Italic**, **Underline**, **Font color**, **Highlight**, **Hyperlink**.
+5. Click **Add FAQ**.<br /> Repeat for each additional FAQ entry you want to include.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777330518-q0a6bwkj34-faq-chatbot.png?fm=auto&auto=compress%2Cformat" alt="FAQ source list view with various chatbot entries and their last updated dates." />
+
+---
+
+### File
+
+1. Click **File** () from the list of sources.
+2. Click <strong>\+ Add new</strong>.
+3. Choose one of the following upload methods:
+
+   - <strong>Upload from my device:</strong> Browse and select files from your computer.
+   - <strong>Choose from Drive:</strong> Select files from your Document360 Drive.
+   - <strong>Drag and drop:</strong> Drag files directly into the upload area.
+4. Select one or multiple files to upload. Supported formats: **DOC**, **DOCX**, **PDF**, <strong>MD (Markdown)</strong>, **TXT**.
+5. Click **Add files** to complete the upload.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777331916-2cedd0kgu6h-file-chatbot.png?fm=auto&auto=compress%2Cformat" alt="File management interface displaying uploaded documents and their last updated dates." />
+
+ NOTE
+
+There is no individual file size limit, but the total size of all sources must not exceed your chatbot's storage limit (40 MB by default). Only text content is extracted from files. Images and other media are not stored. If a file upload fails, an error message appears. Fix the issue and try uploading again.
+
+---
+
+### Zendesk
+
+1. Click **Zendesk** () from the list of sources.
+2. On the **Support ticket** card, click **Connect**. The **Connect Zendesk support ticket** dialog opens.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777332619-6qoffpaxa8k-zendesk-chatbot.png?fm=auto&auto=compress%2Cformat" alt="Zendesk integration options for chatbot support tickets and source details overview." />
+
+3. Connect your Zendesk account:
+
+   - In the **Zendesk subdomain** field, enter your Zendesk subdomain. For example, for `acme.zendesk.com`, enter `acme`.
+   - Click **Connect**. A Zendesk window opens.
+   - Sign in to Zendesk as an admin and approve access.
+
+   Once connected, the dialog shows **Connection successful** and the ticket filters load.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777335951-149gap8yjafo-connect-zendesk-support-ticket.png?fm=auto&auto=compress%2Cformat" alt="Connect Zendesk support ticket dialog showing the Zendesk subdomain field, the connected account, and the ticket filters." />
+
+ NOTE
+
+- Zendesk no longer allows new API tokens to be created, and existing tokens stop working after April 30, 2027. Document360 connects to Zendesk with your Zendesk account instead.
+- Only a Zendesk admin can approve the connection.
+- If your browser blocks the Zendesk window, Document360 shows a link to open Zendesk instead. Approve access there, then return to Document360.
+
+4. Configure your ticket filters:
+
+   - <strong>Updated since:</strong> Select a date to fetch only tickets modified after this date.
+   - <strong>Ticket tags:</strong> Filter tickets by specific tags.
+   - <strong>Agent groups:</strong> Filter tickets assigned to specific agent groups.
+   - <strong>Include private notes:</strong> Choose whether to include internal notes from agents.
+   - <strong>Status:</strong> Filter by ticket status: Open, Pending, Solved, or Closed.
+   - <strong>Types:</strong> Filter by ticket type: Question, Problem, Incident, or Task.
+   - <strong>Priority:</strong> Filter by priority level: Low, Normal, High, or Urgent.
+5. Click **Save details** to begin syncing ticket data.
+
+Once connected, you can view the last synced date and the number of tickets fetched. To change the connection or the ticket filters later, click **Edit** () on the **Support ticket** card.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777336446-1385kq5vqkw-Zendesk-20--20Connection-20Successful.png?fm=auto&auto=compress%2Cformat" alt="Zendesk connection successful screen showing last synced date and ticket count." />
+
+ NOTE
+
+Ticket data is fetched from newest to oldest based on your date filter.
+
+---
+
+### Freshdesk
+
+1. Click **Freshdesk** () from the list of sources.
+2. Click **Connect**.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777338000-l16epekajh-Freshdesk-chatbot.png?fm=auto&auto=compress%2Cformat" alt="Freshdesk integration settings for chatbot support ticket management and source details overview." />
+
+3. Enter your Freshdesk connection details:
+
+   - <strong>API Token:</strong> Your Freshdesk API token for authentication.
+   - <strong>Subdomain URL:</strong> Your Freshdesk subdomain.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777338489-0twk8b5ocga-Connect-20Freshdesk-20--20AI-20Chatbot.png?fm=auto&auto=compress%2Cformat" alt="Freshdesk connection form showing fields for API token and subdomain URL." />
+
+4. Once validated, configure your ticket filters:
+
+   - <strong>Tickets updated since:</strong> Select a date to fetch only tickets modified after this date.
+   - <strong>Ticket tags:</strong> Filter tickets by specific tags.
+   - <strong>Agent groups:</strong> Filter tickets assigned to specific agent groups.
+   - <strong>Include private notes:</strong> Choose whether to include internal notes from agents.
+   - <strong>Status:</strong> Filter by ticket status: Open, Pending, Resolved, or Closed.
+   - <strong>Types:</strong> Filter by ticket type: Question, Problem, Incident, Feature Request, or Refund.
+   - <strong>Priority:</strong> Filter by priority level: Low, Medium, High, or Urgent.
+5. Click **Save details** to connect Freshdesk and begin syncing ticket data.
+
+Once connected, you can view the last synced date and the number of tickets fetched.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777341807-ux6r8japals-Freshdesk--20Connection-20Successful-281-29.png?fm=auto&auto=compress%2Cformat" alt="Freshdesk connection successful screen showing last synced date and ticket count." />
+
+ NOTE
+
+Ticket data is fetched from newest to oldest based on your date filter.
+
+---
+
+## AI Chatbot specifications
+
+| Limit | Value | Notes |
+| --- | --- | --- |
+| Default storage per chatbot | 40 MB | Applies across all connected sources combined |
+| Crawl depth (Crawl Links) | 3 levels | From the starting page |
+| Max URLs per crawl session | 1,000 | Per crawl link source |
+| Max discovered links per page | 200 | During a crawl session |
+| Max URLs per sitemap | 1,000 | Per sitemap source |
+| Max sitemap file size | 1 MB | - |
+| Sitemap type supported | Single-level only | Nested or index sitemaps are not processed |
+| File formats supported | DOC, DOCX, PDF, MD, TXT | Images and media inside files are not ingested |
+| Crawl link recrawl limit | 2 times per day | Per individual crawl link |
+
+---
+
+## Best practices
+
+- <strong>Add the knowledge base source first:</strong> If you already have documentation, it gives the chatbot the strongest, most verified starting content.
+- <strong>Use "Allow selected workspaces & languages or Allow selected categories" for large knowledge bases:</strong> Targeting specific workspaces or categories avoids training the chatbot on content that is irrelevant to your users.
+- <strong>Apply ticket filters when connecting Zendesk or Freshdesk:</strong> Filter by status, date, or tag to ensure only high-quality, resolved tickets are ingested. Be mindful of PII in ticket content.
+- <strong>Use path filters for website sources:</strong> Use **Include only paths** and **Exclude paths** to prevent the chatbot from ingesting admin pages, legal pages, or other non-informational content.
+- <strong>Test with the Playground after adding sources:</strong> Before publishing, use the Playground to verify the chatbot answers questions correctly based on the sources you have added.
+
+Application Programming Interface - A set of defined rules and protocols that allows one software application to communicate with and request functionality from another. APIs are the backbone of modern integrations. When Document360 connects to Slack, Intercom, or Google Analytics, it does so through their APIs. Document360 also provides its own REST API, enabling teams to programmatically manage articles, categories, and reader accounts from external systems.

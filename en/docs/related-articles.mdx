@@ -1,0 +1,114 @@
+---
+title: Related articles
+description: Add related articles in Document360 to improve navigation and user experience. Use AI-powered recommendations and dual linking for enhanced content interconnectivity.
+---
+
+Related articles are links to other articles in your knowledge base that appear at the bottom of an article on the knowledge base site. They are selected by the article author and help readers navigate to content that is relevant to what they have just read.
+
+ NOTE
+
+Only published articles can be added as related articles. Related articles appear on the knowledge base site only. They do not appear in the knowledge base widget.
+
+---
+
+## When to use related articles
+
+- Add related articles to guide readers to the next logical step after completing an article, for example, linking a "Getting started" article to a "Configuration" article.
+- Use related articles to surface prerequisite content readers may have missed.
+- Use Eddy AI recommendations to quickly populate related articles for new or recently updated content without manually searching.
+
+---
+
+## Add related articles
+
+There are two ways to add related articles: manually by searching your knowledge base, or automatically using Eddy AI recommendations.
+
+<Image src="https://cdn.document360.io/860f9f88-412e-4570-8222-d5bf2f4b7dd1/Images/Documentation/Related-articles-more-article-settings%281%29.png" alt="Related articles tab in the Article settings panel showing search and Eddy AI options" />
+
+### Manually
+
+1. Navigate to **Documentation** () in the left navigation bar.
+2. Open the article.
+3. Click the **More** () icon in the article header and select **Related articles**. The **Article settings** panel appears on the **Related articles** tab.
+4. Enter a keyword in the search bar to find articles.
+5. Click the **Add** (+) icon next to the article you want to add. The article appears under **Added articles**.
+6. To remove an article from the list, click the **Remove** (x) icon next to it.
+7. Click **Save**.
+
+You can also add related articles while publishing. Click **Publish**, then select **Related articles** from the panel list on the left side of the publish confirmation dialog and add articles there. Click **Publish** (or **Schedule**) to save and publish.
+
+### Using Eddy AI
+
+Eddy AI analyses your article content and suggests relevant articles from your knowledge base automatically.
+
+ NOTE
+
+The article must have at least 200 words for the Eddy AI recommender to be available.
+
+1. Open the **Related articles** tab in the Article settings panel.
+2. Click **Ask Eddy AI** below the search bar. Suggested articles appear under **Suggested articles from Eddy AI**.
+3. Click the **Add** (+) icon next to any article you want to include.
+4. Click **Save**.
+
+ NOTE
+
+If an article has replicated versions, those versions will not appear in the Eddy AI suggestions when you are viewing one of them. When viewing a different article related to the original, only one version from the set will be suggested. The original article is shown only if you have access to it.
+
+---
+
+## Auto relate
+
+The **Auto relate this article to all related articles** toggle in the Article settings panel automatically creates a two-way link between the active article and all its related articles. When enabled, the active article appears in the related articles section of every article it is linked to.
+
+---
+
+## Archived related articles
+
+Archiving an article affects every article that lists it as a related article. Because archived content is removed from the knowledge base site, an archived article does not appear in the related articles section for readers.
+
+- Check which articles link to an item before you archive it, particularly if you used the **Auto relate** toggle, which creates the relationship in both directions.
+- Archived articles are also excluded from dynamic related article recommendations, so Eddy AI does not surface them to readers on the knowledge base site.
+- You cannot add an archived article as a related article. Only published articles appear in the search results in the **Related articles** panel, and archived articles are excluded from portal search.
+- When you unarchive the article, it returns with its previous status. A Published article becomes available on the knowledge base site again and reappears in the related articles section.
+
+ NOTE
+
+This behaviour is separate from the project-wide **Dynamic related article recommendation** setting, where Eddy AI suggests related articles to readers in real time. Archived articles are excluded from both.
+
+---
+
+## Best practices
+
+- Limit related articles to three to five per article. Too many links reduce the value of each recommendation.
+- Link to articles that are directly relevant to the reader's next action, not just broadly related topics.
+- Use the Auto relate toggle when adding related articles to ensure the relationship is visible from both articles, not just one.
+- Review related article links when restructuring your knowledge base. Moved, archived, or deleted articles may leave broken references in the related articles list.
+- Check the related articles list before archiving. The archive confirmation dialog flags related articles as an affected area, so confirm which articles point to the one you are retiring.
+
+---
+
+## FAQ
+
+<Expandable title="What is the difference between related articles and internal links?">
+  Internal links are hyperlinks embedded within the article content that direct readers to other articles mid-read. Related articles are a dedicated section at the bottom of the article that surfaces recommended follow-up reading. Both can link to the same articles, but they serve different navigation purposes.
+</Expandable>
+
+<Expandable title="Can I add an unpublished article as a related article?">
+  No. Only published articles can be added as related articles. Unpublished or draft articles will not appear in the search results within the Related articles panel.
+</Expandable>
+
+<Expandable title="What happens if a related article is archived?">
+  The archived article is removed from the knowledge base site, so readers no longer see it in the related articles section of any article that links to it. Unarchiving the article restores it with its previous status, and a Published article reappears in the related articles section. You cannot add an archived article as a related article, because only published articles appear in the Related articles search results.
+</Expandable>
+
+<Expandable title="If a reader does not have access to a related article, will it still appear in the list?">
+  No. Related articles that the reader does not have access to are automatically hidden from the related articles section on the knowledge base site. Only accessible articles are displayed.
+</Expandable>
+
+<Expandable title="Do related articles appear in the knowledge base widget?">
+  No. Related articles appear on the knowledge base site only. They are not displayed in the knowledge base widget.
+</Expandable>
+
+<Expandable title="Does the Auto relate toggle apply retroactively to previously added related articles?">
+  No. The Auto relate toggle applies from the point it is enabled. It does not retroactively create two-way links for articles that were already in the related articles list before the toggle was turned on.
+</Expandable>

@@ -1,0 +1,124 @@
+---
+title: Manage tags
+description: The "Manage tags" overview page displays all the tags available in your knowledge base project.This page helps you manage and maintain a consistent tagging strategy across your content.
+---
+
+Once tags are in your tag library, you can edit, delete, move, merge, remove references, filter, and export them from the Manage tags page. These actions help you keep your tag library accurate, consistent, and free of duplicates over time.
+
+To access the Manage tags page, navigate to **Content tools** () > **Tags** in the left navigation bar.
+
+For single and bulk tag actions, select the checkboxes next to the tags to reveal the bulk actions toolbar.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778195980-1n3sldfuytg-manage-20tags.png?fm=auto&auto=compress%2Cformat" alt="Manage tags page showing the bulk actions toolbar with edit, move, merge, remove references, and delete options" />
+
+---
+
+## When to manage tags
+
+- Edit a tag when its name, description, or group assignment needs to be updated.
+- Delete a tag when it is no longer relevant and has no active dependencies.
+- Move a tag to a different group when your tag library structure has changed.
+- Merge tags when you have duplicate or near-duplicate tags that should be consolidated into one.
+- Remove references when you want to detach a tag from specific content without deleting it from the library.
+
+---
+
+## Edit a tag
+
+Editing a tag updates its name, description, or group assignment across all content it is applied to. Dependencies are preserved and only the displayed tag details change.
+
+Select the checkbox next to the tag and click **Edit** from the bulk actions toolbar. Update the **Tag name**, **Description**, or **Group** as needed and click **Update**.
+
+---
+
+## Move a tag
+
+Moving a tag reassigns it to a different tag group without changing its name or dependencies.
+
+Select the checkboxes next to the tags you want to move and click **Move** from the bulk actions toolbar. Select the destination group from the dropdown and click **Move**.
+
+---
+
+## Merge tags
+
+Merging consolidates two or more tags into a single tag. All dependencies from the merged tags are transferred to the target tag, and the source tags are removed from the library.
+
+ NOTE
+
+Merging tags cannot be undone. The source tags are permanently deleted after the merge.
+
+Select the checkboxes next to the tags you want to merge and click **Merge tags** from the bulk actions toolbar. In the **Merge tags** panel, select the target tag that all dependencies will be transferred to, and click **Merge**.
+
+---
+
+## Remove references
+
+Removing references detaches a tag from selected articles, category pages, or files without deleting the tag from the library. The tag remains available for future use.
+
+Select the checkboxes next to the tags and click **Remove references** from the bulk actions toolbar. Click **Yes** to confirm.
+
+---
+
+## Delete a tag
+
+Deleting a tag removes it from all articles, category pages, and files it is applied to. This action cannot be reversed.
+
+ CAUTION
+
+Remove tag dependencies before deleting if you want to reassign them first. [Learn about tag dependencies →](/en/docs/tag-dependency-viewer)
+
+Select the checkbox next to the tag and click **Delete** from the bulk actions toolbar. To delete multiple tags at once, select their checkboxes and click **Delete**. Click **Yes** to confirm.
+
+---
+
+## Filter tags
+
+Use the **Filter** option to narrow down the tags displayed on the page.
+
+Click the **Filter** icon at the top right of the Manage tags page. Set the criteria and click **Apply**.
+
+| Filter | Options |
+| --- | --- |
+| **Tag association** | Both, Individual, Group |
+| **Created on** | Select a date range |
+| **Created by** | Search by contributor name |
+
+---
+
+## Export tags
+
+Click **Export CSV** at the top right of the Manage tags page to download all tags in your project as a CSV file. The export includes tag name, group name, description, articles, page category, and files in Drive.
+
+---
+
+## Best practices
+
+- Remove tag dependencies before deleting a tag so you can reassign them rather than losing the association entirely.
+- Use merge when you find duplicate tags with slight spelling variations, for example, "&#123;&#123; glossary.API&#125;&#125;" and "APIs".
+- Use move when reorganising your tag library into groups, rather than recreating tags from scratch.
+- Use remove references instead of delete when you want to detach a tag from specific content but keep it in the library.
+- Audit your tag library periodically using the Filter and Export CSV options to identify unused or redundant tags.
+
+---
+
+## FAQ
+
+<Expandable title="What is the difference between Delete and Remove references?">
+  Delete permanently removes the tag from your library and from all content it is applied to. Remove references only detaches the tag from selected content. The tag itself stays in the library and can be reapplied elsewhere.
+</Expandable>
+
+<Expandable title="Can I rename a tag without affecting the articles it is applied to?">
+  Yes. Editing a tag name updates it across all articles, category pages, and files it is applied to automatically. The dependencies are preserved and only the displayed tag name changes.
+</Expandable>
+
+<Expandable title="When I merge tags, which tag is kept?">
+  During a merge, you select a target tag. This is the tag that is kept. All dependencies from the other selected tags are transferred to the target tag, and the source tags are permanently deleted from the library.
+</Expandable>
+
+<Expandable title="What happens to articles when a tag is deleted?">
+  The tag is removed from all articles, category pages, and files it was applied to. The content itself is not affected. Only the tag association is removed. This action cannot be reversed.
+</Expandable>
+
+<Expandable title="Can I move a tag to multiple groups at the same time?">
+  No. A tag can belong to only one group at a time. Moving a tag to a new group removes it from its current group and assigns it to the selected one.
+</Expandable>

@@ -1,0 +1,140 @@
+---
+title: LLMs.txt
+description: Automatically generate llms.txt for your knowledge base, enhancing AI retrieval and citation of your documentation for accurate user answers.
+---
+
+Document360 automatically generates an `llms.txt` file for your knowledge base site — a Markdown-formatted text file that tells large language models (LLMs) like GPT, Claude, and Gemini what your content is about, helping AI agents accurately retrieve and cite your documentation when answering user questions.
+
+---
+
+## What is llms.txt
+
+`llms.txt` is an open standard that gives AI language models a structured way to understand what a website contains. It is a plain-text file written in Markdown, placed at the root of a site (for example, `https://yoursite.com/llms.txt`), and readable by both humans and machines.
+
+The standard exists because LLMs struggle to navigate full websites the way search engines do. A sitemap lists every URL but provides no context. `robots.txt` tells crawlers what to skip but nothing about what remains. `llms.txt` fills the gap: it lists a site's key pages with titles, URLs, and short descriptions, giving AI models enough context to decide which pages to retrieve and how to represent the content in generated answers.
+
+---
+
+## Why llms.txt matters for your knowledge base
+
+Users increasingly turn to AI assistants — ChatGPT, Gemini, Copilot, and others — to find answers before visiting a website.
+
+| Without `llms.txt` | With `llms.txt` |
+| --- | --- |
+| AI tools have no structured view of your knowledge base | AI tools can read your content index before retrieving pages |
+| Answers may cite outdated or third-party sources instead of your docs | Answers are more likely to cite your documentation accurately |
+| Article descriptions serve only search engine snippets | Article descriptions contribute to both SEO and AI discoverability |
+| No visibility into what AI crawlers can see | You can audit AI crawler coverage from a single file |
+
+---
+
+## When to use llms.txt
+
+- Your users use AI assistants to find answers, and you want those assistants to cite your documentation accurately rather than produce generic responses.
+- You have written high-quality article descriptions and want them to contribute to AI discoverability, not just search engine snippets.
+- You are preparing for a product launch and want to ensure your documentation is discoverable by AI tools from day one.
+
+---
+
+## Before you begin
+
+- To contribute to `llms.txt`, an article, page category, or Step by step guide must have a description set in the <strong>AI & search descriptions (GEO/SEO)</strong> tab. Content without a description is included in `llms.txt` by title only. To learn how to add a description, see [Article SEO](https://docs.document360.com/help/docs/article-seo).
+- `llms.txt` is only generated for public knowledge bases, and for public content in mixed knowledge bases.
+
+---
+
+## How llms.txt works
+
+Document360 generates `llms.txt` automatically from your published content and its GEO/SEO descriptions — you do not create or edit it manually. The file is updated whenever you publish, update, or remove content.
+
+The file has three parts:
+
+- **Header** — the project name and a one-line tagline describing the knowledge base
+- **Workspace section heading** — entries are grouped under the workspace name (for example, `## Document360 2.0`)
+- **Content entries** — each published article, page category, and Step by step guide appears as a linked title followed by its description (if one is set)
+
+Each entry follows this format:
+
+`- [Title](https://yourdomain.com/docs/slug.md): Description text.`
+
+ NOTE
+
+- The article URLs in `llms.txt` point to the `.md` version of each page, not the live HTML URL. This is intentional — the `.md` format gives AI crawlers clean, structured content without navigation elements or page chrome.
+- Each `.md` page also includes a Documentation Index block at the top, pointing back to `llms.txt`, so AI agents navigating individual pages can always discover the full content index.
+
+---
+
+## Content types included in llms.txt
+
+Not every item in your knowledge base contributes an entry to `llms.txt`.
+
+| Content type | Included | Notes |
+| --- | --- | --- |
+| Article | Yes | Appears with its title and AI & search description |
+| Index category | Yes | Appears with its title and AI & search description |
+| Page category | Yes | Appears with its title and AI & search description |
+| Folder category | No | Folder categories hold no content of their own |
+| Step by step guide | Yes | Appears with its title and AI & search description |
+
+Step by step guides are structured for AI agents and LLMs to read. Where a reader sees an interactive walkthrough, an AI agent retrieving the `.md` version of the guide receives the same walkthrough as an ordered sequence of steps, including each step's instruction text and image alt text.
+
+This matters because procedural questions — "how do I set this up?" — are among the most common things readers ask an AI assistant. A guide with a clear title and description is a guide an assistant can retrieve and cite, rather than paraphrasing a text article that covers the same task.
+
+---
+
+## Add an AI and search description
+
+To ensure an article, page category, or Step by step guide appears in `llms.txt` with a description,
+
+1. Open the article, page category, or Step by step guide in the knowledge base portal.
+2. Click the **More** (•••) icon in the header and select **SEO**. The Article settings panel appears.
+3. Select the <strong>AI & search descriptions (GEO/SEO)</strong> tab.
+4. Enter a description in the **Description** field, or click **Ask Eddy AI** to generate one.
+5. Click **Save**.
+
+<Image src="https://cdn.document360.io/860f9f88-412e-4570-8222-d5bf2f4b7dd1/Images/Documentation/Article&search%20engine%20%28SEO-GEO%29%20-%20category%20settings.png" alt="Settings for article views summary, including SEO and engagement insights." />
+
+ NOTE
+
+- The content must have at least 200 preprocessed words for **Ask Eddy AI** to be available. For a Step by step guide, the step instruction text counts towards this total.
+- To add descriptions across multiple articles at once, go to **Content tools** > **AI & search descriptions**.
+
+---
+
+## Best practices
+
+- <strong>Write descriptions as summaries, not teasers.</strong> AI crawlers use the description to decide whether to retrieve the full article. A description like "Covers how to configure SSO using SAML 2.0 in Document360" is more useful to an LLM than "Learn about SSO in Document360."
+- <strong>Prioritize high-traffic and cornerstone articles.</strong> Use **Content tools** > **AI & search descriptions** to filter articles without descriptions and address the most important ones first.
+- <strong>Give every Step by step guide a description.</strong> A guide's screenshots carry most of its meaning for a reader, but an AI agent relies on the title, description, and step text. A guide published without a description is the weakest entry in your `llms.txt`.
+- <strong>Keep descriptions between 150 and 160 characters.</strong> This length works for both search engine snippets and `llms.txt` entries.
+- <strong>Review AI-generated descriptions before saving.</strong> Eddy AI generates descriptions based on article content. Verify they accurately represent the article's scope and terminology before saving.
+- <strong>Write descriptions that work for both SEO and GEO.</strong> The same description appears in search engine results and `llms.txt` — so a well-written description improves both your search ranking snippets and AI crawler context simultaneously.
+- <strong>Check your documentation's AI readiness.</strong> Use Document360's [Agent Score for Documentation](https://document360.com/agent-score/) to evaluate how well your knowledge base is optimized for AI agents.
+
+---
+
+## FAQ
+
+<Expandable title="Does excluding an article from external search engines also remove it from llms.txt?">
+  Yes. Enabling **Exclude from external search engine results** in **GEO/SEO** removes the article from both `sitemap.xml` and `llms.txt`. Both files honour the same external indexing rules.
+</Expandable>
+
+<Expandable title="What happens if two articles have the same meta description?">
+  Both entries appear in `llms.txt`, but duplicate descriptions reduce the quality of AI retrieval. AI crawlers may conflate the two articles or deprioritize them. Use unique descriptions for every article.
+</Expandable>
+
+<Expandable title="Does llms.txt affect Eddy AI search inside my knowledge base?">
+  No. `llms.txt` is for external AI crawlers only. Eddy AI's assistive search within your knowledge base uses a separate indexing mechanism and is not affected by `llms.txt`.
+</Expandable>
+
+<Expandable title="How long does it take for a newly published article to appear in llms.txt?">
+  There may be a short delay after publishing. If an article is missing, wait a few minutes and refresh the file.
+</Expandable>
+
+<Expandable title="Are Step by step guides included in llms.txt?">
+  Yes. Published Step by step guides appear under the same workspace heading as articles and page categories, with a link to the `.md` version of the guide. Add an AI & search description to the guide so its entry carries a description rather than a title only.
+</Expandable>
+
+<Expandable title="Do the individual steps inside a guide appear in llms.txt?">
+  No. `llms.txt` lists one entry per guide, not one entry per step. The step sequence appears in the guide's `.md` page, which the `llms.txt` entry links to.
+</Expandable>

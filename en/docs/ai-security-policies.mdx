@@ -1,0 +1,411 @@
+---
+title: AI security policies
+description: Eddy AI enhances your experience with robust security, GDPR compliance, and advanced data protection, ensuring your information remains confidential and secure.
+---
+
+This article documents the internal security policies that govern how Eddy AI is built and operated, and how Document360 aligns with OWASP security standards for AI and LLM applications.
+
+---
+
+## Security Policies
+
+Document360 maintains a set of formal policies that apply to all systems, including Eddy AI. Below is a summary of each.
+
+---
+
+### Cryptography Policy
+
+<strong>Policy Owner:</strong> CEO
+
+<strong>Effective Date:</strong> March 1, 2024
+
+<strong>Scope:</strong> All Document360 systems that store or transmit confidential data.
+
+<strong>Purpose:</strong> Ensure cryptography is used correctly to protect the confidentiality, integrity, and authenticity of information.
+
+<strong>Key requirements:</strong>
+
+- Encryption standards follow NIST SP 800-57.
+- AES-256 bit symmetric encryption for data at rest (maximum key period: 1 year).
+- TLS 1.3 for all OpenAI &#123;&#123; glossary.API&#125;&#125; calls; certificate pinning enforced on OpenAI endpoints.
+- Mutual TLS required for high-sensitivity deployments.
+- Text embeddings in MongoDB use field-level encryption.
+- All user prompts encrypted before storage; AI responses encrypted in transit and at rest.
+- Passwords hashed using Bcrypt, PBKDF2, scrypt, or Argon2 (256-bit key, 10K stretch, with unique salt and pepper).
+- Azure Key Vault used to manage and protect all secrets and API keys.
+- Exceptions require CEO approval and documentation.
+- Violations reported to the CEO; may result in disciplinary action including termination.
+
+---
+
+### Incident Response Plan
+
+<strong>Policy Owner:</strong> Product Owner
+
+<strong>Effective Date:</strong> March 1, 2024
+
+<strong>Purpose:</strong> Provide a structured plan for managing information security incidents across Document360, including AI-specific incidents.
+
+<strong>Definitions:</strong>
+
+- <strong>Security event:</strong> An observable occurrence relevant to data security.
+- <strong>Security incident:</strong> An event that results in actual loss or damage to data security.
+
+<strong>Incident severity levels:</strong>
+
+| Level | Type | Examples |
+| --- | --- | --- |
+| **S1 – Critical** | AI incidents | Systematic bias affecting protected groups; successful jailbreak in production (100+ users); PII exposed via AI responses; hallucination rate >5% sustained for 1+ hour |
+| **S2 – High** | AI incidents | Moderation API bypass detected; prompt injection affecting &lt;100 users; model drift >10% accuracy degradation; citation failure rate >15% |
+| **S3 – Medium** | AI incidents | Single unsourced AI response; DAN-style jailbreak blocked; response latency >10 seconds |
+
+<strong>Response process:</strong> Triage → Investigation → Containment → Eradication → Recovery → Hardening → Lessons Learned
+
+<strong>Key rules:</strong>
+
+- Engineering managers lead incident response, with a designated War Room for coordination.
+- Only the Product Owner can declare a breach.
+- Breach notification follows regulatory requirements (GDPR, etc.).
+- Root cause analysis is required for all S1 incidents, reviewed by the Director of Engineering.
+- Reporting: Employees report suspected incidents immediately through defined channels; all incidents must be documented.
+
+---
+
+### Information Security Roles and Responsibilities
+
+<strong>Policy Owner:</strong> CEO
+
+<strong>Effective Date:</strong> March 1, 2024
+
+<strong>Scope:</strong> All Document360 infrastructure, employees, contractors, partners, and affiliates involved in information security.
+
+| Role | Responsibilities |
+| --- | --- |
+| **Executive Leadership** | Approves security spend; oversees risk management; ensures GDPR, CCPA, SOC 2, ISO 27001 compliance; manages vendor contracts |
+| **Director of Engineering** | Oversees security in software development; conducts IT risk assessments; monitors controls |
+| **VP of Customer Support** | Manages security tools in customer environments; enforces data retention and deletion policies |
+| **System Owners** | Maintain confidentiality, integrity, and availability of their systems; approve access and change requests |
+| **Employees & Contractors** | Follow policies; identify risks; report incidents |
+| **Chief People Officer** | Manages background checks, Code of Conduct, and security training |
+
+Non-compliance may result in disciplinary action including termination.
+
+---
+
+### Secure Development Policy
+
+<strong>Policy Owner:</strong> CEO
+
+<strong>Effective Date:</strong> March 1, 2024
+
+<strong>Scope:</strong> All business-critical Document360 applications that process, store, or transmit confidential data.
+
+<strong>Secure-by-design principles applied:</strong>
+
+- Minimize attack surface
+- Secure defaults
+- Least privilege
+- Defense in depth
+- Fail securely
+- Avoid security by obscurity
+- Keep security simple
+
+<strong>Privacy-by-design principles applied:</strong>
+
+- Proactive and preventative approach
+- Privacy as the default setting
+- Privacy embedded into design
+- Full functionality without compromising privacy
+- End-to-end security and full lifecycle protection
+
+<strong>Additional controls:</strong>
+
+- Development, staging, and production environments are strictly separated.
+- A Release Checklist must be completed before deploying code.
+- Test data must not use real confidential customer data without explicit permission.
+- All changes require separate individuals for development, testing, and deployment.
+- All software is version-controlled with role-based access.
+
+---
+
+### Code of Conduct Policy
+
+<strong>Policy Owner:</strong> CEO
+
+<strong>Effective Date:</strong> March 1, 2024
+
+Establishes a safe, inclusive workplace. All staff are expected to act with respect and collaboration. Harassment, violence, discrimination, and inappropriate conduct are strictly prohibited. Violations result in immediate corrective action.
+
+---
+
+### Access Control Policy
+
+<strong>Policy Owner:</strong> CEO
+
+<strong>Effective Date:</strong> March 1, 2024
+
+<strong>Scope:</strong> All Document360 systems handling confidential data.
+
+<strong>Key controls:</strong>
+
+- Access granted based on job role and documented business need.
+- Multi-factor authentication (MFA) required for all privileged access.
+- Generic administrative IDs are prohibited.
+- Time-bound access permissions to limit exposure.
+- All privileged logins and activities are logged and audited.
+- Regular user access reviews conducted.
+- Password management: secure log-on procedures enforced.
+- Violations reported and subject to enforcement.
+
+---
+
+### Data Management Policy
+
+<strong>Policy Owner:</strong> CEO
+
+<strong>Effective Date:</strong> March 1, 2024
+
+<strong>Data classification:</strong>
+
+| Class | Description | Examples |
+| --- | --- | --- |
+| **Confidential** | Highest protection; restricted access | Customer data, PII, financials, technical reports |
+| **Restricted** | Thorough protection; default for all internal data | Internal policies, legal docs, contracts, emails |
+| **Public** | No special controls | Marketing materials, product descriptions |
+
+<strong>Confidential data handling:</strong>
+
+- Restricted access; encrypted at rest and in transit.
+- Not stored on personal devices or removable media.
+- Secure storage and disposal required.
+
+<strong>Data retention:</strong>
+
+- Retained as long as required for business, regulatory, or contractual needs.
+- PII deleted or de-identified when no longer needed.
+- Annual management review of retention requirements.
+- Legal hold data retained per legal counsel's instructions.
+
+Violations reported to CEO; may result in termination.
+
+---
+
+### Operations Security Policy
+
+<strong>Policy Owner:</strong> CEO
+
+<strong>Effective Date:</strong> March 1, 2024
+
+<strong>Scope:</strong> All critical Document360 systems and third parties with network access.
+
+Key controls include:
+
+- <strong>Change management:</strong> All significant changes are documented, tested, and approved before deployment; emergency changes require retrospective authorization.
+- <strong>Capacity management:</strong> Resources monitored and adjusted; human capacity included in annual risk assessments.
+- <strong>Data leakage prevention:</strong> DLP tools applied based on risk assessment; users trained on sensitive data handling.
+- <strong>Web filtering:</strong> DNS and IP blocking for risky or malicious sites.
+- <strong>Environment separation:</strong> Dev, staging, and production strictly segregated; no production data in dev/test without approval.
+- <strong>Malware protection:</strong> Anti-malware and threat detection on all endpoints and email.
+- <strong>Backups:</strong> Designed and implemented to meet customer data recovery SLAs.
+- <strong>Logging and monitoring:</strong> Active detection and response to security incidents.
+- <strong>Vulnerability management:</strong> Timely identification, assessment, and remediation of technical vulnerabilities.
+- <strong>Data masking:</strong> PII in content ingested into Eddy AI from a connected customer support platform is masked before being sent to the AI model.
+
+---
+
+### Data Retention Policy
+
+<strong>Policy Owner:</strong> CEO
+
+<strong>Effective Date:</strong> March 1, 2024
+
+<strong>Scope:</strong> All Document360 customers, both public and private knowledge base projects.
+
+<strong>What data is collected:</strong>
+
+- Public sites: No user-level data collected.
+- Private projects: User identity, timestamps, and other user information available within Document360.
+
+<strong>How it's used:</strong> Document360 stores all prompts entered in the Eddy AI chatbot for:
+
+- Topical analysis (clustering questions using in-house algorithms and OpenAI APIs)
+- Citation analysis (identifying most-cited articles)
+- Metrics (answered vs. unanswered questions, depth metrics)
+
+<strong>Retention and deletion:</strong>
+
+- Data is retained within your Document360 project.
+- Data is permanently deleted when the knowledge base project is deleted.
+- Customers can request deletion at any time during the contract period.
+- This policy is not customizable by the customer.
+
+---
+
+### AI Risk Assessment and Management Policy
+
+<strong>Policy Owner:</strong> Senior Director – Data Science
+
+<strong>Effective Date:</strong> January 1, 2025
+
+<strong>Purpose:</strong> Establish a systematic approach to identifying, assessing, and managing risks across Eddy AI's full lifecycle.
+
+<strong>Key components:</strong>
+
+- <strong>Initial AI Impact Assessment:</strong> Required before any development activity. Covers intended use cases, potential harms, risk likelihood and impact, stakeholder identification, and mitigation strategies.
+- <strong>Ongoing risk monitoring:</strong> Quarterly reviews; comprehensive annual assessments.
+- <strong>Risk tolerance thresholds:</strong>
+
+  - Unacceptable → Deployment prohibited
+  - High → Enhanced controls required
+  - Medium → Standard controls applied
+  - Low → Monitoring only
+- <strong>Risk Register:</strong> Centralized documentation of all identified risks, mitigation measures, residual risks, and owners.
+
+---
+
+### AI Fairness and Bias Management Policy
+
+<strong>Policy Owner:</strong> Senior Director – Data Science
+
+<strong>Effective Date:</strong> January 1, 2025
+
+<strong>Purpose:</strong> Identify, measure, mitigate, and monitor bias in Eddy AI to ensure fair, equitable outcomes for all users.
+
+<strong>Bias types addressed:</strong>
+
+| Type | Source |
+| --- | --- |
+| Systemic Bias | Originates from third-party LLMs |
+| Computational/Statistical Bias | Algorithmic design choices or data sampling methods |
+| Human-Cognitive Bias | Human assumptions introduced during development |
+
+<strong>Testing requirements:</strong>
+
+<em>Before deployment:</em>
+
+- Content representativeness analysis (topic balance, depth, diversity)
+- Stereotype testing (AI must refuse to reinforce stereotypes related to protected characteristics)
+- Language fairness testing for multilingual knowledge bases
+
+<em>After deployment:</em>
+
+- Monthly: Unanswered question analysis by topic or user group
+- Quarterly: Full bias audit using updated test corpus
+- Annually: Independent external bias review and published transparency report
+
+---
+
+## OWASP and Security Best Practices
+
+The Open Worldwide Application Security Project (OWASP) is a globally recognized nonprofit focused on software security. It publishes the "Top 10" lists, the most critical security vulnerabilities in various domains, including web applications and AI/LLM systems.
+
+---
+
+### OWASP Top 10 Threats for LLM Applications
+
+| Threat | What it means |
+| --- | --- |
+| **Prompt Injection** | Malicious inputs that try to manipulate or hijack the LLM's behavior |
+| **Insecure Output Handling** | Failure to sanitize LLM outputs, creating downstream vulnerabilities |
+| **Training Data Poisoning** | Corrupting training data to sabotage or control model behavior |
+| **Model Denial of Service** | Overloading LLM resources to cause downtime or degraded performance |
+| **Supply Chain Vulnerabilities** | Risks from third-party datasets, models, or plugins |
+| **Sensitive Information Disclosure** | Unintended leakage of confidential or personal data in outputs |
+| **Insecure Plugin Design** | Plugins without proper validation or access controls |
+| **Excessive Agency** | Over-empowering LLMs to take autonomous actions |
+| <strong>Overreliance (Misinformation)</strong> | Blind trust in LLM outputs without human validation |
+| **Model Theft** | Unauthorized replication or extraction of proprietary models |
+
+---
+
+### How Eddy AI Addresses Key OWASP Threats
+
+#### LLM01: Prompt Injection
+
+- All user inputs are validated before processing.
+- Context is isolated from system prompts.
+- System instructions are hardened against injection attempts.
+- Eddy AI only generates responses from your knowledge base content.
+- Moderation API used to detect and flag malicious prompts.
+
+#### LLM04: Data and Model Poisoning (Embeddings)
+
+- Document360 does not own or train its own LLM.
+- Embeddings are created using OpenAI APIs; the DPA with OpenAI includes protections against data and model poisoning.
+
+#### LLM05: Improper Output Handling
+
+- Tool calling is not used in Eddy AI's architecture, reducing output handling attack surface.
+- All data stored securely in MongoDB per SOC 2 and GDPR practices.
+- State-of-the-art encryption applied to data at rest and in transit.
+
+#### LLM08: Vector and Embedding Weaknesses
+
+- Embeddings are created exclusively from your knowledge base content.
+- External sources cannot manipulate or poison embeddings.
+- When knowledge base content is updated, embeddings are updated accordingly.
+
+#### LLM09: Misinformation
+
+- Strict system instructions prevent false information from being generated.
+- If the LLM cannot produce a confident response, it responds with "I do not know."
+- GPT-4.1 Mini is used as the primary model — selected for its lower hallucination rate.
+
+---
+
+### Continuous Monitoring and Governance
+
+To effectively manage these risks, Ask Eddy employs the following governance and monitoring structures:
+
+| Control | Description |
+| --- | --- |
+| **Automated Threat Detection** | Real-time monitoring that flags unusual input patterns or suspicious model behavior |
+| **Audit Trails** | Comprehensive logs of all input-output interactions for forensic analysis and compliance |
+| **Incident Response Protocols** | Defined workflows for rapid containment, assessment, and remediation |
+| **Compliance Alignment** | Regular audits and updates aligned with SOC 2 and GDPR |
+
+---
+
+### Document360's Commitment to OWASP Best Practices
+
+Document360 actively integrates OWASP principles across its platform:
+
+- <strong>Secure development:</strong> Secure coding and input validation practices aligned with OWASP guidelines are built into the development lifecycle.
+- <strong>Common vulnerability mitigation:</strong> Injection flaws, insecure direct object references, and other OWASP Top 10 risks are mitigated through platform architecture.
+- <strong>AI-specific risk management:</strong> OWASP's LLM Top 10 framework applied to all AI-powered features, including Eddy AI.
+- <strong>API security:</strong> Authenticated tokens used for all API access, consistent with OWASP recommended controls.
+- <strong>Infrastructure:</strong> Hosted on Microsoft Azure with DDoS defense, encrypted data storage, SOC 2 Type II and GDPR compliance, and continuous monitoring aligned with OWASP's Security Logging and Monitoring recommendations.
+
+#### Learn more about OWASP and how Document360's security strategy aligns with best practices
+
+- OWASP Official Site: https://owasp.org
+- OWASP Top 10 Project: https://www.owasptopten.org
+- Document360 Security Overview: https://docs.document360.com/docs/security
+
+---
+
+## FAQ
+
+<Expandable title="How does Document360 ensure that my data is not accessed or leaked to other customers? What security assurance is approved?">
+  Document360 is **SOC II compliant** and adheres to industry-standard engineering best practices to ensure data isolation and protection. Robust security measures are implemented to prevent unauthorized access, ensuring that your data remains secure and inaccessible to other customers. For more details, refer to our [Security practices](https://document360.com/security/).
+</Expandable>
+
+<Expandable title="How does Document360 ensure that non-targeted customer data is not ingested?">
+  Document360 strictly adheres to the **GDPR** and the **EU AI Act**. Our internal processes and data handling practices are designed to align with all relevant legal and compliance requirements, ensuring that only intended and authorized data elements are processed. Non-targeted customer data is explicitly excluded from ingestion.
+</Expandable>
+
+<Expandable title="What controls are in place to detect and prevent errors?">
+  We log all outputs and responses generated by Eddy AI. In addition, we are in the process of integrating **LLM observability tools** to enhance monitoring and error prevention capabilities.
+</Expandable>
+
+<Expandable title="How do you ensure that sensitive or confidential data are not exposed to other clients?">
+  We have a DPA signed with OpenAI stating that data will not be used for training or shared with others. We are SOC2 Type II and GDPR compliant. The data shared with AI is limited to the individual user's access permissions and not the entire project.
+</Expandable>
+
+<Expandable title="How is the confidentiality of my data maintained, and are any human reviewers involved in processing it?">
+  All project data is encrypted at rest, and all data sent to the AI model is encrypted in transit. We use AES 256-bit encryption for data at rest and HTTPS with TLS 1.2 for data in transit. No human reviewers read, annotate, or process your data, and we do not train our own LLMs.
+</Expandable>
+
+<Expandable title="Are the data anonymized before being processed by the AI models?">
+  Yes. Where content is ingested into Eddy AI from a connected customer support platform, we run internal processes to detect personally identifiable information (PII). If PII is detected, it is masked and replaced with placeholders before the content is sent to any third-party model.
+</Expandable>

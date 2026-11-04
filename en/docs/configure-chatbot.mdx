@@ -1,0 +1,56 @@
+---
+title: Configure chatbot
+description: Configure your Eddy AI Chatbot's appearance, behavior, and security settings easily. Publish changes and enhance user experience on your website today!
+---
+
+Chatbot settings in Eddy AI Chatbot let you control how the chatbot looks, behaves, and integrates with your website and support systems. Once you have added content sources, you configure the chatbot using a tabbed settings panel that covers the Playground, Embed code, Appearance, Custom CSS & JavaScript, Ticket escalation, Security, and Sources. Changes take effect on the live chatbot only after you click **Publish**.<br /> The exception is Security settings (trusted domains and JWT): they apply as soon as you click **Save**, with no need to publish.
+
+---
+
+## When to configure chatbot settings
+
+- Use this when you have created a chatbot and are ready to deploy it to your website.
+- Use this when you want to update the chatbot's appearance, security rules, or ticketing integration.
+- Use this when you want to preview changes before they go live, using the Playground.
+
+---
+
+## Before you begin
+
+- You must have already [created an Eddy AI Chatbot](/en/docs/create-chatbot) with at least one source connected.
+- To configure Ticket escalation, have your Zendesk subdomain and a Zendesk admin to approve the connection, or your Freshdesk API token and subdomain URL.
+- To configure Security (JWT), have your Client ID, Client secret, and Token endpoint details available.
+
+---
+
+## Access chatbot settings
+
+1. Navigate to **AI Chatbot** (<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777302035-k7orlbicyb-Frame-201707479697.png?fm=auto&auto=compress%2Cformat" alt="Frame image" />) in the left navigation bar of the Knowledge Base portal.
+2. Click **Customize** and select the chatbot you want to configure.
+
+The chatbot settings panel opens with tabs for each configuration area.
+
+---
+
+## Settings tabs overview
+
+| Tab | What you can do |
+| --- | --- |
+| [**Playground**](/en/docs/chatbot-playground) () | Test chatbot responses before publishing. |
+| [**Embed code**](/en/docs/chatbot-embed-code) () | Generate the embed code and deploy the chatbot to your website. |
+| [**Appearance**](/en/docs/chatbot-appearance) () | Customize the chatbot's name, icon, color, position, and welcome message. |
+| [**Custom CSS & JavaScript**](/en/docs/chatbot-custom-css-and-javascript) () | Add custom code to modify the chatbot's styling or behavior. |
+| [**Ticket Escalation**](/en/docs/chatbot-ticket-escalation) () | Connect Zendesk, Freshdesk, or email-based ticket creation so users can raise support tickets from within the chatbot. |
+| [**Security settings**](/en/docs/chatbot-security) () | Set trusted domains and configure JWT authentication. |
+| [**Manage chatbot sources**](/en/docs/manage-chatbot) | View and manage all connected sources, check storage usage, and retrain the chatbot. |
+
+---
+
+## Best practices
+
+- **Configure trusted domains before going live**: restricting the chatbot to authorized domains prevents it from appearing on unintended sites.
+- **Use the Playground to validate all changes**: test appearance and response changes in the Playground before publishing to avoid a poor user experience on the live site.
+- **Set up ticket escalation early**: connecting a ticketing platform at setup ensures users always have a fallback when the chatbot cannot answer their question.
+- **Use JWT authentication for private or authenticated knowledge bases**: this ensures only verified users can interact with the chatbot and access your content.
+
+Application Programming Interface - A set of defined rules and protocols that allows one software application to communicate with and request functionality from another. APIs are the backbone of modern integrations. When Document360 connects to Slack, Intercom, or Google Analytics, it does so through their APIs. Document360 also provides its own REST API, enabling teams to programmatically manage articles, categories, and reader accounts from external systems.

@@ -1,0 +1,141 @@
+---
+title: AI safety testing and defence
+description: Eddy AI employs robust moderation, jailbreak testing, and adversarial strategies to ensure safe, reliable responses while protecting against harmful content.
+---
+
+This article explains how Eddy AI is tested and defended against misuse, harmful content, and adversarial attacks. All testing described here is done for defensive purposes - to make Eddy AI safer and more reliable for you.
+
+---
+
+### Moderation API
+
+<strong>What it is:</strong>
+
+An automated safety filter that screens both incoming user prompts and outgoing AI responses for harmful content, including violent, sexual, hateful, or self-harm-related content, and other policy-restricted material.
+
+<strong>How we use it:</strong>
+
+- The Moderation API is called on every user prompt and every candidate response.
+- If content is flagged, Eddy AI blocks the response, redacts the content, or routes to safe fallback copy.
+- All blocked prompts are logged for compliance review.
+
+<strong>What this means for customer:</strong>
+
+Reduces the risk of unsafe or policy-violating responses appearing in your knowledge base. Helps you enforce acceptable-use policies for your end users.
+
+<strong>Operational controls:</strong>
+
+- Pre-prompt and post-response moderation applied on all interactive surfaces.
+- Severity tags applied in logs for compliance review.
+- Periodic threshold tuning to balance detection accuracy against false positives.
+
+---
+
+### DAN-Style Jailbreak Testing
+
+<strong>What it is:</strong>
+
+"DAN" (Do-Anything-Now) is a well-known type of jailbreak attack. It tries to coerce an AI model to ignore its instructions, policies, or permissions — often using role-play, policy override commands, or nested instruction payloads. We use "DAN" as shorthand for this entire class of prompt-engineering attacks.
+
+<strong>How we use it:</strong>
+
+- We maintain a corpus of DAN-style and related jailbreak prompts.
+- These are run against staging environments as part of our red teaming practice.
+- We use the results to harden system prompts, isolate retrieved context, and verify that the model refuses to act outside its defined scope.
+
+<strong>What this means for customer:</strong>
+
+Eddy AI's responses stay grounded in your authorized knowledge base content. Instruction override attacks are blocked.
+
+<strong>Operational controls:</strong>
+
+- Regular replay of jailbreak test sets (including DAN variants) before every release.
+- Guardrail rules that nullify "ignore previous instructions" and similar override commands.
+- Automated alerts triggered on any successful jailbreak in pre-production — deployment is blocked until the issue is resolved.
+
+ NOTE
+
+Document360 does not endorse or enable any "DAN mode." All references to DAN are strictly about defensive testing.
+
+---
+
+### Adversarial Testing
+
+<strong>What it is:</strong>
+
+Structured, systematic attempts to break or degrade Eddy AI using hostile inputs. This includes token stuffing, prompt injections, context contamination, unicode/encoding tricks, logit attacks, and denial-of-wallet prompts (inputs designed to exhaust compute resources).
+
+<strong>How we use it:</strong>
+
+- Continuous adversarial tests run across the full RAG (Retrieval-Augmented Generation) pipeline: retrieval, ranking, grounding, and response generation.
+- Tests include injection strings planted in user prompts and in knowledge base content to validate isolation and output sanitization.
+
+<strong>What this means for customer:</strong>
+
+Improves Eddy AI's robustness against manipulation, reduces hallucination risk, and protects system performance and cost under abuse conditions.
+
+<strong>Operational controls:</strong>
+
+- Scheduled adversarial test runs before every release; additional runs after major model or prompt updates.
+- Metrics tracked:
+
+  - Jailbreak success rate
+  - Injection pass-through rate
+  - Grounded-answer rate
+  - Refusal accuracy
+  - Latency and compute spike alerts
+- Findings feed back directly into prompt policies, retriever filters, and content sanitizers.
+
+---
+
+#### LLM Observability and Performance Evaluation
+
+Eddy AI uses the following evaluation frameworks to track accuracy and performance:
+
+| Framework | Purpose |
+| --- | --- |
+| **OpenAI Evals** | Evaluate model performance against defined benchmarks |
+| **RAGAS** | Assess retrieval quality and answer grounding in RAG pipelines |
+| **GeneralQA Metrics** | Measure general question-answering accuracy and context recall |
+
+Based on internal testing, Eddy AI achieves an accuracy rate of <strong>96–98%</strong> when responding to user queries.
+
+---
+
+### FAQ
+
+<Expandable title="What is the expected margin of error for Eddy AI responses? How is adherence to the permitted error margin monitored and measured?">
+  Based on our internal testing, Eddy AI demonstrates an accuracy rate of 96–98% when responding to user queries. We are actively integrating **LLM observability tools** and use evaluation frameworks such as OpenAI Evals, RAGAS, and GeneralQA metrics to assess performance and accuracy against defined benchmarks.
+</Expandable>
+
+<Expandable title="Has the product been assessed for bias, toxicity, or harmful content such as threats, profanity, or political polarity?">
+  Yes, we use OpenAI Moderation APIs to evaluate responses for harmful content. If a response is flagged, Eddy AI will either avoid generating the response.
+</Expandable>
+
+<Expandable title="How is the risk of AI hallucination managed in Eddy AI?">
+  Document360 has an AI risk mitigation strategy. Eddy AI is constrained to your knowledge base content and any external sources you add. Our system prompts guide the AI to avoid generating unsupported or cooked up responses. If Eddy AI is unsure or cannot cite a reliable source, it will respond with "I do not know."
+</Expandable>
+
+<Expandable title="Are AI decisions explainable, and is there human oversight in the process?">
+  Yes, all AI-generated responses from Eddy AI include inline citations, allowing end users to clearly see the source of the information and understand how the response is generated. Additionally, we follow a human-in-the-loop approach as part of our AI governance. While Eddy AI can assist with recommendations, final decisions are left to humans, ensuring oversight and accountability.
+</Expandable>
+
+<Expandable title="How do you ensure transparency and identify biases? How do the AI models generate responses?">
+  We use OpenAI's LLMs and rely on their scorecards and reports for transparency. We follow red teaming best practices to identify biases and periodically test for model drift. For generating responses, we use a Retrieval Augmented Generation (RAG) approach, where context is retrieved from our knowledge base and sent to the LLM.
+</Expandable>
+
+<Expandable title="What steps are taken to ensure the reliability and performance of your AI models?">
+  We offer a 99.9% uptime SLA and are working on integrating a backup LLM provider. We regularly monitor for anomalies using red teaming practices, model drift tests, and evaluations that track parameters like accuracy and context recall. If undesirable behavior is detected, we investigate the root cause and may adjust system prompts, upgrade to a new LLM, or suggest content changes to customers.
+</Expandable>
+
+<Expandable title="How do you manage model updates and ensure ongoing performance?">
+  We regularly run evaluations to monitor performance and model drift. Based on the results, we update our systems and adopt newer LLMs to improve performance and accuracy.
+</Expandable>
+
+<Expandable title="Is Eddy AI vulnerable to prompt injection attacks or capable of generating information outside the knowledge base?">
+  Eddy AI is designed with safeguards to mitigate prompt injection attacks and prevent unauthorized or misleading responses. The platform validates and moderates user inputs, isolates prompts from system instructions, and applies additional security controls aligned with OWASP LLM security recommendations.
+
+  Eddy AI follows a Retrieval-Augmented Generation (RAG) approach and generates responses only from the content in your Document360 knowledge base and any external sources you add. For AI assistive search, you can add webpages as external sources. For the AI chatbot, you can add Website, Text, FAQ, File, Zendesk, and Freshdesk sources. If relevant information is not available in these sources or the AI cannot generate a reliable grounded response, Eddy AI will respond accordingly instead of generating unsupported content.
+</Expandable>
+
+Application Programming Interface - A set of defined rules and protocols that allows one software application to communicate with and request functionality from another. APIs are the backbone of modern integrations. When Document360 connects to Slack, Intercom, or Google Analytics, it does so through their APIs. Document360 also provides its own REST API, enabling teams to programmatically manage articles, categories, and reader accounts from external systems.

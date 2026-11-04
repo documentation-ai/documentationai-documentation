@@ -1,0 +1,142 @@
+---
+title: Archive category
+---
+
+Archiving a category removes it and all the articles inside it from the category tree and the knowledge base site, while keeping their version history intact. Archived categories are stored on the **Archive** page, where you can find, preview, and unarchive them. Use archiving to retire a whole section of your knowledge base without deleting it.
+
+ NOTE
+
+Archiving a category archives every article within it. Archived categories do not go to the Recycle bin and are not subject to the 30-day retention period.
+
+---
+
+## When to archive a category
+
+- An entire product area, feature set, or process has been retired and its documentation is no longer relevant to readers.
+- You are restructuring your knowledge base and want to take a section offline without losing its content.
+- A seasonal or campaign-specific section is not currently in use but will be needed again later.
+- You want to remove a section from search results and Eddy AI responses while keeping it recoverable.
+
+---
+
+## Before you begin
+
+Before archiving a category, ensure the following:
+
+- You have **View** and **Update** permissions for the workspace. Team members with view-only access cannot archive categories.
+- You have reviewed the articles inside the category. Every article in the category is archived along with it.
+- You have checked where the category and its articles are linked from. Archiving affects related articles, replicated instances, internal links, and article redirect rules.
+
+---
+
+## Archive a category
+
+1. Navigate to **Documentation** () in the left navigation bar.
+2. Hover over the category in the **Categories & Articles** pane and click the **More** () icon.
+3. Select **Archive** (). The **Confirm archive** dialog appears, listing the areas that archiving affects.
+4. Review the listed areas and click **Archive**.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777767674-zm3c5j9h81-archive-category-option.png?fm=auto&auto=compress%2Cformat" alt="Archive-an-article" />
+
+The **Confirm archive** dialog asks you to verify the integrity of linked content before proceeding. It lists four areas:
+
+- **Related articles**: articles in the archived category are no longer suggested as related articles.
+- **Replicates**: replicated instances of articles in the category are removed from their categories.
+- **Internal links**: links to articles in the archived category no longer resolve.
+- **Article redirection rules**: redirect rules pointing to articles in the category are affected.
+
+### Other ways to archive a category
+
+- <strong>From the category manager:</strong> Open the category manager, hover over the category, click the **More** () icon, and select **Archive** (). Confirm the action.
+- <strong>From the category page editor:</strong> Open the category page, click the **More** () icon at the top right, and select **Archive** (). Confirm the action.
+
+---
+
+## What happens when you archive a category
+
+- The category and all articles within it are removed from the category tree and moved to the **Archived** page.
+- The category page and its articles are no longer accessible on the knowledge base site. Direct links return a page-not-found response.
+- The category and its articles are excluded from portal search, knowledge base site search, and AI-powered search. Search exclusion takes effect within 60 seconds.
+- Articles in the category are no longer suggested by dynamic related article recommendations.
+- Revision history, metadata, tags, attachments, and SEO settings are preserved for the category page and every article inside it.
+- Content resources are preserved, but the archived items are hidden from the dependency viewer in the variables, snippets, glossary, and Drive modules.
+- Slugs of the category and its articles remain reserved and cannot be reused.
+- The archive action is recorded in Team auditing, and relevant users receive a notification.
+
+---
+
+## Archived content and category deletion
+
+Archived sub-categories and articles remain linked to their parent category. This affects what happens when the parent category is deleted.
+
+If you delete a parent category, its archived sub-categories and articles are permanently removed from your knowledge base.
+
+ WARNING
+
+Deleting a category also removes any archived content beneath it from the Archived page. No warning is shown at the point of deletion. Check the Archived page for content belonging to the category before you delete it.
+
+---
+
+## Unarchive a category
+
+1. Navigate to the **Archived** () page in the left navigation bar.
+2. Locate the category you want to restore. Use the search bar or set the **Entity** filter to **Category** to narrow the list.
+3. Click the category to open the preview pane and confirm its contents. The preview shows the category tree with the articles inside it.
+4. Hover over the category row and click **Unarchive**. The **Confirm unarchive** dialog appears.
+5. Click **Unarchive**.
+
+The category returns to its most recent location in the documentation with its previous status intact, along with all the articles inside it. Published articles become available on the knowledge base site again.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777779493-t2vx7fc1okr-archived-page-category.png?fm=auto&auto=compress%2Cformat" alt="Archive-an-article" />
+
+For more details on managing archived content, refer to [Archive page](https://docs.document360.com/help/docs/archive-page).
+
+---
+
+## Archive vs. hide vs. delete
+
+| Action | What it does | Visible on KB site | In portal search | Recoverable |
+| --- | --- | --- | --- | --- |
+| **Archive** | Moves the category and its articles to the Archive page. | No | No | Yes. Unarchive at any time. |
+| **Hide** | Hides the category from the knowledge base site. The category stays in the category tree. | No | Yes | Yes. Unhide at any time. |
+| **Delete** | Moves the category and its articles to the Recycle bin. | No | No | Yes, within 30 days only. |
+
+---
+
+## Limitations
+
+- Slugs of an archived category and its articles stay reserved and cannot be reused.
+- Archived articles are skipped when you clone a category or a workspace.
+
+---
+
+## Best practices
+
+- **Review the category contents before archiving**: every article inside the category is archived with it. Open the category and check that nothing inside it is still in use.
+- **Check the Archive page before deleting a parent category**: deleting a category permanently removes archived content beneath it, and no warning is shown.
+- **Archive rather than delete when restructuring**: archiving lets you take a section offline and bring it back if the new structure does not work out.
+- **Use the preview pane to confirm scope**: before unarchiving, open the preview to see which articles return with the category.
+
+---
+
+## FAQ
+
+<Expandable title="What happens to the articles inside a category when I archive it?">
+  All articles inside the category are archived along with it. They are removed from the category tree and the knowledge base site, and appear on the Archive page. Unarchiving the category restores the category and all its articles together.
+</Expandable>
+
+<Expandable title="Can I archive a single article without archiving its category?">
+  Yes. Archiving works at both the article and category level. To archive a single article, use the Archive option in the article's More menu. Refer to [Archive articles](https://docs.document360.com/help/docs/archive-articles).
+</Expandable>
+
+<Expandable title="What happens to archived content if I delete its parent category?">
+  The archived sub-categories and articles beneath that parent are also removed from the Archive page. If you restore the parent category from the Recycle bin, the archived content returns to the Archive page. No warning is shown when you delete a category that has archived content beneath it, so check the Archive page first.
+</Expandable>
+
+<Expandable title="Can I preview an archived category before restoring it?">
+  Yes. Select the category on the Archive page to open the preview pane, which shows the category tree and the articles it contains. Preview is available for categories only, not for individual articles.
+</Expandable>
+
+<Expandable title="Does archiving a category in one language archive it in all languages?">
+  Yes. Archiving applies to all language versions. The category in other enabled languages are also archived or unarchived parallely. 
+</Expandable>

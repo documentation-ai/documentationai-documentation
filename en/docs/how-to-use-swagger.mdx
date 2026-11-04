@@ -1,0 +1,114 @@
+---
+title: How to use Swagger
+description: Swagger is an interface description language that describes RESTful APIs expressed using JSON. It allows you to create interactive, machine and human-readable.
+---
+
+Swagger is an interface description language that describes RESTful APIs expressed using JSON. It allows you to create interactive, machine and human-readable API documentation. It helps you visualize and interact with the API's resources without any implementation logic. It is a web-based application.
+
+---
+
+## Swagger documentation site
+
+1. Open the [<u>Swagger documentation site</u>](https://apihub.document360.io/).
+2. To authenticate the documentation, click **Authorize**.<br />The **Available authorizations** panel will appear.
+3. Enter the API token in the **Value** field. 
+
+   <Callout kind="info">
+      NOTE
+
+     You can select an existing token, or you can generate a new token as per your requirement. To generate a new token, follow the below steps
+
+     - Navigate to **Settings** () in the left navigation bar in the Knowledge base portal.
+     - In the left navigation pane, navigate to <strong>**Knowledge base portal**</strong> > **API Tokens**.
+     - Type a name for the API token in the **Enter token name**.
+     - Select the required HTTP method(s). You have four methods under <strong>Allowed method(s)</strong>: **GET**, **PUT**, **POST** and **DELETE**.
+     - You can only use the generated token for the selected method(s). It cannot be used to perform other methods.
+     - Click **Copy** to copy the API token.
+   </Callout>
+4. Click the **Authorize** button.
+5. Once done, click the **Close** button.<br />The authorization is done successfully.
+
+   <Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778301245-scmurcuub5d-17_ScreenShot-Swagger.png?fm=auto&auto=compress%2Cformat" alt="Image showing authorize panel in Swagger" />
+
+   <Callout kind="info">
+      NOTE
+
+     If you wish to change to a different token, click **Authorize** > **Logout** > enter your **API token** > **Authorize** > **Close**.
+   </Callout>
+
+### GET
+
+- The **GET** method is used to retrieve information.
+- Below is an example of **GET** action, to retrieve all records about the user.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778302168-47c4qnuifr8-12_ScreenShot-Swagger_Get.png?fm=auto&auto=compress%2Cformat" alt="Image showing GET action in Swagger" />
+
+1. Fill the marked fields and click the **Execute** button.
+
+   The information about the user will be available under the **Responses** section.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778302972-ra7yraq39l-13_ScreenShot-Swagger_Get.png?fm=auto&auto=compress%2Cformat" alt="Image showing GET action in Swagger" />
+
+### POST
+
+- The **POST** method is used to add an item.
+- Below is an example of a **POST** action, to add a user to a project.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778313009-x9juh4wjymk-14_ScreenShot-Swagger_Post.png?fm=auto&auto=compress%2Cformat" alt="Image showing POST action in Swagger" />
+
+1. You should add the user information such as email\_id, first\_name, and last\_name to add a user to the project.<br />The user will be added to the project.
+2. Click the **Execute** button.<br />The addition of the user will be successful if the status is 200 and the success is true.
+
+### PUT
+
+- The **PUT** method is used to update an existing item.
+- Below is an example of **PUT** action, to update a user role in the project.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778312428-ksje7wzw0rt-15_ScreenShot-Swagger_Put.png?fm=auto&auto=compress%2Cformat" alt="Image showing PUT action in Swagger" />
+
+1. Enter the **userId** in the marked field.
+2. Update the user role with the number mentioned for the user role syntax. The numbers for the respective roles are as follows:
+
+   - 1 → Administrator
+   - 2 → Editor
+   - 3 → Draft Writer
+   - 4 → Reader
+   - 7 → Owner
+3. Once done, click on the **Execute** button. 
+
+   The update of the user is successful if the status is 200 and the success is true.
+
+### DELETE
+
+- The **DELETE** method is used to delete an item.
+- Below is an example of a **DELETE** action, to delete a **userId**.
+
+1. Enter the **userId** in the marked field.
+2. Once done, click on the **Execute** button.<br />If the status is 200 and the success is true, the **userId** will be successfully deleted.
+
+   <Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778312465-k3df5d203e-16_ScreenShot-Swagger_Delete.png?fm=auto&auto=compress%2Cformat" alt="Image showing DELETE action in Swagger" />
+
+<Callout kind="info">
+   NOTE
+
+  It is mandatory to enter the content in the field that are marked \***required**.
+</Callout>
+
+  For more information, refer to the following blogs
+
+1. [<u>Ultimate guide to create an API documentation with examples</u>](https://document360.com/blog/api-documentation/)
+2. [Feature spotlight – API in Document360](https://www.google.com/search?q=Feature+spotlight+%E2%80%93+API+in+Document360&rlz=1C1CHBD_enIN1119IN1119&oq=Feature+spotlight+%E2%80%93+API+in+Document360&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIGCAEQRRg80gEHNDI5ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8)
+
+<ExpandableGroup>
+  ---
+
+  ### FAQs
+
+  <Expandable title="What should I do if refreshing the page ends my session?">
+    If you refresh the page, the session might end, and you will have to authenticate again. Follow the steps provided for authentication.
+  </Expandable>
+
+  <Expandable title="How should I format fields that require a specific character?">
+    You must use an underscore wherever required. For example, use “email\_id” instead of “email id.” Using spaces will result in an error.
+  </Expandable>
+</ExpandableGroup>

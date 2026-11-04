@@ -1,0 +1,121 @@
+---
+title: Connect Claude to Document360 MCP
+description: Connect Claude to your Document360 knowledge base to manage documentation, search articles, and streamline workflows directly from conversations.
+---
+
+Connect Claude to your Document360 knowledge base to work with your documentation directly from your Claude conversations. Once connected, Claude can search documentation, retrieve article content, create and update articles and categories, move content through review workflows, and publish it to your knowledge base site - with every operation following your Document360 roles and permissions.
+
+Direct connector availability in the US region
+
+Currently, there is no confirmed timeline for the availability of a direct Claude connector in the US region. Document360 has submitted the necessary Multi-Cloud Platform (MCP) request to Anthropic and is awaiting approval. Users are encouraged to stay updated through official Document360 announcements for any changes or updates regarding this feature.
+
+You can establish this connection in two ways:
+
+- **From the Document360 portal** \- Start the connection from the MCP settings page in Document360.
+- **From Claude** \- Add the Document360 connector from the connectors directory in Claude.
+
+Both methods result in the same connection. Both take you directly to a chat session once connected.
+
+---
+
+## Before you begin
+
+- Ensure MCP is enabled in your Document360 project. For the steps to enable MCP, refer to the [Connect MCP to your AI assistant page](https://docs.document360.com/help/docs/connect-mcp-to-your-ai-assistant).
+- You must have a Claude account on a paid plan.
+- MCP access follows your Document360 role-based permissions. Claude can only access content permitted for the account you authenticate with.
+
+---
+
+## Connect from the Document360 portal
+
+To connect Claude from Document360,
+
+1. Navigate to **Settings** () in the left navigation bar.
+2. Go to **AI Settings** > **MCP**.
+3. On the **Claude** tile, click **Connect**.<br /> You will be redirected to the Document360 connector in Claude, prompting you to connect.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777927785-487gv5ej8ac-claudeconnect.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+4. Click **Connect**.<br /> <Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777933100-cwbozyvr6x8-claudeconnectpage.png?fm=auto&auto=compress%2Cformat" alt="" />
+5. In the **Connect with Document360 MCP** page, select the desired project from the dropdown.
+6. Select the **I understand and trust this URL** checkbox.
+7. Click **Continue**.
+
+You will be redirected to a Claude chat session. The connection is now active; enter a prompt to start working with your knowledge base.
+
+---
+
+## Connect from Claude
+
+To connect directly from Claude,
+
+1. Open **Claude**.
+2. Click your profile and navigate to **Settings**.
+3. Go to **Connectors**.
+4. Click **Browse**.
+5. In the search bar, search for **Document360**.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777933480-xbg2eagsbx-d360inclaudesearch.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+6. Open the **Document360** connector and click **Connect**.
+7. In the **Connect with Document360 MCP** page, select the desired project from the dropdown.
+8. Select the **I understand and trust this URL** checkbox.
+9. Click **Continue**.
+
+You will be redirected to a Claude chat session. Enter a prompt to start working with your knowledge base.
+
+---
+
+## Manage the connection
+
+After connecting, you can manage the Document360 connector's tools, permissions, and connection status from Claude.<br /> Go to **Settings** > **Connectors** and select **Document360**.
+
+### Set tool permissions
+
+The Document360 connector's tools appear on the connector page, grouped by type (for example, **Read-only tools**, **Write/delete tools**) with the number of tools in each group. Under **Tool permissions**, you can control when Claude is allowed to use each tool.
+
+ NOTE
+
+You only see the tools your organization has given you access to. The tools available also depend on your Document360 role and permissions.
+
+Each tool can be set to one of the following:
+
+| Permission | Behavior |
+| --- | --- |
+| **Always allow** | Claude uses the tool without asking for approval. |
+| **Ask every time** | Claude asks for your approval before each use. [VERIFY: exact label of the middle icon] |
+| **Blocked** | Claude cannot use the tool. |
+
+You can set a permission for an entire group using the group's dropdown, or set each tool individually using the icons next to it. Setting different permissions across the tools in a group shows the group as **Custom**. This lets you, for example, allow read tools such as `get-article` and `get-categories` to run automatically while blocking or requiring approval for other tools.
+
+### View connector details
+
+Click the more options icon (  ) and select **View details** to open the connector's information page. This page includes the author, the connector URL (used when connecting through a custom connector), and links to the documentation, support, and privacy policy. For a detailed explanation of each tool, refer to the [Supported MCP tools](https://docs.document360.com/help/docs/supported-mcp-tools) article.
+
+### Get new MCP tools
+
+When Document360 releases new MCP tools, Claude may not detect them automatically. To refresh the available tools:
+
+1. Go to **Settings** > **Connectors** and select **Document360**.
+2. Click the more options icon (  ) and select **Refresh tools list**.<br /> The connector updates to include any newly added MCP tools without requiring a full reconnect.
+
+### Disconnect
+
+1. Go to **Settings** > **Connectors** and select **Document360**.
+2. Click **Disconnect**.
+3. In the confirmation dialog, click **Disconnect** to confirm, or **Cancel** to keep the connection.<br /> Once disconnected, Claude can no longer access your knowledge base until you reconnect.
+
+Once disconnected, Claude can no longer access your knowledge base until you reconnect.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777933784-56qyhoyt38h-toolslistclaude.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+---
+
+## Verify the connection
+
+To confirm that Claude can access your knowledge base:
+
+1. Start a new chat in Claude.
+2. Enter a prompt that asks Claude to fetch or search your documentation. For example, ask it to find an article by title or summarize a specific topic from your knowledge base.<br /> If the connection is successful, Claude returns results sourced from your Document360 knowledge base. For more prompts you can try, refer to the [MCP use cases](https://docs.document360.com/help/docs/mcp-use-cases-in-document360) article.
+
+If Claude returns no results or an error, verify that MCP is enabled in Document360 and that the connector is active in Claude, then refresh the tools list and try again.

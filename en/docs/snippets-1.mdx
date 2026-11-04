@@ -1,0 +1,61 @@
+---
+title: Snippets
+description: Streamline your documentation with snippets in Document360, ensuring consistent updates and reduced maintenance across all articles effortlessly.
+---
+
+A snippet is a reusable block of content: text, paragraphs, tables, images, callouts, code blocks, or any combination that you create once and insert into multiple articles. When you update a snippet, the change is automatically reflected in every article that uses it. Snippets are stored in a central library within Document360 and are invisible as a separate element to readers. On the knowledge base site, snippet content renders as regular article content.
+
+---
+
+## Why use snippets
+
+Snippets address a common documentation problem: content that appears in multiple articles needs to be maintained in multiple places. Without snippets, updating a product disclaimer, a support contact block, or a shared warning means finding every article that contains it and editing each one individually. A missed instance leads to inconsistent information.
+
+With snippets, that content lives in one place:
+
+- Single source of truth. One edit, consistent updates everywhere.
+- Reduced maintenance overhead. No hunting across articles for repeated content.
+- Consistency at scale. The same warning, note, or step appears identically across all articles.
+- Faster authoring. Writers insert predefined blocks instead of retyping or copy-pasting.
+
+---
+
+## Snippets vs. variables
+
+Document360 offers two content reuse tools. Choosing the right one depends on what you are reusing.
+
+|  | Snippets | Variables |
+| --- | --- | --- |
+| **Content type** | Formatted blocks such as paragraphs, tables, images, callouts, and code. | Plain text values such as names, numbers, URLs, and short phrases. |
+| **Typical use** | Disclaimers, shared steps, contact blocks, repeated warnings. | Product names, version numbers, support email addresses. |
+| **Character limit** | No character limit. | 300 characters. |
+| <strong>Can contain formatting?</strong> | Yes, full editor formatting. | No, text only. |
+| <strong>Can nest other snippets?</strong> | Yes, Markdown snippets only. | No. |
+| **Inserted via** | Toolbar or merge code syntax. | Toolbar, merge code syntax, or slash command. |
+
+---
+
+## Get started with Snippets
+
+Create and manage snippets
+
+Create a snippet, choose your editor, use Eddy AI while drafting, and manage snippets from the Snippets page — edit, delete, bulk delete, and view dependencies.
+
+[Learn more →](/en/docs/snippets)
+
+Use and translate snippets
+
+Insert snippets into articles using three methods, translate snippets for multilingual knowledge bases, and troubleshoot common issues.
+
+[Learn more →](/en/docs/use-and-translate-snippets)
+
+---
+
+## Best practices
+
+- Use snippets for content that appears in three or more articles. If the same block appears in only one or two places, editing those directly is simpler than creating and managing a snippet.
+- Keep each snippet focused on one purpose. A snippet that serves a single, specific function such as a disclaimer, a contact block, or a shared warning is easier to reuse and update than one that bundles unrelated content together.
+- Name snippets descriptively. Use a naming pattern that reflects the content type and purpose, for example `[Warning] Unsaved changes` or `[Contact] Support block`. Consistent names make the library easy to scan and reduce the chance of inserting the wrong snippet.
+- Check dependencies before editing or deleting. Changes to a snippet apply immediately to all articles that use it, including published ones. Use the **Used in** column to review the impact before making changes.
+- Do not use variables inside snippets. Variables inside snippets do not render correctly in the editor preview or in PDF exports. Manage dynamic values separately from snippet content.
+- Translate snippets alongside articles. If your knowledge base supports multiple languages, translate snippets at the same time as the articles that use them. A snippet without a translation will display the default language value to readers in other locales.

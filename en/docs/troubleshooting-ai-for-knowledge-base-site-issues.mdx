@@ -1,0 +1,68 @@
+---
+title: Troubleshooting AI for Knowledge Base Site Issues
+description: Fix the Listen feature not reading variable values after importing articles by creating required variables in the destination project before import.
+---
+
+### After importing articles from one project into another, the Listen feature does not read variable values.
+
+This happens because the variables referenced in the imported articles did not exist in the destination project at the time of import, so the content could not link to them correctly. You can prevent this by creating all required variables in the destination project before importing any content.
+
+### Before you begin
+
+- Confirm you have **Owner** or **Admin** access in the destination project — you need this to create variables.
+- Have a list of all variables used in the articles you plan to import. You can review these in the source project under **Settings** > **Variables**.
+
+### Fix the Listen feature not reading variable values
+
+1. In the destination project, navigate to **Settings** > **Variables**.
+2. Select **New variable** and recreate each variable from the source project, using the same name and value.
+3. Repeat until all required variables exist in the destination project.
+4. Import the articles or category structure into the destination project.
+5. Open each imported article in the editor and confirm the variable placeholders are rendering the correct values.
+6. Select **Publish** for each article.
+
+The Listen feature can now read the variable values as expected.
+
+### Verify the fix
+
+1. Open a published article that contains variables.
+2. Select the **Listen** icon in the article toolbar.
+3. Confirm the audio reads out the variable values and not the placeholder syntax.
+
+<Callout kind="info">
+  Note:
+
+  If the Listen feature still does not read variable values in an article imported *before* creating the variables, unpublish the article, open it in the editor, and republish it. This forces the system to re-evaluate the variable references.
+</Callout>
+
+If the Listen feature still does not read variable values in an article imported *before* creating the variables, unpublish the article, open it in the editor, and republish it. This forces the system to re-evaluate the variable references.
+
+### Why this happens
+
+When articles are imported, Document360 checks whether the variables referenced in the content already exist in the destination project. If they do not, the imported content cannot form the correct association between the variable placeholders and the variable definitions. Even if the variables are created afterward, the previously imported articles may retain broken references. The Listen feature relies on these associations to resolve and read variable values aloud, so articles imported before the variables were created may not work correctly until republished.
+
+<ExpandableGroup>
+  ---
+
+  ### FAQ
+
+  <Expandable title="Does this affect all articles in the import or only some?">
+    It affects only articles that contain variable references. Articles without variables are not impacted.
+  </Expandable>
+
+  <Expandable title="Do I need to republish every imported article to fix the issue?">
+    Only articles that were imported before the variables were created need to be republished. Articles imported after the variables exist are linked correctly at the time of import.
+  </Expandable>
+
+  <Expandable title="Will the variable values appear correctly in the editor even if Listen does not read them?">
+    Sometimes. The editor may display the resolved variable value visually, but the Listen feature may still fail to read it if the underlying reference was not established correctly during import.
+  </Expandable>
+
+  <Expandable title="What if I do not know which variables are used in the articles I plan to import?">
+    Review the source project under **Settings** > **Variables** to see all variables defined there. Cross-check these against the articles you intend to import before starting.
+  </Expandable>
+
+  <Expandable title="I followed the steps and republished, but Listen still skips the variable values. What next?">
+    Contact Document360 support with the affected article URL and variable names. Include the order in which the import and variable creation were performed.
+  </Expandable>
+</ExpandableGroup>

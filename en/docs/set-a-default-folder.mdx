@@ -1,0 +1,87 @@
+---
+title: Set a default folder
+description: Set a default folder in Document360 Drive to keep your files organized, streamline uploads, and enhance collaboration for all contributors.
+---
+
+The default folder in Document360 Drive determines where images and files are automatically saved when contributors paste or upload them directly from the article editor. Setting the right default folder keeps your Drive organized, reduces manual file management, and ensures assets land in a predictable, structured location from the start.
+
+---
+
+## What is a default folder
+
+When a contributor adds an image or file to an article by pasting it or uploading it inline from the editor, Document360 needs to know where to store that file in the Drive. The default folder is the fallback destination for all such uploads.
+
+The default folder operates at the project level, meaning it applies to all contributors in the project. It acts as a catch-all when no more specific folder mapping is in place for a category.
+
+ NOTE
+
+If a category has been mapped to a specific Drive folder, that mapping takes precedence over the default folder. Only when no category-level mapping exists does the default folder apply. Refer to [Mapping a category with a folder in Drive](https://docs.document360.com/help/docs/assigning-drive-folder-for-a-category) for more information.
+
+---
+
+## Why set a default folder
+
+Without a default folder, uploaded assets may land in an unintended or ungrouped location, making them difficult to find, audit, or maintain over time. A well-chosen default folder:
+
+- Prevents assets from accumulating in a root-level or unstructured location.
+- Gives new contributors a sensible starting point without requiring them to manually select a folder every time they upload.
+- Supports Drive organization when your team has not yet set up category-level folder mappings.
+- Acts as a safety net for edge cases. For example, when images are pasted from an external source, when files are uploaded directly from the editor, or when articles are imported from Word documents (.docx).
+
+---
+
+## Use cases
+
+The following scenarios illustrate when setting a default folder is most useful:
+
+| Scenario | How the default folder helps |
+| --- | --- |
+| New project setup | Before category-folder mappings are configured, all uploaded images and files go to one designated folder rather than scattering across the Drive. |
+| General or uncategorized content | Articles that do not belong to a specific category still have a consistent home for their assets. |
+| Importing Word documents | Images embedded in imported .docx files are automatically extracted and saved to the default folder. |
+| Inline image pastes | When contributors paste screenshots directly into the editor, the image is saved to the default folder without any additional steps. |
+| File uploads from editor | Files uploaded directly from the editor are routed to the default folder when no category mapping is configured. |
+| Teams without a folder mapping strategy yet | A shared default folder keeps assets accessible to the whole team while the Drive structure is being established. |
+
+---
+
+## Set a default folder
+
+To set a folder as the default folder,
+
+1. Click the **Drive** icon in the left navigation bar.
+2. In the left navigation pane, locate the folder you want to set as the default.
+3. Click the **More** icon next to the folder and select **Set default folder**.
+
+<Image src="https://cdn.document360.io/860f9f88-412e-4570-8222-d5bf2f4b7dd1/Images/Documentation/set%20default%20folder%281%29.png" alt="Menu options in Document360 showing folder management and file organization features." />
+
+A confirmation popup appears saying **Editor folder updated**. The default folder is now set at the project level and is identifiable by the **DEFAULT** badge next to its folder name in the Drive.
+
+ NOTE
+
+- You can set the default folder as many times as needed. If you select **Set default folder** on a folder that is already the default, no changes are made.
+- The default folder cannot be deleted. To delete it, first reassign the default to another folder using **Set default folder**, then delete the original folder.
+
+---
+
+## Folder mapping priority
+
+Document360 uses a priority order to determine which Drive folder receives an uploaded image. Understanding this order helps you plan your Drive structure effectively.
+
+| Priority | Setting | When it applies |
+| --- | --- | --- |
+| 1 (highest) | Subcategory folder mapping | The article belongs to a subcategory that has been mapped to a Drive folder. |
+| 2 | Parent category folder mapping | The article belongs to a category (with no subcategory mapping) that has been mapped to a Drive folder. |
+| 3 | Default folder | No category or subcategory mapping exists for the article. |
+| 4 (fallback) | File-type based system folder | No default folder is configured for the project. |
+
+To set up category-level folder mappings, refer to [Mapping a category with a folder in Drive](https://docs.document360.com/help/docs/assigning-drive-folder-for-a-category).
+
+---
+
+## Best practices
+
+- <strong>Create a dedicated default folder.</strong> Avoid setting a system folder or a category-specific folder as the default. Instead, create a folder named something like *General* or *Unsorted* to serve as a clear catch-all.
+- <strong>Mirror your category structure.</strong> As your knowledge base grows, set up category-to-folder mappings for each major category. This reduces reliance on the default folder and keeps assets logically organized.
+- <strong>Update the default folder before hitting the file limit.</strong> Each folder supports up to 5,000 files. If your default folder is filling up, change the default to a new folder before uploads start failing. Refer to [Troubleshooting Drive issues](https://docs.document360.com/help/docs/troubleshooting-drive-issues) for steps on resolving folder file limit errors.
+- <strong>Communicate the default folder to your team.</strong> Since the setting applies project-wide, all contributors are affected. Let your team know which folder is set as the default and why, so they can anticipate where their uploads will go.

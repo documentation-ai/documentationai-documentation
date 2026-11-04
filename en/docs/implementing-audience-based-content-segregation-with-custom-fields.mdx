@@ -1,0 +1,139 @@
+---
+title: Implementing audience-based content segregation with custom fields for external platforms
+description: Learn to use Document360's Custom Fields for effective content segregation, ensuring tailored access for different user groups in your external applications.
+---
+
+When using Document360 as a headless content management system, you may need to control which content is visible to different user groups or organizations in your external application. This is particularly common in enterprise scenarios where multiple companies or departments share the same knowledge base but require segregated access to specific policies, procedures, or documentation.
+
+This guide explains how to use Document360's Custom Fields feature to store audience metadata that external platforms can consume via API to implement content segregation. Unlike Document360's built-in Reader Groups (which control access within Document360 itself), this approach allows external applications to make authorization decisions while keeping audience definitions centralized in Document360.
+
+<Callout kind="info">
+  Note:
+
+  Custom Fields can be applied to **Articles** and **Page Categories** only. Standard Categories (folder-type categories used for navigation structure) do not support Custom Fields.
+</Callout>
+
+## Prerequisites
+
+1. Document360 account with Custom Fields feature enabled
+2. API access to Document360 (API key or authentication method)
+3. External application capable of consuming Document360 APIs
+4. Understanding of your organization's audience segmentation requirements
+5. Content management permissions in Document360 to create and configure Custom Fields
+
+## Step-by-Step Guide
+
+### Define your audience segmentation strategy
+
+1. Identify the different audience groups that need segregated content access (e.g., "CompanyA", "PartnerOrg", "Internal", "External").
+2. Determine whether you need explicit tagging (all articles tagged) or selective tagging (only restricted articles tagged).
+3. Document your content governance model for who will manage audience assignments.
+
+### Create the “Target Audience” custom field
+
+1. Navigate to **Settings** > **Custom Fields** in your Document360 admin panel
+2. Click **Add Custom Field**
+3. Configure the field with these settings:
+
+   1. **Field Name**: "Target Audience"
+   2. **Field Type**: Select **MultiSelectDropdown** to allow multiple audience assignments
+   3. **Apply To**: Select **Articles** (and **Page Categories** if needed)
+4. Add your audience values as dropdown options (e.g., CompanyA, PartnerOrg, Internal, External)
+5. Set the field as optional if using selective tagging, or required if using explicit tagging
+6. Click **Save** to create the field
+
+### Configure content with audience metadata
+
+1. Open any article that needs audience-specific visibility
+2. Scroll to the **Custom Fields** section in the article editor
+3. Select the appropriate audience(s) from the **Target Audience** dropdown
+4. Save the article
+5. Repeat for all articles requiring specific audience targeting
+
+> Articles without a Target Audience value can be treated as generally visible or restricted based on your governance model.
+
+### Implement API integration in your external platform
+
+1. Use Document360's content retrieval APIs to fetch articles:
+
+   1. Get a document article by URL path
+   2. Get an article by URL
+   3. Get article settings
+2. Extract the `custom_fields` object from each article response
+3. Read the **Target Audience** field value
+4. Map audience values to your external platform's user groups or organizations
+5. Apply filtering logic during content indexing or search
+
+### Build a dynamic content structure
+
+1. Retrieve and index all articles from Document360
+2. Filter articles based on the authenticated user's organization or group
+3. Build category navigation dynamically based on visible articles
+4. Hide categories that contain no visible articles for the current user
+
+## Use cases & scenarios
+
+### Multi-company policy management
+
+A parent organization has subsidiary companies that need access to shared general policies, while also maintaining company-specific policies that should remain segregated. Using Custom Fields, shared policies can be tagged with multiple company identifiers, while company-specific policies are tagged with only the relevant organization.
+
+### Department-specific documentation
+
+An organization needs to provide different documentation sets to departments such as HR, Legal, and Communications. Each article is tagged with the appropriate department(s) in the Target Audience field, and the external platform filters content based on the user's department membership.
+
+### External partner access
+
+A company shares certain documentation with external partners while keeping internal procedures private. Articles are tagged as "Internal", "External", or both, allowing the external platform to show appropriate content based on user type.
+
+---
+
+## FAQ
+
+<Expandable title="Can I use multiple Custom Fields for different types of audience segmentation?">
+  Yes, you can create multiple Custom Fields for different segmentation criteria (e.g., "Department", "Company", "Security Level"). Your external platform can then apply multiple filters based on user attributes.
+</Expandable>
+
+<Expandable title="What happens if I don't assign a Target Audience to an article?">
+  This depends on your implementation. You can configure your external platform to treat untagged articles as either generally visible or restricted. The selective tagging approach treats untagged articles as generally visible, while explicit tagging treats them as restricted.
+</Expandable>
+
+<Expandable title="Can I change audience assignments after articles are published?">
+  Yes, you can modify Custom Field values at any time. Changes will be reflected in API responses immediately, and your external platform should pick them up during its next content synchronization.
+</Expandable>
+
+<Expandable title="How do I handle articles that should be visible to multiple audiences?">
+  Use the MultiSelectDropdown field type, which allows you to assign multiple audience values to a single article. Your external platform can then check if the user's group matches any of the assigned audiences.
+</Expandable>
+
+<Expandable title="Can I apply audience metadata at the category level?">
+  Yes, Custom Fields can be applied to Page Categories. However, consider whether article-level control provides sufficient granularity, as category-level restrictions may be harder to manage and could create inconsistencies.
+</Expandable>
+
+## Troubleshooting
+
+<Expandable title="Custom Fields not appearing in API responses">
+  **Resolution**<br />Use individual article retrieval APIs instead of the Project Version Articles API to get custom field data.
+
+  **Root cause**<br />The Project Version Articles API does not include custom fields in its response payload.
+</Expandable>
+
+<Expandable title="Articles are not filtering correctly in the external platform">
+  **Resolution**<br />Verify that Custom Field values exactly match the filtering logic in your external platform — check for case sensitivity, extra spaces, or special characters in field values.
+
+  **Root cause**<br />Mismatched field values between Document360 and the external platform's filtering logic, often caused by formatting inconsistencies.
+</Expandable>
+
+<Expandable title="Performance issues with large content sets">
+  **Resolution**<br />Retrieve custom field definitions once and cache them. Use incremental synchronisation and apply filtering during content indexing rather than on real-time API calls.
+
+  **Root cause**<br />Repeated live API calls for custom field definitions on every request introduce unnecessary latency at scale.
+</Expandable>
+
+<Callout kind="alert">
+  **Warning**
+
+  1. Changes to Custom Field configurations may require updates to your external platform's integration code and content re-indexing.
+  2. Removing audience assignments from articles immediately affects visibility in your external platform — ensure proper change management processes are in place.
+</Callout>
+
+Application Programming Interface - A set of defined rules and protocols that allows one software application to communicate with and request functionality from another. APIs are the backbone of modern integrations. When Document360 connects to Slack, Intercom, or Google Analytics, it does so through their APIs. Document360 also provides its own REST API, enabling teams to programmatically manage articles, categories, and reader accounts from external systems.

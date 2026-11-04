@@ -1,0 +1,86 @@
+---
+title: Update article contributors
+description: Manage article contributors in Document360 effortlessly, ensuring every team member's contributions are recognized and displayed correctly.
+---
+
+Document360 automatically tracks which users have created, updated, or published an article and adds them to the article's contributor list. Contributors are displayed publicly on the knowledge base site. Readers can click a contributor's avatar to view other articles they have worked on.
+
+By default, anyone who performs an action on an article is listed as a contributor. Contributors can also be manually added or removed at any time.
+
+---
+
+## When to update article contributors
+
+- Multiple users worked on an article and you want to ensure everyone's contribution is acknowledged.
+- A user has left the team and needs to be removed from the contributor list, or their articles need to be reassigned to an active user.
+- An article was created or edited under the wrong account and the attribution needs to be corrected.
+
+---
+
+## Article information panel
+
+The contributor list is managed through the **Article information** panel in the editor. This panel also displays other key article details.
+
+1. Navigate to the article in the knowledge base portal.
+2. Click the **Article information** () icon in the article header.
+
+The panel displays the following:
+
+| Field | What it shows |
+| --- | --- |
+| **Contributors** | All contributors associated with the article. Hover over a contributor icon to view their name. |
+| **Manage** | Opens the Manage contributors dialog to add or remove contributors. |
+| **URL slug** | The article's current URL slug. Click the Edit icon to update it. |
+| **Description** | An internal description for the article. For Page category articles, this appears under the article title on the knowledge base site. |
+| **Status** | The current article status, version, contributor name, and last updated time. |
+| **Statistics** | Total word count of the article. |
+| **Created by** | The user who created the article and the creation date. |
+| **Latest version** | Appears only when an article is published and copied to draft. Shows the latest version details. |
+| **Mirror** | Appears only for articles that are part of a mirror setup. On a source article, it shows **View mirror articles**, which lists the workspace, language, and category of each location where the article is mirrored. On a mirrored article, it shows **Go to source article**, which opens the source article. For more information, see [Mirror articles](https://docs.document360.com/docs/en/replicate-articles). |
+| **Navigation path** | The article's path from the root category. If the article belongs to multiple categories, only the root and immediate parent are shown with "..." in between. |
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778439900-wuw8thoi8xo-article-information-popover.png?fm=auto&auto=compress%2Cformat" alt="Article information panel showing contributors, status, URL slug, and other article details" />
+
+ NOTE
+
+Document360 shows a default avatar if the contributor has not uploaded a profile photo.
+
+---
+
+## Add or remove contributors
+
+1. In the editor, click the **Article information** () icon in the article header.
+2. Click **Manage** to open the **Manage contributors** dialog.
+3. Search for a user by name or email.
+4. Click the **Add as contributor** () icon next to their name to add them.
+5. To remove a contributor, click the **Remove contributor** () icon next to their name.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778440894-bbjrmxfw86f-image-1774950924275.png?fm=auto&auto=compress%2Cformat" alt="Manage contributors dialog showing search field and add or remove contributor options" />
+
+ NOTE
+
+If a contributor leaves your team, their name will still appear in the contributor list as long as their account exists in the project. To remove them completely, delete their user account. For details, refer to [Managing users](https://docs.document360.com/docs/user-overview)
+
+---
+
+## Best practices
+
+- Add contributors at publish time. The Publish confirmation dialog includes article settings. Use this moment to verify the contributor list is accurate before the article goes live.
+- Reassign articles before deleting a user. If a user's account is deleted, their articles will lose all contributor attribution. Assign a replacement contributor before removing the account.
+- Use contributors for visibility, not access control. The contributor list is a public-facing attribution feature. It does not affect who can edit the article. That is managed through Roles and permissions.
+
+---
+
+## FAQ
+
+<Expandable title="A contributor I added is not showing on the knowledge base site. Why?">
+  A contributor's name will only appear on the knowledge base site after they log in to Document360 for the first time. Until then, their profile cannot be associated with the article. Ask the contributor to log in at least once to activate their profile. If the issue persists after login, try clearing your project cache or contact [support@document360.com](https://document360.com/support/).
+</Expandable>
+
+<Expandable title="Does deleting a user delete the articles they contributed to?">
+  No. Deleting a user does not delete their articles. The articles remain published and accessible. However, the deleted user will no longer appear as a contributor. If they were the only contributor, the article will display a warning in the portal stating no contributor is assigned, and no contributor avatar will appear on the knowledge base site. Assign a new contributor to resolve this.
+</Expandable>
+
+<Expandable title="Can I add a contributor who is not a project member?">
+  No. Contributors must be existing users in the Document360 project. You can search for users by name or email in the Manage contributors dialog.
+</Expandable>

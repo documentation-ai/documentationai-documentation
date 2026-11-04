@@ -1,0 +1,149 @@
+---
+title: MCP overview
+description: Unlock structured access to your knowledge base with Document360's Model Context Protocol, enabling AI assistants to manage and retrieve content efficiently.
+---
+
+The Model Context Protocol (MCP) server in Document360 exposes your knowledge base content through a structured interface for interacting with documentation. Instead of accessing documentation as rendered web pages, MCP allows AI assistants (ChatGPT, Claude) to interact directly with the underlying content. With MCP enabled, your knowledge base becomes accessible through defined AI assistants that perform specific operations such as searching, retrieving, creating, updating, publishing, and managing content workflows, as well as maintaining glossary terms, managing review reminders, working through assigned tasks, and sending article feedback, all within your existing project rules.
+
+---
+
+## What is MCP?
+
+The MCP is an open standard that allows AI assistants to securely connect with external systems and access structured data. Instead of building separate integrations for each AI assistant and each platform, MCP provides a common interface that standardizes how AI assistants communicate with external platforms.
+
+An MCP server acts as a bridge between an AI assistant and your system. It exposes specific capabilities such as searching content, retrieving documents, or performing structured updates through a defined protocol. The AI assistant sends a structured request to the MCP server, and the server responds with structured data that the assistant can use. You can think of MCP as a universal connector for AI integrations. Rather than creating custom connections for every tool, MCP enables a single, standardized way for AI assistants to interact with real, up-to-date systems.
+
+By using MCP, AI assistants are not limited to generating responses from training data alone. They can retrieve live content, access structured documentation, and perform defined actions through the MCP server making their outputs more relevant and context aware.
+
+---
+
+## The challenge organizations face with AI assistants
+
+Many organizations are adopting AI assistants such as:
+
+- ChatGPT
+- Claude
+- GitHub Copilot
+- Internal AI agents
+
+However, these assistants often lack direct access to structured business knowledge.
+
+As a result:
+
+- AI tools cannot easily access knowledge bases
+- Documentation is not integrated into AI workflows
+- Developers and support teams copy-paste documentation manually
+- Maintaining consistent documentation becomes difficult
+
+Organizations need a structured way to connect AI assistants with their documentation systems. Document360 MCP solves this problem.
+
+---
+
+## Why MCP in Document360
+
+- Documentation in Document360 is structured across project versions, multiple languages, category hierarchies, and role-based visibility settings. This structure defines how content is organized, accessed, and governed within your knowledge base.
+- When documentation is consumed only through rendered web pages, much of that structure is experienced visually. Version context, language selection, and hierarchical relationships are present, but not always explicit when accessed programmatically.
+- MCP availability depends on your project configuration and plan. The MCP Server introduces a standardized way for AI assistants to interact with your documentation through defined capabilities such as searching, retrieving, updating, and publishing content, and managing workflows. Instead of relying purely on rendered output, AI assistants can interact with your knowledge base in a structured and controlled manner.
+
+  For example:
+
+  - Search operations can span across project versions by default or target a specific version when required.
+  - Retrieved content respects your configured visibility and permission rules.
+  - Write operations follow existing versioning behavior and preserve content structure.
+  - Workflow operations respect your project's configured review stages and role-based permissions.
+  - Publishing operations follow the same rules as the portal; content can only be published or unpublished by users with the appropriate permissions.
+- At the same time, MCP operates entirely within your existing configuration. Content availability reflects your project version settings, language configuration, permission model, and visibility rules. Unpublished or restricted content remains governed by those rules.
+
+  When write, workflow, or publishing operations occur, existing versioning behavior is preserved. MCP does not override documentation workflows, publishing rules, or governance controls. It simply provides structured access to your knowledge base while maintaining the integrity of your documentation system.
+- MCP is available on Business and Enterprise plans. If your project is on a different plan, the AI Settings > MCP page will prompt you to upgrade before you can enable MCP.
+
+If your project is already on a Business or Enterprise plan but the MCP page still shows an upgrade prompt, first confirm your current plan under Settings > Knowledge base portal > Billing > My plan. If the My plan tab correctly shows Business or Enterprise and the MCP page still blocks access, contact Document360 support so the team can verify your project’s plan eligibility on their end.
+
+---
+
+## Before you begin
+
+Before enabling MCP, ensure the following:
+
+- You have a **Project Owner** or **Admin** role. Only these roles can enable or disable MCP for a project.
+- You are using a supported AI assistant (ChatGPT, Claude, GitHub Copilot, Cursor IDE, or any platform that supports MCP or custom connectors).
+
+To enable MCP and connect your AI assistant, refer to [Connect MCP to your AI assistant](/en/docs/connect-mcp-to-your-ai-assistant).
+
+---
+
+## Authentication and access control
+
+MCP uses **OAuth** for authentication. When you connect an AI assistant to Document360 through MCP, the connection is tied to the user account that completes the OAuth flow.
+
+All MCP interactions follow Document360's <strong>role-based access control (RBAC)</strong> model. This means:
+
+- The AI assistant can only access content permitted for the authenticated user based on their assigned roles and permissions.
+- Restricted or unpublished content remains governed by your existing visibility rules.
+- Write operations (such as creating or updating articles, categories, and glossary terms) are only possible if the authenticated user has the appropriate permissions.
+- Publishing, unpublishing, and workflow operations follow the same permission model as the portal. Only users with the appropriate permissions can perform these actions.
+- Task tools only show and act on tasks assigned to the authenticated user, directly or through a group.
+- Article feedback sent through MCP is recorded against the authenticated user. Reader accounts can send article feedback, but cannot use any other write tools.
+
+Enabling MCP does not grant external tools unrestricted access to your knowledge base.
+
+---
+
+## Document360 MCP tools
+
+The MCP Server provides a list of [tools](/en/docs/supported-mcp-tools) that define how documentation can be searched, retrieved, and managed.
+
+Each tool represents a specific and intentional action against your knowledge base. Rather than exposing raw content or open-ended endpoints, MCP structures interactions through clearly defined operations. This ensures that documentation access remains predictable, version-aware, and aligned with your project configuration.
+
+These tools collectively support structured discovery, contextual retrieval, controlled content updates, workflow management, publishing operations, glossary management, review reminders, task management, and article feedback.
+
+NOTE
+
+When Document360 releases new MCP tools, your AI assistant does not pick them up automatically. Refresh the tools list in your AI assistant, or disconnect and reconnect the Document360 connector, to start using them.
+
+### Search and retrieval tools
+
+| Tool | Description |
+| --- | --- |
+| `document360-mcp-search` | Performs a semantic search across your knowledge base project. Matches by meaning, not exact wording. Searches all project versions by default, or a specific version when needed. |
+| `document360-mcp-find-text` | Finds an exact word or phrase anywhere in your documentation and returns every article and page category that contains it, with their public URLs. |
+| `document360-mcp-list-documents` | Lists articles and page categories using filters such as version, language, category, status, tags, labels, or update date. |
+| `document360-mcp-get-article` | Retrieves full article content using an article ID or URL. Supports multiple languages and allows fetching published or draft versions. |
+| `document360-mcp-get-categories` | Retrieves the complete category structure for a selected project version, including child categories and associated articles. |
+| `document360-mcp-get-category` | Retrieves detailed information for a specific category, including its content, subcategories, and associated articles. |
+| `document360-mcp-get-project-versions` | Lists all available project versions along with their identifiers, enabling version-specific operations. |
+| `document360-mcp-get-workflow-statuses` | Lists the workflow statuses configured for the project, with their identifiers. |
+| `document360-mcp-get-workflow-assignees` | Lists the users and groups that can be assigned to an article's workflow. |
+| `document360-mcp-list-glossary-terms` | Lists the project's glossary terms, including each term's definition and language variants. |
+| `document360-mcp-list-review-reminders` | Lists the articles and Page categories in a workspace that have a review reminder, stale or scheduled, with the earliest review date first. |
+| `document360-mcp-get-my-tasks` | Lists the tasks assigned to you in a workspace, including workflow assignments, reader feedback, and review reminders. This is the same list as the **Tasks** page in the portal. |
+
+These tools allow structured discovery and contextual access to documentation content.
+
+---
+
+### Write tools
+
+| Tool | Description |
+| --- | --- |
+| `document360-mcp-create-article` | Creates a new article in a specified category and project version. Supports structured content formats and requires confirmation before creation. |
+| `document360-mcp-update-article` | Updates an existing article while preserving its structure and formatting. Supports partial updates and requires retrieving the article before modification. |
+| `document360-mcp-create-category` | Creates a new category within a selected project version. Supports hierarchical category structures. |
+| `document360-mcp-update-category` | Updates category properties such as name, position, hierarchy, or visibility within the knowledge base. |
+| `document360-mcp-update-category-content` | Updates the content of category pages (applicable for Page or Index type categories) while preserving existing structure. |
+| `document360-mcp-publish-article` | Publishes an article by promoting its latest draft to the live version. |
+| `document360-mcp-unpublish-article` | Unpublishes an article and removes it from the live knowledge base site. |
+| `document360-mcp-publish-category` | Publishes a Page category's latest draft content to the live version. |
+| `document360-mcp-unpublish-category` | Unpublishes a Page category and removes it from the live knowledge base site. |
+| `document360-mcp-set-workflow-status` | Sets the workflow status of an article or Page category, with an optional due date, comment, and assignees. |
+| `document360-mcp-create-glossary-term` | Adds a new term to the glossary, either as a global term or as a language-level term for one language. |
+| `document360-mcp-update-glossary-term` | Updates a glossary term's term or definition. Only the fields you change are updated. |
+| `document360-mcp-set-article-review-reminder` | Schedules a review reminder on an article, flags it for review now, or clears the reminder. |
+| `document360-mcp-snooze-task` | Snoozes one of your tasks until a specific date, or brings a snoozed task back. |
+| `document360-mcp-mark-task-done` | Marks one of your workflow tasks as done, the same as **Mark as done** on the **Tasks** page. It does not change the workflow status. |
+| `document360-mcp-update-feedback-status` | Updates the status, assignee, or internal note of reader feedback assigned to you. |
+| `document360-mcp-send-article-feedback` | Sends feedback on a published article to your documentation team, for example when content is unclear, outdated, or missing information. The feedback appears in the **Feedback manager**. |
+
+Write operations follow the same versioning behavior and content handling rules as the Document360 editor.
+
+These tools can be used individually or in combination to support end-to-end documentation workflows. For example, AI assistants can search for an article, update its content, move it through a review workflow, and publish it to the live site - all within a single conversation. This makes MCP suitable for automation scenarios such as bulk content updates, large-scale documentation creation, structured review and approval workflows, and maintaining consistency across multiple articles. The experience of prompts and responses may vary depending on the AI assistant being used, as each tool interprets and processes requests differently. You can monitor how your knowledge base is being accessed through MCP using the [MCP server analytics](https://docs.document360.com/docs/mcp-server-analytics) dashboard.

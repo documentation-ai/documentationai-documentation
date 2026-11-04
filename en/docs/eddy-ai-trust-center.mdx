@@ -1,0 +1,99 @@
+---
+title: Eddy AI trust center
+description: Learn how Eddy AI ensures data security and compliance with GDPR, SOC 2, and NIST standards while using trusted subprocessors like OpenAI and Azure.
+---
+
+At Document360, we believe you should know exactly how Eddy AI handles your data. This section covers everything from compliance certifications to how your data flows to OpenAI and back.
+
+---
+
+### Compliance
+
+Eddy AI follows these industry standards:
+
+| Standard | What it means |
+| --- | --- |
+| **GDPR** | Data protection and privacy rights for all EU users. |
+| **SOC 2 Type II** | Independent audit confirming our security, availability, and confidentiality controls. Also aligned with EU AI Act requirements. |
+| **NIST AI RMF** | A voluntary framework that guides trustworthy AI design, development, and evaluation across the AI lifecycle. |
+
+---
+
+### Subprocessors
+
+Eddy AI uses the following trusted third-party services to deliver its features:
+
+| Subprocessor | Role |
+| --- | --- |
+| **MongoDB** | Vector database for storing text embeddings |
+| **OpenAI** | AI models (GPT-4.1 Mini, GPT-4o) for generating responses |
+| **Azure** | Cloud infrastructure (EU region) |
+| **Stripe** | Payment processing |
+| **Segment** | Product analytics |
+| **Mixpanel** | Advanced usage analytics |
+
+---
+
+### Data Security and Privacy
+
+All data associated with Eddy AI is encrypted and protected.
+
+- <strong>Data at rest:</strong> Encrypted using AES-256 bit symmetric encryption.
+- <strong>Data in transit:</strong> Protected using HTTPS with TLS 1.2 (TLS 1.3 required for all OpenAI API calls).
+- <strong>Prompts:</strong> Encrypted before storage.
+- <strong>AI responses:</strong> Encrypted both in transit and at rest.
+- <strong>Vector database:</strong> Field-level encryption applied to all embeddings stored in MongoDB.
+- <strong>Passwords:</strong> Hashed using Bcrypt, PBKDF2, scrypt, or Argon2 with a unique cryptographic salt and pepper.
+- <strong>Third-party connections:</strong> Certificate pinning enforced for OpenAI endpoints. Mutual TLS required for high-sensitivity deployments.
+
+Eddy AI is built for high availability with a **99.9% uptime SLA**, backed by all subprocessors and third-party providers.
+
+Document360 also maintains a formal AI incident response plan. See the AI Security Policies article for full details.
+
+---
+
+#### Eddy AI Data Flow and Secure Connection to OpenAI
+
+The diagram below shows how your queries travel from the Document360 UI, through the MongoDB vector store, to OpenAI's API — and back to you as a grounded, filtered response.
+
+At every step, credentials are retrieved from Azure Key Vault. No raw API keys are stored in application code. The response is filtered before it reaches the end user.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778314507-jaz9aaab5q-Eddy-20AI-20data-20flow-20and-20secure-20connection-20to-20OpenAI.jpg?fm=auto&auto=compress%2Cformat" alt="Diagram illustrating API interaction with Azure Key Vault and MongoDB for data retrieval." />
+
+---
+
+#### Data Privacy
+
+Document360 has signed a **Data Processing Agreement (DPA) with OpenAI**. Key commitments under this agreement:
+
+- OpenAI will **not** use API data to train its models or improve its services.
+- Data sent via API is retained by OpenAI for a **maximum of 30 days** for analytical and compliance purposes, then permanently deleted.
+- Eddy AI uses **OpenAI's ChatGPT-4.1 Mini and GPT-4o** models.
+
+---
+
+### FAQ
+
+<Expandable title="What countries and regions are these AI technologies/platforms/models hosted?">
+  The AI technologies/platforms/models are hosted in the European Union (EU) region.
+</Expandable>
+
+<Expandable title="Is Eddy AI built on the same infrastructure as Document360?">
+  Yes, Eddy AI runs on the same secure and reliable infrastructure as Document360. This ensures consistent performance and compliance with our standards.
+</Expandable>
+
+<Expandable title="What is the uptime SLA, and is it supported by all subprocessors and third parties?">
+  Document360 maintains a **99.9% uptime SLA**, which is fully supported by all relevant subprocessors and third-party service providers involved in delivering our services.
+</Expandable>
+
+<Expandable title="Can we choose not to train third-party AI/LLMs on our data?">
+  Yes, customer data is not used to train AI/LLM models. Eddy AI uses OpenAI's technology, but as per OpenAI's privacy policy and our agreement with them, any data sent through their system is not used for AI training.
+
+  We send data to OpenAI through their API. As stated in their policy: "OpenAI will not use data submitted by customers via our API to train OpenAI models or improve OpenAI's service offerings." However, OpenAI may retain the data for up to 30 days for analysis and compliance purposes, after which it is permanently deleted.
+</Expandable>
+
+<Expandable title="Does Document360 involve any generative AI or large language model (LLM) features?">
+  Yes, Eddy AI, a feature in Document360, uses third party LLMs such as OpenAI and generative AI to enhance the user experience. It leverages advanced language models to provide smart assistance and content generation.
+</Expandable>
+
+Application Programming Interface - A set of defined rules and protocols that allows one software application to communicate with and request functionality from another. APIs are the backbone of modern integrations. When Document360 connects to Slack, Intercom, or Google Analytics, it does so through their APIs. Document360 also provides its own REST API, enabling teams to programmatically manage articles, categories, and reader accounts from external systems.

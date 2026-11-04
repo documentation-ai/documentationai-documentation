@@ -1,0 +1,124 @@
+---
+title: Manage and translate glossary terms
+description: Create and manage multilingual glossaries for consistent translations, enhancing user experience in your knowledge base. Learn to edit, delete, and export terms.
+---
+
+Once glossary terms have been added to your knowledge base, you can edit their content, translate them into other languages, delete them individually or in bulk, and export them as a CSV file. All glossary management is done from **Content tools** () > **Content resources** > **Glossary**.
+
+ NOTE
+
+You can also list, add, and update glossary terms through an AI assistant connected via [Document360 MCP](/en/docs/mcp). Deleting glossary terms and translating them using **Translate to other languages** are available only in the portal. For more information, see [Supported MCP tools](/en/docs/supported-mcp-tools).
+
+---
+
+## Translate a glossary term
+
+You can manage glossary terms in multiple languages to ensure a consistent and localised experience when your articles are translated.
+
+ NOTE
+
+Global terms cannot be translated. Only terms created with a specific language scope support translation.
+
+1. Navigate to **Content tools** () > **Content resources** > **Glossary**.
+2. Click **Create**.
+3. From the **Language** dropdown, select a specific language (not Global).
+4. Enter the glossary **Name**, **Term**, and **Definition** in your default language.
+5. Click the **Translate to other languages** dropdown, select one or more languages, and click **Translate**.
+6. To retranslate the content, click **Translate again**. This overwrites the existing translation.
+
+ NOTE
+
+The default language is marked as **Main**. Translated languages show a green tick to indicate the translation is complete.
+
+7. Click **Create** to save the glossary term with all translations.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777354212-9q1l0mkhi8c-translate-20glossary.png?fm=auto&auto=compress%2Cformat" alt="Glossary term translation panel showing language tabs and translation status" />
+
+---
+
+## Edit a glossary term
+
+1. Navigate to **Content tools** () > **Content resources** > **Glossary**.
+2. Hover over the glossary term and click the **Edit** () icon. You can update the **Term** and **Definition**.
+3. Click the **Translate to other languages** dropdown, select one or more languages, and click **Translate**.
+4. To retranslate, click **Translate again**. This overwrites the existing translation.
+5. To remove a translation for a specific language, select the language and click **Remove language**.
+6. Click **Update** once all changes are complete.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777356001-bpxlgtpgiyv-edit-20glossary.png?fm=auto&auto=compress%2Cformat" alt="Glossary term edit panel showing translation and update options" />
+
+ NOTE
+
+Global glossary terms cannot be translated and will always appear as-is across all languages. If you want a glossary term available in multiple languages, create it in your main language first, then use the translation feature to generate versions in other languages.
+
+---
+
+## View glossary term references
+
+Before editing or deleting a glossary term, check which articles and category pages use it.
+
+1. Navigate to **Content tools** () > **Content resources** > **Glossary**.
+2. Locate the glossary term and click **View**. The **View references** panel opens, listing the articles and category pages where the term is used.
+
+ NOTE
+
+Archived articles and category pages are not listed in the View references panel and are not counted in the dependency total. A glossary term used only in archived content appears to be unused. The references are preserved and reappear when the content is unarchived.
+
+---
+
+## Delete a glossary term
+
+ CAUTION
+
+If a glossary term is linked in any articles, deleting it removes the visible text from those locations on the knowledge base site, not just the tooltip. The text is not retained as plain text. To avoid unintended content loss, unlink the term from all articles first: navigate to the glossary term, click **View**, open each article listed in the **View references** panel, remove the glossary term manually, and then return to the Glossary page to proceed with deletion.
+
+Archived articles and category pages are not listed in the **View references** panel, so you cannot unlink the term from them. Check the Archive page for content that uses the term before you delete it.
+
+1. Navigate to **Content tools** () > **Content resources** > **Glossary**.
+2. Hover over the glossary term and click the **Delete** () icon. Alternatively, open the glossary term and click **Delete**.
+3. To bulk delete multiple terms, select the terms from the Glossary page and click **Delete** at the top of the list.
+4. Click **Yes** in the confirmation dialog.
+
+After deletion, the term is removed from all articles and no longer appears on the knowledge base site. The article itself is not modified or republished. On the knowledge base site, surrounding content adjusts automatically with no empty space remaining. In the portal, the glossary term is replaced with the placeholder text "Loading...". Replace it with another glossary term or delete the placeholder manually.
+
+---
+
+## Export glossary terms
+
+You can export glossary terms as a CSV file for backup or team sharing.
+
+1. Navigate to **Content tools** () > **Content resources** > **Glossary**.
+2. Select the language from the **Languages** dropdown. The default is **Global**.
+3. Click **Export CSV** at the top right. A `.csv` file downloads to your device.
+
+ NOTE
+
+You can open the exported CSV file with Microsoft Excel, OpenOffice Calc, Google Sheets, or other CSV tools.
+
+The exported file includes the following fields:
+
+| Field | Description |
+| --- | --- |
+| **Glossary Name** | The name of each glossary term. |
+| **Glossary Definition** | The definition associated with each term. |
+| **Dependencies** | The number of articles or categories linked to each term. Archived articles and category pages are not counted. |
+| **Updated By** | The name of the user who last updated the term. |
+| **Updated On** | The date when the term was last modified. |
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777356521-3blj0rkyv0d-Glossary-20--20Export-20as-20CSV.png?fm=auto&auto=compress%2Cformat" alt="CSV export file showing glossary term data including name, definition, and dependencies" />
+
+---
+
+ NOTE
+
+The CSV is downloaded through your browser, so it is saved to whichever download location your browser is configured to use, usually your **Downloads** folder. If you can't find the file, check your browser's download history (or download settings) to see where it was saved or to change the default location.
+
+## FAQ
+
+<Expandable title="What happens to articles when a glossary term is deleted?">
+  The term is removed from all articles where it was used. If the term was linked in any articles, the visible text is also removed, not just the tooltip. The article itself is not republished. On the knowledge base site, surrounding content adjusts automatically with no empty space remaining.
+</Expandable>
+
+<Expandable title="Can I change the Name of a glossary term after it has been created?">
+  No. The Name field cannot be changed after creation. If you need a different name, delete the term and create a new one.
+</Expandable>

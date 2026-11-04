@@ -1,0 +1,123 @@
+---
+title: AI customization
+description: Customize your Eddy AI's name, tone, and response length to align with your brand's identity and enhance your Document360 experience.
+---
+
+Eddy AI customization lets you control how Eddy AI behaves across your knowledge base. If your organization wants Eddy to maintain a consistent brand voice and align with your internal documentation style across AI-generated content, customize Eddy AI. This depicts that Eddy not only supports your content needs but also represents your brand in the best possible way.
+
+As a Document360 user, you have the flexibility to:
+
+- Rename Eddy to fit seamlessly with your company's identity
+- Set the tone of its responses to match how your team communicates
+- Control how long or short its answers appear to your readers
+- Replace the default Eddy icon with your own brand icon
+
+---
+
+## Prerequisite
+
+The users with the access to **Profile** > **View access permissions** > **Portal role** > **Project settings** > <strong>Update (enabled)</strong>, can only customize the Eddy AI term. If not enabled reach out to admin.
+
+ NOTE
+
+Only Admin and owner roles can customize Eddy AI.
+
+---
+
+## Customize Eddy AI
+
+To personalize your Eddy AI,
+
+1. Navigate to **Settings** () in the left navigation bar in the portal.
+2. In the left navigation pane, navigate to **AI settings** > **Customize Eddy AI**.
+3. On the **Customize Eddy AI** page, in the **AI assistant name** text box, enter your desired name for the AI assistant.
+
+   By default, the AI assistant will be named **Eddy AI**.
+4. You can customize the AI Assistive response tone to fit various contexts and situations:
+
+   | Tone | Best used when | Example use cases |
+   | --- | --- | --- |
+   | **Default** | Automatically adapts to the reader's tone and question context. | Works across all types of documentation where tone may vary. |
+   | **Professional** | Formal enterprise or B2B knowledge bases. | IT policies, legal, compliance, enterprise SaaS documentation. |
+   | **Friendly** | Customer-facing help centers with a warm brand voice. | Consumer apps, onboarding guides, support portals. |
+   | **Casual** | Internal team wikis or developer portals with a relaxed culture. | Startup internal docs, engineering runbooks. |
+   | **Straightforward** | Technical documentation where users want quick, no-frills answers. | &#123;&#123; glossary.API&#125;&#125; references, troubleshooting guides, admin portals. |
+   | **Confident** | Authoritative product documentation where decisiveness matters. | Medical, legal, or safety documentation where hedging erodes trust. |
+5. You can customize the response length of AI Assistive search based on how detailed you want the responses to be:
+
+   | Response length | Best used when | Example use cases |
+   | --- | --- | --- |
+   | **Default** | Automatically adjust to your question and context, varying in length as required. | Mixed-content portals, general help centers. |
+   | **Long and detailed** | Readers need in-depth explanation and context. | Onboarding docs, complex technical procedures, educational content. |
+   | **Short and concise** | Readers want quick answers without reading through long explanations. | FAQs, troubleshooting quick-fix guides, internal wikis. |
+6. Once done, click <strong>Save.</strong>
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778083704-ivd010c0a3l-Customize-20eddy-20ai.png?fm=auto&auto=compress%2Cformat" alt="Settings page for customizing AI assistant name and response tone options." />
+
+ NOTE
+
+**Moderation APIs** verify and filter out inappropriate words in the **AI assistant name** field. If the name doesn't meet our community standards while saving, a prompt will be displayed. Click **Yes** to proceed, and the moderation API will be overridden.
+
+---
+
+## Customize Eddy AI icon in knowledge base site
+
+To customize the Eddy AI icon according to your requirements, follow these steps:
+
+1. Upload the icon you wish to use to Document360's drive.
+2. Navigate to () in the left navigation bar in the portal.
+3. In the left navigation pane, navigate to **Knowledge base site** > **Custom CSS & JavaScript**.
+4. Paste the following custom CSS code in the **CSS** section:
+
+<Expandable title="View code">
+  ```css
+     .eddy-banner .eddy-search-icon,
+     .eddy-header .eddy-icon-section,
+     .eddy-section.multi-conversation-section .next-conversation img,
+     .article-summary-container .ai-summary-text img {
+         margin-top: 0 !important;
+         animation: none !important;
+         visibility: hidden !important;
+     }
+     .eddy-description-section,
+     .eddy-header.w-100,
+     .eddy-section.multi-conversation-section .next-conversation,
+     .article-summary-container .ai-summary-text {
+         position: relative;
+     }
+     .eddy-description-section::before,
+     .eddy-header.w-100::before,
+     .eddy-section.multi-conversation-section .next-conversation::before,
+     .article-summary-container .ai-summary-text::before {
+         content: "";
+         width: 20px;
+         height: 20px;
+         position: absolute;
+         top: 50%;
+         left: 0;
+         transform: translateY(-50%);
+         background: url(https://files.us.document360.io/7385d460-4578-4f21-813a-4fa112c9c410/Images/Documentation/Eddy_replace_image.png) no-repeat center;
+         background-size: contain;
+     }
+     .article-summary-container .ai-summary-text::before {
+         width: 14px;
+         height: 14px;
+     }
+     .eddy-section.multi-conversation-section .next-conversation::before {
+         left: 24px;
+     }
+  ```
+</Expandable>
+
+5. In the above code, replace `URL for custom icon` in the CSS code with the direct URL of your uploaded file in the Document360 drive.
+6. Click **Save** to apply the changes to the knowledge base site.
+
+The Eddy AI icon in the knowledge base site will now be replaced with your desired icon.
+
+---
+
+### FAQ
+
+<Expandable title="Is there a character limit for the AI assistant name?">
+  Yes, the AI assistant name should not exceed 15 characters.
+</Expandable>

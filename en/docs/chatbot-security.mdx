@@ -1,0 +1,95 @@
+---
+title: Security
+description: Implement JWT for the Eddy AI Chatbot to secure your projects, ensuring trusted authentication and protecting sensitive information from unauthorized access.
+---
+
+Security settings in Eddy AI Chatbot let you control where your chatbot can be embedded and configure secure user authentication using JSON Web Tokens (JWT). You can restrict the chatbot to specific trusted domains to prevent it from appearing on unauthorised sites, and enable JWT authentication to ensure only verified users can interact with the chatbot. Both settings are available under the **Security** () tab in your chatbot's configuration panel.
+
+---
+
+## When to configure security settings
+
+- Use **Trusted domains** when you want to restrict the chatbot to specific websites and prevent it from loading on domains you have not authorised.
+- Use **Connected domains** to audit where your chatbot embed code has been detected across the web.
+- Use **JWT authentication** when your chatbot is deployed on a private or authenticated site and you need to verify the identity of users before they can interact with the chatbot.
+
+---
+
+## Before you begin
+
+- You must have [created an Eddy AI Chatbot](/en/docs/create-chatbot) and [embedded it on your site](/en/docs/chatbot-embed-code).
+- To configure JWT, have your **Client ID**, **Client secret**, **Chatbot ID**, and **Token endpoint** details ready.
+
+---
+
+## Configure trusted domains
+
+Trusted domains define which websites are authorised to display your chatbot. Any domain not on the list will not load the chatbot, even if the embed code is present.
+
+1. Navigate to **AI Chatbot** (<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777302035-k7orlbicyb-Frame-201707479697.png?fm=auto&auto=compress%2Cformat" alt="Frame image" />) in the left navigation bar and click **Customize**.
+2. Navigate to the **Security** () tab.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778283100-msmpuygg26-image-1769525947780.png?fm=auto&auto=compress%2Cformat" alt="Settings page for managing chatbot security, including trusted and connected domains." />
+
+3. Click <strong>\+ Add</strong> under **Trusted domains**.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778284567-37s4zow6w3g-Trusted-20Domains.png?fm=auto&auto=compress%2Cformat" alt="Trusted domains configuration panel showing the domain entry field." />
+
+4. Enter the domain where your chatbot will be embedded.
+5. Click **Save** to apply.
+
+ NOTE
+
+Only domains listed in Trusted domains are authorised to display the chatbot on your frontend application. If no trusted domains are added, the chatbot will work on any domain.
+
+The domain is now authorised and the chatbot will load on that site.
+
+---
+
+## View connected domains
+
+Connected domains shows you an auto-populated, read-only list of all domains where your chatbot embed code has been detected. Use this to audit where the chatbot is currently active.
+
+1. Navigate to the **Security** () tab.
+2. Click **Connected domains** to view the list.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778287425-wer3qnncjf8-Connected-20domains-281-29.png?fm=auto&auto=compress%2Cformat" alt="Connected domains screen showing the auto-populated list of domains where the chatbot embed code has been detected." />
+
+ NOTE
+
+Connected domains is an auto-populated, read-only section. It reflects the domains where the chatbot embed code has been detected — not necessarily where the chatbot is visible to users.
+
+If the embed code is detected on a domain that is not in your Trusted domains list, a warning is displayed and the chatbot will not be visible on that domain. To resolve this, add the domain to the Trusted domains list.
+
+---
+
+## Configure JWT authentication
+
+JWT (JSON Web Token) enables secure chatbot authentication, ensuring only verified users on your site can interact with the chatbot.
+
+1. Navigate to the **Security** () tab.
+2. Enable **JWT** and configure the following fields:
+
+| Field | Description |
+| --- | --- |
+| **Client ID** | The unique identifier for your client application |
+| **Chatbot ID** | The unique identifier for your chatbot |
+| **Token endpoint** | The URL your server uses to generate and return JWT tokens |
+| **Client secret** | The secret key used to sign and verify JWT tokens |
+
+3. Configure your **Authorization URLs**.
+4. Click **Save** to apply changes.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778288779-srijw0egjl-JWT--20Eddy-20AI-20Chatbot.png?fm=auto&auto=compress%2Cformat" alt="JWT configuration screen showing Client ID, Chatbot ID, token endpoint, client secret, and authorization URL fields." />
+
+The chatbot now requires JWT verification before users can interact with it.
+
+---
+
+## Best practices
+
+- **Always configure trusted domains before going live** — leaving trusted domains empty means the chatbot can load on any domain, including sites you do not control.
+- **Add all your environments as trusted domains** — include your production, staging, and development domains so the chatbot works correctly across all environments without unexpected blocks.
+- **Use JWT for authenticated knowledge bases** — if your knowledge base or website requires users to log in, enable JWT so the chatbot session is tied to the authenticated user identity.
+- **Rotate your Client secret periodically** — treat the Client secret like a password. Rotate it on a regular schedule and update the Token endpoint configuration accordingly.
+- **Use Connected domains to detect unauthorised usage** — if you see an unrecognised domain in the Connected domains list, restrict access immediately by adding only your authorised domains to the Trusted domains list.

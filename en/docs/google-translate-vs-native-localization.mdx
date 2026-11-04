@@ -1,0 +1,149 @@
+---
+title: Google translate vs. Translate with Eddy AI
+description: Compare browser translation widgets and native localization for multilingual knowledge bases, enhancing search, AI responses, and terminology control.
+---
+
+If your knowledge base serves readers in more than one language, there are two broad ways to do it: embed a browser translation widget such as Google Translate, which translates the page in the reader's browser as they view it, or use native localization, which in Document360 means [Translate with Eddy AI](https://docs.document360.io/docs/translate-with-eddy-ai) creating and storing a translated version of each article. Both make your content readable in other languages, but only one of them affects search, AI assistant responses, and terminology control. This article compares the two approaches and explains how to move from a widget to Translate with Eddy AI.
+
+NOTE
+
+Document360 does not support embedding a browser translation widget on your Knowledge base site. Translated content is created and stored through Translate with Eddy AI, [Crowdin](https://docs.document360.io/docs/crowdin), or manual translation. This article uses Translate with Eddy AI throughout, since it is the option built into the portal. For an overview of what localization covers, see [Localization - Getting started](https://docs.document360.io/docs/localization-getting-started).
+
+---
+
+## How each approach works
+
+**A browser translation widget** is a third-party script embedded in your page. Google Translate is the most widely used example. When a reader selects a language, the script rewrites the text currently rendered in their browser. Nothing is translated ahead of time and nothing is saved. Your knowledge base still contains one article, in its original language. The translation is a display layer, regenerated each time someone loads the page.
+
+**Translate with Eddy AI** works in the opposite direction. When you add a language to a workspace, Document360 creates a distinct article record for that language. Translate with Eddy AI writes real translated content into that record, and Document360 stores it. You end up with one article per language, each of which you can edit, review, and publish independently.
+
+The difference sounds like a technical detail. In practice it determines which parts of the reader experience are translated, because everything other than the visible page text reads from stored content.
+
+---
+
+## Comparison at a glance
+
+|  | Browser translation widget | Translate with Eddy AI |
+| --- | --- | --- |
+| **How it works** | Rewrites the rendered page in the reader's browser, at view time. Nothing is stored. | Writes translated content into a separate article record for each language, which Document360 stores. |
+| **Search results** | Search runs against the stored source-language content. | Readers search against content stored in their own language. |
+| **AI assistant responses** | The assistant reads stored content, so it responds in the source language. | The assistant can respond in the reader's language and cite the localized article. |
+| **Terminology control** | Determined by the translation engine on each page load. | Yours to set and review, article by article. |
+| **Coverage** | Visible page text. | Article body, article and category titles, and meta titles. Site interface labels are translated separately, using localization variables. |
+| **Per-language URL** | No. One URL serves all languages. | Each language has its own indexable URL. |
+| **Content to maintain** | One article. | One article per language. |
+| **Cost** | Typically free to embed. | Translation credits, metered by character volume. |
+| **Setup effort** | Low. A script is embedded once. | Configuration per language, then part of the authoring workflow. |
+
+---
+
+## Where the difference shows up
+
+### Search
+
+This is the difference most teams underestimate. A search index is built from stored content. Because a widget never changes what is stored, the index stays in the source language. A reader who switches the page to French and then searches in French is searching French terms against English content, so relevant articles may not surface at all.
+
+Translate with Eddy AI stores the translated article, so it is indexed in that language and a French query matches French content.
+
+### AI assistant responses
+
+If your knowledge base has an AI assistant, it answers from stored article content. A browser widget operates only in the reader's browser, so the assistant has no awareness of it and responds in the source language regardless of what the reader sees on the page.
+
+Because Translate with Eddy AI stores real translated content, [Ask Eddy AI](https://docs.document360.io/docs/ai-assistive-search-ask-eddy) can answer in the reader's language and cite the correct localized article.
+
+### Terminology
+
+A translation engine resolves each phrase at the moment it runs. It has no record of how a product term was translated on another page, so the same term can appear differently across articles. Content translated with Eddy AI is editable, so you can fix a term once and keep it consistent, and pair it with [glossary terms](https://docs.document360.io/docs/editing-and-deleting-glossary-term) to standardize vocabulary across languages.
+
+### Coverage
+
+A widget translates the text rendered on the page. Elements delivered separately from the article body, such as navigation labels, notification bars, or interface controls, may not be covered depending on how the site is built.
+
+Translate with Eddy AI translates the article body, article and category titles, and meta titles. Your site interface text is translated separately, using [localization variables](https://docs.document360.io/docs/localization-variables), so plan for both.
+
+### Stability
+
+A widget is a script running on a platform that was not necessarily built to host it. Whether it keeps working depends on how the host site renders pages. On sites that load or re-render content dynamically, the widget may not reapply translations to content rendered after the initial page load, and it can stop working without displaying an error.
+
+Content translated with Eddy AI has no such dependency, because it is stored in your knowledge base and served by Document360 like any other article.
+
+### Search engine visibility
+
+A widget produces no separate URL for each language, so search engines have nothing language-specific to index. Articles translated with Eddy AI each have their own URL, which means a reader searching in their own language can find your documentation before they reach your site.
+
+---
+
+## When a browser widget is enough
+
+A widget is not the wrong answer in every situation. It is reasonable when:
+
+- Non-English readers are a small or occasional share of your audience.
+- Your goal is basic readability rather than a fully usable experience.
+- You have no budget or capacity for translation and review, and something is better than nothing.
+- Your knowledge base has no search-driven workflow and no AI assistant.
+
+The trade-off is that readability is all you get. If readers rely on search to find articles, or if an AI assistant handles a meaningful share of questions, a widget leaves those paths in the source language.
+
+---
+
+## The trade-offs of Translate with Eddy AI
+
+Translate with Eddy AI asks for more than a widget does, and the difference is worth sizing before you commit to it.
+
+- <strong>Content volume.</strong> Every article exists once per language. Fifty articles across nine languages means 450 article-language pairs to keep accurate, rather than 50 articles.
+- <strong>Ongoing sync.</strong> Each edit to a source article leaves its translations out of date until they are re-translated and reviewed. Content that changes often carries more of this cost than content that is stable.
+- <strong>Translation credits.</strong> Credits are metered by character volume and consumed on the initial translation and on every re-translation after an edit.
+- <strong>Review capacity.</strong> Machine translation produces a working draft. Domain-specific terminology still needs a reviewer who reads the target language, which is a staffing question rather than a tooling one.
+
+None of this has to be absorbed at once. Most teams translate a subset of articles into a small number of languages and expand from there.
+
+For product behavior and limits, including translation direction and deletion behavior, see [Localization - Getting started](https://docs.document360.io/docs/localization-getting-started).
+
+---
+
+## Moving from a translation widget to Translate with Eddy AI
+
+If you are migrating to Document360 from a platform where a widget was in use, work through the following.
+
+1. <strong>Identify the languages your readers actually use.</strong> A widget typically offers dozens of languages at no cost, which tells you nothing about which ones have real demand. Check your analytics for reader location and browser language before deciding what to support.
+2. <strong>Add those languages to your workspace.</strong> See [Multilingual Knowledge base](https://docs.document360.io/docs/getting-started-with-multi-lingual-knowledge-base).
+3. <strong>Rank your articles by traffic and business impact.</strong> Translate the top articles first. Untranslated articles fall back to the default language, so partial coverage is a valid state to launch in.
+4. <strong>Translate the first set with Translate with Eddy AI.</strong> If you already work with a translation vendor, use [Crowdin](https://docs.document360.io/docs/crowdin) instead.
+5. <strong>Review the output in each language.</strong> Confirm product terminology, then record decisions as [glossary terms](https://docs.document360.io/docs/editing-and-deleting-glossary-term) so they carry forward.
+6. <strong>Translate your site interface.</strong> Article translation does not cover navigation labels and controls. Use [localization variables](https://docs.document360.io/docs/localization-variables) for these.
+7. <strong>Confirm redirects if your URLs have changed.</strong> Each language now has its own URL. See [Migrate to Document360](https://docs.document360.io/docs/migrate-to-document360) for redirect rules.
+8. <strong>Expand one language at a time.</strong> Each language multiplies your maintenance load, and your credit consumption. Confirm you can sustain one before adding the next.
+
+For ongoing guidance once localization is in place, including keeping translations in sync with source edits, see the best practices in [Localization - Getting started](https://docs.document360.io/docs/localization-getting-started).
+
+---
+
+## FAQ
+
+<Expandable title="Can I add Google Translate to my Document360 Knowledge base site?">
+  No. Document360 does not support embedding a browser translation widget. Translate with Eddy AI stores a translated version of each article instead, which is what allows search and Ask Eddy AI to work in the reader's language. See [Multilingual Knowledge base](https://docs.document360.io/docs/getting-started-with-multi-lingual-knowledge-base) to set this up.
+</Expandable>
+
+<Expandable title="Why does search not work when a translation widget is in use?">
+  A search index is built from stored content. A widget changes only what is rendered in the browser, so the stored content and the index remain in the source language. A query typed in another language is matched against source-language content, which is why results can be incomplete or irrelevant.
+</Expandable>
+
+<Expandable title="Is Translate with Eddy AI always the better choice?">
+  Not in every case. If non-English readers are a small share of your audience and your goal is basic readability, a widget may be sufficient on a platform that supports one. Translate with Eddy AI is the stronger choice when readers rely on search, when an AI assistant answers questions, or when terminology consistency matters.
+</Expandable>
+
+<Expandable title="Does Translate with Eddy AI also translate my site interface?">
+  No. Translate with Eddy AI covers the article body, article and category titles, and meta titles. Navigation labels, buttons, and other interface text are translated using [localization variables](https://docs.document360.io/docs/localization-variables).
+</Expandable>
+
+<Expandable title="How many languages should we support after moving off a widget?">
+  Start from reader demand rather than from the number of languages the widget offered. A widget's language list costs nothing to extend, so it rarely reflects actual usage. Check reader location and browser language in your analytics, support the languages with real traffic, and add more once you can maintain the ones you have.
+</Expandable>
+
+<Expandable title='Can I remove the translate="no" attribute from my knowledge base pages?'>
+  Document360 does not provide a setting to add, remove, or configure a translate="no" attribute at the knowledge base level. Where this attribute appears, it is part of how the page renders rather than something configurable in the portal. Removing it would not affect your article content, but Document360 cannot guarantee that doing so changes whether a reader's browser offers to translate the page, since that behavior is controlled by the browser itself.
+</Expandable>
+
+<Expandable title="Does Document360 add a meta tag that tells Google not to translate my knowledge base?">
+  No. Document360 does not add a "notranslate" meta tag to your knowledge base by default, and there is no portal setting to add or remove one.
+</Expandable>

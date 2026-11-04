@@ -1,0 +1,145 @@
+---
+title: External sources for AI assistive search
+description: Enhance your AI Assistive search with external sources for comprehensive answers, improving response time and customer satisfaction in your Knowledge base.
+---
+
+**External sources for Eddy AI Assistive Search** lets you configure Eddy AI to retrieve answers from URLs and sitemaps outside your Document360 knowledge base, enabling federated search across multiple content sources. Once configured, Eddy AI searches both your internal knowledge base articles and the external sources simultaneously, returning a unified response with numbered references that link back to the originating page. This is available in the **Manage sources** section under **AI settings** in your Knowledge base portal.
+
+ NOTE
+
+For a full list of languages supported by Eddy AI, see [Multilingual support for Eddy AI Search Suite](https://docs.document360.com/help/docs/ai-search-suite#multilingual-support-for-eddy-ai-search-suite).
+
+---
+
+## When to use external sources
+
+- **Cross-platform support teams** — agents can pull answers from internal knowledge base articles, public documentation sites, blogs, and product release notes without switching platforms.
+- **Distributed content** — when your authoritative content lives across multiple sites and you want Eddy AI to surface answers from all of them in one response.
+- **Supplementary reference material** — add external resources such as third-party guides or partner documentation to enrich Eddy AI's answers without migrating that content into Document360.
+
+---
+
+## Before you begin
+
+- You can add up to **50 webpages** and **1 sitemap** per project.
+- Webpages must be in **HTML5 format** and include `<article>` or `<main>` tags.
+- Only <strong>server-side rendered (SSR)</strong> webpages are supported. Client-side rendered pages may not index correctly and can return empty search results.
+- Webpages with **bot detection or crawl-blocking mechanisms** cannot be indexed — a Forbidden error will occur.
+- Sitemaps must be under **1 MB**, in **XML format**, and must not use nested sitemaps with the `<sitemapindex>` tag.
+- Sources sync automatically every **24 hours**. Manual sync is available up to **4 times per day**.
+
+---
+
+## Add an external source
+
+1. In the Knowledge Base portal, select **Settings** in the left navigation bar.
+2. In the left navigation pane, go to **AI settings** > **Manage sources**.
+
+   The **Manage sources** page displays all currently configured external sources.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777774497-m81zxcs4wvr-manage-sources-AI.png?fm=auto&auto=compress%2Cformat" alt="Image showing how to add a new external source for AI to fetch in the Manage sources section of the Knowledge Base portal." />
+
+3. Click **Add new**.
+
+   The **Add source** panel appears.
+4. Select the source type: **Webpage** or **Sitemap**.
+5. Enter a **source name**.
+6. Enter a valid **URL**.
+7. Click **Add source**.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777767594-vxtfjan398e-manage-source-webpage-siteurl.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+---
+
+## Manage sources overview
+
+The **Manage sources** page lists all indexed external sources and provides the following controls:
+
+| Option | Description |
+| --- | --- |
+| **Content access** | Restrict Eddy AI to specific workspaces, languages, and categories. Options: **All** or **Allow selected**. |
+| **Filter** | Filter the source list by type: **All**, **Sitemap**, **Webpage**, or **Failed sources**. Failed sources shows all entries that have encountered errors. |
+| **Sync** | Manually sync all sources. Available up to 4 times per day. Sources are synced automatically every 24 hours. |
+| **Add new** | Add a new source for indexing. |
+| **Search** | Search for a source by name. |
+| **Type** | Displays whether the source is a Webpage or Sitemap. |
+| **Last sync** | Shows the date of the last sync. Hover to see the exact time. |
+| **Status** | Toggle to activate or deactivate a source. Deactivating a source stops Eddy AI from fetching content from it. |
+| **Error** | Appears when a source URL has encountered an error. Click to view affected URLs. |
+| **Edit** | Modify the source name or URL. |
+| **Delete** | Remove a source permanently. |
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777773919-5rjvcr2knc-elements-in-manage-source.png?fm=auto&auto=compress%2Cformat" alt="Manage sources overview page showing all indexed external sources with controls for content access, filter, sync, and individual source actions." />
+
+---
+
+## Restrict Eddy AI to specific workspaces, languages, and categories
+
+By default, Eddy AI searches across all workspaces and languages. You can restrict this to specific workspaces, languages, and categories using the **Content access** control on the Manage sources page.
+
+1. On the **Manage sources** page, click the **Content access** dropdown (shown as **All** by default).
+2. Select **Allow selected**.
+
+   The **Manage workspace & category** popup appears.
+3. Select the workspaces, languages, and categories you want Eddy AI to search.
+
+   A **Manage** button appears alongside the **Allow selected** dropdown.
+4. Click **Manage** to review and confirm your selections, then click **Save**.
+
+   A confirmation message — *AI search sources updated* — appears. The **Save** button is only enabled when changes have been made.
+5. To close the popup without saving, click **Cancel** or press **Esc**.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777767726-crwwmra2gqf-allow-selected-manage-sources.png?fm=auto&auto=compress%2Cformat" alt="Manage workspace and category popup showing workspace, language, and category selection options for restricting Eddy AI content access." />
+
+ NOTE
+
+If you switch from **Allow selected** back to **All** and then return to **Allow selected**, your previous selections are retained. This content access setting applies across all areas where AI Assistive Search is enabled.
+
+---
+
+## Handle errors in external sources
+
+If a webpage encounters an error (unsupported HTML format, unsupported language, or HTTPS issue), Eddy AI stops fetching from that page until the error is resolved. For sitemaps, Eddy AI continues fetching from all valid URLs in the sitemap even if individual pages within it have errors.
+
+1. Click the **Error** (⚠) icon next to the source's status toggle.
+
+   The **Edit** panel opens and displays all affected URLs and their error details.
+2. Hover over a URL and click the **Open site** icon to inspect the external source directly.
+3. Click **Remove** to delete a specific URL from the sitemap's URL list.
+4. Click **Remove all** to delete all URLs with errors at once.
+
+ WARNING
+
+If a webpage has bot detection or crawl-blocking mechanisms enabled, Eddy AI cannot index it and will return a Forbidden error. Only server-side rendered (SSR) pages are supported — client-side rendered pages may not index correctly and can produce empty search results.
+
+---
+
+## How external source results appear on your Knowledge Base site
+
+When Eddy AI returns an answer that draws from external sources:
+
+- Each response includes **numbered reference markers** indicating which parts of the answer came from which source.
+- Hovering over a reference number shows the **webpage title** and a **short description** of the source.
+- Clicking the reference number or the **Open in a new tab** icon opens the source page in a new tab.
+
+<Image src="https://cdn.document360.io/860f9f88-412e-4570-8222-d5bf2f4b7dd1/Images/Documentation/ScreenGIF-Adding_Ask_Eddy_AI.gif" alt="Screen recording showing Eddy AI returning a response with numbered reference markers linking to external source pages on the Knowledge Base site." />
+
+---
+
+## FAQ
+
+<Expandable title="How do I manually sync external sources?">
+  Go to **Settings** > **AI settings** > **Manage sources** and click **Sync** at the top of the page. You can manually sync up to four times per day. Sources also sync automatically every 24 hours.
+</Expandable>
+
+<Expandable title="How do I delete an external source?">
+  Go to **Settings** > **AI settings** > **Manage sources**. Hover over the source and click the **Delete** icon to remove a single source. To delete multiple sources at once, select their checkboxes and click **Delete** at the top of the page.
+</Expandable>
+
+<Expandable title="How do I view analytics for external sources?">
+  Go to **Analytics** in the left navigation bar, then navigate to **Eddy AI**. In the **Most referenced articles** section, external sources are listed alongside internal knowledge base articles.
+</Expandable>
+
+<Expandable title="Can I deactivate an external source without deleting it?">
+  Yes. On the **Manage sources** page, turn off the **Status** toggle next to any source to deactivate it. Eddy AI will stop fetching content from that source until you re-enable the toggle.
+</Expandable>

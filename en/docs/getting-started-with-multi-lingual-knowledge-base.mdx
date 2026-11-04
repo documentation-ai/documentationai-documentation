@@ -1,0 +1,149 @@
+---
+title: Multilingual Knowledge base
+description: Add multiple languages to a single project workspace or a language-specific Knowledge base with Document360.
+---
+
+A multilingual knowledge base lets you serve your documentation in multiple languages from a single workspace, so readers can access content in their preferred language without you having to manage separate projects.
+
+When you add a language to a workspace, all existing categories and articles become available in that language. The content itself still needs to be translated, either manually, using [**Translate with Eddy AI**](/en/docs/translate-with-eddy-ai), or through an integration like **Crowdin**.
+
+ NOTE
+
+Document360 supports the internationalization (i18n) of your project's Knowledge base site. All languages other than English are displayed in their native script when selecting a language for your workspace.
+
+---
+
+## Why set up a multilingual knowledge base?
+
+Serving documentation in a reader's native language reduces friction, improves comprehension, and builds trust, especially for global products where readers may not be fluent in your default language.
+
+- **Reach a global audience**: Let readers access documentation in the language they're most comfortable with, without navigating away or relying on browser translation tools, which do not extend to search or Ask Eddy AI responses. See [Localization - Getting started](https://docs.document360.com/help/docs/localization-getting-started) for how this affects the reader experience.
+- **Reduce support tickets**: Localized documentation helps readers solve problems on their own, reducing language barriers that lead to support requests.
+- **Single source of truth**: Manage all language variants from a single workspace. When your source content is updated, the structure is reflected across all languages immediately.
+- **Flexible translation workflows**: Translate content manually, with AI, or through a dedicated localization tool like Crowdin, based on your team's resources and scale.
+- **SEO across languages**: Localized articles can be indexed in their respective languages, improving discoverability for non-English-speaking readers.
+
+---
+
+## Supported languages
+
+Document360 supports a variety of languages for localization using Translate with Eddy AI. The languages supported by Document360 are:
+
+<Expandable title="Supported languages">
+  Afrikaans, Arabic, Arabic (Egypt), Bulgarian, Cantonese, Chinese, Chinese (Simplified, People's Republic of China), Chinese (Traditional, Taiwan), Chinese (Traditional), Croatian, Czech, Danish, Dutch, Dutch (Belgium), English, English (Australia), English (Canada), English (UK), English (US), Estonian, Fijian, Filipino, Finnish, French, French (Canada), Georgian, German, Greek, Greek (Greece), Hebrew, Hungarian, Icelandic, Indonesian, Italian, Japanese, Korean, Kurdish, Latvian, Lithuanian, Malagasy, Mongolian, Norwegian, Persian, Polish, Portuguese, Portuguese (Brazil), Punjabi, Romanian, Slovakian, Slovenian, Spanish, Spanish (Mexico), Swedish, Thai, Turkish, Ukrainian, Vietnamese, Russian
+</Expandable>
+
+ NOTE
+
+Some regional variants share a single translation model. For example, English (Australia), English (Canada), English (UK), and English (US) are all translated using the base English model, so the output does not reflect region-specific spelling or terminology. For more information, see [Translate with Eddy AI](https://docs.document360.com/help/docs/translate-with-eddy-ai).
+
+---
+
+## Add a language to a workspace
+
+There are two ways to add a new language to a workspace.
+
+From the Edit Workspace dialog
+
+Add languages while editing an existing workspace from the Workspace & localization settings page.
+
+[Learn more →](/en/docs/getting-started-with-multi-lingual-knowledge-base#from-the-edit-workspace-dialog)
+
+Using the Add new language icon
+
+Quickly add a language directly from the Workspace & localization overview page without opening the Edit Workspace dialog.
+
+[Learn more →](/en/docs/getting-started-with-multi-lingual-knowledge-base#using-the-add-new-language-icon)
+
+---
+
+### From the Edit Workspace dialog
+
+1. Navigate to **Settings** () > **Knowledge base portal** in the left navigation bar.
+2. In the left navigation pane, select **Workspace & localization** ().
+3. Click the **Edit** () icon to the right of the workspace you want to update.<br /> The **Edit Workspace** dialog appears.
+4. Open the **Language** dropdown.
+5. Select the checkbox next to each language you want to add.
+6. Click **Apply**.<br /> The languages appear under **Languages available in selected Workspace**.
+7. Click **Update** to save your changes.
+
+Once the language is added, click the **More options** () icon next to the language name to configure the following settings:
+
+| Option | What it does |
+| --- | --- |
+| **Set as default** | Sets this language as the default for the workspace on the Knowledge base site. |
+| **Edit display name** | Updates the display name shown to readers when they select this language. |
+| **Right to left** | Enables right-to-left text direction for languages like Arabic and Hebrew. Languages such as Chinese, Japanese, and Korean follow their own native text layout conventions and render correctly automatically. |
+| **Hide** | Hides the language from the Knowledge base site. Hidden languages appear with a strikethrough in the portal. |
+| **Remove** | Removes the language from the workspace entirely. |
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777313983-92w1dd7g0pb-lang-more-options.png?fm=auto&auto=compress%2Cformat" alt="Edit Workspace dialog showing the Language dropdown and the languages available in the selected workspace with the More options menu" />
+
+ WARNING
+
+You cannot hide or delete the **default language** of a workspace. To hide or remove a language, first set a different language as the default.
+
+---
+
+### Using the Add new language icon
+
+1. Navigate to **Settings** () > **Knowledge base portal** > **Workspace & localization** ().
+2. Click the **Add new language** icon next to the **Edit** () icon on the workspace row.
+3. Search for the desired languages and select the checkbox next to each one.
+4. Click **Add**.
+
+---
+
+## Best practices
+
+- **Use a single multilingual workspace**: Document360 recommends managing all language variants from a single workspace rather than creating separate workspaces per language, for simpler content management and maintenance.
+- **Translate high-traffic articles first**: You don't need to translate everything at once. Prioritize the articles readers access most before expanding coverage.
+- **Hide untranslated languages until content is ready**: Use the **Hide** option on a language to keep it off the Knowledge base site until translation is complete.
+- **Use Translate with Eddy AI for a first pass**: Then review and refine the output manually for accuracy and tone.
+- **Keep translations in sync with your source content**: Use review reminders to flag translated articles for update whenever the source article changes.
+
+---
+
+## FAQ
+
+<Expandable title="Why are draft articles appearing on the Knowledge base site in other languages?">
+  When multilingual documentation is enabled, an article published in at least one language will appear in the left navigation of the Knowledge base site across all languages. This is because the article title is shared across all language versions.
+
+  If the article is published in English but still in draft in German, it will still appear under the German navigation. Readers will see the published language's content with a notice indicating the content is unavailable in their selected language.
+
+  If you don't want draft articles appearing in other languages, hide them from the portal until the translation is ready.
+</Expandable>
+
+<Expandable title="Can I show the default language content when a translated article is outdated or unavailable?">
+  Fallback to the default language occurs only when the article is not yet published in the selected secondary language. If the article is already published in a secondary language, that version is always shown, even if it's outdated.
+
+  <strong>Workaround:</strong> Temporarily unpublish the article in the secondary language. This triggers the fallback to the default language content until the updated translation is ready to publish.
+</Expandable>
+
+<Expandable title="What is the difference between hiding and removing a language?">
+  **Hide** removes the language from the Knowledge base site but keeps it in the portal for editing. Hidden languages appear with a strikethrough in the portal. You can unhide a language at any time.
+
+  **Remove** permanently deletes the language and all its translated content from the workspace. This action cannot be undone.
+</Expandable>
+
+<Expandable title="Why does content from a published article in the default language not appear in the editor for the same article in a secondary language?">
+  When a new article is created in the default language, it becomes available in secondary languages but the content is not automatically carried over. The article exists in the secondary language but its body remains empty until translated.
+
+  To translate content across multiple articles at once, use the **All articles** () page to bulk translate from the default language to the secondary language.
+</Expandable>
+
+<Expandable title="How do I decide which languages to prioritize for localization?">
+  Document360 recommends you prioritize languages based on your customer demographics, market demand, and potential growth opportunities in specific regions. Analyze your customer's data and feedback to make informed decisions.
+</Expandable>
+
+<Expandable title="How do I maintain consistency across localized knowledge base content?">
+  Document360 recommends the implementation of style guides, glossaries, and translation memory to maintain consistent terminology and writing conventions across different languages.
+</Expandable>
+
+<Expandable title="What challenges should I anticipate during knowledge base localization?">
+  Some challenges include cultural nuances, technical jargon, and context-specific references that may not directly translate. A well-planned localization strategy can help overcome these challenges. You can also use third-party translation integration, such as Crowdin, with your Document360 project. For more information, read the article on [Crowdin integrating with Document360](https://docs.document360.com/docs/crowdin)
+</Expandable>
+
+<Expandable title="How do I measure the success of my knowledge base localization efforts?">
+  Use metrics like user engagement, performance analytics, geography metrics, support ticket reduction, customer satisfaction, and feedback from users in different regions to evaluate the effectiveness of your knowledge base localization strategy.
+</Expandable>

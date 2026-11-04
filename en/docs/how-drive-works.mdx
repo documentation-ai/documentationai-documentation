@@ -1,0 +1,68 @@
+---
+title: How Drive works
+description: Learn how to manage file uploads in Drive, configure allowed formats, and understand file dependencies to maintain your content effectively.
+---
+
+This article explains how files are stored and referenced in Drive, and how to configure which file types your team can upload.
+
+---
+
+## Permanent CDN URL
+
+Every file you upload to Drive gets a permanent CDN URL in the following format:
+
+​`http https://cdn.document360.io/[project-id]/[folder-path]/[filename] ​`
+
+`[folder-path]` reflects the actual Drive folder (and subfolder, if any) the file is stored in — for example, `Images/Documentation` for an image in the default Documentation subfolder, or `PDF` for a file uploaded directly to the root-level PDF folder.
+
+This URL is what your articles reference when they display an image or link to a file. Understanding how each Drive action affects this URL is critical before you move, copy, replace, or delete files. The table below summarizes the impact of each action.
+
+Every file you upload to Drive gets a permanent CDN URL in the following format:
+
+| Action | What it does | Effect on CDN URL | Risk |
+| --- | --- | --- | --- |
+| **Move** | Relocates a file to a different folder | URL unchanged. Linked articles stay intact | Low |
+| **Copy** | Duplicates a file to a destination folder | New URL assigned to the copy | Low |
+| **Replace** | Overwrites file content with a new file of the same type | URL unchanged. Articles are updated within 1 hour | Irreversible (Old content cannot be restored) |
+| **Rename** | Changes the file's display name | URL unchanged. Linked articles stay intact | None |
+| **Remove** | Deletes the file and moves it to the Recycle bin | URL becomes invalid. All linked articles break | High (Check dependencies before removing) |
+| **Download** | Saves file(s) to your local storage as a .zip file | No effect | None |
+| **Add tags/alt text** | Adds metadata to the file for search and accessibility | No effect | None |
+
+In private and mixed projects, this URL alone is not enough to open the file. Document360 appends a temporary access token to the URL when a user views or downloads the file from within an authorized session. By default, this token expires 15 minutes after it is generated for standard files (configurable up to 36 hours) and 1 hour for video files. This means a bare CDN URL copied and shared outside Document360, such as in an email, will stop working once the token expires. See [File and media access issues](https://docs.document360.com/help/docs/file-and-media-access-issues) for troubleshooting, or [Share articles via private link](https://docs.document360.com/help/docs/share-articles-via-private-link) if you need an ongoing way to share a file with someone outside your project.
+
+---
+
+## Before you act on a file
+
+Always check a file's dependency count before making changes. The **Dependencies** column in Drive shows how many articles, homepage sections, or content reuse elements reference that file. If the count is greater than zero, removing or replacing the file will affect live content.
+
+To check dependencies: navigate to **Drive**, locate the file, and select the number in the **Dependencies** column. The File dependencies panel lists every article and content element that references the file.
+
+---
+
+## Drive settings
+
+Navigate to **Settings** > **Knowledge base portal** > **General** > **Drive settings**.
+
+### Allowed file types
+
+By default, Allow all media formats is selected, permitting any file type. Owners and Admins can control which file types are permitted for upload. To restrict uploads to specific formats:
+
+- Select **Choose allowed media formats** and click **Add**.
+- Enter the\*\* Media type\*\* in the format media type/extension (for example, image/png).
+- Enter the **Extension** in lowercase (for example, .png, .svg, .jpg). This field is case-sensitive.
+- Click <strong>+</strong> to add the format, then click **Save**.
+
+ NOTE
+
+- At upload, a file name must not contain `+`, `%`, `#`, `=`, `\`, `/`, `:`, `*`, `?`, `"`, `<`, `>`, or `|`. Files with these characters in their original name, or typed into the File name field during upload, will fail to upload.
+- This restriction applies only at upload. Once a file is in Drive, renaming it only blocks `\`, `/`, `:`, `*`, `?`, `"`, `<`, `>`, and `|` — `+`, `%`, `#`, and `=` are allowed when renaming. See [Rename a file](/en/docs/rename-a-file) for the full character rules.
+
+---
+
+## FAQ
+
+<Expandable title="Can two files in Drive have the same name?">
+  No. If you try to upload or rename a file using a name that's already in use by another active file in Drive, you'll see a "File name already exists" error and need to pick a different name. This check doesn't apply to files sitting in the Recycle bin, so a deleted file can still share a name with an active one. If you restore a file from the Recycle bin and its name matches an active file, Document360 automatically adds a number to the restored file's name instead of blocking the restore. Either way, your existing articles are unaffected, since they always link to a file by its CDN URL, not its name.
+</Expandable>

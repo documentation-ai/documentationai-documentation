@@ -1,0 +1,146 @@
+---
+title: private hosting
+metaTitle: Private hosting
+metaDescription: Optimize your enterprise's knowledge base with Document360's private hosting, offering control, security, and scalability without the overhead of on-premise systems.
+---
+
+Private hosting in Document360 gives your organization a dedicated cloud environment built exclusively for your knowledge base, powered by Microsoft Azure infrastructure. Unlike shared hosting, private hosting isolates your compute resources, storage, and network so that your data never shares an environment with other tenants. This makes it the right choice for enterprises that must meet strict compliance requirements, enforce data residency policies, or sustain high-volume documentation workloads without performance trade-offs.
+
+---
+
+## When to use private hosting
+
+Private hosting is best suited for organizations where shared infrastructure is not an option.
+
+- **Regulated industries** — Healthcare, financial services, and government organizations that must comply with GDPR, HIPAA, or regional data sovereignty laws can select a specific Microsoft Azure region to ensure data stays within required boundaries.
+- **High-volume documentation teams** — Enterprises managing thousands of articles across multiple workspaces need dedicated resources that scale with demand, not resources shared across customers.
+- **Security-first enterprises** — Organizations that require end-to-end encryption, SSO via SAML or JWT, and isolated infrastructure to protect sensitive internal and external documentation.
+
+---
+
+## Why choose private hosting?
+
+Private hosting refers to a dedicated cloud environment allocated exclusively to a single organization. Document360 delivers this through geographically distributed Microsoft Azure data centers, giving your team the ability to choose a preferred hosting region and define infrastructure specifications — without managing any on-premises hardware.
+
+### Complete data control and sovereignty
+
+Document360's private hosting supports global data residency across more than 50 Microsoft Azure locations. You select the region that best aligns with your compliance obligations. This gives your organization direct control over where data is stored and processed.
+
+### Custom infrastructure to match your workloads
+
+Each private hosting deployment is configured to your specifications. You define compute capacity, network bandwidth, and infrastructure settings to ensure your knowledge base performs consistently under your workload patterns. This is especially useful for enterprises with high article volumes or complex documentation workflows.
+
+### Secure remote access for distributed teams
+
+Document360 supports SAML, OpenID Connect, and JSON Web Token (JWT) authentication. This lets distributed and remote teams access your knowledge base securely without depending on a private corporate network. See [Single Sign-On (SSO)](/docs/single-sign-on-sso) for setup guidance.
+
+### Scalable architecture
+
+Private hosting scales horizontally and vertically with your organization. Adding users, expanding workspaces, or serving more readers does not require infrastructure rework or service interruptions.
+
+### Reduced infrastructure and maintenance overhead
+
+Document360 manages server provisioning, patching, upgrades, and monitoring on your behalf. This removes the capital expense and day-to-day burden associated with self-managed systems, and keeps your infrastructure costs predictable.
+
+### Optimized performance and low latency
+
+Dedicated hosting resources combined with global content delivery networks ensure fast, consistent documentation delivery to readers anywhere in the world.
+
+---
+
+## Comparing private hosting and on-premises deployment
+
+Private hosting delivers the control of a traditional on-premises deployment without the operational burden of managing your own servers.
+
+ NOTE
+
+Document360 does not offer an on-premises deployment option. This comparison is provided to illustrate how private hosting differs from typical self-managed, on-premises setups.
+
+| Feature | Private hosting (Document360) | Typical on-premises server |
+| --- | --- | --- |
+| Deployment | Cloud-based with dedicated resources | On-site physical or virtual servers |
+| IT overhead | Managed by Document360 | Managed in-house |
+| Scalability | Dynamic and on-demand | Hardware-dependent and capacity-limited |
+| Infrastructure costs | Operational expenses only | Significant capital and operational expenses |
+| Maintenance | Handled by vendor | Requires an in-house IT team |
+| Performance optimization | Built-in, location-based content delivery | Limited to internal network setup |
+| Data residency options | 50+ Azure regions to choose from | Restricted to your own physical locations |
+| Security | End-to-end encryption, SSO, strict access control | Depends on internal security measures |
+
+---
+
+## Private hosting vs. shared hosting
+
+Private hosting is better suited for organizations that prioritize performance, customization, and security over cost-efficiency of shared infrastructure.
+
+| Capability | Private hosting | Shared hosting |
+| --- | --- | --- |
+| Server resources | Dedicated | Shared across customers |
+| Network bandwidth | Unrestricted | Shared and limited |
+| Infrastructure | Customizable | Fixed |
+| Support SLA | Within 2 hours | Up to 1 day |
+| Content delivery | Optimized for low latency | Standard speed |
+
+---
+
+## Enterprise-ready security
+
+Document360's private hosting architecture enforces strict security and privacy controls at every layer:
+
+- **Encryption in transit and at rest** — All data is protected using TLS in transit and encrypted storage at rest.
+- **Strict access controls** — Role-based access and SSO integrations (SAML, OpenID Connect, JWT) govern who can access your knowledge base and portal.
+- **Compliance with global standards** — The platform is SOC 2 Type II compliant and GDPR compliant. See [Document360 security and infrastructure](https://docs.document360.com/docs/quick-summary-of-the-security-and-infrastructure-aspects) for a full overview.
+- **Penetration testing support** — Private hosting environments support customer-initiated or coordinated penetration testing, isolated from other customers.
+
+---
+
+## Migration to private hosting
+
+Migrating to Document360's private hosting is managed end-to-end by the Document360 team. Migration experts handle the transition from legacy systems or other knowledge base platforms, with white-glove onboarding tailored to enterprise requirements. The process is designed to minimize disruption and ensure no data loss.
+
+---
+
+## Considerations
+
+The following are recommended soft limits for optimal performance in a private hosting environment. These limits can be adjusted on request, since the environment is dedicated to your organization.
+
+ NOTE
+
+These are soft limits, not hard caps. Use them as planning benchmarks — monitor your article and category counts against these thresholds and request an increase proactively before you reach them. Contact your Document360 account team to request an adjustment.
+
+| Resource | Recommended limit |
+| --- | --- |
+| Categories per workspace | 1,000 |
+| Articles per category | 100 |
+| Subcategories per category | 100 |
+| Articles per workspace | 10,000 |
+
+---
+
+## FAQ
+
+<Expandable title="What is the difference between private hosting and shared hosting in Document360?">
+  Private hosting gives your organization a dedicated cloud environment on Microsoft Azure, with isolated compute resources, network bandwidth, and storage. Shared hosting runs multiple customer environments on common infrastructure. Private hosting is recommended for enterprises with strict compliance, performance, or security requirements.
+</Expandable>
+
+<Expandable title="Can I choose which Azure region my data is hosted in?">
+  Yes. Document360's private hosting supports over 50 Microsoft Azure regions. You select your preferred region during the provisioning process to meet data residency, compliance, or performance requirements.
+</Expandable>
+
+<Expandable title="Does Document360 manage server maintenance and upgrades for private hosting?">
+  Yes. Document360 handles all server provisioning, patching, upgrades, and monitoring for private hosting environments. You do not need an in-house IT team to manage the infrastructure.
+</Expandable>
+
+<Expandable title="Can I run penetration testing on my private hosting environment?">
+  Yes. Penetration testing is supported in private hosting environments because the infrastructure is isolated from other customers. Coordinate testing schedules and scope with your Document360 account team before proceeding.
+</Expandable>
+
+<Expandable title="Are the recommended article and category limits hard limits?">
+  No. The limits listed (for example, 10,000 articles per workspace and 1,000 categories per workspace) are soft limits recommended for optimal performance. Because the environment is private and dedicated, higher limits can be accommodated. Contact your Document360 account team to request an increase.
+</Expandable>
+
+<Expandable title="Where is the data hosted, and can you choose the data center region or private hosting?">
+   Document360 hosts data on Microsoft Azure. For shared hosting, data is hosted in one of three regions — **Western Europe**, **Canada Central** or **Central US** — and you can select your preferred region based on your compliance and data residency needs. 
+
+  For **private hosting**, you get a dedicated cloud environment exclusive to your organization, with a choice of **50+ Azure data center regions** worldwide. Private hosting also isolates compute, storage, and network resources, so nothing is shared with other tenants.<br /> Document360 manages provisioning, maintenance, and upgrades for private hosting — no on-premises hardware management required.
+</Expandable>

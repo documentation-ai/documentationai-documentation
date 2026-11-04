@@ -1,0 +1,169 @@
+---
+title: API integration patterns for headless content delivery with metadata-driven access control
+description: Integrate Document360 as a headless CMS with APIs for content management, access control, and synchronization in enterprise applications.
+---
+
+Document360 can serve as a headless content management system, in which external applications consume content via APIs and handle their own user experience, search, and access control. This pattern is common in enterprise scenarios where organizations need to integrate knowledge base content into existing portals, intranets, or custom applications while maintaining centralized content management.
+
+This guide covers API integration patterns, content synchronization strategies, and metadata handling for external platforms that need to implement access control based on Document360 content metadata.
+
+## Prerequisites
+
+1. Document360 API access (API key or authentication credentials)
+2. External platform with API consumption capabilities
+3. Understanding of your content synchronization requirements (real-time vs batch)
+4. Knowledge of your access control and user authentication model
+5. Development resources for API integration implementation
+
+## Step-by-Step Guide
+
+### Establish API authentication
+
+1. Navigate to **Settings** > **Knowledge base portal** > **API keys** in your Document360 admin panel
+2. Generate an API key for your external platform integration
+3. Configure authentication in your external platform using the API key
+4. Test connectivity with a simple API call to verify authentication
+5. Implement proper error handling for authentication failures
+
+> Store API credentials securely and rotate them regularly according to your security policies.
+
+### Design content synchronization strategy
+
+1. Determine synchronization frequency based on content update patterns:
+
+   1. <strong>Real-time:</strong> Webhook-based updates for immediate synchronization
+   2. <strong>Scheduled:</strong> Batch synchronization at regular intervals
+   3. <strong>On-demand:</strong> Manual or triggered synchronization
+2. Plan for incremental vs full synchronization based on content volume
+3. Design content indexing structure in your external platform
+4. Implement change detection mechanisms to optimize sync performance
+
+### Implement content retrieval pattern
+
+1. <strong>Initial Content Discovery:</strong> Use the Project Version Articles API to get article lists
+2. <strong>Metadata Enrichment:</strong> For each article, call individual article APIs to retrieve custom fields:
+
+```plaintext
+GET /api/v1/articles/{article-id}
+```
+
+3. <strong>Content Extraction:</strong> Parse the response to extract:
+
+   3. Article content and metadata
+   4. Custom fields object containing audience information
+   5. Category associations and hierarchy
+4. <strong>Index Building:</strong> Store content with associated metadata in your external platform's search index
+
+### Configure metadata-driven filtering
+
+1. Extract custom field values from API responses:
+
+```json
+{
+  "custom_fields": {
+    "target_audience": [
+      "CompanyA",
+      "PartnerOrg"
+    ],
+    "security_level": "Internal"
+  }
+}
+```
+
+2. Map Document360 audience values to your platform's user groups
+3. Implement filtering logic during search and content retrieval
+4. Build dynamic navigation based on user-accessible content
+5. Cache filtered results to optimize performance
+
+### Handle content updates and synchronization
+
+1. Implement webhook endpoints to receive Document360 content change notifications
+2. Process update events to refresh specific articles or categories
+3. Handle content deletions and URL changes
+4. Maintain synchronization logs for troubleshooting
+5. Implement fallback mechanisms for failed synchronizations
+
+### Build user access control layer
+
+1. Authenticate users in your external platform
+2. Determine user's audience and group memberships
+3. Filter content based on Target Audience custom field values
+4. Apply additional access controls as needed (department, role, etc.)
+5. Log access attempts for audit purposes
+
+## Use Cases & Scenarios
+
+### Enterprise portal integration
+
+A large organization integrates Document360 content into its employee portal. The portal authenticates users via SSO, determines their department and company affiliation, then shows only relevant policies and procedures based on Custom Field metadata. Content is synchronized nightly and cached for performance.
+
+### Multi-tenant SaaS platform
+
+A SaaS provider uses Document360 to manage help documentation for multiple clients. Each client's users see only their organization's content plus general documentation. The platform uses real-time webhooks to keep content synchronized and implements client-specific content filtering based on Custom Fields.
+
+### Partner portal with tiered access
+
+A company provides different levels of documentation access to various partner types (resellers, integrators, end customers). Custom Fields define access tiers, and the partner portal filters content based on the partner's access level and authentication status.
+
+## FAQ
+
+<Expandable title="Which APIs should I use for bulk content retrieval?">
+  Start with the Project Version Articles API to get article lists, then use individual article APIs to retrieve detailed content and custom fields. Bulk APIs may not include all metadata needed for access control.
+</Expandable>
+
+<Expandable title="How do I handle API rate limits during synchronization?">
+  Implement exponential backoff, batch requests where possible, and consider spreading synchronization across time periods. Monitor API usage and adjust synchronization frequency based on rate limit constraints.
+</Expandable>
+
+<Expandable title="Can I use webhooks for real-time content updates?">
+  Yes, Document360 supports webhooks for content change notifications. Configure webhook endpoints in your external platform to receive and process update events immediately.
+</Expandable>
+
+<Expandable title="How do I handle content that exists in multiple categories?">
+  Document360 articles can belong to multiple categories. Your external platform should handle this by either duplicating content references or implementing cross-references in your content index.
+</Expandable>
+
+<Expandable title="What's the best way to handle large content volumes?">
+  Implement pagination for API calls, use incremental synchronization where possible, and consider content caching strategies. For very large datasets, consider implementing content archiving or selective synchronization based on usage patterns.
+</Expandable>
+
+## Troubleshooting
+
+<Expandable title="API calls returning incomplete custom field data">
+  **Resolution**<br />Use individual article retrieval APIs instead of bulk APIs to get complete metadata including custom fields.
+
+  **Root cause**<br />Some bulk APIs are not designed to return custom field data in their responses.
+</Expandable>
+
+<Expandable title="Synchronization performance issues">
+  **Resolution**<br />Implement caching for repeated data, use incremental sync, consider parallel processing for API calls, and adjust batch sizes based on monitored response times.
+
+  **Root cause**<br />Fetching large volumes of content without optimisation strategies leads to slow API response times and high processing overhead.
+</Expandable>
+
+<Expandable title="Content filtering is not working correctly">
+  **Resolution**<br />Check custom field value formatting for exact matches, including case sensitivity and spacing. Verify that user group mappings between Document360 and your platform are correctly configured.
+
+  **Root cause**<br />Mismatches between Document360 custom field values and the external platform's filtering logic, or incorrect user group mappings, cause filtering to behave unexpectedly.
+</Expandable>
+
+<Expandable title="Missing content after synchronization">
+  **Resolution**<br />Review your filtering logic to ensure it is not overly restrictive. Confirm that articles without custom field values are handled according to your governance model.
+
+  **Root cause**<br />Overly strict filtering rules or unhandled cases where articles have no custom field values result in content being excluded from synchronization.
+</Expandable>
+
+<Expandable title="Authentication failures during API calls">
+  **Resolution**<br />Verify API key validity and confirm correct header formatting. Add error handling and retry logic to recover from transient authentication failures.
+
+  **Root cause**<br />Invalid or expired API keys, or incorrectly formatted authentication headers, cause API calls to be rejected.
+</Expandable>
+
+<Callout kind="alert">
+  **Warning**
+
+  1. Legacy API keys (v2) have unrestricted access to your Document360 content and can only be limited by allowed HTTP methods. For content delivery, use an enhanced API key (v3) scoped to the least access needed through its portal role, content role, and content access settings. Store keys securely and implement proper access controls in your external platform.
+  2. Changes to custom field structures may require updates to your integration code and content re-indexing in your external platform.
+</Callout>
+
+Application Programming Interface - A set of defined rules and protocols that allows one software application to communicate with and request functionality from another. APIs are the backbone of modern integrations. When Document360 connects to Slack, Intercom, or Google Analytics, it does so through their APIs. Document360 also provides its own REST API, enabling teams to programmatically manage articles, categories, and reader accounts from external systems.

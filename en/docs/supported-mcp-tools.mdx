@@ -1,0 +1,112 @@
+---
+title: Supported MCP tools
+description: Explore how AI assistants utilize MCP tools for efficient content management, searching, and documentation workflows in your knowledge base.
+---
+
+Now that you have [connected the Document360 MCP server](/en/docs/connect-mcp-to-your-ai-assistant) with your AI assistants, let's explore how the AI assistants can use MCP tools to search, retrieve, create, update, manage workflows, and publish content in your knowledge base. They can also maintain glossary terms, manage article review reminders, work through your assigned tasks, and send article feedback.
+
+These tools work together via prompts, enabling multi-step documentation tasks with a single instruction. For example, an AI assistant can search for existing articles, retrieve category details, create new documentation, update existing content, move content through workflow stages, and publish it to your knowledge base site, all based on your project structure and permissions. Understanding how these tools work helps you create more effective prompts and build efficient documentation workflows.
+
+NOTE
+
+When Document360 releases new MCP tools, your AI assistant does not pick them up automatically. Refresh the tools list in your AI assistant, or disconnect and reconnect the Document360 connector, to start using them.
+
+NOTE
+
+MCP tools work only with your Knowledge base workspace content. They do not search, retrieve, create, or update content inside an API documentation workspace (API references generated from an OpenAPI or Postman specification). To work with API documentation content, use the Document360 portal or the standard Customer API instead.
+
+---
+
+## MCP tools
+
+### Search and retrieval tools
+
+| Tool | What it does | Use this to |
+| --- | --- | --- |
+| `document360-mcp-search` | Performs a semantic search across your knowledge base project. Matches by meaning, not exact wording. Searches all project versions by default, or a specific version when needed. | Discover related articles, explore a topic, or find documentation when you don't know the exact phrase used |
+| `document360-mcp-find-text` | Finds an exact word or phrase anywhere in your documentation and returns every article and page category that contains it, with their public URLs. | Find every document containing an exact term, content resources, or code snippet before a bulk update |
+| `document360-mcp-list-documents` | Lists articles and page categories using filters such as version, language, category, status, tags, labels, or update date. | Build a review list for a release, audit a category, or find everything updated since a date |
+| `document360-mcp-get-article` | Retrieves the full content of any article using its ID or URL. Works across multiple languages and lets you access both published and draft versions. | Read existing articles, review draft content, fetch articles before updating |
+| `document360-mcp-get-categories` | Retrieves the complete category structure for a selected project version, including child categories and associated articles. | Browse the knowledge base hierarchy, find category IDs, understand documentation structure |
+| `document360-mcp-get-category` | Retrieves everything about a specific category, its content, subcategories, and associated articles using the category ID. | Inspect one category deeply, read category page content, validate category before updates |
+| `document360-mcp-get-project-versions` | Lists all available versions of your project along with their identifiers so that you can run version-specific operations with precision. | Select the correct version, create version-aware prompts, retrieve valid version IDs |
+| `document360-mcp-get-workflow-statuses` | Lists the workflow statuses configured for the project, along with their identifiers and flags. | Discover available workflow statuses, retrieve status IDs before moving content through review stages |
+| `document360-mcp-get-workflow-assignees` | Lists the users and groups that can be assigned to a specific document's workflow. | Find valid assignee IDs before assigning a workflow step, identify who can review a document |
+| `document360-mcp-list-glossary-terms` | Lists the glossary terms in your project, including each term's definition and language variants. You can filter by global or language-level terms, language, or search text. | Check whether a term is already defined, review glossary definitions, find a term before inserting it into an article |
+| `document360-mcp-list-review-reminders` | Lists the articles and Page categories in a workspace that have a review reminder, with the earliest review date first. You can filter by state (stale or scheduled), review date range, and language. | Find content that needs review now, plan upcoming reviews, check which articles are due before a release |
+| `document360-mcp-get-my-tasks` | Lists the tasks assigned to you in a workspace, including workflow assignments, reader feedback, and review reminders. This is the same list you see on the **Tasks** page in the portal. | See what is overdue or due this week, triage your work, find the task ID before acting on a task |
+
+NOTE
+
+<strong>Which search tool should you use?</strong> It depends on what you are looking for:
+
+- If you know the **topic** but not the exact words, use `document360-mcp-search`. For example, "what do our docs say about resetting a password?"
+- If you know the **exact word or phrase** you want to find, use `document360-mcp-find-text`. For example, to find every article that contains `{{old_api_key}}`.
+- If you do not have a search term and just want a **list of documents**, use `document360-mcp-list-documents`. For example, every article in one category that was updated last month.
+
+---
+
+### Write tools
+
+| Tool | What it does | Use this to |
+| --- | --- | --- |
+| `document360-mcp-create-article` | Creates a new article inside a specified category and project version by supporting structured content. | Create new documentation in the right category, draft missing help articles, generate first drafts from prompts |
+| `document360-mcp-update-article` | Updates an existing article while preserving its structure and formatting. Built for partial updates so you can revise a section without touching the rest of the article. | Update outdated documentation, revise articles during product updates, rewrite specific sections without affecting the rest |
+| `document360-mcp-create-category` | Creates a new category within a selected project version. Supports nested structures so you can build subcategories as your content grows. | Add new documentation sections, create subcategories for new features, organize content into new structures |
+| `document360-mcp-update-category` | Updates category properties such as name, position, hierarchy, or visibility. | Rename categories, reorganize hierarchy, improve structure |
+| `document360-mcp-update-category-content` | Updates the content of category pages while preserving the existing structure. | Update Page or Index category content, revise category overview or introductory sections, refresh category-level guidance without affecting the rest of the structure |
+| `document360-mcp-set-workflow-status` | Sets the workflow status of an article or Page category, with an optional due date, comment, and assignees. | Move content through review stages, assign reviewers, set due dates for workflow tasks |
+| `document360-mcp-publish-article` | Publishes an article by promoting its latest draft to the live version. | Make a draft article live on the knowledge base site after creating or updating it |
+| `document360-mcp-unpublish-article` | Unpublishes an article and removes it from the live knowledge base site. Content is preserved and can be republished. | Take an outdated or incorrect article offline without deleting it |
+| `document360-mcp-publish-category` | Publishes a Page category's latest draft content to the live version. | Make a Page category live after updating its content |
+| `document360-mcp-unpublish-category` | Unpublishes a Page category and removes it from the live knowledge base site. Content is preserved and can be republished. | Remove a Page category from the live knowledge base site without deleting it |
+| `document360-mcp-create-glossary-term` | Adds a new term to your glossary, either as a global term shared across all languages or as a language-level term for one language. | Define new product terms, add missing glossary entries, build a glossary from existing documentation |
+| `document360-mcp-update-glossary-term` | Updates the name, term, or definition of an existing glossary term. Only the fields you change are updated. For language-level terms, you can update a language or add a new one. | Revise outdated definitions, add a definition in another language, correct a term's wording |
+| `document360-mcp-set-article-review-reminder` | Schedules a review reminder on an article, flags it for review now, or clears the reminder. | Schedule the next review after updating an article, flag an article as needing review, remove a reminder that is no longer needed |
+| `document360-mcp-snooze-task` | Snoozes one of your tasks until a specific date, or brings a snoozed task back. | Postpone a task you cannot act on yet, bring a snoozed task back early |
+| `document360-mcp-mark-task-done` | Marks one of your workflow tasks as done, the same as **Mark as done** on the **Tasks** page. | Confirm that you have completed your review of an article |
+| `document360-mcp-update-feedback-status` | Updates the status, assignee, or internal note of reader feedback assigned to you. You can also notify the reader about the change. | Close feedback after fixing an article, hand feedback to a teammate, add an internal note |
+| `document360-mcp-send-article-feedback` | Sends feedback on a published article to your documentation team, for example when content is unclear, outdated, missing information, irrelevant, or has a broken link. The feedback appears in the **Feedback manager**. | Report a problem found in an article while using your AI assistant |
+
+NOTE
+
+- Glossary tools are available only when the **Glossary** feature is included in your project's plan. `document360-mcp-update-feedback-status` is available only when the **Feedback manager** is included in your project's plan.
+- Glossary terms cannot be deleted through MCP, and you cannot trigger glossary translation from MCP. For language-level terms, add each language separately using `document360-mcp-update-glossary-term`.
+- Renaming a glossary term does not update the articles that already use it.
+- `document360-mcp-mark-task-done` does not change the workflow status. To move the article to the next status, use `document360-mcp-set-workflow-status`.
+
+NOTE
+
+<strong>Reader and Reviewer accounts:</strong> MCP tools follow the role and content access of the connected account, so your AI assistant can only perform actions you are allowed to perform in the portal.
+
+- **Reader accounts** can use `document360-mcp-send-article-feedback`, but no other write tools. Readers also cannot use `document360-mcp-list-glossary-terms`, `document360-mcp-list-review-reminders`, or `document360-mcp-get-my-tasks`.
+- **Reviewer accounts** cannot use `document360-mcp-create-glossary-term`, `document360-mcp-update-glossary-term`, `document360-mcp-set-article-review-reminder`, or `document360-mcp-update-feedback-status`.
+
+---
+
+## Rate limits
+
+MCP requests are subject to rate limits based on your Document360 plan. Limits are applied per user, per project, across all MCP tool calls within a fixed one-minute window. Read and write operations share the same limit, so search, retrieve, create, and update calls all draw from one pool. The rate limit depends on your plan: Business plan projects are limited to 60 requests per minute per user and Enterprise plan projects are limited to 100 requests per minute per user.
+
+These limits help ensure reliable performance and fair usage across documentation workflows. If you exceed the rate limit, subsequent requests may be throttled until the next one-minute window begins.
+
+This can happen when:
+
+- Running frequent automated prompts
+- Performing repeated searches in quick succession
+- Executing multiple create or update operations at the same time
+
+If your workflow needs a higher limit, contact your Customer Success Manager or support@document360.com. Higher limits can be configured based on your requirements, and may involve an additional cost.
+
+---
+
+### Best practices for managing MCP request limits
+
+To avoid throttling:
+
+- Space out frequent or automated requests
+- Break large workflows into smaller prompt sequences
+- Reuse retrieved category or article context when possible
+- Avoid repeated parallel searches across multiple versions
+
+This helps maintain a smoother MCP experience and reduces the likelihood of workflow interruptions.

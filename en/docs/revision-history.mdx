@@ -1,0 +1,344 @@
+---
+title: Revision history
+description: "In Document360, when a \u007D clicks the Edit button on a published article, a new unpublished version of that article is created."
+metaTitle: Revision history - Manage article versions effortlessly
+---
+
+Revision history in Document360 lets you track, compare, and manage every version of an article from a single panel. In a project that uses the Advanced WYSIWYG editor and the Markdown editor, the full-page revision history described in this article is available only in the Advanced WYSIWYG editor. It is not available in the Markdown editor, which uses the **Article revision** panel instead. When a published article is edited, a new unpublished draft is created automatically. The previously published version is added to revision history and remains live on the knowledge base site until the new draft is published. This lets admins, reviewers, and contributors compare differences between versions, get an AI summary of what changed, and revert to a previous version at any time.
+
+You can have multiple draft versions of an article, but only one draft per article can be actively edited by multiple contributors at a time. To protect your content from being overwritten, Document360 automatically creates System Backup versions in situations such as copying an older version into the current draft, or reloading the editor after the article was updated externally (for example, via the API, MCP, or another integration).
+
+ NOTE
+
+For revision history in the Markdown editor, see [Revision history in the Markdown editor](/en/docs/revision-history#revision-history-in-the-markdown-editor).
+
+The in-progress version is labeled **Draft** in revision history, the article title area, workflow, and confirmation pop-ups. Published versions are assigned version numbers such as v1 and v2. The current draft is not assigned a version number until you publish it. **System Backup** versions use separate numbers, such as System Backup 1 and System Backup 2.
+
+The version that opens when you select an article depends on the project-level setting in your workspace's general settings. For more information, see [General project settings](https://docs.document360.com/docs/general-project-settings#set-the-default-article-view).
+
+ NOTE
+
+Creating a new version does not delete your existing content. You can manually delete unpublished, **System Backup**, and older published versions. The latest published version can't be deleted.
+
+Selecting **Copy to draft** for an older version replaces the current draft with that version's content:
+
+- If a draft is already active, for example when other contributors are actively editing, Document360 first saves a **System Backup** version containing the current draft's content, so nothing is lost, then replaces the draft. All active contributors see a notification that the draft was created from an earlier version, and their view automatically switches to the same new draft. Select **Take me to the draft** to open the active draft.
+- If no draft exists yet, meaning the article is currently published and no one is editing it, Document360 creates a new draft directly from the selected version's content. No System Backup is created in this case, since there's no existing draft to preserve.
+
+---
+
+## When to use revision history
+
+- Track what changed in the current draft before publishing. Each contributor's additions, deletions, and edits are color-coded; content carried over from the previously published version stays in plain text.
+- Click **Copy to draft** on an older version to restore its content into the current draft.
+- Use version comparison to review overall content changes during the review and approval process. Comparison shows differences between versions, not a contributor-by-contributor breakdown.
+- Use **Summarize changes** to get a plain-language overview of what was added, removed, or rewritten before you review each highlighted change.
+- Use **Workflow history** to see which stages a version passed through, who was assigned, and whether it was created from an earlier version.
+
+---
+
+## Viewing and restoring older versions
+
+Only one draft can be active at a time. When you restore an older version, its content replaces the current draft.
+
+### View an older version
+
+1. Navigate to the article in the knowledge base portal.
+2. Click the **More** () icon in the article header and select **Revision history** ().
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777566731-1a63wnac7mm-revision-history.png?fm=auto&auto=compress%2Cformat" alt="Revision history option in the More menu of the article editor" />
+
+3. Click the version you want to view. The selected version opens with its additions, deletions, and edits highlighted. Content that remains unchanged appears as plain text. Hover over highlighted content to see which contributor made the change.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777567512-layyo25eb7b-revision-history-new.png?fm=auto&auto=compress%2Cformat" alt="Revision history page showing a selected version with contributor changes highlighted and version cards on the right" />
+
+ NOTE
+
+Viewing an older version from **Revision history** does not make you an active contributor on the article. You become an active contributor again when you return to the current draft editor.
+
+### Copy an older version into the current draft
+
+1. Navigate to the article in the knowledge base portal.
+2. Click the **More** () icon in the article header and select **Revision history** ().
+3. Hover over the version you want to restore, click the **More** () icon, and select **Copy to draft**.
+4. Click **Confirm** on the confirmation pop-up that appears.
+
+   - If a draft is already open — for example, other contributors are actively editing — Document360 first saves a **System Backup** version containing the current draft's content, so nothing is lost, then replaces the draft with the content from the version you selected. Anyone else actively editing sees a message that the draft was created from an earlier version, and their view automatically switches to the same new draft, so everyone ends up working on it together.
+   - If no draft exists yet — the article is currently published with no one editing — Document360 creates a new draft directly from the selected version's content. No System Backup is created in this case, since there's no existing draft to preserve.
+5. Make any further edits and publish when ready.
+
+ NOTE
+
+**Copy to draft** replaces the draft for everyone in the collaborative session at once. It's worth a heads-up to your team before using it on an article others are actively editing.
+
+ NOTE
+
+In a project that uses the Advanced WYSIWYG editor and the Markdown editor, **Copy to draft** replaces the earlier **Fork** option in the Advanced WYSIWYG editor. The Markdown editor still uses **Fork**. Unlike Fork, which created an additional draft, **Copy to draft** replaces the current draft with the selected version's content. If a draft already exists, it's saved as a **System Backup** first, so nothing is lost.
+
+### From the editor
+
+Clicking **Edit** on a published article creates the article's next draft.
+
+---
+
+## Article revision actions
+
+| Action | What it does |
+| --- | --- |
+| **Click the version** | Opens a read-only view of that version, with its own contributor-level changes highlighted. To edit an older version, use **Copy to draft** to bring it into the live draft. |
+| **Workflow history** | Displays the version's status (**Published**, **Unpublished**, **Draft**, or **System Backup**), creator, timestamp, workflow stages, assignees, and comments, including a note if the version was created from an earlier one. |
+| **Copy to draft** | Replaces the current draft with the selected version's content. If a draft already exists, Document360 backs it up as a **System Backup** version first. |
+| **View in KB** / **Preview in KB** | Opens the version on the knowledge base site so you can see how it appears to readers. Published versions show **View in KB**; other versions, such as drafts, show **Preview in KB**. |
+| **Add comments** / **Edit comments** | Adds or edits the comment on that version. Only the team member who published or unpublished the version can add or edit its comment. For everyone else, this option is disabled. Long comments are shortened on the version card; click the comment to view it in full. |
+| **Version visibility** | Opens the **Version Visibility** modal to control whether a published version appears in the version log on the knowledge base site, and to set a custom version number. |
+| **Delete forever** | Permanently deletes the version. This action cannot be reversed. |
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777568237-ixj313ra5-more-options-version-history.png?fm=auto&auto=compress%2Cformat" alt="More menu on a version card showing Copy to draft, View in KB, Edit comments, Version visibility, and Delete forever" />
+
+ NOTE
+
+You can't delete the latest published version. Older published versions, unpublished versions, and **System Backup** versions can be deleted. If an article has only one version and it's published, deletion is disabled entirely, with a message that you cannot delete the only version of the article.
+
+If other contributors are actively working on the article when you delete a version, you'll see a confirmation message letting you know others are currently editing before the deletion goes through. Once you confirm, those contributors see a message that the version was deleted by you, and they're taken to the published version if one exists, or otherwise to the latest view-only version of the draft.
+
+Each version in revision history appears as a card that shows the following details:
+
+| Element | Position | What it shows |
+| --- | --- | --- |
+| **Status badge** | Top left | **Draft**, the version number for published versions (for example, v2), **Unpublish**, or **System Backup**. |
+| **Contributors** | Top right | Avatars of everyone who worked on the version. Hover over an avatar to see the contributor's name. |
+| **Date and time** | Below the status badge | The most recent activity on the version, such as when it was published, unpublished, or last modified. |
+| **Comment** | Below the date | The comment added to the version, if any. |
+| **Visible on KB** | Bottom right | Appears if the version is set to display on the knowledge base site. |
+
+Hover over a card to show the **More** () icon and the actions available for that version.
+
+### Manage version visibility
+
+The version visibility setting controls whether a published version appears in the published version history on the knowledge base site. You can also assign a custom version number to each published version for clearer identification.
+
+ NOTE
+
+Version visibility only appears on the knowledge base site if **Show published version history** is enabled at the project level (**Settings > Knowledge base site > Article settings**).
+
+1. Navigate to the article in the knowledge base portal.
+2. Click the **More** () icon in the article header and select **Revision history** ().
+3. Hover over the version you want to configure, click the **More** () icon, and select **Version visibility**.
+4. In the **Version Visibility** modal, toggle **Display this version info on knowledge base site** on or off.
+5. If the toggle is on, edit the **Customize version number** field to set a version label for this entry. The field is pre-filled with a system-generated value (for example, v10).
+6. Click **Save**.
+
+ NOTE
+
+The knowledge base site displays the latest 10 published versions for which visibility is enabled, along with the version number, publication date, publisher, and comments. When a new version is made visible and the limit of 10 is reached, the oldest visible version is removed automatically.
+
+<strong>Version number validation rules:</strong>
+
+| Rule | Detail |
+| --- | --- |
+| Maximum length | 20 characters |
+| Allowed characters | Letters, numbers, hyphens (-), and underscores (\_) |
+| Must be unique | Duplicate version numbers are not allowed per article |
+
+---
+
+## Compare article versions
+
+1. Navigate to the article in the knowledge base portal.
+2. Click the **More** () icon in the article header and select **Revision history** ().
+3. Click **Compare with** at the top of the screen, then select the version you want to compare with the current version.
+
+To get an AI-generated summary of the differences, see [Summarize changes with Eddy AI](/en/docs/revision-history#summarize-changes-with-eddy-ai).
+
+ NOTE
+
+Comparison always shows the overall differences between two versions. It doesn't show the highlighted changes made by contributors. For contributor-level detail, view the specific version instead.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777570614-e725q10arxm-compare-histories.png?fm=auto&auto=compress%2Cformat" alt="Comparison view showing two versions with added, removed, and formatting changes highlighted" />
+
+### Content highlighting criteria
+
+The comparison view highlights changes between the two versions using color coding.
+
+- **Added content**: new text is highlighted in green. For images, videos, code blocks, PDFs, and self-closing tags, added content shows a green **Added** badge. Table additions are highlighted in green.
+- **Removed content**: deleted text is highlighted in red with a strikethrough. For images, videos, code blocks, PDFs, and self-closing tags, removed content shows a red **Removed** badge. Table removals are highlighted in red.
+- **Formatting changes**: changes to bold, italic, underline, font size, or lists are highlighted in blue. Non-text formatting changes such as table styles or image resizing show a blue **Modified** badge.
+
+ NOTE
+
+Content block movements and multi-formatting changes (applying italic, bold, and underline to the same content block simultaneously) are not highlighted in the comparison view.
+
+**Swap versions**: the **Swap** button at the top of the comparison view reverses the comparison order of the two selected versions. All highlights update in real time. Content previously marked as **Added** will appear as **Removed** after the swap. You can also change the versions being compared using the selectors on either side of **Swap**.
+
+**Exit compare**: click **Exit compare** at the top right to return to the main article view. You're taken back to the exact location you were viewing before entering comparison mode.
+
+---
+
+## Summarize changes with Eddy AI
+
+Reviewing a long draft, or one that many contributors edited, can mean going through dozens of highlighted changes. Click **Summarize changes** to have Eddy AI describe them in plain language first, so you can see what was added, removed, or rewritten and decide where to focus your review. You can summarize the current draft against the latest published version, or any two versions in the comparison view.
+
+ NOTE
+
+**Summarize changes** is available when the AI writer suite is enabled for your project. In a project that uses the Advanced WYSIWYG editor and the Markdown editor, it is available only in the Advanced WYSIWYG editor. Each summary that Eddy AI generates uses 1 credit, with a monthly limit of 1,000 credits. For details, see [AI writer suite usage limits](/en/docs/ai-writer-suite#usage-limits).
+
+### Summarize the current draft
+
+1. Navigate to the article in the knowledge base portal.
+2. Click the **More** () icon in the article header and select **Revision history** (). The current draft opens.
+3. Click **Summarize changes** next to the **Draft** badge.<br /> The summary opens above the article, titled with the versions being compared, for example Summary · Draft vs v3.
+4. Read the summary, then review the highlighted changes below it. To collapse the summary, click the arrow next to its title. To close it, click **X**.
+
+ NOTE
+
+**Summarize changes** appears only on the current draft. It isn't shown when you view an older version or when the article has no draft. To summarize published versions, use the comparison view.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777574115-nsfzjphhsmi-summarize-from-draft.png?fm=auto&auto=compress%2Cformat" alt="Draft view with the summary open above the article" />
+
+### Summarize changes between two versions
+
+1. Navigate to the article in the knowledge base portal.
+2. Click the **More** () icon in the article header and select **Revision history** ().
+3. Click **Compare with** at the top of the screen, then select the version you want to compare with.
+4. Click **Summarize changes** in the comparison toolbar. The summary opens above the comparison, for example Summary · v2 vs v1.
+
+If you click **Swap**, the comparison order is reversed. Click **Summarize changes** again to get a summary for the new order.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777574865-mdneb0udkq-revision-history-ai-summary-user-management-changes.png?fm=auto&auto=compress%2Cformat" alt="Comparison view with the summary open above the diff" />
+
+### How summaries are saved and refreshed
+
+- Each summary is saved for that pair of versions. When you or another team member opens the same comparison later, the saved summary appears right away without being generated again, and no credit is used.
+- If the draft is edited after its summary was generated, the summary shows <strong>This summary is outdated: the content changed after it was generated.</strong> Click **Regenerate** to summarize the latest draft. Regenerating uses 1 credit.
+- If you replace the draft with an older version using **Copy to draft**, or delete the draft, its saved summary is removed. Click **Summarize changes** to generate a new summary for the updated draft.
+- If the two versions have the same content, the summary tells you there are no content changes between them.
+
+### What the summary covers
+
+- Eddy AI decides how to format the summary based on the size and structure of the changes. Short changes are usually summarized in a paragraph, and changes across a long article may be broken down by section. You can't choose the format.
+- The summary describes what changed in the content, not which contributor made each change. To see who changed what, view the draft and hover over the highlighted content.
+- You can summarize two versions at a time.
+- The summary is read-only. To accept or undo a change, edit the draft directly.
+
+ NOTE
+
+The summary is generated by AI and gives you an overview, not a complete record. Check it against the highlighted changes before you approve or publish the draft.
+
+---
+
+## Revision history in the Markdown editor
+
+In a project that uses the Advanced WYSIWYG editor and the Markdown editor, [collaborative editing](https://docs.document360.com/help/docs/collaborative-editing) is available only in the Advanced WYSIWYG editor. It is not available in the Markdown editor, so articles in the Markdown editor use the **Article revision** panel instead of the full-page revision history.
+
+### Open the Article revision panel
+
+1. Navigate to the article in the knowledge base portal.
+2. Click the **More** () icon in the article header and select **Revision history** ().<br /> The **Article revision** panel opens on the right, listing each version with its version number, the version it was forked from, contributor, date, and status.
+
+### Article revision actions
+
+| Action | What it does |
+| --- | --- |
+| **Fork** | Creates a new draft from the selected version without affecting the published article. You can fork the same version more than once; each fork creates its own separate draft. |
+| **Open** | Opens the selected version in the editor. |
+| **Delete** | Permanently deletes the version. This action cannot be reversed. |
+| **Workflow history** | Shows the workflow stages, assignees, and dates for that version. |
+| **Version visibility** | Available from the **More** () icon on a published version. Controls whether the version appears on the knowledge base site and lets you set a custom version number. |
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777592984-1wlbm4dxsby-article-revision-panel-markdown.png?fm=auto&auto=compress%2Cformat" alt="Article revision panel in the Markdown editor showing versions with Workflow history, Fork, Delete, and Open options" />
+
+### Restore an older version
+
+1. In the **Article revision** panel, click **Fork** on the version you want to restore.
+2. Click **Yes** in the confirmation prompt. A new draft is created with that version's content, and the published article stays live.
+3. The new draft opens automatically in the editor. Make any changes and publish when ready.
+
+### Compare versions
+
+1. In the **Article revision** panel, select the checkboxes for the two versions you want to compare.
+2. Click **Compare**.<br /> The **Document difference viewer** opens, showing the older version on the left and the newer version on the right, each with its version number and creation date.
+3. Switch between the tabs to review the changes:
+
+| Tab | What it shows |
+| --- | --- |
+| **Code difference** | The Markdown source of both versions side by side. |
+| **Rendered difference** | Both versions side by side as they appear to readers. |
+| **Version** tabs | One tab for each of the two versions you selected. Each tab shows that version on its own, with the Markdown code on the left and the rendered output on the right. |
+
+Removed content is highlighted in red in the older version, and added content is highlighted in green in the newer version.
+
+ NOTE
+
+In a project that uses the Advanced WYSIWYG editor and the Markdown editor, **Summarize changes** is available only in the Advanced WYSIWYG editor. It is not available in the Markdown editor.
+
+4. Click **Back to article** to return to the editor.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777601409-jlqpym28hkc-compare-versinos-markdown.png?fm=auto&auto=compress%2Cformat" alt="Document difference viewer showing removed content highlighted in red and added content highlighted in green" />
+
+---
+
+## Best practices
+
+- Use **Copy to draft**, not editing directly, when you want to restore an older version — if a draft already exists, it's backed up automatically so nothing is lost.
+- Let your team know before using **Copy to draft** on an article others are actively editing, since it replaces the current draft for everyone in the session.
+- Use the comparison view before publishing a major update to verify that only the intended changes are included.
+- Run **Summarize changes** before a detailed review to see where the biggest changes are, then confirm them against the highlighted content.
+- Delete redundant unpublished or **System Backup** versions regularly to keep revision history clean and easier to navigate.
+- Check **Workflow history** on a version when reviewing articles in a multi-stage approval process to confirm who has reviewed it and when.
+
+---
+
+## FAQ
+
+<Expandable title="Can I restore a previous revision of an article?">
+  Yes. Find the version you want in revision history and click **Copy to draft** — this replaces the current draft with that version's content, after backing up the current draft if one exists. In a project that uses the Advanced WYSIWYG editor and the Markdown editor, **Copy to draft** is available only in the Advanced WYSIWYG editor. In the Markdown editor, click **Fork** on the version instead; a new draft is created and opens in the editor. If the article has never been published, use the **Backup and Restore** option in **Settings** instead.
+</Expandable>
+
+<Expandable title="How do I discard current changes and revert to the previous version?">
+  If your changes haven't been published yet, open **Revision history**, view the previous version to confirm it's the one you want, then use **Copy to draft** to restore it. In a project that uses the Advanced WYSIWYG editor and the Markdown editor, **Copy to draft** is available only in the Advanced WYSIWYG editor. In the Markdown editor, you can delete the draft with your unwanted changes, or click **Fork** on the previous version to start a new draft from it. This works once the article has been published at least once. If it's never been published, use the **Backup and Restore** option in **Settings**.
+</Expandable>
+
+<Expandable title="Why does revision history show a team member's name with a recent timestamp even though they haven't made recent changes?">
+  With multiple contributors able to work on the same draft, this is common. A save action updates the timestamp to reflect the latest save, even if no meaningful content changed, and it's attributed to whoever triggered that save. To see exactly who did what and when, click **Workflow history** on that version, or check the Team auditing log.
+</Expandable>
+
+<Expandable title="Why can't I add or edit the comment on a version?">
+  Only the team member who published or unpublished a version can add or edit its comment. This keeps the publisher's notes from being changed without their knowledge. Comments in **Workflow history** are not affected.
+</Expandable>
+
+<Expandable title="Can I change the published or last updated date of an article to a past date?">
+  No. The published date and last updated date cannot be modified. The last updated date always reflects the most recent modification, regardless of which version was published.
+</Expandable>
+
+<Expandable title="Where is the Fork option in the Advanced WYSIWYG editor?">
+  In a project that uses the Advanced WYSIWYG editor and the Markdown editor, **Fork** has been replaced by **Copy to draft** in the Advanced WYSIWYG editor. Hover over the version in **Revision history**, click the **More** icon, and select **Copy to draft**. The Markdown editor still uses **Fork**.
+</Expandable>
+
+<Expandable title="Why don't I see the Summarize changes option?">
+  Check the following:
+
+  - The AI writer suite must be enabled for your project. To enable it, go to **Settings** > **AI settings** > **Eddy AI settings**.
+  - In a project that uses the Advanced WYSIWYG editor and the Markdown editor, **Summarize changes** is available only in the Advanced WYSIWYG editor.
+  - In the default revision history view, **Summarize changes** appears only on the current draft. If the article has no draft, or you're viewing an older version, use **Compare with** to select two versions, then click **Summarize changes**.
+</Expandable>
+
+<Expandable title="Does Summarize changes use AI credits?">
+  Yes. Each time Eddy AI generates a summary, 1 credit is used, regardless of the article's length or the summary's length. **Summarize changes** has a monthly limit of 1,000 credits. Opening a saved summary doesn't use a credit, whether you or a teammate opens it. A new credit is used only when a summary is generated again after the content changes. For limits, see [Summarize changes credit limits](/en/docs/ai-writer-suite#summarize-changes-credit-limits).
+</Expandable>
+
+<Expandable title="Does deleting a version in between affect comparing two other versions?">
+  No. Comparing versions works directly between the two versions you select, so deleting a version that falls between them does not affect the comparison. For example, if version 4 is deleted, you can still compare version 3 with version 5 and see the full set of differences between those two versions.
+</Expandable>
+
+<Expandable title="Can I restore the same version more than once?">
+  Yes. How it works depends on the editor:
+
+  - <strong>Advanced WYSIWYG editor:</strong> Click **Copy to draft** on the version as often as you need. Each time, the selected version's content replaces the current draft, and if a draft already exists, it's saved as a **System Backup** first. Because an article has only one active draft, this doesn't create additional drafts.
+  - <strong>Markdown editor:</strong> Each time you click **Fork** on a version, Document360 creates a new, separate draft from that version's content. To remove drafts you don't need, click **Delete** on them in the **Article revision** panel.
+
+  In both editors, the published article is not affected until you publish the draft. For how these actions appear in the audit log, see [Team auditing](https://docs.document360.com/help/docs/team-auditing).
+</Expandable>
+
+<Expandable title="Why does Summarize changes show an error instead of a summary?">
+  Eddy AI can't summarize content that is flagged by the AI provider's content safety checks. This includes content that involves harassment or threats, hate speech, instructions for illegal or violent acts, self-harm, sexual content, or violence and graphic injury. Eddy AI also won't summarize content that contains instructions directed at the AI, for example text asking it not to summarize the article. In these cases, an error message appears instead of a summary. Review the changed content, then try again.
+</Expandable>

@@ -1,0 +1,142 @@
+---
+title: Gen AI friendly content
+description: Learn how to write GenAI-friendly documentation using clear structure, SEO best practices, FAQs, and formatting techniques that improve AI understanding and accuracy.
+---
+
+**GenAI-friendly content** is documentation structured so that AI tools can accurately parse, chunk, retrieve, and summarize it to answer user queries. This guide covers best practices for writing content that works equally well for human readers and AI systems like Eddy AI.
+
+---
+
+## Optimize for generative engines (GEO)
+
+Generative Engine Optimization (GEO) is the practice of structuring content so AI systems can accurately retrieve, synthesize, and cite it when answering user queries.
+
+- Unlike SEO, which helps content rank in search results, GEO determines whether your content is selected and quoted in AI-generated answers.
+- For documentation, this means writing in clear, factual language, using consistent terminology, and keeping each section focused on a single idea.
+- The practices in this guide serve both GEO and SEO goals simultaneously.
+
+<strong>What makes content GEO-ready:</strong>
+
+- **Semantic chunking** — Each section covers one idea, so AI can extract it without needing surrounding context.
+- **Direct, factual language** — AI engines favor content that states facts clearly over content that hedges or over-explains.
+- **Citation-worthiness** — Concrete data points, defined terms, and authoritative statements are more likely to be quoted in AI-generated answers.
+- **Consistent terminology** — AI systems build entity relationships from your content. Switching between synonyms weakens those signals.
+
+GEO and SEO are not in conflict. Content structured for GEO also performs better in traditional search. The best practices in this guide serve both goals simultaneously.
+
+---
+
+## Write for humans first
+
+- Use a clear, conversational tone. This improves both reader engagement and AI comprehension.
+- Write in plain language and reserve technical terms for situations where they are necessary, and define them clearly on first use.
+- Use second-person ("you") when guiding users through tasks or troubleshooting content.
+- Avoid robotic or overly formal phrasing.
+
+Content that reads naturally is easier for AI to interpret and summarize accurately.
+
+---
+
+## Use clear, hierarchical headings
+
+- Use **H1**, **H2**, and **H3** headings in order to define content structure.
+- Write descriptive headings that reflect the actual topic. Use "Managing projects in Document360" instead of a generic "Overview."
+- Avoid repeating the same heading across sections within an article.
+- Include relevant keywords naturally in headings to support AI indexing and search.
+
+Well-structured headings help Eddy AI chunk your content more accurately, making retrieval and summarization more reliable.
+
+---
+
+## Write short, focused paragraphs
+
+- Keep sentences short and direct, ideally under 20 words.
+- Limit each paragraph to a single idea or task. This helps AI tools like Eddy AI extract and summarize key information more accurately.
+- Avoid filler or background explanations within instructional content. Link to supporting content instead.
+- Keep individual sections concise, ideally under 500 tokens (~375 words) to improve AI summarization and retrieval.
+
+---
+
+## Use lists and tables for structured content
+
+<strong>Lists:</strong>
+
+- Use bullet points for grouped information like features or comparisons.
+- Use numbered lists for sequential steps.
+- Keep lists between 3–7 items, parallel in structure, and self-contained.
+
+<strong>Tables:</strong>
+
+- Use tables for structured data such as parameters, settings, or field descriptions.
+- Label all columns descriptively.
+- Fill all cells. Avoid placeholders like "Y," "N," dashes, or icons.
+- Don't include images, emojis, or symbols within cells. If they are unavoidable, add a description wherever possible.
+
+---
+
+## Add code snippets with context
+
+- Use clean, consistently indented code with meaningful inline comments. Comments help GenAI tools understand logic, intent, and variable behavior, especially in usage examples or walkthroughs.
+- Apply syntax highlighting or language tags (```` ```javascript ````, ```` ```json ````) where supported.
+- Keep code blocks copyable. Avoid line numbers or decorative styling.
+- For &#123;&#123; glossary.API&#125;&#125; or product code, include a brief context statement explaining what the code does.
+
+---
+
+## Include descriptive alt text for images
+
+- Write alt text that describes what the image shows and why it is relevant, especially if the image contains data, a UI screenshot, or step-by-step instructions.
+- Add captions or surrounding context to aid interpretation.
+- Avoid vague labels like "screenshot" or "image of graph."
+
+---
+
+## Use descriptive anchor text for links
+
+- Write anchor text that tells the reader and AI what the linked article covers.<br /> For example, "Learn how to manage private workspaces" instead of "Click here."
+- Prioritize internal links between related articles to help AI understand topic relationships.
+
+---
+
+## Apply SEO and metadata best practices
+
+- Use keywords naturally in headings, subheadings, and section openers. Avoid keyword stuffing.
+- Write a concise AI & search description for each article, page category, and Step by step guide that includes the main keywords. This helps AI tools understand the topic and improves indexing accuracy.
+- Be consistent with terminology. Use glossary-approved terms consistently to maintain search relevance.
+- Treat Step by step guides as text for AI. A guide's screenshots carry its meaning for a reader, but an AI agent reads the title, the description, the step instruction text, and the image alt text. Write all four as if they were the only thing the agent sees.
+
+---
+
+## Use business glossary terms consistently
+
+- Use approved glossary terms exactly as defined. Avoid synonyms or variations unless explicitly noted.
+- Define or link to unfamiliar terms on first mention.
+- Apply standard abbreviations and acronyms consistently throughout all articles. Do not switch between expanded and abbreviated forms arbitrarily.
+
+---
+
+## Include a FAQ section
+
+A Q&A format is one of the most effective structures for AI retrieval. Each FAQ is a self-contained, searchable unit that Eddy AI can surface independently.
+
+- Add 5–10 questions and answers relevant to the article topic.
+- Source questions from support tickets, customer feedback, or product queries.
+- Keep each answer concise and self-contained. Answers should be understood without needing to reference the rest of the article.
+
+---
+
+## Monitor AI-generated content
+
+- If you're using tools like the AI writing agent or other AI-powered content generators, always **review and refine the output** before publishing.
+- Check for **incomplete thoughts, hallucinated facts, or unnatural phrasing** that may affect the credibility or usability of your content.
+- Ensure the content aligns with your documentation standards, style guide, and glossary terms.
+
+---
+
+## Test and iterate
+
+After publishing, ask Eddy AI the questions your article should answer. If responses are incomplete or inaccurate, revise with more context, clearer headings, or explicit definitions. Review unanswered queries regularly and update content accordingly.
+
+---
+
+<em>Before publishing, run through the [Gen AI friendly content checklist](/en/docs/gen-ai-friendly-content-checklist). To draft with AI assistance, use the [GenAI Writing Prompt Template](/en/docs/prompt-template-gen-ai-friendly-writing).</em>

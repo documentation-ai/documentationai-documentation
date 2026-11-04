@@ -1,0 +1,110 @@
+---
+title: Add glossary to your knowledge base site
+description: Learn how to add a glossary overview page link to your knowledge base site header, footer, and navigation menu in Document360. Improve term discoverability and enhance user experience with easy access to glossary definitions.
+---
+
+The glossary overview page URL follows this format:
+
+```
+https://yourdomain/docs/glossary-overview
+```
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778202156-8h1pmplr4dv-glossary-20kb-20site.png?fm=auto&auto=compress%2Cformat" alt="Glossary overview page showing alphabetical index and list of defined terms" />
+
+---
+
+## Before you begin
+
+- You need **Admin** or **Owner** permissions to modify site customisation settings.
+- Site changes require a **Publish** step before they are visible to readers.
+
+---
+
+## Add the glossary link to the header
+
+Adding the glossary to the primary navigation makes it accessible from every page of your knowledge base site.
+
+1. Navigate to **Settings** () > **Knowledge base site** > **Site customization**.
+2. Click **Customize site**.
+3. Select **Site header & footer** from the dropdown and expand the **Header** section.
+4. Select **Primary navigation** and click **Add new item** on the left or right side.
+5. In the **Add new item** dialog, configure the following:
+
+   - Set **Select type** to **Glossary**.
+   - In the **Title** field, enter the label that will appear on the knowledge base site.
+   - Select **Open link in new tab** if you want the glossary overview page to open in a new tab.
+   - Click **Add**.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778202517-ou2w6h3tey-customise-20site.png?fm=auto&auto=compress%2Cformat" alt="Primary navigation settings showing how to add a Glossary link to the header" />
+
+6. Click the **Save** icon, then **Publish** to apply the changes.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778202935-7wok9paze0d-Glossary-20in-20KB-20site-202.jpg?fm=auto&auto=compress%2Cformat" alt="Glossary link visible in the knowledge base site header" />
+
+---
+
+## Add the glossary link to the footer
+
+### Basic footer
+
+1. Navigate to **Settings** () > **Knowledge base site** > **Site customization**.
+2. Click **Customize site**, then select **Site header & footer**.
+3. In the **Footer** section, select **Basic footer**.
+4. In **Navigation items**, click **Add new link**.
+5. In the **Add new item** dialog, configure the following:
+
+   - Set **Select type** to **Custom URL**.
+   - In the **Title** field, enter the label for the footer link.
+   - In the **Link** field, enter: `https://yourdomain/docs/glossary-overview`
+   - Select **Open link in new tab** if required.
+   - Click **Add**.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778205503-76je25m38vc-add-20new-20item.png?fm=auto&auto=compress%2Cformat" alt="Footer settings showing custom URL configuration for the glossary link" />
+
+6. Click the **Save** icon, then **Publish**.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778208188-68ix85ba0c3-Glossary-20in-20KB-20site-20footer.jpg?fm=auto&auto=compress%2Cformat" alt="Glossary link visible in the knowledge base site footer" />
+
+### Custom footer
+
+If you are using a custom footer, add the glossary URL directly in the relevant section of your footer HTML code:
+
+```
+https://yourdomain/docs/glossary-overview
+```
+
+Click **Save** after making the change.
+
+---
+
+## Add the glossary link to secondary navigation
+
+Secondary navigation lets you group multiple related links in your site's header without cluttering the primary navigation bar.
+
+1. Navigate to **Settings** () > **Knowledge base site** > **Site customization**.
+2. Click **Customize site**, then select **Site header & footer** and expand the **Header** section.
+3. Select **Secondary navigation** and click **Add new item**.
+4. In the **Add new item** dialog, configure the following:
+
+   - Set **Select type** to **Single level** or **Multiple level** based on your navigation structure.
+   - In the **Title** field, enter the label to display on your knowledge base site.
+   - In the **Link** field, enter: `https://yourdomain/docs/glossary-overview`
+   - Select **Open link in new tab** if required.
+   - Click **Add**.
+5. Select the **Show in home page** checkbox if you want the link to appear on the home page.
+6. Click the **Save** icon, then **Publish**.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778208548-intkcbbcuy-Screenshot-Glossary_secondary_navigation.png?fm=auto&auto=compress%2Cformat" alt="Secondary navigation settings showing how to add the glossary link" />
+
+ NOTE
+
+You can also add the glossary overview page link in any custom section of your home page based on your site's layout or widgets.
+
+---
+
+## Best practices
+
+- Add the glossary to the header if your knowledge base serves an audience that frequently encounters unfamiliar terminology. Placing it in the primary navigation signals to readers that definitions are available.
+- Use the footer for supplementary access when the glossary is useful but not central to the reader journey. It keeps the primary navigation focused.
+- Customise the link label to match your audience. "Glossary", "Term definitions", or "Key concepts" are all valid choices depending on your documentation style.
+- Add the glossary link to the home page for new readers who may not know the glossary exists. Use the **Show in home page** toggle in secondary navigation or add it to a custom home page section.

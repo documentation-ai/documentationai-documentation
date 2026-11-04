@@ -1,0 +1,89 @@
+---
+title: How to use Postman
+description: Postman is an API platform for building and using APIs.Linking your Document360 project with Postman is easy and can be completed in a few minutes. You can use the on-premises or web-based Postman.
+---
+
+Postman is an API platform for building and using APIs. Linking your Document360 project with Postman is easy and can be completed in a few minutes. You can use the on-premises or web-based Postman.
+
+<Callout kind="info">
+   NOTE
+
+  For more information regarding Postman application, read the following articles.
+
+  - [<u>How to download Postman application?</u>](https://www.postman.com/downloads/)
+  - [<u>How to install and update Postman application?</u>](https://learning.postman.com/docs/getting-started/installation-and-updates/)
+  - [<u>How to use Postman?</u>](https://learning.postman.com/docs/)
+  - [FAQs in Postman](https://www.google.com/search?q=FAQs+in+Postman%3F&rlz=1C1CHBD_enIN1119IN1119&oq=FAQs+in+Postman%3F&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgoIARAAGIAEGKIE0gEHNjI5ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8)
+</Callout>
+
+---
+
+## Linking your Document360 project in Postman
+
+1. The below steps are based on the on-premises Postman application.
+2. Open the Postman application.
+3. In the **My Workspace** section, click on the **Import** button. 
+
+   An **Import** popup panel appears.
+4. Enter the below URL in the field.<br />[https://apihub.document360.io/swagger/v2/swagger.json](https://apihub.document360.io/swagger/v2/swagger.json)<br />The **Choose how to import your API** pop-up will appear with two options.
+5. Select the desired option
+
+   - Postman Collection (default)
+
+   - OpenAPI 3.0 with a Postman Collection
+6. Click the **Import** button.
+
+   Once the import is done, the action will create a sample request for each endpoint, allowing you to make the request quickly.<br />
+
+   <Image src="https://cdn.document360.io/860f9f88-412e-4570-8222-d5bf2f4b7dd1/Images/Documentation/10_ScreenGif-Postman.gif" alt="Steps to link your Document360 project in Postman" />
+
+## Authentication in Postman - Generating an API token
+
+1. In the tree view, expand **Document360 Customer API**.
+2. Under the **Authorization** tab, set the **Auth Type** to API Key from the dropdown.
+3. Enter the desired variable in the **Key** field.
+4. Enter the API token in the Value field. For generating an API token, read the article on [Generating token](https://apidocs.document360.com/apidocs/api-token).
+
+   <Callout kind="info">
+      NOTE
+
+     **Generating an API token**
+
+     1. Navigate to **Settings** () in the left navigation bar in the Knowledge base portal.
+     2. In the left navigation pane, navigate to <strong>**Knowledge base portal**</strong> > **API Tokens**.
+     3. Create the desired API token and copy the token.
+
+     (or) Copy the token from an existing token.
+   </Callout>
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778295098-ke3og8c3it9-11_ScreenShot-Postman.png?fm=auto&auto=compress%2Cformat" alt="Steps for authorization in Postman after importing Document360 project" />
+
+1. In the left navigation bar, go to **Environments**.
+2. From the left navigation pane, click on **Create Environments**.
+3. Under the **Variables** column, type a variable name, for instance, ‘base\_URL,’ and set the **Type** to default.
+4. Enter `https://apihub.document360.io` in the **INITIAL VALUE** and **CURRENT VALUE** fields for the base URL.
+5. Click on the **Save** button.
+
+   The project authentication is completed. Now you can easily access all the available endpoints and perform various actions.
+
+   <Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778296160-j902wk1z32-9_ScreenShot-Postman.png?fm=auto&auto=compress%2Cformat" alt="Steps to authenticate Document360 project" />
+
+### Use cases
+
+With the help of Postman, you can perform various actions in Document360.
+
+Here are a few basic use cases for your reference
+
+- [<u>How to create and publish an article?</u>](https://apidocs.document360.com/apidocs/how-to-create-and-publish-an-article)
+- [<u>How to update a published article?</u>](https://apidocs.document360.com/apidocs/how-to-update-a-published-article)
+- [<u>How to update SEO details?</u>](https://apidocs.document360.com/apidocs/how-to-update-seo-details)
+
+---
+
+### FAQ
+
+<Expandable title="What should I do if my Postman session ends after refreshing the page?">
+  If your Postman session ends after refreshing the page, you will need to authenticate again. Follow the steps provided in the article to re-authenticate. 
+</Expandable>
+
+Application Programming Interface - A set of defined rules and protocols that allows one software application to communicate with and request functionality from another. APIs are the backbone of modern integrations. When Document360 connects to Slack, Intercom, or Google Analytics, it does so through their APIs. Document360 also provides its own REST API, enabling teams to programmatically manage articles, categories, and reader accounts from external systems.

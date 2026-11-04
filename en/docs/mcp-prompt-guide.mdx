@@ -1,0 +1,263 @@
+---
+title: MCP prompt guide
+description: Utilize ready-to-use MCP prompts for your Document360 knowledge base, enhancing search, retrieval, and content creation with AI assistance.
+---
+
+This guide provides ready-to-use prompts for working with your Document360 knowledge base through an AI assistant connected via MCP. Prompts are organized by task so you can find what you need based on what you're trying to accomplish, not which tool is involved.
+
+For details on what each tool does and its parameters, refer to the [Supported MCP tools](/en/docs/supported-mcp-tools) article.
+
+---
+
+## Before you start
+
+Effective MCP prompts share a few common traits:
+
+- **Be specific about versions and languages** when your knowledge base has multiple. Vague prompts may return results from the wrong version.
+- **Chain tasks naturally** \- MCP tools work well in sequence. You can search, retrieve, and update in a single prompt.
+- **State your intent** \- tell the AI assistant what you're trying to achieve, not just what to fetch. It will select the right tools automatically.
+- **Verify before publishing** \- MCP write operations create drafts by default. Use the publish tools to make content live, or review in Document360 before publishing manually.
+
+---
+
+## Search your knowledge base
+
+Use these prompts when you want to discover what content exists, find articles on a topic, or identify gaps before writing.
+
+<strong>Find existing coverage on a topic -</strong> "Search my knowledge base for everything related to setting up SSO. Show me what's covered and flag any gaps."
+
+<strong>Search within a specific version -</strong> "Find all articles in version 3.0 that mention the API key setup process."
+
+<strong>Check for content before creating something new -</strong> "I'm writing a release note for our new analytics dashboard. Search Document360 for existing articles on analytics so I don't duplicate content."
+
+<strong>Find an article to share with a customer -</strong> "A customer is asking about workspace permissions. Search my knowledge base and give me the most relevant article to share."
+
+<strong>Audit coverage across a topic area -</strong> "Search for all articles related to billing and payments. List them with a one-line summary of each so I can spot overlaps or gaps."
+
+<strong>Find articles that may be outdated -</strong> "Search for articles that mention the Starter plan. I want to review them - we've changed our pricing."
+
+<strong>Find every article containing an exact term -</strong> "Find every article that contains the exact text `old_api_key` so I can replace it before the next release."
+
+<strong>Locate a deprecated endpoint before updating -</strong> "Search for the literal string `/v1/articles/export` across all articles. I need the full list of pages that still reference the old endpoint."
+
+---
+
+## Retrieve articles and categories
+
+Use these prompts when you need to read, review, or summarize existing content before acting on it.
+
+<strong>Read and rewrite an article's introduction -</strong> "Fetch the article on 'Getting started with Document360' and rewrite the introduction to be more welcoming for non-technical users."
+
+<strong>Review a draft for completeness -</strong> "Get the current draft of our onboarding guide and tell me if anything looks outdated or incomplete."
+
+<strong>Check a translation for consistency -</strong> "Retrieve the French version of our billing FAQ and check whether the translation is consistent with the English version."
+
+<strong>Summarize an article for a customer email -</strong> "Pull the article on custom domains and summarize it in three bullet points so I can include it in a customer email."
+
+<strong>Browse the knowledge base structure -</strong> "Show me the full category structure for version 2.0. I want to understand how our documentation is organized before we do the Q3 restructure."
+
+<strong>Identify thin categories -</strong> "Get the category list and tell me which sections have fewer than three articles - those are the gaps I want to fill first."
+
+<strong>Inspect a specific category -</strong> "Get the details of our 'Integrations' category and list every article in it. I want to check if our Zapier and Slack docs are up to date."
+
+<strong>Understand structure before onboarding a new writer -</strong> "Fetch our category structure and write a short briefing document explaining how our knowledge base is organized."
+
+<strong>Find the right place for a new article -</strong> "List all top-level categories so I can decide where a new article on team management should live."
+
+---
+
+## List and filter documents
+
+Use these prompts when you want a list of documents filtered by category, version, status, tag, label, or date, without searching for specific content.
+
+<strong>Build a worklist for a release -</strong> "List every article in the 'Integrations' category that was updated since January so I can review them before the 4.0 release."
+
+<strong>Find all drafts in a category -</strong> "List all draft articles in the 'API reference' category. I want to see what's still in progress."
+
+<strong>Audit by tag or label -</strong> "List every article tagged 'needs-review' across all versions so I can plan the next audit cycle."
+
+---
+
+## Create new articles
+
+Use these prompts when you want to draft and create new documentation. MCP creates articles as drafts, review them in Document360 before publishing.
+
+<strong>Search first, then create if nothing exists -</strong> "Search my knowledge base for articles on team roles. If there's nothing on custom roles, create a new article in the 'Account settings' category explaining how to set them up."
+
+<strong>Create an article based on a customer question -</strong> "A customer keeps asking how to embed Document360 into their website. Check if we have an article on this — if not, draft and create one in the 'Getting started' category."
+
+<strong>Document a new feature -</strong> "We just launched a dark mode feature. Create a new article in the 'Customization' category covering how to enable it, with a note that it's available from version 4.0 onwards."
+
+<strong>Draft an article from a ticket -</strong> "Here's a support ticket describing a common setup issue: [paste ticket]. Check if we have documentation for this. If not, draft a new article in the 'Troubleshooting' category."
+
+<strong>Generate a first draft for review -</strong> "Create a draft article in the 'API reference' category explaining how to authenticate with our API using OAuth 2.0. I'll review and refine it before publishing."
+
+---
+
+## Update existing articles
+
+Use these prompts when content needs to change - after a product update, pricing change, rebrand, or UX change.
+
+<strong>Update steps after a UI change -</strong> "Fetch our 'Importing content' article and update the step-by-step section to reflect the new drag-and-drop interface we launched last week."
+
+<strong>Update pricing references across articles -</strong> "Our pricing changed. Find every article that mentions the Starter plan and update the pricing references to match the new structure."
+
+<strong>Fix a specific section without touching the rest -</strong> "The article on configuring custom domains has a broken flow in step 4. Fetch it, fix the steps, and update it. Don't change anything else."
+
+<strong>Add a new section to an existing article -</strong> "Fetch our most-viewed article on editor shortcuts and add a new section for the keyboard shortcuts we added in the last release."
+
+<strong>Refresh an outdated introduction -</strong> "Fetch the 'Getting started' article and update the intro paragraph. It still references our old interface. Keep everything else the same."
+
+---
+
+## Create and update categories
+
+Use these prompts when you need to reorganize your knowledge base, add new sections, or update how categories are named and structured.
+
+<strong>Create a category for a new product tier -</strong> "We're launching an enterprise tier next month. Create a new top-level category called 'Enterprise features' in version 5.0 so I can start adding articles to it."
+
+<strong>Break up a crowded category with subcategories -</strong> "Our 'Integrations' section is getting crowded. Create subcategories for 'CRM integrations', 'Productivity tools', and 'Developer tools' so we can organize it better."
+
+<strong>Set up a new onboarding structure -</strong> "I'm building out a new onboarding flow for admins. Create a category called 'Admin setup guide' and add three subcategories: 'Users', 'Permissions', and 'Branding'."
+
+<strong>Rename a category -</strong> "Rename the 'Getting started' category to 'Quick start guide'."
+
+<strong>Reorder categories for better discoverability -</strong> "Move the 'Billing and payments' category to appear before 'Account settings' in the navigation. It's getting more traffic and should be easier to find."
+
+<strong>Update category visibility -</strong> "The 'Legacy features' category should only be visible to internal team members. Update its visibility settings so it's hidden from the public knowledge base."
+
+<strong>Refresh a category's intro text -</strong> "The intro text on our 'API reference' category page is two years old. Rewrite it to reflect that we now support REST and webhooks, and update the category page."
+
+---
+
+## Manage workflows
+
+Use these prompts when you want to move content through review stages or assign reviewers.
+
+<strong>Check what workflow statuses are available -</strong> "List all the workflow statuses configured in this project so I can see what review stages are set up."
+
+<strong>Move an article to review -</strong> "Move the article on 'Custom domain setup' to the 'In Review' status and assign it to Allen."
+
+<strong>Move an article to review with a due date -</strong> "Set the workflow status of the 'API authentication' article to 'In Review', assign it to the engineering team, leave a comment saying 'July production release - article updated' and set a due date of July 30."
+
+<strong>Find out who can be assigned to review an article -</strong> "Who can I assign to review the 'Getting started' article? Show me the available assignees."
+
+---
+
+## Publish and unpublish content
+
+Use these prompts when you want to make content live on your knowledge base site or remove it from public view.
+
+<strong>Publish an article after review -</strong> "The 'Custom domain setup' article has been approved. Publish it to the knowledge base site."
+
+<strong>Publish a Page category -</strong> "Publish the 'Release notes' category page - the latest draft is ready to go live."
+
+<strong>Unpublish an outdated article -</strong> "Unpublish the article on 'Legacy API authentication' - it's outdated and shouldn't be visible to readers."
+
+<strong>Unpublish a Page category -</strong> "Remove the 'Beta features' category page from the live knowledge base site. Keep the content - we'll republish it later."
+
+---
+
+## Manage glossary terms
+
+Use these prompts when you want to check, add, or update terms in your glossary.
+
+<strong>Check how a term is defined -</strong> "Show me how our glossary defines 'SLA'."
+
+<strong>Add a new term -</strong> "Add a glossary term 'SLA' with the definition: the response and resolution times we commit to for each support plan."
+
+<strong>Add a term based on your documentation -</strong> "Add a glossary term for 'Workspace'. Write the definition using only our knowledge base articles, not information from the web."
+
+<strong>Update a definition -</strong> "Update the definition of our 'SLA' glossary term to match the new support policy."
+
+<strong>Add a definition in another language -</strong> "Add a French definition for our 'SLA' glossary term."
+
+<strong>Find terms that are missing from the glossary -</strong> "List our glossary terms. Then search the 'Billing' category for product terms that are used often but are not in the glossary yet."
+
+---
+
+## Manage review reminders
+
+Use these prompts when you want to see which content needs review or schedule the next review for an article.
+
+<strong>Find content that needs review now -</strong> "Which articles in the latest workspace are stale and need review?"
+
+<strong>Plan upcoming reviews -</strong> "List the articles in the v2 workspace that are due for review before the end of the quarter."
+
+<strong>Schedule the next review -</strong> "I've just updated the pricing article. Set a review reminder for three months from now with the reason 'Pricing changes every quarter'."
+
+<strong>Flag an article for review -</strong> "Flag the 'Legacy SSO setup' article as needing review. It still describes the old login screen."
+
+<strong>Remove a reminder -</strong> "Clear the review reminder on the 'Release notes overview' article. It no longer needs periodic review."
+
+---
+
+## Work with your tasks
+
+Use these prompts when you want to see and act on the tasks assigned to you on the **Tasks** page.
+
+<strong>See what is on your plate -</strong> "What tasks are assigned to me in the latest workspace this week? I'm in India."
+
+<strong>Find overdue work -</strong> "List my overdue tasks, workflow tasks first."
+
+<strong>Mark a review as done -</strong> "I've reviewed 'Getting started with SSO'. Mark my review task as done and move the article to 'Ready to publish'."
+
+<strong>Snooze a task -</strong> "Snooze the review task for the 'Billing FAQ' article until next Monday. I'm waiting on the finance team."
+
+<strong>Bring a snoozed task back -</strong> "Unsnooze my task for the 'API keys' article. I'm ready to work on it now."
+
+---
+
+## Send and manage article feedback
+
+Use these prompts when you want to report a problem in an article to your documentation team, or update feedback that has been assigned to you.
+
+<strong>Report an outdated article -</strong> "That article still tells users to go to Settings > API, but the menu is now Integrations > API. Send feedback that it's outdated."
+
+<strong>Report a broken link -</strong> "The link to the pricing page in the 'Plans and billing' article is broken. Send feedback on it."
+
+<strong>Report missing information -</strong> "The 'Import from Confluence' article doesn't explain how attachments are handled. Send feedback that information is missing."
+
+<strong>Close feedback after fixing an article -</strong> "I've fixed the broken link in the 'API keys' article. Mark the feedback assigned to me as complete, add a note saying what changed, and let the reader know."
+
+<strong>Hand feedback to a teammate -</strong> "Reassign the feedback on the 'SSO setup' article to Allen and set its status to Planned."
+
+---
+
+## Multi-step workflows
+
+Use these prompts for more complex tasks that chain multiple operations together - search, retrieve, create, and update in a single instruction.
+
+<strong>Identify and fill a documentation gap -</strong> "Search my knowledge base for articles on user permissions. Retrieve the most relevant ones. If there's no article covering custom roles specifically, create one in the 'Account settings' category."
+
+<strong>Audit and update a whole section -</strong> "Get all articles in the 'Troubleshooting' category. Identify any that haven't been updated recently or that look incomplete, and suggest what each one needs. Then update the weakest one."
+
+<strong>Prepare a release -</strong> "We're releasing version 4.0 next week. Search for all articles that reference version 3.0 features and list which ones need updating. Then update the top three most critical ones and move them to 'In Review' with the documentation team assigned."
+
+<strong>Restructure and document -</strong> "Show me the category structure for version 2.0. Based on it, create a new 'Quick reference' category and draft a summary article that links to the five most important articles in the knowledge base."
+
+<strong>Support ticket to documentation -</strong> "Here's a support ticket we keep getting: [paste ticket]. Search to see if we have documentation covering this. If we do, fetch it and improve the clarity. If we don't, create a new article in the most appropriate category."
+
+<strong>Morning task triage -</strong> "Show me my overdue tasks and tasks due today. For each workflow task, read the article and summarize what needs reviewing. For each feedback task, fix the article and close the feedback with a note. Snooze anything I can't act on today."
+
+<strong>Review stale content -</strong> "List every stale article in the latest workspace. Read each one and check it against our current product. Update what has changed, then schedule the next review for six months from now."
+
+<strong>Use glossary terms consistently -</strong> "Check whether 'Single sign-on' is in our glossary and add it if it's missing. Then find every article that mentions 'single sign-on' in plain text and replace it with the glossary term."
+
+---
+
+## Tips for better prompts
+
+<strong>Specify the version when it matters -</strong> Prompts like "search my knowledge base" run across all versions by default. Add "in version 3.0" or "in the latest version" when precision matters.
+
+<strong>Tell the AI what not to change -</strong> When updating articles, add "don't change anything else" or "keep all other sections intact" to prevent unintended edits.
+
+<strong>Confirm before write operations -</strong> For sensitive updates, add "show me what you plan to change before making the update" to review before changes are applied.
+
+<strong>Use article URLs for precision -</strong> If you know the exact article you want to retrieve or update, include its URL in the prompt. This is faster and more accurate than searching by title.
+
+<strong>Chain searches with actions -</strong> Combine search and write in one prompt: "Search for X, and if nothing relevant exists, create a new article on Y." The AI assistant will search first and only create if needed.
+
+<strong>Tell the AI where definitions should come from -</strong> When adding glossary terms, say whether the definition should come from your knowledge base or another source. Without this, the AI assistant may use general web information.
+
+<strong>Mention your time zone for task prompts -</strong> When asking about tasks due today or this week, include your time zone so "today" matches your working day.

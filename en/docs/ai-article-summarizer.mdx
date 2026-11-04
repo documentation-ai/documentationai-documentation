@@ -1,0 +1,104 @@
+---
+title: AI article summarizer
+description: Learn how to use Document360's AI summarizer to create concise article summaries in multiple languages. Save time and enhance your reading experience.
+metaTitle: "AI Article Summarizer in Document360: Save Reading Time"
+---
+
+The **Article summarizer** is an AI-powered feature in Document360 that generates a condensed summary of any article, letting readers quickly grasp the key points without reading the full content. It uses natural language processing (NLP) to extract the most relevant information while preserving the original context. The summary appears at the top of the article on your Knowledge Base site and can be expanded or collapsed by the reader.
+
+---
+
+## When to use the Article summarizer
+
+- **Long technical articles** — help readers decide whether the article is relevant before committing to reading it in full.
+- **Multilingual knowledge bases** — provide a quick orientation in the reader's language before they dive into detailed content.
+- **High-traffic support articles** — reduce time-to-answer for readers who need a fast resolution.
+
+---
+
+## Before you begin
+
+The **preprocessed word count** of the article must exceed **250 words**.
+
+### What is a preprocessed word count?
+
+Preprocessing filters out non-text elements before counting words. The following are excluded from the word count:
+
+- HTML tags
+- Images
+- URLs and links
+- Code blocks
+
+ NOTE
+
+The word count shown at the bottom of the Document360 editor includes HTML tags, links, code blocks, and other elements. The preprocessed count will be lower. Ensure the preprocessed content exceeds 250 words for the summarizer to generate a summary.
+
+---
+
+## Enable the Article summarizer
+
+1. In the Knowledge Base portal, select **Settings** () in the left navigation bar.
+2. In the left navigation pane, go to **AI settings** > **Eddy AI settings**.
+3. Expand the **AI search suite** accordion.
+4. Turn on the **Article summarizer** toggle.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778066589-0n9fp07l9d2-Screenshot-Eddy_ai_article_summarizer.png?fm=auto&auto=compress%2Cformat" alt="Eddy AI settings page with the Article summarizer toggle highlighted in the AI search suite accordion." />
+
+Once enabled, a **Summary** section appears at the top of each qualifying article on the Knowledge Base site. Readers can click **Summary** to expand and read it.
+
+<Image src="https://cdn.document360.io/860f9f88-412e-4570-8222-d5bf2f4b7dd1/Images/Documentation/image%28142%29.png" alt="Knowledge Base site article showing the Summary section expanded at the top of the article." />
+
+---
+
+## Localize the Article summarizer UI text
+
+You can translate or customize the labels displayed in the Article summarizer using [Localization variables](https://docs.document360.com/help/docs/localization-variables).
+
+1. In the Knowledge Base portal, select **Settings** () in the left navigation bar.
+2. In the left navigation pane, go to **Knowledge base portal** > **Workspace & localization**.
+3. Select the **Localization variables** tab and expand the **Eddy AI** accordion.
+4. Update the text for any of the following elements: *Article summary*, *Summarized*, *Suggestions for improvements*.
+5. Click **Save**.
+
+ NOTE
+
+By default, the system localizes variables to the respective language. For a full list of languages supported by Eddy AI, see [Multilingual support for Eddy AI Search Suite](https://docs.document360.com/help/docs/ai-search-suite#multilingual-support-for-eddy-ai-search-suite).
+
+---
+
+## Data privacy
+
+The Article summarizer uses an OpenAI integration to generate summaries. OpenAI does not use data submitted through the API to train its models or improve its services. For full details, read the [OpenAI API data usage policies](https://openai.com/policies/api-data-usage-policies) and the [Document360 privacy policy](https://document360.com/privacy/).
+
+---
+
+## Best practices
+
+- **Check preprocessed word count before enabling** — if most of your articles are under 250 preprocessed words, summaries will not generate. Review article length across your knowledge base first.
+- **Review generated summaries after enabling** — spot-check summaries on your highest-traffic articles to confirm the NLP output is accurate and reflects the article's intent.
+- **Localize summary labels for multilingual knowledge bases** — update the Localization variables for each language version so readers see labels in their own language, not the default English.
+- **Use summaries as a quality signal** — if a generated summary is vague or inaccurate, it often indicates the article itself lacks clear structure. Use it as a prompt to improve the source content.
+
+---
+
+## FAQ
+
+<Expandable title="Why is no summary appearing on my article even though the toggle is on?">
+  Two conditions must be met: the article must have been published on or after May 27, 2023, and its preprocessed word count must exceed 250 words. The editor word count includes HTML, links, and code blocks — the preprocessed count will be lower. See [Before you begin](/en/docs/ai-article-summarizer#before-you-begin) for details.
+</Expandable>
+
+<Expandable title="Can readers dismiss or hide the summary?">
+  Yes. The summary is collapsed by default and only expands when the reader clicks **Summary**. Readers can collapse it again at any time.
+</Expandable>
+
+<Expandable title="Can I edit or override the generated summary?">
+  No. The summary is generated automatically by the AI and cannot be manually edited within Document360. If the summary is inaccurate, improving the structure and clarity of the article body will produce a better result.
+</Expandable>
+
+<Expandable title="Why article summary isn't visible for a particular workspace?">
+  Article summaries are displayed only for articles within a Public workspace. If the workspace is not set to Public, users will see only the article preview, and the article summary will not be shown on the site. <Image src="https://cdn.document360.io/860f9f88-412e-4570-8222-d5bf2f4b7dd1/Images/Documentation/workspacepublic.jpg" alt="workspacepublic.jpg" />
+</Expandable>
+
+<Expandable title="Can I preview the summary before publishing an article?">
+  No. The summary is generated for published articles and appears only on the Knowledge Base site. To review a summary, publish the article and check it on the site. If the summary is inaccurate, improving the structure and clarity of the article body will produce a better result on the next update.
+</Expandable>

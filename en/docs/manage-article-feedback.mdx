@@ -1,0 +1,225 @@
+---
+title: Manage article feedback
+description: Manage article feedback in Document360 efficiently with tools for triaging, tracking, and resolving reader comments to enhance your knowledge base.
+---
+
+**Managing article feedback** in Document360 means reviewing reader-submitted likes, dislikes, and comments on your knowledge base articles, then assigning, updating, and resolving those feedback items as a team. The Feedback manager gives you the tools to triage feedback, track resolution progress with status labels, communicate internally through discussions, notify readers when their concern has been addressed, and reopen closed feedback when an issue comes back. You can also manage feedback from the tools your team already uses, such as ticketing or project management systems, through the API.
+
+---
+
+## Respond to article feedback
+
+1. Navigate to **Feedback manager** () in the left navigation bar on the Knowledge base portal.
+2. Click **Articles**, then select the **Feedback** tab.
+3. Select a feedback item from the list to open it in the detail panel.
+4. Review the reader's comment. The article that received the feedback is shown at the top for reference.
+5. If needed, select a team member from the **Assignee** dropdown to assign the feedback.
+6. Type your response in the **Discussions & history** field, then choose how to save it:
+
+   - Click **Add note** to save it as an internal note that only your team can see.
+   - Click **Add note & notify reader** to save it and also email it to the reader. This option is only available if the reader selected **Notify me about updates** and provided their email when they submitted the feedback.
+
+   Either action just adds to the discussion. It doesn't change the feedback's status, so you can go back and forth with your team or the reader before deciding how to resolve it.
+7. When you're ready to resolve the feedback, select a status from the **Status** dropdown:
+
+| Status | Description |
+| --- | --- |
+| **Open** | Default status. The feedback has not yet been addressed. |
+| **Planned** | The feedback has been reviewed and scheduled for future action. |
+| **In progress** | A team member is actively working on addressing the feedback. |
+| **Complete** | The feedback has been addressed. You can still add comments if needed. |
+| **Closed** | The feedback is resolved and locked. To make further changes, reopen it. |
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777399573-i8p9cnun0s-feedback-article.png?fm=auto&auto=compress%2Cformat" alt="Article feedback in Feedback manager with two items selected, the Assign to, Change status, and Mark as closed options, and the Discussions & history panel" />
+
+ NOTE
+
+Selecting **Closed** opens a confirmation popup. See more on **Close feedback and notify readers** below. If you need to work on a closed item again, see **Reopen closed feedback**.
+
+---
+
+## Close feedback and notify readers
+
+When you set an individual feedback item's status to **Closed**, a confirmation popup is shown. The editable comment box in this popup is pre-filled with any note you've already added for that feedback item. If you haven't added one yet, you can type a closing note here before proceeding.
+
+- Click **Close feedback** to close the item without notifying the reader.
+- Click **Close & notify reader** to close the item and email your comment to the reader. If you leave the comment box empty, the reader is still notified that their feedback was closed, but the notification won't include any response text.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777405930-rcns47ci3df-close-feedback.png?fm=auto&auto=compress%2Cformat" alt="Close feedback dialog with a comment box and the Close & notify reader and Close feedback buttons" />
+
+Once a feedback item is **Closed**, it's locked. You can't add notes, reply to the reader, or change its assignee or status until you reopen it.
+
+---
+
+## Reopen closed feedback
+
+Reopen a closed feedback item when the issue isn't fully resolved, for example when a reader follows up, a content fix doesn't hold, or the item was closed by mistake or before the article update was published.
+
+1. In the **Feedback** tab, select the closed feedback item from the list.
+2. Click the **Status** dropdown and select **Reopen**. This is the only option available for a closed item.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777412507-0rxtn2r8czsh-reopen-feedback.png?fm=auto&auto=compress%2Cformat" alt="Status dropdown on a closed feedback item showing the Reopen option" />
+
+3. In the **Reopen feedback** popup, optionally type a note explaining why you're reopening the item.
+4. Click **Reopen feedback**.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777412986-d3sv5yfvpp-reopen-feedback-with-a-popup.png?fm=auto&auto=compress%2Cformat" alt="Reopen feedback popup with an optional note field and the Cancel and Reopen feedback buttons, shown over a closed feedback item." />
+
+The feedback status changes from **Closed** to **Open**, and the list updates right away. The status change is recorded in **Discussions & history**, along with who reopened it, when, and along with a note if added. The assignee and existing discussion stay as they were, and you can add notes, reply to the reader, and change the status again.
+
+To keep the item closed, click **Cancel** or close the popup. Nothing is saved, and any note you typed is discarded.
+
+ NOTE
+
+- Reopening doesn't notify the reader. To update them, use **Add note & notify reader** after the item is reopened.
+- Closed feedback can be reopened one item at a time. Bulk reopen isn't available.
+
+---
+
+## Assign feedback and change status
+
+To update the assignee or status of multiple feedback items at once:
+
+1. Select the checkboxes next to the feedback items you want to update. Only feedback with an **Open**, **In progress**, **Planned** and **Complete** status can be selected.
+2. From the toolbar above the list, click () **Assign to**, () **Change status**, or () **Mark as closed**, depending on what you want to do.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777399573-i8p9cnun0s-feedback-article.png?fm=auto&auto=compress%2Cformat" alt="Article feedback details panel with the Assignee and Status fields and the Add note & notify reader button" />
+
+Clicking **Assign to** or **Change status** opens the **Manage feedback** pop-up:
+
+3. To assign the feedback, click the **Assignee** dropdown and select the desired team member. Use the search field to find a user by name.
+4. To update the status, click the **Status** dropdown and select the desired status: Open, Planned, In progress, or Complete.
+5. Click **Update**.
+
+Clicking **Mark as closed** () opens a confirmation popup for the selected items with options based on the feedback selection. Click **Close all feedback** to close them without notifying readers, or **Close & notify reader** to also send your comment to each reader.
+
+---
+
+## Manage article feedback from the Overview page
+
+The **Tasks** card on the **Overview** page displays article feedback items assigned to you from the Feedback manager.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777406246-rbz843ech3-feedback-from-dashboard.png?fm=auto&auto=compress%2Cformat" alt="Manage feedback pop-up showing assignee and status options for bulk updates." />
+
+Each feedback task on the Tasks card displays the article title, task type, status, due date, and assignee. You can take the following quick actions by hovering over a task or selecting its checkbox:
+
+- <strong>Snooze ():</strong> Temporarily postpone the task. Choose <strong>Tomorrow (9 AM)</strong>, <strong>Next week (same weekday next week, 9 AM)</strong>, or a custom date and time.
+- <strong>Manage feedback ():</strong> Assign the feedback to any user, set its status to Open, Planned, In progress, or Complete.
+- <strong>Information ():</strong> Hover over a feedback item and click this icon to view details such as contributors, article status, URL, and description.
+
+Clicking a feedback task on the Tasks card takes you directly to the corresponding item in the **Feedback** tab of the Feedback manager.
+
+---
+
+## Feedback submitted through AI assistants
+
+If your project uses [Document360 MCP](/en/docs/mcp), users can send feedback on published articles through a connected AI assistant, for example when the assistant finds that an article is unclear or out of date. This feedback appears in the **Feedback** tab like any other article feedback, and is recorded against the account that connected the AI assistant.
+
+Each reason sent through MCP is shown in the Feedback manager as follows:
+
+| Reason sent through MCP | Shown in the Feedback manager as |
+| --- | --- |
+| Unclear | Difficult to understand |
+| Missing | Need more information |
+| Broken link | Broken link |
+| Irrelevant | Irrelevant content |
+| Outdated | Others, with the comment prefixed <strong>[Outdated]</strong> |
+| Other | Others |
+
+ NOTE
+
+If an admin has renamed a reason on the **Feedback form** page, the renamed label is shown instead.
+
+You manage this feedback the same way as feedback from the knowledge base site. Team members can also update the status, assignee, or internal note of feedback assigned to them through their AI assistant. For more information, see [Supported MCP tools](/en/docs/supported-mcp-tools).
+
+---
+
+## Manage article feedback through the API
+
+If your team tracks work in another tool, such as a ticketing or project management system, you can use the Document360 API (v3) to bring article feedback into that tool and send status updates back to Document360. The API covers feedback on both articles and page categories, and each feedback record shows which type it is.
+
+With the API, you can:
+
+- List feedback for a workspace and language, filtered by status, feedback type (like or dislike), article or page category, a specific article, a date range, or when the feedback was last updated.
+- Get a single feedback item.
+- View the internal discussion on a feedback item.
+- Change the status or assignee of a feedback item, or close it with an optional comment to the reader.
+
+To use these endpoints, the API key needs a content role with the **View** permission for **Feedback manager** to read feedback, and the **Update** permission to change it. These are standard endpoints and don't require the premium API add-on. For request and response details, see the [Document360 API reference](https://apidocs.document360.com/apidocs/en/introduction).
+
+ NOTE
+
+- When you close feedback through the API and choose to notify the reader, the reader is emailed only if they selected **Notify me about updates** when submitting the feedback.
+- Closed feedback can't be updated or reopened through the API. To work on it again, reopen it in the Feedback manager.
+- Adding discussion notes and bulk updates aren't available through the API.
+- API responses include the reader's comment but not their name or email.
+
+---
+
+## Export article feedback
+
+1. Navigate to the **Feedback** tab in the Article feedback manager.
+2. Use the filter options to narrow the list as needed.
+3. Click **Export CSV** ().
+4. Wait a few seconds. A **Download** icon appears next to the feedback list.
+5. Click the **Download** icon to save the file to your local storage.
+
+ NOTE
+
+Only the last 90 days of feedback data can be exported at a time.
+
+---
+
+## Best practices
+
+- Prioritize feedback marked as **Dislike**, especially those citing inaccurate information or unclear instructions, as these represent the most urgent content quality issues.
+- Before marking feedback as **Complete**, verify that the article has been updated and the reader's concern is fully resolved.
+- Use the **Discussions & history** field to document what action was taken, so the full context is visible to all team members.
+- For feedback where the reader asked to be notified, use **Add note & notify reader** so they hear back directly. Use **Add note** for internal-only updates that don't need to reach the reader
+- When you reopen closed feedback, add a note explaining why, so your team can see why the item came back.
+- Review feedback assigned to you from the **Tasks** card on the Overview page daily to ensure nothing slips through.
+- Use the assign and change status options to efficiently close out resolved feedback after a content sprint.
+
+---
+
+## FAQ
+
+<Expandable title='What is the difference between "Complete" and "Closed" in the Feedback manager?'>
+  **Complete** indicates that the feedback has been addressed, but you can still add notes and change its status, for example moving it back to **Open** if the issue resurfaces. **Closed** means all actions are finished and the feedback is locked. To work on a **Closed** item again, select **Reopen** from its **Status** dropdown, which sets it back to **Open**.
+</Expandable>
+
+<Expandable title="Is the reader notified when I reopen closed feedback?">
+  No. Reopening only changes the status from **Closed** to **Open** and records the change in **Discussions & history**. Any note you add while reopening is visible only to your team. To update the reader, use **Add note & notify reader** after the item is reopened.
+</Expandable>
+
+<Expandable title="Can I manage article feedback from a ticketing or project management system?">
+  Yes. Use the Document360 API (v3) to pull feedback into your tool, then update its status or assignee, or close it, from there. The API works with any tool. For more information, see **Manage article feedback through the API** above.
+</Expandable>
+
+<Expandable title="Can I reopen closed feedback through the API?">
+  No. Once feedback is closed, the API can't update or reopen it. To work on it again, select **Reopen** from its **Status** dropdown in the Feedback manager. After it's reopened, you can update it through the API again.
+</Expandable>
+
+<Expandable title="How should I effectively manage and respond to article feedback?">
+  Start by prioritizing feedback on high-traffic or recently updated articles, especially items marked as Dislike. Address critical issues first, such as inaccurate information or unclear instructions. Once updates are made, verify the concern is resolved before marking the feedback as Complete. For feedback that includes a response request, use the **Add note & notify reader** toggle in the Discussions & history section to send a reply to the reader.
+</Expandable>
+
+<Expandable title="What is the best way to handle unclear feedback and ensure nothing gets missed?">
+  Review feedback regularly, ideally weekly, to stay on top of actionable items. For feedback that is vague or unclear, use the available context to interpret intent. Avoid auto-resolving ambiguous items. For new articles or recent updates, monitor feedback more closely in the first few days to catch any immediate concerns. Track unresolved items using the **Planned** or **In progress** statuses so they remain visible to your team.
+</Expandable>
+
+<Expandable title="Why did I receive an email notification but cannot find the feedback in the Feedback manager?">
+  If a reader withdraws their feedback (for example, by undoing a Like or Dislike) before your team has picked it up, the feedback is automatically removed from the Feedback manager. Email notifications are sent when feedback is first submitted, but the feedback entry may no longer be available if the reader later withdrew it. If the feedback has already been picked up (assigned, given a status change, or a note added), withdrawing it doesn't remove it. Instead, Document360 logs the withdrawal in the Discussions & history field with a timestamp, and if it was a dislike being undone, the item is automatically closed too
+</Expandable>
+
+<Expandable title="Can I export feedback data from the Feedback manager?">
+  Yes. You can export feedback data from the Feedback manager for a maximum of 90 days at a time. Click **Export CSV** () in the Feedback tab toolbar, then download the file when it is ready.
+</Expandable>
+
+<Expandable title="Why can't I select closed feedback items when using bulk selection?">
+  Closed feedback items cannot be selected using the bulk selection option in the Feedback manager. Bulk selection applies only to active (non-closed) feedback items. To reopen a closed item, open it and select **Reopen** from its **Status** dropdown. To export closed feedback items, use the Filter option: for example, apply a date range or status filter and then export the results.
+</Expandable>
+
+<Expandable title="Why does a feedback item show a different dislike reason than the one the reader selected?">
+  An admin renamed the reason on the **Feedback form** page. A renamed reason replaces the old name in the Feedback manager, including on feedback submitted before the rename. The reason itself doesn't change, only its label. For more information, see [Configuring feedback form](https://docs.document360.com/help/docs/configuring-feedback-form).
+</Expandable>

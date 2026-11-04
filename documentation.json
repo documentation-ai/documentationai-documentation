@@ -1,5 +1,5 @@
 {
-  "name": "WP Travel Engine",
+  "name": "Documentation",
   "colors": {
     "light": {
       "brand": "#0c6b56",
@@ -13,1345 +13,1209 @@
     }
   },
   "navigation": {
-    "products": [
+    "groups": [
       {
-        "product": "WP Travel Engine",
-        "versions": [
+        "group": "Docs",
+        "pages": [
           {
-            "version": "v6",
-            "languages": [
-              {
-                "language": "English",
-                "tabs": [
-                  {
-                    "tab": "Documentation",
-                    "icon": "book",
-                    "groups": [
-                      {
-                        "group": "Create and Manage Trips",
-                        "icon": "rocket",
-                        "pages": [
-                          {
-                            "title": "How to add ggaasdas General Info?",
-                            "path": "how-to-add-general-info"
-                          },
-                          {
-                            "title": "How to add Date and Price Info? this is just a test on how long the page title can be so dont bbe concerend about this",
-                            "path": "how-to-add-date-and-price-info"
-                          },
-                          {
-                            "title": "Seat Allocation and Booking Capacity in WP Travel Engine (with FSD Plugin)",
-                            "path": "seat-allocation-and-booking-capacity-in-wp-travel-engine-with-fsd-plugin"
-                          },
-                          {
-                            "title": "How to Add a Trip Itinerary",
-                            "path": "how-to-add-a-trip-itinerary"
-                          },
-                          {
-                            "title": "How to Add Trip Overview Info",
-                            "path": "how-to-add-trip-overview-info"
-                          },
-                          {
-                            "title": "How to Add Trip Info",
-                            "path": "how-to-add-trip-info"
-                          },
-                          {
-                            "title": "How to Add a Trip Gallery",
-                            "path": "how-to-add-a-trip-gallery"
-                          },
-                          {
-                            "title": "How to Add Trip Includes and Excludes",
-                            "path": "how-to-add-trip-includes-and-excludes"
-                          },
-                          {
-                            "title": "How to add Image Gallery?",
-                            "path": "how-to-add-image-gallery"
-                          },
-                          {
-                            "title": "How to display a Trip Duration on the single trip page?",
-                            "path": "how-to-display-a-trip-duration-on-the-single-trip-page"
-                          }
-                        ]
-                      },
-                      {
-                        "group": "Pro Add-ons",
-                        "icon": "layers",
-                        "pages": [
-                          {
-                            "title": "Webhooks and API",
-                            "path": "webhooks-and-api"
-                          },
-                          {
-                            "title": "Accommodation",
-                            "path": "accommodation"
-                          },
-                          {
-                            "title": "Activity Tour Booking",
-                            "path": "activity-tour-booking"
-                          },
-                          {
-                            "title": "Advanced Analytics",
-                            "path": "advanced-analytics"
-                          },
-                          {
-                            "title": "Advanced Email Automator",
-                            "path": "advanced-email-automator"
-                          },
-                          {
-                            "title": "Advanced Itinerary Builder",
-                            "path": "advanced-itinerary-builder"
-                          },
-                          {
-                            "title": "Booking Fee",
-                            "path": "booking-fee"
-                          },
-                          {
-                            "title": "Conditional Price",
-                            "path": "conditional-price"
-                          },
-                          {
-                            "title": "Currency Converter",
-                            "path": "currency-converter"
-                          },
-                          {
-                            "title": "Custom Booking Link",
-                            "path": "custom-booking-link"
-                          },
-                          {
-                            "title": "Elementor Widgets",
-                            "path": "elementor-widgets"
-                          },
-                          {
-                            "title": "Email Customizer",
-                            "path": "email-customizer"
-                          },
-                          {
-                            "title": "Extra Services",
-                            "path": "extra-services"
-                          },
-                          {
-                            "title": "File Downloads",
-                            "path": "file-downloads"
-                          },
-                          {
-                            "title": "Form Editor",
-                            "path": "form-editor"
-                          },
-                          {
-                            "title": "GA4 eCommerce Tracking",
-                            "path": "ga4-ecommerce-tracking"
-                          },
-                          {
-                            "title": "Group Discount",
-                            "path": "group-discount"
-                          },
-                          {
-                            "title": "Installment Payments",
-                            "path": "installment-payments"
-                          },
-                          {
-                            "title": "Itinerary Downloader",
-                            "path": "itinerary-downloader"
-                          },
-                          {
-                            "title": "Legal Documents",
-                            "path": "legal-documents"
-                          },
-                          {
-                            "title": "Partial Payment",
-                            "path": "partial-payment"
-                          },
-                          {
-                            "title": "Per Trip Emails",
-                            "path": "per-trip-emails"
-                          },
-                          {
-                            "title": "Pickup Points",
-                            "path": "pickup-points"
-                          },
-                          {
-                            "title": "Price on Request",
-                            "path": "price-on-request"
-                          },
-                          {
-                            "title": "Private Trips",
-                            "path": "private-trips"
-                          },
-                          {
-                            "title": "Resource Management Add-on",
-                            "path": "resource-management-add-on"
-                          },
-                          {
-                            "title": "SliceWP Integration",
-                            "path": "slicewp-integration"
-                          },
-                          {
-                            "title": "Social Proof",
-                            "path": "social-proof"
-                          },
-                          {
-                            "title": "Trip Fixed Starting Dates Countdown",
-                            "path": "trip-fixed-starting-dates-countdown"
-                          },
-                          {
-                            "title": "Trip Fixed Starting Dates",
-                            "path": "trip-fixed-starting-dates"
-                          },
-                          {
-                            "title": "Trip Fixed Starting Dates Introduction",
-                            "path": "trip-fixed-starting-dates-introduction"
-                          },
-                          {
-                            "title": "Configuring the Global Settings for Trip Fixed Starting Dates",
-                            "path": "configuring-the-global-settings-for-trip-fixed-starting-dates"
-                          },
-                          {
-                            "title": "Trip Reviews",
-                            "path": "trip-reviews"
-                          },
-                          {
-                            "title": "Trip Weather Forecast",
-                            "path": "trip-weather-forecast"
-                          },
-                          {
-                            "title": "Trips Embedder",
-                            "path": "trips-embedder"
-                          },
-                          {
-                            "title": "Travel Insurance",
-                            "path": "travel-insurance"
-                          },
-                          {
-                            "title": "User History",
-                            "path": "user-history"
-                          },
-                          {
-                            "title": "Waitlist",
-                            "path": "waitlist"
-                          },
-                          {
-                            "title": "Whatsapp Notification",
-                            "path": "whatsapp-notification"
-                          },
-                          {
-                            "title": "WP Travel Engine Pro",
-                            "path": "wp-travel-engine-pro"
-                          },
-                          {
-                            "title": "Zapier",
-                            "path": "zapier"
-                          },
-                          {
-                            "group": "Fixed Starting Dates",
-                            "pages": [
-                              {
-                                "group": "Introduction",
-                                "pages": [
-                                  {
-                                    "title": "Overview",
-                                    "path": "overview"
-                                  },
-                                  {
-                                    "title": "Prerequisites",
-                                    "path": "prerequisites"
-                                  },
-                                  {
-                                    "title": "Key Features",
-                                    "path": "key-features"
-                                  }
-                                ]
-                              },
-                              {
-                                "group": "How to Install the Trip Fixed Starting Dates Add-on",
-                                "pages": [],
-                                "path": "how-to-install-the-trip-fixed-starting-dates-add-on"
-                              },
-                              {
-                                "group": "Global Settings",
-                                "pages": [
-                                  {
-                                    "title": "General",
-                                    "path": "general"
-                                  },
-                                  {
-                                    "title": "Display Options",
-                                    "path": "display-options"
-                                  },
-                                  {
-                                    "title": "Exclude Dates",
-                                    "path": "exclude-dates"
-                                  },
-                                  {
-                                    "title": "Trip Archive",
-                                    "path": "trip-archive"
-                                  },
-                                  {
-                                    "title": "Private Trip",
-                                    "path": "private-trip"
-                                  },
-                                  {
-                                    "title": "Availability Labels",
-                                    "path": "availability-labels"
-                                  },
-                                  {
-                                    "group": "Trip Departure Calendar",
-                                    "pages": [
-                                      {
-                                        "title": "Departure Calendar Shortcode",
-                                        "path": "departure-calendar-shortcode"
-                                      }
-                                    ],
-                                    "path": "trip-departure-calendars"
-                                  },
-                                  {
-                                    "group": "FSD Settings in the Single Trip",
-                                    "pages": [
-                                      {
-                                        "title": "Date Settings in a Single Trip",
-                                        "path": "date-settings-in-a-single-trip"
-                                      },
-                                      {
-                                        "title": "Assigning Dates to Packages in FSD",
-                                        "path": "assigning-dates-to-packages-in-fsd"
-                                      },
-                                      {
-                                        "title": "Adding Time Slots for Booking",
-                                        "path": "adding-time-slots-for-booking"
-                                      },
-                                      {
-                                        "title": "Recurring time",
-                                        "path": "recurring-time"
-                                      },
-                                      {
-                                        "title": "Shortcode",
-                                        "path": "shortcodes"
-                                      }
-                                    ]
-                                  }
-                                ],
-                                "path": "global-settings"
-                              },
-                              {
-                                "title": "Troubleshooting",
-                                "path": "troubleshooting"
-                              },
-                              {
-                                "title": "FAQs",
-                                "path": "faqs"
-                              }
-                            ],
-                            "icon": "calendar",
-                            "path": "addon/fixed-starting-dates"
-                          }
-                        ]
-                      },
-                      {
-                        "group": "General Setup & Configuration",
-                        "pages": [
-                          {
-                            "title": "Installation and Setup",
-                            "path": "installation"
-                          },
-                          {
-                            "title": "How to configure Predefined Pages?",
-                            "path": "how-to-configure-predefined-pages"
-                          },
-                          {
-                            "title": "How to configure Trip Tabs Settings?",
-                            "path": "how-to-configure-trip-tabs-settings"
-                          },
-                          {
-                            "title": "How to configure Trip Info Settings?",
-                            "path": "how-to-configure-trip-info-settings"
-                          },
-                          {
-                            "title": "How to Configure Taxonomy Settings?",
-                            "path": "how-to-configure-taxonomy-settings"
-                          },
-                          {
-                            "title": "How to configure Trip Search Settings?",
-                            "path": "how-to-configure-trip-search-settings"
-                          },
-                          {
-                            "title": "How to configure Performance Setting?",
-                            "path": "how-to-configure-performance-setting"
-                          },
-                          {
-                            "title": "How to configure Single Trip settings?",
-                            "path": "how-to-configure-single-trip-settings"
-                          },
-                          {
-                            "title": "How to Configure Checkout Settings?",
-                            "path": "how-to-configure-checkout-settings"
-                          },
-                          {
-                            "title": "How to configure Trip Card/Listing page settings?",
-                            "path": "how-to-configure-trip-card/listing-page-settings"
-                          },
-                          {
-                            "title": "How to Configure Trip Archive Settings?",
-                            "path": "how-to-configure-trip-archive-settings"
-                          },
-                          {
-                            "title": "How to Customize Colors Settings?",
-                            "path": "how-to-customize-colors-settings"
-                          },
-                          {
-                            "title": "How to add a new Pricing Type?",
-                            "path": "how-to-add-a-new-pricing-type"
-                          },
-                          {
-                            "title": "How to add Global Trip Highlights?",
-                            "path": "how-to-add-global-trip-highlights"
-                          },
-                          {
-                            "title": "How to Configure Currency Settings?",
-                            "path": "how-to-configure-currency-settings"
-                          },
-                          {
-                            "title": "How to Customize the Trip Search / Archive Page",
-                            "path": "how-to-customize-the-trip-search-/-archive-page"
-                          },
-                          {
-                            "title": "Getting Started",
-                            "path": "getting-started"
-                          },
-                          {
-                            "title": "How to Set Up Coupons",
-                            "path": "how-to-set-up-coupons"
-                          }
-                        ]
-                      },
-                      {
-                        "group": "Payment Settings and Gateways",
-                        "pages": [
-                          {
-                            "title": "Stripe Payment Gateway",
-                            "path": "stripe-payment-gateway"
-                          },
-                          {
-                            "title": "How to add PayPal Standard?",
-                            "path": "how-to-add-paypal-standard"
-                          },
-                          {
-                            "title": "How to configure the Check Payments Settings?",
-                            "path": "how-to-configure-the-check-payments-settings"
-                          },
-                          {
-                            "title": "How to configure Tax Settings?",
-                            "path": "how-to-configure-tax-settings"
-                          },
-                          {
-                            "title": "Razorpay Payment Gateway",
-                            "path": "razorpay-payment-gateway"
-                          },
-                          {
-                            "title": "WeTravel Integration",
-                            "path": "wetravel-integration"
-                          },
-                          {
-                            "title": "WooCommerce Payment Gateway",
-                            "path": "woocommerce-payment-gateway"
-                          },
-                          {
-                            "title": "PayU Biz Payment Gateway",
-                            "path": "payu-biz-payment-gateway"
-                          },
-                          {
-                            "title": "PayU Money Payment Gateway",
-                            "path": "payu-money-payment-gateway"
-                          },
-                          {
-                            "title": "PayPal Express Checkout Payment Gateway",
-                            "path": "paypal-express-checkout-payment-gateway"
-                          },
-                          {
-                            "title": "PayHere Payment Gateway",
-                            "path": "payhere-payment-gateway"
-                          },
-                          {
-                            "title": "PayFast Payment Gateway",
-                            "path": "payfast-payment-gateway"
-                          },
-                          {
-                            "title": "Midtrans Payment Gateway",
-                            "path": "midtrans-payment-gateway"
-                          },
-                          {
-                            "title": "Himalayan Bank Payment Gateway",
-                            "path": "himalayan-bank-payment-gateway"
-                          },
-                          {
-                            "title": "Authorize.net Payment Gateway",
-                            "path": "authorizenet-payment-gateway"
-                          }
-                        ]
-                      },
-                      {
-                        "group": "Email Notifications",
-                        "pages": [
-                          {
-                            "title": "How to resend the booking confirmation email",
-                            "path": "how-to-resend-the-booking-confirmation-email"
-                          },
-                          {
-                            "title": "Email Troubleshooting",
-                            "path": "email-troubleshooting"
-                          },
-                          {
-                            "title": "How to change booking emails",
-                            "path": "how-to-change-booking-emails"
-                          },
-                          {
-                            "title": "How to configure Customer Email?",
-                            "path": "how-to-configure-customer-email"
-                          },
-                          {
-                            "title": "How to configure Enquiry Email?",
-                            "path": "how-to-configure-enquiry-email"
-                          },
-                          {
-                            "title": "How to configure Admin Email?",
-                            "path": "how-to-configure-admin-email"
-                          },
-                          {
-                            "title": "How to follow up or send an email to customers who have booked a tour?",
-                            "path": "how-to-follow-up-or-send-an-email-to-customers-who-have-booked-a-tour"
-                          },
-                          {
-                            "title": "How to Customize Header and Footer of Your Email Template",
-                            "path": "how-to-customize-header-and-footer-of-your-email-template"
-                          },
-                          {
-                            "title": "Email Personalization Tags",
-                            "path": "email-personalization-tags"
-                          }
-                        ]
-                      },
-                      {
-                        "group": "Licensing & Account Management",
-                        "pages": [
-                          {
-                            "title": "How to Update Your Credit Card Details",
-                            "path": "how-to-update-your-credit-card-details"
-                          },
-                          {
-                            "title": "How Can You Manage Your Subscription?",
-                            "path": "how-can-you-manage-your-subscription"
-                          },
-                          {
-                            "title": "Why Upgrade to WP Travel Engine Pro",
-                            "path": "why-upgrade-to-wp-travel-engine-pro"
-                          },
-                          {
-                            "title": "How to Make a Purchase from Nepal",
-                            "path": "how-to-make-a-purchase-from-nepal"
-                          },
-                          {
-                            "title": "How to Make a Purchase from India",
-                            "path": "how-to-make-a-purchase-from-india"
-                          },
-                          {
-                            "title": "How generate the Invoice from WP Travel Engine account?",
-                            "path": "how-generate-the-invoice-from-wp-travel-engine-account"
-                          },
-                          {
-                            "title": "How to activate the Pro add-on license key?",
-                            "path": "how-to-activate-the-pro-add-on-license-key"
-                          },
-                          {
-                            "title": "How to Download Add-ons and Themes After Purchasing?",
-                            "path": "how-to-download-add-ons-and-themes-after-purchasing"
-                          },
-                          {
-                            "title": "How to upgrade the purchased plan?",
-                            "path": "how-to-upgrade-the-purchased-plan"
-                          },
-                          {
-                            "title": "How to cancel the subscription for your purchase?",
-                            "path": "how-to-cancel-the-subscription-for-your-purchase"
-                          },
-                          {
-                            "title": "Unable to Login Into Your Account",
-                            "path": "unable-to-login-into-your-account"
-                          }
-                        ]
-                      },
-                      {
-                        "group": "Multilingual & Translation",
-                        "pages": [
-                          {
-                            "title": "How to Translate Themes and Plugins Using Loco Translate",
-                            "path": "how-to-translate-themes-and-plugins-using-loco-translate"
-                          },
-                          {
-                            "title": "How to Build a Multilingual Travel Website Using WP Travel Engine and WPML",
-                            "path": "how-to-build-a-multilingual-travel-website-using-wp-travel-engine-and-wpml"
-                          },
-                          {
-                            "title": "How to use Labels Feature for changing Static Strings?",
-                            "path": "how-to-use-labels-feature-for-changing-static-strings"
-                          },
-                          {
-                            "title": "How to use TranslatePress with WP Travel Engine?",
-                            "path": "how-to-use-translatepress-with-wp-travel-engine"
-                          }
-                        ]
-                      },
-                      {
-                        "group": "Trip Management and Operations",
-                        "pages": [
-                          {
-                            "title": "How to View and Manage Trip Bookings ?",
-                            "path": "how-to-view-and-manage-trip-bookings"
-                          },
-                          {
-                            "title": "Change Currency Symbol to Currency Code",
-                            "path": "change-currency-symbol-to-currency-code"
-                          },
-                          {
-                            "title": "Changing the default currency i.e dollar",
-                            "path": "changing-the-default-currency-ie-dollar"
-                          },
-                          {
-                            "title": "“Label” text is appeared instead of Pricing Category",
-                            "path": "label-text-is-appeared-instead-of-pricing-category"
-                          },
-                          {
-                            "title": "How to Change the Adult, Child Label",
-                            "path": "how-to-change-the-adult-child-label"
-                          },
-                          {
-                            "title": "Roles & Capabilities Controlling Who Can Access What in WP Travel Engine",
-                            "path": "roles-capabilities"
-                          }
-                        ]
-                      },
-                      {
-                        "group": "Design & Layout Customization",
-                        "pages": [
-                          {
-                            "title": "Is WP Travel Engine Compatible with Divi Builder?",
-                            "path": "is-wp-travel-engine-compatible-with-divi-builder"
-                          },
-                          {
-                            "title": "Can I use WP Travel Engine with Elementor?",
-                            "path": "can-i-use-wp-travel-engine-with-elementor"
-                          },
-                          {
-                            "title": "WP Travel Engine – Blocks, Patterns & Templates",
-                            "path": "wp-travel-engine-blocks-patterns-templates"
-                          }
-                        ]
-                      },
-                      {
-                        "group": "FAQ",
-                        "pages": [
-                          {
-                            "title": "How to give WP Travel Engine plugin review on wordpress.org?",
-                            "path": "how-to-give-wp-travel-engine-plugin-review-on-wordpressorg"
-                          },
-                          {
-                            "title": "Why can’t I expand the Trip Edit sections (Overview,Itinerary etc.) in the backend?",
-                            "path": "why-cant-i-expand-the-trip-edit-sections-overviewitinerary-etc-in-the-backend"
-                          },
-                          {
-                            "title": "How does the Trip Expiry Date feature work in WP Travel Engine?",
-                            "path": "how-does-the-trip-expiry-date-feature-work-in-wp-travel-engine"
-                          },
-                          {
-                            "title": "How to add a new filters/taxonomies using Custom Filters",
-                            "path": "how-to-add-a-new-filters/taxonomies-using-custom-filters"
-                          },
-                          {
-                            "title": "How to add the Itinerary Downloader button on the archive pages",
-                            "path": "how-to-add-the-itinerary-downloader-button-on-the-archive-pages"
-                          },
-                          {
-                            "title": "How to Export Bookings with WP Travel Engine",
-                            "path": "how-to-export-bookings-with-wp-travel-engine"
-                          },
-                          {
-                            "title": "How to Customize the WP Travel Engine Trip Slugs",
-                            "path": "how-to-customize-the-wp-travel-engine-trip-slugs"
-                          },
-                          {
-                            "title": "How to Customize the Trip Related Trips",
-                            "path": "how-to-customize-the-trip-related-trips"
-                          },
-                          {
-                            "title": "How to Sort Pricing Category in WP Travel Engine",
-                            "path": "how-to-sort-pricing-category-in-wp-travel-engine"
-                          },
-                          {
-                            "title": "Add FAQs to Your Trips",
-                            "path": "add-faqs-to-your-trips"
-                          }
-                        ]
-                      },
-                      {
-                        "group": "Troubleshooting",
-                        "pages": [
-                          {
-                            "title": "503 and Resource Limit Errors",
-                            "path": "503-resource-limit-errors"
-                          },
-                          {
-                            "title": "Created Destinations Not Displayed on the Destination Page",
-                            "path": "created-destinations-not-displayed-on-the-destination-page"
-                          },
-                          {
-                            "title": "Resolving the Date and Price Tab Loading Issue",
-                            "path": "resolving-the-date-and-price-tab-loading-issue"
-                          },
-                          {
-                            "title": "How to check plugin conflicts in WordPress?",
-                            "path": "how-to-check-plugin-conflicts-in-wordpress"
-                          },
-                          {
-                            "title": "Search Result Page Showing a 404 Error",
-                            "path": "search-result-page-showing-a-404-error"
-                          },
-                          {
-                            "title": "Trip Facts Not Appearing on the Trip Page",
-                            "path": "trip-facts-not-appearing-on-the-trip-page"
-                          },
-                          {
-                            "title": "Page not found appeared on the single trip page",
-                            "path": "page-not-found-appeared-on-the-single-trip-page"
-                          }
-                        ]
-                      },
-                      {
-                        "group": "WordPress Themes",
-                        "pages": [
-                          {
-                            "title": "Travel Booking Pro",
-                            "path": "travel-booking-pro"
-                          },
-                          {
-                            "title": "Travel Booking",
-                            "path": "travel-booking"
-                          },
-                          {
-                            "title": "Travel Muni Pro",
-                            "path": "travel-muni-pro"
-                          },
-                          {
-                            "title": "Travel Muni",
-                            "path": "travel-muni"
-                          },
-                          {
-                            "title": "Travelverse",
-                            "path": "travelverse"
-                          },
-                          {
-                            "title": "Pattern Engine",
-                            "path": "pattern-engine"
-                          }
-                        ]
-                      },
-                      {
-                        "group": "Elementor Widgets",
-                        "pages": [
-                          {
-                            "title": "Destination/Activities Slider 3",
-                            "path": "destination/activities-slider-3"
-                          },
-                          {
-                            "title": "Destination/Activities Slider 2",
-                            "path": "destination/activities-slider-2"
-                          },
-                          {
-                            "title": "Destination/Activities Slider 1",
-                            "path": "destination/activities-slider-1"
-                          },
-                          {
-                            "title": "Destination/Activities Module 2",
-                            "path": "destination/activities-module-2"
-                          },
-                          {
-                            "title": "Destination/Activities Module 1",
-                            "path": "destination/activities-module-1"
-                          },
-                          {
-                            "title": "Destination/Activities 2",
-                            "path": "destination/activities-2"
-                          },
-                          {
-                            "title": "Destination/Activities 1",
-                            "path": "destination/activities-1"
-                          },
-                          {
-                            "title": "Trips List",
-                            "path": "trips-list"
-                          },
-                          {
-                            "title": "Advanced Trips 4",
-                            "path": "advanced-trips-4"
-                          },
-                          {
-                            "title": "Advanced Trip 3",
-                            "path": "advanced-trip-3"
-                          },
-                          {
-                            "title": "Advanced Trip 2",
-                            "path": "advanced-trip-2"
-                          },
-                          {
-                            "title": "Advanced Trip",
-                            "path": "advanced-trip"
-                          },
-                          {
-                            "title": "Featured Trip",
-                            "path": "featured-trip"
-                          },
-                          {
-                            "title": "Trips Accordion",
-                            "path": "trips-accordion"
-                          },
-                          {
-                            "title": "Trips Module Three",
-                            "path": "trips-module-three"
-                          },
-                          {
-                            "title": "Trips Module Two",
-                            "path": "trips-module-two"
-                          },
-                          {
-                            "title": "Trips Module One",
-                            "path": "trips-module-one"
-                          },
-                          {
-                            "title": "Trips Slider",
-                            "path": "trips-slider"
-                          },
-                          {
-                            "title": "Trips Slider Two",
-                            "path": "trips-slider-two"
-                          },
-                          {
-                            "title": "Trips Slider Three",
-                            "path": "trips-slider-three"
-                          },
-                          {
-                            "title": "Trips Tab",
-                            "path": "trips-tab"
-                          },
-                          {
-                            "title": "Trip Search",
-                            "path": "trip-search"
-                          },
-                          {
-                            "title": "Tour Search widget",
-                            "path": "tour-search-widget"
-                          },
-                          {
-                            "title": "Contact widget",
-                            "path": "contact-widget"
-                          },
-                          {
-                            "title": "Navigation menu widget",
-                            "path": "navigation-menu-widget"
-                          },
-                          {
-                            "title": "Search widget",
-                            "path": "search-widget"
-                          },
-                          {
-                            "title": "Site logo widget",
-                            "path": "site-logo-widget"
-                          },
-                          {
-                            "title": "Header and Footer Builder",
-                            "path": "header-and-footer-builder"
-                          },
-                          {
-                            "title": "Mobile Menu & Off Canvas",
-                            "path": "mobile-menu-off-canvas"
-                          }
-                        ]
-                      },
-                      {
-                        "group": "Customer Experience & Portal",
-                        "pages": [
-                          {
-                            "title": "How to configure User Dashboard?",
-                            "path": "how-to-configure-user-dashboard"
-                          },
-                          {
-                            "title": "How to Configure Social Login",
-                            "path": "how-to-configure-social-login"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "tab": "API Reference",
-                    "icon": "code",
-                    "groups": [
-                      {
-                        "group": "Endpoints",
-                        "openapi": "api-reference/openapi.yaml",
-                        "pages": []
-                      }
-                    ]
-                  },
-                  {
-                    "tab": "Help Center",
-                    "icon": "help-circle",
-                    "pages": [
-                      {
-                        "title": "Help Center",
-                        "path": "help-center",
-                        "icon": "home"
-                      },
-                      {
-                        "group": "FAQs",
-                        "icon": "help-circle",
-                        "expandable": false,
-                        "pages": [
-                          {
-                            "title": "What is WP Travel Engine?",
-                            "path": "help-center/faq/what-is-wp-travel-engine"
-                          },
-                          {
-                            "title": "Frequently Asked Questions",
-                            "path": "help-center/faq/common-questions"
-                          }
-                        ]
-                      },
-                      {
-                        "group": "Troubleshooting",
-                        "icon": "alert-triangle",
-                        "expandable": false,
-                        "pages": [
-                          {
-                            "title": "Fix Plugin Conflict",
-                            "path": "help-center/troubleshooting/fix-plugin-conflict"
-                          }
-                        ]
-                      },
-                      {
-                        "group": "Guides",
-                        "icon": "book-open",
-                        "expandable": false,
-                        "pages": [
-                          {
-                            "title": "Setup First Tour",
-                            "path": "help-center/guides/setup-first-tour"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "tab": "Changelog",
-                    "icon": "clock",
-                    "pages": [
-                      {
-                        "title": "Release History",
-                        "path": "changelog",
-                        "icon": "history"
-                      }
-                    ]
-                  }
-                ],
-                "banner": {
-                  "content": "our api is down please move to version 2",
-                  "type": "alert",
-                  "color": "#8b5cf6"
-                },
-                "footer": {
-                  "columns": [
-                    {
-                      "title": "hello",
-                      "links": [
-                        {
-                          "title": "bad",
-                          "link": ""
-                        },
-                        {
-                          "title": "mornning",
-                          "link": ""
-                        }
-                      ]
-                    },
-                    {
-                      "title": "good evening",
-                      "links": [
-                        {
-                          "title": "hello",
-                          "link": ""
-                        },
-                        {
-                          "title": "hi",
-                          "link": ""
-                        }
-                      ]
-                    }
-                  ],
-                  "links": [
-                    {
-                      "header": "Comapny",
-                      "items": [
-                        {
-                          "label": "company1",
-                          "href": "/addon/fixed-starting-dates"
-                        },
-                        {
-                          "label": "company2",
-                          "href": "/es/how-to-configure-currency-settings"
-                        }
-                      ]
-                    },
-                    {
-                      "header": "product",
-                      "items": [
-                        {
-                          "label": "product1",
-                          "href": "/addon/fsd-global-settings"
-                        },
-                        {
-                          "label": "product2",
-                          "href": "/es/installation"
-                        }
-                      ]
-                    }
-                  ],
-                  "socials": {
-                    "discord": "www.discord",
-                    "instagram": "www.instagram",
-                    "youtube": "",
-                    "telegram": "",
-                    "reddit": ""
-                  },
-                  "copyright": "2026 documentation ai legal"
-                }
-              },
-              {
-                "language": "Español",
-                "tabs": [
-                  {
-                    "tab": "Documentación",
-                    "icon": "book",
-                    "groups": [
-                      {
-                        "group": "Configuración general",
-                        "pages": [
-                          {
-                            "title": "Instalación y configuración",
-                            "path": "es/installation"
-                          },
-                          {
-                            "title": "Cómo configurar la moneda",
-                            "path": "es/how-to-configure-currency-settings"
-                          }
-                        ]
-                      },
-                      {
-                        "group": "Pagos e impuestos",
-                        "pages": [
-                          {
-                            "title": "Cómo añadir PayPal Standard",
-                            "path": "es/how-to-add-paypal-standard"
-                          },
-                          {
-                            "title": "Cómo configurar los impuestos",
-                            "path": "es/how-to-configure-tax-settings"
-                          }
-                        ]
-                      },
-                      {
-                        "group": "Complementos Pro",
-                        "icon": "layers",
-                        "pages": [
-                          {
-                            "title": "Pago parcial",
-                            "path": "es/partial-payment"
-                          },
-                          {
-                            "title": "Añadir fechas excluidas",
-                            "path": "es/exclude-dates"
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ],
-                "banner": {
-                  "content": "testing",
-                  "color": "#6b7280"
-                }
-              }
-            ]
+            "path": "en/docs/migrate-to-async-api-reference-import-resync",
+            "title": "Migrating to asynchronous API reference import and resync"
           },
           {
-            "version": "v5",
-            "languages": [
-              {
-                "language": "English",
-                "tabs": [
-                  {
-                    "tab": "Documentation",
-                    "icon": "book",
-                    "groups": [
-                      {
-                        "group": "General Setup & Configuration",
-                        "pages": [
-                          {
-                            "title": "Installation and Setup",
-                            "path": "v5/installation"
-                          },
-                          {
-                            "title": "How to Configure Currency Settings?",
-                            "path": "v5/how-to-configure-currency-settings"
-                          }
-                        ]
-                      },
-                      {
-                        "group": "Payment Settings and Gateways",
-                        "pages": [
-                          {
-                            "title": "How to add PayPal Standard?",
-                            "path": "v5/how-to-add-paypal-standard"
-                          },
-                          {
-                            "title": "How to configure Tax Settings?",
-                            "path": "v5/how-to-configure-tax-settings"
-                          }
-                        ]
-                      },
-                      {
-                        "group": "Pro Add-ons",
-                        "icon": "layers",
-                        "pages": [
-                          {
-                            "title": "Partial Payment",
-                            "path": "v5/partial-payment"
-                          },
-                          {
-                            "title": "Exclude Dates",
-                            "path": "v5/exclude-dates"
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ],
-                "footer": {
-                  "columns": [
-                    {
-                      "title": "hello",
-                      "links": [
-                        {
-                          "title": "bad",
-                          "link": ""
-                        },
-                        {
-                          "title": "mornning",
-                          "link": ""
-                        }
-                      ]
-                    },
-                    {
-                      "title": "good evening",
-                      "links": [
-                        {
-                          "title": "hello",
-                          "link": ""
-                        },
-                        {
-                          "title": "hi",
-                          "link": ""
-                        }
-                      ]
-                    }
-                  ],
-                  "links": [
-                    {
-                      "header": "Comapny",
-                      "items": [
-                        {
-                          "label": "company1",
-                          "href": "/addon/fixed-starting-dates"
-                        },
-                        {
-                          "label": "company2",
-                          "href": "/es/how-to-configure-currency-settings"
-                        }
-                      ]
-                    },
-                    {
-                      "header": "product",
-                      "items": [
-                        {
-                          "label": "product1",
-                          "href": "/addon/fsd-global-settings"
-                        },
-                        {
-                          "label": "product2",
-                          "href": "/es/installation"
-                        }
-                      ]
-                    }
-                  ],
-                  "socials": {
-                    "discord": "www.discord",
-                    "instagram": "www.instagram",
-                    "youtube": "",
-                    "telegram": "",
-                    "reddit": ""
-                  },
-                  "copyright": "2026 documentation ai legal"
-                }
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "product": "Travel Monster",
-        "tabs": [
+            "path": "en/docs/article-feedback",
+            "title": "Article feedback"
+          },
           {
-            "tab": "Documentation",
-            "icon": "book",
-            "groups": [
-              {
-                "group": "Travel Monster",
-                "pages": [
-                  {
-                    "title": "Setup Static Homepage",
-                    "path": "setup-static-homepage"
-                  },
-                  {
-                    "title": "Configure Widgets",
-                    "path": "configure-widgets"
-                  },
-                  {
-                    "title": "Configure Menus",
-                    "path": "configure-menus"
-                  },
-                  {
-                    "title": "Posts & Pages Settings",
-                    "path": "posts-pages-settings"
-                  },
-                  {
-                    "title": "Footer Settings",
-                    "path": "footer-settings"
-                  },
-                  {
-                    "title": "Header Settings",
-                    "path": "header-settings"
-                  },
-                  {
-                    "title": "General Settings",
-                    "path": "general-settings"
-                  },
-                  {
-                    "title": "Configure Site Identity",
-                    "path": "configure-site-identity"
-                  },
-                  {
-                    "title": "Import Starter Site",
-                    "path": "import-starter-site"
-                  },
-                  {
-                    "title": "Install Travel Monster Theme",
-                    "path": "install-travel-monster-theme"
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "product": "Travel Monster Pro",
-        "tabs": [
+            "path": "en/docs/translate-with-eddy-ai",
+            "title": "Translate with Eddy AI"
+          },
           {
-            "tab": "Documentation",
-            "icon": "book",
-            "groups": [
-              {
-                "group": "Travel Monster Pro",
-                "pages": [
-                  {
-                    "title": "User Social Link",
-                    "path": "user-social-link"
-                  },
-                  {
-                    "title": "Misc Settings",
-                    "path": "misc-settings"
-                  },
-                  {
-                    "title": "Posts & Pages Settings 2",
-                    "path": "posts-pages-settings-2"
-                  },
-                  {
-                    "title": "Footer Settings 2",
-                    "path": "footer-settings-2"
-                  },
-                  {
-                    "title": "Header Settings 2",
-                    "path": "header-settings-2"
-                  },
-                  {
-                    "title": "General Settings 2",
-                    "path": "general-settings-2"
-                  },
-                  {
-                    "title": "Import Starter Site 2",
-                    "path": "import-starter-site-2"
-                  },
-                  {
-                    "title": "How To Activate Travel Monster Pro License",
-                    "path": "how-to-activate-travel-monster-pro-license"
-                  },
-                  {
-                    "title": "Install and Activate Travel Monster Pro",
-                    "path": "install-and-activate-travel-monster-pro"
-                  },
-                  {
-                    "title": "Travel Monster Addons",
-                    "path": "travel-monster-addons"
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "product": "Altus AI",
-        "tabs": [
+            "path": "en/docs/configure-chatbot",
+            "title": "Configure chatbot"
+          },
           {
-            "tab": "Documentation",
-            "icon": "book",
-            "groups": [
-              {
-                "group": "Altus AI",
-                "pages": [
-                  {
-                    "title": "Getting Started with Altus AI",
-                    "path": "getting-started-with-altus-ai"
-                  },
-                  {
-                    "title": "Content Generation",
-                    "path": "content-generation"
-                  },
-                  {
-                    "title": "Connect AI Assistants via MCP with WP Travel Engine",
-                    "path": "connect-ai-assistants-via-mcp-with-wp-travel-engine"
-                  },
-                  {
-                    "title": "Usage & Logs",
-                    "path": "usage-logs"
-                  }
-                ]
-              }
-            ]
+            "path": "en/docs/chatbot-ticket-escalation",
+            "title": "Ticket escalation"
+          },
+          {
+            "path": "en/docs/create-chatbot",
+            "title": "Create chatbot"
+          },
+          {
+            "path": "en/docs/mcp-prompt-guide",
+            "title": "MCP prompt guide"
+          },
+          {
+            "path": "en/docs/supported-mcp-tools",
+            "title": "Supported MCP tools"
+          },
+          {
+            "path": "en/docs/mcp-use-cases-in-document360",
+            "title": "MCP use cases in Document360"
+          },
+          {
+            "path": "en/docs/mcp",
+            "title": "MCP overview"
+          },
+          {
+            "path": "en/docs/manage-workspace",
+            "title": "Manage workspace"
+          },
+          {
+            "path": "en/docs/getting-started-with-multi-lingual-knowledge-base",
+            "title": "Multilingual Knowledge base"
+          },
+          {
+            "path": "en/docs/workspaces",
+            "title": "Create workspace"
+          },
+          {
+            "path": "en/docs/editing-and-deleting-glossary-term",
+            "title": "Manage and translate glossary terms"
+          },
+          {
+            "path": "en/docs/tasks-page",
+            "title": "Tasks page"
+          },
+          {
+            "path": "en/docs/review-reminders",
+            "title": "Article review reminder"
+          },
+          {
+            "path": "en/docs/manage-article-feedback",
+            "title": "Manage article feedback"
+          },
+          {
+            "path": "en/docs/feedback-manager-overview",
+            "title": "Article feedback & unanswered queries"
+          },
+          {
+            "path": "en/docs/find-and-replace",
+            "title": "Find and replace"
+          },
+          {
+            "path": "en/docs/managing-interactive-decision-trees",
+            "title": "Managing interactive decision trees"
+          },
+          {
+            "path": "en/docs/view-file-details",
+            "title": "View file details"
+          },
+          {
+            "path": "en/docs/move-files",
+            "title": "Move files"
+          },
+          {
+            "path": "en/docs/remove-folders",
+            "title": "Remove folders"
+          },
+          {
+            "path": "en/docs/add-a-folder",
+            "title": "Add a folder"
+          },
+          {
+            "path": "en/docs/api-integration-patterns-headless-content-delivery-metadata-driven-access-contro",
+            "title": "API integration patterns for headless content delivery with metadata-driven access control"
+          },
+          {
+            "path": "en/docs/article-seo",
+            "title": "Article GEO/SEO"
+          },
+          {
+            "path": "en/docs/seo-descriptions",
+            "title": "AI & search descriptions (GEO/SEO)"
+          },
+          {
+            "path": "en/docs/pdf-design-templates",
+            "title": "Designing a PDF template"
+          },
+          {
+            "path": "en/docs/advanced-elements",
+            "title": "Advanced elements"
+          },
+          {
+            "path": "en/docs/video-recording",
+            "title": "Video recording"
+          },
+          {
+            "path": "en/docs/interactive-demo",
+            "title": "Interactive demo"
+          },
+          {
+            "path": "en/docs/advanced-content-creation-tools",
+            "title": "Advanced content creation tools"
+          },
+          {
+            "path": "en/docs/ai-writer-suite",
+            "title": "AI writer suite"
+          },
+          {
+            "path": "en/docs/managing-chapters",
+            "title": "Creating and managing Chapters"
+          },
+          {
+            "path": "en/docs/creating-and-recording-step-by-step-guides",
+            "title": "Creating and recording Step by step guides"
+          },
+          {
+            "path": "en/docs/managing-step-by-step-guides",
+            "title": "Managing Step by step guides"
+          },
+          {
+            "path": "en/docs/editing-a-step-by-step-guide",
+            "title": "Editing a Step by step guide"
+          },
+          {
+            "path": "en/docs/ai-alt-text-generator",
+            "title": "AI alt text generator"
+          },
+          {
+            "path": "en/docs/editing-interactive-demo",
+            "title": "Editing an interactive demo"
+          },
+          {
+            "path": "en/docs/recording-interactive-demo",
+            "title": "Recording interactive demo"
+          },
+          {
+            "path": "en/docs/screen-capturing-from-the-editor",
+            "title": "Screen capturing from the Editor"
+          },
+          {
+            "path": "en/docs/document360-engage",
+            "title": "Document360 Engage"
+          },
+          {
+            "path": "en/docs/ai-native-documentation",
+            "title": "AI native documentation"
+          },
+          {
+            "path": "en/docs/replace-a-file",
+            "title": "Replace a file"
+          },
+          {
+            "path": "en/docs/troubleshooting-interactive-demo",
+            "title": "Troubleshooting Interactive demo"
+          },
+          {
+            "path": "en/docs/annotation",
+            "title": "Annotation"
+          },
+          {
+            "path": "en/docs/zoom",
+            "title": "Zoom"
+          },
+          {
+            "path": "en/docs/spotlight",
+            "title": "Spotlight"
+          },
+          {
+            "path": "en/docs/highlight",
+            "title": "Highlight"
+          },
+          {
+            "path": "en/docs/crop",
+            "title": "Crop"
+          },
+          {
+            "path": "en/docs/trim",
+            "title": "Trim"
+          },
+          {
+            "path": "en/docs/music",
+            "title": "Music"
+          },
+          {
+            "path": "en/docs/voice",
+            "title": "Voice"
+          },
+          {
+            "path": "en/docs/text",
+            "title": "Text"
+          },
+          {
+            "path": "en/docs/camera",
+            "title": "Camera"
+          },
+          {
+            "path": "en/docs/advanced-images",
+            "title": "Image"
+          },
+          {
+            "path": "en/docs/hotspots",
+            "title": "Hotspots"
+          },
+          {
+            "path": "en/docs/call-to-action",
+            "title": "Call to action"
+          },
+          {
+            "path": "en/docs/blur",
+            "title": "Blur"
+          },
+          {
+            "path": "en/docs/editing-video",
+            "title": "Editing video"
+          },
+          {
+            "path": "en/docs/recording-video",
+            "title": "Recording video"
+          },
+          {
+            "path": "en/docs/revision-history",
+            "title": "Revision history"
+          },
+          {
+            "path": "en/docs/duplicate-content-detection",
+            "title": "Duplicate content detection"
+          },
+          {
+            "path": "en/docs/configure-ai-assistive-search",
+            "title": "Configure AI assistive search"
+          },
+          {
+            "path": "en/docs/ai-safety-testing-and-defence",
+            "title": "AI safety testing and defence"
+          },
+          {
+            "path": "en/docs/ai-glossary-generator",
+            "title": "AI glossary generator"
+          },
+          {
+            "path": "en/docs/editor-elements",
+            "title": "Editor elements"
+          },
+          {
+            "path": "en/docs/related-articles",
+            "title": "Related articles"
+          },
+          {
+            "path": "en/docs/ai-related-articles-recommender",
+            "title": "AI related articles recommender"
+          },
+          {
+            "path": "en/docs/article-tags",
+            "title": "Article tags"
+          },
+          {
+            "path": "en/docs/ai-tag-recommender",
+            "title": "AI tag recommender"
+          },
+          {
+            "path": "en/docs/read-out-loud",
+            "title": "Read out loud"
+          },
+          {
+            "path": "en/docs/organizing-your-knowledge-base",
+            "title": "Organizing your knowledge base"
+          },
+          {
+            "path": "en/docs/screen-capturing-from-the-drive",
+            "title": "Screen capturing from the Drive"
+          },
+          {
+            "path": "en/docs/read-receipt",
+            "title": "Read receipt"
+          },
+          {
+            "path": "en/docs/article-management",
+            "title": "Article optimization"
+          },
+          {
+            "path": "en/docs/code-view",
+            "title": "Code view"
+          },
+          {
+            "path": "en/docs/ai-chatbot",
+            "title": "AI chatbot"
+          },
+          {
+            "path": "en/docs/chatbot-playground",
+            "title": "Playground"
+          },
+          {
+            "path": "en/docs/clone-category",
+            "title": "Clone category"
+          },
+          {
+            "path": "en/docs/downloading-category-and-article-in-kb-site",
+            "title": "Downloading category and article in KB site"
+          },
+          {
+            "path": "en/docs/export-articles-as-pdf",
+            "title": "Export articles as PDF"
+          },
+          {
+            "path": "en/docs/article-analytics",
+            "title": "Article analytics"
+          },
+          {
+            "path": "en/docs/navigating-document360",
+            "title": "Navigating Document360"
+          },
+          {
+            "path": "en/docs/ai-assistive-search",
+            "title": "AI assistive search"
+          },
+          {
+            "path": "en/docs/ai-security-policies",
+            "title": "AI security policies"
+          },
+          {
+            "path": "en/docs/use-and-translate-variables",
+            "title": "Use and translate variables"
+          },
+          {
+            "path": "en/docs/variables",
+            "title": "Create and manage variables"
+          },
+          {
+            "path": "en/docs/rename-a-file",
+            "title": "Rename a file"
+          },
+          {
+            "path": "en/docs/manage-ai-assistive-search",
+            "title": "Manage AI assistive search"
+          },
+          {
+            "path": "en/docs/import-from-word",
+            "title": "Import from Word"
+          },
+          {
+            "path": "en/docs/links",
+            "title": "Links"
+          },
+          {
+            "path": "en/docs/prompt-engineering-tips",
+            "title": "Prompt engineering tips"
+          },
+          {
+            "path": "en/docs/getting-started-with-api-documentation",
+            "title": "Getting started with API documentation"
+          },
+          {
+            "path": "en/docs/api-fundamentals",
+            "title": "API fundamentals"
+          },
+          {
+            "path": "en/docs/manage-files",
+            "title": "Manage files"
+          },
+          {
+            "path": "en/docs/drive",
+            "title": "Getting started with Drive"
+          },
+          {
+            "path": "en/docs/ai-naming-rules-for-drive-images",
+            "title": "AI naming rules for Drive images"
+          },
+          {
+            "path": "en/docs/how-drive-works",
+            "title": "How Drive works"
+          },
+          {
+            "path": "en/docs/adding-folders-and-files",
+            "title": "Drive overview"
+          },
+          {
+            "path": "en/docs/manage-api-references",
+            "title": "Managing API references"
+          },
+          {
+            "path": "en/docs/copy-files",
+            "title": "Copy files"
+          },
+          {
+            "path": "en/docs/add-tags-and-alt-text-to-files",
+            "title": "Add tags and alt-text to files"
+          },
+          {
+            "path": "en/docs/add-a-file",
+            "title": "Add a file"
+          },
+          {
+            "path": "en/docs/recycle-bin-recent-and-starred-files",
+            "title": "Recent, Starred, and Recycle bin files"
+          },
+          {
+            "path": "en/docs/connect-mcp-to-your-ai-assistant",
+            "title": "Connect MCP to your AI assistant"
+          },
+          {
+            "path": "en/docs/categories-and-subcategories",
+            "title": "Managing categories"
+          },
+          {
+            "path": "en/docs/snippets",
+            "title": "Create and manage snippets"
+          },
+          {
+            "path": "en/docs/tag-dependency-viewer",
+            "title": "Manage tag dependencies"
+          },
+          {
+            "path": "en/docs/external-sources-for-ai-assistive-search",
+            "title": "External sources for AI assistive search"
+          },
+          {
+            "path": "en/docs/view-file-dependencies",
+            "title": "View file dependencies"
+          },
+          {
+            "path": "en/docs/archive-category",
+            "title": "Archive category"
+          },
+          {
+            "path": "en/docs/archived-page",
+            "title": "Archived page"
+          },
+          {
+            "path": "en/docs/share-articles-via-private-link",
+            "title": "Share articles via private link"
+          },
+          {
+            "path": "en/docs/status-indicator",
+            "title": "Status indicator"
+          },
+          {
+            "path": "en/docs/changing-the-url-of-an-article",
+            "title": "Change the URL of an article"
+          },
+          {
+            "path": "en/docs/custom-fields",
+            "title": "Custom fields"
+          },
+          {
+            "path": "en/docs/marking-articles-as-deprecated",
+            "title": "Mark as deprecated"
+          },
+          {
+            "path": "en/docs/adding-article-labels",
+            "title": "Add article labels"
+          },
+          {
+            "path": "en/docs/excluding-articles-from-searches",
+            "title": "Search visibility"
+          },
+          {
+            "path": "en/docs/attachments",
+            "title": "Attachments"
+          },
+          {
+            "path": "en/docs/featured-image",
+            "title": "Featured image"
+          },
+          {
+            "path": "en/docs/preferences",
+            "title": "Preferences"
+          },
+          {
+            "path": "en/docs/all-files",
+            "title": "All files"
+          },
+          {
+            "path": "en/docs/manage-folders",
+            "title": "Manage folders"
+          },
+          {
+            "path": "en/docs/interactive-decision-tree",
+            "title": "Interactive decision tree"
+          },
+          {
+            "path": "en/docs/markdown-editor",
+            "title": "Markdown"
+          },
+          {
+            "path": "en/docs/create-article",
+            "title": "Create article"
+          },
+          {
+            "path": "en/docs/settings-for-interactive-decision-trees",
+            "title": "Settings for interactive decision trees"
+          },
+          {
+            "path": "en/docs/viewing-interactive-decision-trees-kb-site",
+            "title": "Viewing interactive decision trees on the Knowledge base site"
+          },
+          {
+            "path": "en/docs/manage-labels",
+            "title": "Manage labels"
+          },
+          {
+            "path": "en/docs/google-translate-vs-native-localization",
+            "title": "Google translate vs. Translate with Eddy AI"
+          },
+          {
+            "path": "en/docs/troubleshooting-ai-search-issues",
+            "title": "Troubleshooting AI search issues"
+          },
+          {
+            "path": "en/docs/troubleshooting-ai-translation",
+            "title": "Troubleshooting AI translation issues"
+          },
+          {
+            "path": "en/docs/files",
+            "title": "Files"
+          },
+          {
+            "path": "en/docs/robotstxt",
+            "title": "Robots.txt"
+          },
+          {
+            "path": "en/docs/gen-ai-friendly-content",
+            "title": "Gen AI friendly content"
+          },
+          {
+            "path": "en/docs/seo",
+            "title": "GEO/SEO"
+          },
+          {
+            "path": "en/docs/step-by-step-guides",
+            "title": "Step by step guides"
+          },
+          {
+            "path": "en/docs/llms-txt",
+            "title": "LLMs.txt"
+          },
+          {
+            "path": "en/docs/editor",
+            "title": "Editor"
+          },
+          {
+            "path": "en/docs/ai-writer",
+            "title": "AI writer"
+          },
+          {
+            "path": "en/docs/collaborative-editing",
+            "title": "Collaborative editing"
+          },
+          {
+            "path": "en/docs/create-template",
+            "title": "Create template"
+          },
+          {
+            "path": "en/docs/inline-comments",
+            "title": "Inline comments"
+          },
+          {
+            "path": "en/docs/images",
+            "title": "Images"
+          },
+          {
+            "path": "en/docs/managing-workflow-status",
+            "title": "Managing workflow status"
+          },
+          {
+            "path": "en/docs/basic-markdown-syntax",
+            "title": "Basic Markdown syntax"
+          },
+          {
+            "path": "en/docs/connect-claude-to-document360-mcp",
+            "title": "Connect Claude to Document360 MCP"
+          },
+          {
+            "path": "en/docs/connect-mcp-using-custom-connectors",
+            "title": "Connect MCP using custom connectors"
+          },
+          {
+            "path": "en/docs/localization-getting-started",
+            "title": "Localization - Getting started"
+          },
+          {
+            "path": "en/docs/faq",
+            "title": "FAQ"
+          },
+          {
+            "path": "en/docs/ai-faq-generator",
+            "title": "AI FAQ generator"
+          },
+          {
+            "path": "en/docs/tables",
+            "title": "Tables"
+          },
+          {
+            "path": "en/docs/troubleshooting-ai-for-knowledge-base-site-issues",
+            "title": "Troubleshooting AI for Knowledge Base Site Issues"
+          },
+          {
+            "path": "en/docs/troubleshooting-advanced-content-creation-tools",
+            "title": "Troubleshooting step by step guides"
+          },
+          {
+            "path": "en/docs/install-document360-ai-capture-extension",
+            "title": "Install Document360 AI Capture extension"
+          },
+          {
+            "path": "en/docs/welcome-to-document360",
+            "title": "Welcome to Document360"
+          },
+          {
+            "path": "en/docs/article-redirect-rules",
+            "title": "Article redirect rule"
+          },
+          {
+            "path": "en/docs/testing-endpoints-with-try-it",
+            "title": "Testing endpoints with Try It!"
+          },
+          {
+            "path": "en/docs/using-variables-in-the-try-it-console",
+            "title": "Using variables in the Try It! console"
+          },
+          {
+            "path": "en/docs/custom-pages",
+            "title": "Custom pages"
+          },
+          {
+            "path": "en/docs/using-eddy-ai-in-the-api-reference",
+            "title": "Using Eddy AI in the API reference"
+          },
+          {
+            "path": "en/docs/authorizing-requests-in-the-try-it-console",
+            "title": "Authorizing requests in the Try It! console"
+          },
+          {
+            "path": "en/docs/recycle-bin-page",
+            "title": "Recycle bin page"
+          },
+          {
+            "path": "en/docs/troubleshooting-api-import-issues",
+            "title": "Troubleshooting API import issues"
+          },
+          {
+            "path": "en/docs/troubleshooting-api-spec-configuration-issues",
+            "title": "Troubleshooting API spec configuration issues"
+          },
+          {
+            "path": "en/docs/troubleshooting-api-authentication-errors",
+            "title": "Troubleshooting API authentication errors"
+          },
+          {
+            "path": "en/docs/troubleshooting-api-access-and-permission-errors",
+            "title": "Troubleshooting API access and permission errors"
+          },
+          {
+            "path": "en/docs/troubleshooting-api-rendering-and-display-issues",
+            "title": "Troubleshooting API rendering and display issues"
+          },
+          {
+            "path": "en/docs/troubleshooting-api-kb-site-errors",
+            "title": "Troubleshooting API KB site errors"
+          },
+          {
+            "path": "en/docs/troubleshooting-api-category-and-navigation-issues",
+            "title": "Troubleshooting API category and navigation issues"
+          },
+          {
+            "path": "en/docs/overview-page",
+            "title": "Dashboard overview"
+          },
+          {
+            "path": "en/docs/latex",
+            "title": "Latex"
+          },
+          {
+            "path": "en/docs/ci-cd-integration",
+            "title": "CI/CD integration"
+          },
+          {
+            "path": "en/docs/migrate-to-document360",
+            "title": "Migrate to Document360"
+          },
+          {
+            "path": "en/docs/workspaces-languages",
+            "title": "Workspaces & languages"
+          },
+          {
+            "path": "en/docs/use-and-translate-snippets",
+            "title": "Use and translate snippets"
+          },
+          {
+            "path": "en/docs/private-notes",
+            "title": "Private notes"
+          },
+          {
+            "path": "en/docs/glossary",
+            "title": "Glossaries"
+          },
+          {
+            "path": "en/docs/tabs",
+            "title": "Tabs"
+          },
+          {
+            "path": "en/docs/connect-chatgpt-to-document360-mcp",
+            "title": "Connect ChatGPT to Document360 MCP"
+          },
+          {
+            "path": "en/docs/managing-endpoint-articles",
+            "title": "Managing endpoint articles"
+          },
+          {
+            "path": "en/docs/ai-style-guide",
+            "title": "AI style guide"
+          },
+          {
+            "path": "en/docs/ai-article-summarizer",
+            "title": "AI article summarizer"
+          },
+          {
+            "path": "en/docs/ask-eddy-ai-api",
+            "title": "Ask Eddy AI API"
+          },
+          {
+            "path": "en/docs/ai-dynamic-related-articles-recommendation",
+            "title": "AI dynamic related articles recommendation"
+          },
+          {
+            "path": "en/docs/ai-customization",
+            "title": "AI customization"
+          },
+          {
+            "path": "en/docs/article-discussion-feed",
+            "title": "Discussion feed"
+          },
+          {
+            "path": "en/docs/adding-videos-in-articles",
+            "title": "Videos"
+          },
+          {
+            "path": "en/docs/editor-find-and-replace",
+            "title": "Find and replace in the editor"
+          },
+          {
+            "path": "en/docs/starred-page",
+            "title": "Starred page"
+          },
+          {
+            "path": "en/docs/recents-starred-and-recycle-bin-pages",
+            "title": "Recent page"
+          },
+          {
+            "path": "en/docs/remove-files",
+            "title": "Remove files"
+          },
+          {
+            "path": "en/docs/download-files",
+            "title": "Download files"
+          },
+          {
+            "path": "en/docs/mermaid-diagrams",
+            "title": "Mermaid diagrams"
+          },
+          {
+            "path": "en/docs/category-types",
+            "title": "Category types"
+          },
+          {
+            "path": "en/docs/managing-categories",
+            "title": "Create category"
+          },
+          {
+            "path": "en/docs/embedding-external-content",
+            "title": "Embedding external content"
+          },
+          {
+            "path": "en/docs/adding-glossary-term",
+            "title": "Add new glossary terms"
+          },
+          {
+            "path": "en/docs/import-pdf",
+            "title": "Import PDF"
+          },
+          {
+            "path": "en/docs/lists",
+            "title": "Lists"
+          },
+          {
+            "path": "en/docs/create-with-eddy-ai",
+            "title": "Create with Eddy AI"
+          },
+          {
+            "path": "en/docs/overview",
+            "title": "Overview"
+          },
+          {
+            "path": "en/docs/inline-code-code-block",
+            "title": "Inline code & code block"
+          },
+          {
+            "path": "en/docs/create-page-category",
+            "title": "Create page category"
+          },
+          {
+            "path": "en/docs/article-access-control-knowledge-base-site",
+            "title": "Security - Article access control"
+          },
+          {
+            "path": "en/docs/tags",
+            "title": "Tags"
+          },
+          {
+            "path": "en/docs/adding-a-new-tag",
+            "title": "Create new tag"
+          },
+          {
+            "path": "en/docs/tag-manager-overview-page",
+            "title": "Manage tags"
+          },
+          {
+            "path": "en/docs/adding-glossary-term-in-articles",
+            "title": "Insert glossary term in article"
+          },
+          {
+            "path": "en/docs/glossary-overview-page",
+            "title": "Add glossary to your knowledge base site"
+          },
+          {
+            "path": "en/docs/workflow-designer",
+            "title": "Workflow designer"
+          },
+          {
+            "path": "en/docs/health-check-metrics",
+            "title": "Health check metrics"
+          },
+          {
+            "path": "en/docs/index-category-seo",
+            "title": "Index category SEO"
+          },
+          {
+            "path": "en/docs/star-category",
+            "title": "Star category"
+          },
+          {
+            "path": "en/docs/rename-category",
+            "title": "Rename category"
+          },
+          {
+            "path": "en/docs/hide-unhide-category",
+            "title": "Hide & Unhide category"
+          },
+          {
+            "path": "en/docs/delete-category",
+            "title": "Delete category"
+          },
+          {
+            "path": "en/docs/move-category",
+            "title": "Move category"
+          },
+          {
+            "path": "en/docs/emoji",
+            "title": "Emoji"
+          },
+          {
+            "path": "en/docs/callouts",
+            "title": "Callouts"
+          },
+          {
+            "path": "en/docs/accordions",
+            "title": "Accordions"
+          },
+          {
+            "path": "en/docs/dividers",
+            "title": "Dividers"
+          },
+          {
+            "path": "en/docs/formatting",
+            "title": "Formatting"
+          },
+          {
+            "path": "en/docs/text-elements",
+            "title": "Text elements"
+          },
+          {
+            "path": "en/docs/troubleshooting-editor-issues",
+            "title": "Troubleshooting editor issues"
+          },
+          {
+            "path": "en/docs/assigning-drive-folder-for-a-category",
+            "title": "Mapping a category with a folder in Drive"
+          },
+          {
+            "path": "en/docs/ai-chart-generator",
+            "title": "AI chart generator"
+          },
+          {
+            "path": "en/docs/seo-description-generator",
+            "title": "AI & search description generator"
+          },
+          {
+            "path": "en/docs/ai-title-recommender",
+            "title": "AI title recommender"
+          },
+          {
+            "path": "en/docs/ai-writing-agent",
+            "title": "AI writing agent"
+          },
+          {
+            "path": "en/docs/manage-chatbot",
+            "title": "Manage chatbot"
+          },
+          {
+            "path": "en/docs/chatbot-security",
+            "title": "Security"
+          },
+          {
+            "path": "en/docs/chatbot-custom-css-and-javascript",
+            "title": "Custom CSS & JavaScript"
+          },
+          {
+            "path": "en/docs/chatbot-appearance",
+            "title": "Appearance"
+          },
+          {
+            "path": "en/docs/chatbot-embed-code",
+            "title": "Embed code"
+          },
+          {
+            "path": "en/docs/how-to-use-postman",
+            "title": "How to use Postman"
+          },
+          {
+            "path": "en/docs/mcp-vs-standard-api",
+            "title": "MCP vs standard API"
+          },
+          {
+            "path": "en/docs/set-a-default-folder",
+            "title": "Set a default folder"
+          },
+          {
+            "path": "en/docs/implementing-audience-based-content-segregation-with-custom-fields",
+            "title": "Implementing audience-based content segregation with custom fields for external platforms"
+          },
+          {
+            "path": "en/docs/how-to-use-swagger",
+            "title": "How to use Swagger"
+          },
+          {
+            "path": "en/docs/ai-for-knowledge-base-site",
+            "title": "AI for knowledge base site"
+          },
+          {
+            "path": "en/docs/gen-ai-friendly-content-checklist",
+            "title": "Gen AI friendly content checklist"
+          },
+          {
+            "path": "en/docs/eddy-ai-trust-center",
+            "title": "Eddy AI trust center"
+          },
+          {
+            "path": "en/docs/snippets-1",
+            "title": "Snippets"
+          },
+          {
+            "path": "en/docs/troubleshooting-drive-issues",
+            "title": "Troubleshooting drive issues"
+          },
+          {
+            "path": "en/docs/variables-1",
+            "title": "Variables"
+          },
+          {
+            "path": "en/docs/tag-groups-overview",
+            "title": "Tag groups"
+          },
+          {
+            "path": "en/docs/sitemap-generator",
+            "title": "Sitemap"
+          },
+          {
+            "path": "en/docs/star-a-folder",
+            "title": "Star a folder"
+          },
+          {
+            "path": "en/docs/change-folder-color",
+            "title": "Change folder color"
+          },
+          {
+            "path": "en/docs/rename-a-folder",
+            "title": "Rename a folder"
+          },
+          {
+            "path": "en/docs/move-a-folder",
+            "title": "Move a folder"
+          },
+          {
+            "path": "en/docs/system-folders",
+            "title": "System folders"
+          },
+          {
+            "path": "en/docs/prompt-template-gen-ai-friendly-writing",
+            "title": "Prompt template: Gen AI friendly writing"
+          },
+          {
+            "path": "en/docs/ai-settings",
+            "title": "AI settings"
+          },
+          {
+            "path": "en/docs/keyboard-shortcuts",
+            "title": "Keyboard shortcuts"
+          },
+          {
+            "path": "en/docs/quickstart",
+            "title": "Quickstart"
+          },
+          {
+            "path": "en/docs/screen-capturing",
+            "title": "Screen capturing"
+          },
+          {
+            "path": "en/docs/troubleshooting-mcp-issues",
+            "title": "Troubleshooting MCP issues"
+          },
+          {
+            "path": "en/docs/knowledge-pulse",
+            "title": "AI Knowledge pulse"
+          },
+          {
+            "path": "en/docs/categories-articles",
+            "title": "Content management"
+          },
+          {
+            "path": "en/docs/content-creation",
+            "title": "Content creation"
+          },
+          {
+            "path": "en/docs/document360-mcp",
+            "title": "Document360 MCP"
+          },
+          {
+            "path": "en/docs/external-api-tools",
+            "title": "External API Tools"
+          },
+          {
+            "path": "en/docs/api-documentation-tool",
+            "title": "API Documentation"
+          },
+          {
+            "path": "en/docs/export-to-pdf",
+            "title": "Export to PDF"
+          },
+          {
+            "path": "en/docs/workflow",
+            "title": "Workflows"
+          },
+          {
+            "path": "en/docs/content-tools",
+            "title": "Content tools"
+          },
+          {
+            "path": "en/docs/getting-started",
+            "title": "Getting started"
+          },
+          {
+            "path": "docs/creating-interactive-decision-trees",
+            "title": "Creating interactive decision trees"
+          },
+          {
+            "path": "docs/eddy-ai",
+            "title": "AI features"
+          },
+          {
+            "path": "docs/eddy-ai-search-analytics",
+            "title": "Eddy AI search analytics"
+          },
+          {
+            "path": "docs/api-keys",
+            "title": "API keys"
+          },
+          {
+            "path": "docs/article",
+            "title": "Managing articles"
+          },
+          {
+            "path": "docs/managing-articles",
+            "title": "Move articles"
+          },
+          {
+            "path": "docs/clone-articles",
+            "title": "Clone articles"
+          },
+          {
+            "path": "docs/mirror-articles",
+            "title": "Mirror articles"
+          },
+          {
+            "path": "docs/archive-articles",
+            "title": "Archive articles"
+          },
+          {
+            "path": "docs/delete-articles",
+            "title": "Delete articles"
+          },
+          {
+            "path": "docs/hide-unhide-articles",
+            "title": "Hide & Unhide articles"
+          },
+          {
+            "path": "docs/star-articles",
+            "title": "Star articles"
+          },
+          {
+            "path": "docs/lock-unlock-article",
+            "title": "Lock & Unlock article"
+          },
+          {
+            "path": "docs/publishing-an-article",
+            "title": "Publish articles"
+          },
+          {
+            "path": "docs/schedule-publishing",
+            "title": "Schedule publishing"
+          },
+          {
+            "path": "docs/unpublishing-an-article",
+            "title": "Unpublishing an article"
+          },
+          {
+            "path": "docs/article-status",
+            "title": "Article status"
+          },
+          {
+            "path": "docs/updating-article-contributors",
+            "title": "Update article contributors"
+          },
+          {
+            "path": "docs/filter-bulk-operations",
+            "title": "Filter articles"
+          },
+          {
+            "path": "docs/export-bulk-operations",
+            "title": "Export all articles"
+          },
+          {
+            "path": "docs/table-of-contents",
+            "title": "Table of contents"
+          },
+          {
+            "path": "docs/feedback-management",
+            "title": "Feedback management"
+          },
+          {
+            "path": "docs/reviewing-an-article-inline-comments",
+            "title": "reviewing an article inline comments"
+          },
+          {
+            "path": "docs/customize-site",
+            "title": "customize site"
+          },
+          {
+            "path": "docs/managing-team-account",
+            "title": "managing team account"
+          },
+          {
+            "path": "docs/roles",
+            "title": "roles"
+          },
+          {
+            "path": "docs/analytics",
+            "title": "analytics"
+          },
+          {
+            "path": "docs/single-sign-on-sso",
+            "title": "single sign on sso"
+          },
+          {
+            "path": "docs/private-hosting",
+            "title": "private hosting"
           }
         ]
       }
@@ -1362,12 +1226,12 @@
     "robots:follow": true
   },
   "icons": {
-    "library": "tabler"
+    "library": "lucide"
   },
-  "initialRoute": "trip-fixed-starting-dates-introduction",
+  "initialRoute": "en/docs/migrate-to-async-api-reference-import-resync",
   "customCss": [
     {
-      "src": "styles/footer-overrides.css"
+      "src": "styles/migration.css"
     }
   ],
   "footer": {
@@ -1408,5 +1272,1093 @@
   "banner": {
     "content": "this is testing ",
     "color": "#6b7280"
-  }
+  },
+  "favicon": "https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777275056-mlvc8pkq4y-favicon.png?fm=auto&auto=compress%2Cformat",
+  "template": "classic",
+  "redirects": [
+    {
+      "destination": "/en/docs/migrate-to-async-api-reference-import-resync",
+      "source": "/docs/migrate-to-async-api-reference-import-resync"
+    },
+    {
+      "destination": "/en/docs/article-feedback",
+      "source": "/docs/article-feedback"
+    },
+    {
+      "destination": "/en/docs/translate-with-eddy-ai",
+      "source": "/docs/translate-with-eddy-ai"
+    },
+    {
+      "destination": "/en/docs/configure-chatbot",
+      "source": "/docs/configure-chatbot"
+    },
+    {
+      "destination": "/en/docs/chatbot-ticket-escalation",
+      "source": "/docs/chatbot-ticket-escalation"
+    },
+    {
+      "destination": "/en/docs/create-chatbot",
+      "source": "/docs/create-chatbot"
+    },
+    {
+      "destination": "/en/docs/mcp-prompt-guide",
+      "source": "/docs/mcp-prompt-guide"
+    },
+    {
+      "destination": "/en/docs/supported-mcp-tools",
+      "source": "/docs/supported-mcp-tools"
+    },
+    {
+      "destination": "/en/docs/mcp-use-cases-in-document360",
+      "source": "/docs/mcp-use-cases-in-document360"
+    },
+    {
+      "destination": "/en/docs/mcp",
+      "source": "/docs/mcp"
+    },
+    {
+      "destination": "/en/docs/manage-workspace",
+      "source": "/docs/manage-workspace"
+    },
+    {
+      "destination": "/en/docs/getting-started-with-multi-lingual-knowledge-base",
+      "source": "/docs/getting-started-with-multi-lingual-knowledge-base"
+    },
+    {
+      "destination": "/en/docs/workspaces",
+      "source": "/docs/workspaces"
+    },
+    {
+      "destination": "/en/docs/editing-and-deleting-glossary-term",
+      "source": "/docs/editing-and-deleting-glossary-term"
+    },
+    {
+      "destination": "/en/docs/tasks-page",
+      "source": "/docs/tasks-page"
+    },
+    {
+      "destination": "/en/docs/review-reminders",
+      "source": "/docs/review-reminders"
+    },
+    {
+      "destination": "/en/docs/manage-article-feedback",
+      "source": "/docs/manage-article-feedback"
+    },
+    {
+      "destination": "/en/docs/feedback-manager-overview",
+      "source": "/docs/feedback-manager-overview"
+    },
+    {
+      "destination": "/en/docs/find-and-replace",
+      "source": "/docs/find-and-replace"
+    },
+    {
+      "destination": "/en/docs/managing-interactive-decision-trees",
+      "source": "/docs/managing-interactive-decision-trees"
+    },
+    {
+      "destination": "/en/docs/view-file-details",
+      "source": "/docs/view-file-details"
+    },
+    {
+      "destination": "/en/docs/move-files",
+      "source": "/docs/move-files"
+    },
+    {
+      "destination": "/en/docs/remove-folders",
+      "source": "/docs/remove-folders"
+    },
+    {
+      "destination": "/en/docs/add-a-folder",
+      "source": "/docs/add-a-folder"
+    },
+    {
+      "destination": "/en/docs/api-integration-patterns-headless-content-delivery-metadata-driven-access-contro",
+      "source": "/docs/api-integration-patterns-headless-content-delivery-metadata-driven-access-contro"
+    },
+    {
+      "destination": "/en/docs/article-seo",
+      "source": "/docs/article-seo"
+    },
+    {
+      "destination": "/en/docs/seo-descriptions",
+      "source": "/docs/seo-descriptions"
+    },
+    {
+      "destination": "/en/docs/pdf-design-templates",
+      "source": "/docs/pdf-design-templates"
+    },
+    {
+      "destination": "/en/docs/advanced-elements",
+      "source": "/docs/advanced-elements"
+    },
+    {
+      "destination": "/en/docs/video-recording",
+      "source": "/docs/video-recording"
+    },
+    {
+      "destination": "/en/docs/interactive-demo",
+      "source": "/docs/interactive-demo"
+    },
+    {
+      "destination": "/en/docs/advanced-content-creation-tools",
+      "source": "/docs/advanced-content-creation-tools"
+    },
+    {
+      "destination": "/en/docs/ai-writer-suite",
+      "source": "/docs/ai-writer-suite"
+    },
+    {
+      "destination": "/en/docs/managing-chapters",
+      "source": "/docs/managing-chapters"
+    },
+    {
+      "destination": "/en/docs/creating-and-recording-step-by-step-guides",
+      "source": "/docs/creating-and-recording-step-by-step-guides"
+    },
+    {
+      "destination": "/en/docs/managing-step-by-step-guides",
+      "source": "/docs/managing-step-by-step-guides"
+    },
+    {
+      "destination": "/en/docs/editing-a-step-by-step-guide",
+      "source": "/docs/editing-a-step-by-step-guide"
+    },
+    {
+      "destination": "/en/docs/ai-alt-text-generator",
+      "source": "/docs/ai-alt-text-generator"
+    },
+    {
+      "destination": "/en/docs/editing-interactive-demo",
+      "source": "/docs/editing-interactive-demo"
+    },
+    {
+      "destination": "/en/docs/recording-interactive-demo",
+      "source": "/docs/recording-interactive-demo"
+    },
+    {
+      "destination": "/en/docs/screen-capturing-from-the-editor",
+      "source": "/docs/screen-capturing-from-the-editor"
+    },
+    {
+      "destination": "/en/docs/document360-engage",
+      "source": "/docs/document360-engage"
+    },
+    {
+      "destination": "/en/docs/ai-native-documentation",
+      "source": "/docs/ai-native-documentation"
+    },
+    {
+      "destination": "/en/docs/replace-a-file",
+      "source": "/docs/replace-a-file"
+    },
+    {
+      "destination": "/en/docs/troubleshooting-interactive-demo",
+      "source": "/docs/troubleshooting-interactive-demo"
+    },
+    {
+      "destination": "/en/docs/annotation",
+      "source": "/docs/annotation"
+    },
+    {
+      "destination": "/en/docs/zoom",
+      "source": "/docs/zoom"
+    },
+    {
+      "destination": "/en/docs/spotlight",
+      "source": "/docs/spotlight"
+    },
+    {
+      "destination": "/en/docs/highlight",
+      "source": "/docs/highlight"
+    },
+    {
+      "destination": "/en/docs/crop",
+      "source": "/docs/crop"
+    },
+    {
+      "destination": "/en/docs/trim",
+      "source": "/docs/trim"
+    },
+    {
+      "destination": "/en/docs/music",
+      "source": "/docs/music"
+    },
+    {
+      "destination": "/en/docs/voice",
+      "source": "/docs/voice"
+    },
+    {
+      "destination": "/en/docs/text",
+      "source": "/docs/text"
+    },
+    {
+      "destination": "/en/docs/camera",
+      "source": "/docs/camera"
+    },
+    {
+      "destination": "/en/docs/advanced-images",
+      "source": "/docs/advanced-images"
+    },
+    {
+      "destination": "/en/docs/hotspots",
+      "source": "/docs/hotspots"
+    },
+    {
+      "destination": "/en/docs/call-to-action",
+      "source": "/docs/call-to-action"
+    },
+    {
+      "destination": "/en/docs/blur",
+      "source": "/docs/blur"
+    },
+    {
+      "destination": "/en/docs/editing-video",
+      "source": "/docs/editing-video"
+    },
+    {
+      "destination": "/en/docs/recording-video",
+      "source": "/docs/recording-video"
+    },
+    {
+      "destination": "/en/docs/revision-history",
+      "source": "/docs/revision-history"
+    },
+    {
+      "destination": "/en/docs/duplicate-content-detection",
+      "source": "/docs/duplicate-content-detection"
+    },
+    {
+      "destination": "/en/docs/configure-ai-assistive-search",
+      "source": "/docs/configure-ai-assistive-search"
+    },
+    {
+      "destination": "/en/docs/ai-safety-testing-and-defence",
+      "source": "/docs/ai-safety-testing-and-defence"
+    },
+    {
+      "destination": "/en/docs/ai-glossary-generator",
+      "source": "/docs/ai-glossary-generator"
+    },
+    {
+      "destination": "/en/docs/editor-elements",
+      "source": "/docs/editor-elements"
+    },
+    {
+      "destination": "/en/docs/related-articles",
+      "source": "/docs/related-articles"
+    },
+    {
+      "destination": "/en/docs/ai-related-articles-recommender",
+      "source": "/docs/ai-related-articles-recommender"
+    },
+    {
+      "destination": "/en/docs/article-tags",
+      "source": "/docs/article-tags"
+    },
+    {
+      "destination": "/en/docs/ai-tag-recommender",
+      "source": "/docs/ai-tag-recommender"
+    },
+    {
+      "destination": "/en/docs/read-out-loud",
+      "source": "/docs/read-out-loud"
+    },
+    {
+      "destination": "/en/docs/organizing-your-knowledge-base",
+      "source": "/docs/organizing-your-knowledge-base"
+    },
+    {
+      "destination": "/en/docs/screen-capturing-from-the-drive",
+      "source": "/docs/screen-capturing-from-the-drive"
+    },
+    {
+      "destination": "/en/docs/read-receipt",
+      "source": "/docs/read-receipt"
+    },
+    {
+      "destination": "/en/docs/article-management",
+      "source": "/docs/article-management"
+    },
+    {
+      "destination": "/en/docs/code-view",
+      "source": "/docs/code-view"
+    },
+    {
+      "destination": "/en/docs/ai-chatbot",
+      "source": "/docs/ai-chatbot"
+    },
+    {
+      "destination": "/en/docs/chatbot-playground",
+      "source": "/docs/chatbot-playground"
+    },
+    {
+      "destination": "/en/docs/clone-category",
+      "source": "/docs/clone-category"
+    },
+    {
+      "destination": "/en/docs/downloading-category-and-article-in-kb-site",
+      "source": "/docs/downloading-category-and-article-in-kb-site"
+    },
+    {
+      "destination": "/en/docs/export-articles-as-pdf",
+      "source": "/docs/export-articles-as-pdf"
+    },
+    {
+      "destination": "/en/docs/article-analytics",
+      "source": "/docs/article-analytics"
+    },
+    {
+      "destination": "/en/docs/navigating-document360",
+      "source": "/docs/navigating-document360"
+    },
+    {
+      "destination": "/en/docs/ai-assistive-search",
+      "source": "/docs/ai-assistive-search"
+    },
+    {
+      "destination": "/en/docs/ai-security-policies",
+      "source": "/docs/ai-security-policies"
+    },
+    {
+      "destination": "/en/docs/use-and-translate-variables",
+      "source": "/docs/use-and-translate-variables"
+    },
+    {
+      "destination": "/en/docs/variables",
+      "source": "/docs/variables"
+    },
+    {
+      "destination": "/en/docs/rename-a-file",
+      "source": "/docs/rename-a-file"
+    },
+    {
+      "destination": "/en/docs/manage-ai-assistive-search",
+      "source": "/docs/manage-ai-assistive-search"
+    },
+    {
+      "destination": "/en/docs/import-from-word",
+      "source": "/docs/import-from-word"
+    },
+    {
+      "destination": "/en/docs/links",
+      "source": "/docs/links"
+    },
+    {
+      "destination": "/en/docs/prompt-engineering-tips",
+      "source": "/docs/prompt-engineering-tips"
+    },
+    {
+      "destination": "/en/docs/getting-started-with-api-documentation",
+      "source": "/docs/getting-started-with-api-documentation"
+    },
+    {
+      "destination": "/en/docs/api-fundamentals",
+      "source": "/docs/api-fundamentals"
+    },
+    {
+      "destination": "/en/docs/manage-files",
+      "source": "/docs/manage-files"
+    },
+    {
+      "destination": "/en/docs/drive",
+      "source": "/docs/drive"
+    },
+    {
+      "destination": "/en/docs/ai-naming-rules-for-drive-images",
+      "source": "/docs/ai-naming-rules-for-drive-images"
+    },
+    {
+      "destination": "/en/docs/how-drive-works",
+      "source": "/docs/how-drive-works"
+    },
+    {
+      "destination": "/en/docs/adding-folders-and-files",
+      "source": "/docs/adding-folders-and-files"
+    },
+    {
+      "destination": "/en/docs/manage-api-references",
+      "source": "/docs/manage-api-references"
+    },
+    {
+      "destination": "/en/docs/copy-files",
+      "source": "/docs/copy-files"
+    },
+    {
+      "destination": "/en/docs/add-tags-and-alt-text-to-files",
+      "source": "/docs/add-tags-and-alt-text-to-files"
+    },
+    {
+      "destination": "/en/docs/add-a-file",
+      "source": "/docs/add-a-file"
+    },
+    {
+      "destination": "/en/docs/recycle-bin-recent-and-starred-files",
+      "source": "/docs/recycle-bin-recent-and-starred-files"
+    },
+    {
+      "destination": "/en/docs/connect-mcp-to-your-ai-assistant",
+      "source": "/docs/connect-mcp-to-your-ai-assistant"
+    },
+    {
+      "destination": "/en/docs/categories-and-subcategories",
+      "source": "/docs/categories-and-subcategories"
+    },
+    {
+      "destination": "/en/docs/snippets",
+      "source": "/docs/snippets"
+    },
+    {
+      "destination": "/en/docs/tag-dependency-viewer",
+      "source": "/docs/tag-dependency-viewer"
+    },
+    {
+      "destination": "/en/docs/external-sources-for-ai-assistive-search",
+      "source": "/docs/external-sources-for-ai-assistive-search"
+    },
+    {
+      "destination": "/en/docs/view-file-dependencies",
+      "source": "/docs/view-file-dependencies"
+    },
+    {
+      "destination": "/en/docs/archive-category",
+      "source": "/docs/archive-category"
+    },
+    {
+      "destination": "/en/docs/archived-page",
+      "source": "/docs/archived-page"
+    },
+    {
+      "destination": "/en/docs/share-articles-via-private-link",
+      "source": "/docs/share-articles-via-private-link"
+    },
+    {
+      "destination": "/en/docs/status-indicator",
+      "source": "/docs/status-indicator"
+    },
+    {
+      "destination": "/en/docs/changing-the-url-of-an-article",
+      "source": "/docs/changing-the-url-of-an-article"
+    },
+    {
+      "destination": "/en/docs/custom-fields",
+      "source": "/docs/custom-fields"
+    },
+    {
+      "destination": "/en/docs/marking-articles-as-deprecated",
+      "source": "/docs/marking-articles-as-deprecated"
+    },
+    {
+      "destination": "/en/docs/adding-article-labels",
+      "source": "/docs/adding-article-labels"
+    },
+    {
+      "destination": "/en/docs/excluding-articles-from-searches",
+      "source": "/docs/excluding-articles-from-searches"
+    },
+    {
+      "destination": "/en/docs/attachments",
+      "source": "/docs/attachments"
+    },
+    {
+      "destination": "/en/docs/featured-image",
+      "source": "/docs/featured-image"
+    },
+    {
+      "destination": "/en/docs/preferences",
+      "source": "/docs/preferences"
+    },
+    {
+      "destination": "/en/docs/all-files",
+      "source": "/docs/all-files"
+    },
+    {
+      "destination": "/en/docs/manage-folders",
+      "source": "/docs/manage-folders"
+    },
+    {
+      "destination": "/en/docs/interactive-decision-tree",
+      "source": "/docs/interactive-decision-tree"
+    },
+    {
+      "destination": "/en/docs/markdown-editor",
+      "source": "/docs/markdown-editor"
+    },
+    {
+      "destination": "/en/docs/create-article",
+      "source": "/docs/create-article"
+    },
+    {
+      "destination": "/en/docs/settings-for-interactive-decision-trees",
+      "source": "/docs/settings-for-interactive-decision-trees"
+    },
+    {
+      "destination": "/en/docs/viewing-interactive-decision-trees-kb-site",
+      "source": "/docs/viewing-interactive-decision-trees-kb-site"
+    },
+    {
+      "destination": "/en/docs/manage-labels",
+      "source": "/docs/manage-labels"
+    },
+    {
+      "destination": "/en/docs/google-translate-vs-native-localization",
+      "source": "/docs/google-translate-vs-native-localization"
+    },
+    {
+      "destination": "/en/docs/troubleshooting-ai-search-issues",
+      "source": "/docs/troubleshooting-ai-search-issues"
+    },
+    {
+      "destination": "/en/docs/troubleshooting-ai-translation",
+      "source": "/docs/troubleshooting-ai-translation"
+    },
+    {
+      "destination": "/en/docs/files",
+      "source": "/docs/files"
+    },
+    {
+      "destination": "/en/docs/robotstxt",
+      "source": "/docs/robotstxt"
+    },
+    {
+      "destination": "/en/docs/gen-ai-friendly-content",
+      "source": "/docs/gen-ai-friendly-content"
+    },
+    {
+      "destination": "/en/docs/seo",
+      "source": "/docs/seo"
+    },
+    {
+      "destination": "/en/docs/step-by-step-guides",
+      "source": "/docs/step-by-step-guides"
+    },
+    {
+      "destination": "/en/docs/llms-txt",
+      "source": "/docs/llms-txt"
+    },
+    {
+      "destination": "/en/docs/editor",
+      "source": "/docs/editor"
+    },
+    {
+      "destination": "/en/docs/ai-writer",
+      "source": "/docs/ai-writer"
+    },
+    {
+      "destination": "/en/docs/collaborative-editing",
+      "source": "/docs/collaborative-editing"
+    },
+    {
+      "destination": "/en/docs/create-template",
+      "source": "/docs/create-template"
+    },
+    {
+      "destination": "/en/docs/inline-comments",
+      "source": "/docs/inline-comments"
+    },
+    {
+      "destination": "/en/docs/images",
+      "source": "/docs/images"
+    },
+    {
+      "destination": "/en/docs/managing-workflow-status",
+      "source": "/docs/managing-workflow-status"
+    },
+    {
+      "destination": "/en/docs/basic-markdown-syntax",
+      "source": "/docs/basic-markdown-syntax"
+    },
+    {
+      "destination": "/en/docs/connect-claude-to-document360-mcp",
+      "source": "/docs/connect-claude-to-document360-mcp"
+    },
+    {
+      "destination": "/en/docs/connect-mcp-using-custom-connectors",
+      "source": "/docs/connect-mcp-using-custom-connectors"
+    },
+    {
+      "destination": "/en/docs/localization-getting-started",
+      "source": "/docs/localization-getting-started"
+    },
+    {
+      "destination": "/en/docs/faq",
+      "source": "/docs/faq"
+    },
+    {
+      "destination": "/en/docs/ai-faq-generator",
+      "source": "/docs/ai-faq-generator"
+    },
+    {
+      "destination": "/en/docs/tables",
+      "source": "/docs/tables"
+    },
+    {
+      "destination": "/en/docs/troubleshooting-ai-for-knowledge-base-site-issues",
+      "source": "/docs/troubleshooting-ai-for-knowledge-base-site-issues"
+    },
+    {
+      "destination": "/en/docs/troubleshooting-advanced-content-creation-tools",
+      "source": "/docs/troubleshooting-advanced-content-creation-tools"
+    },
+    {
+      "destination": "/en/docs/install-document360-ai-capture-extension",
+      "source": "/docs/install-document360-ai-capture-extension"
+    },
+    {
+      "destination": "/en/docs/welcome-to-document360",
+      "source": "/docs/welcome-to-document360"
+    },
+    {
+      "destination": "/en/docs/article-redirect-rules",
+      "source": "/docs/article-redirect-rules"
+    },
+    {
+      "destination": "/en/docs/testing-endpoints-with-try-it",
+      "source": "/docs/testing-endpoints-with-try-it"
+    },
+    {
+      "destination": "/en/docs/using-variables-in-the-try-it-console",
+      "source": "/docs/using-variables-in-the-try-it-console"
+    },
+    {
+      "destination": "/en/docs/custom-pages",
+      "source": "/docs/custom-pages"
+    },
+    {
+      "destination": "/en/docs/using-eddy-ai-in-the-api-reference",
+      "source": "/docs/using-eddy-ai-in-the-api-reference"
+    },
+    {
+      "destination": "/en/docs/authorizing-requests-in-the-try-it-console",
+      "source": "/docs/authorizing-requests-in-the-try-it-console"
+    },
+    {
+      "destination": "/en/docs/recycle-bin-page",
+      "source": "/docs/recycle-bin-page"
+    },
+    {
+      "destination": "/en/docs/troubleshooting-api-import-issues",
+      "source": "/docs/troubleshooting-api-import-issues"
+    },
+    {
+      "destination": "/en/docs/troubleshooting-api-spec-configuration-issues",
+      "source": "/docs/troubleshooting-api-spec-configuration-issues"
+    },
+    {
+      "destination": "/en/docs/troubleshooting-api-authentication-errors",
+      "source": "/docs/troubleshooting-api-authentication-errors"
+    },
+    {
+      "destination": "/en/docs/troubleshooting-api-access-and-permission-errors",
+      "source": "/docs/troubleshooting-api-access-and-permission-errors"
+    },
+    {
+      "destination": "/en/docs/troubleshooting-api-rendering-and-display-issues",
+      "source": "/docs/troubleshooting-api-rendering-and-display-issues"
+    },
+    {
+      "destination": "/en/docs/troubleshooting-api-kb-site-errors",
+      "source": "/docs/troubleshooting-api-kb-site-errors"
+    },
+    {
+      "destination": "/en/docs/troubleshooting-api-category-and-navigation-issues",
+      "source": "/docs/troubleshooting-api-category-and-navigation-issues"
+    },
+    {
+      "destination": "/en/docs/overview-page",
+      "source": "/docs/overview-page"
+    },
+    {
+      "destination": "/en/docs/latex",
+      "source": "/docs/latex"
+    },
+    {
+      "destination": "/en/docs/ci-cd-integration",
+      "source": "/docs/ci-cd-integration"
+    },
+    {
+      "destination": "/en/docs/migrate-to-document360",
+      "source": "/docs/migrate-to-document360"
+    },
+    {
+      "destination": "/en/docs/workspaces-languages",
+      "source": "/docs/workspaces-languages"
+    },
+    {
+      "destination": "/en/docs/use-and-translate-snippets",
+      "source": "/docs/use-and-translate-snippets"
+    },
+    {
+      "destination": "/en/docs/private-notes",
+      "source": "/docs/private-notes"
+    },
+    {
+      "destination": "/en/docs/glossary",
+      "source": "/docs/glossary"
+    },
+    {
+      "destination": "/en/docs/tabs",
+      "source": "/docs/tabs"
+    },
+    {
+      "destination": "/en/docs/connect-chatgpt-to-document360-mcp",
+      "source": "/docs/connect-chatgpt-to-document360-mcp"
+    },
+    {
+      "destination": "/en/docs/managing-endpoint-articles",
+      "source": "/docs/managing-endpoint-articles"
+    },
+    {
+      "destination": "/en/docs/ai-style-guide",
+      "source": "/docs/ai-style-guide"
+    },
+    {
+      "destination": "/en/docs/ai-article-summarizer",
+      "source": "/docs/ai-article-summarizer"
+    },
+    {
+      "destination": "/en/docs/ask-eddy-ai-api",
+      "source": "/docs/ask-eddy-ai-api"
+    },
+    {
+      "destination": "/en/docs/ai-dynamic-related-articles-recommendation",
+      "source": "/docs/ai-dynamic-related-articles-recommendation"
+    },
+    {
+      "destination": "/en/docs/ai-customization",
+      "source": "/docs/ai-customization"
+    },
+    {
+      "destination": "/en/docs/article-discussion-feed",
+      "source": "/docs/article-discussion-feed"
+    },
+    {
+      "destination": "/en/docs/adding-videos-in-articles",
+      "source": "/docs/adding-videos-in-articles"
+    },
+    {
+      "destination": "/en/docs/editor-find-and-replace",
+      "source": "/docs/editor-find-and-replace"
+    },
+    {
+      "destination": "/en/docs/starred-page",
+      "source": "/docs/starred-page"
+    },
+    {
+      "destination": "/en/docs/recents-starred-and-recycle-bin-pages",
+      "source": "/docs/recents-starred-and-recycle-bin-pages"
+    },
+    {
+      "destination": "/en/docs/remove-files",
+      "source": "/docs/remove-files"
+    },
+    {
+      "destination": "/en/docs/download-files",
+      "source": "/docs/download-files"
+    },
+    {
+      "destination": "/en/docs/mermaid-diagrams",
+      "source": "/docs/mermaid-diagrams"
+    },
+    {
+      "destination": "/en/docs/category-types",
+      "source": "/docs/category-types"
+    },
+    {
+      "destination": "/en/docs/managing-categories",
+      "source": "/docs/managing-categories"
+    },
+    {
+      "destination": "/en/docs/embedding-external-content",
+      "source": "/docs/embedding-external-content"
+    },
+    {
+      "destination": "/en/docs/adding-glossary-term",
+      "source": "/docs/adding-glossary-term"
+    },
+    {
+      "destination": "/en/docs/import-pdf",
+      "source": "/docs/import-pdf"
+    },
+    {
+      "destination": "/en/docs/lists",
+      "source": "/docs/lists"
+    },
+    {
+      "destination": "/en/docs/create-with-eddy-ai",
+      "source": "/docs/create-with-eddy-ai"
+    },
+    {
+      "destination": "/en/docs/overview",
+      "source": "/docs/overview"
+    },
+    {
+      "destination": "/en/docs/inline-code-code-block",
+      "source": "/docs/inline-code-code-block"
+    },
+    {
+      "destination": "/en/docs/create-page-category",
+      "source": "/docs/create-page-category"
+    },
+    {
+      "destination": "/en/docs/article-access-control-knowledge-base-site",
+      "source": "/docs/article-access-control-knowledge-base-site"
+    },
+    {
+      "destination": "/en/docs/tags",
+      "source": "/docs/tags"
+    },
+    {
+      "destination": "/en/docs/adding-a-new-tag",
+      "source": "/docs/adding-a-new-tag"
+    },
+    {
+      "destination": "/en/docs/tag-manager-overview-page",
+      "source": "/docs/tag-manager-overview-page"
+    },
+    {
+      "destination": "/en/docs/adding-glossary-term-in-articles",
+      "source": "/docs/adding-glossary-term-in-articles"
+    },
+    {
+      "destination": "/en/docs/glossary-overview-page",
+      "source": "/docs/glossary-overview-page"
+    },
+    {
+      "destination": "/en/docs/workflow-designer",
+      "source": "/docs/workflow-designer"
+    },
+    {
+      "destination": "/en/docs/health-check-metrics",
+      "source": "/docs/health-check-metrics"
+    },
+    {
+      "destination": "/en/docs/index-category-seo",
+      "source": "/docs/index-category-seo"
+    },
+    {
+      "destination": "/en/docs/star-category",
+      "source": "/docs/star-category"
+    },
+    {
+      "destination": "/en/docs/rename-category",
+      "source": "/docs/rename-category"
+    },
+    {
+      "destination": "/en/docs/hide-unhide-category",
+      "source": "/docs/hide-unhide-category"
+    },
+    {
+      "destination": "/en/docs/delete-category",
+      "source": "/docs/delete-category"
+    },
+    {
+      "destination": "/en/docs/move-category",
+      "source": "/docs/move-category"
+    },
+    {
+      "destination": "/en/docs/emoji",
+      "source": "/docs/emoji"
+    },
+    {
+      "destination": "/en/docs/callouts",
+      "source": "/docs/callouts"
+    },
+    {
+      "destination": "/en/docs/accordions",
+      "source": "/docs/accordions"
+    },
+    {
+      "destination": "/en/docs/dividers",
+      "source": "/docs/dividers"
+    },
+    {
+      "destination": "/en/docs/formatting",
+      "source": "/docs/formatting"
+    },
+    {
+      "destination": "/en/docs/text-elements",
+      "source": "/docs/text-elements"
+    },
+    {
+      "destination": "/en/docs/troubleshooting-editor-issues",
+      "source": "/docs/troubleshooting-editor-issues"
+    },
+    {
+      "destination": "/en/docs/assigning-drive-folder-for-a-category",
+      "source": "/docs/assigning-drive-folder-for-a-category"
+    },
+    {
+      "destination": "/en/docs/ai-chart-generator",
+      "source": "/docs/ai-chart-generator"
+    },
+    {
+      "destination": "/en/docs/seo-description-generator",
+      "source": "/docs/seo-description-generator"
+    },
+    {
+      "destination": "/en/docs/ai-title-recommender",
+      "source": "/docs/ai-title-recommender"
+    },
+    {
+      "destination": "/en/docs/ai-writing-agent",
+      "source": "/docs/ai-writing-agent"
+    },
+    {
+      "destination": "/en/docs/manage-chatbot",
+      "source": "/docs/manage-chatbot"
+    },
+    {
+      "destination": "/en/docs/chatbot-security",
+      "source": "/docs/chatbot-security"
+    },
+    {
+      "destination": "/en/docs/chatbot-custom-css-and-javascript",
+      "source": "/docs/chatbot-custom-css-and-javascript"
+    },
+    {
+      "destination": "/en/docs/chatbot-appearance",
+      "source": "/docs/chatbot-appearance"
+    },
+    {
+      "destination": "/en/docs/chatbot-embed-code",
+      "source": "/docs/chatbot-embed-code"
+    },
+    {
+      "destination": "/en/docs/how-to-use-postman",
+      "source": "/docs/how-to-use-postman"
+    },
+    {
+      "destination": "/en/docs/mcp-vs-standard-api",
+      "source": "/docs/mcp-vs-standard-api"
+    },
+    {
+      "destination": "/en/docs/set-a-default-folder",
+      "source": "/docs/set-a-default-folder"
+    },
+    {
+      "destination": "/en/docs/implementing-audience-based-content-segregation-with-custom-fields",
+      "source": "/docs/implementing-audience-based-content-segregation-with-custom-fields"
+    },
+    {
+      "destination": "/en/docs/how-to-use-swagger",
+      "source": "/docs/how-to-use-swagger"
+    },
+    {
+      "destination": "/en/docs/ai-for-knowledge-base-site",
+      "source": "/docs/ai-for-knowledge-base-site"
+    },
+    {
+      "destination": "/en/docs/gen-ai-friendly-content-checklist",
+      "source": "/docs/gen-ai-friendly-content-checklist"
+    },
+    {
+      "destination": "/en/docs/eddy-ai-trust-center",
+      "source": "/docs/eddy-ai-trust-center"
+    },
+    {
+      "destination": "/en/docs/snippets-1",
+      "source": "/docs/snippets-1"
+    },
+    {
+      "destination": "/en/docs/troubleshooting-drive-issues",
+      "source": "/docs/troubleshooting-drive-issues"
+    },
+    {
+      "destination": "/en/docs/variables-1",
+      "source": "/docs/variables-1"
+    },
+    {
+      "destination": "/en/docs/tag-groups-overview",
+      "source": "/docs/tag-groups-overview"
+    },
+    {
+      "destination": "/en/docs/sitemap-generator",
+      "source": "/docs/sitemap-generator"
+    },
+    {
+      "destination": "/en/docs/star-a-folder",
+      "source": "/docs/star-a-folder"
+    },
+    {
+      "destination": "/en/docs/change-folder-color",
+      "source": "/docs/change-folder-color"
+    },
+    {
+      "destination": "/en/docs/rename-a-folder",
+      "source": "/docs/rename-a-folder"
+    },
+    {
+      "destination": "/en/docs/move-a-folder",
+      "source": "/docs/move-a-folder"
+    },
+    {
+      "destination": "/en/docs/system-folders",
+      "source": "/docs/system-folders"
+    },
+    {
+      "destination": "/en/docs/prompt-template-gen-ai-friendly-writing",
+      "source": "/docs/prompt-template-gen-ai-friendly-writing"
+    },
+    {
+      "destination": "/en/docs/ai-settings",
+      "source": "/docs/ai-settings"
+    },
+    {
+      "destination": "/en/docs/keyboard-shortcuts",
+      "source": "/docs/keyboard-shortcuts"
+    },
+    {
+      "destination": "/en/docs/quickstart",
+      "source": "/docs/quickstart"
+    },
+    {
+      "destination": "/en/docs/screen-capturing",
+      "source": "/docs/screen-capturing"
+    },
+    {
+      "destination": "/en/docs/troubleshooting-mcp-issues",
+      "source": "/docs/troubleshooting-mcp-issues"
+    },
+    {
+      "destination": "/en/docs/knowledge-pulse",
+      "source": "/docs/knowledge-pulse"
+    },
+    {
+      "destination": "/en/docs/categories-articles",
+      "source": "/docs/categories-articles"
+    },
+    {
+      "destination": "/en/docs/content-creation",
+      "source": "/docs/content-creation"
+    },
+    {
+      "destination": "/en/docs/document360-mcp",
+      "source": "/docs/document360-mcp"
+    },
+    {
+      "destination": "/en/docs/external-api-tools",
+      "source": "/docs/external-api-tools"
+    },
+    {
+      "destination": "/en/docs/api-documentation-tool",
+      "source": "/docs/api-documentation-tool"
+    },
+    {
+      "destination": "/en/docs/export-to-pdf",
+      "source": "/docs/export-to-pdf"
+    },
+    {
+      "destination": "/en/docs/workflow",
+      "source": "/docs/workflow"
+    },
+    {
+      "destination": "/en/docs/content-tools",
+      "source": "/docs/content-tools"
+    },
+    {
+      "destination": "/en/docs/getting-started",
+      "source": "/docs/getting-started"
+    }
+  ]
 }

@@ -1,0 +1,123 @@
+---
+title: Robots.txt
+description: A robots.txt file is used to communicate with web crawlers and other automated agents about which pages of your knowledge base should not be indexed.
+---
+
+A robots.txt file is a text file placed at the root of your knowledge base site that communicates with web crawlers and automated agents. It specifies which pages or sections of your site crawlers are allowed or not allowed to access. Search engines such as Google, Bing, and Yandex read this file before crawling your site to determine what content they should index.
+
+ NOTE
+
+A web crawler, also known as a spider or spiderbot, is an automated program that navigates the web and collects information about websites. Crawlers open pages, collect data such as links, broken links, sitemaps, and HTML code, and send it to their search engine's servers for indexing.
+
+In Document360, the robots.txt file is accessible and editable directly from the knowledge base site settings. It applies to your entire knowledge base site, not individual articles or categories.
+
+---
+
+## When to use Robots.txt
+
+- Prevent search engines from crawling and indexing internal, admin, or restricted sections of your knowledge base.
+- Block specific search engines from indexing your site entirely, for example, to control which search engines surface your content.
+- Add crawl delay rules when your site is experiencing high traffic and you want to reduce the load caused by bot activity.
+- Pair robots.txt with your sitemap to give crawlers a clear map of what to index and what to skip.
+
+ NOTE
+
+Robots.txt controls crawler access at the site level. To exclude individual articles or categories from search results, use the Search visibility settings instead. Learn about [Search visibility](/en/docs/excluding-articles-from-searches)
+
+---
+
+## Access Robots.txt in Document360
+
+1. Navigate to **Settings** () in the left navigation bar.
+2. Go to **Knowledge base site** > <strong>AI & search optimization (GEO/SEO)</strong>.
+3. Locate **Robots.txt** and click **Edit**. The **Robots.txt settings** panel appears.
+4. Enter your rules.
+5. Click **Update**.
+
+<Image src="https://cdn.document360.io/860f9f88-412e-4570-8222-d5bf2f4b7dd1/Images/Documentation/robots.txt%281%29.png" alt="Robots.txt configuration panel in the knowledge base site settings" />
+
+---
+
+## Common Robots.txt rules
+
+### Block all crawlers from a specific path
+
+Use this to prevent crawlers from accessing admin data or restricted sections.
+
+```plaintext
+User-agent: *
+Disallow: /admin/
+Sitemap: https://example.com/sitemap.xml
+```
+
+- `User-agent: *` applies the rule to all crawlers.
+- `Disallow: /admin/` prevents crawlers from accessing the admin path.
+- `Sitemap:` provides the sitemap URL so crawlers can discover all indexed pages efficiently.
+
+### Block a specific search engine
+
+Use this to prevent a particular search engine from crawling your site.
+
+```plaintext
+User-agent: Bingbot
+Disallow: /
+```
+
+- `User-agent: Bingbot` targets only the Bing search engine crawler.
+- `Disallow: /` prevents Bingbot from crawling any page on the site.
+
+### Add a crawl delay
+
+Use this to slow down the crawl speed of bots when your site is under high traffic load.
+
+```plaintext
+User-agent: *
+Crawl-delay: 10
+```
+
+- `Crawl-delay: 10` instructs crawlers to wait 10 seconds between requests.
+
+---
+
+## Best practices
+
+- Always include your sitemap URL in the robots.txt file so crawlers can easily discover your indexed pages.
+- Block pages that provide no value to search engine users, such as admin paths, login pages, or duplicate content paths.
+- Do not use robots.txt as a security measure. It is a public file and does not prevent unauthorized human access. Use access control settings for that.
+- Avoid blocking CSS or JavaScript files that search engines need to render and understand your pages.
+- Follow the format guidelines from [Google Search Central](https://developers.google.com/crawling/docs/robots-txt/create-robots-txt#format_location) to ensure your file is valid.
+- Test your robots.txt rules using Google Search Console's robots.txt tester before deploying changes.
+
+---
+
+## FAQ
+
+<Expandable title="What is the difference between Robots.txt and Search visibility settings in Document360?">
+  Robots.txt applies at the site level and controls which paths or sections crawlers can access across your entire knowledge base. Search visibility settings apply at the article or category level and let you exclude specific content from external search engines, the knowledge base search bar, or Eddy AI assistive search independently. Use both together for precise control over what gets indexed.
+</Expandable>
+
+<Expandable title="How do I remove my Document360 project from the Google search index?">
+  Go to **Settings** () > **Knowledge base site** > **Article settings and SEO** > **SEO** tab, click **Edit** in Robots.txt, paste the following code, and click **Update**.
+
+  ```plaintext
+  User-Agent: Googlebot
+  Disallow: /
+  ```
+</Expandable>
+
+<Expandable title="How do I prevent tag pages from being indexed by search engines?">
+  Go to **Settings** () > **Knowledge base site** > **Article settings and SEO** > **SEO** tab, click **Edit** in Robots.txt, paste the following code, and click **Update**.
+
+  ```plaintext
+  User-agent: *
+  Disallow: /docs/en/tags/
+  ```
+</Expandable>
+
+<Expandable title="Does Robots.txt prevent all crawlers from accessing blocked pages?">
+  Robots.txt is a voluntary standard. Most reputable search engine crawlers such as Googlebot and Bingbot respect it, but malicious bots may ignore it entirely. Do not rely on robots.txt to protect sensitive or private content. Use access control settings for that purpose.
+</Expandable>
+
+<Expandable title="Should I include my sitemap URL in the robots.txt file?">
+  Yes. Including the sitemap URL in your robots.txt file helps crawlers discover all the pages on your knowledge base site efficiently. Add it using the following format: `Sitemap: https://yourdomain.com/sitemap.xml`.
+</Expandable>

@@ -1,0 +1,310 @@
+---
+title: Troubleshooting editor issues
+description: Resolve unsupported HTML tags and formatting issues in your articles with our guide on using WYSIWYG editors effectively for consistent content display.
+---
+
+Use this article to resolve common issues you may encounter while working in the Document360 editor — from sections that can't be edited and formatting that breaks after pasting, to videos that won't load. Issues are grouped into three sections: fixable problems, expected platform behaviors (known limitations), and frequently asked how-to questions.
+
+---
+
+## Editing issues
+
+### Unable to edit the article section due to unsupported HTML tags
+
+This issue occurs when an article is converted from the WYSIWYG editor to the Advanced WYSIWYG editor, resulting in unsupported HTML tags.
+
+**Steps to resolve**
+
+If the issue has already occurred, review the article's code view and remove any unsupported HTML tags. These tags are typically wrapped within the `<editor360-custom-block>` tag. Removing this tag will restore editing functionality and resolve the issue.
+
+**To prevent this issue**
+
+1. Avoid converting articles from the standard WYSIWYG editor to the Advanced WYSIWYG editor.
+2. Instead, import or copy-paste content directly into the Advanced WYSIWYG editor to prevent formatting challenges.
+3. If the issue has already occurred, review the article’s code view and remove any unsupported HTML tags. These tags are typically wrapped within the `<editor360-custom-block>` tag. Removing this tag will restore editing functionality and resolve the issue.
+
+---
+
+## Formatting and display issues
+
+### Code block text is cut off or not displaying correctly
+
+This issue can occur when inline styling is applied directly to the code block within the article editor. Certain inline styles may affect the rendering behavior of the code block, causing the top portion of the text to appear cut off or improperly aligned on the published page.
+
+**Steps to resolve**
+
+Navigate to the code view of the specific article and remove the inline styling applied to the affected code blocks in the article editor. Once the inline styling is removed, the code block should render correctly on the knowledge base site.
+
+---
+
+### Normal text in the editor is displayed as a hyperlink on the live site
+
+This issue can occur when the article content contains empty `<a>` (anchor) tags or custom CSS applied to anchor elements, usually introduced while copying and pasting content from external sources.
+
+**Steps to resolve**
+
+- Remove the empty `<a>` tags from the article code view.
+- Remove any unnecessary custom CSS applied to anchor (`<a>`) elements.
+- Paste content without formatting using: 
+
+  - `Ctrl + Shift + V` (Windows)
+  - `Cmd + Shift + V` (Mac)
+
+This helps prevent unwanted hyperlink formatting on the live site.
+
+---
+
+### Article content formatting is inconsistent
+
+Formatting inconsistencies occur when content is copied and pasted from external sources, retaining original styles that conflict with the article's default formatting. To ensure uniform formatting across your article, follow the steps below:
+
+1. Select the entire content within the article. Select the **Clear** formatting option available in the **Format** menu to remove any inherited styles applied to the content while the article structure remains the same.
+2. After clearing the formatting, manually reapply necessary styles such as headings, lists, or bold text if needed.
+
+Clearing the formatting ensures that content displays consistently in both light and dark modes on the Knowledge base site.
+
+---
+
+### Font color is not displayed as intended in dark mode
+
+This case usually occurs when inline CSS styles are carried over while copying content from external sources (like web pages, documents, or PDFs). These styles often override the platform's default theme, causing low contrast or invisible text in dark mode.
+
+**To prevent this**
+
+- Paste as plain text using `Ctrl + Shift + V` (Windows) or `Cmd + Shift + V` (Mac) when adding content to an article.
+- This removes any unwanted formatting, keeping your content readable in both light and dark modes.
+
+If you've already pasted content and are facing readability concerns, try selecting the text and removing the inline formatting using the **Clear** option in the Advanced WYSIWYG editor.
+
+---
+
+## Videos and embed issues
+
+### Embedded video doesn’t load in the Editor
+
+In the editor, direct HTML player code is not supported. The player still tries to start from the HTML code, leading to network requests that stay in a pending state. To fix this problem, substitute the HTML player code with the iframe embed code.
+
+For instance, here's the Wistia HTML player code:
+
+`<wistia-player media-id=”lorem” aspect=”1.777777”></wistia-player'>`
+
+If you insert the HTML code, the video will not play. You need to utilize the iframe code that is supported:
+
+`<iframe src=”https://fast.wistia.net/embed/iframe/loremipsumloremipsum”> </iframe>`
+
+---
+
+### Some Wistia embed codes are not working in the editor
+
+Document360 supports video embedding primarily through supported HTML tags such as `<iframe>` and `<embed>` within the Advanced WYSIWYG editor.
+
+Some Wistia embed models, especially the **Popover** and **Legacy** embed types, include unsupported `<script>` and custom HTML tags. These unsupported tags are automatically sanitized by the editor for security and stability reasons. Because of this:
+
+- The embed may not get inserted properly
+- The editor may appear blank or unresponsive
+- Slowness or freezing can occur when unsupported code is added through code view
+
+**Recommended approach**
+
+We recommend using the **Wistia Inline embed format** with supported `<iframe>` embeds to ensure:
+
+---
+
+## Known limitations
+
+The behaviors in this section are by design. Where available, workarounds are included.
+
+### Tab spacing is not supported within list items
+
+Tab spacing is not supported within list items, so pressing the `Tab` key will not insert a tab character when the cursor is positioned inside a list item.
+
+---
+
+### Bold and italic formatting is not retained after Word import
+
+When importing Word documents, bold and italic formatting may not be preserved if the formatting is applied through Word character or paragraph styles (for example, **Strong**, *Emphasis*, or *Caption* styles) rather than using the inline formatting options available in the Word editor toolbar.
+
+This behavior is a known limitation of the current Word import implementation, which is based on Mammoth. The implementation includes a custom style mapping only for underline formatting and relies on Mammoth's default conversion behavior for other text styles. Mammoth's default processing converts formatting applied through inline run properties but does not convert formatting inherited through style references. As a result, bold and italic formatting defined via Word styles may not be reflected after import.
+
+---
+
+### Checklist items cannot be checked by readers on the Knowledge base site
+
+Checklist blocks created in the **Advanced WYSIWYG editor** are displayed as read-only on the **Knowledge base site** by design. Readers can check or uncheck checklist items only while editing the article inside the **Knowledge base portal**.
+
+If your use case requires temporary interaction on the live site, such as SOP walkthroughs or process validation, you can use **Custom CSS and JavaScript** to make the checklist checkboxes clickable.
+
+Example:
+
+```css
+#articleContent ul[data-type=taskList] li[data-checked] > label {
+  pointer-events: auto;
+}
+```
+
+<Callout kind="info">
+   NOTE
+
+  Any checklist state changed using this workaround is temporary and resets when the page is refreshed.
+</Callout>
+
+---
+
+### Text enclosed in angle brackets (&lt; >) disappears from article titles after saving
+
+This is an expected platform behavior. Any content enclosed within angle brackets (&lt; >) is automatically removed from article title fields.
+
+This restriction is in place as a security measure to prevent unintended HTML injection, which could affect the rendering and integrity of your Knowledge Base site.
+
+For example, if you enter &lt;Title> in an article title, the text may initially appear to be accepted but will be removed when the article is saved or created.
+
+To represent the same information in your title, consider using:
+
+- `[Event ID]`
+- `{Event ID}`
+
+These formats are supported and will be retained when the article is saved.
+
+---
+
+### Angle brackets work in the article body but not in the article title
+
+The article title and article body are designed to serve different purposes and are handled differently by the platform.
+
+**Article title**
+
+The article title maps to the HTML `<title>` element on the Knowledge Base site. This element supports plain text only and does not allow HTML markup. As a result, content that resembles HTML tags may be sanitized or removed to prevent unintended behavior.
+
+**Article body**
+
+The article body is designed to support formatted content. It allows a controlled set of HTML elements that are validated and sanitized before being rendered on the page.
+
+Because of these differences, content enclosed within angle brackets may be allowed in the article body under supported scenarios, while the same content is removed from the article title. This behavior is expected and aligns with the intended purpose and technical constraints of each field.
+
+<ExpandableGroup>
+  ---
+
+  ### FAQ
+
+  <Expandable title="Is it possible to add a code block without any heading?">
+    When using the Advanced WYSIWYG editor, it is not possible to add a code block without a name/heading. However, if you wish to hide the name of a code block, you can use Custom CSS code in the **Custom CSS & JavaScript** settings. Note that this change will apply to all the code blocks on your Knowledge base site.
+
+    You can use the Markdown editor to add a code block without a name or heading.
+  </Expandable>
+
+  <Expandable title="How can I add spaces in LaTeX formulas?">
+    To insert spaces in LaTeX formulas, use `\;` (a backslash followed by a semicolon) between terms.
+
+    <strong>Example:</strong><br />`Area = length\;*\;width`
+
+    <strong>Output:</strong><br />
+  </Expandable>
+
+  <Expandable title="How can I add numbering to my content in the Advanced WYSIWYG editor?">
+    You can add numbering to your content in three ways:
+
+    1. <strong>Type and press:</strong> Type `1.` and press `space` to start numbering.
+    2. <strong>Keyboard shortcut:</strong> Select the desired content and use the shortcut `Ctrl + Shift + 7` or `Ctrl + Shift + O`.
+    3. <strong>Format menu:</strong> Select the desired content, go to **Format**, and choose the **Numbered list** icon.
+
+    You can choose from various numbering styles, including Default (1, 2, etc.), Lower Alpha, Lower Greek, Lower Roman, Upper Alpha, and Upper Roman.
+  </Expandable>
+
+  <Expandable title="How do I delete an accordion block in the editor?">
+    You can delete an accordion block in two ways:
+
+    1. Remove all content from the accordion and press the **Backspace** key.
+    2. Hover over the accordion block, click the **drag handle** (six dots on the left), then press **Delete** or use the delete option from the toolbar that appears when you hover over the drag handle.
+  </Expandable>
+
+  <Expandable title="What are the different ways to create FAQ sections in Document360, and how do Accordion, FAQ Templates, and AI FAQ Generator compare?">
+    In Document360, there are three ways to create FAQ sections: Accordion, FAQ templates, and the AI FAQ generator. All three use accordion-style formatting, but they differ in how the content is added and managed. While Accordions are entirely manual, FAQ templates provide a structure, and the AI FAQ generator creates content based on the article.
+
+    |  | **Accordion** | **FAQ Templates** | **AI FAQ Generator** |
+    | :---: | :---: | :---: | :---: |
+    | **How to add** | Manually add each accordion item using the slash menu `/accordion`. | Insert a predefined FAQ skeleton using the slash menu `/FAQs`. | Generate FAQs using the Eddy icon beside the code view (requires a minimum of 150 words in the article). |
+    | **Content entry** | You have full control—type both the question and answer manually. | Only the structure is added; you fill in your questions and answers. | Questions and answers are generated automatically based on the article's content. |
+    | **Placement** | It can be placed anywhere in the article. | It can be inserted anywhere in the article. | Always added at the end of the article. |
+    | **Managing items** | Add, edit, or delete each accordion manually. | Delete or edit individual FAQ blocks as needed. | Edit, delete, lock specific FAQs, and regenerate others as needed. |
+    | **Reusability** | Does not provide reusable layouts. | Offers a consistent layout for reuse across articles. | FAQs are unique to each article and can be regenerated multiple times. |
+    | **Expand/Collapse** | Expand/collapse works at each accordion level only. | FAQs can be expanded or collapsed across the entire project. | FAQs can be expanded or collapsed across the entire project. |
+    | **Entry mode** | Fully manual entry. | Manual entry after inserting the layout. | You can manually add or edit the generated FAQs. |
+  </Expandable>
+
+  <Expandable title="How can I find the article ID of an article in Document360?">
+    To find an article ID in Document360:
+
+    1. Navigate to the **Knowledge base portal**.
+    2. In the **Documentation** () section in the left navigation bar, go to the desired article.
+    3. Look at the URL in your browser — the last part of the URL is the **article ID**.
+
+    <strong>Example URL:</strong><br />`https://portal.document360.io/860f9f88-412e-4570-8111-d5bf2f4b7dd1/document/help/view/6aac3117-05d0-4917-b22f-4e20fb65f9dc`
+
+    - In this example, `860f9f88-412e-4570-8111-d5bf2f4b7dd1` is the **project ID**.
+    - The last segment, `6aac3117-05d0-4917-b22f-4e20fb65f9dc` is the **article ID**.
+  </Expandable>
+
+  <Expandable title="How can I create a two-column layout in my Document360 articles?">
+    You can create a two-column layout (for example, article content on the left and additional notes or tips on the right) in your Document360 articles using **Custom CSS**.
+
+    1. Navigate to **Settings** () > **Knowledge base site** in the left navigation bar in the Knowledge base portal.
+    2. In the left navigation pane, navigate to **Customize site** > **Custom CSS & JavaScript**.
+    3. In the **CSS** tab, paste the following code:
+
+    ```css
+    .onehope {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        font-size: smaller;
+        background-color: white;
+    }
+    .onehope .onehope_left {
+        flex: 1;
+        margin-right: 0.5vw;
+        margin-top: 25px;
+        margin-left: 0.2vw;
+        text-align: justify;
+    }
+    .onehope .onehope_right {
+        flex: 1;
+        margin-right: 0vw;
+        margin-left: 1vw;
+        max-width: 30%;
+        text-align: justify;
+    } 
+    ```
+
+    4. In your article content, add the HTML structure. 
+
+       <Callout kind="info">
+          NOTE
+
+         You can use the content below directly in the Markdown editor. If you are working in a WYSIWYG or an Advanced WYSIWYG editor, switch to Code view and paste the same.
+       </Callout>
+    5. Here’s a sample:
+
+    ```css
+    <div class="onehope">
+        <div class="onehope_left">
+            <h3>How to reset your password</h3>
+            <p>If you forget your password, click <b>Forgot Password</b> on the login page. 
+            Enter your registered email, and you’ll receive a password reset link.</p>
+        </div>
+        <div class="onehope_right">
+            <h4>Tip</h4>
+            <p>For better security, choose a password with at least 8 characters, 
+            including numbers and special symbols.</p>
+        </div>
+    </div> 
+    ```
+
+    <Callout kind="info">
+       NOTE
+
+      Make sure the class names in your HTML (e.g., `onehope`, `onehope_left`, `onehope_right`) exactly match the class names you defined in your CSS. Otherwise, the layout won’t be applied.
+    </Callout>
+  </Expandable>
+</ExpandableGroup>
+
+The platform where project members manage and create content for the knowledge base. It allows users to create categories, articles, and templates; manage files, team accounts, and readers; and configure site settings such as branding, domain, and security.

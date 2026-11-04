@@ -1,0 +1,228 @@
+---
+title: MCP use cases in Document360
+description: Enhance your documentation workflow with MCP Server, enabling AI assistants to access your Document360 knowledge base while maintaining governance and version control.
+---
+
+The MCP Server enables external AI assistants to interact with your Document360 knowledge base in a structured way. These interactions do not bypass your governance model - they operate within your existing version, language, and visibility configuration. Below are practical scenarios that show how different roles can use MCP in their daily documentation workflows.
+
+---
+
+## Technical writers
+
+**Problem: Researching, drafting, and refining documentation takes context-switching and manual effort**
+
+Technical writers often move between multiple articles, versions, and categories to gather context before writing or updating content. They also need to ensure consistency in tone, terminology, and structure, especially when a Style Guide is configured. Switching between the editor, search, previous versions, and reference articles slows down drafting and review.
+
+**How MCP helps**
+
+With an AI assistant connected to Document360 through MCP, writers can:
+
+- Ask the assistant to fetch relevant articles before drafting new content
+- Brainstorm ideas grounded in existing documentation
+- Build a review list of everything in a category updated since a given date, to plan an audit or release
+- Refine or rewrite content directly within the documentation system
+- Update articles without manually copying content between tools
+- Check whether a product term is already in the glossary, add it if it is missing, and use the glossary term in articles to keep terminology consistent
+- Move updated articles to the appropriate workflow status and assign reviewers without switching to the portal
+- Publish approved content directly from the AI assistant once the review is complete
+- Schedule a review reminder on an article after updating it, so it is reviewed again before it goes out of date
+- Close reader feedback assigned to them after fixing the article, add a note on what changed, and let the reader know
+
+Instead of drafting in isolation and pasting content later, writers can work with context pulled from their own knowledge base. When updates are made, existing workflow and versioning behavior remains unchanged. New drafts, revision history, and review states continue to follow normal documentation processes.
+
+**Outcome**
+
+Technical writers reduce repetitive research, maintain better consistency across articles, and draft and publish content faster, while staying within the same documentation governance model.
+
+---
+
+## Developers
+
+**Problem: Developers need version-specific documentation while building features**
+
+Developers frequently switch between IDEs and AI-assisted coding environments such as Cursor or other AI-enabled tools. When referencing documentation, they need accurate, version-aware information without manually navigating the knowledge base.
+
+**How MCP helps**
+
+By connecting Document360 through MCP to their AI assistant within the IDE:
+
+- Developers can retrieve full article content instead of partial snippets
+- Search across all project versions by default, or specify a version
+- Access documentation in a selected language
+- Generate draft documentation for new endpoints or integrations
+- Send feedback to the documentation team when an article is unclear, outdated, or missing information, without leaving the IDE
+
+This allows documentation lookup and content creation to happen directly within the development workflow.
+
+**Outcome**
+
+Developers spend less time switching contexts and more time building with documentation that reflects the correct version and structure.
+
+---
+
+## Product managers and consultants
+
+**Problem: Validating documentation across releases is manual and fragmented**
+
+Product managers often need to compare feature descriptions across versions, prepare release notes, or validate that documentation reflects the latest product changes. Manually checking multiple versions and categories can be slow and inconsistent.
+
+**How MCP helps**
+
+Through MCP-enabled AI assistants, product teams can:
+
+- Retrieve documentation by specific project version
+- Compare how features are described across releases
+- Identify gaps before launch
+- Generate structured summaries for internal alignment or onboarding
+
+Because the interaction is structured, content is retrieved in context rather than as disconnected web output.
+
+**Outcome**
+
+Documentation becomes easier to validate before release, reducing misalignment between product updates and published knowledge.
+
+---
+
+## Support engineers
+
+**Problem: Support tickets expose knowledge gaps**
+
+When a support ticket arrives, engineers need to quickly determine whether relevant documentation already exists. Searching manually can be time-consuming, especially across multiple versions and languages. In some cases, documentation may not exist at all.
+
+**How MCP helps**
+
+With MCP connected to an AI assistant:
+
+- Support engineers can paste ticket context and ask the assistant to fetch relevant articles
+- Retrieve content by article name or ID
+- Search across versions and languages
+- Share article URLs directly with customers
+
+If no relevant article is found, then it means a knowledge gap exists in the knowledge base. Engineers can then:
+
+- Draft a new article based on the ticket context
+- Update an existing article to improve clarity
+- Push structured changes back into Document360
+- Move the article to review and assign the appropriate team member before it goes live
+- Publish the article directly once it has been reviewed and approved
+
+If an existing article is outdated or incomplete but the engineer is not the right person to fix it, they can send article feedback through the AI assistant. The feedback appears in the **Feedback manager** for the documentation team to pick up.
+
+All write, workflow, and publishing operations continue to respect existing permissions and governance rules.
+
+**Outcome**
+
+Support teams resolve tickets faster while continuously improving documentation quality — and can now take content from draft to live without leaving their AI assistant.
+
+---
+
+## Reviewers and subject matter experts
+
+**Problem: Keeping track of assigned reviews and tasks takes time**
+
+Reviewers and subject matter experts are often assigned articles to review and articles that need a periodic review. Checking the **Tasks** page regularly, opening each article, and updating its status one by one interrupts their main work.
+
+**How MCP helps**
+
+With an AI assistant connected to Document360 through MCP, reviewers can:
+
+- Ask what is overdue or due this week across their workflow and review reminder tasks
+- Read an assigned article and mark their review as done
+- Move the article to the next workflow status once the review is complete
+- Snooze a task they cannot act on yet, so it comes back on a set date
+
+Tasks shown through MCP are the same as the tasks on the **Tasks** page, so nothing is tracked twice.
+
+**Outcome**
+
+Reviewers clear their assigned work from a single conversation, and the rest of the team can see progress on the **Tasks** page as usual.
+
+---
+
+## Documentation managers and content leads
+
+**Problem: Coordinating review, approval, and publishing across a large team is time-consuming**
+
+Documentation managers overseeing multiple writers need to track which articles are in draft, which are awaiting review, and which are ready to publish. Coordinating this across a team without a centralized view leads to delays, missed reviews, and inconsistent publishing cadences.
+
+**How MCP helps**
+
+With an AI assistant connected to Document360 through MCP, documentation managers can:
+
+- Check which workflow statuses are configured and how the review pipeline is structured
+- Move multiple articles to the appropriate review stage and assign the right team members in a single conversation
+- Set due dates on workflow tasks to keep reviews on schedule
+- Publish content that has cleared review without switching to the portal
+- Unpublish outdated or incorrect content quickly when something needs to be taken offline
+- List articles that are stale or due for review in a workspace, and flag articles that need review now
+- Reassign reader feedback to the right team member and track it to completion
+
+Because all workflow and publishing operations follow the same permissions and governance model as the portal, managers retain full control over who can do what.
+
+**Outcome**
+
+Documentation managers spend less time chasing review status and manually publishing content, and more time ensuring documentation quality and consistency across the team.
+
+---
+
+## Using external data sources alongside Document360 MCP
+
+The Document360 MCP server exposes your knowledge base to AI assistants — letting them search, retrieve, and update content in Document360. However, your AI assistant is not limited to a single MCP server. Many AI platforms support connecting multiple MCP servers simultaneously, which means Document360 MCP can work alongside other MCP-enabled tools in the same conversation.
+
+**A common scenario: pulling content from an external tool into Document360**
+
+Your team may store structured information in a third-party platform — a project management tool, a database, a wiki, or a customer data system — and want that information to inform or populate articles in Document360. If that platform provides its own MCP server, you can connect both servers to your AI assistant at the same time.
+
+With both connected, a typical workflow looks like this:
+
+1. The AI assistant pulls structured data from the external tool using that tool's MCP server
+2. It retrieves the relevant article from Document360 using `document360-mcp-get-article`
+3. It drafts or updates the article content based on what it retrieved from the external source
+4. It updates the article in Document360 using `document360-mcp-update-article`
+5. Optionally, it moves the article to review or publishes it directly
+
+This pattern is useful for keeping documentation synchronized with data that lives outside Document360 - for example, generating release notes from a project tracker, populating API reference articles from an internal spec, or creating onboarding articles from a CRM record.
+
+**What you need**
+
+- Your AI assistant must support connecting multiple MCP servers simultaneously. Check your AI assistant's documentation to confirm this capability and how to configure multiple server connections.
+- The external platform must provide its own MCP server. Not all tools expose an MCP server - check the platform's documentation or developer resources.
+- You need appropriate access credentials for both the external tool's MCP server and the Document360 MCP server.
+
+**Outcome**
+
+Teams that work across multiple platforms can use their AI assistant as a coordination layer — reading from external sources and writing structured, reviewed content into Document360 — without manual copy-paste between tools.
+
+---
+
+## Best practices
+
+Follow these best practices when using MCP with AI assistants:
+
+- Use MCP for retrieving source-of-truth documentation instead of manually copying content
+- Verify AI-generated content before moving it to review or publishing it to the knowledge base site
+- Specify project version or language when precision is required
+- Use clear and specific prompts when requesting content or updates
+- Ensure that user roles and permissions are configured correctly, especially for workflow and publishing operations
+- When creating glossary terms, tell the AI assistant where the definition should come from, such as your knowledge base articles. Otherwise, it may use general web information.
+- After updating an article, schedule its next review so the content does not go out of date unnoticed
+
+---
+
+## Limitations and considerations
+
+- AI assistants can only access content permitted by your project configuration
+- Restricted or unpublished content remains governed by visibility rules
+- AI-generated outputs may require validation before use
+- The configuration process may vary depending on the AI assistant
+- MCP support may vary depending on the AI assistant or developer tool being used (such as IDE-based assistants or experimental clients). Some tools may have limited or evolving support for MCP capabilities.
+- If a user has different portal roles and content roles across categories and articles, MCP applies the lowest-priority role across all categories and articles. For example, if you have Editor access in one category and Reviewer access in another, MCP treats both as Reviewer.
+- If a user is assigned two custom roles, one with view permissions for a set of categories and another with update permissions for a different set of categories, the role with view access takes precedence. If you would like the user to update articles via MCP, please ensure that only the role with update permissions is assigned to the user.
+- To use workflow tools via MCP, custom portal roles must have the **View workflow assignments** and **Update workflow assignments** permissions explicitly enabled. Without these, workflow status changes cannot be performed through MCP.
+- For Page categories, there is no standalone Publish permission in custom role settings. If a custom role has View and Update permissions for categories, publishing Page categories via MCP is automatically allowed, consistent with portal behavior.
+- Publishing and unpublishing via MCP is not supported for Step-by-step guides.
+- Please ensure that the Content Access setting is configured as 'All' for the user attempting to create or update articles via MCP. If the user's Content Access is set to None, they will not be able to read, create, or update articles through the MCP integration.
+- If an article is updated through MCP while someone is editing it in the portal, Document360 saves that person's unsaved changes as a **System Backup** version, which they can restore from **Revision history**.
+- Glossary tools work only when the **Glossary** feature is included in your project's plan, and updating reader feedback works only when the **Feedback manager** is included in your plan.
+- Glossary terms cannot be deleted through MCP, and glossary translation cannot be triggered from MCP.
+- Article feedback can only be sent on published articles that have feedback enabled.

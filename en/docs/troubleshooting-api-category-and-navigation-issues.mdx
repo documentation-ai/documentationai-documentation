@@ -1,0 +1,26 @@
+---
+title: Troubleshooting API category and navigation issues
+---
+
+### Nested categories not displaying correctly
+
+<strong>When it occurs:</strong> Endpoints that should appear in nested subcategories are not organised hierarchically after import.
+
+<strong>How it works:</strong> Document360 supports second-level subcategories using the `>` symbol in OpenAPI tags. For example, a tag of `Pets > Details` will create a `Pets` category with a `Details` subcategory inside it. This structure is preserved during resync operations.
+
+```yaml
+tags:
+  - name: "Pets > Details"
+```
+
+> ℹ️ **NOTE**<br /> The API documentation workspace supports a maximum of three levels of subcategories. If your spec includes more than three levels, any additional levels are placed at the third level.
+
+---
+
+### Category order is not what I expected
+
+<strong>When it occurs:</strong> After uploading a spec, categories appear in a different order than expected.
+
+<strong>Why it happens:</strong> Categories in Document360 are created based on the tag order defined in the spec file. The order of tags in your spec determines the order categories appear in the documentation.
+
+<strong>How to fix it:</strong> Reorder the `tags` array in your OpenAPI spec to match the desired category order, then resync.

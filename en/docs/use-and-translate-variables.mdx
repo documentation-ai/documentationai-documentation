@@ -1,0 +1,122 @@
+---
+title: Use and translate variables
+description: "Manage variables in Document360 with ease: create, edit, and delete them while checking their usage across your knowledge base. Optimize your content today!"
+---
+
+Once a variable is created, you can insert it into any article or category page using the merge code syntax, the toolbar (Markdown editor), or the slash command (Advanced WYSIWYG editor). Variables can also be translated so that when your articles are read in another language, the variable content matches.
+
+To create a variable, edit its content, check where it is used, or delete it, read [Create and manage variables](https://docs.document360.com/help/docs/variables).
+
+---
+
+## Insert a variable into an article
+
+Choose the method that matches your editor.
+
+Using merge code syntax
+
+Type the merge code directly wherever you can type Markdown. Best when you already know the variable's merge code value.
+
+[Learn more →](/en/docs/use-and-translate-variables#using-merge-code-syntax)
+
+Using the toolbar
+
+Browse or search for variables from the Content tools icon in the toolbar. Works in the Markdown editor.
+
+[Learn more →](/en/docs/use-and-translate-variables#using-the-toolbar-markdown-editor)
+
+Using the slash command
+
+Type /variables in the Advanced WYSIWYG editor to open the variable picker inline without leaving the keyboard.
+
+[Learn more →](/en/docs/use-and-translate-variables#using-the-slash-command-advanced-wysiwyg-editor)
+
+### Using merge code syntax
+
+Type the variable's merge code value between double curly brackets directly in the content. The merge code syntax works wherever you can type Markdown, such as the Markdown editor.
+
+<strong>Example:</strong> `{{variable.Disclaimer}}`
+
+You can find the merge code in the **Merge code value** field when you create the variable, and on the **Variables** page afterwards.
+
+The merge code must match exactly, including capitalisation and spelling. A single character difference will prevent the variable from rendering.
+
+ NOTE
+
+In the Advanced WYSIWYG editor, the merge code syntax does not work. Insert variables using the toolbar or the slash command instead.
+
+### Using the toolbar (Markdown editor)
+
+1. In the article editor, click the **Content Resources** () icon in the toolbar.
+2. Select **Variables**.
+3. Select the variable or use the search bar to narrow down by name.
+4. Select the variable to insert it.
+
+### Using the slash command (Advanced WYSIWYG editor)
+
+1. In the Advanced WYSIWYG editor, type `/variables` to open the Variables tool in the slash menu.
+2. Use the search bar to find the variable you want to insert.
+3. Select the variable to insert it.
+
+---
+
+## Translate variables
+
+You can create variables in multiple languages so that when your articles are read in a specific language, the matching translated variable content is displayed.
+
+ NOTE
+
+Global variables cannot be translated. Only variables created with a specific language scope support translation.
+
+### Translate a new variable
+
+1. Navigate to **Content tools** () > **Content resources** > **Variables**.
+2. Click **Create**.
+3. Enter the variable name, select the language, and enter the content.
+4. Click the **Translate to other languages** dropdown, select the languages you want to translate into, and click **Translate**.
+5. Click **Save** to save with all translations.
+
+### Translate an existing variable
+
+1. On the **Variables** page, click the name of the variable you want to translate.
+2. Navigate to **Translate to other languages**, select the language, and click **Translate**.
+3. To translate into additional languages, select each one and click **Translate**.
+4. To overwrite an existing translation, click **Translate again**.
+5. Click **Update** to save.
+
+### Check translation status
+
+On the **Variables** page, click the globe icon in the **Translation** column. A green check means the variable has been translated into that language. An X means it has not.
+
+---
+
+## Best practices
+
+- Copy the merge code from the **Variables** page rather than typing it from memory. An exact match is required, and one wrong character stops the variable rendering.
+- Translate before publishing. If your knowledge base is multilingual, add translations for new variables before publishing articles that use them. A missing translation can display content in the wrong language to readers.
+- Check where a variable is used before you change its content. An edit applies immediately to every article that uses the variable, including published ones. See [Create and manage variables](https://docs.document360.com/help/docs/variables) for the **View references** panel.
+- Use a snippet for anything longer than a phrase. If the content you want to reuse includes formatting, multiple sentences, or structured elements, use a [Snippet](https://docs.document360.com/help/docs/snippets) instead of a variable.
+
+---
+
+## FAQ
+
+<Expandable title="Why is my variable not rendering in the article?">
+  The merge code must match the variable name exactly, including capitalisation and spelling. A single character difference prevents the variable from rendering. Copy the merge code from the **Merge code value** field on the **Variables** page rather than typing it.
+</Expandable>
+
+<Expandable title="Can I use variables inside snippets?">
+  No. Using variables inside snippets is not supported. If you insert a variable within a snippet, it will not render correctly in the editor preview or in exported outputs such as PDF.
+</Expandable>
+
+<Expandable title="Is there a character limit for variable content?">
+  Yes. Variable content is limited to 300 characters including spaces. For longer or formatted content, use a snippet instead.
+</Expandable>
+
+<Expandable title="Can I change the name or merge code of a variable after it has been created?">
+  No. The **Name** and **Merge code value** cannot be changed after the variable is created. You can edit the content of a variable at any time.
+</Expandable>
+
+<Expandable title="What happens to my articles if I delete a variable?">
+  The variable is removed from all articles where it is referenced. The article itself is not modified or republished. On the knowledge base site, surrounding content adjusts automatically and no empty space remains. In the portal, the variable is replaced with the placeholder text "Loading...", which you can replace with another variable or delete manually.
+</Expandable>

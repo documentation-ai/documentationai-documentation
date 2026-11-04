@@ -1,0 +1,554 @@
+---
+title: Migrating to asynchronous API reference import and resync
+description: Migrate to asynchronous endpoints for the Customer API and d360 CLI to avoid timeouts, ensuring smooth imports and clear results for your integrations.
+---
+
+If you import or resync API references through the Customer API or the `d360` CLI, you need to move your integration to the new asynchronous endpoints and commands before the old ones are removed. After you migrate, large specification files import without timeouts or memory errors, and your pipeline gets a clear pass or fail result for every import.
+
+This guide walks you through the migration for Customer API V3, Customer API v2, and the `d360` CLI.
+
+IMPORTANT!
+
+On Customer API V3, `force_import` now defaults to `false` on every import and resync route, including the deprecated synchronous ones. If your V3 calls omit `force_import`, a specification that used to import despite errors or warnings is now refused, even before you migrate. See [Decide how to handle findings](/en/docs/migrate-to-async-api-reference-import-resync#decide-how-to-handle-findings).
+
+---
+
+## Find out what you need to migrate
+
+Start with the integration you use today. Each row links to the section you need.
+
+| If you use | What to do | Go to |
+| --- | --- | --- |
+| Customer API V3 (`/v3/projects/{projectId}/api-references`) | Replace the import and resync calls, and add polling | [Migrate a Customer API V3 integration](/en/docs/migrate-to-async-api-reference-import-resync#migrate-a-customer-api-v3-integration) |
+| Customer API v2 (`/v2/APIReferences`) | Replace the import and resync calls, and add polling | [Migrate a Customer API v2 integration](/en/docs/migrate-to-async-api-reference-import-resync#migrate-a-customer-api-v2-integration) |
+| CI/CD routes (`/v2/apidocs/…`) called directly | Replace the routes, and add polling | [Migrate a Customer API v2 integration](/en/docs/migrate-to-async-api-reference-import-resync#migrate-a-customer-api-v2-integration) |
+| `d360 apiref import` or `d360 apiref resync` | Upgrade the CLI and switch to `d360 apiref submit` | [Migrate the d360 CLI and CI/CD pipelines](/en/docs/migrate-to-async-api-reference-import-resync#migrate-the-d360-cli-and-cicd-pipelines) |
+| `d360 apidocs` or `d360 apidocs:resync` | Upgrade the CLI and switch to `d360 apidocs:submit` | [Migrate the d360 CLI and CI/CD pipelines](/en/docs/migrate-to-async-api-reference-import-resync#migrate-the-d360-cli-and-cicd-pipelines) |
+| The knowledge base portal only | Nothing. Portal import and resync are unaffected. |  |
+
+Your current endpoints and commands still work, but they are deprecated.
+
+ NOTE
+
+The old synchronous endpoints and CLI commands will be removed by the end of March 2027. Plan your migration ahead of that window.
+
+---
+
+## Before you begin
+
+Confirm the following so your first asynchronous call works:
+
+1. <strong>Your V3 API key or role has both permissions.</strong> Submitting needs **Update articles**. Reading the outcome needs **View project settings**. With only one of them, you can submit but not read the result, or the reverse. On v2, the same CI/CD API key or API token is used to submit and to read the outcome.
+2. <strong>You know your regional base URL.</strong>
+
+   | Region | Base URL |
+   | --- | --- |
+   | EU | `https://apihub.document360.io` |
+   | US | `https://apihub.us.document360.io` |
+   | Canada | `https://apihub.ca.document360.io` |
+   | Private hosting | `https://apihub.<your-hosting-name>.document360.io` |
+3. <strong>Your specification is within the size limits.</strong> A specification can be up to 25 MB, uploaded or fetched from a URL. The upload request can be up to 26 MB. A URL fetch that does not complete within 100 seconds fails.
+4. <strong>You have decided how to handle findings.</strong> See the next section.
+
+### Decide how to handle findings
+
+When force import is off, your import or resync is refused if the specification:
+
+- Has any error or warning.
+- Has no `servers` entry.
+
+Force import is off by default in all three integrations:
+
+| Integration | Default | What changed |
+| --- | --- | --- |
+| Customer API V3 | `force_import: false` | The default used to be `true`. This applies to the new and the deprecated V3 routes. |
+| Customer API v2 | `forceImport=false` | Nothing. The default was already `false`. |
+| `d360` CLI | `--force-import` and `--force` are off unless you pass them | Nothing. |
+
+When a specification is refused, you have two options:
+
+- <strong>Fix the specification.</strong> This is the recommended option. Findings can affect the generated documentation. For example, a property typed `bool` instead of `boolean` is imported without a type.
+- <strong>Force the import.</strong> Send `"force_import": true` (V3), `forceImport=true` (v2), `--force-import` (`apiref submit`), or `--force` (`apidocs:submit`). Treat this as a deliberate override, not a default.
+
+If your V3 scripts relied on the old default, they are refused now, whether or not you have migrated. Fix the specification or add `force_import: true`.
+
+The same confirmation applies to a resync that would remove endpoints. Without it, the operation fails with a warning such as <em>"This update will permanently delete 19 endpoint(s). Pass force\_import=true to confirm"</em>, and lists the endpoints in `result.deleted_endpoints`. Nothing is deleted until you confirm.
+
+---
+
+## How your integration changes
+
+Today, your call waits until the whole specification is processed and returns the result. After you migrate, your integration works in three steps:
+
+1. **Submit** the import or resync. You get `202 Accepted` and an operation ID right away.
+2. **Poll** the status endpoint with that ID until the operation reaches a final status.
+3. **Read** the result, errors, warnings, and the new API reference ID from the final response.
+
+What gets imported does not change. The same specification produces the same API reference. Only *when* you get the result and *where* you read errors and warnings change.
+
+A typical import finishes in a few seconds to under a minute. Never treat the `202` response as success.
+
+The JSON samples in this guide are abridged to the fields that matter.
+
+---
+
+## Migrate a Customer API V3 integration
+
+Authenticate with the `X-API-Key: d360_sk_…` header, or a bearer token with the `customerApi` scope.
+
+### Step 1: Replace the endpoints
+
+| Operation | Old (deprecated) | New |
+| --- | --- | --- |
+| Import | `POST /v3/projects/{projectId}/api-references` | `POST /v3/projects/{projectId}/api-references/imports` |
+| Resync | `PUT /v3/projects/{projectId}/api-references/{apiReferenceId}` | `POST /v3/projects/{projectId}/api-references/{apiReferenceId}/resyncs` |
+| Read the outcome | In the response | `GET /v3/projects/{projectId}/operations/{operationId}` |
+
+### Step 2: Submit the import or resync
+
+To import from a URL:
+
+```bash
+curl -i -X POST "https://apihub.document360.io/v3/projects/$PROJECT_ID/api-references/imports" \
+  -H "X-API-Key: $D360_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+        "url": "https://api.example.com/openapi.json",
+        "workspace_id": "<workspace-id>"
+      }'
+```
+
+To import from a file, send `multipart/form-data`:
+
+```bash
+curl -i -X POST "https://apihub.document360.io/v3/projects/$PROJECT_ID/api-references/imports" \
+  -H "X-API-Key: $D360_API_KEY" \
+  -F "file=@openapi.json;type=application/json" \
+  -F "workspace_id=<workspace-id>"
+```
+
+To resync an existing API reference:
+
+```bash
+curl -i -X POST "https://apihub.document360.io/v3/projects/$PROJECT_ID/api-references/$API_REFERENCE_ID/resyncs" \
+  -H "X-API-Key: $D360_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{ "url": "https://api.example.com/openapi.json" }'
+```
+
+A resync does not take `workspace_id`. It uses the workspace of the existing API reference.
+
+Use these request fields:
+
+| Field | Import | Resync | Notes |
+| --- | --- | --- | --- |
+| `url` | Optional | Optional | A publicly reachable specification URL |
+| `file` | Optional (multipart) | Optional (multipart) | The specification file, JSON or YAML |
+| `content` | Deprecated | Deprecated | Use `file` instead |
+| `workspace_id` | Required | Not used | Target workspace |
+| `publish_articles` | Optional | Optional | Publishes the generated articles |
+| `user_id` | Required with `publish_articles` | Required with `publish_articles` | The team member who publishes |
+| `force_import` | Optional, default `false` | Optional, default `false` | See [Decide how to handle findings](/en/docs/migrate-to-async-api-reference-import-resync#decide-how-to-handle-findings) |
+
+Supply exactly one of `url`, `file`, or `content`.
+
+The response is `202 Accepted`. Save the `operation_id` field or the `Operation-Location` header. Both identify the operation you poll next.
+
+```
+Operation-Location: https://apihub.document360.io/v3/projects/{projectId}/operations/{operationId}
+```
+
+```json
+{
+  "data": {
+    "id": null,
+    "status": null,
+    "operation_id": "4da2313e-b2da-440f-b4be-a1632901f2eb",
+    "operation_status": "queued"
+  },
+  "success": true
+}
+```
+
+ NOTE
+
+If your integration reads `data.id` or `data.status` from the submit response, update it. Both are `null` on a `202` response because nothing has been imported yet. You get the API reference ID from the operation result in Step 4.
+
+### Step 3: Poll until the operation finishes
+
+```bash
+curl -sS "https://apihub.document360.io/v3/projects/$PROJECT_ID/operations/$OPERATION_ID" \
+  -H "X-API-Key: $D360_API_KEY"
+```
+
+While the operation is `queued` or `running`, the response includes a `Retry-After: 5` header. Wait that many seconds between polls. Stop polling when the status is final:
+
+| Status | Final | Meaning |
+| --- | --- | --- |
+| `queued` | No | Accepted and waiting for a worker |
+| `running` | No | Being processed |
+| `succeeded` | Yes | Imported or resynced successfully |
+| `failed` | Yes | Not applied. Check `message`, `errors`, and `result` |
+
+Cap your polling with a timeout. Twenty minutes is generous for most specifications. If an operation stops making progress, a background watchdog marks it `failed`, so your poll always reaches a final status.
+
+### Step 4: Read the result
+
+When the operation succeeds, save `result.api_definition_id`. This is the API reference ID you use in later resync, publish, and delete calls.
+
+```json
+{
+  "data": {
+    "id": "4da2313e-b2da-440f-b4be-a1632901f2eb",
+    "operation_type": "import-api-reference",
+    "status": "succeeded",
+    "message": null,
+    "result": {
+      "api_definition_id": "f9af5181-ee76-489d-b6c9-306e9eb6d60a",
+      "is_success": true,
+      "articles_created": 19,
+      "categories_created": 3,
+      "errors": null,
+      "warnings": null,
+      "is_server_available": true,
+      "show_spec_file_warning": false,
+      "deleted_endpoints": null
+    },
+    "errors": null,
+    "created_at": "2026-10-05T10:02:25.33Z",
+    "updated_at": "2026-10-05T10:02:30.866Z",
+    "completed_at": "2026-10-05T10:02:30.866Z"
+  },
+  "success": true
+}
+```
+
+**If your specification has findings** and `force_import` is `false`, the operation ends as `failed` and lists the findings in `result.errors` and `result.warnings`. Each `pointer` is a JSON pointer into your specification, so you can go straight to the line to fix. The path in this sample is illustrative.
+
+```json
+{
+  "data": {
+    "status": "failed",
+    "message": "The operation failed.",
+    "result": {
+      "is_success": false,
+      "errors": [
+        {
+          "message": "Invalid schema type identifier: bool",
+          "pointer": "#/paths/~1orders/get/responses/200/content/application~1json/schema/properties/active/type"
+        }
+      ],
+      "warnings": []
+    }
+  }
+}
+```
+
+**If the job could not run**, for example because the URL could not be fetched, `message` and `errors[0].message` give the reason:
+
+```json
+{
+  "data": {
+    "status": "failed",
+    "message": "This operation can't be completed. Please ensure that you have given a valid specification URL.",
+    "result": null,
+    "errors": [
+      { "code": "OPERATION_FAILED", "message": "This operation can't be completed. Please ensure that you have given a valid specification URL." }
+    ]
+  }
+}
+```
+
+### Example: Gate a pipeline step on the import result
+
+This script submits an import, waits for a final status, and exits with a non-zero code on failure:
+
+```bash
+#!/usr/bin/env bash
+set -euo pipefail
+
+BASE="https://apihub.document360.io"
+H=(-H "X-API-Key: $D360_API_KEY")
+
+# 1. Submit and capture the status URL from the Operation-Location header
+OP_URL=$(curl -sS -D - -o /dev/null -X POST \
+  "$BASE/v3/projects/$PROJECT_ID/api-references/imports" "${H[@]}" \
+  -H "Content-Type: application/json" \
+  -d "{\"url\":\"$SPEC_URL\",\"workspace_id\":\"$WORKSPACE_ID\"}" \
+  | awk 'tolower($1)=="operation-location:" {print $2}' | tr -d '\r')
+
+[ -n "$OP_URL" ] || { echo "Submission was not accepted" >&2; exit 1; }
+
+# 2. Poll until a final status (capped at 20 minutes)
+for _ in $(seq 1 240); do
+  BODY=$(curl -sS "$OP_URL" "${H[@]}")
+  STATUS=$(echo "$BODY" | jq -r '.data.status')
+  case "$STATUS" in
+    queued|running) sleep 5 ;;
+    succeeded)      echo "$BODY" | jq '.data.result'; exit 0 ;;
+    *)              echo "$BODY" | jq '.data.message, .data.result.errors, .data.result.warnings' >&2; exit 1 ;;
+  esac
+done
+echo "Timed out waiting for the operation" >&2
+exit 1
+```
+
+---
+
+## Migrate a Customer API v2 integration
+
+Authenticate with the `api_token` header. The v2 asynchronous endpoints take the same `multipart/form-data` fields as the synchronous ones, including the required `forceImport`.
+
+### Step 1: Replace the endpoints
+
+| Operation | Old (deprecated) | New |
+| --- | --- | --- |
+| Import | `POST /v2/APIReferences` | `POST /v2/APIReferences/jobs` |
+| Resync | `PUT /v2/APIReferences` | `PUT /v2/APIReferences/jobs` |
+| Read the outcome | In the response | `GET /v2/APIReferences/jobs/{backgroundTaskId}` |
+
+If you call the CI/CD routes directly with a CI/CD API key, replace these instead. The `d360 apidocs` commands use the same routes.
+
+| Operation | Old (deprecated) | New |
+| --- | --- | --- |
+| Import | `POST /v2/apidocs/import/{userId}` | `POST /v2/apidocs/jobs/import/{userId}` |
+| Resync | `POST /v2/apidocs/{apiDefinitionId}/resync/{userId}` | `POST /v2/apidocs/jobs/{apiDefinitionId}/resync/{userId}` |
+| Read the outcome | In the response | `GET /v2/apidocs/jobs/{backgroundTaskId}` |
+
+### Step 2: Submit the import or resync
+
+To import:
+
+```bash
+curl -i -X POST "https://apihub.document360.io/v2/APIReferences/jobs" \
+  -H "api_token: $D360_API_TOKEN" \
+  -F "url=https://api.example.com/openapi.json" \
+  -F "projectVersionId=<workspace-id>" \
+  -F "userId=<user-id>" \
+  -F "forceImport=false"
+```
+
+To resync:
+
+```bash
+curl -i -X PUT "https://apihub.document360.io/v2/APIReferences/jobs" \
+  -H "api_token: $D360_API_TOKEN" \
+  -F "url=https://api.example.com/openapi.json" \
+  -F "apiReferenceId=<api-reference-id>" \
+  -F "projectVersionId=<workspace-id>" \
+  -F "userId=<user-id>" \
+  -F "forceImport=false"
+```
+
+The response is `202 Accepted`. Save `background_task_id` for polling.
+
+```json
+{
+  "data": {
+    "background_task_id": "c02535d8-f051-41d3-92a9-57a224022f7d",
+    "is_processing": true,
+    "alerts": [{ "message": "Accepted for processing. Poll /v2/apireferences/jobs/c02535d8-… for the result." }]
+  },
+  "success": true
+}
+```
+
+### Step 3: Poll until the job finishes
+
+```bash
+curl -sS "https://apihub.document360.io/v2/APIReferences/jobs/$BACKGROUND_TASK_ID" \
+  -H "api_token: $D360_API_TOKEN"
+```
+
+Keep polling until `data.is_processing` is `false`.
+
+### Step 4: Read the result
+
+The final response carries the result. Save `api_reference_id` for later calls.
+
+```json
+{
+  "data": {
+    "api_reference_id": "b8e74ec5-7de3-4d4b-8cbc-b2945f7aeb56",
+    "articles_created": 19,
+    "categories_created": 3,
+    "errors": [],
+    "alerts": [],
+    "background_task_id": "c02535d8-f051-41d3-92a9-57a224022f7d",
+    "is_processing": false
+  },
+  "success": true
+}
+```
+
+Read findings from `data.errors`, and warnings from `data.alerts`. For a resync, `data.deleted_endpoints` lists the endpoints that were removed, with the `method`, `path`, `article_id`, and `title` of each.
+
+---
+
+## Migrate the d360 CLI and CI/CD pipelines
+
+The CLI has two command families: V3 (`apiref`) and v2 (`apidocs`). Stay within your current family when you migrate. Replace V3 commands with V3 commands, and v2 commands with v2 commands.
+
+### Step 1: Upgrade the CLI
+
+The new commands require version **3.0.7** or later.
+
+```bash
+npm install -g d360@latest
+d360 --version
+```
+
+The old commands (`apiref import`, `apiref resync`, `apidocs`, `apidocs:resync`) are marked `[DEPRECATED]` in `--help`. They stop working when the endpoints they call are removed. `d360 apidocs:validate` is not deprecated.
+
+### Step 2: Check that you use the right credential
+
+Both families read the same `D360_API_KEY` variable name, but each expects a different credential. Using the wrong one is the most common setup error. The CLI tells you when it detects the wrong credential.
+
+|  | V3 commands (`apiref`, `operations`) | v2 commands (`apidocs`, `apidocs:submit`, `apidocs:status`) |
+| --- | --- | --- |
+| Credential | A V3 API key starting with `d360_sk_`, created under **Settings** > **Knowledge base portal** > **API keys** | The project's CI/CD API key (a GUID) |
+| Sent as | `X-API-Key` header | `api_token` |
+| Also needs | Project ID (`--project-id` or `d360 config set-project-id`), plus the workspace ID (import) or API reference ID (resync) | User ID (`--userId`), plus the workspace ID (`--versionId`, import) or API reference ID (`--apiReferenceId`, resync). No project ID. |
+| Permissions | **Update articles** to submit, **View project settings** to poll. A key missing either one can submit but not read the result, or the reverse. | The same key is used for submit and status |
+
+The CLI has no interactive login. It takes the API key from the first source that is set: a command flag, an environment variable (`D360_API_KEY`, `D360_PROJECT_ID`, `D360_BASE_URL`), then the saved configuration (`d360 init`, or `d360 config set-key` and `d360 config set-project-id`). In a pipeline, store the key in your CI secret store and pass it as an environment variable. Use the base URL for your region.
+
+### Step 3: Replace your commands
+
+#### If you use V3 commands
+
+Replace both `apiref import` and `apiref resync` with `apiref submit`. The ID you pass decides the operation: `--workspace-id` imports, `--api-reference-id` resyncs.
+
+Before:
+
+```bash
+d360 apiref import --workspace-id <workspace-id> --url https://api.example.com/openapi.json
+d360 apiref resync --api-reference-id <api-reference-id> --url https://api.example.com/openapi.json
+```
+
+After:
+
+```bash
+# Import a new API reference and wait for the result
+d360 apiref submit --workspace-id <workspace-id> --url https://api.example.com/openapi.json --wait
+
+# Resync an existing API reference from a local file and wait
+d360 apiref submit --api-reference-id <api-reference-id> --file ./openapi.json --wait
+
+# Submit now and poll separately, for example from another pipeline stage
+id=$(d360 apiref submit --workspace-id <workspace-id> --file ./openapi.json \
+       --filter operation_id -o tsv)
+d360 operations wait "$id"
+```
+
+Update your flags:
+
+|  | Old | New |
+| --- | --- | --- |
+| Import or resync | Two commands | One command: `--workspace-id` imports, `--api-reference-id` resyncs |
+| Specification source | Import: `--url` or `--content`. Resync: `--url` | `--url` or `--file` for both |
+| Publish after import | `--publish-articles` | `--publish-articles` with `--user-id` (required) |
+| Warnings |  | `--force-import` to continue past warnings (off by default) |
+| Result | In the response | `--wait`, or `d360 operations wait <operation-id>` |
+
+The `--filter` flag takes a path into the response data. Use `operation_id`, not `data.operation_id`. The `-o tsv` option prints the bare ID.
+
+`--wait` and `d360 operations wait` exit `0` when the operation succeeds. They exit `1` when it fails or the 20-minute wait budget runs out. A budget timeout stops waiting but does not cancel the operation.
+
+#### If you use v2 (apidocs) commands
+
+These are the commands shown for CI/CD in the portal's **Add API reference** and **Edit API reference** panels. Replace both `apidocs` and `apidocs:resync` with `apidocs:submit`, then read the result with `apidocs:status`. The flag names stay the same (camelCase), and you keep the CI/CD key.
+
+Before:
+
+```bash
+d360 apidocs --apiKey "$D360_CICD_KEY" --userId <user-id> --versionId <workspace-id> \
+  --path ./openapi.json
+
+d360 apidocs:resync --apiKey "$D360_CICD_KEY" --userId <user-id> \
+  --apiReferenceId <api-reference-id> --path ./openapi.json
+```
+
+After:
+
+```bash
+# Import (prints the task ID on its own line)
+d360 apidocs:submit --apiKey "$D360_CICD_KEY" --userId <user-id> --versionId <workspace-id> \
+  --path ./openapi.json
+
+# Resync (passing --apiReferenceId makes it a resync)
+d360 apidocs:submit --apiKey "$D360_CICD_KEY" --userId <user-id> \
+  --apiReferenceId <api-reference-id> --path ./openapi.json
+
+# Wait for the job to finish
+d360 apidocs:status <task-id> --apiKey "$D360_CICD_KEY" --wait
+```
+
+`apidocs:submit` accepts the same flags as the old `apidocs` command: `--apiKey`, `--userId`, `--versionId`, `--apiReferenceId`, `--path`, `--force`, `--publish`, and `--apihubUrl`. It prints a task ID and exits.
+
+`apidocs:status` takes only `--apiKey`, plus `--apihubUrl` for non-EU regions. Always gate your pipeline on `--wait`. Without it, the command reports once and exits `0` even if the job is still running. With `--wait`, it polls until the job finishes, prints the findings (errors, alerts, and any endpoints removed by a resync), and exits `1` if the job did not succeed.
+
+If a resync would delete endpoints, it stops and lists them. Re-run with `--force` to confirm.
+
+### Step 4: Update your pipeline
+
+Use one of these GitHub Actions steps as a starting point. In both, the step fails when the job fails, and the findings are printed in the log.
+
+V3:
+
+```yaml
+- name: Publish API reference (V3)
+  env:
+    D360_API_KEY: ${{ secrets.D360_API_KEY }}          # a d360_sk_ key
+    D360_PROJECT_ID: ${{ vars.D360_PROJECT_ID }}
+  run: |
+    npm install -g d360@latest
+    d360 apiref submit --api-reference-id "${{ vars.D360_API_REFERENCE_ID }}" \
+      --file ./openapi.json --wait
+```
+
+v2 (`apidocs`):
+
+```yaml
+- name: Publish API reference (v2)
+  env:
+    D360_CICD_KEY: ${{ secrets.D360_CICD_KEY }}         # the project's CI/CD key
+  run: |
+    npm install -g d360@latest
+    task=$(d360 apidocs:submit --apiKey "$D360_CICD_KEY" --userId "${{ vars.D360_USER_ID }}" \
+             --apiReferenceId "${{ vars.D360_API_REFERENCE_ID }}" --path ./openapi.json)
+    d360 apidocs:status "$task" --apiKey "$D360_CICD_KEY" --wait
+```
+
+---
+
+## Fix common issues after you migrate
+
+| What you see | Why it happens | What to do |
+| --- | --- | --- |
+| Polling returns `403` after a successful submit | Your key or role can update articles but cannot view project settings | Give the integration both permissions |
+| Submit returns `409 Conflict` | Another import or resync is already running in the project. Only one can run at a time. | Poll the running task named in the response, then retry |
+| Re-submitting returns the same operation ID | You sent an identical request while the first was still running | Poll the returned operation. No second import is started. |
+| A V3 import or resync that used to work is now refused | `force_import` now defaults to `false` on all V3 routes, including the deprecated ones | Fix the findings, or set `force_import: true` deliberately. See [Decide how to handle findings](/en/docs/migrate-to-async-api-reference-import-resync#decide-how-to-handle-findings). |
+| A resync fails with <em>"This update will permanently delete…"</em> | The resync would remove endpoints | Review the listed endpoints, then resubmit with `force_import: true` (V3), `forceImport=true` (v2), `--force-import` (`apiref submit`), or `--force` (`apidocs:submit`) to confirm |
+| A submit times out or returns `5xx` | The request may or may not have been accepted | Do not retry right away. A retry can start a second import. Check for a running operation with `GET /v3/projects/{projectId}/operations?status=running`, or poll the operation ID if you have it. |
+
+The CLI follows the same retry rule. It does not retry a submit after a `5xx` or a dropped connection. It only retries a `429`, which is rejected before any work starts.
+
+---
+
+## Verify your migration
+
+Your migration is complete when:
+
+- Every import and resync call uses an asynchronous endpoint or command.
+- Your integration reads the outcome from the status endpoint, not from the `202` response.
+- On V3, your integration uses `operation_id` instead of `data.id` and `data.status` from the submit response.
+- Your integration handles `409 Conflict` by waiting for the running task and retrying.
+- You have chosen how to handle findings: fix the specification, or set `force_import: true` deliberately.
+- Your API key or role can both submit and read operations.
+- Your CLI is on version 3.0.7 or later, and each family uses its own credential: a `d360_sk_` key for `apiref`, and the CI/CD key for `apidocs`.
+- Your pipeline fails the step when an import or resync fails.
+- You have completed the migration before the old endpoints and commands are removed at the end of March 2027.
+
+Application Programming Interface - A set of defined rules and protocols that allows one software application to communicate with and request functionality from another. APIs are the backbone of modern integrations. When Document360 connects to Slack, Intercom, or Google Analytics, it does so through their APIs. Document360 also provides its own REST API, enabling teams to programmatically manage articles, categories, and reader accounts from external systems.

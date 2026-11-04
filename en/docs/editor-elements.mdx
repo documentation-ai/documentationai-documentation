@@ -1,0 +1,221 @@
+---
+title: Editor elements
+description: Create engaging content effortlessly with the Advanced WYSIWYG editor's movable and conditional content blocks for tailored reader experiences.
+---
+
+The Advanced WYSIWYG editor gives you a complete set of building blocks for creating structured, engaging content, without writing a single line of code. Whether you're organizing a long article, displaying code for developers, or embedding a video walkthrough, editor elements let you control exactly how your content looks and behaves for every reader.
+
+Use this section to understand the foundational concepts of the editor, then navigate to the specific element articles you need.
+
+---
+
+## Content blocks
+
+In the Advanced WYSIWYG editor, a block is a section of content that ends with a line break. The next piece of content that starts on a new line is considered a new block. Content blocks are a foundational content management capability of the editor. They give you control over how your article is organized and who can see each part of it.
+
+Content blocks support the following capabilities:
+
+- **Movable content blocks** let you rearrange sections of your article by clicking arrows or dragging and dropping, no copy-pasting required. Use movable blocks when you need to restructure content after a product update, or to ensure a warning or note appears immediately before the step it applies to.
+- **Conditional content blocks** let you show or hide specific sections based on conditions such as country, device type, date, and workspace. In private projects and private content, you can also use reader group and IP address conditions.
+
+ NOTE
+
+Content inside a conditional block is not indexed by Eddy AI or general search. Avoid placing information there that readers might need to find through search.
+
+Together, these two block types help you keep a single article relevant to multiple audiences and easier to maintain over time, without duplicating content across separate articles.
+
+---
+
+## Movable content blocks
+
+Hover over any block in the Advanced WYSIWYG editor to reveal two icons on the left: the **Settings** icon and the **ellipsis** icon.
+
+<Image src="https://cdn.document360.io/860f9f88-412e-4570-8222-d5bf2f4b7dd1/Images/Documentation/movable%20arrow%281%29.png" alt="" />
+
+<strong>To move a block using arrows:</strong>
+
+1. Navigate to the desired article in the Advanced WYSIWYG editor.
+2. Hover over the block you want to move.
+3. Click the **ellipsis** icon on the left side of the block.
+4. Use the controls that appear:
+
+   - <strong>Up / Down arrows:</strong> move the block one position at a time.
+   - **Delete** icon: removes the block; the next block moves up automatically.
+
+<strong>To drag a block to a specific position:</strong>
+
+Hold the **ellipsis** icon of the block and drag it to your desired location within the editor.
+
+<strong>To insert a new block:</strong>
+
+Hover over an existing block, click the **Settings** icon, then select **Insert block above** or **Insert block below**.
+
+<Image src="https://cdn.document360.io/860f9f88-412e-4570-8222-d5bf2f4b7dd1 /Images/Documentation/insert.png" alt="" />
+
+ NOTE
+
+- Dividers cannot be moved using movable blocks.
+- When you move the FAQ section, the entire section is treated as a single block. To reorder individual FAQs within the section, select an FAQ item and use **Move up** or **Move down**.
+- To undo a deletion, press `Ctrl + Z`.
+
+---
+
+## Conditional content blocks
+
+Conditional content blocks allow you to control the visibility of specific sections based on predefined conditions.
+
+ NOTE
+
+Content inside a conditional block is not indexed by Eddy AI or general search.
+
+<strong>To set up a conditional content block:</strong>
+
+1. Navigate to the desired article in the Advanced WYSIWYG editor.
+2. Hover over the content block and click the **Settings** icon on the left.
+3. Select **Conditional Content**. The **Conditional content** panel appears.
+
+<Image src="https://cdn.document360.io/860f9f88-412e-4570-8222-d5bf2f4b7dd1 /Images/Documentation/conditional.png" alt="" />
+
+4. Turn on the **Enable** toggle to activate the conditional content.
+5. In the **Visibility** section, choose:
+
+   - **Show** — displays the block only when the condition is met.
+   - **Hide** — hides the block when the condition is met.
+6. Select the operator:
+
+   - **AND** — all conditions must be met.
+   - **OR** — any single condition triggers the visibility rule.
+7. Click <strong>\+ Add</strong> to create a new condition.
+8. In the **Parameter** dropdown, select the desired parameter and set the condition and value. You can filter articles by conditional content rule type from the [All Articles page](/docs/filter-bulk-operations#available-filters).
+
+| Parameter | Conditions | Example | Availability |
+| --- | --- | --- | --- |
+| **Country** | Equals, Not equals, In, Not in | Equals + India → only readers from India see the content. Not in + USA → all countries except USA see the content. | All projects |
+| **Date** | After, Before, Between | Before + Oct 1, 2024 → only readers accessing before that date see the content. Between + Sep 1–Oct 1, 2024 → content visible during that period only. | All projects |
+| **Device** | Equals, Not equals, In, Not in | Equals + Mobile → only mobile users see the content. Not in + Desktop → content hidden from desktop users. | All projects |
+| **Workspace** | Equals, Not equals, In, Not in | Equals + Marketing workspace → only that workspace's content is visible. Not in + Sales workspace → content hidden from the Sales workspace. | All projects |
+| **Reader groups** | Equals, Not equals, In, Not in | Equals + Admins → only the Admin group sees the content. Not in + Editors → hidden from editors, visible to other groups. | Private projects and private content only |
+| **IP address** | Equals, Not equals, Range, In, Not in | Equals + 192.168.1.1 → only that IP sees the content. Range + 192.168.1.1–192.168.1.100 → visible to users within that IP range. | Private projects and private content only |
+
+ NOTE
+
+- **Reader groups** and **IP address** are only available in private projects and private content. They do not appear in public projects, workspaces, categories, or articles. In mixed projects, these parameters are available only in the private sections.
+- The Workspace parameter appears only if you have multiple workspaces.
+- For **In** or **Not in** conditions, you can select multiple values from the dropdown.
+- If you switch content from private to public, any **Reader group** or **IP address** conditions on that content are automatically removed. This cannot be undone, and the conditions will not be restored if you switch back to private.
+
+9. To reuse the condition across articles, click **Save for reuse**, enter a name, and save it.
+10. Click **Save** to apply the condition to the block, or **Save as** to save it for future use.
+11. To remove a condition, click **Remove Condition** within the selected block, then click **Apply**.
+
+---
+
+### Copying conditional content
+
+- Conditional blocks are mapped to the article ID where they were created. If you copy and paste a conditional block into a different article, the condition is removed on refresh; the IDs no longer match the new article.
+- Never rely on copy-paste to move conditional blocks between articles. The conditional formatting will be stripped after refresh, navigation, or publish.
+- If you copy a conditional block from a private article into a public article, any Reader group or IP address conditions are removed automatically.
+
+<strong>Recommended approach when reusing conditional content across articles:</strong>
+
+- Copy the content without relying on the existing conditional formatting.
+- Reapply the conditional content block in the new article.
+- Alternatively, use **Save for reuse** to quickly apply the same condition across articles without recreating it each time.
+
+---
+
+## Editor elements
+
+Within each content block, you can use a wide range of editor elements to present your content clearly — from text and formatting controls to tables, callouts, media, code blocks, and more. Explore the articles below to learn about each element and when to use it.
+
+### Text and formatting
+
+Text elements [Learn more →](/en/docs/text-elements)
+
+Manage text styles, headings, and color to create clear visual hierarchy.
+
+Formatting [Learn more →](/en/docs/formatting)
+
+Apply bold, alignment, indentation, and spacing to make articles easy to scan.
+
+Lists [Learn more →](/en/docs/lists)
+
+Present steps, options, and tasks using bullet, numbered, multilevel, and checklist formats.
+
+### Code and technical content
+
+Inline code & code block [Learn more →](/en/docs/inline-code-code-block)
+
+Show code with syntax highlighting for commands, variables, and multi-line snippets.
+
+Tables [Learn more →](/en/docs/tables)
+
+Build structured layouts with merged cells, frozen rows, and styled columns.
+
+LaTeX [Learn more →](/en/docs/latex)
+
+Render mathematical equations and scientific notation with precision.
+
+### Content structure
+
+Tabs [Learn more →](/en/docs/tabs)
+
+Separate platform-specific or plan-based content into tabs on a single page.
+
+Accordion [Learn more →](/en/docs/accordions)
+
+Collapse optional or advanced content behind a toggle to keep the page clean.
+
+Dividers [Learn more →](/en/docs/dividers)
+
+Visually separate sections using solid, dotted, or dashed lines.
+
+### Callouts and notices
+
+Callout [Learn more →](/en/docs/callouts)
+
+Highlight critical content using Info, Warning, Error, and Success notice blocks.
+
+Private note [Learn more →](https://docs.document360.com/docs/private-note)
+
+Add internal notes visible only to your team — never shown to readers.
+
+### Media and interactivity
+
+Images [Learn more →](/en/docs/images)
+
+Insert, align, resize, crop, style, and caption images, with support for alt text, hyperlinks, and advanced editing tools.
+
+Files [Learn more →](/en/docs/files)
+
+Add downloadable files inline in the article or as sidebar attachments.
+
+Mermaid diagrams [Learn more →](/en/docs/mermaid-diagrams)
+
+Create flowcharts, sequence diagrams, and more directly in the editor using built-in templates or custom syntax.
+
+Embedding external content [Learn more →](/en/docs/embedding-external-content)
+
+Embed third-party forms, widgets, and live tools directly into your article.
+
+### Discovery and navigation
+
+Links [Learn more →](/en/docs/links)
+
+Connect readers to articles, headings, external URLs, or email addresses.
+
+FAQ [Learn more →](/en/docs/faq)
+
+Add structured Q&A sections that improve SEO, with an AI option that writes questions for you.
+
+Emoji [Learn more →](/en/docs/emoji)
+
+Insert emojis to add visual cues and make onboarding content more engaging.
+
+Code view [Learn more →](/en/docs/code-view)
+
+Switch to raw HTML view to inspect, edit, or paste source code directly into the article.
+
+Find and replace [Learn more →](/en/docs/editor-find-and-replace)
+
+Search for specific text within an article and replace it instantly, without scrolling through content manually.

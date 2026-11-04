@@ -1,0 +1,94 @@
+---
+title: Remove folders
+description: You can manage the Folders and Subfolders in your Drive with individual folder actions or use the bulk action on multiple folders.
+---
+
+You can remove folders and subfolders from your Drive when they are no longer needed. Removed folders are sent to the Recycle bin, where they can be restored within 30 days. After 30 days, they are permanently deleted and cannot be recovered.
+
+---
+
+## Understanding remove vs permanent deletion
+
+Document360 uses a two-stage deletion process for folders. Understanding the difference helps you avoid accidental data loss.
+
+| Stage | What happens | Reversible? |
+| --- | --- | --- |
+| Remove | The folder and its contents are moved to the Recycle bin. Files are no longer accessible from the Drive but have not been permanently deleted. | Yes — restore from the Recycle bin within 30 days. |
+| Permanent deletion | The folder and all files within it are permanently erased. All article references to those files become broken links. CDN cache clearance takes up to 1 minute. | No — this action cannot be undone. |
+
+ NOTE
+
+System folders cannot be removed or deleted. You can identify system folders by the shield icon next to their name in the Drive.
+
+---
+
+## Before you remove a folder
+
+Removing a folder that contains files used in articles will result in broken image links once the folder is permanently deleted. Before removing a folder, consider the following:
+
+- Check the file dependencies within the folder to identify which articles reference its files. Refer to [File actions in Drive](https://docs.document360.com/help/docs/file-actions-in-drive) for guidance on viewing file dependencies.
+- If the files are still needed, move them to another folder before removing this one. Refer to [Move a folder](https://docs.document360.com/help/docs/move-a-folder) for instructions.
+- If the folder is the current default folder, set another folder as the default before you remove it. This prevents uploads from failing. Refer to [Set a default folder](https://docs.document360.com/help/docs/set-a-default-folder) for instructions.
+- If the folder is mapped to a category, removing it will leave that category without a Drive folder mapping. Refer to [Mapping a category with a folder in Drive](https://docs.document360.com/help/docs/assigning-drive-folder-for-a-category) for more information.
+
+---
+
+## Remove a folder
+
+To remove a folder,
+
+1. Click the **Drive** icon in the left navigation bar.
+2. Click the **More** icon next to the desired folder.
+3. Click **Remove**. A confirmation prompt appears.
+
+   <Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777430781-prm693695qp-Remove-folder.png?fm=auto&auto=compress%2Cformat" alt="Document360 interface showing file management options like remove and move for selected items." />
+4. Click **Yes** to confirm.
+
+The folder and its subfolders and files are moved to the Recycle bin.
+
+### Remove multiple folders at once
+
+To remove more than one folder at the same time,
+
+1. Click the **Drive** icon in the left navigation bar.
+2. Select the checkboxes next to the folders you want to remove.
+3. Click **Remove** from the toolbar that appears at the top.
+4. Click **Yes** to confirm.
+
+---
+
+## Restore a folder from the Recycle bin
+
+If you have removed a folder by mistake, you can restore it from the Recycle bin within 30 days of deletion.
+
+1. Click the **Drive** icon in the left navigation bar.
+2. Click **Recycle bin** in the left navigation pane.
+3. Locate the folder you want to restore.
+4. Click the **More** icon next to the folder and select **Restore**.
+
+The folder is restored to its original location in the Drive, along with its subfolders and files.
+
+ NOTE
+
+Folders in the Recycle bin are permanently deleted after 30 days and cannot be recovered. Restore folders promptly if they were removed in error.
+
+---
+
+## Best practices
+
+- <strong>Always check file dependencies before removing a folder.</strong> Files used in published articles will result in broken image links once permanently deleted. A dependency check takes seconds and prevents difficult-to-diagnose issues in your knowledge base.
+- <strong>Move files before removing the folder, not after.</strong> Once a folder is in the Recycle bin, its files are inaccessible from the Drive. Relocate any files you still need before confirming the removal.
+- <strong>Do not remove folders to reorganize.</strong> If you want to change where a folder sits in the Drive hierarchy, use Move instead of removing and recreating it. Moving preserves all file URLs and avoids the risk of broken links entirely. Refer to [Move a folder](https://docs.document360.com/help/docs/move-a-folder) for instructions.
+- <strong>Communicate before removing shared folders.</strong> If a folder contains assets used by multiple contributors or teams, confirm with them before removing it. What appears unused from one person's view may be actively referenced by another.
+
+---
+
+## FAQ
+
+<Expandable title="What happens if I click on the Set default folder option for a folder that is already set as the default?">
+  A drive folder can be set as the default multiple times. If you select the **Set default folder** option for a folder that is already the default, no changes will be made.
+</Expandable>
+
+<Expandable title="What happens when I change the name, copy, move, or reorder a folder?">
+  Changing the name, copying, moving, or reordering a folder does not affect the file URLs of the files within it keeping the images linked to articles intact.
+</Expandable>

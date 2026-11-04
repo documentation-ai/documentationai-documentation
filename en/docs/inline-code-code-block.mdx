@@ -1,0 +1,81 @@
+---
+title: Inline code & code block
+description: Learn how to use inline code and code blocks in Document360 for effective syntax highlighting and clear code presentation across various programming languages.
+---
+
+The Advanced WYSIWYG editor supports two ways to display code in your articles: inline code and code blocks.
+
+- **Inline code** formats a short snippet or command within a line of text, distinguishing it visually from the surrounding prose.
+- **Code block** displays a multi-line block of code as a separate section with syntax highlighting, a language label, and a copy option.
+
+Document360 uses [Prism.js](https://prismjs.com/) for syntax highlighting and supports a wide range of programming languages in code blocks.
+
+---
+
+## Recommended scenarios
+
+- Use inline code to reference a variable name, file path, command, or parameter within a sentence — for example, "Set the value of `max_retries` to 3"
+- Use a code block for multi-line scripts, &#123;&#123; glossary.API&#125;&#125; request examples, configuration files, or any code readers may need to copy and run
+- Use a custom language label when documenting a proprietary scripting language or configuration format not available in the default list
+- Use code blocks inside tab elements to show the same API call in multiple languages side by side — for example, Python, JavaScript, and cURL in separate tabs
+
+---
+
+## Inline Code
+
+Inline code is applied directly to selected text within a paragraph without creating a new block.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778177591-pwz6oxxo31-inline-20code.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+1. Select the text you want to format as inline code.
+2. In the floating toolbar, click the **Inline code** icon or use the keyboard shortcut `Ctrl + E`.
+
+The selected text appears styled as code within the sentence.
+
+---
+
+## Code Block
+
+A code block creates a dedicated section for displaying multi-line code with syntax highlighting.
+
+<Image src="https://cdn.document360.io/860f9f88-412e-4570-8222-d5bf2f4b7dd1/Images/Documentation/code%20block%281%29.png" alt="" />
+
+To insert a code block, use any of the following methods:
+
+1. Click the **Code block** icon in the Quick insert menu (appears when a block is empty)
+2. Type three backticks ```` ``` ```` and press `Enter`
+3. Use the slash command `/code block` and press `Enter`
+
+After inserting a code block:
+
+1. Click on the code block — a floating menu appears.
+2. Select the desired language from the dropdown for syntax highlighting.
+3. Enter your code inside the block.
+
+To copy the block, click the **Copy** icon. To remove it, click the **Delete** icon.
+
+<strong>Setting a custom language label:</strong> If the language you need is not in the list, select **Custom** from the dropdown, click the **Edit** icon, enter your desired title, and click **Update**.
+
+ NOTE
+
+In the Advanced WYSIWYG editor, a code block always requires a heading. To hide the heading on the knowledge base site, apply Custom CSS via **Settings** > **Knowledge base site** > <strong>Custom CSS & JavaScript.</strong> This will hide the heading across all code blocks on the site. If you prefer code blocks without a heading, use the Markdown editor instead.
+
+---
+
+## Supported Languages
+
+Document360 supports syntax highlighting for the following languages (among others):
+
+HTML, C#, Java, JavaScript, XML, JSON, CSS, SQL, Python, Markdown, PHP, PowerShell, Ruby, and Text.
+
+For a full list, refer to [Prism's supported languages](https://prismjs.com/#supported-languages).
+
+---
+
+## Best practices
+
+- Use inline code for short references (one line or less) and code blocks for anything longer
+- Always select the correct language for your code block — accurate syntax highlighting improves readability and signals the correct language to readers
+- Add a descriptive heading to your code block so readers know what the code does before reading it
+- Keep code blocks focused — one block per distinct snippet or example; avoid combining unrelated code in a single block
+- Keep code clean and free of placeholder comments that could cause errors if run directly

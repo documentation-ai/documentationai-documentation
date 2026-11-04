@@ -1,0 +1,108 @@
+---
+title: AI & search descriptions (GEO/SEO)
+description: An overview page for all your article's SEO information, such as title and description. Manage or add meta data from this section.
+---
+
+The **AI & search description** page in Content tools gives you a centralized view of SEO titles and GEO/AI & search descriptions across all articles and page categories in your project. Instead of opening each article individually, you can review, edit, and generate AI & search descriptions in bulk from one place.
+
+AI & search descriptions can also be added or edited per article from the article editor. See [Article GEO/SEO](/en/docs/article-seo)&#123;target=`_blank`&#125; for more information.
+
+ CAUTION
+
+SEO metadata is only applicable when your project, workspace, and language are all set to Public. If your project is set to Private or Mixed, search engines cannot index the content and SEO metadata will not be applied.
+
+---
+
+## When to use AI & search descriptions
+
+- You are auditing your knowledge base for missing or incomplete metadata across a large number of articles.
+- You have just published a new category or workspace and need AI & search descriptions for multiple articles at once.
+- You want to isolate articles without descriptions, articles in a specific category, or articles updated within a date range using filters.
+
+---
+
+## AI & search descriptions page overview
+
+To access the AI & search descriptions page, navigate to **Content tools** () > **AI & search description** in the left navigation bar.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777444050-147h3bnkugi-GEO-SEO-content-tools.png?fm=auto&auto=compress%2Cformat" alt="AI & search description page showing selected articles with the Generate AI & search description button" />
+
+The page displays a table with the following columns:
+
+| Column | Description |
+| --- | --- |
+| **Title** | The article or page category name, along with its word count. |
+| **SEO title** | The current meta title configured for the article or category. |
+| **AI & search description** | The current meta description used in search results and by AI agents. Displays a prompt to add or generate one if empty. |
+| **Updated on** | The date the article or category was last updated. |
+
+Use the **Filter** dropdown to narrow the list by the following criteria:
+
+| Filter | Options |
+| --- | --- |
+| **AI & search description** | Available / Not available |
+| **Category** | Filter by category or subcategory |
+| **Contributor** | Filter by article contributor |
+| **Tags** | Filter by article tags |
+| **Updated on** | Filter by a specific date or date range |
+
+ NOTE
+
+Step by step guides also carry an AI & search description, and they are included in your knowledge base's [llms.txt](https://docs.document360.com/help/docs/llms-txt) file. Set a guide's description from the guide itself: click the **More** (•••) icon on the guide and select **GEO/SEO**. For more information, read the article on [Editing a Step by step guide](https://docs.document360.com/help/docs/editing-a-step-by-step-guide).
+
+---
+
+## Generate AI & search descriptions for multiple articles
+
+1. Navigate to **Content tools** () > **AI & search description**.
+2. Select the workspace from the **Workspace** dropdown. The workspace language must be set to English.
+3. Select the checkbox next to each article or page category for which you want to generate a description.
+
+ NOTE
+
+Articles with fewer than 200 words are not eligible for AI description generation. Their checkboxes will be cleared automatically if selected.
+
+4. Click **Generate AI & search description** in the top-right corner.
+5. Review the generated descriptions in the **AI & search description** column.
+6. For each article, click **Save** to accept the description or **Remove** to discard it. To accept all generated descriptions at once, click **Save All**. To discard all, click **Cancel**.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777444937-mlac6e0vd5p-SEO-20description-20--20Generated.png?fm=auto&auto=compress%2Cformat" alt="Generated AI & search descriptions displayed in the AI & search description page ready for review" />
+
+---
+
+## Best practices
+
+- Filter by **AI & search description: Not available** first to identify and prioritise articles with no metadata before running bulk generation.
+- Review generated descriptions before saving. Eddy AI generates descriptions based on article content, but they may need adjustments for tone, keywords, or accuracy.
+- Ensure every article has a unique AI & search description. Duplicate descriptions across articles reduce ranking clarity and are flagged in SEO audits.
+- Run an AI & search description audit after major content restructuring, such as renaming categories or moving articles between workspaces.
+- Keep descriptions between 120 and 160 characters and titles between 50 and 70 characters (including spaces) for optimal display in search results and accurate AI retrieval.
+- <strong>Cover your Step by step guides too.</strong> Guides are structured for AI agents and LLMs to read and appear in `llms.txt` alongside your articles. A guide published without a description is listed by title only.
+
+---
+
+## FAQ
+
+<Expandable title="Why is SEO metadata showing as not applicable for my project?">
+  SEO metadata only works for content that is publicly accessible. For SEO metadata to be applicable, your project, workspace, and language must all be set to Public. Go to **Settings** () > **Users and permissions** > **Reader access** to check and update these settings.
+</Expandable>
+
+<Expandable title="Does generating AI & search descriptions also update the meta title?">
+  No. The Generate AI & search description function only creates or updates the meta description. Meta titles must be set manually per article or category from the GEO/SEO tab in the Article settings dialog.
+</Expandable>
+
+<Expandable title="What happens when I select all articles and some have fewer than 200 words?">
+  When using Select all, articles with fewer than 200 words are included in the selection. When you click **Generate AI & search description**, a confirmation prompt notifies you that descriptions cannot be generated for those articles. Type "yes" in the field and confirm to proceed with generation for eligible articles only.
+</Expandable>
+
+<Expandable title="Are AI & search descriptions language-specific?">
+  Yes. AI & search descriptions are configured per language. Generating or updating a description in one language does not apply it to other languages in your project. Switch workspaces and repeat the process for each language you want to cover.
+</Expandable>
+
+<Expandable title="Can I generate an AI & search description for a single article from the editor?">
+  Yes. Open the article in the knowledge base portal, click the **More** () icon, select **GEO/SEO**, and use the **Ask Eddy AI** button in the GEO/SEO tab to generate a description for that article.
+</Expandable>
+
+<Expandable title="Do Step by step guides need an AI & search description?">
+  Yes. Step by step guides are structured for AI agents and LLMs to read and are included in your knowledge base's [llms.txt](https://docs.document360.com/help/docs/llms-txt) file, so a guide published without a description is listed by title only. Set the description from the guide's **More** (•••) > **GEO/SEO** option.
+</Expandable>

@@ -1,0 +1,144 @@
+---
+title: Use and translate snippets
+description: Learn how to insert and translate snippets in your articles using merge code, toolbar, or slash commands for seamless multilingual content integration.
+---
+
+Once a snippet is created, you can insert it into any article or category page using three methods: the merge code syntax (Markdown editor), the toolbar (Markdown editor), or the slash command (Advanced WYSIWYG editor). Snippets can also be translated so that when your articles are read in another language, the snippet content matches.
+
+---
+
+## Insert a snippet into an article
+
+Choose the method that matches your editor.
+
+Using merge code syntax
+
+Type the merge code directly in the Markdown editor. Best when you already know the snippet's merge code value.
+
+[Learn more →](/en/docs/use-and-translate-snippets#using-merge-code-syntax-markdown-editor)
+
+Using the toolbar
+
+Browse or search for snippets from the Content tools icon in the toolbar. Works in the Markdown editor.
+
+[Learn more →](/en/docs/use-and-translate-snippets#using-the-toolbar-markdown-editor)
+
+Using the slash command
+
+Type /snippets in the Advanced WYSIWYG editor to open the snippet picker inline without leaving the keyboard.
+
+[Learn more →](/en/docs/use-and-translate-snippets#using-the-slash-command-advanced-wysiwyg-editor)
+
+### Using merge code syntax (Markdown editor)
+
+In the Markdown editor, type the snippet's merge code value between double curly brackets directly in the content.
+
+<strong>Example:</strong> `{{snippet.snippet name}}`
+
+The merge code must match exactly, including capitalisation and spelling. A single character difference will prevent the snippet from rendering.
+
+ NOTE
+
+The merge code syntax only works in the Markdown editor. If you are using the Advanced WYSIWYG editor, insert snippets using the toolbar or slash command.
+
+### Using the toolbar (Markdown editor)
+
+1. In the article editor, click the **Content tools** () icon in the toolbar.
+2. Select the snippet or use the **Search snippets** bar to narrow down by name.
+3. Select the snippet to insert it.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778030390-cr0foky3rgv-image-1768559949127.png?fm=auto&auto=compress%2Cformat" alt="Markdown editor toolbar showing the Content tools icon and snippet selection panel" />
+
+ NOTE
+
+If the **Insert as local copy** toggle is on, the snippet content added to the article will remain unchanged even if the source snippet is modified or removed in the future.
+
+### Using the slash command (Advanced WYSIWYG editor)
+
+1. In the Advanced WYSIWYG editor, type `/snippets` to open the Snippets tool in the slash menu.
+2. Use the **Search snippet** bar to find the snippet you want to insert.
+3. Hover over a snippet name to preview its full content.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778030708-8mfkch6v8jm-Snippet-20--20Slash-20command.png?fm=auto&auto=compress%2Cformat" alt="Slash command menu in the Advanced WYSIWYG editor showing snippet search and preview" />
+
+4. Click the snippet to insert it. The content is inserted inside a content block highlighted with a dotted outline, distinguishing it from the rest of the article.
+5. Click inside the snippet block to open the bubble menu.
+
+| Option | Description |
+| --- | --- |
+| **Dropdown** | Switch to a different snippet. |
+| **Insert as text** | Converts the snippet into static content. The snippet tag is replaced with its current text and future updates to the snippet will no longer apply. |
+| **Delete** | Removes the snippet block from the article. |
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778054265-qdn2rblfw5-Snippet-20--20Edit-20options.png?fm=auto&auto=compress%2Cformat" alt="Snippet bubble menu showing Switch, Insert as text, and Delete options" />
+
+---
+
+## Translate snippets
+
+You can create snippets in multiple languages so that when your articles are read in a specific language, the matching translated snippet content is displayed.
+
+ NOTE
+
+Global snippets cannot be translated. Only snippets created with a specific language scope support translation.
+
+### Translate a new snippet
+
+1. Navigate to **Content tools** () > **Content resources** > **Snippets**.
+2. Click **Create**.
+3. In the **Create new snippet** dialog, enter the snippet name, select the language, and choose your editor. Click **Create**.
+4. From the **Language** dropdown at the top of the editor, select the language for the snippet.
+5. Enter the content in that language.
+6. Click the **Translate to other languages** dropdown, select the languages you want to translate into, and click **Translate**.
+
+ NOTE
+
+The default language is marked as **Main**. Translated languages show a green tick once translation is complete. You can manually switch to untranslated languages and add translations as needed.
+
+7. Click **Save** to save with all translations.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778053052-xzdecunjtw-Snippet-20--20Translation.png?fm=auto&auto=compress%2Cformat" alt="Snippet translation panel showing language tabs and translation status indicators" />
+
+### Translate an existing snippet
+
+1. On the **Snippets** page, click the name of the snippet you want to translate.
+2. Navigate to **Translate to other languages**, select the language, and click **Translate**.
+3. To translate into additional languages, select each one and click **Translate**.
+4. To overwrite an existing translation, click **Translate again**.
+5. To remove a translation for a specific language, click the **More** () icon and select **Clear content from this language**.
+6. Click **Update** to save.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778041013-h0mb03jo2o-Snippet-20--20Remove-20translation.png?fm=auto&auto=compress%2Cformat" alt="Snippet translation panel showing the More menu with Clear content from this language option" />
+
+---
+
+## Best practices
+
+- Preview before inserting. In the Advanced WYSIWYG editor, hover over a snippet name in the slash menu to preview the full content before inserting.
+- Use Insert as text with care. Converting a snippet to static text breaks the link to the source snippet. Future updates to the snippet will no longer apply to that instance.
+- Translate before publishing. If your knowledge base is multilingual, add translations for new snippets before publishing articles that use them. A missing translation can display inconsistent or fallback content to readers.
+- Use the slash command for faster insertion. In the Advanced WYSIWYG editor, `/snippets` is often faster than navigating the toolbar, especially when you know part of the snippet name.
+
+---
+
+## FAQ
+
+<Expandable title="Can I use variables inside snippets?">
+  No. Using variables inside snippets is not supported. If you insert a variable within a snippet, it will not render correctly in the editor preview or in exported outputs such as PDF.
+</Expandable>
+
+<Expandable title="Why is a snippet always inserted on a new line?">
+  Snippets are designed as content blocks that can contain multiple lines. They always start on a new line to maintain structure and clarity in the article.
+</Expandable>
+
+<Expandable title="Is there a character limit for snippet content?">
+  No. There is no character limit for snippet body content. You can include as much text, formatting, images, tables, or other supported elements as needed. The only character limit is the **Name** field, which has a maximum of 50 characters.
+</Expandable>
+
+<Expandable title="Can I change the name of a snippet after it has been created?">
+  No. The snippet name cannot be changed after creation. You can edit the content of a snippet at any time.
+</Expandable>
+
+<Expandable title="How many snippets can I create in one project?">
+  You can create up to 200 snippets per project. Contact support if you need additional snippets.
+</Expandable>

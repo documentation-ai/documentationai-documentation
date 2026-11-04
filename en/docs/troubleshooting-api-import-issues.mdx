@@ -1,0 +1,247 @@
+---
+title: Troubleshooting API import issues
+description: Resolve OpenAPI errors like missing server URLs and 401 responses with clear steps to ensure proper API documentation and functionality.
+---
+
+This article is a consolidated reference for every error, warning, and unexpected behavior documented across Document360's API documentation feature. Use it to diagnose and resolve issues with imports, authentication, the Try It! feature, rendering, and the knowledge base site.
+
+---
+
+## Import errors
+
+### Invalid format – API file upload failed
+
+<strong>When it occurs:</strong> When one or more responses in your OpenAPI specification file are missing the required `content` section.
+
+<strong>Why it happens:</strong> Document360 enforces strict OpenAPI validation rules. Although a file may pass validation in tools like Swagger Editor, Document360 requires all responses to explicitly define both the media type (for example, `application/json`) and a schema reference under a `content` block. Responses that are empty or that reference a schema directly without a `content` wrapper will cause this error.
+
+<strong>How to fix it:</strong>
+
+1. Open your OpenAPI spec file in a text editor or IDE.
+2. Locate any response definitions that are empty or that reference a schema without a `content` block.<br /> <strong>Incorrect:</strong>
+
+```yaml
+   responses:
+     "200": {}
+```
+
+<strong>Correct:</strong>
+
+```yaml
+   responses:
+     "200":
+       description: OK
+       content:
+         application/json:
+           schema:
+             $ref: "#/components/schemas/YourSchema"
+```
+
+3. Save the file and re-upload it to Document360.<br /> If the issue persists, contact the [Document360 support](https://document360.com/support/) team.
+
+---
+
+### Invalid URL
+
+<strong>When it occurs:</strong> When creating an API reference from a URL and the URL provided cannot be fetched or resolved.
+
+<strong>Why it happens:</strong> The URL may be malformed, unreachable from Document360's servers, or pointing to a resource that is not a valid OpenAPI spec.
+
+<strong>How to fix it:</strong> Verify the URL resolves correctly in a browser or with `curl`. Ensure it returns a valid JSON or YAML OpenAPI document. Correct the URL and try again.
+
+---
+
+### Unsupported file format
+
+<strong>When it occurs:</strong> When the uploaded file is not a supported format.
+
+<strong>How to fix it:</strong> Ensure your file is one of the following: JSON, YAML, or YML. Document360 supports OpenAPI 2.0, OpenAPI 3.0, OpenAPI 3.1, and Postman Collections.
+
+---
+
+### Unable to add API reference – invalid specification file
+
+<strong>Error message:</strong> <em>"Unable to add API reference. This operation can't be completed. Please ensure that you have given a valid specification file."</em>
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778004764-m5b4z734guq-3_ScreenShot-Troubleshooting.png?fm=auto&auto=compress%2Cformat" alt="Screenshot showing the invalid API reference error" />
+
+<strong>When it occurs:</strong> When uploading a YAML specification file that has been copied or exported from a rich-text editor or word processor.
+
+<strong>Why it happens:</strong> The uploaded YAML file is malformed and not a valid OpenAPI 3.0 YAML document. This commonly occurs when the file has been copied or exported from a rich-text editor, which introduces formatting characters such as `\f0\fs24` or trailing backslashes that break the YAML format.
+
+1. **Validate your spec file**: Open your YAML file in a tool like Swagger Editor or a code editor to check for errors or formatting issues.
+2. **Look for unwanted formatting characters**: Check for characters like `\f0\fs24` or trailing backslashes `\` (especially in the endpoint description) that may have been introduced during copy-paste from a rich-text source. These can break the YAML format.
+3. **Clean up the file**: Use a plain text or code editor to remove any special formatting characters. Avoid using word processors when editing or saving YAML files.
+4. **Re-upload the file**: After cleaning the file and ensuring it's a valid OpenAPI 3.0 YAML, try uploading it again.
+
+---
+
+### Summary and tags not reflected after import
+
+<strong>When it occurs:</strong> After importing a spec, endpoint articles display incorrect titles or appear under unexpected category folders.
+
+<strong>Why it happens:</strong> The `summary` and `tags` fields are defined at the path level in the spec rather than inside the operation object (`get`, `post`, `put`, or `delete`). Additionally, the `tags` field must always be written as an array, even when only one tag is used.
+
+<strong>How to fix it:</strong>
+
+1. Open your OpenAPI specification file in a text editor.
+2. Move the `summary` and `tags` fields inside each operation object and ensure `tags` is written as an array.<br /> <strong>Incorrect:</strong>
+
+```yaml
+   /your-endpoint:
+     summary: My Endpoint
+     tags: My Category
+     get:
+       ...
+```
+
+<strong>Correct:</strong>
+
+```yaml
+   /your-endpoint:
+     get:
+       summary: My Endpoint
+       tags: ["My Category"]
+       ...
+```
+
+3. Save the file and reimport it into Document360. The imported articles will use the `summary` value as the article title, and tag-based folders will be created correctly.<br /> If the issue persists, contact the [Document360 support](https://document360.com/support/) team.
+
+---
+
+### Upload fails with 400 Bad Request – specification file too large
+
+<strong>When it occurs:</strong> When uploading a valid YAML or JSON OpenAPI specification file that contains endpoints with deeply nested response schemas and multiple response codes per endpoint.
+
+<strong>Why it happens:</strong> Although the file may be valid YAML and pass external validators such as Swagger Editor, Document360 enforces an internal article size limit. When an endpoint contains response schemas nested eight or more levels deep across multiple response codes, the resulting data size exceeds this limit and cannot be processed or stored.
+
+<strong>How to fix it:</strong>
+
+1. Open your OpenAPI specification file in a text editor or IDE.
+2. For each endpoint, retain only **one 201 response type**, **one 400-series response type**, and the **default response type**. Remove all additional response codes.
+3. For endpoints where the 201 response alone contains deeply nested schemas, retain **only the 201 response type** and remove the 400-series and default response types entirely.
+4. Save the modified file and re-upload it to Document360.
+
+> ℹ️ **NOTE**<br /> If publishing fails after a successful upload, contact the Document360 support team. Publishing may require backend assistance due to the article size limitation.
+
+---
+
+### Top-level tag descriptions not rendered in API documentation
+
+<strong>When it occurs:</strong> Descriptions and metadata defined in top-level OpenAPI tag objects are not displayed in the generated API documentation.
+
+<strong>Why it happens:</strong> When an OpenAPI specification file contains top-level tags used to group API operations, Document360 converts those tags into folder-type categories during import. Folder categories are used only for organising endpoints and do not generate standalone content pages. As a result, any description or metadata defined within those top-level tag objects is not rendered.
+
+<strong>Workaround:</strong> Add the relevant context directly to the individual endpoint descriptions within the tag, so the information is visible on the generated endpoint pages.
+
+---
+
+## Still having issues?
+
+If the steps above do not resolve your issue, contact the [Document360 support](https://document360.com/support/) team directly.
+
+---
+
+## FAQ
+
+<Expandable title="Can I filter API results by articles created or modified after a certain date?">
+  The API does not support filtering articles directly by creation or modification time. You can use the Gets all article versions endpoint, which includes a Modified At timestamp in the metadata, and filter the response on your end. Use the article ID to fetch full content via the article details endpoint.
+</Expandable>
+
+<Expandable title="Does Document360 support dynamic or instance-based API responses?">
+  No. Document360 follows the OpenAPI specification, which defines a consistent static structure for request and response objects. If your API returns different responses for the same endpoint across different instances, Document360 cannot reflect those variations dynamically. The recommended approach is to use the same schema structure across all environments, or to publish separate OpenAPI spec files for each environment. For fields that vary slightly between instances, use the OpenAPI `additionalProperties` property.
+</Expandable>
+
+<Expandable title="Can I download articles as PDFs using the API?">
+  Currently there is no option to download articles as PDFs through the API endpoints.
+</Expandable>
+
+<Expandable title="Can readers access the knowledge base site during Document360 portal downtime?">
+  Yes. GET calls of the Customer API run independently of the Document360 portal, so readers can continue accessing the site during scheduled maintenance or portal downtime.
+</Expandable>
+
+<Expandable title="Why does the Try It! URL include tryit.document360.io?">
+  This is expected behaviour. The `tryit.document360.io` subdomain is used internally to route and process API test requests. It does not affect functionality — requests return correct results from your API.
+</Expandable>
+
+<Expandable title="Why am I receiving errors when making API requests from an automated workflow or CI/CD pipeline?">
+  This can occur if the user\_id included in the API request belongs to an inactive user or a user who does not have the required permissions for the operation being performed.
+
+  <strong>Example:</strong> When calling fork endpoints (such as `/v2/Categories/{CategoryId}/fork`), a stale or invalid user\_id will return the misleading error "The method or operation is not implemented." This does not mean the endpoint is unsupported — it means the user\_id is invalid or the user lacks permissions.
+
+  <strong>Fix:</strong> Ensure that the user\_id belongs to an active Document360 user with the necessary access rights (for example, edit permissions on the article or category being forked). For automation use cases, it is recommended to use a dedicated service account. You can retrieve the appropriate user\_id using the Get complete user details by id API endpoint.
+</Expandable>
+
+<Expandable title="Why does the API return unexpected languages in the available_languages field?">
+  **When it occurs**
+
+  This occurs when the `available_languages` field in the API response includes languages that are not currently expected to be available for the article.
+
+  **Why it happens**
+
+  The API returns all languages in which the article has been published at least once. If a translated version of the article was published previously, that language will be included in the `available_languages` field, even if it is no longer actively maintained.
+
+  **How to fix it**
+
+  1. Navigate to the article in the respective language.
+  2. Verify whether the translated article has been published previously.
+  3. Unpublish the translated article if it should no longer be available.
+
+  After the translated article is unpublished, the language will no longer be returned in the `available_languages` field of the API response.
+</Expandable>
+
+<Expandable title="Why does the API return a different slug for translated articles?">
+  **When it occurs**
+
+  This occurs when the slug returned for a translated article differs from the slug used in the original API request.
+
+  **Example**
+
+  - Requested slug: `add-subscription-activation-code`
+  - Returned translation slug: `adding-your-subscription-with-your-activation-code`
+
+  **Why it happens**
+
+  The URL of the translated article has been modified after its initial creation, and a redirect rule has been configured for the previous URL. The API returns the current active slug associated with the translated article rather than the original slug.
+
+  **How to fix it**
+
+  1. Navigate to **Settings > Knowledge Base Site > Article Redirect Rules**.
+  2. Check whether a redirect rule exists for the translated article.
+  3. Review the current URL configured for the article in the respective language.
+  4. If required, update the article URL or redirect configuration to align with the expected slug.
+
+  The API will always return the currently active URL for the translated article.
+</Expandable>
+
+<Expandable title='How can I retrieve only published articles when using the "Get list of articles within a project version" API endpoint?'>
+  **When it occurs**
+
+  This occurs when the **Get list of articles within a project version** API endpoint returns articles in multiple publication states, and only published articles are required.
+
+  **Why it happens**
+
+  The endpoint returns all articles available within the specified project version, regardless of their publication status. The publication state of each article is identified by the `status` field in the API response.
+
+  Supported status values include:
+
+  - `0` — Draft
+  - `3` — Published
+
+  As the endpoint does not currently support filtering by publication status, both draft and published articles are returned in the response.
+
+  **How to fix it**
+
+  To retrieve only published articles:
+
+  1. Call the **Get list of articles within a project version** API endpoint.
+  2. Filter the response to include only articles where `status = 3`.
+  3. Extract the article IDs from the filtered results.
+  4. Use the filtered article IDs with the **Gets an article** API endpoint to retrieve the content of the published articles.
+
+  **Additional Information**
+
+  Currently, the **Get list of articles within a project version** API endpoint does not provide a query parameter or path parameter to return only published articles. Filtering the response based on the `status` field is the recommended method for identifying and retrieving published content.
+
+  > The `isPublished` parameter exists on individual-resource endpoints (Gets an article, Gets a category) but not on list endpoints. Do not use `isPublished` to filter list results.
+</Expandable>

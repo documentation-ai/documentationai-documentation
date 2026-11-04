@@ -1,0 +1,157 @@
+---
+title: Create and manage variables
+description: You can reuse variables when you use the same text-based content in multiple places that changes over time.
+---
+
+Variables in Document360 are created and managed from the **Variables** page under Content tools. From this page you can create new variables, edit their content, check where they are used across your knowledge base, and delete them individually or in bulk.
+
+To insert a variable into an article or category page, and to translate variables, read [Use and translate variables](https://docs.document360.com/help/docs/use-and-translate-variables).
+
+---
+
+## The Variables page
+
+1. Navigate to **Content tools** () in the left navigation bar.
+2. Select **Content resources** > **Variables** in the left navigation pane.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777685309-0b3dwy0pax69-variables.png?fm=auto&auto=compress%2Cformat" alt="Variables page showing the list of variables with management options" />
+
+| Element | Description |
+| --- | --- |
+| **Create** | Creates a new variable. |
+| **Languages** | Filters the variable list by Global or a specific language. |
+| **Search variable** | Searches for a variable by name. |
+| **Select variable** | Checkbox to select one or more variables for bulk delete. Click a variable name to view its content. |
+| **Used in** | Shows a hyphen if the variable is unused. If used, click **View** to see the articles and category pages where it appears. Archived articles and category pages are not counted. |
+| **Language** | Shows the language assigned to each variable. |
+| **Last modified** | Displays the date and time the variable was last updated. |
+| **Translation** | Click the globe icon to check translation progress. A green check means the variable has been translated into that language. An X means it has not. |
+| **Edit** | Opens the variable for editing. Click **Update** to save changes. |
+| **Delete** | Deletes the variable. For bulk delete, select the checkboxes and click **Delete** at the top. |
+
+---
+
+## Create a variable
+
+1. On the **Variables** page, click **Create** in the top-right corner.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777691032-d92ipuwg0a-Create-20variable.png?fm=auto&auto=compress%2Cformat" alt="Create variable panel showing name, merge code, language, and content fields" />
+
+2. Enter a **Name** for the variable.
+
+ NOTE
+
+Variable names can include letters, numbers, hyphens, and underscores. The name must not exceed 50 characters.
+
+3. Note the **Merge code value**. This is the tag used to insert the variable in the editor. For example, if the variable name is `Disclaimer`, the merge code is `{{variable.Disclaimer}}`.
+4. From the **Language** dropdown, select a language scope:
+
+   - **Global** (default): The variable applies to all languages.
+   - A specific language: The variable applies to that language only.
+5. In the **Content** field, enter the variable content.
+
+ NOTE
+
+Variable content is limited to 300 characters including spaces. For longer texts or media, use [Snippets →](/en/docs/snippets)
+
+6. Click **Save**.
+
+### Formatting options
+
+You can style variable content using the toolbar.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777684728-383fezgxkq8-formatting-20tools-20variables.png?fm=auto&auto=compress%2Cformat" alt="Variable editor toolbar showing formatting options including font, bold, italic, text color, and more" />
+
+| Option | Description |
+| --- | --- |
+| **Font family** | Change the font family of the text. |
+| **Font size** | Adjust the text size between 8 and 48. |
+| **Bold** | Emphasise important words or phrases. |
+| **Italic** | Highlight text or indicate terms. |
+| **Underline** | Add a line below the text for emphasis. |
+| **Text color** | Change text color using a color picker or HEX code. |
+| **Background color** | Change the background color behind the text. |
+| **Insert link** | Add a hyperlink to an internal article or external URL. |
+| **LaTeX** | Add LaTeX expressions for mathematical content. |
+| **Emoji** | Insert emojis into the content. |
+| **More** | Access additional options: Inline code, Strikethrough, Superscript, Subscript, and Remove formatting. |
+
+ NOTE
+
+You can also use the `/` slash menu in the variable editor to access formatting tools such as Heading 3 and Heading 4, and insert elements such as Link, LaTeX, and Emoji.
+
+---
+
+## View variable usage
+
+Before editing or deleting a variable, you can check exactly which articles and category pages use it.
+
+1. On the **Variables** page, locate the variable in the **Used in** column.
+2. Click **View**. The **View references** panel opens.
+3. Click an article name to expand its entry. For each reference you can see the article version, project workspace and language, the name of the user who inserted the variable, the article state (Draft or Published), and the date and time the variable was inserted.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777685590-yzj3lqzokuq-view-20references.png?fm=auto&auto=compress%2Cformat" alt="View references panel showing articles and category pages where a variable is used" />
+
+ NOTE
+
+Archived articles and category pages are not listed in the View references panel and are not counted in the **Used in** column. A variable used only in archived content shows a hyphen, as though it is unused. The references are preserved and reappear when the content is unarchived.
+
+---
+
+## Edit a variable
+
+1. On the **Variables** page, hover over the variable and click the **Edit** () icon. The variable content opens for editing. The **Name** and **Merge code value** cannot be changed after creation.
+2. Edit the content as needed and click **Update**.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777690617-hn8pnnodm4f-edit-20and-20delete-20variables.png?fm=auto&auto=compress%2Cformat" alt="Variable edit panel showing content field and Update option" />
+
+ NOTE
+
+Editing a variable's content updates it in every article and category page where the variable is used, including published ones, without needing to republish them.
+
+### Edit a link inside a variable
+
+If your variable contains a hyperlink, click the link to open the bubble menu.
+
+| Option | Description |
+| --- | --- |
+| **Open link** | Opens the link in a new tab so you can verify it. |
+| **Edit** | Edit the URL, link text, or the open-in-new-tab setting. |
+| **Unlink** | Removes the hyperlink and leaves the URL as plain text. |
+| **Copy** | Copies the link URL. |
+
+---
+
+## Delete a variable
+
+1. On the **Variables** page, hover over the variable and click the **Delete** () icon.
+2. Click **Yes** in the confirmation dialog.
+
+To delete multiple variables at once, select the checkboxes next to the variables you want to delete and click **Delete** at the top of the list.
+
+ NOTE
+
+When you delete a variable, it is removed from all articles where it is referenced. The article itself is not modified or republished. On the knowledge base site, surrounding content adjusts automatically and no empty space remains. In the portal, the variable is replaced with the placeholder text "Loading...". Replace it with another variable or delete the placeholder manually.
+
+---
+
+## Considerations
+
+| Item | Detail |
+| --- | --- |
+| **Variable name length** | Maximum 50 characters. |
+| **Variable name characters** | Letters, numbers, hyphens, and underscores only. |
+| **Content length** | Maximum 300 characters including spaces. |
+| **Name and merge code** | Cannot be changed after the variable is created. |
+| **Global variables** | Cannot be translated. |
+| **Variables inside snippets** | Not supported. Variables will not render correctly in the editor preview or PDF exports. |
+| **Archived content** | Archived articles and category pages are excluded from the Used in column and the View references panel. |
+
+---
+
+## Best practices
+
+- Name variables descriptively. Use names that make the merge code self-explanatory, for example `Support_Email` rather than `var1`. This helps authors insert the right variable without having to check its content first.
+- Use Global scope by default. Set the language to **Global** unless the variable content genuinely differs by language. Language-specific variables require separate management for each language.
+- Check dependencies before editing. Use **View references** to understand the full impact before changing a variable that is widely used across your knowledge base.
+- Use Snippets for anything longer than a phrase. If the content you want to reuse includes formatting, multiple sentences, or structured elements, a Snippet is the right tool, not a variable.

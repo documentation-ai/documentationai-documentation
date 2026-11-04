@@ -1,0 +1,144 @@
+---
+title: Embedding external content
+description: Embed diagrams, videos, and Google Forms in Document360 articles seamlessly. Enhance your knowledge base with interactive content without leaving the portal.
+---
+
+Document360 supports embedding third-party content directly into your articles — including diagrams, videos, and interactive forms — without leaving the knowledge base portal. Embedding is done using HTML iframe code pasted into Code view in the Advanced WYSIWYG editor, or directly into the Markdown editor.
+
+Three embedding types are covered in this article:
+
+Draw.io diagrams
+
+Embed flowcharts, UML diagrams, network diagrams, and more from Diagrams.net directly into your articles as images or via HTML.
+
+[Learn more →](/en/docs/embedding-external-content#embed-drawio-diagram)
+
+Microsoft Stream videos
+
+Embed SharePoint Stream and Microsoft Stream videos into articles using an iframe embed code from the Stream platform.
+
+[Learn more →](/en/docs/embedding-external-content#embed-microsoft-stream-videos)
+
+Google Forms
+
+Embed interactive Google Forms into articles to collect feedback, run surveys, or capture reader input directly on the page.
+
+[Learn more →](/en/docs/embedding-external-content#embed-google-forms)
+
+---
+
+## When would you use these
+
+- Embed a **Draw.io** flowchart or architecture diagram alongside a technical procedure so readers can see the full system context without switching tools
+- Embed a **Microsoft Stream** training video inside an onboarding article so internal users can watch it without leaving the knowledge base
+- Embed a **Google Form** at the end of an article to collect reader feedback, satisfaction ratings, or support requests inline
+- Use diagrams exported as images when you need a lightweight, always-visible visual that does not depend on external service availability
+
+---
+
+## Embed Draw.io diagram
+
+Diagrams.net (commonly referred to as Draw.io) is a web-based open-source tool for creating flowcharts, UML diagrams, entity relationships, network diagrams, mockups, and more.
+
+ NOTE
+
+Diagrams stored on Google Drive, Dropbox, or other cloud storage are private by default. Before embedding, ensure the diagram's privacy settings are set to public — otherwise readers will not be able to view it.
+
+**Embed as an image tag**
+
+Use this approach in the Markdown editor or via Code view in the Advanced WYSIWYG editor.
+
+1. In Diagrams.net, click **File > Embed** and choose **Image**.
+2. Click **Embed**.
+3. Click **Copy** to copy the generated image tag.
+4. In the Markdown editor, paste the copied code directly into the article. In the Advanced WYSIWYG editor, click the **Code view** icon and paste the code at the desired location.
+
+<Image src="https://cdn.document360.io/860f9f88-412e-4570-8222-d5bf2f4b7dd1/Images/Documentation/embed%20draw.io.gif" alt="" />
+
+You can adjust the height and width values in the tag as needed.
+
+**Export as image and upload**
+
+Use this approach for the Advanced WYSIWYG editor or when you want to store the diagram in Document360 Drive.
+
+1. In Diagrams.net, click **File > Export as > PNG**.
+2. Click **Export**, name the file, and save it to your preferred location.
+3. Click **Download**.
+4. In the Document360 editor, click **Insert image** and select **From Upload/URL**.
+5. Select the downloaded image and click **Insert**.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778149245-fdyejmzddfi-export-20image-20draw-io.png?fm=auto&auto=compress%2Cformat" alt="" />
+
+---
+
+## Embed Microsoft Stream videos
+
+You can embed both Microsoft SharePoint Stream and the latest Microsoft Stream videos into Document360 articles. Embedding is supported in both the Markdown and Advanced WYSIWYG editors.
+
+#### Getting the embed code from Stream
+
+1. Navigate to the Stream platform and select the video you want to embed.
+2. Click **Share** at the top right of the video page, then select **Embed code**.
+3. In the embed panel, configure the following options if needed:
+
+   - **Start from** — set a specific timestamp (e.g., 01:23)
+   - **Player size** — choose a resolution (e.g., 640×360, 1280×720)
+4. Click **Copy embed code**.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778149881-xjwsw0duqas-embed-20stream.gif?fm=auto&auto=compress%2Cformat" alt="" />
+
+#### Embedding in the Advanced WYSIWYG editor
+
+1. Navigate to the desired article.
+2. Click the **Code view** icon.
+3. Paste the embed code at the desired location.
+4. Press `Ctrl + S` to save.
+
+#### Embedding using the slash command
+
+1. Type `/Video` and press `Enter`. The **Insert video** panel appears.
+2. In the **Embed code** tab, paste the copied embed code.
+3. Click **Save**.
+
+ NOTE
+
+Ensure you manage access permissions for the Stream video before publishing. Without proper permissions set in Microsoft Stream, readers will not be able to view the embedded video. Refer to the Microsoft Stream support documentation on permissions for details.
+
+---
+
+## Embed Google Forms
+
+You can embed Google Forms directly into knowledge base articles using an HTML iframe code. After publishing, readers can interact with the form — filling out surveys, submitting feedback, or entering data — without leaving the article.
+
+#### Getting the embed code from Google Forms
+
+1. Go to Google Forms and log in with your Google account.
+2. Open an existing form or create a new one.
+3. Click the **Send** button at the top of the form.
+4. In the **Send form** panel, select the <strong>&lt; ></strong> (Embed) tab.
+5. Click **Copy** to copy the iframe embed code.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778149583-rd58umagqe-embed-20google.gif?fm=auto&auto=compress%2Cformat" alt="" />
+
+#### Embedding in the Advanced WYSIWYG editor
+
+1. Navigate to the desired article.
+2. Click the **Code view** icon.
+3. Paste the copied iframe code at the desired location.
+4. Press `Ctrl + S` to save. The form will appear rendered in the article.
+
+#### Embedding in the Markdown editor
+
+1. Navigate to the desired article in the Markdown editor.
+2. Paste the iframe src link directly into the editor at the desired location.
+
+---
+
+## Best practices
+
+- Always set Draw.io diagrams to public before embedding — private diagrams will appear broken to readers on the knowledge base site
+- Use the export as image approach for Draw.io diagrams when you want full control over the visual without relying on an external service link staying active
+- Verify Stream video permissions before publishing — readers without access to the Stream video will see an error rather than the video
+- Test embedded Google Forms after publishing to confirm they render and submit correctly for readers
+- Keep embedded content focused — one diagram or form per section. Stacking multiple embeds in a single article can affect page load performance
+- Always preview the article after embedding to confirm the content renders correctly before publishing

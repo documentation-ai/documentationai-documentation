@@ -1,0 +1,105 @@
+---
+title: All files
+description: Manage all your Document360 project files in one place. Perform bulk operations like move, copy, download, and delete easily from the All files overview page.
+---
+
+The **All files** page in Document360 Drive brings every file in your project into a single view, regardless of which folder or subfolder it lives in. It is the fastest way to perform bulk operations — moving, copying, downloading, or removing multiple files at once without navigating folder by folder.
+
+---
+
+## Why use the All files page
+
+- **Manage files at scale** — Perform bulk operations across your entire Drive from one place instead of repeating actions folder by folder.
+- **Monitor storage** — See how much Drive storage your project is using at a glance.
+- **Find files faster** — Use filters to narrow down files by type, upload date, uploader, tags, or dependency status without browsing through folders.
+- **Clean up unused assets** — Filter for files with no dependencies to identify and remove assets that are no longer in use.
+
+---
+
+## Before you begin
+
+- The All files page shows **20 files per page**. This is fixed and cannot be changed.
+- Bulk move and copy operations work within the **same project** only.
+- Removing a file that has active dependencies will break any article, page, or content reuse element that references it. A warning is shown before deletion, but the action is not reversible from this page — removed files go to the **Recycle Bin** where they can be restored or permanently deleted.
+
+---
+
+## Access the All files page
+
+1. Navigate to Drive () in the left navigation bar in the Knowledge base portal.
+2. In the left navigation pane, navigate to **All files**.
+
+The All files page opens, listing all files across every folder and subfolder in your project.
+
+<Image src="https://cdn.document360.io/860f9f88-412e-4570-8222-d5bf2f4b7dd1/Images/Documentation/All-files-overview%281%29.png" alt="Document360 interface showing file storage usage and file management options." />
+
+---
+
+## Elements of the All files page
+
+#### Storage Usage
+
+The page displays how much of your Drive storage is currently in use against the total available.
+
+#### View Options
+
+Files are displayed in **list view** by default. Click **Grid view** to switch to a thumbnail-based layout — useful when browsing image files visually.
+
+#### Filters
+
+Use the **Filter** option to narrow down files by specific criteria. You can also perform bulk operations on filtered results.
+
+| Filter | What it does |
+| --- | --- |
+| Dependencies | Shows files with or without dependencies — useful for identifying unused assets |
+| Uploaded | Filters files by upload date |
+| Uploaded by | Filters files by the user who uploaded them |
+| Type | Filters files by file format |
+| Tags | Filters files by user-added tags |
+
+#### Pagination
+
+The All files page displays 20 files per page. Use the **Next** and **Previous** buttons or click a **page number** at the bottom of the list to navigate between pages.
+
+---
+
+## Perform bulk operations
+
+### Select files
+
+There are two ways to select files:
+
+- **Select individually** — Click the checkbox next to each file you want to include.
+- **Select all on current page** — Click the **Select all** checkbox at the top of the list to select all 20 files on the current page.
+
+ NOTE
+
+- After selecting the checkbox at the top of the list, click Select all &#123;N&#125; items to extend the selection beyond the current page. On the All files page, this selects all files project-wide.
+- To check the file count within a specific folder, open that folder and select the checkbox at the top of the list. The Select all &#123;N&#125; items number then shows the total for that folder's current view. Note that this count applies to the current view only and does not include files inside its subfolders.
+
+### Choose a bulk action
+
+Once files are selected, the following actions become available in the top menu bar:
+
+| Action | What it does |
+| --- | --- |
+| Move | Relocates selected files to another folder or subfolder within the same project. File URLs do not change. |
+| Copy | Duplicates selected files to another folder or subfolder within the same project. Each copy gets a new URL and is prefixed with "Copy of". |
+| Download | Downloads all selected files to your local storage as a .zip file. |
+| Remove | Moves selected files to the Recycle Bin. Files can be restored or permanently deleted from there. |
+
+ CAUTION
+
+Removing files with active dependencies will break any articles, pages, or content reuse elements that reference them. A warning is displayed before the action is confirmed — review dependencies before proceeding.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777823826-vzturvnho9-Bulk-operations.png?fm=auto&auto=compress%2Cformat" alt="File management interface showing options to upload, move, and manage files in a drive." />
+
+---
+
+## Best practices
+
+- **Filter before you act** — Bulk operations apply only to selected files; filtering first ensures you target the right subset.
+- **Check dependencies before bulk removal** — Review which files are referenced before deleting, so you can re-link them if needed.
+- **Use "Without dependencies" filter regularly** — Quickly surface unused assets and keep your Drive clean as part of routine maintenance.
+- **Download before removing** — Bulk download files you're unsure about before deletion; it serves as a local backup beyond the Recycle Bin.
+- **Use grid view for image audits** — Thumbnail view makes it faster to spot outdated or incorrect visuals before taking action.

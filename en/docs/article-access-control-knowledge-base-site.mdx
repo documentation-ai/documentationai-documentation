@@ -1,0 +1,165 @@
+---
+title: Security - Article access control
+description: Add or deny access to the article content for team accounts, team account groups, reader account, and reader groups on the Knowledge base portal.
+metaTitle: Security - Article access control to authors and readers
+---
+
+Article access control in Document360 lets you manage who can view and edit specific articles and categories, both in the knowledge base portal and on the knowledge base site. Access is managed independently for portal users and knowledge base site readers, giving you precise control over content visibility at the article level.
+
+---
+
+## When to use
+
+- Restrict a sensitive article to specific portal users or user groups without affecting the rest of the category.
+- Make an article private on the knowledge base site while keeping others in the same category publicly accessible.
+- Deny access to a specific article for a user or reader even if they have category-level access.
+
+---
+
+## Access article security settings
+
+There are two ways to access the article security settings.
+
+- <strong>From the article header:</strong> Open the article in the knowledge base portal. Click the **More** () icon in the article header and select **Security**.
+- <strong>From the category tree:</strong> Hover over the article or category in the **Categories & Articles** pane. Click the **More** () icon and select **Security**.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778183850-62yropuwasg-security.png?fm=auto&auto=compress%2Cformat" alt="Security option in the More menu of the article header and category tree" />
+
+Both locations show the same two options:
+
+Knowledge base portal
+
+Manage access for portal users and user groups. Controls who can view and edit the article or category in the knowledge base portal.
+
+[Learn more →](/en/docs/article-access-control-knowledge-base-site#knowledge-base-portal-access-control)
+
+Knowledge base site
+
+Manage access for readers and reader groups. Controls who can view the published article on the knowledge base site. Available for private and mixed projects only.
+
+[Learn more →](/en/docs/article-access-control-knowledge-base-site#knowledge-base-site-access-control)
+
+---
+
+## Knowledge base portal access control
+
+Portal access controls which portal users and user groups can view and edit the article or category in the knowledge base portal.
+
+Select **Knowledge base portal** from the Security options. The **Assign content access: Knowledge base portal** panel appears.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778184137-5n0g6kc604r-kb-20portal-20assign.png?fm=auto&auto=compress%2Cformat" alt="Assign content access panel showing portal users and user groups with their content roles" />
+
+| Element | Description |
+| --- | --- |
+| **Breadcrumb** | Shows the content hierarchy: Project name, Workspace, Language, Category, and Article. |
+| **Block inherited access** | Toggle to override inherited permissions. When enabled, only users and groups explicitly assigned to this article can access it. Inherited users are excluded. See [Block inheritance →](https://docs.document360.com/docs/block-inheritance#block-inheritance-for-users-and-users-group) |
+| **Filter** | Filter the users list by role or access type. |
+| **Assign article access** | Opens the Assign article access panel to add users or user groups. |
+| **Users tab** | Lists all portal users who have access to the article, with their content role and whether access is Inherited or explicitly assigned. |
+| **User groups tab** | Lists all user groups with access to the article. |
+| **Content role and access** | Shows the user's role level, for example Editor - Article or Editor - Workspace, and whether access is Inherited or explicitly set. |
+
+<strong>Actions available per user:</strong>
+
+- <strong>Edit:</strong> Change the user's content role for this article.
+- <strong>Deny:</strong> Deny access to this article for the user. The user will no longer appear in the list. To restore access, click **Assign article access** and add them again.
+- <strong>Remove:</strong> Remove the user's explicit access assignment, reverting to inherited access.
+
+ NOTE
+
+Content access assignment at the article and category level is available only for Contributor and Editor roles. Reviewer accounts do not appear in the article or category level access list. To grant a Reviewer access to content, assign their access at the user level from Users & Groups.
+
+### Assign article access to users
+
+Click **Assign article access** in the panel. The **Assign article access** dialog opens.
+
+| Element | Description |
+| --- | --- |
+| **Change content role** | Select the content role to assign. Available roles: Editor, Draft writer, Reviewer, SEO Optimization Specialist, Localization manager, Localization administrator. |
+| **Content access** | Displays the access scope being assigned at the article level. |
+| **Users tab** | Lists users who do not currently have complete content access to the article. Search by name or email. |
+| **User groups tab** | Lists user groups available to assign. |
+| **Content role and access** | Shows each user's current role and access level. |
+
+Select the users or user groups, set the content role, and click **Apply**.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778186272-87irezewiav-assing-20article-20access-20users.png?fm=auto&auto=compress%2Cformat" alt="Assign article access dialog showing users list with content role selection" />
+
+---
+
+## Knowledge base Reader access control
+
+Reader access controls which readers and reader groups can view the published article on the knowledge base site. This option is only available for private and mixed projects.
+
+ NOTE
+
+This option is inactive if the knowledge base Reader access is set to **Public**.
+
+Select **Knowledge base site** from the Security options. The **Assign content access: Knowledge base site** panel appears.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778188447-36eu1jykmqc-kb-20site-20assing.png?fm=auto&auto=compress%2Cformat" alt="Assign content access panel for the knowledge base site showing reader accounts and reader groups" />
+
+| Element | Description |
+| --- | --- |
+| **Breadcrumb** | Shows the content hierarchy: Project name, Workspace, Language, Category, and Article. |
+| **Block inherited access** | Toggle to override inherited permissions. When enabled, inherited readers cannot access the category or article. Readers and groups with explicit access can still access it. See [Block inheritance →](https://docs.document360.com/docs/block-inheritance#block-inheritance-for-readers-and-reader-groups) |
+| **Filter** | Filter the readers list by access type or reader group. |
+| **Assign article access** | Opens the Assign article access panel to add readers or reader groups. |
+| **Readers tab** | Lists all readers who have access to the article, with their content access level and whether it is Inherited or explicitly assigned. |
+| **Reader groups tab** | Lists all reader groups with access to the article. |
+| **Content access** | Shows the reader's access level, for example Language or Project, and whether it is Inherited or explicitly set. |
+
+<strong>Actions available per reader:</strong>
+
+- <strong>Deny:</strong> Deny access to this article for the reader. The reader will no longer appear in the list. To restore access, click **Assign article access** and add the same reader account again.
+- <strong>Remove:</strong> Remove the reader's explicit access assignment, reverting to inherited access.
+
+### Assign article access to readers
+
+Click **Assign article access** in the panel. The **Assign article access** dialog opens.
+
+| Element | Description |
+| --- | --- |
+| **Change content role** | Select the content role to assign to the selected readers. |
+| **Content access** | Displays the access scope being assigned at the article level. |
+| **Readers tab** | Lists readers available to assign. Search by email address. |
+| **Reader groups tab** | Lists reader groups available to assign. |
+| **Content access column** | Shows each reader's current content access level. |
+
+Select the readers or reader groups, set the content role, and click **Apply**.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778189866-k9vt1em4qa-assign-20article-20access-20site.png?fm=auto&auto=compress%2Cformat" alt="Assign article access dialog for the knowledge base site showing readers list" />
+
+---
+
+## Best practices
+
+- Use article-level access control for exceptions. For broad restrictions, configure access at the category level and let articles inherit it.
+- Enable **Block inherited access** only when you need to restrict an article to a specific subset of users that differs from the parent category's access list.
+- For mixed projects, combine knowledge base Reader access control with workspace-level Reader access settings to control which articles are public and which are private.
+
+---
+
+## FAQ
+
+<Expandable title="Can I give access to an entire category to a user and still restrict specific articles within it?">
+  Yes. You can grant a user access to a category and still deny access to specific articles within it. Open the article, click the **More** () icon, go to **Security** > **Knowledge base portal**, hover over the user, and click **Deny**. Article-level restrictions override category-level permissions for that specific article.
+</Expandable>
+
+<Expandable title="How do I restore access for a user or reader after denying it?">
+  Denied users and readers are removed from the access list. To restore access, click **Assign article access** in the relevant panel and add the user or reader account again.
+</Expandable>
+
+<Expandable title="How can I make one article public while keeping all others in the same category private?">
+  This works in a Mixed project only. Set the workspace Reader access to **Public** in **Settings** () > **Users & permissions** > **Reader access**. Then for each article you want to keep private, go to **Security** > **Knowledge base site** and set the Reader access to **Private**. Leave the article you want public in Public access mode.
+
+  <Image src="https://cdn.document360.io/860f9f88-412e-4570-8222-d5bf2f4b7dd1/Images/Documentation/Screenshot-FAQ_Configuring_one_article_public_other_Articles_As_private.gif" alt="Configuring one article as public while keeping all others private" />
+</Expandable>
+
+<Expandable title="Why is the padlock icon not showing on articles that should be private?">
+  This usually happens when the subcategory containing the article is set to public, even if the parent category is private. Open the article, go to **Security** > **Knowledge base Reader access control**, and set Reader access to **Private**. If the category was cloned, it may have inherited public visibility settings. Update the subcategory settings to private and recheck the portal.
+</Expandable>
+
+<Expandable title="Why can't I see the category and article structure on the knowledge base site as it appears in the portal?">
+  This may be due to reader group access settings. If a reader group does not have access to specific categories, those categories and their articles will not be visible to readers in that group. Ensure the correct content access is granted to the relevant reader group. If the project uses JWT access, verify that the reader group has the correct permissions assigned.
+</Expandable>

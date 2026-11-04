@@ -1,0 +1,231 @@
+---
+title: Authorizing requests in the Try It! console
+---
+
+Try It! lets developers authenticate their requests directly in the console, using whichever security scheme your API defines. Document360 reads the authentication configuration from your OpenAPI specification and surfaces the right fields for each method, so developers can supply credentials and send an authorized request without leaving the documentation.
+
+This article explains how to choose an authentication method in the console, how each supported method works, and how to configure your OpenAPI specification so the method appears correctly in Try It!. For a general overview of the console, see <em>Testing endpoints with Try it!</em>.
+
+---
+
+## Choosing an authentication method
+
+When an endpoint defines one or more security schemes, the Try It! console shows an **Authorization** tab. At the top of that tab is an **Authentication method** selector listing every scheme the endpoint supports.
+
+Select a method, and the console displays the credential fields for that scheme. If an endpoint supports more than one method, developers can pick whichever one they want to authenticate with.
+
+Document360 supports the following authentication methods:
+
+| Method | How it works |
+| --- | --- |
+| API key | A unique key passed in the request headers. |
+| Basic authentication | A username and password passed in the request header. |
+| Bearer token | A token generated after login, passed in the Authorization header. |
+| OAuth 2.0 | Delegated authorization through a sign-in flow, with support for PKCE. |
+| OpenID Connect | Extends OAuth 2.0 to add user identity verification. |
+
+Authentication methods are defined in your OpenAPI specification under `components/securitySchemes` and applied to individual endpoints using the `security` field.
+
+ NOTE
+
+Try It! supports multiple security schemes simultaneously, so developers can test endpoints that require more than one authentication method within the same session.
+
+---
+
+## API key
+
+API key authentication uses a unique key passed in the request headers.
+
+In your OpenAPI spec:
+
+```yaml
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+```
+
+Apply it to an endpoint:
+
+```yaml
+/your-endpoint:
+  get:
+    security:
+      - ApiKeyAuth: []
+```
+
+In the console, select **API key** as the authentication method. The **Name** field is fixed to the header name defined in your spec (`X-API-Key` in the example above), and developers enter their key in the **Value** field. The key is then sent in that header with the request.
+
+---
+
+## Basic authentication
+
+Basic authentication requires a username and password encoded and passed in the `Authorization` header of each request.
+
+In your OpenAPI spec:
+
+```yaml
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+```
+
+Apply it to an endpoint:
+
+```yaml
+/your-endpoint:
+  get:
+    security:
+      - basicAuth: []
+```
+
+In the console, select **Basic authentication** and enter the username and password. Try It! encodes them and sends them in the `Authorization` header when the request is sent.
+
+---
+
+## Bearer token
+
+Bearer token authentication uses a token passed in the `Authorization` header as `Bearer <token>`.
+
+In your OpenAPI spec:
+
+```yaml
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+```
+
+IMPORTANT
+
+Document360 requires the security scheme to be named `BearerAuth` (case-sensitive). If this definition is missing from your spec, clicking Try It! on an affected endpoint will return a 403 error. During import, Document360 will flag this in the Alerts section if it detects a missing BearerAuth definition.
+
+Apply it to an endpoint:
+
+```yaml
+/your-endpoint:
+  get:
+    security:
+      - BearerAuth: []
+```
+
+In the console, select **Bearer token** and enter the token. Try It! sends it in the `Authorization` header as `Bearer <token>`.
+
+---
+
+## OAuth 2.0
+
+OAuth 2.0 lets developers authorize through a sign-in flow rather than entering a static credential. Document360 supports the following flows — use the one that matches how your API issues access tokens.
+
+| Flow | When to use it |
+| --- | --- |
+| Authorization Code | Server-side applications where the client secret can be kept confidential. |
+| PKCE | Public clients such as single-page apps and mobile apps where the secret cannot be kept confidential. |
+| Client Credentials | Machine-to-machine communication where no user is involved. |
+| Implicit | Legacy flow. Not recommended for new implementations. |
+
+### Signing in
+
+When a developer selects **OAuth 2.0** in the console, they see the scheme's configuration and a list of **scopes**, followed by an **Authorize** button. The scopes defined for the scheme are pre-selected; developers can clear any they do not need before authorizing.
+
+Clicking **Authorize** starts the sign-in flow. When the API uses PKCE, no manual configuration is needed in the console — Try It! handles the exchange automatically, and the developer only needs to sign in. Once authorization completes, the console uses the resulting access token for requests to that endpoint.
+
+### Example spec definition (Authorization Code flow)
+
+```yaml
+components:
+  securitySchemes:
+    oauth2Auth:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://auth.yourdomain.com/oauth/authorize
+          tokenUrl: https://auth.yourdomain.com/oauth/token
+          scopes:
+            read: Read access
+            write: Write access
+```
+
+For the redirect URI and token-refresh behaviour that OAuth 2.0 requires, see *Configuring your OAuth provider* below.
+
+---
+
+## OpenID Connect
+
+OpenID Connect extends OAuth 2.0 by adding user identity verification. It is configured similarly to OAuth 2.0 and has the same redirect URI and silent renewal requirements.
+
+In your OpenAPI spec:
+
+```yaml
+components:
+  securitySchemes:
+    openIdConnect:
+      type: openIdConnect
+      openIdConnectUrl: https://auth.yourdomain.com/.well-known/openid-configuration
+```
+
+In the console, select **OpenID Connect** and complete the sign-in flow. As with OAuth 2.0, see *Configuring your OAuth provider* below for the required provider settings.
+
+---
+
+## Configuring your OAuth provider
+
+Both OAuth 2.0 and OpenID Connect require two settings so that authorization works correctly in Try It!.
+
+**Redirect URI** — After a developer completes the authorization flow, the provider redirects them back to the API reference. Add the API reference's OAuth callback URL to your OAuth provider's list of allowed redirect URIs:
+
+```
+https://<your-knowledge-base-domain>/assets/apidocs-oauth-callback.html
+```
+
+Replace `<your-knowledge-base-domain>` with the domain your API documentation is published on.
+
+**Silent renewal** — Document360 automatically refreshes the access token in the background while a developer is actively using Try It!, so the session does not expire mid-use. No configuration is required on your end; this is handled automatically.
+
+---
+
+## Applying multiple security schemes to one endpoint
+
+If an endpoint requires more than one authentication method simultaneously, define them together under `security` at the operation level:
+
+```yaml
+/secure-endpoint:
+  get:
+    security:
+      - BearerAuth: []
+        ApiKeyAuth: []
+```
+
+This requires both a Bearer token and an API key to be provided before the request can be sent. Try It! supports multiple security schemes in a single session, so developers can supply credentials for each and send one authorized request.
+
+---
+
+## Sessions and security
+
+- <strong>Credentials are session-only.</strong> The credentials a developer enters are kept only for the active session and are not saved. When the session ends, they must be entered again.
+- <strong>Credentials are masked in the request preview.</strong> Sensitive values are hidden in the Request preview so they are not exposed on screen while building a request.
+
+---
+
+## FAQ
+
+<Expandable title="Where do developers enter credentials in the console?">
+  In the **Authorization** tab of the Try It! console. Select the authentication method, and the console shows the credential fields for that scheme.
+</Expandable>
+
+<Expandable title="Why does an endpoint return a 403 error when I click Try It!?">
+  For Bearer token authentication, Document360 requires the security scheme to be named `BearerAuth` (case-sensitive). If this definition is missing from your spec, affected endpoints return a 403 error.
+</Expandable>
+
+<Expandable title="Do I need to configure anything for OAuth 2.0 with PKCE?">
+  When your API uses PKCE, no manual configuration is needed in the console — developers only need to click Authorize and sign in. You still need to add the API reference's redirect URI to your OAuth provider's allowed list. See *Configuring your OAuth provider*.
+</Expandable>
+
+<Expandable title="Are the credentials I enter saved for next time?">
+  No. Credentials are kept only for the active session and are not persisted. They are also masked in the request preview for security.
+</Expandable>

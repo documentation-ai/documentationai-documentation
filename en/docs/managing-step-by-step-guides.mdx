@@ -1,0 +1,230 @@
+---
+title: Managing Step by step guides
+description: "Manage Step by step guides with ease: translate, clone, unpublish, and export for offline use. Streamline your documentation process today!"
+---
+
+This article covers the management of step by step guides: translating them into other languages, cloning them across workspaces, unpublishing when needed, and exporting for offline use.
+
+## When to use each action
+
+| Action | Use when… |
+| --- | --- |
+| **Translate** | Your knowledge base serves readers in multiple languages, and you want the guide available in their workspace language |
+| **GEO/SEO** | You want the guide to be found by search engines and cited by AI assistants, and need to set its title, slug, and AI & search description |
+| **Clone** | You need a nearly identical guide for a different product tier, region, or workspace faster than re-recording from scratch |
+| **Unpublish** | A guide covers a feature that has changed significantly, is temporarily unavailable, or was published before it was ready |
+| **Export to PDF** | A reader or internal team needs an offline or printable version of the guide |
+
+---
+
+## Translating Step by step guides
+
+After a Step by step guide is created in the default workspace language, it can be translated into any enabled secondary languages.
+
+You can start a translation in several ways:
+
+### Translating from the All articles page in default language
+
+Use this when you want to translate one or more guides into multiple languages in a single action.
+
+1. Navigate to **Documentation** () in the Knowledge base portal.
+2. Ensure you are in the default workspace language.
+3. In the left navigation pane, go to **All Articles** ().
+4. Select the checkboxes next to the guides you want to translate.
+5. Click **Translate with Eddy AI** ().
+
+   <Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777469104-bro63irebn6-sbs-translate.png?fm=auto&auto=compress%2Cformat" alt="Document360 interface showing article management features and translation option with Eddy AI." />
+6. Select the required secondary languages in the translate panel.
+7. Type **yes** and click **Confirm** to continue with the translation process.
+
+   <Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777469632-n6v2kzwbu8d-translation-dialog-sbs.png?fm=auto&auto=compress%2Cformat" alt="Document360 interface showing translation options and selected languages for articles." />
+
+### Translating from the All articles page in secondary language
+
+Use this when a translated guide is marked **Needs translation** (🌐), meaning the source has been updated and the translation is outdated.
+
+1. Navigate to **Documentation** () in the Knowledge base portal.
+2. Switch to the required secondary language workspace.
+3. In **All Articles**, select the guides marked **Needs translation** (🌐).
+4. Click **More** () > **Translate with Eddy AI** ().
+
+### Translating from within Step by step guide in the secondary language
+
+Use this when you want to translate a specific guide without navigating away from the editor.
+
+1. Open the step by step guide you want to translate.
+2. Click the **Translate with Eddy AI** () icon at the top. The approximate translation credits (characters) the translation will use are displayed.
+3. Click **Translate with Eddy AI** to begin the translation process.
+
+### Translating from Document360 Engage
+
+Use this when you want to translate guides alongside your recorded videos and interactive demos, or find the guides that haven't been translated yet.
+
+1. Click **Document360 Engage** () in the left navigation bar.
+2. To find guides that still need translating, click the **Filter** () icon, set **Type** to **Step by step guide** and **Translation status** to **Need translation**, and click **Apply**.
+3. Select the checkboxes next to the guides you want to translate.
+4. Click **Translate with Eddy AI**. The approximate translation credits (characters) the translation will use are displayed.
+5. Type **yes** in the confirmation dialog and click **Confirm**.
+
+To translate a single guide, hover over it, click the **More** () icon, and select **Translate with Eddy AI**. For more information, see [Document360 Engage](https://docs.document360.com/help/docs/document360-engage#translate-content).
+
+A progress indicator will appear until the translation is complete. Once completed, the content will be translated; the formatting will remain consistent across all languages.
+
+Translated versions display a **Translated** or **Needs translation** status, helping contributors quickly identify guides that require localization updates.
+
+ NOTE
+
+When steps are added or removed in the default language guide, those changes are reflected in the secondary language versions within the editor in draft state. These updates are not visible on the Knowledge base site until the guide is re-translated and published in the respective language. The total number of steps in a guide remains consistent across all languages, ensuring structural alignment between the source and translated versions.
+
+---
+
+## Translation status
+
+Translated guides display a **Translated** or **Needs translation** status so contributors can quickly see what needs attention.
+
+A guide is marked **Needs translation** (🌐) when:
+
+- A new guide is created
+- The source guide is updated
+- Steps are added, removed, or reordered in the source language
+- Text overlays inside images are changed
+- A new workspace language is added
+
+When the source guide is updated, translated versions are automatically marked **Needs translation**. Contributors choose when to re-translate.
+
+ NOTE
+
+- During re-translation, translation credits are calculated for the entire Step by step guide, not just the modified steps.
+- Translation credits are calculated based on step titles, descriptions, and text overlays on step images. Visual elements like highlights, spotlight regions, and blur areas do not consume credits unless they include editable text.
+
+---
+
+## Configuring GEO/SEO descriptions
+
+Step by step guides are structured for AI agents and LLMs to read. A published guide is served as a Markdown (`.md`) page and listed in your knowledge base's [llms.txt](https://docs.document360.com/help/docs/llms-txt) file, so its title and AI & search description determine how an AI assistant represents it.
+
+To set these values, click the **More** (•••) icon on the guide and select **GEO/SEO**. For the full procedure, read the article on [Editing a Step by step guide](https://docs.document360.com/help/docs/editing-a-step-by-step-guide).
+
+---
+
+## Cloning step by step guides
+
+Cloning a step by step guide creates an exact copy of the original content as a new guide. You can clone step by step guides within the same workspace or across different workspaces.
+
+There are three ways to clone a step by step guide in the Knowledge base portal:
+
+### Cloning from the Categories & articles pane
+
+1. Navigate to **Documentation** () in the left navigation bar in the Knowledge base portal.
+2. Hover over the desired guide in the left navigation pane and click the **More** () icon and select the **Clone** () icon.
+3. In the **Clone step by step guide** dialog, configure the fields as described in [Clone dialog fields](/en/docs/managing-step-by-step-guides#clone-dialog-fields) below.
+4. Click **Clone**.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777471242-2715x1yc67o-clone-sbs-with-dialog.png?fm=auto&auto=compress%2Cformat" alt="Guide for cloning articles in Document360 with highlighted options and steps." />
+
+### Cloning from within a specific Folder or Index category
+
+1. Navigate to **Documentation** () in the left navigation bar in the Knowledge base portal.
+2. Go to the desired **Folder**/**Index** category.
+3. Hover over the desired step by step guide.
+4. Click the **More** () icon and select the **Clone** () icon.
+5. In the Clone step by step guide dialog, configure the fields as described in [Clone dialog fields](/en/docs/managing-step-by-step-guides#clone-dialog-fields) below.
+6. Click **Clone**.
+
+### Cloning from Document360 Engage
+
+1. Click **Document360 Engage** () in the left navigation bar.
+2. Hover over the desired step by step guide, click the **More** () icon, and select **Clone**.
+3. In the **Clone step by step guide** dialog, configure the fields as described in [Clone dialog fields](/en/docs/managing-step-by-step-guides#clone-dialog-fields) below.
+4. Click **Clone**.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777475575-0kjqnrp69zd-clone-dialog.png?fm=auto&auto=compress%2Cformat" alt="Clone step by step guide dialog opened from Document360 Engage with Title, Workspace, Category, and Cross-references fields" />
+
+The clone is created as a new article in Documentation, based on the latest published or draft version of the guide, whichever is newer.
+
+#### Clone dialog fields
+
+| Field | Description |
+| --- | --- |
+| **Title** | Enter a name for the cloned guide. |
+| **Workspace** | Select the destination workspace. Click **Reset** to assign it to the main workspace. |
+| **Category** | Select an existing category in the destination workspace. |
+| **Cross-references** | Select **Update to cloned** to point links in the clone to the cloned copy, or **Retain original** to keep them pointing to the original. |
+
+---
+
+## Unpublishing step by step guide
+
+Similar to unpublishing a regular article, you can also unpublish a step by step guide if it is no longer needed or requires updates.
+
+For example, if a guide was created for a feature that is still in development but was mistakenly published, you can unpublish it until the feature is ready. This ensures only accurate and finalized information appears in your knowledge base.
+
+ NOTE
+
+Only users with **Publish** permissions can unpublish articles.
+
+You can unpublish a step by step guide using any of the following methods:
+
+| Method | Steps |
+| --- | --- |
+| Unpublish from the Categories & articles section | Navigate to **Documentation** () > **Categories & articles** > Click **More** () > select **Unpublish** (). |
+| Unpublish from the Folder/Index category | Navigate to **Documentation** () > hover over the published step by step guide > Click **More** () > select **Unpublish** (). To unpublish multiple guides, select them and click **Unpublish** () at the top. |
+| Unpublish from the All articles () section | Navigate to **Documentation** () > **All Articles** () > select one or more published guides > click **Unpublish** (). |
+| Unpublish from the Article editor | Navigate to **Documentation** () > open the step by step guide > Click **More** () > select **Unpublish** (). |
+
+The following steps are the same regardless of the method used.
+
+The **Confirm unpublishing** panel appears.
+
+1. Enter the **Reason for unpublishing**. This is an optional field.
+2. Click **Unpublish**.
+3. To edit or republish:
+
+   1. Click **Edit** to make changes.
+   2. Click **Publish** to republish without editing.
+
+ NOTE
+
+Once a step by step guide is unpublished:
+
+- Unpublishing a step by step guide changes its status from Published to Draft.
+- All associated links will break.
+- The guide will be hidden from the Knowledge base site.
+- In the Knowledge base portal, the status will show as Unpublished and the step by step guide's status icon will appear in gray ().
+
+Unpublishing a guide also removes it from `sitemap.xml` and `llms.txt`.
+
+---
+
+## Exporting a step by step guide to PDF
+
+You can export any step by step guide as a PDF, useful for sharing offline, attaching to support tickets, or printing for in-person training.
+
+### Exporting from the Knowledge base site
+
+1. Navigate to the published step by step guide on the Knowledge base site.
+2. In the article header, click the **More** () icon.
+3. Select **Export to PDF**.
+4. The PDF downloads automatically. Choose a save location in your file explorer and click **Save**.
+
+### Exporting from the Knowledge base portal
+
+1. Navigate to the guide (draft or published) in the Knowledge base portal.
+2. Click the **More** () icon near the **Share** option.
+3. Select **Export to PDF**.
+
+A well-formatted PDF version of the guide downloads to your computer.
+
+---
+
+## FAQ
+
+<Expandable title="How do I view contributors?">
+  Click the Information icon near the status badge. A panel shows the contributor list, step count, last updated date, and creation details.
+</Expandable>
+
+<Expandable title="How do I perform bulk operations for Step by step guides?">
+  Step by step guides function similarly to articles and are displayed in the **All Articles** section. Here, you can manage, search, and organize them alongside other articles in your project. In the **All Articles** section, you can use filters to sort guides by status (e.g., Draft, Published, New), category, tags, or date modified.
+
+  You can also manage guides in bulk from [Document360 Engage](https://docs.document360.com/help/docs/document360-engage), where you can translate or delete several guides at once and filter them by language, contributor, or translation status.
+</Expandable>

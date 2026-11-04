@@ -1,0 +1,149 @@
+---
+title: Organizing your knowledge base
+description: Organize your knowledge base with Document360's five-level hierarchy, ensuring easy navigation and tailored access for diverse audiences.
+---
+
+Before you add your first article, decide how your knowledge base will be structured. Document360 organizes content in five levels: project, workspace, language, category, and article. This article helps you choose the right level for each part of your documentation, so readers find what they need and your team can keep it maintainable as it grows.
+
+---
+
+Understand - Structure
+
+## Know the five levels
+
+Each level answers a different question about your documentation: who it is for, what language it is in, and where it sits in the navigation. Work from the top down when you plan your structure.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777630410-e65k8mihhi-organizing-20your-20kb.png?fm=auto&auto=compress%2Cformat" alt="Hierarchy of project components including workspaces, languages, categories, and articles." />
+
+<br />
+
+Project [Learn more →](https://docs.document360.com/docs/creating-a-project)
+
+Holds everything for one documentation site: workspaces, content, users, settings, and subscription. Each project is independent. When you sign in, the Project dashboard lists all your projects.
+
+Workspace [Learn more →](/en/docs/workspaces-languages)
+
+Gives one audience, product, or product version its own self-contained knowledge base, with its own category tree, URL, and languages. Every new project starts with a workspace named **v1**. Set a workspace to **Public** when it is ready for readers, **Beta** while you build it, or **Deprecated** to keep outdated content for reference. The **Main** workspace is the one readers land on.
+
+Language [Learn more →](/en/docs/getting-started-with-multi-lingual-knowledge-base)
+
+Lets readers read a workspace in their own language. Each workspace has a default language. When you add a language, all existing categories and articles become available in it, ready for translation.
+
+Category [Learn more →](/en/docs/category-types)
+
+Groups related articles and sets the navigation readers see. Choose a type: **Folder** groups content without its own URL, **Index** lists its articles on its own page, **Page** has its own written content, and **GitHub** syncs content from a connected repository. Nest categories up to seven levels deep.
+
+Article [Learn more →](/docs/article)
+
+Holds the content your readers come for. Create an article from a blank page, a template, Eddy AI, or an imported Word or PDF file. Each article stays in draft until you publish it.
+
+### Control who can read what
+
+<br />
+
+Workspaces and languages [Learn more →](https://docs.document360.com/docs/project-workspaces-and-languages)
+
+In a project with Mixed reader access, set each workspace and language to Public or Private. For example, keep your English user guide public and an internal workspace private.
+
+Categories and articles [Learn more →](/en/docs/article-access-control-knowledge-base-site)
+
+In a Private or Mixed project, choose which readers and reader groups can open a specific category or article. In a Mixed project, you can keep one article private while the rest of its category stays public. Articles inherit access from their category unless you block inheritance.
+
+Sections of an article [Learn more →](/en/docs/editor-elements)
+
+Show or hide a block inside an article with conditional content. Every project can use country, device, date, and workspace conditions. Reader group and IP address conditions work only in private projects and private content. Content inside a conditional block is not indexed by Eddy AI or search.
+
+---
+
+Plan - Example
+
+## See it in practice
+
+Acme makes project management software for two audiences: everyday users and developers. The two groups need completely different documentation, so Acme gives each its own workspace inside one project.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777631328-xhaobza8no-acme-20example.jpg?fm=auto&auto=compress%2Cformat" alt="Example Document360 project for Acme with separate workspaces for end users and developers" />
+
+Acme manages both workspaces from one project, with one subscription, one team, and one set of settings. Readers experience them as two separate sites, each with its own navigation and search.
+
+---
+
+Plan - Decide
+
+## Workspace, category, or language: which one do you need?
+
+This is the decision most new teams get stuck on. Use these rules:
+
+✓
+
+Use a new workspace when...
+
+The audience, product, or product version is different and readers should never search each other's content. A developer and a customer support agent have nothing to search in common, so separate workspaces keep each experience focused.
+
+✓
+
+Use a new category when...
+
+It is the same audience with a different topic. "Billing" and "Troubleshooting" serve the same reader, so they belong as categories in the same workspace.
+
+✓
+
+Use a new language when...
+
+It is the same content for readers in another language. Add the language to the existing workspace instead of creating a workspace for each language.
+
+---
+
+Before you build
+
+<a id="limits-and-limitations"></a>
+
+## Considerations
+
+Check these limits while you plan, so your structure does not need to change later.
+
+| Item | Behavior |
+| --- | --- |
+| **Category depth** | Up to seven levels: one root category and six subcategory levels. |
+| **Categories per workspace** | Up to 1,000. |
+| **Workspace name** | Up to 30 characters, using letters, numbers, and hyphens only. |
+| **Main workspace** | Must be Public. A Deprecated workspace cannot be the Main workspace. |
+| **Visibility on the site** | A category does not appear on the Knowledge base site until it contains at least one published, visible article. |
+| **Page categories** | A Page category stays in draft until you publish it. Until then, its URL returns a broken link. |
+| **GitHub categories** | Created through the GitHub integration only. Synced content is read-only in Document360. |
+| **Moving content** | Drag and drop works within one workspace. To move content to another workspace, use **Move** and turn on **Auto update referenced links** to keep internal links working. Content cannot be moved between projects. |
+
+---
+
+Maintain - Best practices
+
+## Best practices
+
+These habits keep your knowledge base easy to navigate as it grows.
+
+1. <strong>Start with three to five top-level categories.</strong> You can reorganize later. Renaming a category does not change its slug or article URLs, so existing links keep working. If you change a slug, add an [article redirect rule](/en/docs/article-redirect-rules) from the old URL.
+2. **Name categories for what readers want to do**, not your team's internal terms. "Get started" works better than "Onboarding flow."
+3. <strong>Keep one idea per article.</strong> Focused articles are easier to find in search and easier to keep current.
+4. <strong>Keep to two subcategory levels.</strong> Deeper nesting makes content harder for readers to find and harder for you to maintain.
+5. **Use one multilingual workspace** instead of a separate workspace for each language.
+6. **Set a new workspace to Beta while you build it**, so readers do not see it before it is ready.
+7. <strong>Copy an existing workspace when you document a new product version.</strong> You keep your category structure and save setup time.
+
+---
+
+## FAQ
+
+<Expandable title="Can I change a category's type after I create it?">
+  Yes. You can change the type at any time without losing content. If you change a category to Page, it goes into draft until you publish it. Read [Category types](/en/docs/category-types).
+</Expandable>
+
+<Expandable title="Can I move content from one workspace to another?">
+  Yes. Use **Move** on the category or article, select the destination workspace, and turn on **Auto update referenced links**. Read [Move category](/en/docs/move-category).
+</Expandable>
+
+<Expandable title="Why doesn't my new category appear on the Knowledge base site?">
+  A category appears only when it contains at least one published article that is not hidden. Publish an article in the category to make it visible.
+</Expandable>
+
+<Expandable title="Should I create a separate workspace for each language?">
+  No. Add languages to one workspace. Each language then shares the same structure, which makes your content easier to manage. Read [Multilingual knowledge base](/en/docs/getting-started-with-multi-lingual-knowledge-base).
+</Expandable>

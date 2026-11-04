@@ -1,0 +1,43 @@
+---
+title: Troubleshooting API spec configuration issues
+---
+
+### Missing or incorrect server URL in OpenAPI spec
+
+<strong>When it occurs:</strong> The Try It! button does not appear, or API consumers are unsure which base URL to use for their requests.
+
+<strong>Why it happens:</strong> The `servers` section is missing from the OpenAPI spec or contains an incorrect URL. Without it, API users cannot determine where to send requests and documentation tools cannot populate the Try It! feature.
+
+<strong>How to fix it:</strong>
+
+1. Add a correct `servers` section to your spec:
+
+```yaml
+   servers:
+     - url: https://api.yourdomain.com
+       description: Production
+```
+
+2. For region-specific APIs, define multiple server entries:
+
+```yaml
+   servers:
+     - url: https://api.yourdomain.com
+       description: Global
+     - url: https://api.us.yourdomain.com
+       description: US region
+```
+
+3. Ensure that all API clients (for example, Postman, cURL) use the correct server URL when making requests.
+
+> ℹ️ **NOTE**<br /> The URLs above are examples. Use the actual base URL for your API.
+
+---
+
+### Empty body shown in API documentation
+
+<strong>When it occurs:</strong> An endpoint's request body displays as empty in the published documentation.
+
+<strong>Why it happens:</strong> The OpenAPI schema is missing `"type": "object"` on one or more object definitions.
+
+<strong>How to fix it:</strong> Ensure every object definition in your OpenAPI spec includes `"type": "object"`. This attribute tells Document360 how to render request body parameters and response schemas accurately, making it easier for developers to understand and interact with your API.

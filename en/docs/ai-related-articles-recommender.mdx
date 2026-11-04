@@ -1,0 +1,124 @@
+---
+title: AI related articles recommender
+description: Use the Document360 AI to identify and associate content related to the current article, thus helping readers with the same context content.
+---
+
+The AI related articles recommender in Document360 uses Eddy AI to automatically suggest relevant articles based on your current article's content. Available in the AI writer suite, it helps readers discover related information without manual effort, improving navigation and reducing time-to-answer on your knowledge base site.
+
+ NOTE
+
+To learn about the languages Eddy AI supports, see [Multilingual support for Eddy AI writer suite](https://docs.document360.com/help/docs/ai-writer-suite#multilingual-support-for-eddy-ai-writer-suite).
+
+---
+
+## When to use the AI related articles recommender
+
+Use this feature when you want to:
+
+- Surface contextually relevant articles to readers without building a manual list for each article
+- Complement existing manually curated related articles with AI-generated suggestions
+- Quickly populate related articles during the publish workflow, saving time before going live
+- Improve knowledge base navigation for articles that cover overlapping or sequential topics
+
+ NOTE
+
+To apply related article recommendations across your entire knowledge base in one action, use [AI dynamic related articles recommendation](/en/docs/ai-dynamic-related-articles-recommendation) instead.
+
+---
+
+## Before you begin
+
+Before using the AI related articles recommender, confirm the following:
+
+- The article must have at least **200 words** to trigger recommendations.
+- You must have the relevant access permissions and credits to generate related articles.
+
+---
+
+## Use the AI related articles recommender
+
+### From the article editor
+
+1. Navigate to **Documentation**  in the left navigation bar of the Knowledge base portal.
+2. Select any published or unpublished article.
+3. Click the **More** () option and select **Related articles**.<br /> If related articles have already been added, they appear below the search bar.
+4. Click **Ask Eddy AI**. Eddy AI analyses the article content and returns up to three recommendations.
+5. Click the **Add** () icon next to each article you want to include in the related articles list.
+6. Turn on the **Auto relate this article to all related articles** toggle, if needed.
+
+ NOTE
+
+When **Auto relate this article to all related articles** is enabled, if Article-A is added as a related article in Article-B, then Article-B will automatically appear as a related article in Article-A. This eliminates the need to add the relationship from both sides.
+
+7. Click **Save**.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777614826-zkjerzgb9l-GIF-AI_related_articles_recommendations.gif?fm=auto&auto=compress%2Cformat" alt="Animated walkthrough showing how to use Ask Eddy AI to generate and add related article recommendations from the article editor" />
+
+---
+
+### From the publish checklist
+
+You can also generate related article recommendations at the point of publishing.
+
+1. Click **Publish** on any article. The **Publish confirmation** dialog appears.
+2. Select **Related articles** from the panel list on the left.
+3. Click **Generate**. Eddy AI recommends related articles based on the article content. Requires a minimum of 200 words.
+4. Click the **Add** () icon next to each article you want to add.
+5. Click **Publish** (or **Schedule**, if you are publishing it later) to save and publish.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777618439-z1txhwdp0em-related-20articles-20generate.png?fm=auto&auto=compress%2Cformat" alt="Related articles panel with Eddy AI suggestions and manual search in the publish dialog" />
+
+---
+
+## Viewing related articles on the knowledge base site
+
+After related articles are added, they appear in the **Related articles** section at the bottom of each article on the knowledge base site. Readers can click any related article to navigate directly to it.
+
+<Image src="https://cdn.document360.io/860f9f88-412e-4570-8222-d5bf2f4b7dd1/Images/Documentation/Related%20articles%20in%20KB%20site.png" alt="Knowledge base site article page showing the Related articles section at the bottom with linked article tiles" />
+
+---
+
+## Best practices
+
+- <strong>Run Ask Eddy AI after every significant content update.</strong> Recommendations are based on the current article content, so regenerating after edits ensures suggestions remain accurate.
+- <strong>Combine AI recommendations with manual curation.</strong> Use Eddy AI to discover candidates, then review and remove suggestions that are not contextually relevant before saving.
+- <strong>Enable Auto relate for bidirectional linking.</strong> Turning on the auto-relate toggle ensures consistency across paired articles without requiring duplicate effort.
+- <strong>Use the publish checklist as a final check.</strong> Running the recommender at publish time is a good safety net to catch related articles you may have missed during editing.
+- <strong>Keep articles at 200 words or more.</strong> Short articles will not qualify for recommendations. If an article is thin on content, consider expanding it or manually assigning related articles.
+
+---
+
+## Considerations
+
+| Item | Detail |
+| --- | --- |
+| Maximum recommendations per request | Eddy AI returns up to **3** related article suggestions at a time |
+| Minimum article length | The article must have at least **200 words** |
+| Existing related articles | Eddy AI suggestions are additive — they do not overwrite previously added related articles |
+| Replicated articles | If an article has replicated versions (e.g., A, A1, A2), only one version from the set is suggested |
+
+---
+
+## FAQ
+
+<Expandable title="How many related articles can Eddy AI generate at one time?">
+  Eddy AI can generate a maximum of 3 related article suggestions per request.
+</Expandable>
+
+<Expandable title="Can I manually add related articles in addition to those recommended by Eddy AI?">
+  Yes. You can manually search for and add articles from the Related articles panel. Eddy AI recommendations complement your manual selections and do not replace them.
+</Expandable>
+
+<Expandable title="Will previously added related articles be overwritten when I use Eddy AI?">
+  No. Eddy AI only suggests additional articles. Your existing related articles remain unchanged, and you choose which suggestions to add.
+</Expandable>
+
+<Expandable title="Why is the Ask Eddy AI button not returning any recommendations?">
+  This usually happens when the article has fewer than 200 words. Eddy AI requires sufficient content to assess relevance. Expand the article content and try again. Also confirm you have the required access permissions and credits.
+</Expandable>
+
+<Expandable title="What is the difference between the AI related articles recommender and the AI dynamic related articles recommendation?">
+  The AI related articles recommender works at the individual article level — you invoke it manually per article. The [AI dynamic related articles recommendation](https://docs.document360.com/help/docs/ai-dynamic-related-articles-recommendation) is a site-wide setting that automatically links related articles across all content in your knowledge base without per-article action.
+</Expandable>
+
+The platform where project members manage and create content for the knowledge base. It allows users to create categories, articles, and templates; manage files, team accounts, and readers; and configure site settings such as branding, domain, and security.

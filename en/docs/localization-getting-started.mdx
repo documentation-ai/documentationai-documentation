@@ -1,0 +1,94 @@
+---
+title: Localization - Getting started
+description: Localize your website and add multiple language versions of your knowledge base using machine translation and multi-lingual extension
+metaTitle: Localization and Multi-lingual Knowledge base
+---
+
+Localization in Document360 is the process of adapting your knowledge base's content, visuals, and behavior to a specific language or region, so readers experience it as if it were built natively for them. Document360 does this by storing a separate version of each article for every language you add to a workspace, rather than translating pages as readers view them. Localization goes beyond translating text, and can also cover visual styling, regional formats, and automatic language detection.
+
+NOTE
+
+If you are comparing this with a browser translation widget, or moving to Document360 from a platform where one was in use, see [Google Translate vs native localization](https://docs.document360.io/docs/google-translate-vs-native-localization).
+
+---
+
+## What complete localization includes
+
+Complete localization in Document360 covers more than translated article text:
+
+- **Article content** — each article exists as stored, editable content in every language you add to the workspace.
+- **Titles and metadata** — article titles, category titles, and meta titles are translated alongside the article body.
+- **Interface text** — [localization variables](https://docs.document360.io/docs/localization-variables) let you translate the labels and controls on your Knowledge base site.
+- **Visual customization** — graphics, color, aesthetics, fonts, and images can be adapted per language.
+- **Regional formats** — units of measure, currencies, and address and date formats can be localized to match the reader's region.
+- **Automatic language detection** — Document360 can detect and load a reader's preferred language based on their login location or browser language settings.
+- **Cultural relevance** — a fully localized knowledge base incorporates the nuances that make it feel native, rather than simply machine-translated.
+
+---
+
+## When to use localization
+
+Use localization when:
+
+- Your customer base spans multiple countries or language groups, and a single-language knowledge base creates friction for non-English readers.
+- You want to reduce support ticket volume by letting readers self-serve in their native language.
+- You need search and Ask Eddy AI to work in each reader's language, not only the displayed page text.
+- Your brand needs region-specific visuals, formats, or terminology to feel credible to local customers.
+- You are entering a new market and want readers there to find your documentation in their own language.
+
+---
+
+## How to set up localization
+
+1. Enable a multilingual workspace and add the languages you want to support. See [Multilingual Knowledge base](https://docs.document360.io/docs/getting-started-with-multi-lingual-knowledge-base).
+2. Translate your content using one of the following:
+
+   - [Translate with Eddy AI](https://docs.document360.io/docs/translate-with-eddy-ai) for AI-powered translation from the portal.
+   - [Crowdin](https://docs.document360.io/docs/crowdin) if you work with an external translation vendor.
+   - Manual translation, by editing the article in each language.
+3. Translate your site interface using [localization variables](https://docs.document360.io/docs/localization-variables).
+4. Standardise product terminology across languages using [glossary terms](https://docs.document360.io/docs/editing-and-deleting-glossary-term).
+5. Set review reminders on source articles, so translations are flagged for updating when the source changes.
+
+---
+
+## Limits and behaviour to know
+
+| Behaviour | What to expect |
+| --- | --- |
+| **Fallback** | Untranslated articles fall back to the default language content, so partial coverage is a valid state to publish in. |
+| **Translation direction** | Translate with Eddy AI translates from the workspace default language into secondary languages, not between two secondary languages. |
+| **Deletion** | Deleting an article in the default language deletes it in all languages. Hiding it in the default language does not hide it in the others. |
+| **Translation credits** | Translate with Eddy AI is metered by character volume, consumed on the initial translation and on every re-translation after an edit. See [Translate with Eddy AI](https://docs.document360.io/docs/translate-with-eddy-ai) for details. |
+| **Browser widgets** | Document360 does not support embedding a browser translation widget on your Knowledge base site. |
+
+---
+
+## Best practices
+
+- <strong>Prioritise high-traffic content first.</strong> You don't need every article translated on day one. Start with the articles your readers access most and expand coverage over time.
+- <strong>Draft new content in the default language first.</strong> Translate with Eddy AI translates outward from the default language, so keeping it as your single source avoids extra workflow later.
+- <strong>Use machine translation as a first pass, then review manually.</strong> It produces a working draft quickly; human review confirms accuracy and preserves intended meaning, particularly for domain-specific terminology.
+- <strong>Keep translated content in sync with the source.</strong> Use the **Review reminder** feature so a source edit prompts a translation update, rather than letting translations drift out of date silently.
+- <strong>Localize all customer-facing content, not just articles.</strong> Include FAQs, user guides, smart bars, cookie consent text, and interface controls, so the experience is consistent end to end.
+- <strong>Add languages incrementally.</strong> Each language multiplies your maintenance load. Confirm you can sustain one before adding the next.
+
+---
+
+## FAQ
+
+<Expandable title="What is the localization of a knowledge base?">
+  Localization is the process of adapting and translating your documentation's content, visuals, and behavior to suit the language, culture, and preferences of a target audience in a specific region.
+</Expandable>
+
+<Expandable title="What content should be localized in a knowledge base?">
+  All customer-facing content should be localized for consistency, including articles, FAQs, user guides, smart bars, cookie consent text, and interface controls.
+</Expandable>
+
+<Expandable title="Do I have to translate every article before publishing a new language?">
+  No. Untranslated articles fall back to the default language content, so you can add a language, translate your highest-traffic articles first, and expand coverage over time.
+</Expandable>
+
+<Expandable title="Does using Translate with Eddy AI replace the need for human review?">
+  No. Translate with Eddy AI is a strong starting point for a first-pass translation, but human review is recommended afterward to confirm accuracy and preserve the intended meaning. See [Translate with Eddy AI](https://docs.document360.io/docs/translate-with-eddy-ai) for setup and credit details.
+</Expandable>

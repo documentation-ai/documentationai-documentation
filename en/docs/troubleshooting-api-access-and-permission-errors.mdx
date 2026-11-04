@@ -1,0 +1,27 @@
+---
+title: Troubleshooting API access and permission errors
+---
+
+### 400 error – API access is disabled
+
+<strong>Error message:</strong> <em>"400 error – API access is disabled. Please contact your project administrator."</em>
+
+<strong>When it occurs:</strong> When attempting to use the public API and public API access has been deactivated in the project settings.
+
+<strong>How to fix it:</strong>
+
+1. Navigate to **Settings** (⚙️) > **AI settings** > **Eddy AI settings** in the Knowledge base portal.
+2. Under the **AI search suite** section, ensure that the **Public API** checkbox is selected.<br /> <Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778007916-4hbl7neaev2-Screenshot-Public_API_settings.png?fm=auto&auto=compress%2Cformat" alt="Eddy AI settings page showing options for AI writer and assistive search features." />
+3. If the issue persists, contact the Document360 support team.
+
+---
+
+### 403 error when posting via API endpoint
+
+<strong>When it occurs:</strong> When attempting a POST request through the API endpoint and receiving a 403 response.
+
+<strong>Why it happens:</strong> The API token being used does not have the required permissions to make POST requests.
+
+<strong>How to fix it:</strong> Review the permissions assigned to your API token. Ensure it has write and POST permissions enabled. Update the token settings and retry.
+
+> A 403 error when updating content via the API can also occur if you attempt to modify spec-generated content (endpoint articles generated from an OpenAPI/Swagger file). Spec-generated content cannot be retrieved or updated through regular content API endpoints, regardless of your API token's permissions. To update this type of content, update your API specification file and resync the documentation instead. See [Managing API references](https://docs.document360.com/help/docs/manage-api-references) for details. If the content you are updating is a regular knowledge base article (not generated from a spec), verify your API token's permissions as described above.

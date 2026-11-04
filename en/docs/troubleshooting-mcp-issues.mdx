@@ -1,0 +1,9 @@
+---
+title: Troubleshooting MCP issues
+---
+
+## “Invalid scope” error while connecting Document360 MCP to ChatGPT using a custom connector
+
+Ensure that the **OIDC enabled** option is unchecked under **Advanced settings** while creating the custom connector app in ChatGPT. Leaving this option enabled can result in an “Invalid scope” authorization error during the connection flow.
+
+The following example shows the authorization error that can occur when OIDC remains enabled:<br /> <Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778343503-6s3q0gdzs2i-Invalid-20scope-20error-20for-20ChatgptMcp.png?fm=auto&auto=compress%2Cformat" alt="" />

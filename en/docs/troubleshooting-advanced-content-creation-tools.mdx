@@ -1,0 +1,184 @@
+---
+title: Troubleshooting step by step guides
+description: Troubleshoot recording issues with step-by-step guides on Document360 AI Capture, ensuring smooth uploads and quality translations for your projects.
+---
+
+Step by step guides in Document360 can run into issues at three stages: recording (when capturing steps in the browser), editing (when annotating or adjusting captured images), and translation (when publishing guides in secondary languages). This article covers the most common symptoms at each stage, their causes, and how to resolve them.
+
+---
+
+## Recording issues
+
+### The install prompt doesn't appear
+
+The extension may already be installed.
+
+1. Navigate to `chrome://extensions` in your browser.
+2. Search for **Document360 AI Capture** in the list.
+3. If the extension is present but disabled, toggle it on.
+4. Return to the Document360 portal and retry.
+
+---
+
+### The recording panel appears but no steps are uploaded after stopping
+
+This usually means the browser tab lost its connection to the portal mid-recording.
+
+1. Check your internet connection.
+2. Record a short two- or three-step sequence to confirm uploads are working before attempting a full guide.
+3. Keep the portal tab open and in the foreground for the full duration of the recording. Navigating away from the portal tab during recording breaks the upload link.
+
+---
+
+### The extension prompt appears but selecting Install does nothing
+
+Your organisation's Chrome policies may be blocking extension installs.
+
+Contact your IT administrator and ask them to allowlist the Document360 AI Capture extension ID from the Chrome Web Store.
+
+---
+
+### Steps are uploaded but images are blank or low quality
+
+This happens when the recorded tab was minimised or partially covered by another window during capture.
+
+Keep the recorded tab fully visible and in the foreground for the entire recording session. Repeat the recording with the tab in full view.
+
+---
+
+### The recording runs, but mouse clicks are not showing as indicators
+
+The Document360 extension may not be attached to the tab you are recording.
+
+1. Stop the current recording.
+2. Confirm that the **Document360** extension is active on the tab you intend to record.
+3. Refresh the tab.
+4. Start the recording again from the beginning.
+
+If you switched browser tabs during setup, the extension may not have attached to the new tab. Always confirm the extension is active on the correct tab before starting.
+
+---
+
+### The capture fails or closes immediately when recording a specific application
+
+If recording works for most windows but fails only for one specific desktop application, the target application likely has screen capture restrictions or security protections enabled at the OS or application level. This is expected behavior, not a Document360 or extension issue, and it is not limited to Document360 AI Capture; other capture and screen-sharing tools will show the same restriction on that application.
+
+Steps to resolve:
+
+1. Confirm the issue is specific to one application by recording a different window or a Chrome tab. If those recordings succeed, the target application is the source of the restriction, not the extension.
+2. Check with your application administrator whether the application is configured as a secured or protected window. Some organizations enable this deliberately to prevent screenshots or recordings of sensitive internal tools.
+3. If the application is intentionally protected, there is no workaround within Document360 AI Capture. Consider documenting that workflow using an alternative method, such as a written walkthrough or an application vendor recording.
+4. If you don't believe the application should be protected, or you're unsure whether a restriction is in place, contact your internal IT or application team to confirm.
+
+---
+
+## Editing issues
+
+### A blur or spotlight I applied isn't showing on the published guide
+
+The **Show blur** or **Show highlight** toggle for the element is turned off.
+
+1. Open the step in the editor.
+2. Locate the element in the **Added elements** panel.
+3. Toggle **Show blur** or **Show highlight** on for the element.
+4. Publish the guide.
+
+Elements are hidden by default until you enable their toggle. They remain saved in your editor as configurations but do not render on the Knowledge base site until the toggle is active.
+
+---
+
+### Animate click shows "not available" for a step
+
+Animate click only works on steps whose slide image was taken directly from the original recording. If you replaced the image using **My uploads**, the animation source is no longer available.
+
+Choose one of the following:
+
+- Select **Select from original** to revert to the original captured frame and restore animation support.
+- Use **Zoom in** as an alternative highlight method for steps using a custom uploaded image.
+
+---
+
+### I cropped a step image but now the reader can't see the surrounding context
+
+Crop is applied permanently to the step. Once applied, only the cropped area is visible to readers.
+
+1. Select the affected step in the editor.
+2. Select **Crop**.
+3. Choose **Original** as the aspect ratio to revert to the full image.
+
+Reverting to the original removes the crop you applied. If you need to preserve a cropped version, duplicate the step before reverting.
+
+---
+
+### Text annotations look fine in the editor but are too small on the Knowledge base site
+
+Font sizes that appear adequate on a large editor canvas can render small on different screen sizes.
+
+1. Select the text annotation in the editor.
+2. Set the font size to at least **16–18 px** for body annotations.
+3. Preview the guide on the Knowledge base site before publishing to check legibility at typical reading sizes.
+
+---
+
+### The "Added elements" section is empty, but I know I applied a blur
+
+Elements are stored per step. You may have a different step selected than the one where the blur was applied.
+
+1. Check the left panel and confirm you have the correct step selected.
+2. Select the step where you applied the blur — its elements appear in the **Added elements** panel for that step only.
+
+---
+
+## Translation issues
+
+### A translated guide shows the source language content instead of the translation
+
+The guide may not have been published from the secondary language workspace.
+
+1. Navigate to the guide in the secondary language workspace.
+2. Check the guide's translation status.
+3. If the status shows **Translated**, select **Mark as Needs translation**, then run **Translate with Eddy AI** to re-translate and republish the guide.
+
+---
+
+### The Translate with Eddy AI button is greyed out
+
+Eddy AI translation may be disabled for your project, or your plan may not include the AI translation suite.
+
+1. Navigate to **Settings** > **AI settings** > **Eddy AI settings**.
+2. Confirm that Eddy AI translation is enabled for your project.
+3. If the setting is enabled but the button remains greyed out, contact Document360 support to confirm that your plan includes the AI translation suite.
+
+---
+
+### Translation credits were consumed more than expected
+
+Credits are charged for step titles, descriptions, and text overlays added via the **Text** element in the editor. If your guide uses many text annotation overlays, each one contributes to the credit total.
+
+Review the text elements in your guide and remove any overlays that are not needed for the published version. Visual-only elements such as highlights and blurs do not consume translation credits.
+
+Credits are charged per translatable text element. Guides with a high number of text annotations will consume more credits than guides that rely on visual elements alone.
+
+---
+
+## FAQ
+
+<Expandable title="The extension is installed and enabled but the recording panel still doesn't appear. What should I try?">
+  Try restarting Chrome and returning to the portal. If the panel still doesn't appear, uninstall and reinstall the **Document360 AI Capture** extension from the Chrome Web Store, then refresh the portal.
+</Expandable>
+
+<Expandable title="Can I record on any browser, or only Chrome?">
+  Step by step guide recording requires Chrome with the Document360 AI Capture extension installed. Other browsers are not currently supported for recording.
+</Expandable>
+
+<Expandable title="I re-translated a guide but it still shows source language content. What next?">
+  Clear your browser cache and reload the Knowledge base site. If the content is still in the source language, check that the secondary language workspace is correctly configured under **Settings** > **Languages**.
+</Expandable>
+
+<Expandable title="Do text annotation credits apply to every language I translate into?">
+  Yes. Credits are charged per translation run. If you translate a guide with multiple text overlays into three languages, credits are consumed for each language separately.
+</Expandable>
+
+<Expandable title="I followed all the steps but my issue isn't listed here. Where should I go?">
+  Contact Document360 support with a description of the symptom, the browser and OS you are using, and the name of the affected guide. Screenshots or a screen recording of the issue will help the team investigate faster.
+</Expandable>

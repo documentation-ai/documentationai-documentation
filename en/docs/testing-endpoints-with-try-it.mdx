@@ -1,0 +1,197 @@
+---
+title: Testing endpoints with Try It!
+description: Explore Document360's Try It! feature for live API testing, enabling developers to send requests and view responses directly in the documentation.
+---
+
+Try It! is Document360's interactive API console, embedded directly in your published API reference. It lets developers send real requests to your API endpoints and see live responses without leaving the documentation or writing any code.
+
+This article explains how the Try It! console works in your published API reference — how to open it, build and send a request, read the response, and what the console does and does not support. For details on configuring each authentication method, see [Authorizing requests in the Try It console](https://docs.document360.com/help/docs/authorizing-requests-in-the-try-it-console).
+
+---
+
+## What Try It! does
+
+From any endpoint page in your published API reference, developers can:
+
+- Open an interactive console inline on the endpoint, without leaving the page
+- Fill in path and query parameters, headers, and (for write methods) a request body
+- Supply authentication credentials for the endpoint's security scheme
+- Send a live request and view the real response — status, timing, headers, and body
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777708566-96lyh76jj0v-try-20it-20in-20site.png?fm=auto&auto=compress%2Cformat" alt="The Try It console open on an endpoint, showing the request builder and the live response." />
+
+ NOTE
+
+Try It! is not available for webhooks. Webhook pages show the payload schema and an example but cannot send test requests.
+
+---
+
+## Opening the Try It console
+
+On any endpoint page, the endpoint's method and URL appear at the top, with an **Try It** button beside them.
+
+1. Click **Try It**. The interactive console opens inline, directly below the endpoint URL.
+2. Build your request using the tabs described below, then click **Send**.
+3. When you are finished, click the close Try it icon (**X**) to collapse the console and return to reading the documentation.
+
+The console opens in place - you stay on the same endpoint page the whole time, with the documentation still visible above it.
+
+---
+
+## Building a request
+
+The request builder is organised into tabs. Which tabs appear depends on the endpoint's HTTP method:
+
+- **Params** — path and query parameters defined for the endpoint. Required parameters are marked, and each shows its description from your spec.
+- **Authorization** — the authentication method and credential fields for the endpoint's security scheme. See [Authorizing requests in the Try It console](https://docs.document360.com/help/docs/authorizing-requests-in-the-try-it-console).
+- **Headers** — request headers.
+- **Body** — the request payload. This tab appears only for methods that take a body, such as POST, PUT, and PATCH. It is not shown for GET requests.
+
+As you fill in the tabs, the console builds the request in the background. You can preview the assembled request at any time in the **Request** panel on the right, and see the equivalent code sample in the **Code** panel.
+
+---
+
+## Working with the request body
+
+For endpoints that accept a body, the **Body** tab gives you a full editor with tools to build and validate your payload.
+
+- **none / raw** — choose whether to send no body (`none`) or a raw payload (`raw`).
+- **Media type** — select the content type for the body, such as `application/json`.
+- **Example** — insert a ready-made example payload for the endpoint, generated from your spec.
+- **Fill from schema** — populate the editor with a sample body built from the endpoint's request schema. This overwrites the current contents of the editor.
+- **Beautify** — reformat the body with proper indentation, making a minified or messy payload readable.
+- **Restore a recently-sent body** — bring back a body you sent earlier in this session. This restores bodies you have actually *sent*, so you can quickly return to a previous working payload without retyping it.
+- **Toggle word wrap** — wrap long lines within the editor so you can read them without scrolling horizontally.
+
+ NOTE
+
+**Fill from schema** replaces whatever is currently in the editor with a fresh sample generated from the schema. If you have edited the body, copy anything you want to keep before using it.
+
+---
+
+## Validation against the schema
+
+The body editor validates your payload against the endpoint's schema as you type — not just for valid JSON, but for whether the payload actually matches what the endpoint expects.
+
+This catches two different kinds of problems:
+
+- **Syntax errors** — the payload is not well-formed, for example a missing comma or colon. These appear as messages such as <em>"Colon expected"</em> or <em>"Expected comma"</em>.
+- **Schema errors** — the payload is valid JSON but does not match the schema. For example, if a field expects an integer and you supply a string, the editor flags <em>"Incorrect type. Expected..."</em>. Supplying a field the schema does not allow is flagged as <em>"Property is not allowed."</em>
+
+When problems are found, a **Body validation problems** area appears below the editor, showing a count of the issues. Use **Jump to next problem** to move directly to each one in the editor, and expand the list to see every problem at once.
+
+This means a payload can be perfectly valid JSON and still be flagged — because Try It! checks it against your API's actual schema, catching mismatches before you send the request rather than after the server rejects it.
+
+---
+
+## Sending the request and reading the response
+
+Once your request is ready, click **Send request**. The console sends a live request to your API and shows the result in the response area on the right.
+
+The response includes:
+
+- **Status** — the HTTP status code returned, such as `200`, `401`, or `404`.
+- **Time** — how long the request took, in milliseconds.
+- **Size** — the size of the response body.
+- **Body** and **Header** tabs — switch between the response payload and the full set of response headers returned by the server.
+
+You can resize the request and response panels by dragging the separator between them, giving more room to whichever side you are working in.
+
+---
+
+## Your work is saved
+
+While you are working in the console, Try It! preserves your input so you do not lose it as you move around:
+
+- Parameters, headers, the request body, the selected media type, and the active tab are kept as you switch endpoints and even if you close and reopen the console during the same session.
+- Credentials and the last response are kept only for the active session and are not persisted. Credentials are also masked in the request preview for security.
+
+---
+
+## Authentication
+
+Developers supply credentials in the **Authorization** tab, using whichever scheme your API defines — API key, HTTP Basic, HTTP Bearer, OAuth 2.0, or OpenID Connect. Try It! reads the schemes from your OpenAPI specification and shows the correct fields for each.
+
+For full details on every method — including how to define each one in your spec and how OAuth 2.0 sign-in works in the console — see [Authorizing requests in the Try It console](https://docs.document360.com/help/docs/authorizing-requests-in-the-try-it-console).
+
+ NOTE
+
+Try It! supports multiple security schemes, so developers can test endpoints that require more than one authentication method.
+
+---
+
+## Using variables
+
+Variables let developers store a value once and reuse it across endpoints with a `{{placeholder}}` — useful for values like an ID or token that recur across many requests. You can insert a variable into any field, and the Request preview shows it resolved to its actual value.
+
+For how to create, manage, and reuse variables, see [Using variables in the Try It console](https://docs.document360.com/help/docs/using-variables-in-the-try-it-console).
+
+---
+
+## Requirements for Try It! to appear
+
+Try It! only appears on an endpoint page when your API specification file correctly defines the following:
+
+- **A server URL** \- the `servers` section of your spec must contain at least one valid base URL.
+- <strong>A server variable (optional)</strong> \- if used, the variable must be defined alongside the URL.
+
+If the server URL is missing, the Try It! button will not be visible on the Knowledge base site.
+
+### Correct server URL format
+
+```yaml
+servers:
+  - url: https://api.yourdomain.com
+    description: Production
+```
+
+For APIs with multiple regions, define multiple entries:
+
+```yaml
+servers:
+  - url: https://api.yourdomain.com
+    description: Global
+
+  - url: https://api.us.yourdomain.com
+    description: US region
+```
+
+ NOTE
+
+The URLs above are examples. Use the actual base URL for your API.
+
+---
+
+## What Try It! does not support
+
+- **Webhooks** \- Try It! is not available for webhook definitions. Webhook pages show the payload schema and an example but cannot send test requests.
+
+---
+
+## FAQ
+
+<Expandable title="Why is the request routed via api/apidocs/tryit-proxy?">
+  This is expected behavior. Requests are routed through the `api/apidocs/tryit-proxy` endpoint to avoid CORS (Cross-Origin Resource Sharing) errors. It does not affect functionality - requests still return the correct results from your API.
+</Expandable>
+
+<Expandable title="Why is there no Body tab on some endpoints?">
+  The Body tab appears only for methods that take a request payload, such as POST, PUT, and PATCH. GET requests do not take a body, so the tab is not shown for them.
+</Expandable>
+
+<Expandable title="My request body is valid JSON but the editor still flags a problem. Why?">
+  Try It! validates the body against the endpoint's schema, not just for well-formed JSON. A payload can be valid JSON but still not match the schema — for example, sending a string where an integer is expected, or including a field the schema does not allow. The validation area shows what needs to change.
+</Expandable>
+
+<Expandable title="Are the credentials I enter in Try It! saved?">
+  No. Credentials and the last response are kept only for the active session and are not persisted. Parameters, headers, the request body, the selected media type, and the active tab are preserved as you work, but credentials are session-only and are masked in the request preview.
+</Expandable>
+
+<Expandable title="Can I test endpoints that require more than one authentication method?">
+  Yes. Try It! supports multiple security schemes, but not simultaneously. You can configure and send credentials for one scheme at a time. See [Authorizing requests in the Try It console](/en/docs/authorizing-requests-in-the-try-it-console) for details.
+</Expandable>
+
+<Expandable title="Can an AI agent switch between MCP and the standard API within the same workflow?">
+  Yes. A single workflow can use MCP for the reasoning and acting steps — searching, reading, writing, and call the standard API directly for operations outside MCP's scope. The two interfaces are not mutually exclusive; they access the same underlying knowledge base.
+</Expandable>
+
+Application Programming Interface - A set of defined rules and protocols that allows one software application to communicate with and request functionality from another. APIs are the backbone of modern integrations. When Document360 connects to Slack, Intercom, or Google Analytics, it does so through their APIs. Document360 also provides its own REST API, enabling teams to programmatically manage articles, categories, and reader accounts from external systems.

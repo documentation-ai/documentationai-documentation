@@ -1,0 +1,143 @@
+---
+title: managing team account
+metaTitle: Deactivate or delete user
+metaDescription: Learn how to efficiently manage team accounts in Document360, including creating, editing, deleting, and converting accounts to SSO or reader roles.
+canonical: https://docs.document360.com/docs/deactivate-delete-user
+---
+
+When a team member leaves your project or no longer needs portal access, you can either **deactivate** or **delete** their account. Deactivation is reversible — the user loses access immediately, but their contributions, articles, and analytics data are preserved, and the account can be reactivated later. Deletion is permanent and cannot be undone. Choose deactivation when you may need to reinstate the user; choose deletion only when you are certain the account is no longer needed.
+
+---
+
+## Deactivation vs. deletion
+
+| Action | Deactivate | Delete |
+| --- | --- | --- |
+| **Portal access** | Removed immediately | Removed permanently |
+| **Articles and content** | Retained; attributed to the user | Retained; not attributed to the user |
+| **Analytics and audit data** | Retained | Retained |
+| **Reversible** | Yes — can be reactivated | No — permanent action |
+| **User seat freed** | Yes | Yes |
+
+---
+
+## Before you begin
+
+- You have a Project **Owner** or **Admin** role. Admins cannot deactivate or delete Owners.
+- You are not the last remaining Owner of the project. The last Owner cannot be deleted.
+
+---
+
+## Delete a user
+
+Deleting a user permanently removes their account from the project. Their articles stay in the knowledge base, but their name and historical activity are removed, so all author and contributor attribution is lost. You can't recover the account. Use this option only when you are certain the user will not need access again.
+
+ WARNING
+
+Deletion is permanent and cannot be undone. If you want to preserve the option to restore access later, use **Deactivate** instead.
+
+You can delete a user using one of two methods.
+
+### From the user profile page
+
+1. Navigate to **Settings** () > **Users and security** in the left navigation bar in the knowledge base portal.
+2. In the left navigation pane, navigate to **Users and groups** > **Users** and select the desired user.
+3. In the user profile details page, click the **Delete** icon and select **Yes** in the confirmation dialog.
+
+<Image src="https://cdn.document360.io/860f9f88-412e-4570-8222-d5bf2f4b7dd1/Images/Documentation/user%20profile%20delete%282%29.png" alt="User profile page showing the Delete icon option for removing a user from the project." />
+
+### From the user list
+
+**Active user**
+
+1. Select the checkbox next to the user and click **Deactivate** at the top of the table. The **Confirm user deactivation** dialog appears.
+2. Select **Delete user** and click **Delete**. The user is deleted immediately, with no further confirmation.
+
+<Image src="https://cdn.document360.io/860f9f88-412e-4570-8222-d5bf2f4b7dd1/Images/Documentation/delete%20user%283%29.png" alt="Deactivate or delete dialog showing the Delete user radio button option." />
+
+**Inactive (deactivated) user**
+
+1. Select the checkbox next to the inactive user.
+2. Click **Delete** at the top of the users table.
+3. In the confirmation dialog, click **Yes**.
+
+ NOTE
+
+Bulk selection of both Active and Inactive users will not display the Deactivate button.<br />Bulk selection of only Inactive users will display only the Activate and Delete buttons.
+
+ NOTE
+
+**Role-based restrictions**
+
+- Admins cannot delete or edit Owners, but can delete all other roles.
+- Owners can delete Admins, Contributors, and Reviewers.
+- The last remaining Owner of a project cannot be deleted.
+
+---
+
+## Deactivate and reactivate a user
+
+Deactivation suspends a user's access to the knowledge base portal without removing their account or any data they have contributed. Their authored articles remain published, their name stays in audit logs and analytics, and the account can be reactivated at any time. Deactivation also frees up a user seat on your plan.
+
+### Deactivate a user
+
+1. Navigate to **Settings** () > **Users and security** in the left navigation bar in the knowledge base portal.
+2. In the left navigation pane, navigate to **Users and groups** > **Users**.
+3. Select the checkbox next to the desired user and click **Deactivate** at the top. The **Confirm user deactivation** dialog appears.
+4. Select **Deactivate user** and click **Deactivate**.
+
+The **Confirm user deactivation** dialog offers three options:
+
+| Option | What it does |
+| --- | --- |
+| **Deactivate user** | Removes the user's access to the portal and site. Their name stays in documentation and analytics to show past activity. |
+| **Convert to reader** | Removes all portal permissions and switches the user to a read-only role. They can only view the knowledge base site. |
+| **Delete user** | Permanently revokes the user's access and removes their name and historical activity. Not recommended, as it may affect data integrity. |
+
+ NOTE
+
+For SSO users, deactivation, deletion, or conversion to a reader role takes effect only after their current SSO session ends.
+
+ NOTE
+
+- You can deactivate standard users, SSO users, and reader accounts.
+- Deactivated accounts lose portal access immediately but all their data, articles, analytics, and audit logs, are retained.
+- Either deactivating or deleting a reader will free a reader slot.
+
+<Image src="https://cdn.document360.io/860f9f88-412e-4570-8222-d5bf2f4b7dd1/Images/Documentation/deactivate%282%29.png" alt="Confirm user deactivation panel with the Deactivate user button." />
+
+### Reactivate a user
+
+1. Select one or more deactivated users from the list.
+2. Click **Activate**.
+3. Click **Confirm** in the **Confirm user activation** panel.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778465753-0lvvxds3ce5-Activate-20user.jpg?fm=auto&auto=compress%2Cformat" alt="Confirm user activation panel with user details and Confirm button." />
+
+---
+
+## FAQ
+
+<Expandable title="Can a deleted user be recovered?">
+  No. Deletion is permanent and cannot be reversed. The user's account is removed from the project and cannot be restored. Their authored articles and content remain in the knowledge base, but the user's name and historical activity are removed. If there is any chance you will need to reinstate access, use **Deactivate** instead of Delete.
+</Expandable>
+
+<Expandable title="What happens to articles authored by a deleted or deactivated user?">
+  The articles stay in the knowledge base and remain published. Neither deactivation nor deletion removes or unpublishes any content. If you deactivate the user, their name stays on their articles and in analytics. If you delete the user, their name and historical activity are removed, so their articles lose all author and contributor attribution. To keep attribution, assign another contributor before you delete the user. For details, see [Update article contributors](https://docs.document360.com/docs/en/updating-article-contributors).
+</Expandable>
+
+<Expandable title="What is the difference between deactivating and deleting a user?">
+  Deactivation suspends portal access but keeps the account intact — all data is preserved and the account can be reactivated later. Deletion permanently removes the account from the project and cannot be undone. In both cases, the user's authored content stays in the knowledge base, but deletion also removes the user's name and historical activity.
+</Expandable>
+
+<Expandable title="Who can deactivate or delete a user?">
+  **Owners** can deactivate and delete Admins, Contributors, and Reviewers. **Admins** can deactivate and delete Contributors and Reviewers, but cannot deactivate or delete Owners. The last remaining Owner of a project cannot be deleted by anyone.
+</Expandable>
+
+<Expandable title="Does deactivation free up a user seat on my plan?">
+  Yes. A deactivated user no longer counts against your plan's active user limit, freeing up a seat that can be used to add a new user. If you reactivate the user and that would exceed your limit, you will be prompted to either remove an active user or purchase additional seats.
+</Expandable>
+
+<Expandable title="How do I remove a user from Document360?">
+  To fully remove a team member from your Document360 project, use the **Delete** option described in this article. If you want to suspend their access without permanently removing them, use **Deactivate**. Both options are available from the user list under **Settings > Users & security > Users & groups**.
+</Expandable>

@@ -1,0 +1,211 @@
+---
+title: Category types
+description: Learn about Folder, Index, and Page categories in Document360. Organize your knowledge base efficiently with flexible category types and easy management.
+metaTitle: Understanding Category Types in Document360
+---
+
+In Document360, every category has a type that determines how it appears and behaves on both the knowledge base portal and the knowledge base site. Selecting the right type helps you build a clear, navigable structure for your readers. There are four category types: **Folder**, **Index**, **Page**, and **GitHub**.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778130102-jjmf838m35p-create-20new.png?fm=auto&auto=compress%2Cformat" alt="Category type selection during category creation" />
+
+---
+
+## Category types at a glance
+
+Folder
+
+A container for articles and subcategories. No URL is generated. It appears only as a navigation node on the knowledge base site.
+
+[Learn more →](/en/docs/category-types#folder)
+
+Index
+
+Generates a URL and displays an overview of all articles within the category. Readers browse the list before opening a specific article.
+
+[Learn more →](/en/docs/category-types#index)
+
+Page
+
+Behaves like a regular article. Write and publish content in it while still containing subcategories and articles beneath it.
+
+[Learn more →](/en/docs/category-types#page)
+
+GitHub
+
+Syncs content directly from a connected GitHub repository. Best for developer documentation maintained alongside source code.
+
+[Learn more →](/en/docs/category-types#github)
+
+ NOTE
+
+You can select the category type when creating a category and change it at any time without losing content.
+
+---
+
+## Folder category
+
+The **Folder** type is the default and most commonly used category type. It acts as a pure container, grouping articles and subcategories under a common topic without generating its own URL or content page on the knowledge base site.
+
+<strong>Use Folder when:</strong>
+
+- You need a top-level grouping for a broad topic area.
+- The category does not need a shareable link.
+- You want readers to navigate into subcategories or articles rather than land on a category page.
+
+<strong>Key characteristics:</strong>
+
+- No URL is generated for this category type.
+- Supports bulk operations: Hide (), Unhide (), Delete (), Move (), and Star () for articles within the category.
+- The category icon can be customised with an emoji.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778143053-d3lnbvilo0a-category-20types.png?fm=auto&auto=compress%2Cformat" alt="Knowledge base portal view of a folder category" />
+
+---
+
+## Index category
+
+The **Index** type generates its own URL and displays a structured overview of all articles within the category. When readers click on an Index category on the knowledge base site, they see a list of articles, including title, contributors, last updated date, status, and tags, before opening a specific one.
+
+<strong>Use Index when:</strong>
+
+- You want readers to get an overview of a category's contents before navigating into it.
+- The category needs a shareable, linkable URL.
+- You need a structured entry point for a large section of your knowledge base.
+
+<strong>Key characteristics:</strong>
+
+- A unique slug is generated. You can share Index category links and apply redirect rules to them.
+- Supports the same bulk operations as Folder: Hide, Unhide, Delete, Move, and Star.
+- Supports SEO settings (meta title, slug, description) via the **More** () icon > **SEO**.
+
+<strong>Portal view:</strong>
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778143650-zqm0vvbe87n-index-20category.png?fm=auto&auto=compress%2Cformat" alt="Knowledge base portal view of an index category" />
+
+<strong>Knowledge base site view:</strong>
+
+When readers click on an Index category, they see the category title and the number of articles and subcategories it contains.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778136700-b165pto8ss9-index-20kb.png?fm=auto&auto=compress%2Cformat" alt="Knowledge base site view of an index category" />
+
+---
+
+## Page category
+
+The **Page** type behaves like a regular article. You can write, format, and publish content in it using the Markdown, WYSIWYG, or Advanced WYSIWYG editor. It can still contain subcategories and articles beneath it, making it suitable for section landing pages that also serve as navigational parents.
+
+<strong>Use Page when:</strong>
+
+- You want a category that has its own written content, such as a section overview or introduction.
+- You need full article functionality (SEO settings, slug, status, revision history) at the category level.
+- The category needs to both contain content and act as a parent for subcategories.
+
+<strong>Key characteristics:</strong>
+
+- Behaves exactly like a regular article. You can change the title, slug, and perform all the same article-level actions.
+- Supports SEO settings via the **More** () icon > **SEO**.
+- Unlike a regular article, a Page category can contain subcategories and additional articles beneath it.
+
+<strong>Portal view:</strong>
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778136370-cq36ovwrtqp-page-20portal.png?fm=auto&auto=compress%2Cformat" alt="Knowledge base portal view of a page category" />
+
+<strong>Knowledge base site view:</strong>
+
+<Image src="https://cdn.document360.io/860f9f88-412e-4570-8222-d5bf2f4b7dd1/Images/Documentation/page%20category%281%29.png" alt="Knowledge base site view of a page category" />
+
+---
+
+## GitHub category
+
+The **GitHub** type syncs documentation content directly from a connected GitHub repository into your knowledge base. Each branch in the repository appears as an article within the category, identified by a branch icon. Whenever a commit is pushed to the connected repository, Document360 automatically pulls the updated Markdown files and publishes them.
+
+<strong>Use GitHub when:</strong>
+
+- Your documentation lives alongside your code in a GitHub repository and is maintained in GitHub.
+- You want version-controlled docs that stay in sync with code releases automatically.
+- Your team prefers writing Markdown in a local editor rather than in the Document360 editor.
+
+<strong>Key characteristics:</strong>
+
+- Content synced from GitHub is read-only in Document360. All edits must be made in the source GitHub repository.
+- Only the **main branch** is supported for sync.
+- Each branch in the connected repository appears as an article with a branch icon in the portal.
+- Users cannot edit or publish articles in a GitHub category. All changes must originate in the GitHub repository.
+- The GitHub icon is displayed only for **public** categories.
+- New articles cannot be created within Document360 for GitHub-synced categories.
+
+ NOTE
+
+The GitHub category type requires the GitHub integration to be configured first. It is created automatically as part of the integration setup and cannot be selected independently like Folder, Index, or Page.
+
+---
+
+## Comparing category types
+
+|  | Folder | Index | Page | GitHub |
+| --- | --- | --- | --- | --- |
+| Has its own URL |  |  |  |  |
+| Has editable content |  |  |  |  |
+| Syncs from GitHub |  |  |  |  |
+| Supports bulk operations |  |  |  |  |
+| Can contain subcategories |  |  |  |  |
+| Supports SEO settings |  |  |  |  |
+| Supports custom emoji icon |  |  |  |  |
+
+---
+
+## Change the category type
+
+You can switch a category's type at any time without losing content.
+
+1. Navigate to **Documentation** () in the left navigation bar.
+2. Hover over the category in the **Categories & Articles** pane.
+3. Click the **More** () icon and select **Change type**.
+4. Select the new category type and click **Update**.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778130167-yalbzyyway-change-20type.png?fm=auto&auto=compress%2Cformat" alt="Changing a category type from the More menu" />
+
+ CAUTION
+
+When you convert a Folder or Index category to a Page category, it is placed in draft state until you publish it. The category's URL may result in broken links during this time.
+
+---
+
+## Best practices
+
+- Use **Folder** for top-level categories that exist purely for navigation. It is the simplest type and does not generate unnecessary URLs.
+- Use **Index** for large sections where readers benefit from seeing an article overview before navigating in, for example, an API reference or a long troubleshooting guide.
+- Use **Page** for section landing pages that need introductory content alongside child articles, for example, a "Getting started" page that explains the section and links to child articles.
+- Use **GitHub** only when your documentation is actively maintained in a repository and you need automatic syncing, not for one-off imports.
+- Avoid frequent type changes on high-traffic categories. Converting to Page leaves the category in draft state, which can cause broken links until published.
+
+---
+
+## FAQ
+
+<Expandable title="Can I change the category type after it has been created?">
+  Yes. You can change the category type at any time, as often as needed, without losing content.
+</Expandable>
+
+<Expandable title="What happens to my content if I change a Page category to a different type?">
+  Your content is not deleted. If you switch a Page category to Index and then back to Page, your content is restored.
+</Expandable>
+
+<Expandable title="Does the Folder category type have a URL?">
+  No. Folder categories do not have a URL or shareable link on the knowledge base site. Use Index or Page if you need a linkable category.
+</Expandable>
+
+<Expandable title="What is the difference between a Page category and a regular article?">
+  A Page category can contain subcategories and additional articles beneath it. A regular article cannot contain subcategories or other articles.
+</Expandable>
+
+<Expandable title="Can I add SEO settings to a Folder category?">
+  Folder categories do not support SEO settings directly. As a workaround, temporarily change the category type to Index or Page, apply the SEO settings via **More** () > **SEO**, then convert the category back to Folder.
+
+  CAUTION
+
+  Converting to Page places the category in draft state. The category's URL may result in broken links until it is published.
+</Expandable>
+
+Application Programming Interface - A set of defined rules and protocols that allows one software application to communicate with and request functionality from another. APIs are the backbone of modern integrations. When Document360 connects to Slack, Intercom, or Google Analytics, it does so through their APIs. Document360 also provides its own REST API, enabling teams to programmatically manage articles, categories, and reader accounts from external systems.

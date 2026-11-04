@@ -1,0 +1,145 @@
+---
+title: Add new glossary terms
+description: In Document360, you can add glossary terms at any time. Adding a glossary term is easy and can be done in a few seconds.
+---
+
+You can add glossary terms to your knowledge base manually one at a time, or import multiple terms at once from a CSV file. All glossary management is done from **Content tools** () > **Content resources** > **Glossary**.
+
+ NOTE
+
+You must have Content reuse permissions to create and manage glossary terms. To translate glossary terms after creation, the term must be created with a specific language scope. Global terms cannot be translated.
+
+---
+
+## Add a glossary term
+
+1. Navigate to **Content tools** () > **Content resources** > **Glossary** in the left navigation bar.
+2. Click **Create**.
+3. Fill in the following fields:
+
+| Field | Description | Character limit |
+| --- | --- | --- |
+| **Name** | A unique internal identifier for the glossary entry. The Name remains the same across all languages and is never visible to readers. For example, if the term is "Account", the Name could be `account`. It stays fixed even when the term is translated. | 100 characters |
+| **Language** | The language scope for the term. Select **Global** to use the same term across all languages without translation. Select a specific language to enable translation for that term. |  |
+| **Term** | The actual word or phrase readers see on the knowledge base site. This can vary by language, for example "Account" in English, "Compte" in French, or "खाता" in Hindi, while the Name stays as `account`. Accepts letters, numbers, spaces, and special characters such as `() - _ & : ; ? / . , [ ] @ # ! *`. | 100 characters including spaces |
+| **Definition** | A detailed definition or explanation of the term. Displayed as a tooltip when readers hover over the term on the knowledge base site. | 1000 characters |
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778155748-hzln589nj5g-image-1767346873625.png?fm=auto&auto=compress%2Cformat" alt="Glossary term creation panel showing Name, Language, Term, and Definition fields" />
+
+4. Click **Create**.
+
+### Formatting options
+
+You can style glossary term definitions using the toolbar.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778157870-qwt5j1g540m-3_Screenshot-Glossary_editor.png?fm=auto&auto=compress%2Cformat" alt="Glossary definition editor showing the formatting toolbar" />
+
+| Option | Description |
+| --- | --- |
+| **Font family** | Change the font family of the text. |
+| **Font size** | Adjust text size between 8 and 96. |
+| **Headings** | Define headings: Paragraph, Heading 3, or Heading 4. |
+| **Bold** | Emphasise important words or phrases. |
+| **Italic** | Highlight text or indicate terms. |
+| **Underline** | Add a line below the text for emphasis. |
+| **Text color** | Change the text color using a color picker or HEX code. |
+| **Background color** | Change the background color behind the text. |
+| **Unordered list** | Create a bulleted list: Default, Disc, Square, or Circle. |
+| **Ordered list** | Create a numbered list with formats including Numeric, Lowercase alphabetic, Lowercase Roman, Uppercase Roman, and Greek lowercase. |
+| **Multi-level numbering list** | Create a hierarchical numbered list with styles such as Numeric, Alphabetic, Roman, and parenthesis variants. |
+| **Insert image** | Upload images from a URL, local storage, or Drive. |
+| **Insert link** | Add a hyperlink to an internal article or external URL. |
+| **Checklist** | Add a checklist to the definition content. |
+| **Divider** | Add a divider to the content. |
+| **LaTeX** | Add LaTeX expressions for mathematical content. |
+| **Emoji** | Insert emojis into the content. |
+| **More** | Access additional options: Inline code, Strikethrough, Superscript, Subscript, and Remove formatting. |
+
+ NOTE
+
+You can use the `/` slash menu in the Glossary editor to access formatting tools such as Heading 3, Heading 4, Numbered list, Bullet list, and Checklist, and insert elements such as Image, Link, Divider, LaTeX, and Emoji. If a glossary term is added under Global, it cannot also be added at the language-specific level. To define a term across multiple languages, create it in your main language and use the translation feature to add other language versions.
+
+---
+
+## Import glossary terms
+
+You can import multiple glossary terms at once using a CSV file.
+
+### Prepare the CSV file
+
+Use the following format for your CSV file:
+
+| Term | Definition |
+| --- | --- |
+| First term | First term definition |
+| Second term | Second term definition |
+| Third term | Third term definition |
+
+Download a sample template:
+
+- [Import glossary with data →](https://cdn.document360.io/860f9f88-412e-4570-8222-d5bf2f4b7dd1/Images/Documentation/Import%20glossary%20-%20With%20data%281%29.csv) (includes sample terms and definitions)
+- [Import glossary without data →](https://cdn.document360.io/860f9f88-412e-4570-8222-d5bf2f4b7dd1/Images/Documentation/Import%20glossary%20-%20Without%20data%281%29.csv) (contains only row headers)
+
+ NOTE
+
+Use software such as Microsoft Excel, OpenOffice Calc, or Google Sheets to open and edit the CSV file.
+
+### Import the CSV file
+
+1. Navigate to **Content tools** () > **Content resources** > **Glossary**.
+2. Click **Create** > **Import terms** to open the **Import terms** dialog.
+3. Select the language from the **Language** dropdown.
+4. Click **Download template** to download the sample CSV format if needed.
+5. Drag and drop the CSV file or click **Upload from my device** to select the file. Wait for validation. The system displays the number of valid and invalid terms. If any terms are invalid, click **Download** next to the error count to review the errors.
+6. Click **Import**. The newly added terms appear in the Glossary overview.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793778159159-b25wx32x6mv-image-1767346787229.png?fm=auto&auto=compress%2Cformat" alt="Import terms dialog showing CSV upload and validation options" />
+
+---
+
+## Troubleshooting
+
+### CSV upload error
+
+<strong>Error:</strong> "Please make sure the CSV follows the sample template"
+
+This error usually occurs when the CSV headers have changed because your Excel application's language is not set to English.
+
+<strong>To resolve using Excel:</strong>
+
+1. Open your glossary CSV template in Excel.
+2. Go to **File** > **Options** > **Regional Settings**.
+3. In the **Change Regional Format Settings** panel, select <strong>English (United Kingdom)</strong> from the dropdown.
+4. Close and reopen the CSV template.
+5. Confirm the headers match the sample template exactly.
+6. Save the file and retry the upload.
+
+<strong>To resolve using Windows regional settings:</strong>
+
+1. Open **Settings** in Windows.
+2. Navigate to **Time & Language** > **Language & Region**.
+3. Change the regional format to <strong>English (United Kingdom)</strong>.
+4. Reopen the CSV file, confirm the headers, save, and retry.
+
+If the issue persists, contact [Document360 Support](https://document360.com/support).
+
+---
+
+## Limitations
+
+| Item | Detail |
+| --- | --- |
+| **Name character limit** | 100 characters. |
+| **Term character limit** | 100 characters including spaces. |
+| **Definition character limit** | 1000 characters. |
+| **Global terms** | Cannot be translated. |
+| **Term name after creation** | Cannot be changed. |
+| **Sub-glossaries** | Not supported |
+
+---
+
+## FAQ
+
+<Expandable title="Can I add images to the glossary while importing terms from a CSV file?">
+  Only web images can be imported through definitions. Use the tag `<img src="Image_URL"/>` in your definition cell to add images. For example: `JSON Web Token <img src="https://jwt.io/img/logo-asset.svg"/>`. Imported images are stored in **My Drive** > **Images** > **Glossary**.
+</Expandable>

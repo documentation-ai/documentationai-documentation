@@ -1,0 +1,59 @@
+---
+title: Variables
+description: Learn how to use variables for consistent, reusable content across articles, ensuring easy updates and maintaining accuracy in your knowledge base.
+---
+
+Variables are reusable text elements that let you define a value once and insert it across multiple articles and category pages. When the value changes, you update the variable in one place and every article that uses it updates automatically.
+
+For example, if your support email appears in 40 articles and changes, updating the variable once updates all 40 articles instantly.
+
+---
+
+## When to use variables
+
+Use variables for short, text-based content that:
+
+- Appears in multiple articles or category pages.
+- Is likely to change over time, such as contact details, version numbers, product names, URLs, field labels, or disclaimers.
+- Must stay consistent across the entire knowledge base.
+
+For longer or formatted content such as paragraphs, tables, callouts, or images, use [Snippets](/en/docs/snippets-1) instead.
+
+---
+
+## Variables vs. snippets
+
+|  | Variables | Snippets |
+| --- | --- | --- |
+| **Content type** | Plain text, numbers, links, short phrases. | Formatted blocks such as paragraphs, tables, images, callouts, and code. |
+| **Typical use** | Product names, version numbers, support emails. | Disclaimers, shared steps, contact blocks, repeated warnings. |
+| **Character limit** | 300 characters. | No character limit. |
+| **Formatting support** | Basic inline formatting only. | Full editor formatting. |
+| **Inserted via** | Toolbar, merge code syntax, or slash command. | Toolbar or merge code syntax. |
+
+---
+
+## Get started with variables
+
+Create and manage variables
+
+Create a variable and configure its name, merge code, language, and content. Edit, delete, bulk delete, and view article dependencies.
+
+[Learn more →](/en/docs/variables)
+
+Use and translate variables
+
+Insert variables into articles using the toolbar, merge code syntax, or slash command. Translate variables for multilingual knowledge bases.
+
+[Learn more →](/en/docs/use-and-translate-variables)
+
+---
+
+## Best practices
+
+- Use variables for content that changes, not content that stays fixed. Variables are most valuable when the content needs to be updated periodically. If a value is unlikely to change, writing it inline is simpler and easier to review.
+- Only use variables when the same content appears in three or more places. If something appears in just one or two articles, updating those directly is faster than creating and managing a variable.
+- Use descriptive, specific names. Name variables so contributors can identify the right one at a glance. For example, `SupportEmail` or `ProductVersion_iOS` is clearer than `email1` or `v1`. Vague names slow down authoring and lead to the wrong variable being inserted.
+- Set language scope intentionally. Use Global for values that are the same in every language, such as a product name that is never translated. Use language-specific variables for values that differ by locale, such as a regional phone number or a localised URL.
+- Check the Used in column before editing or deleting. An edit to a variable updates every article that uses it immediately, including published ones. Before making a change, review which articles are affected so you can verify the updated value reads correctly in all contexts.
+- Do not use variables inside snippets. Variables inside snippets do not render correctly in the editor preview or in PDF exports. If a snippet needs dynamic values, manage them separately.

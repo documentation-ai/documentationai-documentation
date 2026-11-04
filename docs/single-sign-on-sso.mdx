@@ -1,0 +1,127 @@
+---
+title: single sign on sso
+metaTitle: Single Sign-On (SSO)
+metaDescription: Explore Single Sign-On (SSO) benefits like improved security, productivity, and user experience while simplifying IT management and compliance.
+---
+
+Set up Single Sign-On (SSO) so your users and readers sign in to Document360 with an account they already have, instead of a separate Document360 password. This article helps you choose the right SSO method, understand what people see when they sign in, and start the setup.
+
+Document360 supports three methods:
+
+- **SAML 2.0** and <strong>OpenID Connect (OIDC)</strong>: People sign in through your identity provider, such as Okta, Microsoft Entra ID, or Google Workspace.
+- <strong>JWT (JSON Web Token)</strong>: Your own application signs readers in and passes a verified token to Document360, with no identity provider involved.
+
+---
+
+## How SSO sign-in works
+
+SSO involves two parties:
+
+- <strong>Identity provider (IdP)</strong>: The service that stores and checks credentials, such as Okta, Microsoft Entra ID, Google Workspace, ADFS, or OneLogin.
+- <strong>Service provider (SP)</strong>: Document360. It relies on the IdP to confirm who is signing in.
+
+With SAML or OpenID Connect, sign-in works the same way for users and readers:
+
+1. A user opens the knowledge base portal, or a reader opens your knowledge base site. They either enter their email on the sign-in page or select the SSO button first.
+2. Document360 finds the matching SSO configuration and sends them to your IdP's sign-in page.
+3. They sign in with their IdP credentials. They never enter a password in Document360.
+4. The IdP confirms their identity and sends a signed token back to Document360.
+5. Document360 checks the token and gives them access based on their role and permissions.
+
+If they've already signed in to your IdP for another application, they don't need to sign in again. With SAML, you can also let people open Document360 directly from your IdP's dashboard. To learn how, read [IdP-initiated sign-in](https://docs.document360.com/help/docs/saml#idp-initiated-sign-in).
+
+With JWT, there's no IdP and no redirect. Your application creates and signs the token, and Document360 checks it directly.
+
+---
+
+## Choose an SSO method
+
+|  | SAML 2.0 | OpenID Connect | JWT |
+| --- | --- | --- | --- |
+| **Choose it if** | You use an enterprise or on-premises IdP, such as ADFS, or Okta, Microsoft Entra ID, Google Workspace, or OneLogin | You use a cloud-based IdP, such as Okta or Auth0, or ADFS with OpenID Connect | You manage sign-in in your own application and want to sign readers in from there |
+| **Who can sign in** | Users and readers | Users and readers | Readers only |
+| **Needs an IdP** | Yes | Yes | No |
+| **Setup effort** | Medium | Medium | Higher: requires custom development |
+| **SCIM provisioning** | Okta and Microsoft Entra ID; OneLogin for readers only; ADFS through third-party tools; other IdPs that support SCIM. Not available with Google Workspace. | Okta; ADFS through third-party tools; other IdPs that support SCIM. Not available with Auth0. | Not available |
+
+**Combining methods**
+
+- You can have several SAML configurations active at the same time, or several OpenID Connect configurations, for example one IdP for your users and another for your readers.
+- SAML and OpenID Connect can't both be active at the same time. To switch from one to the other, turn off the configuration you no longer want to use.
+- You can add up to five JWT configurations alongside your SAML or OpenID Connect configurations.
+
+---
+
+## Set up SSO
+
+**Before you begin**
+
+- You need the Owner or Admin role in your Document360 project.
+- Make sure you have admin access to your IdP, or, for JWT, a developer who can update your application's sign-in code.
+- Decide which method you'll use. See [Choose an SSO method](/docs/single-sign-on-sso#choose-an-sso-method).
+
+Every SSO configuration starts from the same place in Document360:
+
+1. Go to **Settings** > **Users & Permissions** > **Enterprise SSO**.
+2. Select **Create SSO**.
+3. Select **SAML**, **OpenID Connect**, or **JWT**.
+4. If you selected SAML or OpenID Connect, select your identity provider. The setup wizard opens.
+5. Complete the wizard using the guide for your method.
+
+Configure SAML
+
+Connect Document360 to your IdP using SAML 2.0.
+
+[Learn more →](https://docs.document360.com/help/docs/saml)
+
+Configure OpenID Connect
+
+Connect Document360 to your IdP using OpenID Connect.
+
+[Learn more →](https://docs.document360.com/help/docs/openid)
+
+Configure JWT
+
+Sign readers in to your knowledge base site from your own application.
+
+[Learn more →](https://docs.document360.com/help/docs/jwt)
+
+When you finish, the configuration appears in the **Enterprise SSO** list with all your other SSO configurations. You can edit, reorder, or remove it from there.
+
+ NOTE
+
+Users and readers who sign in through SSO use their IdP credentials, not a Document360 password. You can't lock yourself out: an admin can't remove their own access, only another admin's.
+
+---
+
+## After you set up SSO
+
+When your SSO configuration is working, set up automatic provisioning and manage who can sign in. SCIM is available for SAML and OpenID Connect only.
+
+Set up SCIM provisioning
+
+Add, update, and deactivate users and readers in your IdP, and Document360 updates automatically.
+
+[Learn more →](https://docs.document360.com/help/docs/scim-provisioning)
+
+Manage SSO access
+
+Add users, manage readers, map projects, and control sign-in settings.
+
+[Learn more →](https://docs.document360.com/help/docs/sso-user-reader-management)
+
+---
+
+## FAQ
+
+<Expandable title="Can I use SAML and OpenID Connect at the same time?">
+  No. A project can have SAML or OpenID Connect active, but not both. To switch, turn off the configuration you no longer want to use. Either one can run alongside JWT.
+</Expandable>
+
+<Expandable title="Can I set up SSO for both users and readers?">
+  Yes. SAML and OpenID Connect work for users, who sign in to the knowledge base portal, and readers, who sign in to the knowledge base site. JWT works for readers only and can't be used to sign in to the portal.
+</Expandable>
+
+<Expandable title="Can I have more than one SSO configuration in a project?">
+  Yes. You can have several SAML configurations or several OpenID Connect configurations active at the same time, for example one IdP for your users and another for your readers. You can also add up to five JWT configurations alongside them.
+</Expandable>

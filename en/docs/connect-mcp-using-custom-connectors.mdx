@@ -1,0 +1,173 @@
+---
+title: Connect MCP using custom connectors
+description: Connect Document360 MCP to AI assistants like Claude and ChatGPT using URLs or JSON for secure access to your knowledge base.
+---
+
+Custom connectors let you establish a secure connection between your knowledge base and MCP-compatible AI assistants such as Cursor IDE and Copilot. Once connected, the AI assistant can interact with documentation content in your Document360 project through MCP.
+
+Depending on your AI assistant, use one of the following:
+
+- **MCP server URL** \- Use this when your AI assistant accepts a direct URL for connector setup (for example, Copilot).
+- **JSON configuration** \- Use this when your AI assistant requires a structured config file (for example, Cursor IDE).
+
+ NOTE
+
+To connect ChatGPT or Claude, use the one-click connectors instead. Refer to [ChatGPT](https://docs.document360.com/help/docs/connect-chatgpt-to-document360-mcp) and [Claude](https://docs.document360.com/help/docs/connect-claude-to-document360-mcp) article that helps you connect them to Document360 MCP
+
+If you are on a US-region project and the Claude one-click connector is unavailable, you can connect Claude with a custom connector. Use the MCP server URL for the US region (https://mcp.us.document360.io/mcp) and follow the steps under [Other MCP-compatible platforms on this page](https://docs.document360.com/help/docs/connect-mcp-using-custom-connectors#other-mcpcompatible-platforms).
+
+---
+
+## Before you begin
+
+- Ensure MCP is enabled in your Document360 project. For the steps to enable MCP, refer to the [Connect MCP to your AI assistant](https://docs.document360.com/help/docs/connect-mcp-to-your-ai-assistant) page.
+- You have access to an AI assistant that supports MCP or custom connector configurations.
+
+---
+
+## Get the JSON configuration
+
+To get the configuration details,
+
+1. Navigate to **Settings** () in the left navigation bar.
+2. Go to **AI Settings** > **MCP**.
+3. Under **Custom Connectors**, click **Get details**.
+
+   <Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777740097-uhamcieqm2q-MCP-20first-20page.png?fm=auto&auto=compress%2Cformat" alt="User interface showing AI settings with highlighted 'Get details' button for custom connectors." />
+4. The MCP configuration will be displayed.
+5. You can either copy the full JSON configuration or use the URL provided within it, depending on your AI assistant's requirements.
+
+   This configuration is required to establish the MCP connection in your AI assistant.
+
+<Image src="https://cdn.document360.io/860f9f88-412e-4570-8222-d5bf2f4b7dd1/Images/Documentation/configuration%20in%20mcp%203%281%29.png" alt="Configuration settings for connecting to Document360's custom connector interface." />
+
+---
+
+## MCP server URLs
+
+Use the following MCP server URLs when configuring connectors in your AI assistant. Select the appropriate URL based on your project's region or environment. Paste the URL into the MCP custom connector configuration field in your AI assistant.
+
+| Region | MCP configuration URL |
+| --- | --- |
+| EU region | `https://mcp.document360.io/mcp` |
+| US region | `https://mcp.us.document360.io/mcp` |
+| Canada region | `https://mcp.ca.document360.io/mcp` |
+
+---
+
+## Cursor IDE
+
+To connect MCP in Cursor IDE:
+
+1. Open **Cursor IDE**.
+2. Navigate to **Settings**.
+3. Go to **Tools & MCP**.
+4. Click **Add new MCP server**.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777939172-mg7fegyhftl-cursor-20ide-20add-20mcp.png?fm=auto&auto=compress%2Cformat" alt="Settings menu showing Tools & MCP with options for browser automation and custom tools." />
+
+You will be redirected to the MCP configuration screen.
+
+1. Paste the MCP **JSON** configuration copied from Document360.
+2. Save it.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777939465-xnl26ai551s-image-1774611048247.png?fm=auto&auto=compress%2Cformat" alt="JSON structure showing Document360 server configuration with URL and type details." />
+
+After saving:
+
+1. Return to Cursor IDE **Settings > Tools & MCP**.
+2. Locate the configured MCP server.
+3. Once authentication is enabled, click **Connect**.
+
+After creating the connection:
+
+1. You will be redirected to **Document360**.
+2. Review the connection request and choose the required project.
+3. Select the confirmation checkbox (I understand and trust this URL).
+4. Click **Continue**.
+
+The connection is now established. You can use MCP capabilities directly within the Cursor IDE to search, retrieve, and update documentation while coding.
+
+---
+
+## Copilot
+
+To connect MCP in Copilot agents:
+
+**Create a new agent**
+
+1. Log in to your Copilot environment.
+2. Navigate to **Agents**.
+3. Click **Create blank agent**.
+4. Enter a name for the agent.
+5. Click **Create**.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777949129-0otnrybgdac-create-20agent-20in-20copilot.png?fm=auto&auto=compress%2Cformat" alt="Creating a new agent named Document360 in Copilot Studio interface." />
+
+You will be redirected to the newly created agent.
+
+**Add MCP as a tool**
+
+1. In the agent page, navigate to the **Tools** tab in the top navigation bar.
+2. Click **Add a tool**.
+3. Select **Model Context Protocol**.
+
+**Configure MCP settings**
+
+1. Enter the following details:
+
+   - **Name** – Provide a name for the MCP connector
+   - **Description** – Enter a description (minimum 30 characters)
+   - **URL** – Paste the appropriate MCP server URL
+2. Under **Authentication method**, select **OAuth 2.0**.
+3. Ensure **Dynamic discovery** is selected by default.
+4. Click **Create**.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777961231-9dsvj7xj679-copilot-20--20enter-20infos.png?fm=auto&auto=compress%2Cformat" alt="Form for adding a Model Context Protocol server with required fields and options." />
+
+**Establish connection**
+
+1. After creating the tool, a **Connection** screen will appear showing **Not connected**.
+2. Click **Not connected**.
+3. Select **Create new connection**.
+4. Click **Create**.
+
+<Image src="https://test-dai.imgix.net/org-305180ff-8bbf-40a5-bdbf-7db82ff17465/doc-37e0ac78-8ede-48d7-8b5d-fcbc080a78a6/1793777949325-qsnh3ag1pes-copilot-20--20not-20connected-20--20create-20new-20connection.png?fm=auto&auto=compress%2Cformat" alt="Document360 tool setup screen showing connection options and instructions for creating connections." />
+
+After creating the connection:
+
+1. You will be redirected to **Document360**.
+2. Review the connection request and choose the required project.
+3. Select the confirmation checkbox (I understand and trust this URL).
+4. Click **Continue**.
+
+The connection is now established. Copilot agent can interact with your knowledge base using the MCP capabilities enabled in your project.
+
+ NOTE
+
+MCP support may vary depending on the AI assistant or client being used (such as IDE-based assistants or experimental tools). Some platforms may have limited or evolving support for MCP capabilities. The available fields and interface may vary slightly depending on the AI assistant. Refer to your AI assistant's documentation for compatibility details.
+
+---
+
+## Other MCP-compatible platforms
+
+You can connect any other AI assistant that supports MCP or custom connectors using the same configuration details:
+
+1. In your AI assistant, locate the option to add an MCP server or custom connector.
+2. Provide the MCP server URL or the JSON configuration from Document360, depending on what the platform requires.
+3. Complete the OAuth authentication when redirected to Document360: choose the required project, select the **I understand and trust this URL** checkbox, and click **Continue**.
+
+---
+
+## Verify the connection
+
+To confirm that your AI assistant can access your knowledge base:
+
+1. Start a new conversation in your AI assistant.
+2. Enter a prompt that asks it to fetch or search your documentation. For example, ask it to find an article by title or update a section of it and then publish it in your knowledge base.<br /> If the connection is successful, the AI assistant returns results sourced from your Document360 knowledge base. For more prompts you can try, refer to the [MCP use cases](https://docs.document360.com/help/docs/mcp-use-cases-in-document360) article.
+
+If no results are returned or an error appears, verify:
+
+- MCP is enabled in Document360.
+- The JSON configuration or server URL was copied correctly.
+- The connector is active in your AI assistant.<br /> If the issue persists, re-authenticate by disconnecting and reconnecting the MCP connector, or contact [Document360 support](https://document360.com/contact-us/).
