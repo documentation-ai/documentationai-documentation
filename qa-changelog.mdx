@@ -1,0 +1,126 @@
+---
+title: Release Notes
+description: 'Changes, fixes, and improvements across versions'
+---
+<Update label="2026-10-29" description="Announcement banners, per-language footers, GitLab context repositories, agent and MCP improvements, and fixes" tags={["feature","improvement","fix"]}>
+  ## Announcement banners
+
+  Site admins can create, edit, enable, disable, preview, and delete announcement banners shown at the top of the published site. Each banner carries its own text, type, color and dismissibility, and publishing safeguards handle locking, revalidation and rollback so a broken edit never reaches readers. Eligible banners render above the header before the page's first paint, with the page UI shifting down to make room.
+
+  See [Banners](/customize/banners).
+
+  ## Custom site footers
+
+  Configure a different custom footer for each navigation language in Site Config. The interface flags languages whose footer values have diverged and lets you unify them again when one footer should apply everywhere.
+
+  See [Custom footers](/customize/footer).
+
+  ## GitLab context repositories
+
+  Connect GitLab projects as read-only context repositories for the AI agent, without making them the source repository for your documentation. Select the projects and branches the agent may read — including projects under subgroup paths — so the agent can ground its answers in code that lives outside your docs repo.
+
+  See [GitLab integration](/integrations/gitlab).
+
+  ## Improvements
+
+  - **GitHub context repositories and branch selection**: Connect read-only GitHub repositories as agent context and choose which branch the agent reads. See [GitHub integration](/connectors/github).
+  - **Agent repository analysis sandbox**: Repository analysis now runs in an isolated sandbox. See [AI Documentation Agent](/ai/ai-documentation-agent).
+  - **Reader MCP tools**: Read-only access to documentation files, navigation and search through the Reader MCP. See [Reader MCP Server](/ai/reader-mcp-server).
+  - **Markdown delivery and redirects**: Configured redirects now apply to `.md` URLs. See [Redirects and rewrites](/customize/redirects-and-rewrites).
+  - **MCP retrieval and security**: Navigation uses backend access rules, so private pages stay hidden. See [MCP servers](/ai/mcp-servers).
+  - **Agent context retrieval**: Locate, read and history analysis are consolidated into fewer steps. See [AI Documentation Agent](/ai/ai-documentation-agent).
+  - **Sidebar title wrapping**: New option to wrap long sidebar titles. See [Navigation and sidebar](/customize/navigation-and-sidebar).
+
+  ## Fixes
+
+  - **Floating embed navigation**: Linked sections now open at the selected section.
+  - **Embed resizing**: Floating documentation embeds support `minWidth`, `minHeight` and resizing. See [Embedded docs reference](/embedded-docs/reference).
+  - **PDF downloads**: The site footer is excluded from generated PDFs. See [Page actions](/ai/page-actions).
+  - **Inline snippets**: Inline snippets stay inside the step or list item where they were inserted. See [Reusable snippets](/write-and-publish/snippets).
+  - **Organization permissions**: Organizations are refetched after creation to avoid permission errors. See [Organizations and projects](/account-and-billing/organizations-and-projects).
+  - **Media uploads**: The media upload page scrolls when many files are added. See [Media library](/write-and-publish/media-library).
+  - **Organization lists**: Malformed organization lists no longer crash the dashboard.
+  - **Content security policy**: Corrected the CSP API fallback and allowed telemetry hosts.
+  - **Search synchronization**: Clearer failed-page errors and completion reporting.
+  - **Agent runs and repositories**: Fixed stale branch picks and branch-list loading. See [AI Documentation Agent](/ai/ai-documentation-agent).
+  - **GitLab automation runs**: Corrected run labels and persistence. See [Automations](/ai/automations).
+</Update>
+
+<Update label="2026-10-13" description="Documentation.AI Auth, expanded icon library, SEO language and structured data, faster search, Workflows renamed to Automations, and fixes" tags={["feature","improvement","fix"]}>
+  ## Documentation.AI auth for published sites
+
+  Access control has a fourth sign-in method: readers sign in to your published documentation with their Documentation.AI account. Every member of your organization can read your protected docs, so you manage access from **Settings > Members** instead of sharing a password or setting up an identity provider.
+
+  See [Documentation.AI Auth](/customize/access-control/documentation-ai-auth).
+
+  ## Expanded icon library
+
+  Navigation icons now support three icon libraries: **Lucide**, **Font Awesome**, and **Tabler**  alongside uploaded SVG, PNG, and WebP files from your media library. The icon picker in the editor has been redesigned with cross-library search, outline and filled style filters, and lazy loading as you scroll.
+
+  See [Navigation and Sidebar](/customize/navigation-and-sidebar).
+
+  ## SEO language and structured data
+
+  New site-level and page-level SEO controls give search engines richer metadata for multilingual and structured-data compliance.
+
+  - **Site language**: Set a default language for your site with `seo.language` using BCP 47 codes such as `es-ES`. The `<html lang>` attribute reflects this on every page.
+  - **Page language and hreflang**: Override the language per page with `lang` frontmatter and declare alternate-language pages with `hreflang` mappings.
+  - **Connected JSON-LD**: Structured data is now emitted as a single `@graph` containing Organization, WebSite, WebPage, BreadcrumbList, and Article nodes, with per-node overrides and the ability to disable individual nodes.
+  - **Open Graph locale**: Open Graph tags now include the correct locale from your language settings.
+
+  See [Metadata](/seo-and-geo/metadata) and [Page Configuration](/customize/page-configuration).
+
+  ## Workflows are now Automations
+
+  Workflows have been renamed to **Automations** in the dashboard and documentation — only the name changed, with no setup needed. Run-notification email links now point to `/automations` instead of `/workflows`. See [Automations](/ai/automations).
+
+  ## Improvements
+
+  - **Faster search**: Reduced search debounce, added result caching within the current session, and warmed the search index when the modal opens. Search highlighting now matches word starts and handles punctuation-separated terms, with proper HTML escaping.
+  - **Search indexes table contents**: Markdown table rows are now indexed with their column labels, so table-only sections can be found through keyword and semantic search.
+  - **Search citations link to correct headings**: Citation URLs now use the docs site's actual heading-ID generation, fixing links that previously pointed to non-existent anchors for accented, non-Latin, or punctuation-heavy headings.
+  - **OpenAPI page validation before deployment**: Generated API pages are now validated during deployment instead of failing later during search indexing, with error messages identifying the source spec and line/column.
+  - **OpenAPI descriptions preserve Markdown safely**: Tags, braces, and HTML-like text in OpenAPI descriptions are now converted to valid MDX, so `<redirect_uri>` and similar text renders literally instead of being interpreted as JSX.
+  - **Frontmatter validation for complex YAML**: Long frontmatter containing flow maps, JSON-LD, or complex YAML is now handled correctly during deployment validation.
+  - **Auth session renewal for search and AI assistant**: Reader sessions no longer expire unexpectedly for readers who primarily search or chat. Search and assistant requests refresh the access check once it is five minutes old, without extending the original sign-in expiration.
+
+  ## Fixes
+
+  - **Heading spacing**: Fixed missing spaces between inline formatting (bold, italic, code, links) and following text in headings.
+  - **MDX HTML-entity handling**: Preserved encoded spaces around Markdown emphasis markers, list items, blockquotes, and paragraphs so bold, italic, and links render correctly.
+  - **Same-site auth redirect security**: Post-login redirects are now restricted to paths on the current site, preventing open-redirect vulnerabilities across Documentation.AI Auth, OAuth, and JWT flows.
+  - **DNS rebinding protection for media imports**: Remote media downloads now use a pinned DNS lookup to prevent DNS rebinding attacks during URL image imports.
+  - **Tab and code-group drag-and-drop persistence**: Fixed drag-and-drop reordering for tabs and code groups not saving the new order to the document.
+</Update>
+
+<Update label="2026-10-08" description="External Sources, new agent connectors" tags={["feature","improvement","fix"]}>
+  ## External Sources
+
+  Add PDFs and website URLs as searchable knowledge sources for the AI Assistant. External sources are indexed and searchable alongside your own documentation, so the assistant can ground its answers in reference material that lives outside your docs.
+
+  - **PDF uploads**: Upload PDF files to extract and index their content. Page-count validation and plan-based limits apply.
+  - **Website sources**: Crawl a website or add individual URLs. Preview discovered pages, select which ones to include, and set exclusion patterns.
+  - **Source management**: Search, filter, paginate, edit, refresh, retry, and delete sources from the AI Assistant settings pane.
+  - **Access control**: Sources respect page-level visibility and role-based access, just like your documentation pages.
+
+  See [External Sources](/ai/external-sources) for setup instructions.
+
+  ## New Agent Connectors: Linear, Notion, HubSpot, Plain
+
+  Four new connectors are now available as context sources for the AI Documentation Agent. Connect them from **Agent Settings** and the agent will search and read from these tools alongside your existing GitHub, Confluence, Jira, and User & Agent Feedback connectors.
+
+  - **Linear**: Search and read issues, projects, teams, cycles, and comments. The agent can use issue details and project context to keep your docs aligned with engineering work.
+  - **Notion**: Search pages and databases, read content as Markdown, and query database rows with filters. Useful for pulling specs, wikis, and internal documentation into your agent's context.
+  - **HubSpot**: Search support tickets, contacts, companies, notes, and inbox conversations. The agent can identify recurring customer questions and documentation gaps from real support data.
+  - **Plain**: Search support threads, read thread timelines, browse help center articles, and look up customer profiles. The agent can surface common support questions that indicate missing or unclear docs.
+
+  See [Linear](/connectors/linear), [Notion](/connectors/notion), [HubSpot](/connectors/hubspot), and [Plain](/connectors/plain) for setup instructions.
+
+  ## Improvements
+
+  - **Deployment failure recovery with Fix with Agent**: Failed publishes now show error details and a **Fix with Agent** action that opens the failed branch with the error pre-loaded.
+  - **API Playground file uploads**: The API playground supports native file uploads for multipart requests and binary bodies, with generated cURL and JavaScript previews and a 4 MB limit.
+  - **Expandable heading anchors and copy-link**: Expandable titles can render as headings with anchor IDs, appear in the table of contents, and support copy-link.
+  - **Sidebar scroll isolation**: Sidebar auto-scroll now moves only the sidebar container, keeping the main page from jumping.
+  - **MCP Reader dashboard improvements**: Added auth-aware endpoint display, reusable MCP URL cards, an expanded Authoring MCP tool list, and setup documentation links.
+</Update>

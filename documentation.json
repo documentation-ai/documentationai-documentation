@@ -32,6 +32,10 @@
                         "icon": "rocket",
                         "pages": [
                           {
+                            "title": "How to Add a Trip Gallery",
+                            "path": "how-to-add-a-trip-gallery"
+                          },
+                          {
                             "title": "How to add ggaasdas General Info?",
                             "path": "how-to-add-general-info"
                           },
@@ -54,10 +58,6 @@
                           {
                             "title": "How to Add Trip Info",
                             "path": "how-to-add-trip-info"
-                          },
-                          {
-                            "title": "How to Add a Trip Gallery",
-                            "path": "how-to-add-a-trip-gallery"
                           },
                           {
                             "title": "How to Add Trip Includes and Excludes",
@@ -882,6 +882,113 @@
                           {
                             "title": "How to Configure Social Login",
                             "path": "how-to-configure-social-login"
+                          }
+                        ]
+                      },
+                      {
+                        "group": "QA Chat Batch",
+                        "pages": [
+                          {
+                            "title": "QA chat batch page 1",
+                            "path": "qa-chat-batch/page-1"
+                          },
+                          {
+                            "title": "QA chat batch page 2",
+                            "path": "qa-chat-batch/page-2"
+                          },
+                          {
+                            "title": "QA chat batch page 3",
+                            "path": "qa-chat-batch/page-3"
+                          },
+                          {
+                            "title": "QA chat batch page 4",
+                            "path": "qa-chat-batch/page-4"
+                          },
+                          {
+                            "title": "QA chat batch page 5",
+                            "path": "qa-chat-batch/page-5"
+                          },
+                          {
+                            "title": "QA chat batch page 6",
+                            "path": "qa-chat-batch/page-6"
+                          },
+                          {
+                            "title": "QA chat batch page 7",
+                            "path": "qa-chat-batch/page-7"
+                          },
+                          {
+                            "title": "QA chat batch page 8",
+                            "path": "qa-chat-batch/page-8"
+                          },
+                          {
+                            "title": "QA chat batch page 9",
+                            "path": "qa-chat-batch/page-9"
+                          },
+                          {
+                            "title": "QA chat batch page 10",
+                            "path": "qa-chat-batch/page-10"
+                          }
+                        ]
+                      },
+                      {
+                        "group": "QA Parallel",
+                        "pages": [
+                          {
+                            "title": "QA parallel page 1",
+                            "path": "qa-parallel/page-1"
+                          },
+                          {
+                            "title": "QA parallel page 2",
+                            "path": "qa-parallel/page-2"
+                          },
+                          {
+                            "title": "QA parallel page 3",
+                            "path": "qa-parallel/page-3"
+                          },
+                          {
+                            "title": "QA parallel page 4",
+                            "path": "qa-parallel/page-4"
+                          },
+                          {
+                            "title": "QA parallel page 5",
+                            "path": "qa-parallel/page-5"
+                          },
+                          {
+                            "title": "QA parallel page 6",
+                            "path": "qa-parallel/page-6"
+                          },
+                          {
+                            "title": "QA parallel page 7",
+                            "path": "qa-parallel/page-7"
+                          },
+                          {
+                            "title": "QA parallel page 8",
+                            "path": "qa-parallel/page-8"
+                          },
+                          {
+                            "title": "QA parallel page 9",
+                            "path": "qa-parallel/page-9"
+                          },
+                          {
+                            "title": "QA parallel page 10",
+                            "path": "qa-parallel/page-10"
+                          }
+                        ]
+                      },
+                      {
+                        "group": "QA Seq (tab B while A offline)",
+                        "pages": [
+                          {
+                            "title": "QA seq page 4",
+                            "path": "qa-fast/fourth"
+                          },
+                          {
+                            "title": "QA seq page 1 (room ahead of redux)",
+                            "path": "qa-seq-2/first-agent"
+                          },
+                          {
+                            "title": "QA seq page 3",
+                            "path": "qa-seq-2/three-agent"
                           }
                         ]
                       }
