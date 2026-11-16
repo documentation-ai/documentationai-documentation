@@ -32,6 +32,18 @@
                         "icon": "rocket",
                         "pages": [
                           {
+                            "title": "Math Toggle Check",
+                            "path": "math-toggle-check"
+                          },
+                          {
+                            "title": "Math Rebuild Check",
+                            "path": "math-rebuild-check"
+                          },
+                          {
+                            "title": "Math Seed Check",
+                            "path": "math-seed-check"
+                          },
+                          {
                             "title": "How to Add a Trip Gallery",
                             "path": "how-to-add-a-trip-gallery"
                           },
@@ -1515,5 +1527,13 @@
   "banner": {
     "content": "this is testing ",
     "color": "#6b7280"
+  },
+  "styling": {
+    "latex": true
+  },
+  "api": {
+    "playground": {
+      "proxy": false
+    }
   }
 }
