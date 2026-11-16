@@ -1515,5 +1515,10 @@
   "banner": {
     "content": "this is testing ",
     "color": "#6b7280"
+  },
+  "api": {
+    "playground": {
+      "proxy": false
+    }
   }
 }
