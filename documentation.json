@@ -82,6 +82,10 @@
                           {
                             "title": "How to display a Trip Duration on the single trip page?",
                             "path": "how-to-display-a-trip-duration-on-the-single-trip-page"
+                          },
+                          {
+                            "title": "Math New Page Check",
+                            "path": "math-new-page-check"
                           }
                         ]
                       },
@@ -1535,5 +1539,8 @@
     "playground": {
       "proxy": false
     }
+  },
+  "math": {
+    "latex": true
   }
 }
